@@ -1,0 +1,33 @@
+{
+  "name": "prototypable-design-system",
+  "version": "1.0.0",
+  "description": "A design system for making websites",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjbo/prototypable-design-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tjbo/prototypable-design-system/issues"
+  },
+  "homepage": "https://github.com/tjbo/prototypable-design-system#readme",
+  "dependencies": {
+    "styled-components": "^5.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/react": "^5.3.18",
+    "babel-loader": "^8.1.0"
+  }
+}
