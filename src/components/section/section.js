@@ -4,17 +4,22 @@ export default function ({
   children,
   textAlign = 'left',
   hasBgDarkColor = false,
-  hasBgColor = false,
+  hasBgLightColor = false,
   isFullWidth = false,
   innerWidth = 'big',
 }) {
   if (isFullWidth) {
     return (
-      <SectionWrapperUI hasBgColor={hasBgColor}>{children}</SectionWrapperUI>
+      <SectionWrapperUI hasBgLightColor={hasBgLightColor}>
+        {children}
+      </SectionWrapperUI>
     )
   } else {
     return (
-      <SectionWrapperUI hasBgColor={hasBgColor} hasBgDarkColor={hasBgDarkColor}>
+      <SectionWrapperUI
+        hasBgLightColor={hasBgLightColor}
+        hasBgDarkColor={hasBgDarkColor}
+      >
         <SectionUI textAlign={textAlign} innerWidth={innerWidth}>
           {children}
         </SectionUI>

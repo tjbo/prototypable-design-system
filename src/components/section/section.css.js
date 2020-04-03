@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import config from '../../../config'
 
-const getBgColor = ({ hasBgColor, hasBgDarkColor }) => {
-  if (hasBgColor) {
+const getBgColor = ({ hasBgLightColor, hasBgDarkColor }) => {
+  if (hasBgLightColor) {
     return `${config.colors.light1}`
   } else if (hasBgDarkColor) {
     return `${config.colors.dark3}`
