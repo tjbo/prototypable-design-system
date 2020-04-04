@@ -1,26 +1,33 @@
-// import peerDepsExternal from 'rollup-plugin-peer-deps-external'
-// import autoExternal from 'rollup-plugin-auto-external'
-import resolve from '@rollup/plugin-node-resolve'
+// https://medium.com/@tomaszmularczyk89/guide-to-building-a-react-components-library-with-rollup-and-styled-jsx-694ec66bd2
 import babel from 'rollup-plugin-babel'
+import commonjs from 'rollup-plugin-commonjs'
+import resolve from 'rollup-plugin-node-resolve'
+import replace from 'rollup-plugin-replace'
+import inject from '@rollup/plugin-inject'
+
+const NODE_ENV = process.env.NODE_ENV || 'development'
+const outputFile = NODE_ENV === 'production' ? './lib/prod.js' : './lib/dev.js'
 
 export default {
-  external: ['react', 'react-dom', 'styled-components'],
-
-  input: 'src/index.js',
+  input: './src/index.js',
   output: {
-    file: 'dist/bundle.js',
+    file: outputFile,
     format: 'cjs',
-    // globals: {
-    //   react: 'React',
-    //   'react-dom': 'ReactDOM',
-    //   'styled-components': 'styled',
-    // },
   },
   plugins: [
-    resolve(),
+    replace({
+      'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
+    }),
     babel({
-      presets: ['@babel/react'],
       exclude: 'node_modules/**',
     }),
+    inject({
+      include: '**/*.js',
+      React: 'react',
+      styled: 'styled-components',
+    }),
+    resolve(),
+    commonjs(),
   ],
+  external: (id) => /^react|styled/.test(id),
 }
