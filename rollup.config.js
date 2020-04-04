@@ -9,12 +9,12 @@ export default {
   input: 'src/index.js',
   output: {
     file: 'dist/bundle.js',
-    format: 'cjs',
-    globals: {
-      react: 'React',
-      'react-dom': 'ReactDOM',
-      'styled-components': 'styled',
-    },
+    format: 'es',
+    // globals: {
+    //   react: 'React',
+    //   'react-dom': 'ReactDOM',
+    //   'styled-components': 'styled',
+    // },
   },
   plugins: [
     resolve(),
