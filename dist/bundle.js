@@ -1,7 +1,11 @@
-import 'react'
-import 'styled-components'
+'use strict';
 
-const unit = 32
+Object.defineProperty(exports, '__esModule', { value: true });
+
+require('react');
+require('styled-components');
+
+const unit = 32;
 const config = {
   colors: {
     dark1: '#000',
@@ -9,95 +13,90 @@ const config = {
     dark3: '#0090e7',
     dark4: '#454545',
     light1: '#f5faff',
-    light2: '36,139,204',
+    light2: '36,139,204'
   },
   domain: 'SomeBiz.com',
   fonts: {
     font1: 'PT Serif',
     font2: 'Roboto',
-    font3: 'PT Serif Caption',
+    font3: 'PT Serif Caption'
   },
   border: '1px solid #eee',
 
   unit(multiplier) {
-    return multiplier * unit + 'px'
+    return multiplier * unit + 'px';
   },
 
   layout: {
-    topNavHeight: 2.25 * unit + 'px',
+    topNavHeight: 2.25 * unit + 'px'
   },
   contact: {
     email: 'biz@yourbiz.com',
-    phone: '999-9999-9999',
-  },
-}
+    phone: '999-9999-9999'
+  }
+};
 
 // import styled from 'styled-components'
 
-const getBgColor = ({ hasBgLightColor, hasBgDarkColor }) => {
+const getBgColor = ({
+  hasBgLightColor,
+  hasBgDarkColor
+}) => {
   if (hasBgLightColor) {
-    return `${config.colors.light1}`
+    return `${config.colors.light1}`;
   } else if (hasBgDarkColor) {
-    return `${config.colors.dark3}`
+    return `${config.colors.dark3}`;
   } else {
-    return '#fff'
+    return '#fff';
   }
-}
+};
 
-const getInnerWidth = ({ innerWidth }) => {
+const getInnerWidth = ({
+  innerWidth
+}) => {
   if (innerWidth === 'medium') {
-    return '720px'
+    return '720px';
   } else if (innerWidth === 'small') {
-    return '460px'
+    return '460px';
   } else {
-    return `${config.unit(33)}`
+    return `${config.unit(33)}`;
   }
-}
+};
 
 const SectionWrapperUI = styled('section')`
   width: 100%;
   background-color: ${getBgColor};
-`
+`;
 const SectionUI = styled('div')`
   max-width: ${getInnerWidth};
   margin: 0 auto;
   padding: ${config.unit(1)} 0;
-  text-align: ${({ textAlign }) => textAlign};
-`
+  text-align: ${({
+  textAlign
+}) => textAlign};
+`;
 
-function section({
+function section ({
   children,
   textAlign = 'left',
   hasBgDarkColor = false,
   hasBgLightColor = false,
   isFullWidth = false,
-  innerWidth = 'big',
+  innerWidth = 'big'
 }) {
   if (isFullWidth) {
-    return /*#__PURE__*/ React.createElement(
-      SectionWrapperUI,
-      {
-        hasBgLightColor: hasBgLightColor,
-      },
-      children,
-    )
+    return /*#__PURE__*/React.createElement(SectionWrapperUI, {
+      hasBgLightColor: hasBgLightColor
+    }, children);
   } else {
-    return /*#__PURE__*/ React.createElement(
-      SectionWrapperUI,
-      {
-        hasBgLightColor: hasBgLightColor,
-        hasBgDarkColor: hasBgDarkColor,
-      },
-      /*#__PURE__*/ React.createElement(
-        SectionUI,
-        {
-          textAlign: textAlign,
-          innerWidth: innerWidth,
-        },
-        children,
-      ),
-    )
+    return /*#__PURE__*/React.createElement(SectionWrapperUI, {
+      hasBgLightColor: hasBgLightColor,
+      hasBgDarkColor: hasBgDarkColor
+    }, /*#__PURE__*/React.createElement(SectionUI, {
+      textAlign: textAlign,
+      innerWidth: innerWidth
+    }, children));
   }
 }
 
-export { section as Section }
+exports.Section = section;

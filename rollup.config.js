@@ -9,7 +9,7 @@ export default {
   input: 'src/index.js',
   output: {
     file: 'dist/bundle.js',
-    format: 'es',
+    format: 'cjs',
     // globals: {
     //   react: 'React',
     //   'react-dom': 'ReactDOM',
