@@ -1,1 +1,1 @@
-export { default as Section } from './components/section'
+export { default as Section } from 'src/components/section'
