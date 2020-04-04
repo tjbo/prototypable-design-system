@@ -8,10 +8,7 @@ module.exports = {
       React: 'react',
       styled: ['styled-components', 'default'],
     })
-
     config.plugins.push(provideReact)
-    // config.plugins.push(provideStyled)
-
     return config
   },
 }
