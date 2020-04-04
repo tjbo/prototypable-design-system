@@ -1,6 +1,6 @@
 {
   "name": "prototypable-design-system",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A design system for making websites",
   "main": "dist/bundle.js",
   "scripts": {
