@@ -1,1 +1,1 @@
-import * as section from './components/section'
+export { default as Section } from './components/section'
