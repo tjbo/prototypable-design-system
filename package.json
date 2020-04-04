@@ -2,14 +2,13 @@
   "name": "prototypable-components",
   "version": "0.1.13",
   "description": "A design system for making websites",
-  "main": "index.js",
+  "main": "build/dist.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "release": "release-it",
-    "build:dev": "NODE_ENV=development rollup -c",
-    "build:prod": "NODE_ENV=production rollup -c"
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -42,7 +41,6 @@
     "rollup": "^1.23.1",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-replace": "^2.2.0"
+    "rollup-plugin-node-resolve": "^5.2.0"
   }
 }
