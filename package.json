@@ -2,7 +2,7 @@
   "name": "prototypable-design-system",
   "version": "0.1.5",
   "description": "A design system for making websites",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
@@ -26,11 +26,14 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "@rollup/plugin-node-resolve": "^7.1.1",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-links": "^5.3.18",
     "@storybook/addons": "^5.3.18",
     "@storybook/react": "^5.3.18",
     "babel-loader": "^8.1.0",
-    "release-it": "^13.5.1"
+    "release-it": "^13.5.1",
+    "rollup-plugin-babel": "^4.4.0"
   }
 }
