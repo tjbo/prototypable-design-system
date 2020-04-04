@@ -6,9 +6,11 @@ module.exports = {
   webpackFinal: (config) => {
     const provideReact = new webpack.ProvidePlugin({
       React: 'react',
+      styled: ['styled-components', 'default'],
     })
 
     config.plugins.push(provideReact)
+    // config.plugins.push(provideStyled)
 
     return config
   },
