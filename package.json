@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/tjbo/prototypable-design-system#readme",
   "dependencies": {
+    "next": "^9.2.2",
     "styled-components": "^5.0.1"
   },
   "devDependencies": {
