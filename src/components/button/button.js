@@ -22,7 +22,7 @@ export default function (props) {
   if (href && link) {
     return (
       <ButtonUI align={align} onClick={onClick} maxWidth={maxWidth}>
-        <link href={href}>{text}</link>
+        {/* <link href={href}>{text}</link> */}
       </ButtonUI>
     )
   } else {

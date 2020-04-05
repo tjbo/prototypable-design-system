@@ -7,7 +7,7 @@ import inject from '@rollup/plugin-inject'
 export default {
   input: './src/index.js',
   output: {
-    file: './build/dist.js',
+    file: './dist/index.js',
     format: 'cjs',
   },
   plugins: [
