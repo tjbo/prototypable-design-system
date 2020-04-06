@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import config from '../../config'
 
-export const DealUI = styled('div')`
+export const CardUI = styled('div')`
   img {
     width: 100%;
   }
@@ -20,10 +20,10 @@ export const ContentUI = styled('div')`
   padding-top: ${config.unit(0.25)};
 `
 
-export const DealImageUI = styled('div')`
+export const CardImageUI = styled('div')`
   height: 200px;
   width: 330px;
-  background-image: url(${(props) => props.src});
+  background-image: url(${(props) => props.imageUrl});
   text-align: center;
   background-size: cover;
   background-position: center;
