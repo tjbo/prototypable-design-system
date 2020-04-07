@@ -265,8 +265,18 @@ function faq (_ref) {
   }));
 }
 
+function _templateObject4$1() {
+  var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n  color: #fff;\n  margin-right: ", ";\n"]);
+
+  _templateObject4$1 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject3$2() {
-  var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n  font-family: ", ";\n  margin: 0 ", ";\n  list-style: none;\n  padding: 0;\n  display: flex;\n  a {\n    margin-left: ", ";\n\n    :active,\n    :visited,\n    :hover,\n    :link {\n      color: #fff;\n      text-decoration: none;\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  color: #fff;\n  white-space: nowrap;\n  font-style: normal;\n  a:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: #fff;\n    text-decoration: none;\n    font-family: ", ";\n    font-size: ", ";\n    text-transform: uppercase;\n  }\n  font-family: ", ";\n"]);
 
   _templateObject3$2 = function _templateObject3() {
     return data;
@@ -276,7 +286,7 @@ function _templateObject3$2() {
 }
 
 function _templateObject2$2() {
-  var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n  margin: 0;\n  height: 100%;\n  margin-left: ", ";\n  display: flex;\n  align-items: flex-start;\n  text-align: center;\n  justify-content: space-around;\n  font-family: ", ";\n  font-weight: 500;\n  text-transform: uppercase;\n  a:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: #fff;\n    text-decoration: none;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: space-between;\n  background-color: ", ";\n  padding: ", " ", ";\n  padding-right: ", ";\n  font-family: ", ";\n"]);
 
   _templateObject2$2 = function _templateObject2() {
     return data;
@@ -286,7 +296,7 @@ function _templateObject2$2() {
 }
 
 function _templateObject$4() {
-  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  width: 100%;\n  justify-content: space-between;\n  color: #fff;\n  position: relative;\n  top: 0;\n  line-height: ", ";\n  height: ", ";\n  z-index: 1;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: block;\n  width: 100%;\n  background-color: ", ";\n  width: 100%;\n  flex-shrink: 0;\n"]);
 
   _templateObject$4 = function _templateObject() {
     return data;
@@ -294,9 +304,50 @@ function _templateObject$4() {
 
   return data;
 }
-var Header = styled__default('header')(_templateObject$4(), config.colors.dark1, config.layout.topNavHeight, config.layout.topNavHeight);
-var Brand = styled__default('div')(_templateObject2$2(), config.unit(1.125), config.unit(0.5), config.fonts.font2);
-var NavMenu = styled__default('nav')(_templateObject3$2(), config.unit(0.7), config.fonts.font2, config.unit(0.5), config.unit(0.5));
+var FooterUI = styled__default('footer')(_templateObject$4(), config.colors.dark1);
+var FooterUIInner = styled__default('div')(_templateObject2$2(), config.colors.dark1, config.unit(0.5), config.unit(0.75), config.unit(1), config.fonts.font1);
+var AddressUI = styled__default('address')(_templateObject3$2(), config.fonts.font2, config.unit(0.65), config.fonts.font2);
+var FinePrintUI = styled__default('div')(_templateObject4$1(), config.unit(0.4), config.unit(1));
+
+function Footer(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/React.createElement(FooterUI, null, /*#__PURE__*/React.createElement(FooterUIInner, null, /*#__PURE__*/React.createElement(AddressUI, null)));
+}
+
+Footer.AddressUI = AddressUI;
+
+function _templateObject3$3() {
+  var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n  font-family: ", ";\n  margin: 0 ", ";\n  list-style: none;\n  padding: 0;\n  display: flex;\n  a {\n    margin-left: ", ";\n\n    :active,\n    :visited,\n    :hover,\n    :link {\n      color: #fff;\n      text-decoration: none;\n    }\n  }\n"]);
+
+  _templateObject3$3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2$3() {
+  var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n  margin: 0;\n  height: 100%;\n  margin-left: ", ";\n  display: flex;\n  align-items: flex-start;\n  text-align: center;\n  justify-content: space-around;\n  font-family: ", ";\n  font-weight: 500;\n  text-transform: uppercase;\n  a:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: #fff;\n    text-decoration: none;\n  }\n"]);
+
+  _templateObject2$3 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$5() {
+  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  width: 100%;\n  justify-content: space-between;\n  color: #fff;\n  position: relative;\n  top: 0;\n  line-height: ", ";\n  height: ", ";\n  z-index: 1;\n"]);
+
+  _templateObject$5 = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var Header = styled__default('header')(_templateObject$5(), config.colors.dark1, config.layout.topNavHeight, config.layout.topNavHeight);
+var Brand = styled__default('div')(_templateObject2$3(), config.unit(1.125), config.unit(0.5), config.fonts.font2);
+var NavMenu = styled__default('nav')(_templateObject3$3(), config.unit(0.7), config.fonts.font2, config.unit(0.5), config.unit(0.5));
 
 function header (_ref) {
   var children = _ref.children,
@@ -386,49 +437,49 @@ function _templateObject5$1() {
   return data;
 }
 
-function _templateObject4$1() {
+function _templateObject4$2() {
   var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n"]);
 
-  _templateObject4$1 = function _templateObject4() {
+  _templateObject4$2 = function _templateObject4() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject3$3() {
+function _templateObject3$4() {
   var data = _taggedTemplateLiteral([""]);
 
-  _templateObject3$3 = function _templateObject3() {
+  _templateObject3$4 = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$3() {
+function _templateObject2$4() {
   var data = _taggedTemplateLiteral(["\n  color: #fff;\n  font-family: ", ";\n  font-size: ", ";\n  line-height: 1.125;\n  margin: 0;\n  text-align: center;\n  text-shadow: 2px 2px #333;\n"]);
 
-  _templateObject2$3 = function _templateObject2() {
+  _templateObject2$4 = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$5() {
+function _templateObject$6() {
   var data = _taggedTemplateLiteral(["\n  align-items: center;\n  display: flex;\n  flex-grow: 1;\n  flex-direction: column;\n  justify-content: center;\n  padding: ", ";\n  width: 100%;\n"]);
 
-  _templateObject$5 = function _templateObject() {
+  _templateObject$6 = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var BottomBannerUI = styled__default('p')(_templateObject$5(), config.unit(0.25));
-var CallToAction = styled__default('div')(_templateObject2$3(), config.fonts.font2, config.unit(1.5));
-var CallToAction1UI = styled__default(CallToAction)(_templateObject3$3());
-var CallToAction2UI = styled__default(CallToAction)(_templateObject4$1(), config.unit(1));
+var BottomBannerUI = styled__default('p')(_templateObject$6(), config.unit(0.25));
+var CallToAction = styled__default('div')(_templateObject2$4(), config.fonts.font2, config.unit(1.5));
+var CallToAction1UI = styled__default(CallToAction)(_templateObject3$4());
+var CallToAction2UI = styled__default(CallToAction)(_templateObject4$2(), config.unit(1));
 var ContentUI$1 = styled__default('div')(_templateObject5$1(), config.unit(2.5), config.unit(2.25));
 var IntroUI = styled__default('div')(_templateObject6$1(), config.unit(0.88), config.fonts.font1);
 var Intro2UI = styled__default('div')(_templateObject7$1(), config.unit(0.88), config.fonts.font3);
@@ -442,20 +493,20 @@ function jumbotron () {
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(JumbotronBackgroundUI, null), /*#__PURE__*/React.createElement(ContentUI$1, null, /*#__PURE__*/React.createElement(JumbotronContentUI, null, /*#__PURE__*/React.createElement(Intro2UI, null, /*#__PURE__*/React.createElement(TitleUI$1, null, "Your Trusted Los Angeles ", /*#__PURE__*/React.createElement("br", null), "Hard Money Lender"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(SubTitleUI, null, "Loans from $200K to $5 Million. ", /*#__PURE__*/React.createElement("br", null), "Fast. Reliable. Transparent.", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("br", null), "Call Us Today @ ", config.contact.phone)))));
 }
 
-function _templateObject2$4() {
+function _templateObject2$5() {
   var data = _taggedTemplateLiteral(["\n  max-width: ", ";\n  margin: 0 auto;\n  padding: ", " 0;\n  text-align: ", ";\n"]);
 
-  _templateObject2$4 = function _templateObject2() {
+  _templateObject2$5 = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$6() {
+function _templateObject$7() {
   var data = _taggedTemplateLiteral(["\n  width: 100%;\n  background-color: ", ";\n"]);
 
-  _templateObject$6 = function _templateObject() {
+  _templateObject$7 = function _templateObject() {
     return data;
   };
 
@@ -487,8 +538,8 @@ var getInnerWidth = function getInnerWidth(_ref2) {
   }
 };
 
-var SectionWrapperUI = styled__default('section')(_templateObject$6(), getBgColor);
-var SectionUI = styled__default('div')(_templateObject2$4(), getInnerWidth, config.unit(1), function (_ref3) {
+var SectionWrapperUI = styled__default('section')(_templateObject$7(), getBgColor);
+var SectionUI = styled__default('div')(_templateObject2$5(), getInnerWidth, config.unit(1), function (_ref3) {
   var textAlign = _ref3.textAlign;
   return textAlign;
 });
@@ -521,22 +572,37 @@ function section (_ref) {
   }
 }
 
-function _templateObject$7() {
+function Fonts () {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("link", {
+    href: "https://fonts.googleapis.com/css2?family=PT+Serif+Caption:ital@0;1&family=Roboto+Condensed:ital,wght@0,400;0,700;1,400&family=Roboto:wght@500;700;900&display=swap",
+    rel: "stylesheet"
+  }), /*#__PURE__*/React.createElement("link", {
+    href: "https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap",
+    rel: "stylesheet"
+  }));
+}
+
+function _templateObject$8() {
   var data = _taggedTemplateLiteral(["\nbody {\n  font-family: ", ";\n  font-size: ", ";\n  line-height: 1.5;\n  padding: 0;\n  margin: 0;\n  display: flex;\n  flex-direction: column;\n  color: ", ";\n}\n\ntable {\n  margin: 0;\n}\n\nh1, h2, h3, h4 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n}\n\nh1 {\n  font-size: ", ";\n  font-weight: 600;\n  margin: 0;\n}\n\nh1.double-size {\n  font-size: ", ";\n}\n\nh2 {\n  font-size: ", ";\n  font-weight: 500;\n  line-height: 1;\n  margin-bottom: ", ";\n}\n\n\nh3 {\n  font-size: ", ";\n  font-weight: 400;\n}\n\nh4 {\n  font-size: ", ";\n  font-weight: 500;\n}\n\nh5 {\n  font-size: ", ";\n}\n\np, ul {\n  padding: 0;\n}\n\np.double-size {\n  font-size: ", ";\n}\n\nul {\n  margin-left: ", ";\n}\n\na:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: ", ";\n  }\n"]);
 
-  _templateObject$7 = function _templateObject() {
+  _templateObject$8 = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var GlobalStyles = styled.createGlobalStyle(_templateObject$7(), config.fonts.font1, config.unit(0.6), config.colors.dark4, config.fonts.font2, config.unit(1), config.unit(2), config.unit(1.125), config.unit(0.75), config.unit(0.9), config.unit(0.75), config.unit(0.6), config.unit(1), config.unit(2), config.colors.dark3);
+var GlobalStyles = styled.createGlobalStyle(_templateObject$8(), config.fonts.font1, config.unit(0.6), config.colors.dark4, config.fonts.font2, config.unit(1), config.unit(2), config.unit(1.125), config.unit(0.75), config.unit(0.9), config.unit(0.75), config.unit(0.6), config.unit(1), config.unit(2), config.colors.dark3);
+
+function head () {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Fonts, null), /*#__PURE__*/React.createElement(GlobalStyles, null));
+}
 
 exports.Banner = banner;
 exports.Button = button;
 exports.Card = card;
 exports.Faq = faq;
-exports.GlobalStyles = GlobalStyles;
+exports.Footer = Footer;
+exports.Head = head;
 exports.Header = header;
 exports.Jumbotron = jumbotron;
 exports.Section = section;

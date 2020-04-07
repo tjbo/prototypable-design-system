@@ -1,3 +1,11 @@
+import Fonts from './fonts'
+import GlobalStyles from './styles'
+
 export default function () {
-  return <div>thingdsafsafd</div>
+  return (
+    <React.Fragment>
+      <Fonts />
+      <GlobalStyles />
+    </React.Fragment>
+  )
 }
