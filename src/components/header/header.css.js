@@ -1,12 +1,6 @@
 import styled from 'styled-components'
 import config from '../../config'
 
-const breakpoints = {
-  sm: '768px',
-  md: '992px',
-  lg: '1200px',
-}
-
 export const HeaderUI = styled('header')`
   background-color: ${config.colors.dark1};
   display: flex;
@@ -19,7 +13,7 @@ export const HeaderUI = styled('header')`
   height: ${config.layout.topNavHeight};
   z-index: 1;
 
-  @media (max-width: ${breakpoints.sm}) {
+  @media (max-width: ${config.breakPoints.sm}) {
     height: ${config.unit(2)};
   }
 `
@@ -44,12 +38,12 @@ export const BrandUI = styled('div')`
     text-decoration: none;
   }
 
-  @media (max-width: ${breakpoints.sm}) {
+  @media (max-width: ${config.breakPoints.sm}) {
     font-size: ${config.unit(0.75)};
   }
 `
 export const NavMenuTriggerUI = styled('span')`
-  @media (max-width: ${breakpoints.sm}) {
+  @media (max-width: ${config.breakPoints.sm}) {
     cursor: pointer;
     display: block;
     width: ${config.unit(1.5)};
@@ -76,7 +70,7 @@ export const NavMenuUI = styled('nav')`
     }
   }
 
-  @media (max-width: ${breakpoints.sm}) {
+  @media (max-width: ${config.breakPoints.sm}) {
     display: ${({ isOpen }) => {
       return isOpen === true ? 'flex' : 'none'
     }};
@@ -95,7 +89,7 @@ export const NavMenuUI = styled('nav')`
 `
 
 export const NavLinkUI = styled('span')`
-  @media (max-width: ${breakpoints.sm}) {
+  @media (max-width: ${config.breakPoints.sm}) {
     cursor: pointer;
     font-size: ${config.unit(0.6)};
     padding: ${config.unit(0.4)} 0;
@@ -111,7 +105,7 @@ export const NavLinkUI = styled('span')`
   }
 `
 
-const heightLine = 5
+const heightLine = 4
 const heightIcon = 30
 
 function makeValue(eq) {
@@ -122,8 +116,8 @@ function makeValue(eq) {
 const translateY = heightIcon / 2
 
 export const TriggerIconUI = styled('div')`
- @media (max-width: ${breakpoints.sm}) {
-  width: ${config.unit(1.5)};
+ @media (max-width: ${config.breakPoints.sm}) {
+  width: ${config.unit(1)};
   top: ${config.unit(.5)};
   right: ${config.unit(.5)};
   height: ${makeValue(heightIcon)};
@@ -156,7 +150,6 @@ export const TriggerIconUI = styled('div')`
 
 
   ${({ isOpen }) => {
-    console.log('isOpen', isOpen)
     return (
       isOpen &&`
     .line-1 {

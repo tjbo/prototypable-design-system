@@ -1,6 +1,11 @@
 const unit = 32
 
 const config = {
+  breakPoints: {
+    sm: '768px',
+    md: '992px',
+    lg: '1200px',
+  },
   colors: {
     dark1: '#000',
     dark2: '#2b6242',

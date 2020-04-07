@@ -7,10 +7,11 @@ import {
   FieldTitleUI,
   TitleUI,
 } from './card.css'
+var short = require('short-uuid')
 
 function makeField(key, value) {
   return (
-    <FieldUI>
+    <FieldUI key={short.generate()}>
       <FieldTitleUI>{key}</FieldTitleUI>
       <FieldTextUI>{value}</FieldTextUI>
     </FieldUI>
@@ -18,9 +19,8 @@ function makeField(key, value) {
 }
 
 export default function ({ data: { fields, title, imageUrl } }) {
-  console.log('imageUrl', imageUrl)
   return (
-    <CardUI>
+    <CardUI key={short.generate()}>
       <CardImageUI imageUrl={imageUrl} />
       <ContentUI>
         <TitleUI>{title}</TitleUI>

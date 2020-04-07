@@ -22,7 +22,6 @@ export const ContentUI = styled('div')`
 
 export const CardImageUI = styled('div')`
   height: 200px;
-  width: 330px;
   background-image: url(${(props) => props.imageUrl});
   text-align: center;
   background-size: cover;

@@ -7,7 +7,6 @@ import {
   SubTitleUI,
   TitleUI,
 } from './jumbotron.css'
-import config from '../../config'
 
 export default function () {
   return (
@@ -26,7 +25,7 @@ export default function () {
               Fast. Reliable. Transparent.
               <br />
               <br />
-              Call Us Today @ {config.contact.phone}
+              Call Us Today @
             </SubTitleUI>
           </Intro2UI>
           {/* <Form /> */}
