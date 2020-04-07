@@ -11,7 +11,7 @@ export default function ({
   if (isFullWidth) {
     return (
       <SectionWrapperUI hasBgLightColor={hasBgLightColor}>
-        {children}dsafsadf
+        {children}
       </SectionWrapperUI>
     )
   } else {
@@ -21,7 +21,7 @@ export default function ({
         hasBgDarkColor={hasBgDarkColor}
       >
         <SectionUI textAlign={textAlign} innerWidth={innerWidth}>
-          {children}tesafdsasdfsd
+          {children}
         </SectionUI>
       </SectionWrapperUI>
     )

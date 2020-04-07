@@ -50,7 +50,7 @@ var config = {
 };
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  border: 0;\n  border-radius: 5px;\n  color: #fff;\n  cursor: pointer;\n  display: block;\n  font-family: ", ";\n  font-size: ", ";\n  font-weight: 700;\n  height: ", ";\n  margin-top: ", ";\n  width: 100%;\n  max-width: ", "px;\n  background-image: linear-gradient(\n    to bottom,\n    #e52d27 0%,\n    #b31217 41%,\n    #e52d27 100%\n  );\n  ", "\n\n  border:1px solid #d02718;\n  box-shadow: inset 0px 1px 0px 0px #f5978e;\n"]);
+  var data = _taggedTemplateLiteral(["\n  color: #fff;\n  text-align: center;\n  font-size: ", ";\n  font-style: 'italic';\n  font-family: ", ";\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -58,7 +58,23 @@ function _templateObject() {
 
   return data;
 }
-var ButtonUI = styled__default('button')(_templateObject(), config.colors.dark2, config.fonts.font2, config.unit(0.75), config.unit(1.75), config.unit(0.66), function (_ref) {
+var BannerUI = styled__default('div')(_templateObject(), config.unit(1.25), config.fonts.font3);
+
+function banner (_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/React.createElement(BannerUI, null, children);
+}
+
+function _templateObject$1() {
+  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  border: 0;\n  border-radius: 5px;\n  color: #fff;\n  cursor: pointer;\n  display: block;\n  font-family: ", ";\n  font-size: ", ";\n  font-weight: 700;\n  height: ", ";\n  margin-top: ", ";\n  width: 100%;\n  max-width: ", "px;\n  background-image: linear-gradient(\n    to bottom,\n    #e52d27 0%,\n    #b31217 41%,\n    #e52d27 100%\n  );\n  ", "\n\n  border:1px solid #d02718;\n  box-shadow: inset 0px 1px 0px 0px #f5978e;\n"]);
+
+  _templateObject$1 = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var ButtonUI = styled__default('button')(_templateObject$1(), config.colors.dark2, config.fonts.font2, config.unit(0.75), config.unit(1.75), config.unit(0.66), function (_ref) {
   var maxWidth = _ref.maxWidth;
   return maxWidth;
 }, function (_ref2) {
@@ -163,16 +179,16 @@ function _templateObject2() {
   return data;
 }
 
-function _templateObject$1() {
+function _templateObject$2() {
   var data = _taggedTemplateLiteral(["\n  img {\n    width: 100%;\n  }\n  display: flex;\n  line-height: 1.75;\n  justify-content: center;\n  flex-direction: column;\n  margin-bottom: ", ";\n  background: #fff;\n  border: ", ";\n"]);
 
-  _templateObject$1 = function _templateObject() {
+  _templateObject$2 = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var CardUI = styled__default('div')(_templateObject$1(), config.unit(1), config.border);
+var CardUI = styled__default('div')(_templateObject$2(), config.unit(1), config.border);
 var ContentUI = styled__default('div')(_templateObject2(), config.unit(0.75), config.unit(0.25));
 var CardImageUI = styled__default('div')(_templateObject3(), function (props) {
   return props.imageUrl;
@@ -219,16 +235,16 @@ function _templateObject2$1() {
   return data;
 }
 
-function _templateObject$2() {
+function _templateObject$3() {
   var data = _taggedTemplateLiteral(["\n  border: solid black;\n  border-width: 0 3px 3px 0;\n  display: inline-block;\n  padding: 3px;\n  transform: ", ";\n  -webkit-transform: ", ";\n"]);
 
-  _templateObject$2 = function _templateObject() {
+  _templateObject$3 = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var ArrowUI = styled__default('i')(_templateObject$2(), function (_ref) {
+var ArrowUI = styled__default('i')(_templateObject$3(), function (_ref) {
   var isOpen = _ref.isOpen;
   return isOpen ? "rotate(45deg)" : "rotate(-135deg)";
 }, function (_ref2) {
@@ -269,16 +285,16 @@ function _templateObject2$2() {
   return data;
 }
 
-function _templateObject$3() {
+function _templateObject$4() {
   var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  width: 100%;\n  justify-content: space-between;\n  color: #fff;\n  position: relative;\n  top: 0;\n  line-height: ", ";\n  height: ", ";\n  z-index: 1;\n"]);
 
-  _templateObject$3 = function _templateObject() {
+  _templateObject$4 = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var Header = styled__default('header')(_templateObject$3(), config.colors.dark1, config.layout.topNavHeight, config.layout.topNavHeight);
+var Header = styled__default('header')(_templateObject$4(), config.colors.dark1, config.layout.topNavHeight, config.layout.topNavHeight);
 var Brand = styled__default('div')(_templateObject2$2(), config.unit(1.125), config.unit(0.5), config.fonts.font2);
 var NavMenu = styled__default('nav')(_templateObject3$2(), config.unit(0.7), config.fonts.font2, config.unit(0.5), config.unit(0.5));
 
@@ -400,16 +416,16 @@ function _templateObject2$3() {
   return data;
 }
 
-function _templateObject$4() {
+function _templateObject$5() {
   var data = _taggedTemplateLiteral(["\n  align-items: center;\n  display: flex;\n  flex-grow: 1;\n  flex-direction: column;\n  justify-content: center;\n  padding: ", ";\n  width: 100%;\n"]);
 
-  _templateObject$4 = function _templateObject() {
+  _templateObject$5 = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var BottomBannerUI = styled__default('p')(_templateObject$4(), config.unit(0.25));
+var BottomBannerUI = styled__default('p')(_templateObject$5(), config.unit(0.25));
 var CallToAction = styled__default('div')(_templateObject2$3(), config.fonts.font2, config.unit(1.5));
 var CallToAction1UI = styled__default(CallToAction)(_templateObject3$3());
 var CallToAction2UI = styled__default(CallToAction)(_templateObject4$1(), config.unit(1));
@@ -436,10 +452,10 @@ function _templateObject2$4() {
   return data;
 }
 
-function _templateObject$5() {
+function _templateObject$6() {
   var data = _taggedTemplateLiteral(["\n  width: 100%;\n  background-color: ", ";\n"]);
 
-  _templateObject$5 = function _templateObject() {
+  _templateObject$6 = function _templateObject() {
     return data;
   };
 
@@ -471,7 +487,7 @@ var getInnerWidth = function getInnerWidth(_ref2) {
   }
 };
 
-var SectionWrapperUI = styled__default('section')(_templateObject$5(), getBgColor);
+var SectionWrapperUI = styled__default('section')(_templateObject$6(), getBgColor);
 var SectionUI = styled__default('div')(_templateObject2$4(), getInnerWidth, config.unit(1), function (_ref3) {
   var textAlign = _ref3.textAlign;
   return textAlign;
@@ -493,7 +509,7 @@ function section (_ref) {
   if (isFullWidth) {
     return /*#__PURE__*/React.createElement(SectionWrapperUI, {
       hasBgLightColor: hasBgLightColor
-    }, children, "dsafsadf");
+    }, children);
   } else {
     return /*#__PURE__*/React.createElement(SectionWrapperUI, {
       hasBgLightColor: hasBgLightColor,
@@ -501,21 +517,22 @@ function section (_ref) {
     }, /*#__PURE__*/React.createElement(SectionUI, {
       textAlign: textAlign,
       innerWidth: innerWidth
-    }, children, "tesafdsasdfsd"));
+    }, children));
   }
 }
 
-function _templateObject$6() {
+function _templateObject$7() {
   var data = _taggedTemplateLiteral(["\nbody {\n  font-family: ", ";\n  font-size: ", ";\n  line-height: 1.5;\n  padding: 0;\n  margin: 0;\n  display: flex;\n  flex-direction: column;\n  color: ", ";\n}\n\ntable {\n  margin: 0;\n}\n\nh1, h2, h3, h4 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n}\n\nh1 {\n  font-size: ", ";\n  font-weight: 600;\n  margin: 0;\n}\n\nh1.double-size {\n  font-size: ", ";\n}\n\nh2 {\n  font-size: ", ";\n  font-weight: 500;\n  line-height: 1;\n  margin-bottom: ", ";\n}\n\n\nh3 {\n  font-size: ", ";\n  font-weight: 400;\n}\n\nh4 {\n  font-size: ", ";\n  font-weight: 500;\n}\n\nh5 {\n  font-size: ", ";\n}\n\np, ul {\n  padding: 0;\n}\n\np.double-size {\n  font-size: ", ";\n}\n\nul {\n  margin-left: ", ";\n}\n\na:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: ", ";\n  }\n"]);
 
-  _templateObject$6 = function _templateObject() {
+  _templateObject$7 = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var GlobalStyles = styled.createGlobalStyle(_templateObject$6(), config.fonts.font1, config.unit(0.6), config.colors.dark4, config.fonts.font2, config.unit(1), config.unit(2), config.unit(1.125), config.unit(0.75), config.unit(0.9), config.unit(0.75), config.unit(0.6), config.unit(1), config.unit(2), config.colors.dark3);
+var GlobalStyles = styled.createGlobalStyle(_templateObject$7(), config.fonts.font1, config.unit(0.6), config.colors.dark4, config.fonts.font2, config.unit(1), config.unit(2), config.unit(1.125), config.unit(0.75), config.unit(0.9), config.unit(0.75), config.unit(0.6), config.unit(1), config.unit(2), config.colors.dark3);
 
+exports.Banner = banner;
 exports.Button = button;
 exports.Card = card;
 exports.Faq = faq;
