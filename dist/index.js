@@ -8,6 +8,120 @@ var React = _interopDefault(require('react'));
 var styled = require('styled-components');
 var styled__default = _interopDefault(styled);
 
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) _setPrototypeOf(subClass, superClass);
+}
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (typeof call === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return _assertThisInitialized(self);
+}
+
+function _createSuper(Derived) {
+  return function () {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (_isNativeReflectConstruct()) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
+  };
+}
+
 function _taggedTemplateLiteral(strings, raw) {
   if (!raw) {
     raw = strings.slice(0);
@@ -30,7 +144,6 @@ var config = {
     light1: '#f5faff',
     light2: '36,139,204'
   },
-  domain: 'SomeBiz.com',
   fonts: {
     font1: 'PT Serif',
     font2: 'Roboto',
@@ -42,10 +155,6 @@ var config = {
   },
   layout: {
     topNavHeight: 2.25 * _unit + 'px'
-  },
-  contact: {
-    email: 'biz@yourbiz.com',
-    phone: '999-9999-9999'
   }
 };
 
@@ -316,8 +425,38 @@ function Footer(_ref) {
 
 Footer.AddressUI = AddressUI;
 
+function _templateObject6$1() {
+  var data = _taggedTemplateLiteral(["\n @media (max-width: ", ") {\n  width: ", ";\n  top: ", ";\n  right: ", ";\n  height: ", ";\n  position: absolute;\n  display: block;\n  margin: (", ") auto ", " auto;\n\n  .line {\n    display: block;\n    background: #fff;\n    width: 100%;\n    height: ", ";\n    position: absolute;\n    left: 0;\n    border-radius: (", ");\n    transition: all 0.4;\n    -webkit-transition: all 0.4;\n    -moz-transition: all 0.4;\n\n    &.line-1 {\n      top: 0;\n    }\n    &.line-2 {\n      top: 50%;\n    }\n    &.line-3 {\n      top: 100%;\n    }\n  }\n\n\n  ", "\n }\n"]);
+
+  _templateObject6$1 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5$1() {
+  var data = _taggedTemplateLiteral(["\n  @media (max-width: ", ") {\n    cursor: pointer;\n    font-size: ", ";\n    padding: ", " 0;\n    border-bottom: ", ";\n    margin: 0;\n    width: 100vw;\n    text-align: left;\n\n    :hover,\n    :active {\n      /* background-color: #000; */\n    }\n  }\n"]);
+
+  _templateObject5$1 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4$2() {
+  var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n  font-family: ", ";\n  margin: 0 ", ";\n  list-style: none;\n  padding: 0;\n  display: flex;\n  flex-direction: row;\n  a {\n    margin-left: ", ";\n    :active,\n    :visited,\n    :hover,\n    :link {\n      color: #fff;\n      text-decoration: none;\n    }\n  }\n\n  @media (max-width: ", ") {\n    display: ", ";\n    align-items: center;\n    margin: 0;\n    position: absolute;\n    top: ", ";\n    align-content: stretch;\n    flex-direction: column;\n    /* border-top: 1px solid #eee; */\n    min-height: calc(100vh - ", ");\n    background-color: #000;\n    background-color: ", ";\n    /* min-width: 100vw; */\n  }\n"]);
+
+  _templateObject4$2 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject3$3() {
-  var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n  font-family: ", ";\n  margin: 0 ", ";\n  list-style: none;\n  padding: 0;\n  display: flex;\n  a {\n    margin-left: ", ";\n\n    :active,\n    :visited,\n    :hover,\n    :link {\n      color: #fff;\n      text-decoration: none;\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  @media (max-width: ", ") {\n    cursor: pointer;\n    display: block;\n    width: ", ";\n    height: ", ";\n  }\n"]);
 
   _templateObject3$3 = function _templateObject3() {
     return data;
@@ -327,7 +466,7 @@ function _templateObject3$3() {
 }
 
 function _templateObject2$3() {
-  var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n  margin: 0;\n  height: 100%;\n  margin-left: ", ";\n  display: flex;\n  align-items: flex-start;\n  text-align: center;\n  justify-content: space-around;\n  font-family: ", ";\n  font-weight: 500;\n  text-transform: uppercase;\n  a:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: #fff;\n    text-decoration: none;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n  margin: 0;\n  height: 100%;\n  margin-left: ", ";\n  display: flex;\n  align-items: center;\n  text-align: center;\n  justify-content: space-around;\n  font-family: ", ";\n  font-weight: 500;\n  text-transform: uppercase;\n  a:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: #fff;\n    text-decoration: none;\n  }\n\n  @media (max-width: ", ") {\n    font-size: ", ";\n  }\n"]);
 
   _templateObject2$3 = function _templateObject2() {
     return data;
@@ -337,7 +476,7 @@ function _templateObject2$3() {
 }
 
 function _templateObject$5() {
-  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  width: 100%;\n  justify-content: space-between;\n  color: #fff;\n  position: relative;\n  top: 0;\n  line-height: ", ";\n  height: ", ";\n  z-index: 1;\n"]);
+  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  width: 100%;\n  justify-content: space-between;\n  color: #fff;\n  position: relative;\n  top: 0;\n  height: ", ";\n  z-index: 1;\n\n  @media (max-width: ", ") {\n    height: ", ";\n  }\n"]);
 
   _templateObject$5 = function _templateObject() {
     return data;
@@ -345,17 +484,91 @@ function _templateObject$5() {
 
   return data;
 }
-var Header = styled__default('header')(_templateObject$5(), config.colors.dark1, config.layout.topNavHeight, config.layout.topNavHeight);
-var Brand = styled__default('div')(_templateObject2$3(), config.unit(1.125), config.unit(0.5), config.fonts.font2);
-var NavMenu = styled__default('nav')(_templateObject3$3(), config.unit(0.7), config.fonts.font2, config.unit(0.5), config.unit(0.5));
+var breakpoints = {
+  sm: '768px',
+  md: '992px',
+  lg: '1200px'
+};
+var HeaderUI = styled__default('header')(_templateObject$5(), config.colors.dark1, config.layout.topNavHeight, breakpoints.sm, config.unit(2));
+var BrandUI = styled__default('div')(_templateObject2$3(), config.unit(1.125), config.unit(0.5), config.fonts.font2, breakpoints.sm, config.unit(0.75));
+var NavMenuTriggerUI = styled__default('span')(_templateObject3$3(), breakpoints.sm, config.unit(1.5), config.unit(1.5));
+var NavMenuUI = styled__default('nav')(_templateObject4$2(), config.unit(0.7), config.fonts.font2, config.unit(0.5), config.unit(0.5), breakpoints.sm, function (_ref) {
+  var isOpen = _ref.isOpen;
+  return isOpen === true ? 'flex' : 'none';
+}, config.unit(2), config.unit(2), config.colors.dark3);
+var NavLinkUI = styled__default('span')(_templateObject5$1(), breakpoints.sm, config.unit(0.6), config.unit(0.4), config.border);
+var heightLine = 5;
+var heightIcon = 30;
 
-function header (_ref) {
-  var children = _ref.children,
-      siteName = _ref.siteName;
-  return /*#__PURE__*/React.createElement(Header, null, /*#__PURE__*/React.createElement(Brand, null, /*#__PURE__*/React.createElement("a", {
-    href: "/"
-  }, siteName)), /*#__PURE__*/React.createElement(NavMenu, null, children));
+function makeValue(eq) {
+  return "\n  ".concat(eq, "px\n  ");
 }
+
+var translateY = heightIcon / 2;
+var TriggerIconUI = styled__default('div')(_templateObject6$1(), breakpoints.sm, config.unit(1.5), config.unit(.5), config.unit(.5), makeValue(heightIcon), makeValue(heightIcon * 2), heightIcon, makeValue(heightLine), makeValue(heightLine / 2), function (_ref2) {
+  var isOpen = _ref2.isOpen;
+  console.log('isOpen', isOpen);
+  return isOpen && "\n    .line-1 {\n      transform: translateY(".concat(makeValue(translateY), ") translateX(0) rotate(45deg);\n    }\n    .line-2 {\n      opacity: 0;\n    }\n    .line-3 {\n      transform: translateY(").concat(makeValue(translateY * -1), ") translateX(0) rotate(-45deg);\n  }");
+});
+
+var Header = /*#__PURE__*/function (_React$Component) {
+  _inherits(Header, _React$Component);
+
+  var _super = _createSuper(Header);
+
+  function Header() {
+    var _this;
+
+    _classCallCheck(this, Header);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      isOpen: false
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "toggleMenu", function () {
+      _this.setState({
+        isOpen: !_this.state.isOpen
+      });
+    });
+
+    return _this;
+  }
+
+  _createClass(Header, [{
+    key: "render",
+    value: function render() {
+      var children = this.props.children;
+      var isOpen = this.state.isOpen;
+      return /*#__PURE__*/React.createElement(HeaderUI, null, React.Children.map(children, function (child) {
+        return React.cloneElement(child, {
+          isOpen: isOpen
+        });
+      }), /*#__PURE__*/React.createElement(NavMenuTriggerUI, {
+        onClick: this.toggleMenu
+      }, /*#__PURE__*/React.createElement(TriggerIconUI, {
+        isOpen: isOpen
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "line line-1"
+      }), /*#__PURE__*/React.createElement("div", {
+        className: "line line-2"
+      }), /*#__PURE__*/React.createElement("div", {
+        className: "line line-3"
+      }))));
+    }
+  }]);
+
+  return Header;
+}(React.Component);
+
+Header.Brand = BrandUI;
+Header.NavMenu = NavMenuUI;
+Header.NavLink = NavLinkUI;
 
 function _templateObject12() {
   var data = _taggedTemplateLiteral(["\n  font-family: ", ";\n  font-size: ", ";\n  font-weight: 700;\n  line-height: 1.125;\n  margin-bottom: ", ";\n  margin-top: 0.25em;\n  text-align: center;\n"]);
@@ -417,30 +630,30 @@ function _templateObject7$1() {
   return data;
 }
 
-function _templateObject6$1() {
+function _templateObject6$2() {
   var data = _taggedTemplateLiteral(["\n  color: #000;\n  display: flex;\n  flex: 2;\n  flex-direction: column;\n  font-size: ", ";\n  line-height: 1.5;\n  justify-content: space-around;\n  text-align: left;\n  text-shadow: 2px 2px #222;\n  font-weight: 600;\n  font-family: ", ";\n  font-weight: 700;\n"]);
 
-  _templateObject6$1 = function _templateObject6() {
+  _templateObject6$2 = function _templateObject6() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject5$1() {
+function _templateObject5$2() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  height: calc(100vh - ", ");\n  position: absolute;\n  top: ", ";\n  width: 100%;\n"]);
 
-  _templateObject5$1 = function _templateObject5() {
+  _templateObject5$2 = function _templateObject5() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject4$2() {
+function _templateObject4$3() {
   var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n"]);
 
-  _templateObject4$2 = function _templateObject4() {
+  _templateObject4$3 = function _templateObject4() {
     return data;
   };
 
@@ -479,9 +692,9 @@ function _templateObject$6() {
 var BottomBannerUI = styled__default('p')(_templateObject$6(), config.unit(0.25));
 var CallToAction = styled__default('div')(_templateObject2$4(), config.fonts.font2, config.unit(1.5));
 var CallToAction1UI = styled__default(CallToAction)(_templateObject3$4());
-var CallToAction2UI = styled__default(CallToAction)(_templateObject4$2(), config.unit(1));
-var ContentUI$1 = styled__default('div')(_templateObject5$1(), config.unit(2.5), config.unit(2.25));
-var IntroUI = styled__default('div')(_templateObject6$1(), config.unit(0.88), config.fonts.font1);
+var CallToAction2UI = styled__default(CallToAction)(_templateObject4$3(), config.unit(1));
+var ContentUI$1 = styled__default('div')(_templateObject5$2(), config.unit(2.5), config.unit(2.25));
+var IntroUI = styled__default('div')(_templateObject6$2(), config.unit(0.88), config.fonts.font1);
 var Intro2UI = styled__default('div')(_templateObject7$1(), config.unit(0.88), config.fonts.font3);
 var ButtonsUI = styled__default('div')(_templateObject8());
 var JumbotronBackgroundUI = styled__default('div')(_templateObject9(), config.unit(2.25), config.unit(2));
@@ -603,6 +816,6 @@ exports.Card = card;
 exports.Faq = faq;
 exports.Footer = Footer;
 exports.Head = head;
-exports.Header = header;
+exports.Header = Header;
 exports.Jumbotron = jumbotron;
 exports.Section = section;

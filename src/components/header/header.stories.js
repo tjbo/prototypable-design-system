@@ -7,24 +7,21 @@ export default {
 }
 
 export const Default = () => (
-  <Header
-    links={[
-      {
-        name: 'About',
-        path: '/',
-      },
-      {
-        name: 'Recent',
-        path: '/',
-      },
-      {
-        name: 'Our Team',
-        path: '/',
-      },
-      {
-        name: 'Contact',
-        path: '/',
-      },
-    ]}
-  ></Header>
+  <Header>
+    <Header.Brand>SOMELONGBRANDNAMEGOES</Header.Brand>
+    <Header.NavMenu>
+      <Header.NavLink>
+        <a href="/">Home</a>
+      </Header.NavLink>
+      <Header.NavLink>
+        <a href="/">About</a>
+      </Header.NavLink>
+      <Header.NavLink>
+        <a href="/">Blog</a>
+      </Header.NavLink>
+      <Header.NavLink>
+        <a href="/">Contact</a>
+      </Header.NavLink>
+    </Header.NavMenu>
+  </Header>
 )

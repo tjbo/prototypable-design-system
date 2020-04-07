@@ -9,7 +9,6 @@ const config = {
     light1: '#f5faff',
     light2: '36,139,204',
   },
-  domain: 'SomeBiz.com',
   fonts: {
     font1: 'PT Serif',
     font2: 'Roboto',
@@ -21,10 +20,6 @@ const config = {
   },
   layout: {
     topNavHeight: 2.25 * unit + 'px',
-  },
-  contact: {
-    email: 'biz@yourbiz.com',
-    phone: '999-9999-9999',
   },
 }
 
