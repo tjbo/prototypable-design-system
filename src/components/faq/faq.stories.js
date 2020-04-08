@@ -9,8 +9,9 @@ export default {
 export const Default = () => (
   <Faq
     data={{
-      title: 'What kind of design library is this?',
-      content: 'One I like to work on.',
+      title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit?',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at urna ac sapien accumsan elementum ac in ex. Praesent sit amet laoreet justo, in consequat libero. Nunc finibus condimentum lacus et aliquam. Suspendisse potenti. Sed finibus nisl a nisi gravida tempor ut elementum est. Aliquam dictum euismod nibh ac mollis.',
     }}
   />
 )

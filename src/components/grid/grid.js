@@ -36,13 +36,13 @@ const Rows = function ({ children, itemsPerRow = 3 }) {
     <div>
       <Break
         breakpoints={config.breakPoints}
-        query={{ method: 'isAtMost', breakpoint: 'mobile' }}
+        query={{ method: 'is', breakpoint: 'mobile' }}
       >
         {getChunks(itemsPerRow - 1)}
       </Break>
       <Break
         breakpoints={config.breakPoints}
-        query={{ method: 'isAtMost', breakpoint: 'phablet' }}
+        query={{ method: 'is', breakpoint: 'phablet' }}
       >
         {getChunks(1)}
       </Break>

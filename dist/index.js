@@ -341,7 +341,7 @@ function card (_ref) {
 }
 
 function _templateObject3$1() {
-  var data = _taggedTemplateLiteral(["\n  display: block;\n  clear: both;\n  width: 100%;\n  color: ", ";\n  font-size: ", ";\n  font-weight: 500;\n  height: ", ";\n  position: relative;\n  padding: 0;\n  &:after {\n    content: '';\n    color: ", ";\n    border: solid ", ";\n    border-width: 0 3px 3px 0;\n    display: inline-block;\n    padding: 4px;\n    transform: rotate(-135deg);\n    -webkit-transform: rotate(-135deg);\n    position: absolute;\n    right: 0;\n    top: 3px;\n  }\n  [open] &:after {\n    transform: rotate(45deg);\n    -webkit-transform: rotate(45deg);\n  }\n  &:focus {\n    outline: none;\n  }\n  &::-webkit-details-marker {\n    display: none;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  color: ", ";\n  font-size: ", ";\n  font-weight: 500;\n  position: relative;\n  padding: 0;\n  &:after {\n    content: '';\n    color: ", ";\n    border: solid ", ";\n    border-width: 0 3px 3px 0;\n    display: inline-block;\n    padding: 4px;\n    transform: rotate(-135deg);\n    -webkit-transform: rotate(-135deg);\n    position: absolute;\n    right: 0;\n    top: 3px;\n  }\n  [open] &:after {\n    transform: rotate(45deg);\n    -webkit-transform: rotate(45deg);\n  }\n  &:focus {\n    outline: none;\n  }\n  &::-webkit-details-marker {\n    display: none;\n  }\n"]);
 
   _templateObject3$1 = function _templateObject3() {
     return data;
@@ -351,7 +351,7 @@ function _templateObject3$1() {
 }
 
 function _templateObject2$1() {
-  var data = _taggedTemplateLiteral(["\n  border: ", ";\n  margin-bottom: ", ";\n  padding: ", ";\n  padding-bottom: ", ";\n  background-color: #fff;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  border: ", ";\n  margin-bottom: ", ";\n  padding: ", ";\n  background-color: #fff;\n"]);
 
   _templateObject2$1 = function _templateObject2() {
     return data;
@@ -376,8 +376,8 @@ var ArrowUI = styled__default('i')(_templateObject$3(), function (_ref) {
   var isOpen = _ref2.isOpen;
   return isOpen ? "rotate(45deg)" : "rotate(-135deg)";
 });
-var DetailsUI = styled__default('details')(_templateObject2$1(), config.border, config.unit(1), config.unit(1), config.unit(0.75));
-var SummaryUI = styled__default('summary')(_templateObject3$1(), config.colors.dark4, config.unit(0.66), config.unit(1.375), config.colors.dark1, config.colors.dark4);
+var DetailsUI = styled__default('details')(_templateObject2$1(), config.border, config.unit(1), config.unit(1));
+var SummaryUI = styled__default('summary')(_templateObject3$1(), config.colors.dark4, config.unit(0.66), config.colors.dark1, config.colors.dark4);
 
 function faq (_ref) {
   var _ref$data = _ref.data,
@@ -521,13 +521,13 @@ var Rows = function Rows(_ref3) {
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Break, {
     breakpoints: config.breakPoints,
     query: {
-      method: 'isAtMost',
+      method: 'is',
       breakpoint: 'mobile'
     }
   }, getChunks(itemsPerRow - 1)), /*#__PURE__*/React.createElement(Break, {
     breakpoints: config.breakPoints,
     query: {
-      method: 'isAtMost',
+      method: 'is',
       breakpoint: 'phablet'
     }
   }, getChunks(1)), /*#__PURE__*/React.createElement(Break, {

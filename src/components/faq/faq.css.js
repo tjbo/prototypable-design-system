@@ -12,21 +12,18 @@ export const ArrowUI = styled('i')`
 `
 
 export const DetailsUI = styled('details')`
+  display: flex;
   border: ${config.border};
   margin-bottom: ${config.unit(1)};
   padding: ${config.unit(1)};
-  padding-bottom: ${config.unit(0.75)};
   background-color: #fff;
 `
 
 export const SummaryUI = styled('summary')`
-  display: block;
-  clear: both;
   width: 100%;
   color: ${config.colors.dark4};
   font-size: ${config.unit(0.66)};
   font-weight: 500;
-  height: ${config.unit(1.375)};
   position: relative;
   padding: 0;
   &:after {
