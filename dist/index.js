@@ -342,7 +342,7 @@ function card (_ref) {
 }
 
 function _templateObject3$1() {
-  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  color: ", ";\n  font-size: ", ";\n  font-weight: 500;\n  position: relative;\n  padding: 0;\n  &:after {\n    content: '';\n    color: ", ";\n    border: solid ", ";\n    border-width: 0 3px 3px 0;\n    display: inline-block;\n    padding: 4px;\n    transform: rotate(-135deg);\n    -webkit-transform: rotate(-135deg);\n    position: absolute;\n    right: 0;\n    top: 3px;\n  }\n  [open] &:after {\n    transform: rotate(45deg);\n    -webkit-transform: rotate(45deg);\n  }\n  &:focus {\n    outline: none;\n  }\n  &::-webkit-details-marker {\n    display: none;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  color: ", ";\n  cursor: pointer;\n  font-size: ", ";\n  font-weight: 500;\n  position: relative;\n  padding: 0;\n  &:after {\n    content: '';\n    color: ", ";\n    border: solid ", ";\n    border-width: 0 3px 3px 0;\n    display: inline-block;\n    padding: 4px;\n    transform: rotate(-135deg);\n    -webkit-transform: rotate(-135deg);\n    position: absolute;\n    right: 0;\n    top: 3px;\n  }\n  [open] &:after {\n    transform: rotate(45deg);\n    -webkit-transform: rotate(45deg);\n  }\n  &:focus {\n    outline: none;\n  }\n  &::-webkit-details-marker {\n    display: none;\n  }\n"]);
 
   _templateObject3$1 = function _templateObject3() {
     return data;
@@ -382,13 +382,9 @@ var SummaryUI = styled__default('summary')(_templateObject3$1(), config.colors.d
 
 function faq (_ref) {
   var _ref$data = _ref.data,
-      content = _ref$data.content,
-      title = _ref$data.title;
-  return /*#__PURE__*/React.createElement(DetailsUI, null, /*#__PURE__*/React.createElement(SummaryUI, null, /*#__PURE__*/React.createElement("h4", null, title)), /*#__PURE__*/React.createElement("div", {
-    dangerouslySetInnerHTML: {
-      __html: content
-    }
-  }));
+      answer = _ref$data.answer,
+      question = _ref$data.question;
+  return /*#__PURE__*/React.createElement(DetailsUI, null, /*#__PURE__*/React.createElement(SummaryUI, null, /*#__PURE__*/React.createElement("h4", null, question)), answer);
 }
 
 function _templateObject4$1() {

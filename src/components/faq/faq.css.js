@@ -22,6 +22,7 @@ export const DetailsUI = styled('details')`
 export const SummaryUI = styled('summary')`
   width: 100%;
   color: ${config.colors.dark4};
+  cursor: pointer;
   font-size: ${config.unit(0.66)};
   font-weight: 500;
   position: relative;
