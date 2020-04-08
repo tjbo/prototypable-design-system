@@ -7,8 +7,6 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var React = _interopDefault(require('react'));
 var styled = require('styled-components');
 var styled__default = _interopDefault(styled);
-var reactBreakpoints = require('react-breakpoints');
-var Break = _interopDefault(require('react-break'));
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -481,15 +479,24 @@ var ColUI = styled__default('div')(_templateObject3$3(), function (_ref) {
   return size;
 }, config.unit(0.25));
 
+var Break = function Break(_ref) {
+  var children = _ref.children;
+  return children;
+};
+
+if (typeof window !== 'undefined') {
+  Break = require('react-break')["default"];
+}
+
 var _short$1 = require('short-uuid');
 
-function Grid(_ref) {
-  var children = _ref.children;
+function Grid(_ref2) {
+  var children = _ref2.children;
   return /*#__PURE__*/React.createElement(GridUI, null, children);
 }
 
-Grid.Col = function (_ref2) {
-  var children = _ref2.children;
+Grid.Col = function (_ref3) {
+  var children = _ref3.children;
   return /*#__PURE__*/React.createElement(ColUI, {
     key: _short$1.generate()
   }, children);
@@ -507,10 +514,10 @@ function chunk(arr, len) {
   return chunks;
 }
 
-var Rows = function Rows(_ref3) {
-  var children = _ref3.children,
-      _ref3$itemsPerRow = _ref3.itemsPerRow,
-      itemsPerRow = _ref3$itemsPerRow === void 0 ? 3 : _ref3$itemsPerRow;
+var Rows = function Rows(_ref4) {
+  var children = _ref4.children,
+      _ref4$itemsPerRow = _ref4.itemsPerRow,
+      itemsPerRow = _ref4$itemsPerRow === void 0 ? 3 : _ref4$itemsPerRow;
 
   function getChunks(modifier) {
     var chunks = chunk(children, itemsPerRow - modifier);
@@ -548,7 +555,7 @@ var Rows = function Rows(_ref3) {
   }, getChunks(0)));
 };
 
-Grid.Rows = reactBreakpoints.withBreakpoints(Rows);
+Grid.Rows = Rows;
 
 function _templateObject7$1() {
   var data = _taggedTemplateLiteral(["\n  @media (max-width: ", ") {\n    width: ", ";\n    top: ", ";\n    right: ", ";\n    height: ", ";\n    position: absolute;\n    display: block;\n    margin: (", ") auto ", " auto;\n\n    .line {\n      display: block;\n      background: #fff;\n      width: 100%;\n      height: ", ";\n      position: absolute;\n      left: 0;\n      border-radius: (", ");\n      transition: all 0.4;\n      -webkit-transition: all 0.4;\n      -moz-transition: all 0.4;\n\n      &.line-1 {\n        top: 0;\n      }\n      &.line-2 {\n        top: 50%;\n      }\n      &.line-3 {\n        top: 100%;\n      }\n    }\n\n    ", "\n  }\n"]);

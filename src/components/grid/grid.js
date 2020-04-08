@@ -1,7 +1,14 @@
 import { ColUI, GridUI, RowUI } from './grid.css'
-import { withBreakpoints } from 'react-breakpoints'
-import Break from 'react-break'
 import config from '../../config'
+
+// node safe
+let Break = function ({ children }) {
+  return children
+}
+
+if (typeof window !== 'undefined') {
+  Break = require('react-break').default
+}
 
 var short = require('short-uuid')
 
@@ -62,6 +69,6 @@ const Rows = function ({ children, itemsPerRow = 3 }) {
   )
 }
 
-Grid.Rows = withBreakpoints(Rows)
+Grid.Rows = Rows
 
 export default Grid
