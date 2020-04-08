@@ -2,19 +2,19 @@ import styled from 'styled-components'
 import config, { makePixelValue } from '../../config'
 
 export const HeaderUI = styled('header')`
-  background-color: ${config.colors.dark1};
-  display: flex;
   align-items: center;
-  width: 100%;
-  justify-content: space-between;
+  background-color: ${config.colors.dark1};
   color: #fff;
+  display: flex;
+  height: ${config.layout.desktop.headerHeight};
+  justify-content: space-between;
   position: fixed;
   top: 0;
-  height: ${config.layout.desktop.headerHeight};
+  width: 100%;
   z-index: 1;
 
   @media (max-width: ${makePixelValue(config.breakPoints.tablet)}) {
-    height: ${config.unit(2)};
+    height: ${config.layout.tablet.headerHeight};
   }
 `
 
@@ -24,6 +24,9 @@ export const HeaderPushUI = styled('div')`
   height: ${config.layout.desktop.headerHeight};
   display: block;
   width: 100%;
+  @media (max-width: ${makePixelValue(config.breakPoints.tablet)}) {
+    height: ${config.layout.tablet.headerHeight};
+  }
 `
 
 export const BrandUI = styled('div')`
@@ -37,6 +40,7 @@ export const BrandUI = styled('div')`
   justify-content: space-around;
   font-family: ${config.fonts.font2};
   font-weight: 500;
+  text-align: left;
   text-transform: uppercase;
   a:active,
   a:visited,
@@ -60,13 +64,13 @@ export const NavMenuTriggerUI = styled('span')`
 `
 
 export const NavMenuUI = styled('nav')`
-  font-size: ${config.unit(0.7)};
-  font-family: ${config.fonts.font2};
-  margin: 0 ${config.unit(0.5)};
-  list-style: none;
-  padding: 0;
   display: flex;
   flex-direction: row;
+  font-size: ${config.unit(0.7)};
+  font-family: ${config.fonts.font2};
+  list-style: none;
+  margin: 0 ${config.unit(0.5)};
+  padding: 0;
   a {
     margin-left: ${config.unit(0.5)};
     :active,
@@ -76,45 +80,42 @@ export const NavMenuUI = styled('nav')`
       color: #fff;
       text-decoration: none;
     }
+    width: 100%;
+    @media (max-width: ${makePixelValue(config.breakPoints.tablet)}) {
+      /* position: absolute; */
+      width: 100%;
+    }
   }
 
   @media (max-width: ${makePixelValue(config.breakPoints.tablet)}) {
+    align-content: stretch;
+    align-items: center;
+    background-color: ${config.colors.dark3};
     display: ${({ isOpen }) => {
       return isOpen === true ? 'flex' : 'none'
     }};
-    align-items: center;
+    flex-direction: column;
     margin: 0;
+    min-height: calc(100vh - ${config.unit(2)});
     position: absolute;
     top: ${config.unit(2)};
-    align-content: stretch;
-    flex-direction: column;
-    /* border-top: 1px solid #eee; */
-    min-height: calc(100vh - ${config.unit(2)});
-    background-color: #000;
-    background-color: ${config.colors.dark3};
-    /* min-width: 100vw; */
   }
 `
 
 export const NavLinkUI = styled('span')`
   @media (max-width: ${makePixelValue(config.breakPoints.tablet)}) {
     cursor: pointer;
-    font-size: ${config.unit(0.6)};
-    padding: ${config.unit(0.4)} 0;
     border-bottom: ${config.border};
+    font-size: ${config.unit(0.6)};
     margin: 0;
-    width: 100vw;
+    padding: ${config.unit(0.4)} 0;
     text-align: left;
-
-    :hover,
-    :active {
-      /* background-color: #000; */
-    }
+    width: 100%;
   }
 `
 
 const heightLine = 4
-const heightIcon = 30
+const heightIcon = 22
 const translateY = heightIcon / 2
 
 export const TriggerIconUI = styled('div')`

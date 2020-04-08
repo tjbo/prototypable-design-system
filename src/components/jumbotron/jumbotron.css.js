@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import config from '../../config'
+import config, { makePixelValue } from '../../config'
 
 export const BottomBannerUI = styled('p')`
   align-items: center;
@@ -103,9 +103,13 @@ export const JumbotronBackgroundUI = styled('div')`
 
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-position: center -100px; */
+  background-position: center -100px;
   position: relative;
   width: 100%;
+
+  @media (max-width: ${makePixelValue(config.breakPoints.tablet)}) {
+    background-position: center center;
+  }
   /* -webkit-filter: blur(2px); */
   /* filter: blur(2px); */
 `

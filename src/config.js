@@ -32,6 +32,9 @@ const config = {
     desktop: {
       headerHeight: makePixelValue(2.5 * unit),
     },
+    tablet: {
+      headerHeight: makePixelValue(2 * unit),
+    },
   },
 }
 

@@ -167,6 +167,9 @@ var config = {
   layout: {
     desktop: {
       headerHeight: makePixelValue(2.5 * _unit)
+    },
+    tablet: {
+      headerHeight: makePixelValue(2 * _unit)
     }
   }
 };
@@ -558,7 +561,7 @@ function _templateObject7$1() {
 }
 
 function _templateObject6$1() {
-  var data = _taggedTemplateLiteral(["\n  @media (max-width: ", ") {\n    cursor: pointer;\n    font-size: ", ";\n    padding: ", " 0;\n    border-bottom: ", ";\n    margin: 0;\n    width: 100vw;\n    text-align: left;\n\n    :hover,\n    :active {\n      /* background-color: #000; */\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  @media (max-width: ", ") {\n    cursor: pointer;\n    border-bottom: ", ";\n    font-size: ", ";\n    margin: 0;\n    padding: ", " 0;\n    text-align: left;\n    width: 100%;\n  }\n"]);
 
   _templateObject6$1 = function _templateObject6() {
     return data;
@@ -568,7 +571,7 @@ function _templateObject6$1() {
 }
 
 function _templateObject5$1() {
-  var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n  font-family: ", ";\n  margin: 0 ", ";\n  list-style: none;\n  padding: 0;\n  display: flex;\n  flex-direction: row;\n  a {\n    margin-left: ", ";\n    :active,\n    :visited,\n    :hover,\n    :link {\n      color: #fff;\n      text-decoration: none;\n    }\n  }\n\n  @media (max-width: ", ") {\n    display: ", ";\n    align-items: center;\n    margin: 0;\n    position: absolute;\n    top: ", ";\n    align-content: stretch;\n    flex-direction: column;\n    /* border-top: 1px solid #eee; */\n    min-height: calc(100vh - ", ");\n    background-color: #000;\n    background-color: ", ";\n    /* min-width: 100vw; */\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: row;\n  font-size: ", ";\n  font-family: ", ";\n  list-style: none;\n  margin: 0 ", ";\n  padding: 0;\n  a {\n    margin-left: ", ";\n    :active,\n    :visited,\n    :hover,\n    :link {\n      color: #fff;\n      text-decoration: none;\n    }\n    width: 100%;\n    @media (max-width: ", ") {\n      /* position: absolute; */\n      width: 100%;\n    }\n  }\n\n  @media (max-width: ", ") {\n    align-content: stretch;\n    align-items: center;\n    background-color: ", ";\n    display: ", ";\n    flex-direction: column;\n    margin: 0;\n    min-height: calc(100vh - ", ");\n    position: absolute;\n    top: ", ";\n  }\n"]);
 
   _templateObject5$1 = function _templateObject5() {
     return data;
@@ -588,7 +591,7 @@ function _templateObject4$2() {
 }
 
 function _templateObject3$4() {
-  var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n  margin: 0;\n  height: 100%;\n  margin-left: ", ";\n  display: flex;\n  align-items: center;\n  text-align: center;\n  justify-content: space-around;\n  font-family: ", ";\n  font-weight: 500;\n  text-transform: uppercase;\n  a:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: #fff;\n    text-decoration: none;\n  }\n\n  @media (max-width: ", ") {\n    font-size: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n  margin: 0;\n  height: 100%;\n  margin-left: ", ";\n  display: flex;\n  align-items: center;\n  text-align: center;\n  justify-content: space-around;\n  font-family: ", ";\n  font-weight: 500;\n  text-align: left;\n  text-transform: uppercase;\n  a:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: #fff;\n    text-decoration: none;\n  }\n\n  @media (max-width: ", ") {\n    font-size: ", ";\n  }\n"]);
 
   _templateObject3$4 = function _templateObject3() {
     return data;
@@ -598,7 +601,7 @@ function _templateObject3$4() {
 }
 
 function _templateObject2$4() {
-  var data = _taggedTemplateLiteral(["\n  position: relative;\n  height: ", ";\n  display: block;\n  width: 100%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  position: relative;\n  height: ", ";\n  display: block;\n  width: 100%;\n  @media (max-width: ", ") {\n    height: ", ";\n  }\n"]);
 
   _templateObject2$4 = function _templateObject2() {
     return data;
@@ -608,7 +611,7 @@ function _templateObject2$4() {
 }
 
 function _templateObject$6() {
-  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  width: 100%;\n  justify-content: space-between;\n  color: #fff;\n  position: fixed;\n  top: 0;\n  height: ", ";\n  z-index: 1;\n\n  @media (max-width: ", ") {\n    height: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  background-color: ", ";\n  color: #fff;\n  display: flex;\n  height: ", ";\n  justify-content: space-between;\n  position: fixed;\n  top: 0;\n  width: 100%;\n  z-index: 1;\n\n  @media (max-width: ", ") {\n    height: ", ";\n  }\n"]);
 
   _templateObject$6 = function _templateObject() {
     return data;
@@ -616,18 +619,18 @@ function _templateObject$6() {
 
   return data;
 }
-var HeaderUI = styled__default('header')(_templateObject$6(), config.colors.dark1, config.layout.desktop.headerHeight, makePixelValue(config.breakPoints.tablet), config.unit(2)); // the above header is fixed, this allows content to push down with having to compensate for it every time
+var HeaderUI = styled__default('header')(_templateObject$6(), config.colors.dark1, config.layout.desktop.headerHeight, makePixelValue(config.breakPoints.tablet), config.layout.tablet.headerHeight); // the above header is fixed, this allows content to push down with having to compensate for it every time
 
-var HeaderPushUI = styled__default('div')(_templateObject2$4(), config.layout.desktop.headerHeight);
+var HeaderPushUI = styled__default('div')(_templateObject2$4(), config.layout.desktop.headerHeight, makePixelValue(config.breakPoints.tablet), config.layout.tablet.headerHeight);
 var BrandUI = styled__default('div')(_templateObject3$4(), config.unit(1.125), config.unit(0.5), config.fonts.font2, makePixelValue(config.breakPoints.tablet), config.unit(0.75));
 var NavMenuTriggerUI = styled__default('span')(_templateObject4$2(), makePixelValue(config.breakPoints.tablet), config.unit(1.5), config.unit(1.5));
-var NavMenuUI = styled__default('nav')(_templateObject5$1(), config.unit(0.7), config.fonts.font2, config.unit(0.5), config.unit(0.5), makePixelValue(config.breakPoints.tablet), function (_ref) {
+var NavMenuUI = styled__default('nav')(_templateObject5$1(), config.unit(0.7), config.fonts.font2, config.unit(0.5), config.unit(0.5), makePixelValue(config.breakPoints.tablet), makePixelValue(config.breakPoints.tablet), config.colors.dark3, function (_ref) {
   var isOpen = _ref.isOpen;
   return isOpen === true ? 'flex' : 'none';
-}, config.unit(2), config.unit(2), config.colors.dark3);
-var NavLinkUI = styled__default('span')(_templateObject6$1(), makePixelValue(config.breakPoints.tablet), config.unit(0.6), config.unit(0.4), config.border);
+}, config.unit(2), config.unit(2));
+var NavLinkUI = styled__default('span')(_templateObject6$1(), makePixelValue(config.breakPoints.tablet), config.border, config.unit(0.6), config.unit(0.4));
 var heightLine = 4;
-var heightIcon = 30;
+var heightIcon = 22;
 var translateY = heightIcon / 2;
 var TriggerIconUI = styled__default('div')(_templateObject7$1(), makePixelValue(config.breakPoints.tablet), config.unit(1), config.unit(0.5), config.unit(0.5), makePixelValue(heightIcon), makePixelValue(heightIcon * 2), heightIcon, makePixelValue(heightLine), makePixelValue(heightLine / 2), function (_ref2) {
   var isOpen = _ref2.isOpen;
@@ -724,7 +727,7 @@ function _templateObject10() {
 }
 
 function _templateObject9() {
-  var data = _taggedTemplateLiteral(["\n  display: block;\n  height: calc(100vh - ", ");\n  line-height: 1.5;\n\n  /* background-image: linear-gradient(\n      rgba(0, 144, 231, 0.75),\n      rgba(0, 144, 231, 0.75)\n    ),\n    url('https://images.unsplash.com/photo-1520020324516-dba91274d8ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80');\n  background-blend-mode: overlay; */\n\n  /* background-image: linear-gradient(rgba(0, 144, 231, 0), rgba(0, 144, 231, 0)),\n    url('https://images.unsplash.com/photo-1491964247380-4f630fb757c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */\n  /* background-image: url('https://media.istockphoto.com/photos/beautiful-sunset-of-los-angeles-downtown-skyline-and-palm-trees-in-picture-id884384784?s=2048x2048'); */\n\n  /* background-image: url('https://images.unsplash.com/photo-1576694541627-114e57070466?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */\n  /* background-position: center bottom; */\n\n  background-image: url('https://images.unsplash.com/photo-1504730187314-ecf3c84cc060?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');\n  background-position: center -100px;\n\n  /* background-image: url('https://images.unsplash.com/photo-1528656053220-4e535d66150d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */\n  /* background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */\n\n  background-repeat: no-repeat;\n  background-size: cover;\n  /* background-position: center -100px; */\n  position: relative;\n  width: 100%;\n  /* -webkit-filter: blur(2px); */\n  /* filter: blur(2px); */\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: block;\n  height: calc(100vh - ", ");\n  line-height: 1.5;\n\n  /* background-image: linear-gradient(\n      rgba(0, 144, 231, 0.75),\n      rgba(0, 144, 231, 0.75)\n    ),\n    url('https://images.unsplash.com/photo-1520020324516-dba91274d8ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80');\n  background-blend-mode: overlay; */\n\n  /* background-image: linear-gradient(rgba(0, 144, 231, 0), rgba(0, 144, 231, 0)),\n    url('https://images.unsplash.com/photo-1491964247380-4f630fb757c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */\n  /* background-image: url('https://media.istockphoto.com/photos/beautiful-sunset-of-los-angeles-downtown-skyline-and-palm-trees-in-picture-id884384784?s=2048x2048'); */\n\n  /* background-image: url('https://images.unsplash.com/photo-1576694541627-114e57070466?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */\n  /* background-position: center bottom; */\n\n  background-image: url('https://images.unsplash.com/photo-1504730187314-ecf3c84cc060?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');\n  background-position: center -100px;\n\n  /* background-image: url('https://images.unsplash.com/photo-1528656053220-4e535d66150d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */\n  /* background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */\n\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center -100px;\n  position: relative;\n  width: 100%;\n\n  @media (max-width: ", ") {\n    background-position: center center;\n  }\n  /* -webkit-filter: blur(2px); */\n  /* filter: blur(2px); */\n"]);
 
   _templateObject9 = function _templateObject9() {
     return data;
@@ -820,7 +823,7 @@ var ContentUI$1 = styled__default('div')(_templateObject5$2(), config.layout.des
 var IntroUI = styled__default('div')(_templateObject6$2(), config.unit(0.88), config.fonts.font1);
 var Intro2UI = styled__default('div')(_templateObject7$2(), config.unit(0.88), config.fonts.font3);
 var ButtonsUI = styled__default('div')(_templateObject8());
-var JumbotronBackgroundUI = styled__default('div')(_templateObject9(), config.layout.desktop.headerHeight);
+var JumbotronBackgroundUI = styled__default('div')(_templateObject9(), config.layout.desktop.headerHeight, makePixelValue(config.breakPoints.tablet));
 var JumbotronContentUI = styled__default('div')(_templateObject10(), IntroUI, config.unit(1.5));
 var TitleUI$1 = styled__default('h1')(_templateObject11(), config.fonts.font2, config.unit(2), config.unit(1));
 var SubTitleUI = styled__default('div')(_templateObject12(), config.fonts.font2, config.unit(1.5), config.unit(0.25));
