@@ -1,4 +1,8 @@
 import { ColUI, GridUI, RowUI } from './grid.css'
+import { withBreakpoints } from 'react-breakpoints'
+import Break from 'react-break'
+import config from '../../config'
+
 var short = require('short-uuid')
 
 function Grid({ children }) {
@@ -20,11 +24,44 @@ function chunk(arr, len) {
   return chunks
 }
 
-Grid.Rows = function ({ children, itemsPerRow = 3 }) {
-  const chunks = chunk(children, itemsPerRow)
-  return chunks.map((_chunk) => {
-    return <RowUI key={short.generate()}>{_chunk}</RowUI>
-  })
+const Rows = function ({ children, itemsPerRow = 3 }) {
+  function getChunks(modifier) {
+    const chunks = chunk(children, itemsPerRow - modifier)
+    return chunks.map((_chunk) => {
+      return <RowUI key={short.generate()}>{_chunk}</RowUI>
+    })
+  }
+
+  return (
+    <div>
+      <Break
+        breakpoints={config.breakPoints}
+        query={{ method: 'isAtMost', breakpoint: 'mobile' }}
+      >
+        {getChunks(itemsPerRow - 1)}
+      </Break>
+      <Break
+        breakpoints={config.breakPoints}
+        query={{ method: 'isAtMost', breakpoint: 'phablet' }}
+      >
+        {getChunks(1)}
+      </Break>
+      <Break
+        breakpoints={config.breakPoints}
+        query={{ method: 'is', breakpoint: 'tablet' }}
+      >
+        {getChunks(0)}
+      </Break>
+      <Break
+        breakpoints={config.breakPoints}
+        query={{ method: 'is', breakpoint: 'desktop' }}
+      >
+        {getChunks(0)}
+      </Break>
+    </div>
+  )
 }
+
+Grid.Rows = withBreakpoints(Rows)
 
 export default Grid

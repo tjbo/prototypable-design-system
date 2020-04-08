@@ -1,10 +1,15 @@
 const unit = 32
 
+export function makePixelValue(value) {
+  return value + 'px'
+}
+
 const config = {
   breakPoints: {
-    sm: '768px',
-    md: '992px',
-    lg: '1200px',
+    mobile: unit * 12,
+    phablet: unit * 20,
+    tablet: unit * 34,
+    desktop: unit * 40,
   },
   colors: {
     dark1: '#000',
@@ -21,10 +26,12 @@ const config = {
   },
   border: '1px solid #eee',
   unit(multiplier) {
-    return multiplier * unit + 'px'
+    return makePixelValue(multiplier * unit)
   },
   layout: {
-    topNavHeight: 2.25 * unit + 'px',
+    desktop: {
+      headerHeight: makePixelValue(2.5 * unit),
+    },
   },
 }
 

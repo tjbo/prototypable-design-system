@@ -7,6 +7,8 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var React = _interopDefault(require('react'));
 var styled = require('styled-components');
 var styled__default = _interopDefault(styled);
+var reactBreakpoints = require('react-breakpoints');
+var Break = _interopDefault(require('react-break'));
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -135,11 +137,15 @@ function _taggedTemplateLiteral(strings, raw) {
 }
 
 var _unit = 32;
+function makePixelValue(value) {
+  return value + 'px';
+}
 var config = {
   breakPoints: {
-    sm: '768px',
-    md: '992px',
-    lg: '1200px'
+    mobile: _unit * 12,
+    phablet: _unit * 20,
+    tablet: _unit * 34,
+    desktop: _unit * 40
   },
   colors: {
     dark1: '#000',
@@ -156,10 +162,12 @@ var config = {
   },
   border: '1px solid #eee',
   unit: function unit(multiplier) {
-    return multiplier * _unit + 'px';
+    return makePixelValue(multiplier * _unit);
   },
   layout: {
-    topNavHeight: 2.25 * _unit + 'px'
+    desktop: {
+      headerHeight: makePixelValue(2.5 * _unit)
+    }
   }
 };
 
@@ -274,7 +282,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  height: 200px;\n  background-image: url(", ");\n  text-align: center;\n  background-size: cover;\n  background-position: center;\n  margin: 0;\n  padding: 0;\n  margin-bottom: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  height: 200px;\n  text-align: center;\n  background-size: cover;\n  background-position: center;\n  margin: 0;\n  padding: 0;\n  margin-bottom: ", ";\n\n  img {\n    width: 100%;\n    height: 100%;\n    object-fit: cover;\n  }\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -304,9 +312,7 @@ function _templateObject$2() {
 }
 var CardUI = styled__default('div')(_templateObject$2(), config.unit(1), config.border);
 var ContentUI = styled__default('div')(_templateObject2(), config.unit(0.75), config.unit(0.25));
-var CardImageUI = styled__default('div')(_templateObject3(), function (props) {
-  return props.imageUrl;
-}, config.unit(0.5));
+var CardImageUI = styled__default('div')(_templateObject3(), config.unit(0.5));
 var TitleUI = styled__default('h3')(_templateObject4());
 var FieldUI = styled__default('div')(_templateObject5());
 var FieldTitleUI = styled__default('b')(_templateObject6());
@@ -327,9 +333,9 @@ function card (_ref) {
       imageUrl = _ref$data.imageUrl;
   return /*#__PURE__*/React.createElement(CardUI, {
     key: _short.generate()
-  }, /*#__PURE__*/React.createElement(CardImageUI, {
-    imageUrl: imageUrl
-  }), /*#__PURE__*/React.createElement(ContentUI, null, /*#__PURE__*/React.createElement(TitleUI, null, title), fields.map(function (field) {
+  }, /*#__PURE__*/React.createElement(CardImageUI, null, /*#__PURE__*/React.createElement("img", {
+    src: imageUrl
+  })), /*#__PURE__*/React.createElement(ContentUI, null, /*#__PURE__*/React.createElement(TitleUI, null, title), fields.map(function (field) {
     return makeField(field.key, field.value);
   })));
 }
@@ -436,7 +442,7 @@ function Footer(_ref) {
 Footer.AddressUI = AddressUI;
 
 function _templateObject3$3() {
-  var data = _taggedTemplateLiteral(["\n  flex: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  flex: ", ";\n  margin-left: ", ";\n\n  :first-child {\n    margin-left: 0;\n  }\n"]);
 
   _templateObject3$3 = function _templateObject3() {
     return data;
@@ -465,12 +471,12 @@ function _templateObject$5() {
   return data;
 }
 var GridUI = styled__default('div')(_templateObject$5());
-var RowUI = styled__default('div')(_templateObject2$3(), config.breakPoints.sm);
+var RowUI = styled__default('div')(_templateObject2$3(), makePixelValue(config.breakPoints.mobile));
 var ColUI = styled__default('div')(_templateObject3$3(), function (_ref) {
   var _ref$size = _ref.size,
       size = _ref$size === void 0 ? 1 : _ref$size;
   return size;
-});
+}, config.unit(0.25));
 
 var _short$1 = require('short-uuid');
 
@@ -498,20 +504,61 @@ function chunk(arr, len) {
   return chunks;
 }
 
-Grid.Rows = function (_ref3) {
+var Rows = function Rows(_ref3) {
   var children = _ref3.children,
       _ref3$itemsPerRow = _ref3.itemsPerRow,
       itemsPerRow = _ref3$itemsPerRow === void 0 ? 3 : _ref3$itemsPerRow;
-  var chunks = chunk(children, itemsPerRow);
-  return chunks.map(function (_chunk) {
-    return /*#__PURE__*/React.createElement(RowUI, {
-      key: _short$1.generate()
-    }, _chunk);
-  });
+
+  function getChunks(modifier) {
+    var chunks = chunk(children, itemsPerRow - modifier);
+    return chunks.map(function (_chunk) {
+      return /*#__PURE__*/React.createElement(RowUI, {
+        key: _short$1.generate()
+      }, _chunk);
+    });
+  }
+
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(Break, {
+    breakpoints: config.breakPoints,
+    query: {
+      method: 'isAtMost',
+      breakpoint: 'mobile'
+    }
+  }, getChunks(itemsPerRow - 1)), /*#__PURE__*/React.createElement(Break, {
+    breakpoints: config.breakPoints,
+    query: {
+      method: 'isAtMost',
+      breakpoint: 'phablet'
+    }
+  }, getChunks(1)), /*#__PURE__*/React.createElement(Break, {
+    breakpoints: config.breakPoints,
+    query: {
+      method: 'is',
+      breakpoint: 'tablet'
+    }
+  }, getChunks(0)), /*#__PURE__*/React.createElement(Break, {
+    breakpoints: config.breakPoints,
+    query: {
+      method: 'is',
+      breakpoint: 'desktop'
+    }
+  }, getChunks(0)));
 };
 
+Grid.Rows = reactBreakpoints.withBreakpoints(Rows);
+
+function _templateObject7$1() {
+  var data = _taggedTemplateLiteral(["\n  @media (max-width: ", ") {\n    width: ", ";\n    top: ", ";\n    right: ", ";\n    height: ", ";\n    position: absolute;\n    display: block;\n    margin: (", ") auto ", " auto;\n\n    .line {\n      display: block;\n      background: #fff;\n      width: 100%;\n      height: ", ";\n      position: absolute;\n      left: 0;\n      border-radius: (", ");\n      transition: all 0.4;\n      -webkit-transition: all 0.4;\n      -moz-transition: all 0.4;\n\n      &.line-1 {\n        top: 0;\n      }\n      &.line-2 {\n        top: 50%;\n      }\n      &.line-3 {\n        top: 100%;\n      }\n    }\n\n    ", "\n  }\n"]);
+
+  _templateObject7$1 = function _templateObject7() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject6$1() {
-  var data = _taggedTemplateLiteral(["\n @media (max-width: ", ") {\n  width: ", ";\n  top: ", ";\n  right: ", ";\n  height: ", ";\n  position: absolute;\n  display: block;\n  margin: (", ") auto ", " auto;\n\n  .line {\n    display: block;\n    background: #fff;\n    width: 100%;\n    height: ", ";\n    position: absolute;\n    left: 0;\n    border-radius: (", ");\n    transition: all 0.4;\n    -webkit-transition: all 0.4;\n    -moz-transition: all 0.4;\n\n    &.line-1 {\n      top: 0;\n    }\n    &.line-2 {\n      top: 50%;\n    }\n    &.line-3 {\n      top: 100%;\n    }\n  }\n\n\n  ", "\n }\n"]);
+  var data = _taggedTemplateLiteral(["\n  @media (max-width: ", ") {\n    cursor: pointer;\n    font-size: ", ";\n    padding: ", " 0;\n    border-bottom: ", ";\n    margin: 0;\n    width: 100vw;\n    text-align: left;\n\n    :hover,\n    :active {\n      /* background-color: #000; */\n    }\n  }\n"]);
 
   _templateObject6$1 = function _templateObject6() {
     return data;
@@ -521,7 +568,7 @@ function _templateObject6$1() {
 }
 
 function _templateObject5$1() {
-  var data = _taggedTemplateLiteral(["\n  @media (max-width: ", ") {\n    cursor: pointer;\n    font-size: ", ";\n    padding: ", " 0;\n    border-bottom: ", ";\n    margin: 0;\n    width: 100vw;\n    text-align: left;\n\n    :hover,\n    :active {\n      /* background-color: #000; */\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n  font-family: ", ";\n  margin: 0 ", ";\n  list-style: none;\n  padding: 0;\n  display: flex;\n  flex-direction: row;\n  a {\n    margin-left: ", ";\n    :active,\n    :visited,\n    :hover,\n    :link {\n      color: #fff;\n      text-decoration: none;\n    }\n  }\n\n  @media (max-width: ", ") {\n    display: ", ";\n    align-items: center;\n    margin: 0;\n    position: absolute;\n    top: ", ";\n    align-content: stretch;\n    flex-direction: column;\n    /* border-top: 1px solid #eee; */\n    min-height: calc(100vh - ", ");\n    background-color: #000;\n    background-color: ", ";\n    /* min-width: 100vw; */\n  }\n"]);
 
   _templateObject5$1 = function _templateObject5() {
     return data;
@@ -531,7 +578,7 @@ function _templateObject5$1() {
 }
 
 function _templateObject4$2() {
-  var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n  font-family: ", ";\n  margin: 0 ", ";\n  list-style: none;\n  padding: 0;\n  display: flex;\n  flex-direction: row;\n  a {\n    margin-left: ", ";\n    :active,\n    :visited,\n    :hover,\n    :link {\n      color: #fff;\n      text-decoration: none;\n    }\n  }\n\n  @media (max-width: ", ") {\n    display: ", ";\n    align-items: center;\n    margin: 0;\n    position: absolute;\n    top: ", ";\n    align-content: stretch;\n    flex-direction: column;\n    /* border-top: 1px solid #eee; */\n    min-height: calc(100vh - ", ");\n    background-color: #000;\n    background-color: ", ";\n    /* min-width: 100vw; */\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  @media (max-width: ", ") {\n    cursor: pointer;\n    display: block;\n    width: ", ";\n    height: ", ";\n  }\n"]);
 
   _templateObject4$2 = function _templateObject4() {
     return data;
@@ -541,7 +588,7 @@ function _templateObject4$2() {
 }
 
 function _templateObject3$4() {
-  var data = _taggedTemplateLiteral(["\n  @media (max-width: ", ") {\n    cursor: pointer;\n    display: block;\n    width: ", ";\n    height: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n  margin: 0;\n  height: 100%;\n  margin-left: ", ";\n  display: flex;\n  align-items: center;\n  text-align: center;\n  justify-content: space-around;\n  font-family: ", ";\n  font-weight: 500;\n  text-transform: uppercase;\n  a:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: #fff;\n    text-decoration: none;\n  }\n\n  @media (max-width: ", ") {\n    font-size: ", ";\n  }\n"]);
 
   _templateObject3$4 = function _templateObject3() {
     return data;
@@ -551,7 +598,7 @@ function _templateObject3$4() {
 }
 
 function _templateObject2$4() {
-  var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n  margin: 0;\n  height: 100%;\n  margin-left: ", ";\n  display: flex;\n  align-items: center;\n  text-align: center;\n  justify-content: space-around;\n  font-family: ", ";\n  font-weight: 500;\n  text-transform: uppercase;\n  a:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: #fff;\n    text-decoration: none;\n  }\n\n  @media (max-width: ", ") {\n    font-size: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  position: relative;\n  height: ", ";\n  display: block;\n  width: 100%;\n"]);
 
   _templateObject2$4 = function _templateObject2() {
     return data;
@@ -561,7 +608,7 @@ function _templateObject2$4() {
 }
 
 function _templateObject$6() {
-  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  width: 100%;\n  justify-content: space-between;\n  color: #fff;\n  position: relative;\n  top: 0;\n  height: ", ";\n  z-index: 1;\n\n  @media (max-width: ", ") {\n    height: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  display: flex;\n  align-items: center;\n  width: 100%;\n  justify-content: space-between;\n  color: #fff;\n  position: fixed;\n  top: 0;\n  height: ", ";\n  z-index: 1;\n\n  @media (max-width: ", ") {\n    height: ", ";\n  }\n"]);
 
   _templateObject$6 = function _templateObject() {
     return data;
@@ -569,25 +616,22 @@ function _templateObject$6() {
 
   return data;
 }
-var HeaderUI = styled__default('header')(_templateObject$6(), config.colors.dark1, config.layout.topNavHeight, config.breakPoints.sm, config.unit(2));
-var BrandUI = styled__default('div')(_templateObject2$4(), config.unit(1.125), config.unit(0.5), config.fonts.font2, config.breakPoints.sm, config.unit(0.75));
-var NavMenuTriggerUI = styled__default('span')(_templateObject3$4(), config.breakPoints.sm, config.unit(1.5), config.unit(1.5));
-var NavMenuUI = styled__default('nav')(_templateObject4$2(), config.unit(0.7), config.fonts.font2, config.unit(0.5), config.unit(0.5), config.breakPoints.sm, function (_ref) {
+var HeaderUI = styled__default('header')(_templateObject$6(), config.colors.dark1, config.layout.desktop.headerHeight, makePixelValue(config.breakPoints.tablet), config.unit(2)); // the above header is fixed, this allows content to push down with having to compensate for it every time
+
+var HeaderPushUI = styled__default('div')(_templateObject2$4(), config.layout.desktop.headerHeight);
+var BrandUI = styled__default('div')(_templateObject3$4(), config.unit(1.125), config.unit(0.5), config.fonts.font2, makePixelValue(config.breakPoints.tablet), config.unit(0.75));
+var NavMenuTriggerUI = styled__default('span')(_templateObject4$2(), makePixelValue(config.breakPoints.tablet), config.unit(1.5), config.unit(1.5));
+var NavMenuUI = styled__default('nav')(_templateObject5$1(), config.unit(0.7), config.fonts.font2, config.unit(0.5), config.unit(0.5), makePixelValue(config.breakPoints.tablet), function (_ref) {
   var isOpen = _ref.isOpen;
   return isOpen === true ? 'flex' : 'none';
 }, config.unit(2), config.unit(2), config.colors.dark3);
-var NavLinkUI = styled__default('span')(_templateObject5$1(), config.breakPoints.sm, config.unit(0.6), config.unit(0.4), config.border);
+var NavLinkUI = styled__default('span')(_templateObject6$1(), makePixelValue(config.breakPoints.tablet), config.unit(0.6), config.unit(0.4), config.border);
 var heightLine = 4;
 var heightIcon = 30;
-
-function makeValue(eq) {
-  return "\n  ".concat(eq, "px\n  ");
-}
-
 var translateY = heightIcon / 2;
-var TriggerIconUI = styled__default('div')(_templateObject6$1(), config.breakPoints.sm, config.unit(1), config.unit(.5), config.unit(.5), makeValue(heightIcon), makeValue(heightIcon * 2), heightIcon, makeValue(heightLine), makeValue(heightLine / 2), function (_ref2) {
+var TriggerIconUI = styled__default('div')(_templateObject7$1(), makePixelValue(config.breakPoints.tablet), config.unit(1), config.unit(0.5), config.unit(0.5), makePixelValue(heightIcon), makePixelValue(heightIcon * 2), heightIcon, makePixelValue(heightLine), makePixelValue(heightLine / 2), function (_ref2) {
   var isOpen = _ref2.isOpen;
-  return isOpen && "\n    .line-1 {\n      transform: translateY(".concat(makeValue(translateY), ") translateX(0) rotate(45deg);\n    }\n    .line-2 {\n      opacity: 0;\n    }\n    .line-3 {\n      transform: translateY(").concat(makeValue(translateY * -1), ") translateX(0) rotate(-45deg);\n  }");
+  return isOpen && "\n    .line-1 {\n      transform: translateY(".concat(makePixelValue(translateY), ") translateX(0) rotate(45deg);\n    }\n    .line-2 {\n      opacity: 0;\n    }\n    .line-3 {\n      transform: translateY(").concat(makePixelValue(translateY * -1), ") translateX(0) rotate(-45deg);\n  }");
 });
 
 var Header = /*#__PURE__*/function (_React$Component) {
@@ -624,7 +668,7 @@ var Header = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var children = this.props.children;
       var isOpen = this.state.isOpen;
-      return /*#__PURE__*/React.createElement(HeaderUI, null, React.Children.map(children, function (child) {
+      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(HeaderPushUI, null), /*#__PURE__*/React.createElement(HeaderUI, null, React.Children.map(children, function (child) {
         return React.cloneElement(child, {
           isOpen: isOpen
         });
@@ -638,7 +682,7 @@ var Header = /*#__PURE__*/function (_React$Component) {
         className: "line line-2"
       }), /*#__PURE__*/React.createElement("div", {
         className: "line line-3"
-      }))));
+      })))));
     }
   }]);
 
@@ -680,7 +724,7 @@ function _templateObject10() {
 }
 
 function _templateObject9() {
-  var data = _taggedTemplateLiteral(["\n  display: block;\n  height: calc(100vh - ", ");\n  line-height: 1.5;\n  /* background-image: linear-gradient(\n      rgba(0, 144, 231, 0.75),\n      rgba(0, 144, 231, 0.75)\n    ),\n    url('https://images.unsplash.com/photo-1520020324516-dba91274d8ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80');\n  background-blend-mode: overlay; */\n\n  /* background-image: linear-gradient(rgba(0, 144, 231, 0), rgba(0, 144, 231, 0)),\n    url('https://images.unsplash.com/photo-1491964247380-4f630fb757c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */\n  /* background-image: url('https://media.istockphoto.com/photos/beautiful-sunset-of-los-angeles-downtown-skyline-and-palm-trees-in-picture-id884384784?s=2048x2048'); */\n\n  /* background-image: url('https://images.unsplash.com/photo-1576694541627-114e57070466?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */\n  /* background-position: center bottom; */\n\n  background-image: url('https://images.unsplash.com/photo-1504730187314-ecf3c84cc060?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');\n  background-position: center -100px;\n\n  /* background-image: url('https://images.unsplash.com/photo-1528656053220-4e535d66150d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */\n  /* background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */\n\n  background-repeat: no-repeat;\n  background-size: cover;\n  /* background-position: center -100px; */\n  position: relative;\n  top: ", ";\n  width: 100%;\n  /* -webkit-filter: blur(2px); */\n  /* filter: blur(2px); */\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: block;\n  height: calc(100vh - ", ");\n  line-height: 1.5;\n\n  /* background-image: linear-gradient(\n      rgba(0, 144, 231, 0.75),\n      rgba(0, 144, 231, 0.75)\n    ),\n    url('https://images.unsplash.com/photo-1520020324516-dba91274d8ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80');\n  background-blend-mode: overlay; */\n\n  /* background-image: linear-gradient(rgba(0, 144, 231, 0), rgba(0, 144, 231, 0)),\n    url('https://images.unsplash.com/photo-1491964247380-4f630fb757c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */\n  /* background-image: url('https://media.istockphoto.com/photos/beautiful-sunset-of-los-angeles-downtown-skyline-and-palm-trees-in-picture-id884384784?s=2048x2048'); */\n\n  /* background-image: url('https://images.unsplash.com/photo-1576694541627-114e57070466?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */\n  /* background-position: center bottom; */\n\n  background-image: url('https://images.unsplash.com/photo-1504730187314-ecf3c84cc060?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');\n  background-position: center -100px;\n\n  /* background-image: url('https://images.unsplash.com/photo-1528656053220-4e535d66150d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */\n  /* background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */\n\n  background-repeat: no-repeat;\n  background-size: cover;\n  /* background-position: center -100px; */\n  position: relative;\n  width: 100%;\n  /* -webkit-filter: blur(2px); */\n  /* filter: blur(2px); */\n"]);
 
   _templateObject9 = function _templateObject9() {
     return data;
@@ -699,10 +743,10 @@ function _templateObject8() {
   return data;
 }
 
-function _templateObject7$1() {
+function _templateObject7$2() {
   var data = _taggedTemplateLiteral(["\n  color: #fff;\n  display: flex;\n  flex-direction: column;\n  font-size: ", ";\n  line-height: 1.5;\n  align-items: center;\n  justify-content: center;\n  width: 100vw;\n  height: 100vh;\n  text-align: left;\n  text-shadow: 2px 2px 3px #000;\n  font-weight: 600;\n  font-family: ", ";\n  font-weight: 700;\n"]);
 
-  _templateObject7$1 = function _templateObject7() {
+  _templateObject7$2 = function _templateObject7() {
     return data;
   };
 
@@ -772,11 +816,11 @@ var BottomBannerUI = styled__default('p')(_templateObject$7(), config.unit(0.25)
 var CallToAction = styled__default('div')(_templateObject2$5(), config.fonts.font2, config.unit(1.5));
 var CallToAction1UI = styled__default(CallToAction)(_templateObject3$5());
 var CallToAction2UI = styled__default(CallToAction)(_templateObject4$3(), config.unit(1));
-var ContentUI$1 = styled__default('div')(_templateObject5$2(), config.unit(2.5), config.unit(2.25));
+var ContentUI$1 = styled__default('div')(_templateObject5$2(), config.layout.desktop.headerHeight, config.unit(2.25));
 var IntroUI = styled__default('div')(_templateObject6$2(), config.unit(0.88), config.fonts.font1);
-var Intro2UI = styled__default('div')(_templateObject7$1(), config.unit(0.88), config.fonts.font3);
+var Intro2UI = styled__default('div')(_templateObject7$2(), config.unit(0.88), config.fonts.font3);
 var ButtonsUI = styled__default('div')(_templateObject8());
-var JumbotronBackgroundUI = styled__default('div')(_templateObject9(), config.unit(2.25), config.unit(2));
+var JumbotronBackgroundUI = styled__default('div')(_templateObject9(), config.layout.desktop.headerHeight);
 var JumbotronContentUI = styled__default('div')(_templateObject10(), IntroUI, config.unit(1.5));
 var TitleUI$1 = styled__default('h1')(_templateObject11(), config.fonts.font2, config.unit(2), config.unit(1));
 var SubTitleUI = styled__default('div')(_templateObject12(), config.fonts.font2, config.unit(1.5), config.unit(0.25));
@@ -796,7 +840,7 @@ function _templateObject2$6() {
 }
 
 function _templateObject$8() {
-  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  background-color: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  background-color: ", ";\n  @media (max-width: ", ") {\n    max-width: calc(100% - 50px);\n    padding: 25px;\n  }\n"]);
 
   _templateObject$8 = function _templateObject() {
     return data;
@@ -830,7 +874,7 @@ var getInnerWidth = function getInnerWidth(_ref2) {
   }
 };
 
-var SectionWrapperUI = styled__default('section')(_templateObject$8(), getBgColor);
+var SectionWrapperUI = styled__default('section')(_templateObject$8(), getBgColor, makePixelValue(config.breakPoints.tablet));
 var SectionUI = styled__default('div')(_templateObject2$6(), getInnerWidth, config.unit(1), function (_ref3) {
   var textAlign = _ref3.textAlign;
   return textAlign;

@@ -22,13 +22,18 @@ export const ContentUI = styled('div')`
 
 export const CardImageUI = styled('div')`
   height: 200px;
-  background-image: url(${(props) => props.imageUrl});
   text-align: center;
   background-size: cover;
   background-position: center;
   margin: 0;
   padding: 0;
   margin-bottom: ${config.unit(0.5)};
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `
 
 export const TitleUI = styled('h3')`

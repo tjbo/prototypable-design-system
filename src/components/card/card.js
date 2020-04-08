@@ -21,7 +21,9 @@ function makeField(key, value) {
 export default function ({ data: { fields, title, imageUrl } }) {
   return (
     <CardUI key={short.generate()}>
-      <CardImageUI imageUrl={imageUrl} />
+      <CardImageUI>
+        <img src={imageUrl} />
+      </CardImageUI>
       <ContentUI>
         <TitleUI>{title}</TitleUI>
         {fields.map((field) => {

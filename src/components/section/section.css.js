@@ -1,4 +1,4 @@
-import config from '../../config'
+import config, { makePixelValue } from '../../config'
 
 const getBgColor = ({ hasBgLightColor, hasBgDarkColor }) => {
   if (hasBgLightColor) {
@@ -23,6 +23,10 @@ const getInnerWidth = ({ innerWidth }) => {
 export const SectionWrapperUI = styled('section')`
   width: 100%;
   background-color: ${getBgColor};
+  @media (max-width: ${makePixelValue(config.breakPoints.tablet)}) {
+    max-width: calc(100% - 50px);
+    padding: 25px;
+  }
 `
 
 export const SectionUI = styled('div')`

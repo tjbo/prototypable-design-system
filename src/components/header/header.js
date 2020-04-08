@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   BrandUI,
+  HeaderPushUI,
   HeaderUI,
   TriggerIconUI,
   NavLinkUI,
@@ -21,18 +22,21 @@ class Header extends React.Component {
     const { isOpen } = this.state
 
     return (
-      <HeaderUI>
-        {React.Children.map(children, (child) =>
-          React.cloneElement(child, { isOpen }),
-        )}
-        <NavMenuTriggerUI onClick={this.toggleMenu}>
-          <TriggerIconUI isOpen={isOpen}>
-            <div className="line line-1"></div>
-            <div className="line line-2"></div>
-            <div className="line line-3"></div>
-          </TriggerIconUI>
-        </NavMenuTriggerUI>
-      </HeaderUI>
+      <div>
+        <HeaderPushUI />
+        <HeaderUI>
+          {React.Children.map(children, (child) =>
+            React.cloneElement(child, { isOpen }),
+          )}
+          <NavMenuTriggerUI onClick={this.toggleMenu}>
+            <TriggerIconUI isOpen={isOpen}>
+              <div className="line line-1"></div>
+              <div className="line line-2"></div>
+              <div className="line line-3"></div>
+            </TriggerIconUI>
+          </NavMenuTriggerUI>
+        </HeaderUI>
+      </div>
     )
   }
 }

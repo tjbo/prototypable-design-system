@@ -30,7 +30,7 @@ export const CallToAction2UI = styled(CallToAction)`
 export const ContentUI = styled('div')`
   display: flex;
   flex-direction: column;
-  height: calc(100vh - ${config.unit(2.5)});
+  height: calc(100vh - ${config.layout.desktop.headerHeight});
   position: absolute;
   top: ${config.unit(2.25)};
   width: 100%;
@@ -78,8 +78,9 @@ export const ButtonsUI = styled('div')`
 
 export const JumbotronBackgroundUI = styled('div')`
   display: block;
-  height: calc(100vh - ${config.unit(2.25)});
+  height: calc(100vh - ${config.layout.desktop.headerHeight});
   line-height: 1.5;
+
   /* background-image: linear-gradient(
       rgba(0, 144, 231, 0.75),
       rgba(0, 144, 231, 0.75)
@@ -104,7 +105,6 @@ export const JumbotronBackgroundUI = styled('div')`
   background-size: cover;
   /* background-position: center -100px; */
   position: relative;
-  top: ${config.unit(2)};
   width: 100%;
   /* -webkit-filter: blur(2px); */
   /* filter: blur(2px); */
