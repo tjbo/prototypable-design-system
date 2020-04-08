@@ -41,7 +41,14 @@ class Header extends React.Component {
   }
 }
 
-Header.Brand = BrandUI
+Header.Brand = function Brand({ children }) {
+  return (
+    <BrandUI>
+      <a href="/">{children}</a>
+    </BrandUI>
+  )
+}
+
 Header.NavMenu = NavMenuUI
 Header.NavLink = NavLinkUI
 

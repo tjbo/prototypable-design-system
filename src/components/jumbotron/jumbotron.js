@@ -8,29 +8,11 @@ import {
   TitleUI,
 } from './jumbotron.css'
 
-export default function () {
+export default function ({ children, imageUrl }) {
   return (
     <div>
-      <JumbotronBackgroundUI />
-      <ContentUI>
-        <JumbotronContentUI>
-          <Intro2UI>
-            <TitleUI>
-              Your Trusted Los Angeles <br />
-              Hard Money Lender
-            </TitleUI>
-            <br />
-            <SubTitleUI>
-              Loans from $200K to $5 Million. <br />
-              Fast. Reliable. Transparent.
-              <br />
-              <br />
-              Call Us Today @
-            </SubTitleUI>
-          </Intro2UI>
-          {/* <Form /> */}
-        </JumbotronContentUI>
-      </ContentUI>
+      <JumbotronBackgroundUI imageUrl={imageUrl} />
+      <ContentUI>{children}</ContentUI>
     </div>
   )
 }

@@ -28,9 +28,11 @@ export const CallToAction2UI = styled(CallToAction)`
 `
 
 export const ContentUI = styled('div')`
+  align-items: center;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - ${config.layout.desktop.headerHeight});
+  justify-content: center;
+  min-height: calc(100vh - ${config.layout.desktop.headerHeight});
   position: absolute;
   top: ${config.unit(2.25)};
   width: 100%;
@@ -95,7 +97,7 @@ export const JumbotronBackgroundUI = styled('div')`
   /* background-image: url('https://images.unsplash.com/photo-1576694541627-114e57070466?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */
   /* background-position: center bottom; */
 
-  background-image: url('https://images.unsplash.com/photo-1504730187314-ecf3c84cc060?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
+  background-image: url(${({ imageUrl }) => imageUrl});
   background-position: center -100px;
 
   /* background-image: url('https://images.unsplash.com/photo-1528656053220-4e535d66150d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80'); */
@@ -115,18 +117,19 @@ export const JumbotronBackgroundUI = styled('div')`
 `
 
 export const JumbotronContentUI = styled('div')`
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap: nowrap;
   padding: 0;
   position: relative;
   width: 100%;
+  border: 1px solid red;
 
   ${IntroUI} {
     margin: ${config.unit(1.5)};
     margin-bottom: 0;
-  }
+  } */
 `
 
 export const TitleUI = styled('h1')`
