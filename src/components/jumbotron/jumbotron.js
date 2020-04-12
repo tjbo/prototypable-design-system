@@ -1,18 +1,46 @@
 import React from 'react'
-import {
-  ContentUI,
-  Intro2UI,
-  JumbotronBackgroundUI,
-  JumbotronContentUI,
-  SubTitleUI,
-  TitleUI,
-} from './jumbotron.css'
+import { ContentUI, ImageUI } from './jumbotron.css'
+import config from '../../config'
+import { CardImageUI } from '../cards/cards.css'
 
-export default function ({ children, imageUrl }) {
+const sizes = [
+  '360×640',
+  '768×1024',
+  '1024x768',
+  '1366×768',
+  '1600×900',
+  '1920x1080',
+]
+
+function getSrcSets(image) {
+  if (!image) {
+    return null
+  }
+
+  return sizes
+    .map((size) => {
+      const {
+        dimensions: { width },
+        url,
+      } = image[size]
+      return `${url} ${width}w`
+    })
+    .join(',')
+}
+
+export default function ({ body, image = null }) {
+  console.log('things', getSrcSets(image))
+
   return (
     <div>
-      <JumbotronBackgroundUI imageUrl={imageUrl} />
-      <ContentUI>{children}</ContentUI>
+      <ImageUI>
+        <img srcSet={getSrcSets(image)} />
+      </ImageUI>
+      <ContentUI
+        dangerouslySetInnerHTML={{
+          __html: body,
+        }}
+      ></ContentUI>
     </div>
   )
 }

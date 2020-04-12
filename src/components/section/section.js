@@ -1,25 +1,19 @@
 import { SectionUI, SectionWrapperUI } from './section.css'
 
 export default function ({
-  children,
+  children = [],
   textAlign = 'left',
-  hasBgDarkColor = false,
-  hasBgLightColor = false,
+  background = 'default',
   isFullWidth = false,
   innerWidth = 'big',
 }) {
   if (isFullWidth) {
     return (
-      <SectionWrapperUI hasBgLightColor={hasBgLightColor}>
-        {children}
-      </SectionWrapperUI>
+      <SectionWrapperUI background={background}>{children}</SectionWrapperUI>
     )
   } else {
     return (
-      <SectionWrapperUI
-        hasBgLightColor={hasBgLightColor}
-        hasBgDarkColor={hasBgDarkColor}
-      >
+      <SectionWrapperUI background={background}>
         <SectionUI textAlign={textAlign} innerWidth={innerWidth}>
           {children}
         </SectionUI>

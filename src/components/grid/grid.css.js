@@ -1,21 +1,35 @@
-import config, { makePixelValue } from '../../config'
-
-export const GridUI = styled('div')``
-
-export const RowUI = styled('div')`
-  display: flex;
-  flex-direction: row;
-
-  @media (max-width: ${makePixelValue(config.breakPoints.mobile)}) {
-    flex-direction: column;
+export const GridWrapperUI = styled('div')`
+  * {
+    box-sizing: border-box;
   }
-`
 
-export const ColUI = styled('div')`
-  flex: ${({ size = 1 }) => size};
-  margin-left: ${config.unit(0.25)};
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
 
-  :first-child {
-    margin-left: 0;
+  .col {
+    min-width: 32.5%;
+    max-width: 32.5%;
+    margin-bottom: 1.25%;
+    flex: 1;
+  }
+
+  @media (min-width: 1200px) {
+  }
+
+  @media (min-width: 650px) and (max-width: 900px) {
+    .col {
+      min-width: 49%;
+      max-width: 49%;
+    }
+  }
+
+  @media (max-width: 650px) {
+    .col {
+      display: block;
+      min-width: 100%;
+      max-width: 100%;
+    }
   }
 `

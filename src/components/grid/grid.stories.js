@@ -12,15 +12,13 @@ export default {
 export const Default = () => {
   return (
     <Grid>
-      <Grid.Rows itemsPerRow={3}>
-        {cardsData.map((_data, index) => {
-          return (
-            <Grid.Col key={short.generate()}>
-              <Card data={_data} />
-            </Grid.Col>
-          )
-        })}
-      </Grid.Rows>
+      {cardsData.map((_data, index) => {
+        return (
+          <div class="col">
+            <Card data={_data} />
+          </div>
+        )
+      })}
     </Grid>
   )
 }

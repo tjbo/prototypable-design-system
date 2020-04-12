@@ -1,9 +1,9 @@
 import config, { makePixelValue } from '../../config'
 
-const getBgColor = ({ hasBgLightColor, hasBgDarkColor }) => {
-  if (hasBgLightColor) {
+const getBgColor = ({ background }) => {
+  if (background === 'light') {
     return `${config.colors.light1}`
-  } else if (hasBgDarkColor) {
+  } else if (background === 'dark') {
     return `${config.colors.dark3}`
   } else {
     return '#fff'
@@ -14,7 +14,7 @@ const getInnerWidth = ({ innerWidth }) => {
   if (innerWidth === 'medium') {
     return '720px'
   } else if (innerWidth === 'small') {
-    return '460px'
+    return `${config.unit(20)}`
   } else {
     return `${config.unit(33)}`
   }

@@ -73,6 +73,30 @@ a:active,
   a:link {
     color: ${config.colors.dark3};
   }
-`
+
+  table {
+    border-collapse: collapse;
+    border-left: ${config.border};
+    border-right: ${config.border};
+    margin: 0;
+    thead {
+      display: none;
+    }
+    tr {
+      border-bottom: ${config.border};
+      width: 100%;
+    }
+    tr:first-child {
+      border-top: ${config.border};
+    }
+    td:first-child {
+      font-weight: 700;
+      min-width: 160px;
+    }
+    td {
+      background-color: #fff;
+      padding: ${config.unit(0.25)} ${config.unit(0.5)};
+    }
+}`
 
 export default GlobalStyles
