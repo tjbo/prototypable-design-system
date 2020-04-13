@@ -13,7 +13,7 @@ export const HeaderUI = styled('header')`
   width: 100%;
   z-index: 1;
 
-  @media (max-width: ${makePixelValue(config.breakPoints.tablet)}) {
+  @media (max-width: ${config.breakPoints.tablet}) {
     height: ${config.layout.tablet.headerHeight};
   }
 `
@@ -24,7 +24,7 @@ export const HeaderPushUI = styled('div')`
   height: ${config.layout.desktop.headerHeight};
   display: block;
   width: 100%;
-  @media (max-width: ${makePixelValue(config.breakPoints.tablet)}) {
+  @media (max-width: ${config.breakPoints.tablet}) {
     height: ${config.layout.tablet.headerHeight};
   }
 `
@@ -50,12 +50,12 @@ export const BrandUI = styled('div')`
     text-decoration: none;
   }
 
-  @media (max-width: ${makePixelValue(config.breakPoints.tablet)}) {
+  @media (max-width: ${config.breakPoints.tablet}) {
     font-size: ${config.unit(0.75)};
   }
 `
 export const NavMenuTriggerUI = styled('span')`
-  @media (max-width: ${makePixelValue(config.breakPoints.tablet)}) {
+  @media (max-width: ${config.breakPoints.tablet}) {
     cursor: pointer;
     display: block;
     width: ${config.unit(1.5)};
@@ -81,13 +81,13 @@ export const NavMenuUI = styled('nav')`
       text-decoration: none;
     }
     width: 100%;
-    @media (max-width: ${makePixelValue(config.breakPoints.tablet)}) {
+    @media (max-width: ${config.breakPoints.tablet}) {
       /* position: absolute; */
       width: 100%;
     }
   }
 
-  @media (max-width: ${makePixelValue(config.breakPoints.tablet)}) {
+  @media (max-width: ${config.breakPoints.tablet}) {
     align-content: stretch;
     align-items: center;
     background-color: ${config.colors.dark3};
@@ -103,7 +103,7 @@ export const NavMenuUI = styled('nav')`
 `
 
 export const NavLinkUI = styled('span')`
-  @media (max-width: ${makePixelValue(config.breakPoints.tablet)}) {
+  @media (max-width: ${config.breakPoints.tablet}) {
     cursor: pointer;
     border-bottom: ${config.border};
     font-size: ${config.unit(0.6)};
@@ -119,7 +119,7 @@ const heightIcon = 22
 const translateY = heightIcon / 2
 
 export const TriggerIconUI = styled('div')`
-  @media (max-width: ${makePixelValue(config.breakPoints.tablet)}) {
+  @media (max-width: ${config.breakPoints.tablet}) {
     width: ${config.unit(1)};
     top: ${config.unit(0.5)};
     right: ${config.unit(0.5)};

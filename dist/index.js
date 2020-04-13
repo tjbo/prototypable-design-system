@@ -8,6 +8,15 @@ var React = _interopDefault(require('react'));
 var styled = require('styled-components');
 var styled__default = _interopDefault(styled);
 
+function Article(_ref) {
+  var body = _ref.body;
+  return /*#__PURE__*/React.createElement("div", {
+    dangerouslySetInnerHTML: {
+      __html: body
+    }
+  });
+}
+
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -140,9 +149,8 @@ function makePixelValue(value) {
 }
 var config = {
   breakPoints: {
-    mobile: _unit * 12,
-    phablet: _unit * 20,
-    tablet: _unit * 34,
+    mobile: makePixelValue(600),
+    tablet: makePixelValue(35 * _unit),
     desktop: _unit * 40
   },
   colors: {
@@ -194,7 +202,7 @@ function _templateObject2() {
 }
 
 function _templateObject$1() {
-  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  background-color: ", ";\n  @media (max-width: ", ") {\n    max-width: calc(100% - 50px);\n    padding: 25px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  background-color: ", ";\n\n  @media (max-width: ", ") {\n    max-width: calc(100% - ", ");\n    padding: ", ";\n  }\n"]);
 
   _templateObject$1 = function _templateObject() {
     return data;
@@ -227,7 +235,7 @@ var getInnerWidth = function getInnerWidth(_ref2) {
   }
 };
 
-var SectionWrapperUI = styled__default('section')(_templateObject$1(), getBgColor, makePixelValue(config.breakPoints.tablet));
+var SectionWrapperUI = styled__default('section')(_templateObject$1(), getBgColor, config.breakPoints.tablet, config.unit(1), config.unit(0.5));
 var SectionUI = styled__default('div')(_templateObject2(), getInnerWidth, config.unit(1), function (_ref3) {
   var textAlign = _ref3.textAlign;
   return textAlign;
@@ -243,7 +251,9 @@ function section (_ref) {
       _ref$isFullWidth = _ref.isFullWidth,
       isFullWidth = _ref$isFullWidth === void 0 ? false : _ref$isFullWidth,
       _ref$innerWidth = _ref.innerWidth,
-      innerWidth = _ref$innerWidth === void 0 ? 'big' : _ref$innerWidth;
+      innerWidth = _ref$innerWidth === void 0 ? 'big' : _ref$innerWidth,
+      _ref$title = _ref.title,
+      title = _ref$title === void 0 ? '' : _ref$title;
 
   if (isFullWidth) {
     return /*#__PURE__*/React.createElement(SectionWrapperUI, {
@@ -255,7 +265,11 @@ function section (_ref) {
     }, /*#__PURE__*/React.createElement(SectionUI, {
       textAlign: textAlign,
       innerWidth: innerWidth
-    }, children));
+    }, title ? /*#__PURE__*/React.createElement("h2", {
+      dangerouslySetInnerHTML: {
+        __html: title
+      }
+    }) : title, children));
   }
 }
 
@@ -363,7 +377,7 @@ function _templateObject2$1() {
 }
 
 function _templateObject$3() {
-  var data = _taggedTemplateLiteral(["\n  h3 {\n    /* padding: 0; */\n  }\n\n  * {\n    box-sizing: border-box;\n  }\n\n  .card {\n    line-height: 1.75;\n    background: #fff;\n    border: ", ";\n    padding: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  h3 {\n    /* padding: 0; */\n  }\n\n  * {\n    box-sizing: border-box;\n  }\n\n  .card {\n    line-height: 1.75;\n    background: #fff;\n    border: ", ";\n\n    /* Position child elements relative to this element */\n    .aspect-ratio-box {\n      position: relative;\n    }\n\n    /* Create a pseudo element that uses padding-bottom to take up space */\n    .aspect-ratio-box::after {\n      display: block;\n      content: '';\n      /* 16:9 aspect ratio */\n      padding-bottom: 56.25%;\n    }\n\n    /* Image is positioned absolutely relative to the parent element */\n    .aspect-ratio-box img {\n      /* Image should match parent box size */\n      position: absolute;\n      left: 0;\n      top: 0;\n      width: 100%;\n      height: 100%;\n    }\n    .content {\n      padding: ", " ", ";\n    }\n  }\n"]);
 
   _templateObject$3 = function _templateObject() {
     return data;
@@ -371,7 +385,7 @@ function _templateObject$3() {
 
   return data;
 }
-var CardsWrapperUI = styled__default('div')(_templateObject$3(), config.border, config.unit(0.5));
+var CardsWrapperUI = styled__default('div')(_templateObject$3(), config.border, config.unit(0.5), config.unit(0.66));
 /* export const FieldUI = styled('div')`
   padding: 3px 0; */
 
@@ -381,7 +395,7 @@ var FieldTitleUI = styled__default('b')(_templateObject4());
 var FieldTextUI = styled__default('span')(_templateObject5());
 
 function _templateObject$4() {
-  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n\n  display: flex;\n  justify-content: space-between;\n  width: 100%;\n  flex-wrap: wrap;\n\n  .col {\n    min-width: 32.5%;\n    max-width: 32.5%;\n    margin-bottom: 1.25%;\n    flex: 1;\n  }\n\n  @media (min-width: 1200px) {\n  }\n\n  @media (min-width: 650px) and (max-width: 900px) {\n    .col {\n      min-width: 49%;\n      max-width: 49%;\n    }\n  }\n\n  @media (max-width: 650px) {\n    .col {\n      display: block;\n      min-width: 100%;\n      max-width: 100%;\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n\n  display: flex;\n  justify-content: space-between;\n  width: 100%;\n  flex-wrap: wrap;\n\n  .col {\n    min-width: 32.5%;\n    max-width: 32.5%;\n    margin-bottom: 1.25%;\n    flex: 1;\n\n    @media (max-width: ", ") {\n      margin-bottom: ", ";\n    }\n  }\n\n  @media (min-width: ", ") and (max-width: ", ") {\n    .col {\n      min-width: 49%;\n      max-width: 49%;\n    }\n  }\n\n  @media (max-width: ", ") {\n    .col {\n      display: block;\n      min-width: 100%;\n      max-width: 100%;\n    }\n  }\n"]);
 
   _templateObject$4 = function _templateObject() {
     return data;
@@ -389,8 +403,7 @@ function _templateObject$4() {
 
   return data;
 }
-
-var GridWrapperUI = styled__default('div')(_templateObject$4());
+var GridWrapperUI = styled__default('div')(_templateObject$4(), config.breakPoints.tablet, config.unit(0.5), config.breakPoints.mobile, config.breakPoints.tablet, config.breakPoints.mobile);
 
 function Grid(_ref) {
   var body = _ref.body;
@@ -548,20 +561,20 @@ function _templateObject$7() {
 
   return data;
 }
-var HeaderUI = styled__default('header')(_templateObject$7(), config.colors.dark1, config.layout.desktop.headerHeight, makePixelValue(config.breakPoints.tablet), config.layout.tablet.headerHeight); // the above header is fixed, this allows content to push down with having to compensate for it every time
+var HeaderUI = styled__default('header')(_templateObject$7(), config.colors.dark1, config.layout.desktop.headerHeight, config.breakPoints.tablet, config.layout.tablet.headerHeight); // the above header is fixed, this allows content to push down with having to compensate for it every time
 
-var HeaderPushUI = styled__default('div')(_templateObject2$3(), config.layout.desktop.headerHeight, makePixelValue(config.breakPoints.tablet), config.layout.tablet.headerHeight);
-var BrandUI = styled__default('div')(_templateObject3$2(), config.unit(1.125), config.unit(0.5), config.fonts.font2, makePixelValue(config.breakPoints.tablet), config.unit(0.75));
-var NavMenuTriggerUI = styled__default('span')(_templateObject4$2(), makePixelValue(config.breakPoints.tablet), config.unit(1.5), config.unit(1.5));
-var NavMenuUI = styled__default('nav')(_templateObject5$1(), config.unit(0.7), config.fonts.font2, config.unit(0.5), config.unit(0.5), makePixelValue(config.breakPoints.tablet), makePixelValue(config.breakPoints.tablet), config.colors.dark3, function (_ref) {
+var HeaderPushUI = styled__default('div')(_templateObject2$3(), config.layout.desktop.headerHeight, config.breakPoints.tablet, config.layout.tablet.headerHeight);
+var BrandUI = styled__default('div')(_templateObject3$2(), config.unit(1.125), config.unit(0.5), config.fonts.font2, config.breakPoints.tablet, config.unit(0.75));
+var NavMenuTriggerUI = styled__default('span')(_templateObject4$2(), config.breakPoints.tablet, config.unit(1.5), config.unit(1.5));
+var NavMenuUI = styled__default('nav')(_templateObject5$1(), config.unit(0.7), config.fonts.font2, config.unit(0.5), config.unit(0.5), config.breakPoints.tablet, config.breakPoints.tablet, config.colors.dark3, function (_ref) {
   var isOpen = _ref.isOpen;
   return isOpen === true ? 'flex' : 'none';
 }, config.unit(2), config.unit(2));
-var NavLinkUI = styled__default('span')(_templateObject6(), makePixelValue(config.breakPoints.tablet), config.border, config.unit(0.6), config.unit(0.4));
+var NavLinkUI = styled__default('span')(_templateObject6(), config.breakPoints.tablet, config.border, config.unit(0.6), config.unit(0.4));
 var heightLine = 4;
 var heightIcon = 22;
 var translateY = heightIcon / 2;
-var TriggerIconUI = styled__default('div')(_templateObject7(), makePixelValue(config.breakPoints.tablet), config.unit(1), config.unit(0.5), config.unit(0.5), makePixelValue(heightIcon), makePixelValue(heightIcon * 2), heightIcon, makePixelValue(heightLine), makePixelValue(heightLine / 2), function (_ref2) {
+var TriggerIconUI = styled__default('div')(_templateObject7(), config.breakPoints.tablet, config.unit(1), config.unit(0.5), config.unit(0.5), makePixelValue(heightIcon), makePixelValue(heightIcon * 2), heightIcon, makePixelValue(heightLine), makePixelValue(heightLine / 2), function (_ref2) {
   var isOpen = _ref2.isOpen;
   return isOpen && "\n    .line-1 {\n      transform: translateY(".concat(makePixelValue(translateY), ") translateX(0) rotate(45deg);\n    }\n    .line-2 {\n      opacity: 0;\n    }\n    .line-3 {\n      transform: translateY(").concat(makePixelValue(translateY * -1), ") translateX(0) rotate(-45deg);\n  }");
 });
@@ -686,7 +699,6 @@ function Jumbotron (_ref) {
   var body = _ref.body,
       _ref$image = _ref.image,
       image = _ref$image === void 0 ? null : _ref$image;
-  console.log('things', getSrcSets(image));
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(ImageUI, null, /*#__PURE__*/React.createElement("img", {
     srcSet: getSrcSets(image)
   })), /*#__PURE__*/React.createElement(ContentUI$1, {
@@ -736,6 +748,7 @@ function head () {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Fonts, null), /*#__PURE__*/React.createElement(GlobalStyles, null));
 }
 
+exports.Article = Article;
 exports.Banner = banner;
 exports.Button = button;
 exports.Cards = cards;

@@ -6,6 +6,7 @@ export default function ({
   background = 'default',
   isFullWidth = false,
   innerWidth = 'big',
+  title = '',
 }) {
   if (isFullWidth) {
     return (
@@ -15,6 +16,7 @@ export default function ({
     return (
       <SectionWrapperUI background={background}>
         <SectionUI textAlign={textAlign} innerWidth={innerWidth}>
+          {title ? <h2 dangerouslySetInnerHTML={{ __html: title }} /> : title}
           {children}
         </SectionUI>
       </SectionWrapperUI>

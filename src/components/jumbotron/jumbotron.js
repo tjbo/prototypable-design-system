@@ -29,8 +29,6 @@ function getSrcSets(image) {
 }
 
 export default function ({ body, image = null }) {
-  console.log('things', getSrcSets(image))
-
   return (
     <div>
       <ImageUI>

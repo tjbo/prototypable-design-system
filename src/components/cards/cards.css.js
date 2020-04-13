@@ -14,7 +14,32 @@ export const CardsWrapperUI = styled('div')`
     line-height: 1.75;
     background: #fff;
     border: ${config.border};
-    padding: ${config.unit(0.5)};
+
+    /* Position child elements relative to this element */
+    .aspect-ratio-box {
+      position: relative;
+    }
+
+    /* Create a pseudo element that uses padding-bottom to take up space */
+    .aspect-ratio-box::after {
+      display: block;
+      content: '';
+      /* 16:9 aspect ratio */
+      padding-bottom: 56.25%;
+    }
+
+    /* Image is positioned absolutely relative to the parent element */
+    .aspect-ratio-box img {
+      /* Image should match parent box size */
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .content {
+      padding: ${config.unit(0.5)} ${config.unit(0.66)};
+    }
   }
 `
 

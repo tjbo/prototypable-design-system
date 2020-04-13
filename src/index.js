@@ -1,3 +1,4 @@
+export { default as Article } from './components/article'
 export { default as Banner } from './components/banner/banner'
 export { default as Button } from './components/button/button'
 export { default as Cards } from './components/cards'

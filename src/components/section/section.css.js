@@ -23,9 +23,10 @@ const getInnerWidth = ({ innerWidth }) => {
 export const SectionWrapperUI = styled('section')`
   width: 100%;
   background-color: ${getBgColor};
-  @media (max-width: ${makePixelValue(config.breakPoints.tablet)}) {
-    max-width: calc(100% - 50px);
-    padding: 25px;
+
+  @media (max-width: ${config.breakPoints.tablet}) {
+    max-width: calc(100% - ${config.unit(1)});
+    padding: ${config.unit(0.5)};
   }
 `
 

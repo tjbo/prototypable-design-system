@@ -6,9 +6,8 @@ export function makePixelValue(value) {
 
 const config = {
   breakPoints: {
-    mobile: unit * 12,
-    phablet: unit * 20,
-    tablet: unit * 34,
+    mobile: makePixelValue(600),
+    tablet: makePixelValue(35 * unit),
     desktop: unit * 40,
   },
   colors: {
