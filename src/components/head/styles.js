@@ -79,23 +79,43 @@ a:active,
     border-left: ${config.border};
     border-right: ${config.border};
     margin: 0;
-    thead {
-      display: none;
+    max-width: 100%;
+
+    @media (max-width: ${config.breakPoints.mobile}) {
+      border: 0;
+        display: block;
     }
+
+
     tr {
       border-bottom: ${config.border};
       width: 100%;
+
+      @media (max-width: ${config.breakPoints.mobile}) {
+        max-width: 100%;
+        padding: ${config.unit(0.5)};
+        display: block;
+        border-left: ${config.border};
+     border-right: ${config.border};
+    }
     }
     tr:first-child {
       border-top: ${config.border};
     }
     td:first-child {
       font-weight: 700;
-      min-width: 160px;
+      /* min-width: 160px; */
     }
+
     td {
       background-color: #fff;
       padding: ${config.unit(0.25)} ${config.unit(0.5)};
+
+      @media (max-width: ${config.breakPoints.mobile}) {
+        padding: 0;
+        display: block;
+        clear: both;
+    }
     }
 }`
 
