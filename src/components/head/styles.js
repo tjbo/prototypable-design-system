@@ -11,10 +11,10 @@ body {
   display: flex;
   flex-direction: column;
   color: ${config.colors.dark4};
-}
 
-table {
-  margin: 0;
+  .is-modal-open {
+    overflow: none;
+  }
 }
 
 h1, h2, h3, h4 {
@@ -81,23 +81,23 @@ a:active,
     margin: 0;
     max-width: 100%;
 
-    @media (max-width: ${config.breakPoints.mobile}) {
+    /* @media (max-width: ${config.breakPoints.mobile}) {
       border: 0;
         display: block;
-    }
+    } */
 
 
     tr {
       border-bottom: ${config.border};
       width: 100%;
 
-      @media (max-width: ${config.breakPoints.mobile}) {
+      /* @media (max-width: ${config.breakPoints.mobile}) {
         max-width: 100%;
         padding: ${config.unit(0.5)};
         display: block;
         border-left: ${config.border};
      border-right: ${config.border};
-    }
+    } */
     }
     tr:first-child {
       border-top: ${config.border};
@@ -111,12 +111,29 @@ a:active,
       background-color: #fff;
       padding: ${config.unit(0.25)} ${config.unit(0.5)};
 
-      @media (max-width: ${config.breakPoints.mobile}) {
-        padding: 0;
+
+    }
+
+    @media (max-width: ${config.breakPoints.mobile}) {
+
+      tr {
+      }
+
+      td {
+        padding: 0 ${config.unit(0.5)};
         display: block;
-        clear: both;
-    }
-    }
+      }
+
+      td:first-child {
+        padding-top: ${config.unit(0.5)};
+      }
+
+      td:last-child {
+        padding-bottom: ${config.unit(0.5)};
+      }
+
+
+     }
 }`
 
 export default GlobalStyles

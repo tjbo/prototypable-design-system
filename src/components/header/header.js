@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   BrandUI,
+  HeaderContainer,
   HeaderPushUI,
   HeaderUI,
   TriggerIconUI,
@@ -9,25 +10,42 @@ import {
   NavMenuTriggerUI,
 } from './header.css'
 
+import { onShowModal, onHideModal } from '../head/modal'
+
 class Header extends React.Component {
   state = {
     isOpen: false,
   }
 
+  componentDidMount() {
+    window.addEventListener('resize', () => this.onResize())
+  }
+
+  onResize = () => {
+    if (this.state.isOpen) {
+      this.setState({ isOpen: false })
+      onHideModal()
+    }
+  }
+
   toggleMenu = () => {
-    this.setState({ isOpen: !this.state.isOpen })
+    this.setState({ isOpen: !this.state.isOpen }, () => {
+      if (this.state.isOpen) {
+        onShowModal()
+      } else {
+        onHideModal()
+      }
+    })
   }
   render() {
     const { children } = this.props
     const { isOpen } = this.state
 
     return (
-      <div>
+      <HeaderContainer>
         <HeaderPushUI />
-        <HeaderUI>
-          {React.Children.map(children, (child) =>
-            React.cloneElement(child, { isOpen }),
-          )}
+        <HeaderUI className={this.state.isOpen ? 'is-open' : 'is-closed'}>
+          {React.Children.map(children, (child) => React.cloneElement(child))}
           <NavMenuTriggerUI onClick={this.toggleMenu}>
             <TriggerIconUI isOpen={isOpen}>
               <div className="line line-1"></div>
@@ -36,7 +54,7 @@ class Header extends React.Component {
             </TriggerIconUI>
           </NavMenuTriggerUI>
         </HeaderUI>
-      </div>
+      </HeaderContainer>
     )
   }
 }

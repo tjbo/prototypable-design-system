@@ -1,14 +1,15 @@
 import config from '../../config'
 
 export const FooterUI = styled('footer')`
+  box-sizing: border-box;
   display: block;
-  width: 100%;
   background-color: ${config.colors.dark1};
-  width: 100%;
+  max-width: 100%;
   flex-shrink: 0;
 `
 
 export const FooterUIInner = styled('div')`
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   background-color: ${config.colors.dark1};

@@ -23,16 +23,16 @@ const getInnerWidth = ({ innerWidth }) => {
 export const SectionWrapperUI = styled('section')`
   width: 100%;
   background-color: ${getBgColor};
-
-  @media (max-width: ${config.breakPoints.tablet}) {
-    max-width: calc(100% - ${config.unit(1)});
-    padding: ${config.unit(0.5)};
-  }
 `
 
 export const SectionUI = styled('div')`
+  box-sizing: border-box;
   max-width: ${getInnerWidth};
   margin: 0 auto;
   padding: ${config.unit(1)} 0;
   text-align: ${({ textAlign }) => textAlign};
+
+  @media (max-width: ${config.breakPoints.tablet}) {
+    margin: 0 ${config.unit(0.5)};
+  }
 `

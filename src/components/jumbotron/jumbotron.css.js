@@ -31,11 +31,16 @@ export const ContentUI = styled('div')`
 `
 
 export const ImageUI = styled('div')`
+  max-width: 100%;
   img {
     display: block;
-    min-width: 100%;
+    width: 100%;
     height: calc(100vh - ${config.layout.desktop.headerHeight});
     object-fit: cover;
+  }
+
+  @media (max-width: ${config.breakPoints.mobile}) {
+    /* display: none; */
   }
 `
 

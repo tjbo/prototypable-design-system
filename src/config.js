@@ -15,6 +15,7 @@ const config = {
     dark2: '#2b6242',
     dark3: '#0090e7',
     dark4: '#454545',
+    dark5: '#0066a3',
     light1: '#f5faff',
     light2: '36,139,204',
   },
@@ -29,7 +30,10 @@ const config = {
   },
   layout: {
     desktop: {
-      headerHeight: makePixelValue(2.5 * unit),
+      headerHeight: makePixelValue(2 * unit),
+    },
+    mobile: {
+      headerHeight: makePixelValue(1.5 * unit),
     },
     tablet: {
       headerHeight: makePixelValue(2 * unit),

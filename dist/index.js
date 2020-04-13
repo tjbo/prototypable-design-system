@@ -158,6 +158,7 @@ var config = {
     dark2: '#2b6242',
     dark3: '#0090e7',
     dark4: '#454545',
+    dark5: '#0066a3',
     light1: '#f5faff',
     light2: '36,139,204'
   },
@@ -172,7 +173,10 @@ var config = {
   },
   layout: {
     desktop: {
-      headerHeight: makePixelValue(2.5 * _unit)
+      headerHeight: makePixelValue(2 * _unit)
+    },
+    mobile: {
+      headerHeight: makePixelValue(1.5 * _unit)
     },
     tablet: {
       headerHeight: makePixelValue(2 * _unit)
@@ -192,7 +196,7 @@ function _templateObject() {
 var BannerUI = styled__default('div')(_templateObject(), config.unit(1.25), config.fonts.font3, config.unit(1.25), config.fonts.font3);
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  max-width: ", ";\n  margin: 0 auto;\n  padding: ", " 0;\n  text-align: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  max-width: ", ";\n  margin: 0 auto;\n  padding: ", " 0;\n  text-align: ", ";\n\n  @media (max-width: ", ") {\n    margin: 0 ", ";\n  }\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -202,7 +206,7 @@ function _templateObject2() {
 }
 
 function _templateObject$1() {
-  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  background-color: ", ";\n\n  @media (max-width: ", ") {\n    max-width: calc(100% - ", ");\n    padding: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  background-color: ", ";\n"]);
 
   _templateObject$1 = function _templateObject() {
     return data;
@@ -235,11 +239,11 @@ var getInnerWidth = function getInnerWidth(_ref2) {
   }
 };
 
-var SectionWrapperUI = styled__default('section')(_templateObject$1(), getBgColor, config.breakPoints.tablet, config.unit(1), config.unit(0.5));
+var SectionWrapperUI = styled__default('section')(_templateObject$1(), getBgColor);
 var SectionUI = styled__default('div')(_templateObject2(), getInnerWidth, config.unit(1), function (_ref3) {
   var textAlign = _ref3.textAlign;
   return textAlign;
-});
+}, config.breakPoints.tablet, config.unit(0.5));
 
 function section (_ref) {
   var _ref$children = _ref.children,
@@ -462,7 +466,7 @@ function _templateObject3$1() {
 }
 
 function _templateObject2$2() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: space-between;\n  background-color: ", ";\n  padding: ", " ", ";\n  padding-right: ", ";\n  font-family: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  display: flex;\n  justify-content: space-between;\n  background-color: ", ";\n  padding: ", " ", ";\n  padding-right: ", ";\n  font-family: ", ";\n"]);
 
   _templateObject2$2 = function _templateObject2() {
     return data;
@@ -472,7 +476,7 @@ function _templateObject2$2() {
 }
 
 function _templateObject$6() {
-  var data = _taggedTemplateLiteral(["\n  display: block;\n  width: 100%;\n  background-color: ", ";\n  width: 100%;\n  flex-shrink: 0;\n"]);
+  var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  display: block;\n  background-color: ", ";\n  max-width: 100%;\n  flex-shrink: 0;\n"]);
 
   _templateObject$6 = function _templateObject() {
     return data;
@@ -492,8 +496,18 @@ function Footer(_ref) {
 
 Footer.AddressUI = AddressUI;
 
+function _templateObject8() {
+  var data = _taggedTemplateLiteral(["\n  @media (max-width: ", ") {\n    width: ", ";\n    height: ", ";\n    position: relative;\n    display: block;\n    margin: (", ") auto ", " auto;\n    margin-top: -", ";\n\n    .line {\n      display: block;\n      background: #fff;\n      width: 100%;\n      height: ", ";\n      position: absolute;\n      left: 0;\n      border-radius: (", ");\n      transition: all 0.4;\n      -webkit-transition: all 0.4;\n      -moz-transition: all 0.4;\n\n      &.line-1 {\n        top: 0;\n      }\n      &.line-2 {\n        top: 50%;\n      }\n      &.line-3 {\n        top: 100%;\n      }\n    }\n\n    ", "\n  }\n"]);
+
+  _templateObject8 = function _templateObject8() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n  @media (max-width: ", ") {\n    width: ", ";\n    top: ", ";\n    right: ", ";\n    height: ", ";\n    position: absolute;\n    display: block;\n    margin: (", ") auto ", " auto;\n\n    .line {\n      display: block;\n      background: #fff;\n      width: 100%;\n      height: ", ";\n      position: absolute;\n      left: 0;\n      border-radius: (", ");\n      transition: all 0.4;\n      -webkit-transition: all 0.4;\n      -moz-transition: all 0.4;\n\n      &.line-1 {\n        top: 0;\n      }\n      &.line-2 {\n        top: 50%;\n      }\n      &.line-3 {\n        top: 100%;\n      }\n    }\n\n    ", "\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  ", " {\n    align-items: center;\n    background-color: ", ";\n    box-sizing: border-box;\n    color: #fff;\n    display: flex;\n    height: ", ";\n    flex-direction: row;\n    justify-content: space-between;\n    padding: 0 ", " 0 ", ";\n    position: fixed;\n    top: 0;\n    width: 100%;\n    z-index: 1;\n  }\n\n  ", " {\n    position: relative;\n    height: ", ";\n    display: block;\n  }\n\n  ", " {\n    font-size: ", ";\n    margin: 0;\n    height: 100%;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    justify-content: space-around;\n    font-family: ", ";\n    font-weight: 500;\n    text-align: left;\n    text-transform: uppercase;\n    a:active,\n    a:visited,\n    a:hover,\n    a:link {\n      color: #fff;\n      text-decoration: none;\n    }\n  }\n\n  ", " {\n    display: none;\n  }\n\n  ", " {\n    display: flex;\n    flex-direction: row;\n    font-size: ", ";\n    font-family: ", ";\n    list-style: none;\n    box-sizing: border-box;\n\n    a {\n      margin-left: ", ";\n      :active,\n      :visited,\n      :hover,\n      :link {\n        color: #fff;\n        text-decoration: none;\n      }\n    }\n  }\n\n  ", " {\n    display: none;\n  }\n\n  @media (max-width: ", ") {\n    .is-open ", " {\n      padding-top: 50px;\n      align-content: stretch;\n      align-items: center;\n      background-color: ", ";\n      display: flex;\n      flex-direction: column;\n      left: 0;\n      min-height: 100vh;\n      position: absolute;\n      top: 0;\n      width: 100%;\n      z-index: 1;\n    }\n\n    .is-closed ", " {\n      display: none;\n    }\n\n    ", " {\n      cursor: pointer;\n      box-sizing: border-box;\n      font-size: ", ";\n      margin: 0;\n      padding: ", ";\n      text-align: center;\n      width: auto;\n      text-transform: uppercase;\n\n      :hover {\n        background-color: ", ";\n\n        padding: ", ";\n      }\n    }\n\n    ", " {\n      cursor: pointer;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      position: absolute;\n      right: 0;\n      top: 0;\n      width: ", ";\n      height: ", ";\n      z-index: 2;\n    }\n\n    .is-closed ", " {\n      margin-right: 15px;\n    }\n  }\n\n  @media (max-width: ", ") {\n    ", " {\n      height: ", ";\n    }\n\n    ", " {\n      height: ", ";\n    }\n\n    ", " {\n      font-size: ", ";\n    }\n\n    ", " {\n      width: ", ";\n      height: ", ";\n    }\n  }\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -503,7 +517,7 @@ function _templateObject7() {
 }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n  @media (max-width: ", ") {\n    cursor: pointer;\n    border-bottom: ", ";\n    font-size: ", ";\n    margin: 0;\n    padding: ", " 0;\n    text-align: left;\n    width: 100%;\n  }\n"]);
+  var data = _taggedTemplateLiteral([""]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -513,7 +527,7 @@ function _templateObject6() {
 }
 
 function _templateObject5$1() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: row;\n  font-size: ", ";\n  font-family: ", ";\n  list-style: none;\n  margin: 0 ", ";\n  padding: 0;\n  a {\n    margin-left: ", ";\n    :active,\n    :visited,\n    :hover,\n    :link {\n      color: #fff;\n      text-decoration: none;\n    }\n    width: 100%;\n    @media (max-width: ", ") {\n      /* position: absolute; */\n      width: 100%;\n    }\n  }\n\n  @media (max-width: ", ") {\n    align-content: stretch;\n    align-items: center;\n    background-color: ", ";\n    display: ", ";\n    flex-direction: column;\n    margin: 0;\n    min-height: calc(100vh - ", ");\n    position: absolute;\n    top: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral([""]);
 
   _templateObject5$1 = function _templateObject5() {
     return data;
@@ -523,7 +537,7 @@ function _templateObject5$1() {
 }
 
 function _templateObject4$2() {
-  var data = _taggedTemplateLiteral(["\n  @media (max-width: ", ") {\n    cursor: pointer;\n    display: block;\n    width: ", ";\n    height: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral([""]);
 
   _templateObject4$2 = function _templateObject4() {
     return data;
@@ -533,7 +547,7 @@ function _templateObject4$2() {
 }
 
 function _templateObject3$2() {
-  var data = _taggedTemplateLiteral(["\n  font-size: ", ";\n  margin: 0;\n  height: 100%;\n  margin-left: ", ";\n  display: flex;\n  align-items: center;\n  text-align: center;\n  justify-content: space-around;\n  font-family: ", ";\n  font-weight: 500;\n  text-align: left;\n  text-transform: uppercase;\n  a:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: #fff;\n    text-decoration: none;\n  }\n\n  @media (max-width: ", ") {\n    font-size: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral([""]);
 
   _templateObject3$2 = function _templateObject3() {
     return data;
@@ -543,7 +557,7 @@ function _templateObject3$2() {
 }
 
 function _templateObject2$3() {
-  var data = _taggedTemplateLiteral(["\n  position: relative;\n  height: ", ";\n  display: block;\n  width: 100%;\n  @media (max-width: ", ") {\n    height: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral([""]);
 
   _templateObject2$3 = function _templateObject2() {
     return data;
@@ -553,7 +567,7 @@ function _templateObject2$3() {
 }
 
 function _templateObject$7() {
-  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  background-color: ", ";\n  color: #fff;\n  display: flex;\n  height: ", ";\n  justify-content: space-between;\n  position: fixed;\n  top: 0;\n  width: 100%;\n  z-index: 1;\n\n  @media (max-width: ", ") {\n    height: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral([""]);
 
   _templateObject$7 = function _templateObject() {
     return data;
@@ -561,22 +575,36 @@ function _templateObject$7() {
 
   return data;
 }
-var HeaderUI = styled__default('header')(_templateObject$7(), config.colors.dark1, config.layout.desktop.headerHeight, config.breakPoints.tablet, config.layout.tablet.headerHeight); // the above header is fixed, this allows content to push down with having to compensate for it every time
-
-var HeaderPushUI = styled__default('div')(_templateObject2$3(), config.layout.desktop.headerHeight, config.breakPoints.tablet, config.layout.tablet.headerHeight);
-var BrandUI = styled__default('div')(_templateObject3$2(), config.unit(1.125), config.unit(0.5), config.fonts.font2, config.breakPoints.tablet, config.unit(0.75));
-var NavMenuTriggerUI = styled__default('span')(_templateObject4$2(), config.breakPoints.tablet, config.unit(1.5), config.unit(1.5));
-var NavMenuUI = styled__default('nav')(_templateObject5$1(), config.unit(0.7), config.fonts.font2, config.unit(0.5), config.unit(0.5), config.breakPoints.tablet, config.breakPoints.tablet, config.colors.dark3, function (_ref) {
-  var isOpen = _ref.isOpen;
-  return isOpen === true ? 'flex' : 'none';
-}, config.unit(2), config.unit(2));
-var NavLinkUI = styled__default('span')(_templateObject6(), config.breakPoints.tablet, config.border, config.unit(0.6), config.unit(0.4));
-var heightLine = 4;
-var heightIcon = 22;
+var BrandUI = styled__default('div')(_templateObject$7());
+var HeaderUI = styled__default('header')(_templateObject2$3());
+var HeaderPushUI = styled__default('div')(_templateObject3$2());
+var NavMenuTriggerUI = styled__default('span')(_templateObject4$2());
+var NavMenuUI = styled__default('nav')(_templateObject5$1());
+var NavLinkUI = styled__default('span')(_templateObject6());
+var HeaderContainer = styled__default('div')(_templateObject7(), HeaderUI, config.colors.dark1, config.layout.desktop.headerHeight, config.unit(0.75), config.unit(0.25), HeaderPushUI, config.layout.desktop.headerHeight, BrandUI, config.unit(1.125), config.fonts.font2, NavMenuTriggerUI, NavMenuUI, config.unit(0.7), config.fonts.font2, config.unit(0.5), NavMenuTriggerUI, config.breakPoints.tablet, NavMenuUI, config.colors.dark3, NavMenuUI, NavLinkUI, config.unit(0.75), config.unit(0.25), config.colors.dark5, config.unit(0.25), NavMenuTriggerUI, config.layout.tablet.headerHeight, config.layout.tablet.headerHeight, NavMenuUI, config.breakPoints.mobile, HeaderUI, config.layout.mobile.headerHeight, HeaderPushUI, config.layout.mobile.headerHeight, BrandUI, config.unit(0.66), NavMenuTriggerUI, config.layout.mobile.headerHeight, config.layout.mobile.headerHeight);
+var heightLine = 3;
+var heightIcon = 20;
 var translateY = heightIcon / 2;
-var TriggerIconUI = styled__default('div')(_templateObject7(), config.breakPoints.tablet, config.unit(1), config.unit(0.5), config.unit(0.5), makePixelValue(heightIcon), makePixelValue(heightIcon * 2), heightIcon, makePixelValue(heightLine), makePixelValue(heightLine / 2), function (_ref2) {
-  var isOpen = _ref2.isOpen;
+var TriggerIconUI = styled__default('div')(_templateObject8(), config.breakPoints.tablet, config.unit(1), makePixelValue(heightIcon), makePixelValue(heightIcon * 2), heightIcon, config.unit(0.125), makePixelValue(heightLine), makePixelValue(heightLine / 2), function (_ref) {
+  var isOpen = _ref.isOpen;
   return isOpen && "\n    .line-1 {\n      transform: translateY(".concat(makePixelValue(translateY), ") translateX(0) rotate(45deg);\n    }\n    .line-2 {\n      opacity: 0;\n    }\n    .line-3 {\n      transform: translateY(").concat(makePixelValue(translateY * -1), ") translateX(0) rotate(-45deg);\n  }");
+});
+
+var onShowModal = function onShowModal() {
+  var scrollY = document.documentElement.style.getPropertyValue('--scroll-y');
+  var body = document.body;
+  body.style.position = 'fixed';
+  body.style.top = "-".concat(scrollY);
+};
+var onHideModal = function onHideModal() {
+  var body = document.body;
+  var scrollY = body.style.top;
+  body.style.position = '';
+  body.style.top = '';
+  window.scrollTo(0, parseInt(scrollY || '0') * -1);
+};
+window.addEventListener('scroll', function () {
+  document.documentElement.style.setProperty('--scroll-y', "".concat(window.scrollY, "px"));
 });
 
 var Header = /*#__PURE__*/function (_React$Component) {
@@ -599,9 +627,25 @@ var Header = /*#__PURE__*/function (_React$Component) {
       isOpen: false
     });
 
+    _defineProperty(_assertThisInitialized(_this), "onResize", function () {
+      if (_this.state.isOpen) {
+        _this.setState({
+          isOpen: false
+        });
+
+        onHideModal();
+      }
+    });
+
     _defineProperty(_assertThisInitialized(_this), "toggleMenu", function () {
       _this.setState({
         isOpen: !_this.state.isOpen
+      }, function () {
+        if (_this.state.isOpen) {
+          onShowModal();
+        } else {
+          onHideModal();
+        }
       });
     });
 
@@ -609,14 +653,23 @@ var Header = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(Header, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      window.addEventListener('resize', function () {
+        return _this2.onResize();
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var children = this.props.children;
       var isOpen = this.state.isOpen;
-      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(HeaderPushUI, null), /*#__PURE__*/React.createElement(HeaderUI, null, React.Children.map(children, function (child) {
-        return React.cloneElement(child, {
-          isOpen: isOpen
-        });
+      return /*#__PURE__*/React.createElement(HeaderContainer, null, /*#__PURE__*/React.createElement(HeaderPushUI, null), /*#__PURE__*/React.createElement(HeaderUI, {
+        className: this.state.isOpen ? 'is-open' : 'is-closed'
+      }, React.Children.map(children, function (child) {
+        return React.cloneElement(child);
       }), /*#__PURE__*/React.createElement(NavMenuTriggerUI, {
         onClick: this.toggleMenu
       }, /*#__PURE__*/React.createElement(TriggerIconUI, {
@@ -645,7 +698,7 @@ Header.NavMenu = NavMenuUI;
 Header.NavLink = NavLinkUI;
 
 function _templateObject2$4() {
-  var data = _taggedTemplateLiteral(["\n  img {\n    display: block;\n    min-width: 100%;\n    height: calc(100vh - ", ");\n    object-fit: cover;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  max-width: 100%;\n  img {\n    display: block;\n    width: 100%;\n    height: calc(100vh - ", ");\n    object-fit: cover;\n  }\n\n  @media (max-width: ", ") {\n    /* display: none; */\n  }\n"]);
 
   _templateObject2$4 = function _templateObject2() {
     return data;
@@ -664,7 +717,7 @@ function _templateObject$8() {
   return data;
 }
 var ContentUI$1 = styled__default('div')(_templateObject$8(), config.layout.desktop.headerHeight, config.unit(2.25), config.fonts.font2, config.unit(2), config.unit(1), config.fonts.font2, config.unit(1.5), config.unit(0.25));
-var ImageUI = styled__default('div')(_templateObject2$4(), config.layout.desktop.headerHeight); // url('https://images.unsplash.com/photo-1520020324516-dba91274d8ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80');
+var ImageUI = styled__default('div')(_templateObject2$4(), config.layout.desktop.headerHeight, config.breakPoints.mobile); // url('https://images.unsplash.com/photo-1520020324516-dba91274d8ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80');
 // background-blend-mode: overlay; */
 
 /* background-image: linear-gradient(rgba(0, 144, 231, 0), rgba(0, 144, 231, 0)),
@@ -734,7 +787,7 @@ function Fonts () {
 }
 
 function _templateObject$9() {
-  var data = _taggedTemplateLiteral(["\nbody {\n  font-family: ", ";\n  font-size: ", ";\n  line-height: 1.5;\n  padding: 0;\n  margin: 0;\n  display: flex;\n  flex-direction: column;\n  color: ", ";\n}\n\ntable {\n  margin: 0;\n}\n\nh1, h2, h3, h4 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n}\n\nh1 {\n  font-size: ", ";\n  font-weight: 600;\n  margin: 0;\n}\n\nh1.double-size {\n  font-size: ", ";\n}\n\nh2 {\n  font-size: ", ";\n  font-weight: 500;\n  line-height: 1;\n  margin-bottom: ", ";\n}\n\n\nh3 {\n  font-size: ", ";\n  font-weight: 400;\n}\n\nh4 {\n  font-size: ", ";\n  font-weight: 500;\n}\n\nh5 {\n  font-size: ", ";\n}\n\np, ul {\n  padding: 0;\n}\n\np.double-size {\n  font-size: ", ";\n}\n\nul {\n  margin-left: ", ";\n}\n\na:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: ", ";\n  }\n\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    max-width: 100%;\n\n    @media (max-width: ", ") {\n      border: 0;\n        display: block;\n    }\n\n\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n\n      @media (max-width: ", ") {\n        max-width: 100%;\n        padding: ", ";\n        display: block;\n        border-left: ", ";\n     border-right: ", ";\n    }\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n      /* min-width: 160px; */\n    }\n\n    td {\n      background-color: #fff;\n      padding: ", " ", ";\n\n      @media (max-width: ", ") {\n        padding: 0;\n        display: block;\n        clear: both;\n    }\n    }\n}"]);
+  var data = _taggedTemplateLiteral(["\nbody {\n  font-family: ", ";\n  font-size: ", ";\n  line-height: 1.5;\n  padding: 0;\n  margin: 0;\n  display: flex;\n  flex-direction: column;\n  color: ", ";\n\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nh1, h2, h3, h4 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n}\n\nh1 {\n  font-size: ", ";\n  font-weight: 600;\n  margin: 0;\n}\n\nh1.double-size {\n  font-size: ", ";\n}\n\nh2 {\n  font-size: ", ";\n  font-weight: 500;\n  line-height: 1;\n  margin-bottom: ", ";\n}\n\n\nh3 {\n  font-size: ", ";\n  font-weight: 400;\n}\n\nh4 {\n  font-size: ", ";\n  font-weight: 500;\n}\n\nh5 {\n  font-size: ", ";\n}\n\np, ul {\n  padding: 0;\n}\n\np.double-size {\n  font-size: ", ";\n}\n\nul {\n  margin-left: ", ";\n}\n\na:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: ", ";\n  }\n\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    max-width: 100%;\n\n    /* @media (max-width: ", ") {\n      border: 0;\n        display: block;\n    } */\n\n\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n\n      /* @media (max-width: ", ") {\n        max-width: 100%;\n        padding: ", ";\n        display: block;\n        border-left: ", ";\n     border-right: ", ";\n    } */\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n      /* min-width: 160px; */\n    }\n\n    td {\n      background-color: #fff;\n      padding: ", " ", ";\n\n\n    }\n\n    @media (max-width: ", ") {\n\n      tr {\n      }\n\n      td {\n        padding: 0 ", ";\n        display: block;\n      }\n\n      td:first-child {\n        padding-top: ", ";\n      }\n\n      td:last-child {\n        padding-bottom: ", ";\n      }\n\n\n     }\n}"]);
 
   _templateObject$9 = function _templateObject() {
     return data;
@@ -742,7 +795,7 @@ function _templateObject$9() {
 
   return data;
 }
-var GlobalStyles = styled.createGlobalStyle(_templateObject$9(), config.fonts.font1, config.unit(0.6), config.colors.dark4, config.fonts.font2, config.unit(1), config.unit(2), config.unit(1.125), config.unit(0.75), config.unit(0.9), config.unit(0.75), config.unit(0.6), config.unit(1), config.unit(2), config.colors.dark3, config.border, config.border, config.breakPoints.mobile, config.border, config.breakPoints.mobile, config.unit(0.5), config.border, config.border, config.border, config.unit(0.25), config.unit(0.5), config.breakPoints.mobile);
+var GlobalStyles = styled.createGlobalStyle(_templateObject$9(), config.fonts.font1, config.unit(0.6), config.colors.dark4, config.fonts.font2, config.unit(1), config.unit(2), config.unit(1.125), config.unit(0.75), config.unit(0.9), config.unit(0.75), config.unit(0.6), config.unit(1), config.unit(2), config.colors.dark3, config.border, config.border, config.breakPoints.mobile, config.border, config.breakPoints.mobile, config.unit(0.5), config.border, config.border, config.border, config.unit(0.25), config.unit(0.5), config.breakPoints.mobile, config.unit(0.5), config.unit(0.5), config.unit(0.5));
 
 function head () {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Fonts, null), /*#__PURE__*/React.createElement(GlobalStyles, null));
