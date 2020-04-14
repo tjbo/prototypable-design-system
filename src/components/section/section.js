@@ -17,7 +17,10 @@ export default function ({
       <SectionWrapperUI background={background}>
         <SectionUI textAlign={textAlign} innerWidth={innerWidth}>
           {title && title.text ? (
-            <h2 dangerouslySetInnerHTML={{ __html: title.text }} />
+            <h3
+              dangerouslySetInnerHTML={{ __html: title.text }}
+              className="heading3"
+            />
           ) : null}
           {children}
         </SectionUI>

@@ -2,6 +2,61 @@ import { createGlobalStyle } from 'styled-components'
 import config from '../../config'
 
 const GlobalStyles = createGlobalStyle`
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+  margin-block-start:0; margin-block-end:0; margin-inline-start:0; margin-inline-end:0;
+padding-block-start:0; padding-block-end:0; padding-inline-start:0; padding-inline-end:0;
+
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-size: 0.75em;
+}
+
+
 body {
   color: ${config.colors.dark4};
   display: flex;
@@ -21,32 +76,43 @@ h1, h2, h3, h4 {
   font-family: ${config.typography.fonts.font2};
   padding: 0;
   margin: 0;
+  line-height: 1;
+  margin-bottom: ${config.unit(0.5)};
+}
+
+p, h1, h2, h3, h4, .heading1, .heading2, .heading3, .heading4, .heading5 {
+margin-bottom: ${config.unit(0.5)};
 }
 
 h1, .heading1 {
-  font-size: ${config.typography.sizes.lg};
+  font-size: ${config.typography.sizes.xxlg};
   font-weight: 600;
-  margin: 0;
+
+  @media (max-width: ${config.breakPoints.mobile}) {
+   font-size: ${config.typography.sizes.lg};
+  }
+
+
 }
 
 h2, .heading2 {
-  font-size: ${config.typography.sizes.lg};
+  font-size: ${config.typography.sizes.xlg};
   font-weight: 500;
   line-height: 1;
-  margin-bottom: ${config.unit(0.75)};
 }
 
 h3, .heading3 {
-  font-size: ${config.unit(0.9)};
-  font-weight: 400;
-}
-
-h4, .heading4 {
-  font-size: ${config.unit(0.75)};
+  font-size: ${config.typography.sizes.lg};
   font-weight: 500;
 }
 
-h5, .heading4 {
+h4, .heading4 {
+  font-size: ${config.typography.sizes.md};;
+  font-weight: 500;
+  margin-bottom: ${config.unit(0.3)};
+}
+
+h5, .heading5 {
   font-size: ${config.unit(0.6)};
 }
 

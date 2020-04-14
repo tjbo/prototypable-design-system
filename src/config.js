@@ -27,11 +27,12 @@ const config = {
       font3: 'PT Serif Caption',
     },
     sizes: {
-      xsm: makePixelValue(0.4 * unit),
-      sm: makePixelValue(0.53 * unit),
-      md: makePixelValue(0.63 * unit),
-      lg: makePixelValue(1.125 * unit),
-      xlg: makePixelValue(2 * unit),
+      xsm: makePixelValue(0.5 * unit),
+      sm: makePixelValue(0.75 * unit),
+      md: makePixelValue(0.9 * unit),
+      lg: makePixelValue(1.25 * unit),
+      xlg: makePixelValue(1.75 * unit),
+      xxlg: makePixelValue(2 * unit),
     },
   },
 

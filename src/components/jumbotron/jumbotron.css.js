@@ -10,24 +10,7 @@ export const ContentUI = styled('div')`
   position: absolute;
   top: ${config.unit(2.25)};
   width: 100%;
-
-  h1 {
-    font-family: ${config.typography.fonts.font2};
-    font-size: ${config.unit(2)};
-    line-height: 1;
-    margin-bottom: -${config.unit(1)};
-    text-align: center;
-  }
-
-  h2 {
-    font-family: ${config.typography.fonts.font2};
-    font-size: ${config.unit(1.5)};
-    font-weight: 700;
-    line-height: 1.125;
-    margin-bottom: ${config.unit(0.25)};
-    margin-top: 0.25em;
-    text-align: center;
-  }
+  text-align: center;
 
   @media (min-width: ${config.breakPoints.desktop}) {
     min-height: calc(100vh - ${config.layout.tablet.headerHeight});
