@@ -4,7 +4,6 @@ function getFontFamily(font) {
   const key = Object.keys(config.typography.fonts).filter((key, index) => {
     return index === parseInt(font, 10)
   })
-
   return config.typography.fonts[key]
 }
 

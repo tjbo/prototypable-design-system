@@ -10,13 +10,13 @@ export default {
 
 function makeComponent(font, size, italic = false) {
   return (
-    <p>
+    <div>
       <Text font={font} selector="div" size={size} italic={italic}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mollis
         rhoncus vulputate. Duis quis ante quis erat ultricies condimentum id
         egestas urna.
       </Text>
-    </p>
+    </div>
   )
 }
 

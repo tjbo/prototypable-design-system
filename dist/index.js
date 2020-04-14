@@ -160,7 +160,8 @@ var config = {
     dark4: '#454545',
     dark5: '#0066a3',
     light1: '#f5faff',
-    light2: '36,139,204'
+    light2: '36,139,204',
+    light3: '#fff'
   },
   typography: {
     fonts: {
@@ -854,17 +855,17 @@ function Loading() {
 }
 
 function Fonts () {
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("link", {
-    href: "https://fonts.googleapis.com/css2?family=PT+Serif+Caption:ital@0;1&family=Roboto+Condensed:ital,wght@0,400;0,700;1,400&family=Roboto:wght@500;700;900&display=swap",
-    rel: "stylesheet"
-  }), /*#__PURE__*/React.createElement("link", {
-    href: "https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap",
-    rel: "stylesheet"
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("link", _defineProperty({
+    rel: "preload",
+    href: "https://fonts.googleapis.com/css2?family=PT+Serif+Caption:ital@0;1&family=PT+Serif:wght@400;700&family=Roboto:wght@400;500;700&display=swap"
+  }, "rel", "stylesheet")), /*#__PURE__*/React.createElement("link", {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css?family=Roboto&display=swap"
   }));
 }
 
 function _templateObject$c() {
-  var data = _taggedTemplateLiteral(["\nbody {\n  font-family: ", ";\n  font-size: ", ";\n  line-height: 1.5;\n  padding: 0;\n  margin: 0;\n  display: flex;\n  flex-direction: column;\n  color: ", ";\n\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nh1, h2, h3, h4 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n}\n\nh1 {\n  font-size: ", ";\n  font-weight: 600;\n  margin: 0;\n}\n\nh1.double-size {\n  font-size: ", ";\n}\n\nh2 {\n  font-size: ", ";\n  font-weight: 500;\n  line-height: 1;\n  margin-bottom: ", ";\n}\n\n\nh3 {\n  font-size: ", ";\n  font-weight: 400;\n}\n\nh4 {\n  font-size: ", ";\n  font-weight: 500;\n}\n\nh5 {\n  font-size: ", ";\n}\n\np, ul {\n  padding: 0;\n}\n\np.double-size {\n  font-size: ", ";\n}\n\nul {\n  margin-left: ", ";\n}\n\na:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: ", ";\n  }\n\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    max-width: 100%;\n\n    /* @media (max-width: ", ") {\n      border: 0;\n        display: block;\n    } */\n\n\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n\n      /* @media (max-width: ", ") {\n        max-width: 100%;\n        padding: ", ";\n        display: block;\n        border-left: ", ";\n     border-right: ", ";\n    } */\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n      /* min-width: 160px; */\n    }\n\n    td {\n      background-color: #fff;\n      padding: ", " ", ";\n\n\n    }\n\n    @media (max-width: ", ") {\n\n      tr {\n      }\n\n      td {\n        padding: 0 ", ";\n        display: block;\n      }\n\n      td:first-child {\n        padding-top: ", ";\n      }\n\n      td:last-child {\n        padding-bottom: ", ";\n      }\n\n\n     }\n}"]);
+  var data = _taggedTemplateLiteral(["\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: ", ";\n  line-height: 1.5;\n  margin: 0;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\n\nh1, h2, h3, h4 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n}\n\nh1, .heading1 {\n  font-size: ", ";\n  font-weight: 600;\n  margin: 0;\n}\n\nh2, .heading2 {\n  font-size: ", ";\n  font-weight: 500;\n  line-height: 1;\n  margin-bottom: ", ";\n}\n\nh3, .heading3 {\n  font-size: ", ";\n  font-weight: 400;\n}\n\nh4, .heading4 {\n  font-size: ", ";\n  font-weight: 500;\n}\n\nh5, .heading4 {\n  font-size: ", ";\n}\n\np, ul {\n  padding: 0;\n}\n\nul {\n  margin-left: ", ";\n}\n\na:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: ", ";\n  }\n\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    max-width: 100%;\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    @media (max-width: ", ") {\n      tr {\n      }\n\n      td {\n        padding: 0 ", ";\n        display: block;\n      }\n\n      td:first-child {\n        padding-top: ", ";\n      }\n\n      td:last-child {\n        padding-bottom: ", ";\n      }\n\n    }\n  }\n\n  ", "\n\n      "]);
 
   _templateObject$c = function _templateObject() {
     return data;
@@ -872,7 +873,15 @@ function _templateObject$c() {
 
   return data;
 }
-var GlobalStyles = styled.createGlobalStyle(_templateObject$c(), config.typography.fonts.font1, config.unit(0.53), config.colors.dark4, config.typography.fonts.font2, config.unit(1), config.unit(2), config.unit(1.125), config.unit(0.75), config.unit(0.9), config.unit(0.75), config.unit(0.6), config.unit(1), config.unit(2), config.colors.dark3, config.border, config.border, config.breakPoints.mobile, config.border, config.breakPoints.mobile, config.unit(0.5), config.border, config.border, config.border, config.unit(0.25), config.unit(0.5), config.breakPoints.mobile, config.unit(0.5), config.unit(0.5), config.unit(0.5));
+var GlobalStyles = styled.createGlobalStyle(_templateObject$c(), config.colors.dark4, config.typography.fonts.font1, config.unit(0.53), config.typography.fonts.font2, config.typography.sizes.lg, config.typography.sizes.lg, config.unit(0.75), config.unit(0.9), config.unit(0.75), config.unit(0.6), config.unit(2), config.colors.dark3, config.border, config.border, config.border, config.border, config.unit(0.25), config.unit(0.5), config.breakPoints.mobile, config.unit(0.5), config.unit(0.5), config.unit(0.5), function (props) {
+  var colors = '';
+
+  for (var color in config.colors) {
+    colors += ".".concat(color, "\n         {\n          color:").concat(config.colors[color], ";\n         }\n       ");
+  }
+
+  return colors;
+});
 
 function head () {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Fonts, null), /*#__PURE__*/React.createElement(GlobalStyles, null));

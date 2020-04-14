@@ -18,6 +18,7 @@ const config = {
     dark5: '#0066a3',
     light1: '#f5faff',
     light2: '36,139,204',
+    light3: '#fff',
   },
   typography: {
     fonts: {
