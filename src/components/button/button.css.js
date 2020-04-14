@@ -7,7 +7,7 @@ export const ButtonUI = styled('button')`
   color: #fff;
   cursor: pointer;
   display: block;
-  font-family: ${config.fonts.font2};
+  font-family: ${config.typography.fonts.font2};
   font-size: ${config.unit(0.75)};
   font-weight: 700;
   height: ${config.unit(1.75)};

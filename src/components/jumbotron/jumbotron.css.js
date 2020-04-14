@@ -12,7 +12,7 @@ export const ContentUI = styled('div')`
   width: 100%;
 
   h1 {
-    font-family: ${config.fonts.font2};
+    font-family: ${config.typography.fonts.font2};
     font-size: ${config.unit(2)};
     line-height: 1;
     margin-bottom: -${config.unit(1)};
@@ -20,7 +20,7 @@ export const ContentUI = styled('div')`
   }
 
   h2 {
-    font-family: ${config.fonts.font2};
+    font-family: ${config.typography.fonts.font2};
     font-size: ${config.unit(1.5)};
     font-weight: 700;
     line-height: 1.125;

@@ -162,10 +162,19 @@ var config = {
     light1: '#f5faff',
     light2: '36,139,204'
   },
-  fonts: {
-    font1: 'PT Serif',
-    font2: 'Roboto',
-    font3: 'PT Serif Caption'
+  typography: {
+    fonts: {
+      font1: 'PT Serif',
+      font2: 'Roboto',
+      font3: 'PT Serif Caption'
+    },
+    sizes: {
+      xsm: makePixelValue(0.4 * _unit),
+      sm: makePixelValue(0.53 * _unit),
+      md: makePixelValue(0.63 * _unit),
+      lg: makePixelValue(1.125 * _unit),
+      xlg: makePixelValue(2 * _unit)
+    }
   },
   border: '1px solid #eee',
   unit: function unit(multiplier) {
@@ -193,7 +202,7 @@ function _templateObject() {
 
   return data;
 }
-var BannerUI = styled__default('div')(_templateObject(), config.unit(1.25), config.fonts.font3, config.unit(1.25), config.fonts.font3);
+var BannerUI = styled__default('div')(_templateObject(), config.unit(1.25), config.typography.fonts.font3, config.unit(1.25), config.typography.fonts.font3);
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  max-width: ", ";\n  margin: 0 auto;\n  padding: ", " 0;\n  text-align: ", ";\n\n  @media (max-width: ", ") {\n    margin: 0 ", ";\n  }\n"]);
@@ -328,7 +337,7 @@ function _templateObject$3() {
 
   return data;
 }
-var ButtonUI = styled__default('button')(_templateObject$3(), config.colors.dark2, config.fonts.font2, config.unit(0.75), config.unit(1.75), config.unit(0.66), function (_ref) {
+var ButtonUI = styled__default('button')(_templateObject$3(), config.colors.dark2, config.typography.fonts.font2, config.unit(0.75), config.unit(1.75), config.unit(0.66), function (_ref) {
   var maxWidth = _ref.maxWidth;
   return maxWidth;
 }, function (_ref2) {
@@ -518,8 +527,8 @@ function _templateObject$7() {
   return data;
 }
 var FooterUI = styled__default('footer')(_templateObject$7(), config.colors.dark1);
-var FooterUIInner = styled__default('div')(_templateObject2$2(), config.colors.dark1, config.unit(0.5), config.unit(0.75), config.unit(1), config.fonts.font1);
-var AddressUI = styled__default('address')(_templateObject3$1(), config.fonts.font2, config.unit(0.65), config.fonts.font2);
+var FooterUIInner = styled__default('div')(_templateObject2$2(), config.colors.dark1, config.unit(0.5), config.unit(0.75), config.unit(1), config.typography.fonts.font1);
+var AddressUI = styled__default('address')(_templateObject3$1(), config.typography.fonts.font2, config.unit(0.65), config.typography.fonts.font2);
 var FinePrintUI = styled__default('div')(_templateObject4$1(), config.unit(0.4), config.unit(1));
 
 function Footer(_ref) {
@@ -593,7 +602,7 @@ var HeaderUI = styled__default('header')(_templateObject2$3());
 var NavMenuTriggerUI = styled__default('span')(_templateObject3$2());
 var NavMenuUI = styled__default('nav')(_templateObject4$2());
 var NavLinkUI = styled__default('span')(_templateObject5$1());
-var HeaderContainer = styled__default('div')(_templateObject6(), HeaderUI, config.colors.dark1, config.layout.desktop.headerHeight, config.unit(0.75), config.unit(0.25), BrandUI, config.unit(1.125), config.fonts.font2, NavMenuUI, config.unit(0.7), config.fonts.font2, config.unit(0.5), NavMenuTriggerUI, config.breakPoints.tablet, NavMenuUI, config.colors.dark3, NavMenuUI, NavLinkUI, config.unit(0.75), config.unit(0.25), config.colors.dark5, config.unit(0.25), NavMenuTriggerUI, config.layout.tablet.headerHeight, config.layout.tablet.headerHeight, config.layout.tablet.headerHeight, config.breakPoints.mobile, HeaderUI, config.layout.mobile.headerHeight, BrandUI, config.unit(0.66), NavMenuTriggerUI, config.layout.mobile.headerHeight, config.layout.mobile.headerHeight);
+var HeaderContainer = styled__default('div')(_templateObject6(), HeaderUI, config.colors.dark1, config.layout.desktop.headerHeight, config.unit(0.75), config.unit(0.25), BrandUI, config.unit(1.125), config.typography.fonts.font2, NavMenuUI, config.unit(0.7), config.typography.fonts.font2, config.unit(0.5), NavMenuTriggerUI, config.breakPoints.tablet, NavMenuUI, config.colors.dark3, NavMenuUI, NavLinkUI, config.unit(0.75), config.unit(0.25), config.colors.dark5, config.unit(0.25), NavMenuTriggerUI, config.layout.tablet.headerHeight, config.layout.tablet.headerHeight, config.layout.tablet.headerHeight, config.breakPoints.mobile, HeaderUI, config.layout.mobile.headerHeight, BrandUI, config.unit(0.66), NavMenuTriggerUI, config.layout.mobile.headerHeight, config.layout.mobile.headerHeight);
 
 function _templateObject5$2() {
   var data = _taggedTemplateLiteral(["\n  display: block;\n  height: ", ";\n  margin: (", ") auto ", " auto;\n  margin-top: -", ";\n  position: relative;\n  width: ", ";\n  z-index: 9999;\n"]);
@@ -787,7 +796,7 @@ function _templateObject$a() {
 
   return data;
 }
-var ContentUI$1 = styled__default('div')(_templateObject$a(), config.layout.desktop.headerHeight, config.unit(2.25), config.fonts.font2, config.unit(2), config.unit(1), config.fonts.font2, config.unit(1.5), config.unit(0.25), config.breakPoints.desktop, config.layout.tablet.headerHeight, config.breakPoints.tablet, config.layout.mobile.headerHeight);
+var ContentUI$1 = styled__default('div')(_templateObject$a(), config.layout.desktop.headerHeight, config.unit(2.25), config.typography.fonts.font2, config.unit(2), config.unit(1), config.typography.fonts.font2, config.unit(1.5), config.unit(0.25), config.breakPoints.desktop, config.layout.tablet.headerHeight, config.breakPoints.tablet, config.layout.mobile.headerHeight);
 var ImageUI = styled__default('div')(_templateObject2$5(), config.breakPoints.desktop, config.layout.tablet.headerHeight, config.layout.tablet.headerHeight, config.breakPoints.tablet, config.layout.mobile.headerHeight, config.layout.mobile.headerHeight);
 
 var sizes = ['360×640', '768×1024', '1024x768', '1366×768', '1600×900', '1920x1080'];
@@ -863,7 +872,7 @@ function _templateObject$c() {
 
   return data;
 }
-var GlobalStyles = styled.createGlobalStyle(_templateObject$c(), config.fonts.font1, config.unit(0.53), config.colors.dark4, config.fonts.font2, config.unit(1), config.unit(2), config.unit(1.125), config.unit(0.75), config.unit(0.9), config.unit(0.75), config.unit(0.6), config.unit(1), config.unit(2), config.colors.dark3, config.border, config.border, config.breakPoints.mobile, config.border, config.breakPoints.mobile, config.unit(0.5), config.border, config.border, config.border, config.unit(0.25), config.unit(0.5), config.breakPoints.mobile, config.unit(0.5), config.unit(0.5), config.unit(0.5));
+var GlobalStyles = styled.createGlobalStyle(_templateObject$c(), config.typography.fonts.font1, config.unit(0.53), config.colors.dark4, config.typography.fonts.font2, config.unit(1), config.unit(2), config.unit(1.125), config.unit(0.75), config.unit(0.9), config.unit(0.75), config.unit(0.6), config.unit(1), config.unit(2), config.colors.dark3, config.border, config.border, config.breakPoints.mobile, config.border, config.breakPoints.mobile, config.unit(0.5), config.border, config.border, config.border, config.unit(0.25), config.unit(0.5), config.breakPoints.mobile, config.unit(0.5), config.unit(0.5), config.unit(0.5));
 
 function head () {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Fonts, null), /*#__PURE__*/React.createElement(GlobalStyles, null));

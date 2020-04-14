@@ -15,7 +15,7 @@ export const FooterUIInner = styled('div')`
   background-color: ${config.colors.dark1};
   padding: ${config.unit(0.5)} ${config.unit(0.75)};
   padding-right: ${config.unit(1)};
-  font-family: ${config.fonts.font1};
+  font-family: ${config.typography.fonts.font1};
 `
 
 export const AddressUI = styled('address')`
@@ -28,11 +28,11 @@ export const AddressUI = styled('address')`
   a:link {
     color: #fff;
     text-decoration: none;
-    font-family: ${config.fonts.font2};
+    font-family: ${config.typography.fonts.font2};
     font-size: ${config.unit(0.65)};
     text-transform: uppercase;
   }
-  font-family: ${config.fonts.font2};
+  font-family: ${config.typography.fonts.font2};
 `
 export const FinePrintUI = styled('div')`
   font-size: ${config.unit(0.4)};

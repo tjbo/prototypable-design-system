@@ -37,7 +37,7 @@ export const HeaderContainer = styled('div')`
     align-items: center;
     text-align: center;
     justify-content: space-around;
-    font-family: ${config.fonts.font2};
+    font-family: ${config.typography.fonts.font2};
     font-weight: 500;
     text-align: left;
     text-transform: uppercase;
@@ -54,7 +54,7 @@ export const HeaderContainer = styled('div')`
     display: flex;
     flex-direction: row;
     font-size: ${config.unit(0.7)};
-    font-family: ${config.fonts.font2};
+    font-family: ${config.typography.fonts.font2};
     list-style: none;
     box-sizing: border-box;
 

@@ -6,7 +6,7 @@ export const BannerUI = styled('div')`
   text-align: center;
   font-size: ${config.unit(1.25)};
   font-style: 'italic';
-  font-family: ${config.fonts.font3};
+  font-family: ${config.typography.fonts.font3};
 
   p,
   h1,
@@ -16,7 +16,7 @@ export const BannerUI = styled('div')`
   h5,
   h6 {
     font-size: ${config.unit(1.25)};
-    font-family: ${config.fonts.font3};
+    font-family: ${config.typography.fonts.font3};
     font-style: 'italic';
     margin: 0;
   }

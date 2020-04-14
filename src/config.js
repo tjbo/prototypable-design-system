@@ -19,11 +19,21 @@ const config = {
     light1: '#f5faff',
     light2: '36,139,204',
   },
-  fonts: {
-    font1: 'PT Serif',
-    font2: 'Roboto',
-    font3: 'PT Serif Caption',
+  typography: {
+    fonts: {
+      font1: 'PT Serif',
+      font2: 'Roboto',
+      font3: 'PT Serif Caption',
+    },
+    sizes: {
+      xsm: makePixelValue(0.4 * unit),
+      sm: makePixelValue(0.53 * unit),
+      md: makePixelValue(0.63 * unit),
+      lg: makePixelValue(1.125 * unit),
+      xlg: makePixelValue(2 * unit),
+    },
   },
+
   border: '1px solid #eee',
   unit(multiplier) {
     return makePixelValue(multiplier * unit)
