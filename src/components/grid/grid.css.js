@@ -1,4 +1,5 @@
 import config from '../../config'
+
 export const GridWrapperUI = styled('div')`
   * {
     box-sizing: border-box;
