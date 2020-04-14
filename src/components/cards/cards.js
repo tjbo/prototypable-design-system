@@ -5,7 +5,7 @@ import Grid from '../grid'
 export default function ({ body }) {
   return (
     <CardsWrapperUI>
-      <Grid body={body} />
+      <Grid body={body.text} />
     </CardsWrapperUI>
   )
 }

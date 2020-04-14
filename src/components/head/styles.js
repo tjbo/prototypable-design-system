@@ -4,7 +4,7 @@ import config from '../../config'
 const GlobalStyles = createGlobalStyle`
 body {
   font-family: ${config.fonts.font1};
-  font-size: ${config.unit(0.6)};
+  font-size: ${config.unit(0.53)};
   line-height: 1.5;
   padding: 0;
   margin: 0;

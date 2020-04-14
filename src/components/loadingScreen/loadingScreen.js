@@ -1,11 +1,11 @@
-import Jumbotron from '../jumbotron'
+import { LoadingScreenContainerUI } from './loadingScreen.css'
 import Loader from '../../svgs/loader'
 
 export default function Loading() {
   return (
-    <Jumbotron>
+    <LoadingScreenContainerUI>
       <Loader />
       {'Loading'}
-    </Jumbotron>
+    </LoadingScreenContainerUI>
   )
 }

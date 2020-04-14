@@ -36,7 +36,7 @@ export default function ({ body, image = null }) {
       </ImageUI>
       <ContentUI
         dangerouslySetInnerHTML={{
-          __html: body,
+          __html: body && body.text,
         }}
       ></ContentUI>
     </div>

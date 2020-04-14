@@ -28,6 +28,14 @@ export const ContentUI = styled('div')`
     margin-top: 0.25em;
     text-align: center;
   }
+
+  @media (min-width: ${config.breakPoints.desktop}) {
+    min-height: calc(100vh - ${config.layout.tablet.headerHeight});
+  }
+
+  @media (max-width: ${config.breakPoints.tablet}) {
+    min-height: calc(100vh - ${config.layout.mobile.headerHeight});
+  }
 `
 
 export const ImageUI = styled('div')`
@@ -35,12 +43,24 @@ export const ImageUI = styled('div')`
   img {
     display: block;
     width: 100%;
-    height: calc(100vh - ${config.layout.desktop.headerHeight});
+    height: 100%;
     object-fit: cover;
   }
 
-  @media (max-width: ${config.breakPoints.mobile}) {
-    /* display: none; */
+  @media (min-width: ${config.breakPoints.desktop}) {
+    min-height: calc(100vh - ${config.layout.tablet.headerHeight});
+
+    img {
+      height: calc(100vh - ${config.layout.tablet.headerHeight});
+    }
+  }
+
+  @media (max-width: ${config.breakPoints.tablet}) {
+    min-height: calc(100vh - ${config.layout.mobile.headerHeight});
+
+    img {
+      height: calc(100vh - ${config.layout.mobile.headerHeight});
+    }
   }
 `
 

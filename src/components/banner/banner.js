@@ -4,7 +4,7 @@ import Section from '../section/'
 export default function ({ body }) {
   return (
     <BannerUI>
-      <span dangerouslySetInnerHTML={{ __html: body }}></span>
+      <span dangerouslySetInnerHTML={{ __html: body.text }}></span>
     </BannerUI>
   )
 }

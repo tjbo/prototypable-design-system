@@ -2,15 +2,15 @@ import React from 'react'
 import {
   BrandUI,
   HeaderContainer,
-  HeaderPushUI,
   HeaderUI,
-  TriggerIconUI,
   NavLinkUI,
   NavMenuUI,
   NavMenuTriggerUI,
 } from './header.css'
 
-import { onShowModal, onHideModal } from '../head/modal'
+import TriggerIconUI from './triggerIcon'
+
+import { onShowModal, onHideModal } from '../body'
 
 class Header extends React.Component {
   state = {
@@ -19,6 +19,12 @@ class Header extends React.Component {
 
   componentDidMount() {
     window.addEventListener('resize', () => this.onResize())
+  }
+
+  onLinkClick = () => {
+    console.log('onCLikckkdsafdsafdsfdsfa')
+    this.setState({ isOpen: false })
+    onHideModal()
   }
 
   onResize = () => {
@@ -43,15 +49,10 @@ class Header extends React.Component {
 
     return (
       <HeaderContainer>
-        <HeaderPushUI />
         <HeaderUI className={this.state.isOpen ? 'is-open' : 'is-closed'}>
           {React.Children.map(children, (child) => React.cloneElement(child))}
           <NavMenuTriggerUI onClick={this.toggleMenu}>
-            <TriggerIconUI isOpen={isOpen}>
-              <div className="line line-1"></div>
-              <div className="line line-2"></div>
-              <div className="line line-3"></div>
-            </TriggerIconUI>
+            <TriggerIconUI isOpen={this.state.isOpen} />
           </NavMenuTriggerUI>
         </HeaderUI>
       </HeaderContainer>
