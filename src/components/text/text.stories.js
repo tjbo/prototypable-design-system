@@ -23,7 +23,7 @@ function makeComponent(font, size, italic = false) {
 function makeSection(title, font, italic) {
   const components = []
 
-  for (const size in config.typography.sizes) {
+  for (const size in config.typography.sizes.desktop) {
     components.push(makeComponent(font, size, italic))
   }
 

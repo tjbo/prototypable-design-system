@@ -52,9 +52,6 @@ html {
   font-size: 100%;
 }
 
-body {
-  font-size: 0.75em;
-}
 
 
 body {
@@ -62,7 +59,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: ${config.typography.fonts.font1};
-  font-size: ${config.unit(0.53)};
+  font-size: 1rem;
   line-height: 1.5;
   margin: 0;
   padding: 0;
@@ -85,31 +82,57 @@ margin-bottom: ${config.unit(0.5)};
 }
 
 h1, .heading1 {
-  font-size: ${config.typography.sizes.xxlg};
+  font-size: ${config.typography.sizes.desktop.xxlg};
   font-weight: 600;
 
-  @media (max-width: ${config.breakPoints.mobile}) {
-   font-size: ${config.typography.sizes.lg};
+  @media (max-width: ${config.breakPoints.tablet}) {
+   font-size: ${config.typography.sizes.tablet.xxlg};
   }
 
-
+  @media (max-width: ${config.breakPoints.mobile}) {
+   font-size: ${config.typography.sizes.mobile.xxlg};
+  }
 }
 
 h2, .heading2 {
-  font-size: ${config.typography.sizes.xlg};
+  font-size: ${config.typography.sizes.desktop.xlg};
   font-weight: 500;
   line-height: 1;
+
+  @media (max-width: ${config.breakPoints.tablet}) {
+   font-size: ${config.typography.sizes.tablet.xlg};
+  }
+
+  @media (max-width: ${config.breakPoints.mobile}) {
+   font-size: ${config.typography.sizes.mobile.xlg};
+  }
 }
 
 h3, .heading3 {
-  font-size: ${config.typography.sizes.lg};
+  font-size: ${config.typography.sizes.desktop.lg};
   font-weight: 500;
+
+  @media (max-width: ${config.breakPoints.tablet}) {
+   font-size: ${config.typography.sizes.tablet.lg};
+  }
+
+  @media (max-width: ${config.breakPoints.mobile}) {
+   font-size: ${config.typography.sizes.mobile.lg};
+  }
 }
 
 h4, .heading4 {
-  font-size: ${config.typography.sizes.md};;
+  font-size: ${config.typography.sizes.desktop.md};;
   font-weight: 500;
   margin-bottom: ${config.unit(0.3)};
+
+  @media (max-width: ${config.breakPoints.tablet}) {
+   font-size: ${config.typography.sizes.tablet.md};
+  }
+
+  @media (max-width: ${config.breakPoints.mobile}) {
+   font-size: ${config.typography.sizes.mobile.md};
+  }
 }
 
 h5, .heading5 {

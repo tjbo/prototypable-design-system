@@ -8,10 +8,12 @@ function getFontFamily(font) {
 }
 
 function getFontSize(size) {
-  const key = Object.keys(config.typography.sizes).filter((key, index) => {
-    return key === size
-  })
-  return config.typography.sizes[key]
+  const key = Object.keys(config.typography.sizes.desktop).filter(
+    (key, index) => {
+      return key === size
+    },
+  )
+  return config.typography.sizes.desktop[key]
 }
 
 export const TextUI = styled('div')`

@@ -170,12 +170,34 @@ var config = {
       font3: 'PT Serif Caption'
     },
     sizes: {
-      xsm: makePixelValue(0.5 * _unit),
-      sm: makePixelValue(0.75 * _unit),
-      md: makePixelValue(0.9 * _unit),
-      lg: makePixelValue(1.25 * _unit),
-      xlg: makePixelValue(1.75 * _unit),
-      xxlg: makePixelValue(2 * _unit)
+      desktop: {
+        xsm: makePixelValue(0.5 * _unit),
+        // not used yet
+        sm: makePixelValue(0.75 * _unit),
+        //not used yet
+        md: '1.75rem',
+        lg: '2.5rem',
+        xlg: '3.5rem',
+        xxlg: '4rem'
+      },
+      tablet: {
+        xsm: makePixelValue(0.5 * _unit),
+        // not used yet
+        sm: makePixelValue(0.75 * _unit),
+        //not used yet
+        md: '1.6rem',
+        lg: '2rem',
+        xlg: '2.75rem',
+        xxlg: '3.25rem'
+      },
+      mobile: {
+        xsm: makePixelValue(0.5 * _unit),
+        sm: makePixelValue(0.75 * _unit),
+        md: '1.5rem',
+        lg: '2rem',
+        xlg: '2.25rem',
+        xxlg: '3rem'
+      }
     }
   },
   border: '1px solid #eee',
@@ -791,7 +813,7 @@ function _templateObject2$5() {
 }
 
 function _templateObject$a() {
-  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  min-height: calc(100vh - ", ");\n  position: absolute;\n  top: ", ";\n  width: 100%;\n  text-align: center;\n\n  @media (min-width: ", ") {\n    min-height: calc(100vh - ", ");\n  }\n\n  @media (max-width: ", ") {\n    min-height: calc(100vh - ", ");\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  min-height: calc(100vh - ", ");\n  position: absolute;\n  top: ", ";\n  width: 100%;\n  text-align: center;\n\n  @media (min-width: ", ") {\n    min-height: calc(100vh - ", ");\n  }\n\n  @media (max-width: ", ") {\n    padding: 0 ", ";\n    min-height: calc(100vh - ", ");\n  }\n"]);
 
   _templateObject$a = function _templateObject() {
     return data;
@@ -799,7 +821,7 @@ function _templateObject$a() {
 
   return data;
 }
-var ContentUI$1 = styled__default('div')(_templateObject$a(), config.layout.desktop.headerHeight, config.unit(2.25), config.breakPoints.desktop, config.layout.tablet.headerHeight, config.breakPoints.tablet, config.layout.mobile.headerHeight);
+var ContentUI$1 = styled__default('div')(_templateObject$a(), config.layout.desktop.headerHeight, config.unit(2.25), config.breakPoints.desktop, config.layout.tablet.headerHeight, config.breakPoints.tablet, config.unit(0.5), config.layout.mobile.headerHeight);
 var ImageUI = styled__default('div')(_templateObject2$5(), config.breakPoints.desktop, config.layout.tablet.headerHeight, config.layout.tablet.headerHeight, config.breakPoints.tablet, config.layout.mobile.headerHeight, config.layout.mobile.headerHeight);
 
 var sizes = ['360×640', '768×1024', '1024x768', '1366×768', '1600×900', '1920x1080'];
@@ -867,7 +889,7 @@ function Fonts () {
 }
 
 function _templateObject$c() {
-  var data = _taggedTemplateLiteral(["\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n  margin-block-start:0; margin-block-end:0; margin-inline-start:0; margin-inline-end:0;\npadding-block-start:0; padding-block-end:0; padding-inline-start:0; padding-inline-end:0;\n\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\nbody {\n  font-size: 0.75em;\n}\n\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: ", ";\n  line-height: 1.5;\n  margin: 0;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\n\nh1, h2, h3, h4 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n  line-height: 1;\n  margin-bottom: ", ";\n}\n\np, h1, h2, h3, h4, .heading1, .heading2, .heading3, .heading4, .heading5 {\nmargin-bottom: ", ";\n}\n\nh1, .heading1 {\n  font-size: ", ";\n  font-weight: 600;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n\n}\n\nh2, .heading2 {\n  font-size: ", ";\n  font-weight: 500;\n  line-height: 1;\n}\n\nh3, .heading3 {\n  font-size: ", ";\n  font-weight: 500;\n}\n\nh4, .heading4 {\n  font-size: ", ";;\n  font-weight: 500;\n  margin-bottom: ", ";\n}\n\nh5, .heading5 {\n  font-size: ", ";\n}\n\np, ul {\n  padding: 0;\n}\n\nul {\n  margin-left: ", ";\n}\n\na:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: ", ";\n  }\n\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    max-width: 100%;\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    @media (max-width: ", ") {\n      tr {\n      }\n\n      td {\n        padding: 0 ", ";\n        display: block;\n      }\n\n      td:first-child {\n        padding-top: ", ";\n      }\n\n      td:last-child {\n        padding-bottom: ", ";\n      }\n\n    }\n  }\n\n  ", "\n\n      "]);
+  var data = _taggedTemplateLiteral(["\n\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n  margin-block-start:0; margin-block-end:0; margin-inline-start:0; margin-inline-end:0;\npadding-block-start:0; padding-block-end:0; padding-inline-start:0; padding-inline-end:0;\n\n}\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\n\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: 1rem;\n  line-height: 1.5;\n  margin: 0;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\n\nh1, h2, h3, h4 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n  line-height: 1;\n  margin-bottom: ", ";\n}\n\np, h1, h2, h3, h4, .heading1, .heading2, .heading3, .heading4, .heading5 {\nmargin-bottom: ", ";\n}\n\nh1, .heading1 {\n  font-size: ", ";\n  font-weight: 600;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh2, .heading2 {\n  font-size: ", ";\n  font-weight: 500;\n  line-height: 1;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh3, .heading3 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh4, .heading4 {\n  font-size: ", ";;\n  font-weight: 500;\n  margin-bottom: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh5, .heading5 {\n  font-size: ", ";\n}\n\np, ul {\n  padding: 0;\n}\n\nul {\n  margin-left: ", ";\n}\n\na:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: ", ";\n  }\n\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    max-width: 100%;\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    @media (max-width: ", ") {\n      tr {\n      }\n\n      td {\n        padding: 0 ", ";\n        display: block;\n      }\n\n      td:first-child {\n        padding-top: ", ";\n      }\n\n      td:last-child {\n        padding-bottom: ", ";\n      }\n\n    }\n  }\n\n  ", "\n\n      "]);
 
   _templateObject$c = function _templateObject() {
     return data;
@@ -875,7 +897,7 @@ function _templateObject$c() {
 
   return data;
 }
-var GlobalStyles = styled.createGlobalStyle(_templateObject$c(), config.colors.dark4, config.typography.fonts.font1, config.unit(0.53), config.typography.fonts.font2, config.unit(0.5), config.unit(0.5), config.typography.sizes.xxlg, config.breakPoints.mobile, config.typography.sizes.lg, config.typography.sizes.xlg, config.typography.sizes.lg, config.typography.sizes.md, config.unit(0.3), config.unit(0.6), config.unit(2), config.colors.dark3, config.border, config.border, config.border, config.border, config.unit(0.25), config.unit(0.5), config.breakPoints.mobile, config.unit(0.5), config.unit(0.5), config.unit(0.5), function (props) {
+var GlobalStyles = styled.createGlobalStyle(_templateObject$c(), config.colors.dark4, config.typography.fonts.font1, config.typography.fonts.font2, config.unit(0.5), config.unit(0.5), config.typography.sizes.desktop.xxlg, config.breakPoints.tablet, config.typography.sizes.tablet.xxlg, config.breakPoints.mobile, config.typography.sizes.mobile.xxlg, config.typography.sizes.desktop.xlg, config.breakPoints.tablet, config.typography.sizes.tablet.xlg, config.breakPoints.mobile, config.typography.sizes.mobile.xlg, config.typography.sizes.desktop.lg, config.breakPoints.tablet, config.typography.sizes.tablet.lg, config.breakPoints.mobile, config.typography.sizes.mobile.lg, config.typography.sizes.desktop.md, config.unit(0.3), config.breakPoints.tablet, config.typography.sizes.tablet.md, config.breakPoints.mobile, config.typography.sizes.mobile.md, config.unit(0.6), config.unit(2), config.colors.dark3, config.border, config.border, config.border, config.border, config.unit(0.25), config.unit(0.5), config.breakPoints.mobile, config.unit(0.5), config.unit(0.5), config.unit(0.5), function (props) {
   var colors = '';
 
   for (var color in config.colors) {

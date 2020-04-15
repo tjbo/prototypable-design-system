@@ -3,6 +3,7 @@ import config, { makePixelValue } from '../../config'
 
 export const ContentUI = styled('div')`
   align-items: center;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,6 +18,7 @@ export const ContentUI = styled('div')`
   }
 
   @media (max-width: ${config.breakPoints.tablet}) {
+    padding: 0 ${config.unit(0.5)};
     min-height: calc(100vh - ${config.layout.mobile.headerHeight});
   }
 `

@@ -27,12 +27,30 @@ const config = {
       font3: 'PT Serif Caption',
     },
     sizes: {
-      xsm: makePixelValue(0.5 * unit),
-      sm: makePixelValue(0.75 * unit),
-      md: makePixelValue(0.9 * unit),
-      lg: makePixelValue(1.25 * unit),
-      xlg: makePixelValue(1.75 * unit),
-      xxlg: makePixelValue(2 * unit),
+      desktop: {
+        xsm: makePixelValue(0.5 * unit), // not used yet
+        sm: makePixelValue(0.75 * unit), //not used yet
+        md: '1.75rem',
+        lg: '2.5rem',
+        xlg: '3.5rem',
+        xxlg: '4rem',
+      },
+      tablet: {
+        xsm: makePixelValue(0.5 * unit), // not used yet
+        sm: makePixelValue(0.75 * unit), //not used yet
+        md: '1.6rem',
+        lg: '2rem',
+        xlg: '2.75rem',
+        xxlg: '3.25rem',
+      },
+      mobile: {
+        xsm: makePixelValue(0.5 * unit),
+        sm: makePixelValue(0.75 * unit),
+        md: '1.5rem',
+        lg: '2rem',
+        xlg: '2.25rem',
+        xxlg: '3rem',
+      },
     },
   },
 
