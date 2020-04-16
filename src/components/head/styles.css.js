@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components'
 import config from '../../config'
 
 const GlobalStyles = createGlobalStyle`
-
+/* css reset */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -22,10 +22,8 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-  margin-block-start:0; margin-block-end:0; margin-inline-start:0; margin-inline-end:0;
-padding-block-start:0; padding-block-end:0; padding-inline-start:0; padding-inline-end:0;
-
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -66,17 +64,36 @@ body {
   }
 }
 
+/* link styles */
+a:active, a:visited, a:hover, a:link {
+    color: ${config.colors.dark3};
+}
 
-h1, h2, h3, h4 {
-  font-family: ${config.typography.fonts.font2};
+/* list and paragraph styles */
+p, ul {
   padding: 0;
-  margin: 0;
-  line-height: 1.125;
   margin-bottom: ${config.unit(0.5)};
 }
 
-p, h1, h2, h3, h4, .heading1, .heading2, .heading3, .heading4, .heading5 {
-margin-bottom: ${config.unit(0.5)};
+b {
+  font-weight: bold;
+}
+
+ul {
+  list-style: disc;
+}
+
+li {
+  margin-bottom: ${config.unit(0.25)};
+  margin-left: ${config.unit(0.75)};
+}
+
+/* heading styles */
+h1, h2, h3, h4, h5, .heading1, .heading2, .heading3, .heading4, .heading5, .heading6 {
+  font-family: ${config.typography.fonts.font2};
+  padding: 0;
+  margin: 0;
+  margin-bottom: ${config.unit(0.5)};
 }
 
 h1, .heading1 {
@@ -133,30 +150,41 @@ h4, .heading4 {
 }
 
 h5, .heading5 {
-  font-size: ${config.unit(0.6)};
-}
+  font-family: ${config.typography.fonts.font1};
+  font-size:  ${config.typography.sizes.desktop.sm};
+  font-weight: bold;
 
-p, ul {
-  padding: 0;
-}
-
-ul {
-  margin-left: ${config.unit(2)};
-}
-
-a:active,
-  a:visited,
-  a:hover,
-  a:link {
-    color: ${config.colors.dark3};
+  @media (max-width: ${config.breakPoints.tablet}) {
+   font-size: ${config.typography.sizes.tablet.sm};
   }
 
+  @media (max-width: ${config.breakPoints.mobile}) {
+   font-size: ${config.typography.sizes.mobile.sm};
+  }
+}
+
+h6, .heading6 {
+  font-family: ${config.typography.fonts.font1};
+  font-size:  ${config.typography.sizes.desktop.xsm};
+  font-weight: bold;
+
+  @media (max-width: ${config.breakPoints.tablet}) {
+   font-size: ${config.typography.sizes.tablet.xsm};
+  }
+
+  @media (max-width: ${config.breakPoints.mobile}) {
+   font-size: ${config.typography.sizes.mobile.xsm};
+  }
+}
+
+
+/* table styles */
   table {
     border-collapse: collapse;
     border-left: ${config.border};
     border-right: ${config.border};
     margin: 0;
-    max-width: 100%;
+    width: 100%;
     tr {
       border-bottom: ${config.border};
       width: 100%;
@@ -193,6 +221,7 @@ a:active,
     }
   }
 
+/* makes a class for each color in config */
   ${(props) => {
     let colors = ''
     for (const color in config.colors) {
@@ -205,6 +234,7 @@ a:active,
     return colors
   }}
 
+/* makes a class for each font in config */
 ${(props) => {
   let fonts = ''
   for (const font in config.typography.fonts) {
@@ -217,12 +247,62 @@ ${(props) => {
   return fonts
 }}
 
+/* random text styles */
 .italic {
   font-style: italic;
 }
 
+.text-shadow-dark {
+text-shadow: 1px 2px #000
+}
+
+.line-height-1 {
+  line-height: 1;
+}
+
+/* random box styles */
+.box-style-1 {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: ${config.border};
+  padding: ${config.unit(0.25)} ${config.unit(0.5)};
+
+  .title {
+    font-weight: bold;
+    flex-grow: 0;
+  }
+
+  ul {
+    margin: 0;
+  }
+
+  @media (max-width: ${config.breakPoints.tablet}) {
+    ul {
+      column-count: 3;
+    }
+  }
+
+  @media (max-width: 800px) {
+    ul {
+      column-count: 2;
+    }
+  }
+
+  @media (max-width: ${config.breakPoints.mobile}) {
+    ul {
+      column-count: 1;
+    }
+  }
+
+}
+
+.border {
+  border: ${config.border};
+}
 
 
-      `
+`
 
 export default GlobalStyles

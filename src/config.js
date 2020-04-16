@@ -16,7 +16,7 @@ const config = {
     dark3: '#0090e7',
     dark4: '#454545',
     dark5: '#0066a3',
-    light1: '#f5faff',
+    light1: '#f8f8f8',
     light2: '36,139,204',
     light3: '#fff',
   },
@@ -28,24 +28,24 @@ const config = {
     },
     sizes: {
       desktop: {
-        xsm: makePixelValue(0.5 * unit), // not used yet
-        sm: makePixelValue(0.75 * unit), //not used yet
-        md: '1.75rem',
+        xsm: '.9rem',
+        sm: '1.125rem',
+        md: '1.5rem',
         lg: '2.5rem',
         xlg: '3.5rem',
         xxlg: '4rem',
       },
       tablet: {
-        xsm: makePixelValue(0.5 * unit), // not used yet
-        sm: makePixelValue(0.75 * unit), //not used yet
-        md: '1.6rem',
+        xsm: '.9rem',
+        sm: '1.125rem',
+        md: '1.5rem',
         lg: '2rem',
         xlg: '2.75rem',
         xxlg: '3.25rem',
       },
       mobile: {
-        xsm: makePixelValue(0.5 * unit),
-        sm: makePixelValue(0.75 * unit),
+        xsm: '.9rem',
+        sm: '1.125rem',
         md: '1.5rem',
         lg: '2rem',
         xlg: '2.25rem',

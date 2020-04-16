@@ -29,7 +29,6 @@ function getSrcSets(image) {
 }
 
 export default function ({ body, image = null }) {
-  console.log('jumbo', body, image)
   return (
     <div>
       <ImageUI>
