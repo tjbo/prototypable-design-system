@@ -22,7 +22,6 @@ class Header extends React.Component {
   }
 
   onLinkClick = () => {
-    console.log('onCLikckkdsafdsafdsfdsfa')
     this.setState({ isOpen: false })
     onHideModal()
   }
@@ -43,17 +42,31 @@ class Header extends React.Component {
       }
     })
   }
+
+  isWithNav() {
+    return (
+      this.props.children.length > 1 &&
+      this.props.children.some((child) => {
+        return child.type.displayName === 'styled.nav'
+      })
+    )
+  }
+
   render() {
     const { children } = this.props
     const { isOpen } = this.state
 
+    const isWithNav = this.isWithNav()
+
     return (
       <HeaderContainer>
-        <HeaderUI className={this.state.isOpen ? 'is-open' : 'is-closed'}>
+        <HeaderUI className={isOpen ? 'is-open' : 'is-closed'}>
           {React.Children.map(children, (child) => React.cloneElement(child))}
-          <NavMenuTriggerUI onClick={this.toggleMenu}>
-            <TriggerIconUI isOpen={this.state.isOpen} />
-          </NavMenuTriggerUI>
+          {isWithNav ? (
+            <NavMenuTriggerUI onClick={this.toggleMenu}>
+              <TriggerIconUI isOpen={isOpen} />
+            </NavMenuTriggerUI>
+          ) : null}
         </HeaderUI>
       </HeaderContainer>
     )

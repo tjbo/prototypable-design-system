@@ -52,14 +52,12 @@ html {
   font-size: 100%;
 }
 
-
-
 body {
   color: ${config.colors.dark4};
   display: flex;
   flex-direction: column;
   font-family: ${config.typography.fonts.font1};
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.5;
   margin: 0;
   padding: 0;
@@ -73,7 +71,7 @@ h1, h2, h3, h4 {
   font-family: ${config.typography.fonts.font2};
   padding: 0;
   margin: 0;
-  line-height: 1;
+  line-height: 1.125;
   margin-bottom: ${config.unit(0.5)};
 }
 
@@ -97,7 +95,6 @@ h1, .heading1 {
 h2, .heading2 {
   font-size: ${config.typography.sizes.desktop.xlg};
   font-weight: 500;
-  line-height: 1;
 
   @media (max-width: ${config.breakPoints.tablet}) {
    font-size: ${config.typography.sizes.tablet.xlg};
@@ -207,6 +204,24 @@ a:active,
     }
     return colors
   }}
+
+${(props) => {
+  let fonts = ''
+  for (const font in config.typography.fonts) {
+    fonts += `.${font}
+         {
+          font-family:${config.typography.fonts[font]};
+         }
+       `
+  }
+  return fonts
+}}
+
+.italic {
+  font-style: italic;
+}
+
+
 
       `
 

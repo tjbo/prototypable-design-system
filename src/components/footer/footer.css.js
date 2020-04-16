@@ -16,6 +16,11 @@ export const FooterUIInner = styled('div')`
   padding: ${config.unit(0.5)} ${config.unit(0.75)};
   padding-right: ${config.unit(1)};
   font-family: ${config.typography.fonts.font1};
+
+  @media (max-width: ${config.breakPoints.mobile}) {
+    flex-direction: column;
+    text-align: center;
+  }
 `
 
 export const AddressUI = styled('address')`

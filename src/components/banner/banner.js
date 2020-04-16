@@ -1,10 +1,13 @@
 import { BannerUI } from './banner.css'
-import Section from '../section/'
+import Text from '../text'
 
 export default function ({ body }) {
   return (
     <BannerUI>
-      <span dangerouslySetInnerHTML={{ __html: body.text }}></span>
+      <span
+        className="heading3 white font3 italic"
+        dangerouslySetInnerHTML={{ __html: body.text }}
+      />
     </BannerUI>
   )
 }

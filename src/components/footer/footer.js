@@ -1,16 +1,14 @@
 import { AddressUI, FinePrintUI, FooterUI, FooterUIInner } from './footer.css'
-import config from '../../config'
 
 function Footer({ children }) {
   return (
     <FooterUI>
-      <FooterUIInner>
-        <AddressUI></AddressUI>
-      </FooterUIInner>
+      <FooterUIInner>{children}</FooterUIInner>
     </FooterUI>
   )
 }
 
-Footer.AddressUI = AddressUI
+Footer.Address = AddressUI
+Footer.FinePrint = FinePrintUI
 
 export default Footer
