@@ -15,7 +15,6 @@ export default function ({
   innerWidth = 'big',
   title = '',
 }) {
-  console.log('childs', children)
   if (isFullWidth) {
     return (
       <SectionWrapperUI background={background}>{children}</SectionWrapperUI>
