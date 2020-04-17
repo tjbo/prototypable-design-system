@@ -1,4 +1,4 @@
-export default function (id) {
+export default function ({ id }) {
   return `
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163906138-1"></script>
   <script>
