@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import config, { makePixelValue } from '../../config'
 
 export const ContentUI = styled('div')`
   align-items: center;
@@ -7,19 +6,23 @@ export const ContentUI = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: calc(100vh - ${config.layout.desktop.headerHeight});
+  min-height: calc(100vh - ${({ theme }) => theme.layout.desktop.headerHeight});
   position: absolute;
-  top: ${config.unit(2.25)};
+  top: ${({ theme }) => theme.unit(2.25)};
   width: 100%;
   text-align: center;
 
-  @media (min-width: ${config.breakPoints.desktop}) {
-    min-height: calc(100vh - ${config.layout.tablet.headerHeight});
+  @media (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
+    min-height: calc(
+      100vh - ${({ theme }) => theme.layout.tablet.headerHeight}
+    );
   }
 
-  @media (max-width: ${config.breakPoints.tablet}) {
-    padding: 0 ${config.unit(0.5)};
-    min-height: calc(100vh - ${config.layout.mobile.headerHeight});
+  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
+    padding: 0 ${({ theme }) => theme.unit(0.5)};
+    min-height: calc(
+      100vh - ${({ theme }) => theme.layout.mobile.headerHeight}
+    );
   }
 `
 
@@ -32,19 +35,23 @@ export const ImageUI = styled('div')`
     object-fit: cover;
   }
 
-  @media (min-width: ${config.breakPoints.desktop}) {
-    min-height: calc(100vh - ${config.layout.tablet.headerHeight});
+  @media (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
+    min-height: calc(
+      100vh - ${({ theme }) => theme.layout.tablet.headerHeight}
+    );
 
     img {
-      height: calc(100vh - ${config.layout.tablet.headerHeight});
+      height: calc(100vh - ${({ theme }) => theme.layout.tablet.headerHeight});
     }
   }
 
-  @media (max-width: ${config.breakPoints.tablet}) {
-    min-height: calc(100vh - ${config.layout.mobile.headerHeight});
+  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
+    min-height: calc(
+      100vh - ${({ theme }) => theme.layout.mobile.headerHeight}
+    );
 
     img {
-      height: calc(100vh - ${config.layout.mobile.headerHeight});
+      height: calc(100vh - ${({ theme }) => theme.layout.mobile.headerHeight});
     }
   }
 `

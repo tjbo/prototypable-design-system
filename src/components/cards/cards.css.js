@@ -1,11 +1,6 @@
 import styled from 'styled-components'
-import config from '../../config'
 
 export const CardsWrapperUI = styled('div')`
-  h3 {
-    /* padding: 0; */
-  }
-
   * {
     box-sizing: border-box;
   }
@@ -13,7 +8,7 @@ export const CardsWrapperUI = styled('div')`
   .card {
     line-height: 1.75;
     background: #fff;
-    border: ${config.border};
+    border: ${({ theme }) => theme.border};
 
     /* Position child elements relative to this element */
     .aspect-ratio-box {
@@ -38,18 +33,13 @@ export const CardsWrapperUI = styled('div')`
       height: 100%;
     }
     .content {
-      padding: ${config.unit(0.5)} ${config.unit(0.66)};
+      padding: ${({ theme }) => `${theme.unit(0.5)} ${theme.unit(0.66)}`};
     }
   }
 `
 
-/* export const FieldUI = styled('div')`
-  padding: 3px 0; */
-
 export const ContentUI = styled('div')`
   background: #fff;
-  /* padding: ${config.unit(0.75)}; */
-  /* padding-top: ${config.unit(0.25)}; */
 `
 
 export const CardImageUI = styled('div')`

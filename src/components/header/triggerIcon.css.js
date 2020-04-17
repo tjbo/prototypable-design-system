@@ -1,4 +1,4 @@
-import config, { makePixelValue } from '../../config'
+import makePixelValue from '../../utils/makePixelValue'
 
 const heightLine = 3
 const heightIcon = 20
@@ -27,7 +27,6 @@ export const Line1UI = styled(LineUI)`
 export const Line2UI = styled(LineUI)`
   top: 50%;
   opacity: ${(props) => {
-    console.log('onStart:', props.isOpen)
     return props.isOpen ? `0` : '1'
   }};
 `
@@ -45,8 +44,8 @@ export const TriggerIconUI = styled('div')`
   display: block;
   height: ${makePixelValue(heightIcon)};
   margin: (${makePixelValue(heightIcon * 2)}) auto ${heightIcon} auto;
-  margin-top: -${config.unit(0.125)};
+  margin-top: -${({ theme }) => theme.unit(0.125)};
   position: relative;
-  width: ${config.unit(1)};
+  width: ${({ theme }) => theme.unit(1)};
   z-index: 9999;
 `

@@ -1,7 +1,5 @@
 import React from 'react'
 import { ContentUI, ImageUI } from './jumbotron.css'
-import config from '../../config'
-import { CardImageUI } from '../cards/cards.css'
 
 const sizes = [
   '360×640',
@@ -28,16 +26,17 @@ function getSrcSets(image) {
     .join(',')
 }
 
-export default function ({ body, image = null }) {
+export default function ({ body, id, image = null }) {
   return (
     <div>
-      <ImageUI>
+      <ImageUI key={`${id}-jumbotron-image`}>
         <img srcSet={getSrcSets(image)} />
       </ImageUI>
       <ContentUI
         dangerouslySetInnerHTML={{
           __html: body && body.text,
         }}
+        key={`${id}-jumbotron-content`}
       ></ContentUI>
     </div>
   )

@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components'
-import config from '../../config'
 
 const GlobalStyles = createGlobalStyle`
 /* css reset */
@@ -51,10 +50,10 @@ html {
 }
 
 body {
-  color: ${config.colors.dark4};
+  color: ${({ theme }) => theme.colors.dark4};
   display: flex;
   flex-direction: column;
-  font-family: ${config.typography.fonts.font1};
+  font-family: ${({ theme }) => theme.typography.fonts.font1};
   font-size: 1.125rem;
   line-height: 1.5;
   margin: 0;
@@ -66,13 +65,13 @@ body {
 
 /* link styles */
 a:active, a:visited, a:hover, a:link {
-    color: ${config.colors.dark3};
+    color: ${({ theme }) => theme.colors.dark3};
 }
 
 /* list and paragraph styles */
 p, ul {
   padding: 0;
-  margin-bottom: ${config.unit(0.5)};
+  margin-bottom: ${({ theme }) => theme.unit(0.5)};
 }
 
 b {
@@ -84,96 +83,96 @@ ul {
 }
 
 li {
-  margin-bottom: ${config.unit(0.25)};
-  margin-left: ${config.unit(0.75)};
+  margin-bottom: ${({ theme }) => theme.unit(0.25)};
+  margin-left: ${({ theme }) => theme.unit(0.75)};
 }
 
 /* heading styles */
-h1, h2, h3, h4, h5, .heading1, .heading2, .heading3, .heading4, .heading5, .heading6 {
-  font-family: ${config.typography.fonts.font2};
+h1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {
+  font-family: ${({ theme }) => theme.typography.fonts.font2};
   padding: 0;
   margin: 0;
-  margin-bottom: ${config.unit(0.5)};
+  margin-bottom: ${({ theme }) => theme.unit(0.5)};
 }
 
-h1, .heading1 {
-  font-size: ${config.typography.sizes.desktop.xxlg};
+h1, .heading-1 {
+  font-size: ${({ theme }) => theme.typography.sizes.desktop.xxlg};
   font-weight: 600;
 
-  @media (max-width: ${config.breakPoints.tablet}) {
-   font-size: ${config.typography.sizes.tablet.xxlg};
+  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
+   font-size: ${({ theme }) => theme.typography.sizes.tablet.xxlg};
   }
 
-  @media (max-width: ${config.breakPoints.mobile}) {
-   font-size: ${config.typography.sizes.mobile.xxlg};
+  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+   font-size: ${({ theme }) => theme.typography.sizes.mobile.xxlg};
   }
 }
 
-h2, .heading2 {
-  font-size: ${config.typography.sizes.desktop.xlg};
+h2, .heading-2 {
+  font-size: ${({ theme }) => theme.typography.sizes.desktop.xlg};
   font-weight: 500;
 
-  @media (max-width: ${config.breakPoints.tablet}) {
-   font-size: ${config.typography.sizes.tablet.xlg};
+  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
+   font-size: ${({ theme }) => theme.typography.sizes.tablet.xlg};
   }
 
-  @media (max-width: ${config.breakPoints.mobile}) {
-   font-size: ${config.typography.sizes.mobile.xlg};
+  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+   font-size: ${({ theme }) => theme.typography.sizes.mobile.xlg};
   }
 }
 
-h3, .heading3 {
-  font-size: ${config.typography.sizes.desktop.lg};
+h3, .heading-3 {
+  font-size: ${({ theme }) => theme.typography.sizes.desktop.lg};
   font-weight: 500;
 
-  @media (max-width: ${config.breakPoints.tablet}) {
-   font-size: ${config.typography.sizes.tablet.lg};
+  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
+   font-size: ${({ theme }) => theme.typography.sizes.tablet.lg};
   }
 
-  @media (max-width: ${config.breakPoints.mobile}) {
-   font-size: ${config.typography.sizes.mobile.lg};
+  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+   font-size: ${({ theme }) => theme.typography.sizes.mobile.lg};
   }
 }
 
-h4, .heading4 {
-  font-size: ${config.typography.sizes.desktop.md};;
+h4, .heading-4 {
+  font-size: ${({ theme }) => theme.typography.sizes.desktop.md};;
   font-weight: 500;
-  margin-bottom: ${config.unit(0.3)};
+  margin-bottom: ${({ theme }) => theme.unit(0.3)};
 
-  @media (max-width: ${config.breakPoints.tablet}) {
-   font-size: ${config.typography.sizes.tablet.md};
+  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
+   font-size: ${({ theme }) => theme.typography.sizes.tablet.md};
   }
 
-  @media (max-width: ${config.breakPoints.mobile}) {
-   font-size: ${config.typography.sizes.mobile.md};
+  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+   font-size: ${({ theme }) => theme.typography.sizes.mobile.md};
   }
 }
 
-h5, .heading5 {
-  font-family: ${config.typography.fonts.font1};
-  font-size:  ${config.typography.sizes.desktop.sm};
+h5, .heading-5 {
+  font-family: ${({ theme }) => theme.typography.fonts.font1};
+  font-size:  ${({ theme }) => theme.typography.sizes.desktop.sm};
   font-weight: bold;
 
-  @media (max-width: ${config.breakPoints.tablet}) {
-   font-size: ${config.typography.sizes.tablet.sm};
+  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
+   font-size: ${({ theme }) => theme.typography.sizes.tablet.sm};
   }
 
-  @media (max-width: ${config.breakPoints.mobile}) {
-   font-size: ${config.typography.sizes.mobile.sm};
+  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+   font-size: ${({ theme }) => theme.typography.sizes.mobile.sm};
   }
 }
 
-h6, .heading6 {
-  font-family: ${config.typography.fonts.font1};
-  font-size:  ${config.typography.sizes.desktop.xsm};
+h6, .heading-6 {
+  font-family: ${({ theme }) => theme.typography.fonts.font1};
+  font-size:  ${({ theme }) => theme.typography.sizes.desktop.xsm};
   font-weight: bold;
 
-  @media (max-width: ${config.breakPoints.tablet}) {
-   font-size: ${config.typography.sizes.tablet.xsm};
+  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
+   font-size: ${({ theme }) => theme.typography.sizes.tablet.xsm};
   }
 
-  @media (max-width: ${config.breakPoints.mobile}) {
-   font-size: ${config.typography.sizes.mobile.xsm};
+  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+   font-size: ${({ theme }) => theme.typography.sizes.mobile.xsm};
   }
 }
 
@@ -181,16 +180,16 @@ h6, .heading6 {
 /* table styles */
   table {
     border-collapse: collapse;
-    border-left: ${config.border};
-    border-right: ${config.border};
+    border-left: ${({ theme }) => theme.border};
+    border-right: ${({ theme }) => theme.border};
     margin: 0;
     width: 100%;
     tr {
-      border-bottom: ${config.border};
+      border-bottom: ${({ theme }) => theme.border};
       width: 100%;
     }
     tr:first-child {
-      border-top: ${config.border};
+      border-top: ${({ theme }) => theme.border};
     }
     td:first-child {
       font-weight: 700;
@@ -198,49 +197,50 @@ h6, .heading6 {
 
     td {
       background-color: #fff;
-      padding: ${config.unit(0.25)} ${config.unit(0.5)};
+      padding: ${({ theme }) => theme.unit(0.25)} ${({ theme }) =>
+  theme.unit(0.5)};
     }
 
-    @media (max-width: ${config.breakPoints.mobile}) {
+    @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
       tr {
       }
 
       td {
-        padding: 0 ${config.unit(0.5)};
+        padding: 0 ${({ theme }) => theme.unit(0.5)};
         display: block;
       }
 
       td:first-child {
-        padding-top: ${config.unit(0.5)};
+        padding-top: ${({ theme }) => theme.unit(0.5)};
       }
 
       td:last-child {
-        padding-bottom: ${config.unit(0.5)};
+        padding-bottom: ${({ theme }) => theme.unit(0.5)};
       }
 
     }
   }
 
-/* makes a class for each color in config */
-  ${(props) => {
+/* makes a class for each color in theme */
+  ${({ theme }) => {
     let colors = ''
-    for (const color in config.colors) {
+    for (const color in theme.colors) {
       colors += `.${color}
          {
-          color:${config.colors[color]};
+          color: ${theme.colors[color]};
          }
        `
     }
     return colors
   }}
 
-/* makes a class for each font in config */
-${(props) => {
+/* makes a class for each font in theme */
+${({ theme }) => {
   let fonts = ''
-  for (const font in config.typography.fonts) {
+  for (const font in theme.typography.fonts) {
     fonts += `.${font}
          {
-          font-family:${config.typography.fonts[font]};
+          font-family: ${theme.typography.fonts[font]};
          }
        `
   }
@@ -260,46 +260,8 @@ text-shadow: 1px 2px #000
   line-height: 1;
 }
 
-/* random box styles */
-.box-style-1 {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  border: ${config.border};
-  padding: ${config.unit(0.25)} ${config.unit(0.5)};
-
-  .title {
-    font-weight: bold;
-    flex-grow: 0;
-  }
-
-  ul {
-    margin: 0;
-  }
-
-  @media (max-width: ${config.breakPoints.tablet}) {
-    ul {
-      column-count: 3;
-    }
-  }
-
-  @media (max-width: 800px) {
-    ul {
-      column-count: 2;
-    }
-  }
-
-  @media (max-width: ${config.breakPoints.mobile}) {
-    ul {
-      column-count: 1;
-    }
-  }
-
-}
-
-.border {
-  border: ${config.border};
+.bold {
+  font-weight: 700;
 }
 
 

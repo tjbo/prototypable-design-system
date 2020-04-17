@@ -1,5 +1,3 @@
-import config from '../../config'
-
 export const GridWrapperUI = styled('div')`
   * {
     box-sizing: border-box;
@@ -16,20 +14,21 @@ export const GridWrapperUI = styled('div')`
     margin-bottom: 1.25%;
     flex: 1;
 
-    @media (max-width: ${config.breakPoints.tablet}) {
-      margin-bottom: ${config.unit(0.5)};
+    @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
+      margin-bottom: ${({ theme }) => theme.unit(0.5)};
     }
   }
 
-  @media (min-width: ${config.breakPoints.mobile}) and (max-width: ${config
-      .breakPoints.tablet}) {
+  @media (min-width: ${({ theme }) =>
+      theme.breakPoints.mobile}) and (max-width: ${({ theme }) =>
+      theme.breakPoints.tablet}) {
     .col {
       min-width: 49%;
       max-width: 49%;
     }
   }
 
-  @media (max-width: ${config.breakPoints.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
     .col {
       display: block;
       min-width: 100%;

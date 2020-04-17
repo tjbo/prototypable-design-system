@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import config from '../../config'
 
 export const BrandUI = styled('div')``
 
@@ -15,14 +14,14 @@ export const HeaderContainer = styled('div')`
   width: 100%;
   ${HeaderUI} {
     align-items: center;
-    background-color: ${config.colors.dark1};
+    background-color: ${({ theme }) => theme.colors.dark1};
     box-sizing: border-box;
     color: #fff;
     display: flex;
-    height: ${config.layout.desktop.headerHeight};
+    height: ${({ theme }) => theme.layout.desktop.headerHeight};
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 ${config.unit(0.75)} 0 ${config.unit(0.25)};
+    padding: ${({ theme }) => `0 ${theme.unit(0.75)} 0 ${theme.unit(0.25)}`};
     position: fixed;
     top: 0;
     width: 100%;
@@ -30,14 +29,14 @@ export const HeaderContainer = styled('div')`
   }
 
   ${BrandUI} {
-    font-size: ${config.unit(1.125)};
+    font-size: ${({ theme }) => theme.unit(1.125)};
     margin: 0;
     height: 100%;
     display: flex;
     align-items: center;
     text-align: center;
     justify-content: space-around;
-    font-family: ${config.typography.fonts.font2};
+    font-family: ${({ theme }) => theme.typography.fonts.font2};
     font-weight: 500;
     text-align: left;
     text-transform: uppercase;
@@ -53,13 +52,13 @@ export const HeaderContainer = styled('div')`
   ${NavMenuUI} {
     display: flex;
     flex-direction: row;
-    font-size: ${config.unit(0.7)};
-    font-family: ${config.typography.fonts.font2};
+    font-size: ${({ theme }) => theme.unit(0.7)};
+    font-family: ${({ theme }) => theme.typography.fonts.font2};
     list-style: none;
     box-sizing: border-box;
 
     a {
-      margin-left: ${config.unit(0.5)};
+      margin-left: ${({ theme }) => theme.unit(0.5)};
       :active,
       :visited,
       :hover,
@@ -74,12 +73,12 @@ export const HeaderContainer = styled('div')`
     display: none;
   }
 
-  @media (max-width: ${config.breakPoints.tablet}) {
+  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
     .is-open ${NavMenuUI} {
       padding-top: 50px;
       align-content: stretch;
       align-items: center;
-      background-color: ${config.colors.dark3};
+      background-color: ${({ theme }) => theme.colors.dark3};
       display: flex;
       flex-direction: column;
       left: 0;
@@ -97,17 +96,17 @@ export const HeaderContainer = styled('div')`
     ${NavLinkUI} {
       cursor: pointer;
       box-sizing: border-box;
-      font-size: ${config.unit(0.75)};
+      font-size: ${({ theme }) => theme.unit(0.75)};
       margin: 0;
-      padding: ${config.unit(0.25)};
+      padding: ${({ theme }) => theme.unit(0.25)};
       text-align: center;
       width: auto;
       text-transform: uppercase;
 
       :hover {
-        background-color: ${config.colors.dark5};
+        background-color: ${({ theme }) => theme.colors.dark5};
 
-        padding: ${config.unit(0.25)};
+        padding: ${({ theme }) => theme.unit(0.25)};
       }
     }
 
@@ -117,26 +116,26 @@ export const HeaderContainer = styled('div')`
       align-items: center;
       justify-content: center;
       position: absolute;
-      left: calc(100vw - ${config.layout.tablet.headerHeight});
+      left: calc(100vw - ${({ theme }) => theme.layout.tablet.headerHeight});
       top: 0;
-      width: ${config.layout.tablet.headerHeight};
-      height: ${config.layout.tablet.headerHeight};
+      width: ${({ theme }) => theme.layout.tablet.headerHeight};
+      height: ${({ theme }) => theme.layout.tablet.headerHeight};
       z-index: 2;
     }
   }
 
-  @media (max-width: ${config.breakPoints.mobile}) {
+  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
     ${HeaderUI} {
-      height: ${config.layout.mobile.headerHeight};
+      height: ${({ theme }) => theme.layout.mobile.headerHeight};
     }
 
     ${BrandUI} {
-      font-size: ${config.unit(0.66)};
+      font-size: ${({ theme }) => theme.unit(0.66)};
     }
 
     ${NavMenuTriggerUI} {
-      width: ${config.layout.mobile.headerHeight};
-      height: ${config.layout.mobile.headerHeight};
+      width: ${({ theme }) => theme.layout.mobile.headerHeight};
+      height: ${({ theme }) => theme.layout.mobile.headerHeight};
     }
   }
 `
