@@ -243,7 +243,7 @@ var onHideModal = function onHideModal() {
   body.style.top = '';
   window.scrollTo(0, parseInt(scrollY || '0') * -1);
 };
-window.addEventListener('scroll', function () {
+window && window.addEventListener('scroll', function () {
   document.documentElement.style.setProperty('--scroll-y', "".concat(window.scrollY, "px"));
 });
 
