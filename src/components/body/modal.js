@@ -13,7 +13,7 @@ export const onHideModal = () => {
   window.scrollTo(0, parseInt(scrollY || '0') * -1)
 }
 
-if (window) {
+if (typeof window !== 'undefined') {
   window.addEventListener('scroll', () => {
     document.documentElement.style.setProperty(
       '--scroll-y',
