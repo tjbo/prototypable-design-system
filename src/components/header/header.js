@@ -18,7 +18,7 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('resize', () => this.onResize())
+    window && window.addEventListener('resize', () => this.onResize())
   }
 
   onLinkClick = () => {
