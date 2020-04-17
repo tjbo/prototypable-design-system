@@ -231,21 +231,28 @@ function body (_ref) {
 }
 
 var onShowModal = function onShowModal() {
-  var scrollY = document.documentElement.style.getPropertyValue('--scroll-y');
-  var body = document.body;
-  body.style.position = 'fixed';
-  body.style.top = "-".concat(scrollY);
+  if (typeof window !== 'undefined') {
+    var scrollY = document.documentElement.style.getPropertyValue('--scroll-y');
+    var body = document.body;
+    body.style.position = 'fixed';
+    body.style.top = "-".concat(scrollY);
+  }
 };
 var onHideModal = function onHideModal() {
-  var body = document.body;
-  var scrollY = body.style.top;
-  body.style.position = '';
-  body.style.top = '';
-  window.scrollTo(0, parseInt(scrollY || '0') * -1);
+  if (typeof window !== 'undefined') {
+    var body = document.body;
+    var scrollY = body.style.top;
+    body.style.position = '';
+    body.style.top = '';
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+  }
 };
-window && window.addEventListener('scroll', function () {
-  document.documentElement.style.setProperty('--scroll-y', "".concat(window.scrollY, "px"));
-});
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('scroll', function () {
+    document.documentElement.style.setProperty('--scroll-y', "".concat(window.scrollY, "px"));
+  });
+}
 
 function _templateObject$2() {
   var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  border: ", ";\n  padding: ", " ", ";\n\n  .title {\n    font-weight: bold;\n    flex-grow: 0;\n  }\n\n  ul {\n    margin: 0;\n  }\n\n  @media (max-width: ", ") {\n    ul {\n      column-count: 3;\n    }\n  }\n\n  @media (max-width: 800px) {\n    ul {\n      column-count: 2;\n    }\n  }\n\n  @media (max-width: ", ") {\n    ul {\n      column-count: 1;\n    }\n  }\n"]);
@@ -878,9 +885,11 @@ var Header = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      window.addEventListener('resize', function () {
-        return _this2.onResize();
-      });
+      if (typeof window !== 'undefined') {
+        window.addEventListener('resize', function () {
+          return _this2.onResize();
+        });
+      }
     }
   }, {
     key: "isWithNav",
