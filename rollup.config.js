@@ -3,7 +3,7 @@ import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
 import inject from '@rollup/plugin-inject'
-import svg from 'rollup-plugin-svg'
+import copy from 'rollup-plugin-copy'
 
 export default {
   input: './src/index.js',
@@ -22,7 +22,9 @@ export default {
     }),
     resolve(),
     commonjs(),
-    svg(),
+    copy({
+      targets: [{ src: 'src/fonts/**', dest: 'dist/fonts' }],
+    }),
   ],
   external: (id) => /^react|styled/.test(id),
 }

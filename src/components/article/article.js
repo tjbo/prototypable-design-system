@@ -1,3 +1,3 @@
 export default function Article({ body }) {
-  return <div dangerouslySetInnerHTML={{ __html: body.text }} />
+  return <article dangerouslySetInnerHTML={{ __html: body.text }} />
 }

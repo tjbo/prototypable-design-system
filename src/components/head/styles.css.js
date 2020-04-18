@@ -1,6 +1,42 @@
 import { createGlobalStyle } from 'styled-components'
 
+const ptSerifWoff2 = require('./fonts/pt-serif-v11-latin-regular.woff2')
+const ptSerifWoff = require('./fonts/pt-serif-v11-latin-regular.woff')
+const robotoMediumWoff = require('./fonts/roboto-v20-latin-500.woff')
+const robotoMediumWoff2 = require('./fonts/roboto-v20-latin-500.woff2')
+const robotoBoldWoff = require('./fonts/roboto-v20-latin-700.woff')
+const robotoBoldWoff2 = require('./fonts/roboto-v20-latin-700.woff2')
 const GlobalStyles = createGlobalStyle`
+
+@font-face {
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 400;
+  src: local('PT Serif'), local('PTSerif-Regular'),
+url(${ptSerifWoff2}) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+url(${ptSerifWoff}) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* roboto-500 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Roboto Medium'), local('Roboto-Medium'),
+       url(${robotoMediumWoff}) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url(${robotoMediumWoff2}) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* roboto-700 - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+       url(${robotoBoldWoff}) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url(${robotoBoldWoff2}) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
 /* css reset */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -97,7 +133,7 @@ h1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, 
 
 h1, .heading-1 {
   font-size: ${({ theme }) => theme.typography.sizes.desktop.xxlg};
-  font-weight: 600;
+  font-weight: 700;
 
   @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
    font-size: ${({ theme }) => theme.typography.sizes.tablet.xxlg};
@@ -151,7 +187,7 @@ h4, .heading-4 {
 h5, .heading-5 {
   font-family: ${({ theme }) => theme.typography.fonts.font1};
   font-size:  ${({ theme }) => theme.typography.sizes.desktop.sm};
-  font-weight: bold;
+  font-weight: 500;
 
   @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
    font-size: ${({ theme }) => theme.typography.sizes.tablet.sm};
@@ -165,7 +201,7 @@ h5, .heading-5 {
 h6, .heading-6 {
   font-family: ${({ theme }) => theme.typography.fonts.font1};
   font-size:  ${({ theme }) => theme.typography.sizes.desktop.xsm};
-  font-weight: bold;
+  font-weight: 500;
 
   @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
    font-size: ${({ theme }) => theme.typography.sizes.tablet.xsm};
