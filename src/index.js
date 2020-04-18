@@ -16,3 +16,5 @@ export { default as GA } from './utils/injectGa'
 export { default as Quote } from './components/quote'
 export { default as Section } from './components/section/'
 export { default as Head } from './components/head/head'
+
+export { default as Roboto } from './components/head/fonts/roboto-v20-latin-500.woff'

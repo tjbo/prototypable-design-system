@@ -1,30 +1,31 @@
 import { createGlobalStyle } from 'styled-components'
+import ptSerifWoff2 from './fonts/pt-serif-v11-latin-regular.woff2'
+import ptSerifWoff from './fonts/pt-serif-v11-latin-regular.woff'
+import robotoMediumWoff from './fonts/roboto-v20-latin-500.woff'
+import robotoMediumWoff2 from './fonts/roboto-v20-latin-500.woff2'
+import robotoBoldWoff from './fonts/roboto-v20-latin-700.woff'
+import robotoBoldWoff2 from './fonts/roboto-v20-latin-700.woff2'
 
-const ptSerifWoff2 = require('./fonts/pt-serif-v11-latin-regular.woff2')
-const ptSerifWoff = require('./fonts/pt-serif-v11-latin-regular.woff')
-const robotoMediumWoff = require('./fonts/roboto-v20-latin-500.woff')
-const robotoMediumWoff2 = require('./fonts/roboto-v20-latin-500.woff2')
-const robotoBoldWoff = require('./fonts/roboto-v20-latin-700.woff')
-const robotoBoldWoff2 = require('./fonts/roboto-v20-latin-700.woff2')
 const GlobalStyles = createGlobalStyle`
 
+/* pt-serif-regular - latin */
 @font-face {
   font-family: 'PT Serif';
   font-style: normal;
   font-weight: 400;
   src: local('PT Serif'), local('PTSerif-Regular'),
-url(${ptSerifWoff2}) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-url(${ptSerifWoff}) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url(${ptSerifWoff2}) format('woff2'), /* Super Modern Browsers */
+       url(${ptSerifWoff}) format('woff'), /* Modern Browsers */
 }
 
-/* roboto-500 - latin */
+/* roboto-700 - latin */
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   src: local('Roboto Medium'), local('Roboto-Medium'),
-       url(${robotoMediumWoff}) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url(${robotoMediumWoff2}) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url(${robotoMediumWoff2}) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url(${robotoMediumWoff}) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* roboto-700 - latin */
@@ -33,8 +34,8 @@ url(${ptSerifWoff}) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.
   font-style: normal;
   font-weight: 700;
   src: local('Roboto Bold'), local('Roboto-Bold'),
-       url(${robotoBoldWoff}) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url(${robotoBoldWoff2}) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url(${robotoBoldWoff2}) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url(${robotoBoldWoff}) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* css reset */

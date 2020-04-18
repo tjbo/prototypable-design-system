@@ -3,7 +3,8 @@ import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
 import inject from '@rollup/plugin-inject'
-import copy from 'rollup-plugin-copy'
+import url from 'rollup-plugin-url'
+import path from 'path'
 
 export default {
   input: './src/index.js',
@@ -22,8 +23,16 @@ export default {
     }),
     resolve(),
     commonjs(),
-    copy({
-      targets: [{ src: 'src/fonts/**', dest: 'dist/fonts' }],
+    url({
+      // by default, rollup-plugin-url will not handle font files
+      fileName: '[name][extname]',
+
+      include: ['**/*.woff', '**/*.woff2'],
+      sourceDir: path.join(__dirname, 'src'),
+      publicPath: '/fonts/',
+      // setting infinite limit will ensure that the files
+      // are always bundled with the code, not copied to /dist
+      limit: 0,
     }),
   ],
   external: (id) => /^react|styled/.test(id),

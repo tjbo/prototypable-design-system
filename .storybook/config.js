@@ -28,7 +28,7 @@ addDecorator((s) => (
           fonts: {
             font1: 'PT Serif',
             font2: 'Roboto',
-            font3: 'PT Serif Caption',
+            font3: 'PT Serif',
           },
           sizes: {
             desktop: {

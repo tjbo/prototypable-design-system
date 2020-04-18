@@ -31,6 +31,13 @@ module.exports = {
       use: ['@svgr/webpack', assetLoader],
     })
 
+    config.module.rules.unshift({
+      test: /\.(woff|woff2)$/,
+      use: {
+        loader: 'url-loader',
+      },
+    })
+
     return config
   },
 }
