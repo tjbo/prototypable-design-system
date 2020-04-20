@@ -49,10 +49,10 @@
     "prismic-javascript": "^2.7.1",
     "release-it": "^13.5.1",
     "rollup": "^1.23.1",
+    "@rollup/plugin-url": "^4.0.2",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-svg": "^2.0.0",
-    "rollup-plugin-url": "^3.0.1"
+    "rollup-plugin-svg": "^2.0.0"
   }
 }
