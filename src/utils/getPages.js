@@ -18,6 +18,7 @@ export default function getPages(apiUrl) {
                   meta,
                 }
               },
+              template: 'src/containers/page',
             }
           })
         })

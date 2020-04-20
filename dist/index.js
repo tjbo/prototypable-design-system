@@ -1374,7 +1374,8 @@ function getPages(apiUrl) {
                 content: content,
                 meta: meta
               };
-            }
+            },
+            template: 'src/containers/page'
           };
         });
       });
