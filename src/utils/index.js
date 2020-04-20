@@ -1,4 +1,9 @@
-export { default as getComponent } from './getComponent'
-export { Context, Provider } from './configContext'
-export { default as makePixelValue } from './makePixelValue'
-export { default as GA } from './injectGa'
+import getPages from './getPages'
+import getComponent from './getComponent'
+import makePixelValue from './makePixelValue'
+
+export default {
+  getComponent,
+  getPages,
+  makePixelValue,
+}

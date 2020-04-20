@@ -10,7 +10,7 @@ export default {
   input: './src/index.js',
   output: {
     file: './dist/index.js',
-    format: 'cjs',
+    // format: 'cjs',
   },
   plugins: [
     babel({
@@ -20,6 +20,7 @@ export default {
       include: '**/*.js',
       React: 'react',
       styled: 'styled-components',
+      Prismic: 'prismic-javascript',
     }),
     resolve(),
     commonjs(),
@@ -35,5 +36,5 @@ export default {
       limit: 0,
     }),
   ],
-  external: (id) => /^react|styled/.test(id),
+  external: (id) => /^react|prismic-javascript|styled/.test(id),
 }
