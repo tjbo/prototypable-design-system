@@ -126,6 +126,11 @@ body {
   }
 }
 
+img {
+  max-width: 100%;
+}
+
+
 /* link styles */
 a:active, a:visited, a:hover, a:link {
     color: ${({ theme }) => theme.colors.dark3};
