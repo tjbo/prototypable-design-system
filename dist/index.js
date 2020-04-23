@@ -838,18 +838,25 @@ var callbacks = [];
 var currentBreakpoint;
 
 function refreshValue() {
-  currentBreakpoint = window.getComputedStyle(document.querySelector('body'), ':before').getPropertyValue('content').replace(/\"/g, '');
+  if (typeof window !== 'undefined') {
+    currentBreakpoint = window.getComputedStyle(document.querySelector('body'), ':before').getPropertyValue('content').replace(/\"/g, '');
 
-  for (var callback in callbacks) {
-    callbacks[callback](currentBreakpoint);
+    for (var callback in callbacks) {
+      callbacks[callback](currentBreakpoint);
+    }
   }
 }
 
-window.addEventListener('resize', refreshValue);
 function addListener(callback) {
-  callbacks.push(callback);
-  currentBreakpoint = window.getComputedStyle(document.querySelector('body'), ':before').getPropertyValue('content').replace(/\"/g, '');
-  return currentBreakpoint;
+  if (typeof window !== 'undefined') {
+    callbacks.push(callback);
+    currentBreakpoint = window.getComputedStyle(document.querySelector('body'), ':before').getPropertyValue('content').replace(/\"/g, '');
+    return currentBreakpoint;
+  }
+}
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('resize', refreshValue);
 }
 
 var NavDropdown = /*#__PURE__*/function (_React$Component) {
