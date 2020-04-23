@@ -906,6 +906,7 @@ var NavDropdown = /*#__PURE__*/function (_React$Component) {
   _createClass(NavDropdown, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      // this allows react static to do a "first render"
       this.setState({
         isOpen: false
       });
