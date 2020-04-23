@@ -20,6 +20,7 @@ class NavDropdown extends React.Component {
   }
 
   componentDidMount() {
+    // this allows react static to do a "first render"
     this.setState({ isOpen: false })
   }
 
