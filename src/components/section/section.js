@@ -6,13 +6,25 @@ import {
   SectionWrapperUI,
 } from './section.css'
 
+function getTitle(title) {
+  const headings = {
+    heading1: 'h1',
+    heading2: 'h2',
+    heading3: 'h3',
+    heading4: 'h4',
+  }
+  return React.createElement(headings[title.type], {
+    dangerouslySetInnerHTML: { __html: title.text },
+  })
+}
+
 export default function ({
   children = [],
   textAlign = 'left',
   background = 'default',
   id,
   isFullWidth = false,
-  innerWidth = 'big',
+  inner_width = 'big',
   title = '',
 }) {
   if (isFullWidth) {
@@ -22,14 +34,8 @@ export default function ({
   } else {
     return (
       <SectionWrapperUI background={background}>
-        <SectionUI textAlign={textAlign} innerWidth={innerWidth}>
-          {title && title.text ? (
-            <h3
-              dangerouslySetInnerHTML={{ __html: title.text }}
-              className="heading-3"
-            />
-          ) : null}
-
+        <SectionUI textAlign={textAlign} innerWidth={inner_width}>
+          {title && getTitle(title)}
           {children.length === 2 ? (
             <ColWrapper key={`${id}-col-wrap`}>
               <Col1 key={`${id}-col-1`}>{children[0]}</Col1>

@@ -6,7 +6,7 @@ export const HeaderUI = styled('header')``
 
 export const NavMenuTriggerUI = styled('span')``
 
-export const NavMenuUI = styled('nav')``
+export const NavMobileMenuUI = styled('nav')``
 
 export const NavLinkUI = styled('span')``
 
@@ -16,7 +16,6 @@ export const HeaderContainer = styled('div')`
     align-items: center;
     background-color: ${({ theme }) => theme.colors.dark1};
     box-sizing: border-box;
-    color: #fff;
     display: flex;
     height: ${({ theme }) => theme.layout.desktop.headerHeight};
     flex-direction: row;
@@ -49,7 +48,27 @@ export const HeaderContainer = styled('div')`
     }
   }
 
-  ${NavMenuUI} {
+  ${NavLinkUI} {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: ${({ theme }) => theme.layout.desktop.headerHeight};
+    a:visited,
+    a:link {
+      color: #fff;
+      text-decoration: none;
+    }
+    color: #fff;
+    padding: 0;
+    padding-left: ${({ theme }) => theme.unit(1)};
+
+    a:active,
+    a:hover {
+      color: ${({ theme }) => theme.colors.dark3x};
+    }
+  }
+
+  ${NavMobileMenuUI} {
     display: flex;
     flex-direction: row;
     font-size: ${({ theme }) => theme.unit(0.7)};
@@ -63,7 +82,6 @@ export const HeaderContainer = styled('div')`
       :visited,
       :hover,
       :link {
-        color: #fff;
         text-decoration: none;
       }
     }
@@ -74,10 +92,8 @@ export const HeaderContainer = styled('div')`
   }
 
   @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
-    .is-open ${NavMenuUI} {
-      padding-top: 50px;
-      align-content: stretch;
-      align-items: center;
+    .is-open ${NavMobileMenuUI} {
+      box-sizing: border-box;
       background-color: ${({ theme }) => theme.colors.dark3};
       display: flex;
       flex-direction: column;
@@ -89,7 +105,7 @@ export const HeaderContainer = styled('div')`
       z-index: 1;
     }
 
-    .is-closed ${NavMenuUI} {
+    .is-closed ${NavMobileMenuUI} {
       display: none;
     }
 
@@ -105,7 +121,6 @@ export const HeaderContainer = styled('div')`
 
       :hover {
         background-color: ${({ theme }) => theme.colors.dark5};
-
         padding: ${({ theme }) => theme.unit(0.25)};
       }
     }

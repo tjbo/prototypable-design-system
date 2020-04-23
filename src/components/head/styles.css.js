@@ -8,6 +8,31 @@ import robotoBoldWoff2 from './fonts/roboto-v20-latin-700.woff2'
 
 const GlobalStyles = createGlobalStyle`
 
+/**
+ * These values will not show up in content, but can be
+ * queried by JavaScript to know which breakpoint is active.
+ * Add or remove as many breakpoints as you like.
+ */
+body:before {
+  content: "mobile";
+  display: none;
+}
+
+
+@media (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
+  body:before {
+    content: "tablet";
+  }
+}
+
+@media (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
+  body:before {
+    content: "desktop";
+  }
+}
+
+
+
 /* pt-serif-regular - latin */
 @font-face {
   font-family: 'PT Serif';
@@ -94,6 +119,7 @@ body {
   font-size: 1.125rem;
   line-height: 1.5;
   margin: 0;
+  overflow: auto;
   padding: 0;
   .is-modal-open {
     overflow: none;
@@ -106,9 +132,9 @@ a:active, a:visited, a:hover, a:link {
 }
 
 /* list and paragraph styles */
-p, ul {
+p, ul, code {
   padding: 0;
-  margin-bottom: ${({ theme }) => theme.unit(0.5)};
+  margin-bottom: ${({ theme }) => theme.unit(1)};
 }
 
 b {
@@ -117,11 +143,24 @@ b {
 
 ul {
   list-style: disc;
+  padding-left: ${({ theme }) => theme.unit(1)};
+};
 }
 
 li {
   margin-bottom: ${({ theme }) => theme.unit(0.25)};
   margin-left: ${({ theme }) => theme.unit(0.75)};
+}
+
+code {
+  box-sizing: border-box;
+  background-color:  ${({ theme }) => theme.colors.light1};
+  display: block;
+  padding:  ${({ theme }) => theme.unit(0.5)};
+  color: ${({ theme }) => theme.colors.dark1};
+  width: 100%;
+  font-family: 'Courier New', Courier, monospace;
+  white-space: pre;
 }
 
 /* heading styles */
@@ -130,11 +169,12 @@ h1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, 
   padding: 0;
   margin: 0;
   margin-bottom: ${({ theme }) => theme.unit(0.5)};
+  line-height: 100%;
 }
 
 h1, .heading-1 {
   font-size: ${({ theme }) => theme.typography.sizes.desktop.xxlg};
-  font-weight: 700;
+  font-weight: 500;
 
   @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
    font-size: ${({ theme }) => theme.typography.sizes.tablet.xxlg};
@@ -221,6 +261,7 @@ h6, .heading-6 {
     border-right: ${({ theme }) => theme.border};
     margin: 0;
     width: 100%;
+  margin-bottom: ${({ theme }) => theme.unit(1)};
     tr {
       border-bottom: ${({ theme }) => theme.border};
       width: 100%;
@@ -232,10 +273,14 @@ h6, .heading-6 {
       font-weight: 700;
     }
 
-    td {
+    td, th {
       background-color: #fff;
       padding: ${({ theme }) => theme.unit(0.25)} ${({ theme }) =>
   theme.unit(0.5)};
+    }
+
+    th {
+      background-color: ${({ theme }) => theme.colors.light1};
     }
 
     @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
@@ -285,6 +330,18 @@ ${({ theme }) => {
 }}
 
 /* random text styles */
+blockquote {
+  padding: ${({ theme }) => theme.unit(0.75)};
+  background-color:  ${({ theme }) => theme.colors.light1};
+  border:  ${({ theme }) => theme.border};
+  margin:  ${({ theme }) => `${theme.unit(1)} 0`};
+
+  p:last-child, ul:last-child {
+    margin-bottom: 0;
+  }
+
+}
+
 .italic {
   font-style: italic;
 }
@@ -299,6 +356,20 @@ text-shadow: 1px 2px #000
 
 .bold {
   font-weight: 700;
+}
+
+.lead {
+  font-size: ${({ theme }) => theme.typography.sizes.desktop.md};
+  line-height: 130%;
+  font-family: ${({ theme }) => theme.typography.fonts.font3};
+
+  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
+   font-size: ${({ theme }) => theme.typography.sizes.tablet.md};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+   font-size: ${({ theme }) => theme.typography.sizes.mobile.md};
+  }
 }
 
 

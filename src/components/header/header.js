@@ -4,12 +4,11 @@ import {
   HeaderContainer,
   HeaderUI,
   NavLinkUI,
-  NavMenuUI,
+  NavMobileMenuUI,
   NavMenuTriggerUI,
 } from './header.css'
-
+import NavDropdown from './navDropdown'
 import TriggerIconUI from './triggerIcon'
-
 import { onShowModal, onHideModal } from '../body'
 
 class Header extends React.Component {
@@ -36,6 +35,7 @@ class Header extends React.Component {
   }
 
   toggleMenu = () => {
+    console.log('onShowModal', this.state.isOpen)
     this.setState({ isOpen: !this.state.isOpen }, () => {
       if (this.state.isOpen) {
         onShowModal()
@@ -49,7 +49,7 @@ class Header extends React.Component {
     return (
       this.props.children.length > 1 &&
       this.props.children.some((child) => {
-        return child.type.displayName === 'styled.nav'
+        return child.props.children.length > 1
       })
     )
   }
@@ -57,13 +57,17 @@ class Header extends React.Component {
   render() {
     const { children } = this.props
     const { isOpen } = this.state
-
     const isWithNav = this.isWithNav()
 
     return (
       <HeaderContainer>
         <HeaderUI className={isOpen ? 'is-open' : 'is-closed'}>
-          {React.Children.map(children, (child) => React.cloneElement(child))}
+          {React.Children.map(children, (child) =>
+            React.cloneElement(child, {
+              closeParentMenu: this.toggleMenu,
+              isParentMenuOpen: isOpen,
+            }),
+          )}
           {isWithNav ? (
             <NavMenuTriggerUI onClick={this.toggleMenu}>
               <TriggerIconUI isOpen={isOpen} />
@@ -83,7 +87,31 @@ Header.Brand = function Brand({ children }) {
   )
 }
 
-Header.NavMenu = NavMenuUI
-Header.NavLink = NavLinkUI
+Header.NavMenu = function ({ children, isParentMenuOpen, closeParentMenu }) {
+  return (
+    <NavMobileMenuUI>
+      {React.Children.map(children, (child) =>
+        React.cloneElement(child, {
+          closeParentMenu,
+          isParentMenuOpen,
+        }),
+      )}
+    </NavMobileMenuUI>
+  )
+}
+
+Header.NavLink = function ({ children, closeParentMenu, isParentMenuOpen }) {
+  return (
+    <NavLinkUI
+      onClick={(event) => {
+        isParentMenuOpen && closeParentMenu()
+        event.nativeEvent.stopPropagation()
+      }}
+    >
+      {children}
+    </NavLinkUI>
+  )
+}
+Header.NavDropdown = NavDropdown
 
 export default Header
