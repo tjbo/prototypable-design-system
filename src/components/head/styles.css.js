@@ -126,7 +126,7 @@ body {
   }
 }
 
-img {
+iframe, img {
   max-width: 100%;
 }
 
