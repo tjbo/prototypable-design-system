@@ -13,10 +13,12 @@ import { onShowModal, onHideModal } from '../body'
 
 class Header extends React.Component {
   state = {
-    isOpen: false,
+    isOpen: true,
   }
 
   componentDidMount() {
+    console.log('cdm 1234')
+    this.setState({ isOpen: false })
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', () => this.onResize())
     }

@@ -1069,7 +1069,7 @@ var Header = /*#__PURE__*/function (_React$Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      isOpen: false
+      isOpen: true
     });
 
     _defineProperty(_assertThisInitialized(_this), "onLinkClick", function () {
@@ -1111,6 +1111,11 @@ var Header = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
+
+      console.log('cdm 1234');
+      this.setState({
+        isOpen: false
+      });
 
       if (typeof window !== 'undefined') {
         window.addEventListener('resize', function () {
