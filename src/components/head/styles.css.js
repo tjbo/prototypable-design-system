@@ -174,7 +174,7 @@ h1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, 
   padding: 0;
   margin: 0;
   margin-bottom: ${({ theme }) => theme.unit(0.5)};
-  line-height: 100%;
+  line-height: 125%;
 }
 
 h1, .heading-1 {
@@ -288,25 +288,34 @@ h6, .heading-6 {
       background-color: ${({ theme }) => theme.colors.light1};
     }
 
-    @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
-      tr {
-      }
 
-      td {
-        padding: 0 ${({ theme }) => theme.unit(0.5)};
-        display: block;
-      }
-
-      td:first-child {
-        padding-top: ${({ theme }) => theme.unit(0.5)};
-      }
-
-      td:last-child {
-        padding-bottom: ${({ theme }) => theme.unit(0.5)};
-      }
-
-    }
   }
+
+
+  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+    table.responsive-collapse {
+
+    table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+  thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+    }
+
+  table.n-plus-2 {
+  td:nth-child(n+2) {
+    display: inline-block
+	}
+  }
+
+
+
+  }
+
 
 /* makes a class for each color in theme */
   ${({ theme }) => {
