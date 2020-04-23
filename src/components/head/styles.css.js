@@ -38,9 +38,11 @@ body:before {
   font-family: 'PT Serif';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: local('PT Serif'), local('PTSerif-Regular'),
        url(${ptSerifWoff2}) format('woff2'), /* Super Modern Browsers */
        url(${ptSerifWoff}) format('woff'), /* Modern Browsers */
+
 }
 
 /* roboto-700 - latin */
@@ -48,6 +50,7 @@ body:before {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
+  font-display: swap;
   src: local('Roboto Medium'), local('Roboto-Medium'),
        url(${robotoMediumWoff2}) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
        url(${robotoMediumWoff}) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
@@ -58,6 +61,7 @@ body:before {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   src: local('Roboto Bold'), local('Roboto-Bold'),
        url(${robotoBoldWoff2}) format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
        url(${robotoBoldWoff}) format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
@@ -126,7 +130,12 @@ body {
   }
 }
 
-iframe, img {
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+iframe {
   max-width: 100%;
 }
 

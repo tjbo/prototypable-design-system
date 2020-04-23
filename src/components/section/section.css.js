@@ -31,7 +31,7 @@ export const SectionUI = styled('div')`
   text-align: ${({ textAlign }) => textAlign};
 
   @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
-    margin: ${({ theme }) => `0 ${theme.unit(0.5)}`};
+    padding: ${({ theme }) => `${theme.unit(0.5)}`};
   }
 `
 
