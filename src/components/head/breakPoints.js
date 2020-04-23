@@ -14,8 +14,6 @@ function refreshValue() {
   }
 }
 
-window.addEventListener('resize', refreshValue)
-
 export function addListener(callback) {
   if (typeof window !== 'undefined') {
     callbacks.push(callback)
@@ -27,4 +25,8 @@ export function addListener(callback) {
 
     return currentBreakpoint
   }
+}
+
+if (typeof window !== 'undefined') {
+  window.addEventListener('resize', refreshValue)
 }
