@@ -1579,6 +1579,20 @@ function Section (_ref) {
   }
 }
 
+function ScrollToTop(_ref) {
+  var children = _ref.children,
+      location = _ref.location;
+
+  if (typeof window !== 'undefined') {
+    React.useEffect(function () {
+      return window.scrollTo(0, 0);
+    }, [location.pathname]);
+    return children;
+  } else {
+    return children;
+  }
+}
+
 var Prismic = require('prismic-javascript');
 
 function getPage(apiUrl, page) {
@@ -1964,6 +1978,7 @@ exports.Header = Header;
 exports.Jumbotron = Jumbotron;
 exports.LoadingScreen = Loading;
 exports.Quote = Quote;
+exports.ScrollToTop = ScrollToTop;
 exports.Section = Section;
 exports.getPages = getPages;
 exports.utils = index;
