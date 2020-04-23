@@ -877,7 +877,7 @@ var NavDropdown = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "state", {
       breakPoint: 'desktop',
-      isOpen: false
+      isOpen: true
     });
 
     _defineProperty(_assertThisInitialized(_this), "toggleMenu", function (bool) {
@@ -904,11 +904,18 @@ var NavDropdown = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(NavDropdown, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setState({
+        isOpen: false
+      });
+    }
+  }, {
     key: "componentWillUpdate",
     value: function componentWillUpdate(props, state) {
-      console.log('cwu', state);
-
-      if (!props.isParentMenuOpen && state.isOpen && state.breakPoint !== 'desktop') ;
+      if (!props.isParentMenuOpen && state.isOpen && state.breakPoint !== 'desktop') {
+        this.toggleMenu(false);
+      }
     }
   }, {
     key: "isDesktop",

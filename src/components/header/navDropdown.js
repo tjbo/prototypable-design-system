@@ -10,7 +10,7 @@ import { addListener } from '../head/breakPoints'
 class NavDropdown extends React.Component {
   state = {
     breakPoint: 'desktop',
-    isOpen: false,
+    isOpen: true,
   }
 
   toggleMenu = (bool) => {
@@ -19,14 +19,17 @@ class NavDropdown extends React.Component {
     })
   }
 
+  componentDidMount() {
+    this.setState({ isOpen: false })
+  }
+
   componentWillUpdate(props, state) {
-    console.log('cwu', state)
     if (
       !props.isParentMenuOpen &&
       state.isOpen &&
       state.breakPoint !== 'desktop'
     ) {
-      // this.toggleMenu(false)
+      this.toggleMenu(false)
     }
   }
 
@@ -56,7 +59,6 @@ class NavDropdown extends React.Component {
           }}
         >
           {text}
-
           <NavLinkDropdownIconUI />
         </NavLinkUI>
         {this.state.isOpen && (
