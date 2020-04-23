@@ -165,7 +165,18 @@ code {
   color: ${({ theme }) => theme.colors.dark1};
   width: 100%;
   font-family: 'Courier New', Courier, monospace;
-  white-space: pre;
+  white-space: normal;
+
+  font-size: ${({ theme }) => theme.typography.sizes.desktop.sm};
+
+
+  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
+   font-size: ${({ theme }) => theme.typography.sizes.tablet.sm};
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+   font-size: ${({ theme }) => theme.typography.sizes.mobile.xsm};
+  }
 }
 
 /* heading styles */
