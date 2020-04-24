@@ -179,7 +179,7 @@ function _taggedTemplateLiteral(strings, raw) {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  color: #fff;\n  text-align: center;\n"]);
+  var data = _taggedTemplateLiteral(["\n  color: #fff;\n  text-align: center;\n  padding: ", ";\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -187,7 +187,10 @@ function _templateObject() {
 
   return data;
 }
-var BannerUI = styled__default('div')(_templateObject());
+var BannerUI = styled__default('div')(_templateObject(), function (_ref) {
+  var theme = _ref.theme;
+  return theme.unit(0.5);
+});
 
 function Banner (_ref) {
   var body = _ref.body;
@@ -256,7 +259,7 @@ if (typeof window !== 'undefined') {
 }
 
 function _templateObject$2() {
-  var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  border: ", ";\n  padding: ", " ", ";\n\n  .title {\n    font-weight: bold;\n    flex-grow: 0;\n  }\n\n  ul {\n    margin: 0;\n  }\n\n  @media (max-width: ", ") {\n    ul {\n      column-count: 3;\n    }\n  }\n\n  @media (max-width: 800px) {\n    ul {\n      column-count: 2;\n    }\n  }\n\n  @media (max-width: ", ") {\n    ul {\n      column-count: 1;\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  border: ", ";\n  padding: ", " ", ";\n  margin-bottom: ", ";\n\n  .title {\n    font-weight: bold;\n    flex-grow: 0;\n  }\n\n  ul {\n    margin: 0;\n  }\n\n  @media (max-width: ", ") {\n    ul {\n      column-count: 3;\n    }\n  }\n\n  @media (max-width: 800px) {\n    ul {\n      column-count: 2;\n    }\n  }\n\n  @media (max-width: ", ") {\n    ul {\n      column-count: 1;\n    }\n  }\n"]);
 
   _templateObject$2 = function _templateObject() {
     return data;
@@ -276,9 +279,12 @@ var BoxWrapper = styled__default('div')(_templateObject$2(), function (_ref) {
   return theme.unit(0.5);
 }, function (_ref4) {
   var theme = _ref4.theme;
-  return theme.breakPoints.tablet;
+  return theme.unit(0.5);
 }, function (_ref5) {
   var theme = _ref5.theme;
+  return theme.breakPoints.tablet;
+}, function (_ref6) {
+  var theme = _ref6.theme;
   return theme.breakPoints.mobile;
 });
 
@@ -1091,8 +1097,6 @@ var Header = /*#__PURE__*/function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "toggleMenu", function () {
-      console.log('onShowModal', _this.state.isOpen);
-
       _this.setState({
         isOpen: !_this.state.isOpen
       }, function () {
@@ -1112,7 +1116,6 @@ var Header = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      console.log('cdm 1234');
       this.setState({
         isOpen: false
       });
@@ -1325,7 +1328,7 @@ function Loading() {
 }
 
 function _templateObject4$4() {
-  var data = _taggedTemplateLiteral(["\n  blockquote {\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  blockquote {\n    border: none;\n  }\n"]);
 
   _templateObject4$4 = function _templateObject4() {
     return data;
@@ -1428,7 +1431,7 @@ function Quote (_ref) {
 }
 
 function _templateObject5$3() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: row;\n\n  @media (max-width: ", ") {\n    flex-direction: column;\n\n    ", " {\n      min-width: 100%;\n    }\n\n    ", " {\n      margin-left: 0;\n      margin-top: ", ";\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: row;\n\n  @media (max-width: ", ") {\n    flex-direction: column;\n\n    ", " {\n      min-width: 100%;\n    }\n\n    ", " {\n      margin-left: 0;\n    }\n  }\n"]);
 
   _templateObject5$3 = function _templateObject5() {
     return data;
@@ -1525,12 +1528,13 @@ var Col2 = styled__default('div')(_templateObject4$5(), function (_ref7) {
 var ColWrapper = styled__default('div')(_templateObject5$3(), function (_ref8) {
   var theme = _ref8.theme;
   return theme.breakPoints.tablet;
-}, Col1, Col2, function (_ref9) {
-  var theme = _ref9.theme;
-  return theme.unit(0.5);
-});
+}, Col1, Col2);
 
 function getTitle(title) {
+  if (!title || !title.text) {
+    return '';
+  }
+
   var headings = {
     heading1: 'h1',
     heading2: 'h2',
@@ -1613,10 +1617,6 @@ function getPage(apiUrl, page) {
               id = result.id,
               type = result.type;
           data.body = data.body[0];
-
-          if (data.layout_style !== 'banner') {
-            data.title = data.title[0];
-          }
 
           if (data.sidebar) {
             data.sidebar = data.sidebar[0];

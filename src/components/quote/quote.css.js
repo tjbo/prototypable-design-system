@@ -37,5 +37,6 @@ export const CloseQuoteUI = styled('div')`
 
 export const DropQuoteUI = styled('div')`
   blockquote {
+    border: none;
   }
 `

@@ -7,6 +7,10 @@ import {
 } from './section.css'
 
 function getTitle(title) {
+  if (!title || !title.text) {
+    return ''
+  }
+
   const headings = {
     heading1: 'h1',
     heading2: 'h2',
@@ -47,5 +51,6 @@ export default function ({
         </SectionUI>
       </SectionWrapperUI>
     )
+    return null
   }
 }

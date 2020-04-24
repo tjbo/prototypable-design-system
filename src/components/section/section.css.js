@@ -57,7 +57,6 @@ export const ColWrapper = styled('div')`
 
     ${Col2} {
       margin-left: 0;
-      margin-top: ${({ theme }) => theme.unit(0.5)};
     }
   }
 `

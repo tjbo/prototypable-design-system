@@ -17,7 +17,6 @@ class Header extends React.Component {
   }
 
   componentDidMount() {
-    console.log('cdm 1234')
     this.setState({ isOpen: false })
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', () => this.onResize())
@@ -37,7 +36,6 @@ class Header extends React.Component {
   }
 
   toggleMenu = () => {
-    console.log('onShowModal', this.state.isOpen)
     this.setState({ isOpen: !this.state.isOpen }, () => {
       if (this.state.isOpen) {
         onShowModal()

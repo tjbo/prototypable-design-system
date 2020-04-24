@@ -20,10 +20,6 @@ export default function getPage(apiUrl, page) {
 
             data.body = data.body[0]
 
-            if (data.layout_style !== 'banner') {
-              data.title = data.title[0]
-            }
-
             if (data.sidebar) {
               data.sidebar = data.sidebar[0]
             }

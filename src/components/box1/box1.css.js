@@ -2,9 +2,9 @@ export const BoxWrapper = styled('div')`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 100%;
   border: ${({ theme }) => theme.border};
   padding: ${({ theme }) => theme.unit(0.25)} ${({ theme }) => theme.unit(0.5)};
+  margin-bottom: ${({ theme }) => theme.unit(0.5)};
 
   .title {
     font-weight: bold;
