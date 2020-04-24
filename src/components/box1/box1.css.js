@@ -12,7 +12,12 @@ export const BoxWrapper = styled('div')`
   }
 
   ul {
+    list-style: none;
     margin: 0;
+    padding-left: 0;
+    li {
+      margin-left: 0;
+    }
   }
 
   @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
