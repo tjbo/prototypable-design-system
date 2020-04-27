@@ -15,7 +15,7 @@ export const FaqWrapperUI = styled('div')`
 
     summary {
       width: 100%;
-      color: ${({ theme }) => theme.colors.dark4};
+      color: ${({ theme }) => theme.colors['dark-4']};
       cursor: pointer;
       font-size: ${({ theme }) => theme.unit(0.66)};
       font-weight: 500;
@@ -23,8 +23,8 @@ export const FaqWrapperUI = styled('div')`
       padding: 0;
       &:after {
         content: '';
-        color: ${({ theme }) => theme.colors.dark1};
-        border: solid ${({ theme }) => theme.colors.dark4};
+        color: ${({ theme }) => theme.colors['dark-1']};
+        border: solid ${({ theme }) => theme.colors['dark-4']};
         border-width: 0 3px 3px 0;
         display: inline-block;
         padding: 4px;

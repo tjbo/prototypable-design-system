@@ -15,20 +15,20 @@ addDecorator((s) => (
           desktop: makePixelValue(unit * 40),
         },
         colors: {
-          dark1: '#000',
-          dark2: '#2b6242',
-          dark3: '#0090e7',
-          dark4: '#454545',
-          dark5: '#0066a3',
-          light1: '#f5faff',
-          light2: '36,139,204',
-          light3: '#fff',
+          ['dark-1']: '#000',
+          ['dark-2']: '#2b6242',
+          ['dark-3']: '#0090e7',
+          ['dark-4']: '#454545',
+          ['dark-5']: '#0066a3',
+          ['light-1']: '#f5faff',
+          ['light-2']: '36,139,204',
+          ['light-3']: '#fff',
         },
         typography: {
           fonts: {
-            font1: 'PT Serif',
-            font2: 'Roboto',
-            font3: 'PT Serif',
+            ['font-1']: 'PT Serif',
+            ['font-2']: 'Roboto',
+            ['font-3']: 'PT Serif',
           },
           sizes: {
             desktop: {

@@ -1,11 +1,11 @@
 export const ButtonUI = styled('button')`
-  background-color: ${({ theme }) => theme.colors.dark2};
+  background-color: ${({ theme }) => theme.colors['dark-2']};
   border: 0;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
   display: block;
-  font-family: ${({ theme }) => theme.typography.fonts.font2};
+  font-family: ${({ theme }) => theme.typography.fonts['font-2']};
   font-size: ${({ theme }) => theme.unit(0.75)};
   font-weight: 700;
   height: ${({ theme }) => theme.unit(1.75)};

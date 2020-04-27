@@ -14,7 +14,7 @@ export const HeaderContainer = styled('div')`
   width: 100%;
   ${HeaderUI} {
     align-items: center;
-    background-color: ${({ theme }) => theme.colors.dark1};
+    background-color: ${({ theme }) => theme.colors['dark-1']};
     box-sizing: border-box;
     display: flex;
     height: ${({ theme }) => theme.layout.desktop.headerHeight};
@@ -35,7 +35,7 @@ export const HeaderContainer = styled('div')`
     align-items: center;
     text-align: center;
     justify-content: space-around;
-    font-family: ${({ theme }) => theme.typography.fonts.font2};
+    font-family: ${({ theme }) => theme.typography.fonts['font-2']};
     font-weight: 500;
     text-align: left;
     text-transform: uppercase;
@@ -64,7 +64,7 @@ export const HeaderContainer = styled('div')`
 
     a:active,
     a:hover {
-      color: ${({ theme }) => theme.colors.dark3x};
+      color: ${({ theme }) => theme.colors['dark-3']};
     }
   }
 
@@ -72,7 +72,7 @@ export const HeaderContainer = styled('div')`
     display: flex;
     flex-direction: row;
     font-size: ${({ theme }) => theme.unit(0.7)};
-    font-family: ${({ theme }) => theme.typography.fonts.font2};
+    font-family: ${({ theme }) => theme.typography.fonts['font-2']};
     list-style: none;
     box-sizing: border-box;
 
@@ -94,7 +94,7 @@ export const HeaderContainer = styled('div')`
   @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
     .is-open ${NavMobileMenuUI} {
       box-sizing: border-box;
-      background-color: ${({ theme }) => theme.colors.dark3};
+      background-color: ${({ theme }) => theme.colors['dark-3']};
       display: flex;
       flex-direction: column;
       left: 0;
@@ -120,7 +120,7 @@ export const HeaderContainer = styled('div')`
       text-transform: uppercase;
 
       :hover {
-        background-color: ${({ theme }) => theme.colors.dark5};
+        background-color: ${({ theme }) => theme.colors['dark-5']};
         padding: ${({ theme }) => theme.unit(0.25)};
       }
     }

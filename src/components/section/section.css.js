@@ -1,8 +1,8 @@
 const getBgColor = ({ background, theme }) => {
   if (background === 'light') {
-    return theme.colors.light1
+    return theme.colors['light-1']
   } else if (background === 'dark') {
-    return theme.colors.dark3
+    return theme.colors['dark-3']
   } else {
     return '#fff'
   }

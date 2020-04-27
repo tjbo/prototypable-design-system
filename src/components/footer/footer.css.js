@@ -1,7 +1,7 @@
 export const FooterUI = styled('footer')`
   box-sizing: border-box;
   display: block;
-  background-color: ${({ theme }) => theme.colors.dark1};
+  background-color: ${({ theme }) => theme.colors['dark-1']};
   max-width: 100%;
   flex-shrink: 0;
 `
@@ -13,10 +13,10 @@ export const FooterUIInner = styled('div')`
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  background-color: ${({ theme }) => theme.colors.dark1};
+  background-color: ${({ theme }) => theme.colors['dark-1']};
   padding: ${({ theme }) => `${theme.unit(0.5)} ${theme.unit(0.75)}`};
   padding-right: ${({ theme }) => theme.unit(1)};
-  font-family: ${({ theme }) => theme.typography.fonts.font1};
+  font-family: ${({ theme }) => theme.typography.fonts['font-1']};
 
   @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
     flex-direction: column;
@@ -33,11 +33,11 @@ export const FooterUIInner = styled('div')`
     a:link {
       color: #fff;
       text-decoration: none;
-      font-family: ${({ theme }) => theme.typography.fonts.font2};
+      font-family: ${({ theme }) => theme.typography.fonts['font-2']};
       font-size: ${({ theme }) => theme.unit(0.65)};
       text-transform: uppercase;
     }
-    font-family: ${({ theme }) => theme.typography.fonts.font2};
+    font-family: ${({ theme }) => theme.typography.fonts['font-2']};
   }
 
   ${FinePrintUI} {

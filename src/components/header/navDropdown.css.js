@@ -30,7 +30,7 @@ export const NavDropdownUI = styled('div')`
 
       a {
         :hover {
-          background-color: ${({ theme }) => theme.colors.dark5};
+          background-color: ${({ theme }) => theme.colors['dark-5']};
         }
         box-sizing: border-box;
         margin-left: 0;
@@ -50,7 +50,7 @@ export const NavDropdownUI = styled('div')`
       a:hover,
       a:link {
         margin-left: 0;
-        color: ${({ theme }) => theme.colors.light1};
+        color: ${({ theme }) => theme.colors['light-1']};
         font-size: ${({ theme }) => theme.typography.sizes.desktop.md};
         text-transform: uppercase;
       }
@@ -58,14 +58,14 @@ export const NavDropdownUI = styled('div')`
 
     ${NavLinkUI} {
       background: ${({ isOpen, theme }) =>
-        isOpen ? theme.colors.dark5 : 'none'};
+        isOpen ? theme.colors['dark-5'] : 'none'};
     }
 
     ${NavLinkDropdownIconUI} {
       &:after {
         content: '';
-        color: ${({ theme }) => theme.colors.dark1};
-        border: solid ${({ theme }) => theme.colors.light1};
+        color: ${({ theme }) => theme.colors['dark-1']};
+        border: solid ${({ theme }) => theme.colors['light-1']};
         border-width: 0 4px 4px 0;
         display: inline-block;
         margin-left: ${({ theme }) => theme.unit(0.5)};
@@ -97,7 +97,7 @@ export const NavDropdownUI = styled('div')`
       a:visited,
       a:hover,
       a:link {
-        color: ${({ theme }) => theme.colors.dark3};
+        color: ${({ theme }) => theme.colors['dark-3']};
         font-size: ${({ theme }) => theme.typography.sizes.desktop.sm};
         margin-left: 0;
       }
