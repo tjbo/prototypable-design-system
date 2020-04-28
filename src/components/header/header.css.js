@@ -140,6 +140,14 @@ export const HeaderContainer = styled('div')`
         background-color: ${({ theme }) => theme.colors['dark-5']};
         padding: ${({ theme }) => theme.unit(0.25)};
       }
+
+      a:active,
+      a:visited,
+      a:hover,
+      a:link {
+        color: #fff;
+        width: 100%;
+      }
     }
 
     ${NavMenuTriggerUI} {
