@@ -13,5 +13,16 @@ export { default as LoadingScreen } from './components/loadingScreen'
 export { default as Quote } from './components/quote'
 export { default as Section } from './components/section/'
 export { default as ScrollToTop } from './components/scrollToTop/'
-export { default as utils } from './utils/'
 export { default as Head } from './components/head/head'
+
+import getComponent from './utils/getComponent'
+import getPages from './utils/getPages'
+import getPosts from './utils/getPosts'
+import makePixelValue from './utils/makePixelValue'
+
+export const utils = {
+  getComponent,
+  getPages,
+  getPosts,
+  makePixelValue,
+}
