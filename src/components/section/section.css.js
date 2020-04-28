@@ -10,9 +10,9 @@ const getBgColor = ({ background, theme }) => {
 
 const getInnerWidth = ({ innerWidth, theme }) => {
   if (innerWidth === 'medium') {
-    return '720px'
+    return '600px'
   } else if (innerWidth === 'small') {
-    return theme.unit(20)
+    return '550px'
   } else {
     return theme.unit(33)
   }

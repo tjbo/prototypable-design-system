@@ -40,7 +40,7 @@ export default function ({
       <SectionWrapperUI background={background}>
         <SectionUI textAlign={textAlign} innerWidth={inner_width}>
           {title && getTitle(title)}
-          {children.length === 2 ? (
+          {children.length === 2 && children[0].props.sidebar.text ? (
             <ColWrapper key={`${id}-col-wrap`}>
               <Col1 key={`${id}-col-1`}>{children[0]}</Col1>
               <Col2 key={`${id}-col-2`}>{children[1]}</Col2>

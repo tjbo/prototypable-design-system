@@ -13,11 +13,10 @@ import { onShowModal, onHideModal } from '../body'
 
 class Header extends React.Component {
   state = {
-    isOpen: true,
+    isOpen: false,
   }
 
   componentDidMount() {
-    this.setState({ isOpen: false })
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', () => this.onResize())
     }
@@ -58,7 +57,6 @@ class Header extends React.Component {
     const { children } = this.props
     const { isOpen } = this.state
     const isWithNav = this.isWithNav()
-
     return (
       <HeaderContainer>
         <HeaderUI className={isOpen ? 'is-open' : 'is-closed'}>

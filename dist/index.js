@@ -615,7 +615,7 @@ Footer.Address = AddressUI;
 Footer.FinePrint = FinePrintUI;
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  ", " {\n    align-items: center;\n    background-color: ", ";\n    box-sizing: border-box;\n    display: flex;\n    height: ", ";\n    flex-direction: row;\n    justify-content: space-between;\n    padding: ", ";\n    position: fixed;\n    top: 0;\n    width: 100%;\n    z-index: 1;\n  }\n\n  ", " {\n    font-size: ", ";\n    margin: 0;\n    height: 100%;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    justify-content: space-around;\n    font-family: ", ";\n    font-weight: 500;\n    text-align: left;\n    text-transform: uppercase;\n    a:active,\n    a:visited,\n    a:hover,\n    a:link {\n      color: #fff;\n      text-decoration: none;\n    }\n  }\n\n  ", " {\n    align-items: center;\n    justify-content: center;\n    display: flex;\n    height: ", ";\n    a:visited,\n    a:link {\n      color: #fff;\n      text-decoration: none;\n    }\n    color: #fff;\n    padding: 0;\n    padding-left: ", ";\n\n    a:active,\n    a:hover {\n      color: ", ";\n    }\n  }\n\n  ", " {\n    display: flex;\n    flex-direction: row;\n    font-size: ", ";\n    font-family: ", ";\n    list-style: none;\n    box-sizing: border-box;\n\n    a {\n      margin-left: ", ";\n      :active,\n      :visited,\n      :hover,\n      :link {\n        text-decoration: none;\n      }\n    }\n  }\n\n  ", " {\n    display: none;\n  }\n\n  @media (max-width: ", ") {\n    .is-open ", " {\n      box-sizing: border-box;\n      background-color: ", ";\n      display: flex;\n      flex-direction: column;\n      left: 0;\n      min-height: 100vh;\n      position: absolute;\n      top: 0;\n      width: 100%;\n      z-index: 1;\n    }\n\n    .is-closed ", " {\n      display: none;\n    }\n\n    ", " {\n      cursor: pointer;\n      box-sizing: border-box;\n      font-size: ", ";\n      margin: 0;\n      padding: ", ";\n      text-align: center;\n      width: auto;\n      text-transform: uppercase;\n\n      :hover {\n        background-color: ", ";\n        padding: ", ";\n      }\n    }\n\n    ", " {\n      cursor: pointer;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      position: absolute;\n      left: calc(100vw - ", ");\n      top: 0;\n      width: ", ";\n      height: ", ";\n      z-index: 2;\n    }\n  }\n\n  @media (max-width: ", ") {\n    ", " {\n      height: ", ";\n    }\n\n    ", " {\n      font-size: ", ";\n    }\n\n    ", " {\n      width: ", ";\n      height: ", ";\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  box-sizing: border-box;\n  position: fixed;\n  z-index: 1;\n  top: 0;\n  display: block;\n  background-color: ", ";\n  height: ", ";\n\n  ", " {\n    align-items: center;\n    background-color: ", ";\n    box-sizing: border-box;\n    display: flex;\n    height: ", ";\n    flex-direction: row;\n    justify-content: space-between;\n    padding: ", ";\n    width: 100%;\n    z-index: 1;\n  }\n\n  ", " {\n    font-size: ", ";\n    margin: 0;\n    background-color: ", ";\n    height: ", ";\n    display: flex;\n    align-items: center;\n    text-align: left;\n    justify-content: space-between;\n    font-family: ", ";\n    font-weight: 500;\n    text-align: left;\n    text-transform: uppercase;\n    a:active,\n    a:visited,\n    a:hover,\n    a:link {\n      color: #fff;\n      text-decoration: none;\n    }\n  }\n\n  ", " {\n    align-items: center;\n    box-sizing: border-box;\n    justify-content: center;\n    display: flex;\n    height: ", ";\n    a:visited,\n    a:link {\n      color: #fff;\n      text-decoration: none;\n    }\n    color: #fff;\n    padding: 0;\n    padding-left: ", ";\n\n    a:active,\n    a:hover {\n      color: ", ";\n    }\n  }\n\n  ", " {\n    display: flex;\n    flex-direction: row;\n    font-size: ", ";\n    font-family: ", ";\n    list-style: none;\n    box-sizing: border-box;\n\n    a {\n      margin-left: ", ";\n      :active,\n      :visited,\n      :hover,\n      :link {\n        text-decoration: none;\n      }\n    }\n  }\n\n  ", " {\n    display: none;\n  }\n\n  @media (max-width: ", ") {\n    height: ", ";\n\n    ", " {\n      height: ", ";\n    }\n\n    ", " {\n      height: ", ";\n    }\n\n    .is-open ", " {\n      box-sizing: border-box;\n      background-color: ", ";\n      display: flex;\n      flex-direction: column;\n      left: 0;\n      min-height: 100vh;\n      position: absolute;\n      top: 0;\n      width: 100%;\n    }\n\n    .is-closed ", " {\n      display: none;\n    }\n\n    ", " {\n      cursor: pointer;\n      box-sizing: border-box;\n      font-size: ", ";\n      margin: 0;\n      padding: ", ";\n      text-align: center;\n      width: auto;\n      text-transform: uppercase;\n\n      :hover {\n        background-color: ", ";\n        padding: ", ";\n      }\n    }\n\n    ", " {\n      cursor: pointer;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      position: absolute;\n      left: calc(100vw - ", ");\n      top: 0;\n      width: ", ";\n      height: ", ";\n      z-index: 2;\n    }\n\n    nav {\n      box-sizing: border-box;\n      padding-top: ", ";\n    }\n  }\n\n  @media (max-width: ", ") {\n    height: ", ";\n\n    ", " {\n      height: ", ";\n    }\n\n    ", " {\n      font-size: ", ";\n      height: ", ";\n    }\n\n    ", " {\n      width: ", ";\n      height: ", ";\n    }\n  }\n"]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -678,80 +678,110 @@ var HeaderUI = styled__default('header')(_templateObject2$2());
 var NavMenuTriggerUI = styled__default('span')(_templateObject3$2());
 var NavMobileMenuUI = styled__default('nav')(_templateObject4$2());
 var NavLinkUI = styled__default('span')(_templateObject5$1());
-var HeaderContainer = styled__default('div')(_templateObject6(), HeaderUI, function (_ref) {
+var HeaderContainer = styled__default('div')(_templateObject6(), function (_ref) {
   var theme = _ref.theme;
   return theme.colors['dark-1'];
 }, function (_ref2) {
   var theme = _ref2.theme;
   return theme.layout.desktop.headerHeight;
-}, function (_ref3) {
+}, HeaderUI, function (_ref3) {
   var theme = _ref3.theme;
-  return "0 ".concat(theme.unit(0.75), " 0 ").concat(theme.unit(0.25));
-}, BrandUI, function (_ref4) {
+  return theme.colors['dark-1'];
+}, function (_ref4) {
   var theme = _ref4.theme;
-  return theme.unit(1.125);
+  return theme.layout.desktop.headerHeight;
 }, function (_ref5) {
   var theme = _ref5.theme;
-  return theme.typography.fonts['font-2'];
-}, NavLinkUI, function (_ref6) {
+  return "0 ".concat(theme.unit(0.75), " 0 ").concat(theme.unit(0.25));
+}, BrandUI, function (_ref6) {
   var theme = _ref6.theme;
-  return theme.layout.desktop.headerHeight;
+  return theme.unit(1.125);
 }, function (_ref7) {
   var theme = _ref7.theme;
-  return theme.unit(1);
+  return theme.colors['dark-1'];
 }, function (_ref8) {
   var theme = _ref8.theme;
-  return theme.colors['dark-3'];
-}, NavMobileMenuUI, function (_ref9) {
+  return theme.layout.desktop.headerHeight;
+}, function (_ref9) {
   var theme = _ref9.theme;
-  return theme.unit(0.7);
-}, function (_ref10) {
-  var theme = _ref10.theme;
   return theme.typography.fonts['font-2'];
+}, NavLinkUI, function (_ref10) {
+  var theme = _ref10.theme;
+  return theme.layout.desktop.headerHeight;
 }, function (_ref11) {
   var theme = _ref11.theme;
-  return theme.unit(0.5);
-}, NavMenuTriggerUI, function (_ref12) {
+  return theme.unit(1);
+}, function (_ref12) {
   var theme = _ref12.theme;
-  return theme.breakPoints.tablet;
+  return theme.colors['dark-3'];
 }, NavMobileMenuUI, function (_ref13) {
   var theme = _ref13.theme;
-  return theme.colors['dark-3'];
-}, NavMobileMenuUI, NavLinkUI, function (_ref14) {
+  return theme.unit(0.7);
+}, function (_ref14) {
   var theme = _ref14.theme;
-  return theme.unit(0.75);
+  return theme.typography.fonts['font-2'];
 }, function (_ref15) {
   var theme = _ref15.theme;
-  return theme.unit(0.25);
-}, function (_ref16) {
+  return theme.unit(0.5);
+}, NavMenuTriggerUI, function (_ref16) {
   var theme = _ref16.theme;
-  return theme.colors['dark-5'];
+  return theme.breakPoints.tablet;
 }, function (_ref17) {
   var theme = _ref17.theme;
-  return theme.unit(0.25);
-}, NavMenuTriggerUI, function (_ref18) {
+  return theme.layout.tablet.headerHeight;
+}, HeaderUI, function (_ref18) {
   var theme = _ref18.theme;
   return theme.layout.tablet.headerHeight;
-}, function (_ref19) {
+}, BrandUI, function (_ref19) {
   var theme = _ref19.theme;
   return theme.layout.tablet.headerHeight;
-}, function (_ref20) {
+}, NavMobileMenuUI, function (_ref20) {
   var theme = _ref20.theme;
-  return theme.layout.tablet.headerHeight;
-}, function (_ref21) {
+  return theme.colors['dark-3'];
+}, NavMobileMenuUI, NavLinkUI, function (_ref21) {
   var theme = _ref21.theme;
-  return theme.breakPoints.mobile;
-}, HeaderUI, function (_ref22) {
+  return theme.unit(0.75);
+}, function (_ref22) {
   var theme = _ref22.theme;
-  return theme.layout.mobile.headerHeight;
-}, BrandUI, function (_ref23) {
+  return theme.unit(0.25);
+}, function (_ref23) {
   var theme = _ref23.theme;
-  return theme.unit(0.66);
-}, NavMenuTriggerUI, function (_ref24) {
+  return theme.colors['dark-5'];
+}, function (_ref24) {
   var theme = _ref24.theme;
-  return theme.layout.mobile.headerHeight;
-}, function (_ref25) {
+  return theme.unit(0.25);
+}, NavMenuTriggerUI, function (_ref25) {
   var theme = _ref25.theme;
+  return theme.layout.tablet.headerHeight;
+}, function (_ref26) {
+  var theme = _ref26.theme;
+  return theme.layout.tablet.headerHeight;
+}, function (_ref27) {
+  var theme = _ref27.theme;
+  return theme.layout.tablet.headerHeight;
+}, function (_ref28) {
+  var theme = _ref28.theme;
+  return theme.unit(2);
+}, function (_ref29) {
+  var theme = _ref29.theme;
+  return theme.breakPoints.mobile;
+}, function (_ref30) {
+  var theme = _ref30.theme;
+  return theme.layout.mobile.headerHeight;
+}, HeaderUI, function (_ref31) {
+  var theme = _ref31.theme;
+  return theme.layout.mobile.headerHeight;
+}, BrandUI, function (_ref32) {
+  var theme = _ref32.theme;
+  return theme.unit(0.66);
+}, function (_ref33) {
+  var theme = _ref33.theme;
+  return theme.layout.mobile.headerHeight;
+}, NavMenuTriggerUI, function (_ref34) {
+  var theme = _ref34.theme;
+  return theme.layout.mobile.headerHeight;
+}, function (_ref35) {
+  var theme = _ref35.theme;
   return theme.layout.mobile.headerHeight;
 });
 
@@ -1075,7 +1105,7 @@ var Header = /*#__PURE__*/function (_React$Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      isOpen: true
+      isOpen: false
     });
 
     _defineProperty(_assertThisInitialized(_this), "onLinkClick", function () {
@@ -1115,10 +1145,6 @@ var Header = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
-
-      this.setState({
-        isOpen: false
-      });
 
       if (typeof window !== 'undefined') {
         window.addEventListener('resize', function () {
@@ -1498,9 +1524,9 @@ var getInnerWidth = function getInnerWidth(_ref2) {
       theme = _ref2.theme;
 
   if (innerWidth === 'medium') {
-    return '720px';
+    return '600px';
   } else if (innerWidth === 'small') {
-    return theme.unit(20);
+    return '550px';
   } else {
     return theme.unit(33);
   }
@@ -1573,7 +1599,7 @@ function Section (_ref) {
     }, /*#__PURE__*/React.createElement(SectionUI, {
       textAlign: textAlign,
       innerWidth: inner_width
-    }, title && getTitle(title), children.length === 2 ? /*#__PURE__*/React.createElement(ColWrapper, {
+    }, title && getTitle(title), children.length === 2 && children[0].props.sidebar.text ? /*#__PURE__*/React.createElement(ColWrapper, {
       key: "".concat(id, "-col-wrap")
     }, /*#__PURE__*/React.createElement(Col1, {
       key: "".concat(id, "-col-1")

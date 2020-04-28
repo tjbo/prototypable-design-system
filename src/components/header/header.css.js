@@ -12,6 +12,14 @@ export const NavLinkUI = styled('span')``
 
 export const HeaderContainer = styled('div')`
   width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  display: block;
+  background-color: ${({ theme }) => theme.colors['dark-1']};
+  height: ${({ theme }) => theme.layout.desktop.headerHeight};
+
   ${HeaderUI} {
     align-items: center;
     background-color: ${({ theme }) => theme.colors['dark-1']};
@@ -21,8 +29,6 @@ export const HeaderContainer = styled('div')`
     flex-direction: row;
     justify-content: space-between;
     padding: ${({ theme }) => `0 ${theme.unit(0.75)} 0 ${theme.unit(0.25)}`};
-    position: fixed;
-    top: 0;
     width: 100%;
     z-index: 1;
   }
@@ -30,11 +36,12 @@ export const HeaderContainer = styled('div')`
   ${BrandUI} {
     font-size: ${({ theme }) => theme.unit(1.125)};
     margin: 0;
-    height: 100%;
+    background-color: ${({ theme }) => theme.colors['dark-1']};
+    height: ${({ theme }) => theme.layout.desktop.headerHeight};
     display: flex;
     align-items: center;
-    text-align: center;
-    justify-content: space-around;
+    text-align: left;
+    justify-content: space-between;
     font-family: ${({ theme }) => theme.typography.fonts['font-2']};
     font-weight: 500;
     text-align: left;
@@ -50,6 +57,7 @@ export const HeaderContainer = styled('div')`
 
   ${NavLinkUI} {
     align-items: center;
+    box-sizing: border-box;
     justify-content: center;
     display: flex;
     height: ${({ theme }) => theme.layout.desktop.headerHeight};
@@ -92,6 +100,16 @@ export const HeaderContainer = styled('div')`
   }
 
   @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
+    height: ${({ theme }) => theme.layout.tablet.headerHeight};
+
+    ${HeaderUI} {
+      height: ${({ theme }) => theme.layout.tablet.headerHeight};
+    }
+
+    ${BrandUI} {
+      height: ${({ theme }) => theme.layout.tablet.headerHeight};
+    }
+
     .is-open ${NavMobileMenuUI} {
       box-sizing: border-box;
       background-color: ${({ theme }) => theme.colors['dark-3']};
@@ -102,7 +120,6 @@ export const HeaderContainer = styled('div')`
       position: absolute;
       top: 0;
       width: 100%;
-      z-index: 1;
     }
 
     .is-closed ${NavMobileMenuUI} {
@@ -137,15 +154,23 @@ export const HeaderContainer = styled('div')`
       height: ${({ theme }) => theme.layout.tablet.headerHeight};
       z-index: 2;
     }
+
+    nav {
+      box-sizing: border-box;
+      padding-top: ${({ theme }) => theme.unit(2)};
+    }
   }
 
   @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+    height: ${({ theme }) => theme.layout.mobile.headerHeight};
+
     ${HeaderUI} {
       height: ${({ theme }) => theme.layout.mobile.headerHeight};
     }
 
     ${BrandUI} {
       font-size: ${({ theme }) => theme.unit(0.66)};
+      height: ${({ theme }) => theme.layout.mobile.headerHeight};
     }
 
     ${NavMenuTriggerUI} {
