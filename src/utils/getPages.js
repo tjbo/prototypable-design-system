@@ -1,7 +1,6 @@
 import getPage from './getPage'
 
 export default function getPages(apiUrl) {
-  console.log('sdafdsafdsfadsfjkdsaklfjdskafdksjl')
   return Prismic.getApi(apiUrl).then(function (api) {
     return api
       .query(Prismic.Predicates.at('document.type', 'page'))
