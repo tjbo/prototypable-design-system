@@ -1556,8 +1556,8 @@ var ColWrapper = styled__default('div')(_templateObject5$3(), function (_ref8) {
   return theme.breakPoints.tablet;
 }, Col1, Col2);
 
-function getTitle(title) {
-  if (!title || !title.text) {
+function getTitle(title, layout_style) {
+  if (!title[0] || !title[0].text || layout_style === 'banner') {
     return '';
   }
 
@@ -1567,9 +1567,9 @@ function getTitle(title) {
     heading3: 'h3',
     heading4: 'h4'
   };
-  return React.createElement(headings[title.type], {
+  return React.createElement(headings[title[0].type], {
     dangerouslySetInnerHTML: {
-      __html: title.text
+      __html: title[0].text
     }
   });
 }
@@ -1599,7 +1599,7 @@ function Section (_ref) {
     }, /*#__PURE__*/React.createElement(SectionUI, {
       textAlign: textAlign,
       innerWidth: inner_width
-    }, title && getTitle(title), children.length === 2 && children[0].props.sidebar.text ? /*#__PURE__*/React.createElement(ColWrapper, {
+    }, title && getTitle(title, children[0].props.layout_style), children.length === 2 && children[0].props.sidebar.text ? /*#__PURE__*/React.createElement(ColWrapper, {
       key: "".concat(id, "-col-wrap")
     }, /*#__PURE__*/React.createElement(Col1, {
       key: "".concat(id, "-col-1")
