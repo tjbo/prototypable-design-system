@@ -1,6 +1,6 @@
 {
   "name": "prototypable-components",
-  "version": "0.3.27",
+  "version": "0.3.28",
   "description": "A design system for making websites",
   "main": "dist/index.js",
   "watch": {
