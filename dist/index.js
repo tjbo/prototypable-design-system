@@ -1167,7 +1167,6 @@ var Header = /*#__PURE__*/function (_React$Component) {
       var children = this.props.children;
       var isOpen = this.state.isOpen;
       var isWithNav = this.isWithNav();
-      console.log('fuking header');
       return /*#__PURE__*/React.createElement(HeaderContainer, null, /*#__PURE__*/React.createElement(HeaderUI, {
         className: isOpen ? 'is-open' : 'is-closed'
       }, React.Children.map(children, function (child) {
