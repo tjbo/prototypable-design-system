@@ -6,8 +6,8 @@ import {
   SectionWrapperUI,
 } from './section.css'
 
-function getTitle(title, layout_style) {
-  if (!title[0] || !title[0].text || layout_style === 'banner') {
+function getTitle(title, layout_style, show_title) {
+  if (!title[0] || !title[0].text || layout_style === 'banner' || !show_title) {
     return ''
   }
 
@@ -39,7 +39,12 @@ export default function ({
     return (
       <SectionWrapperUI background={background}>
         <SectionUI textAlign={textAlign} innerWidth={inner_width}>
-          {title && getTitle(title, children[0].props.layout_style)}
+          {title &&
+            getTitle(
+              title,
+              children[0].props.layout_style,
+              children[0].props.show_title,
+            )}
           {children.length === 2 && children[0].props.sidebar.text ? (
             <ColWrapper key={`${id}-col-wrap`}>
               <Col1 key={`${id}-col-1`}>{children[0]}</Col1>

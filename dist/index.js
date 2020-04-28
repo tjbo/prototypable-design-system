@@ -1556,8 +1556,8 @@ var ColWrapper = styled__default('div')(_templateObject5$3(), function (_ref8) {
   return theme.breakPoints.tablet;
 }, Col1, Col2);
 
-function getTitle(title, layout_style) {
-  if (!title[0] || !title[0].text || layout_style === 'banner') {
+function getTitle(title, layout_style, show_title) {
+  if (!title[0] || !title[0].text || layout_style === 'banner' || !show_title) {
     return '';
   }
 
@@ -1599,7 +1599,7 @@ function Section (_ref) {
     }, /*#__PURE__*/React.createElement(SectionUI, {
       textAlign: textAlign,
       innerWidth: inner_width
-    }, title && getTitle(title, children[0].props.layout_style), children.length === 2 && children[0].props.sidebar.text ? /*#__PURE__*/React.createElement(ColWrapper, {
+    }, title && getTitle(title, children[0].props.layout_style, children[0].props.show_title), children.length === 2 && children[0].props.sidebar.text ? /*#__PURE__*/React.createElement(ColWrapper, {
       key: "".concat(id, "-col-wrap")
     }, /*#__PURE__*/React.createElement(Col1, {
       key: "".concat(id, "-col-1")
@@ -1962,7 +1962,6 @@ function getPage(apiUrl, page) {
 }
 
 function getPages(apiUrl) {
-  console.log('sdafdsafdsfadsfjkdsaklfjdskafdksjl');
   return Prismic$1.getApi(apiUrl).then(function (api) {
     return api.query(Prismic$1.Predicates.at('document.type', 'page')).then(function (response) {
       var promises = response.results.map(function (result) {
