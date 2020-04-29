@@ -354,6 +354,11 @@ h2 + h4 {
           color: ${theme.colors[color]};
          }
        `
+      colors += `a.${color}:active, a.${color}:link, a.${color}:hover, a.${color}:visited
+         {
+          color: ${theme.colors[color]};
+         }
+       `
     }
     return colors
   }}

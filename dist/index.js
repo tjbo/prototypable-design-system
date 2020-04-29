@@ -193,13 +193,19 @@ var BannerUI = styled__default('div')(_templateObject(), function (_ref) {
 });
 
 function Banner (_ref) {
-  var body = _ref.body;
-  return /*#__PURE__*/React.createElement(BannerUI, null, /*#__PURE__*/React.createElement("span", {
-    className: "heading-3 light-3 font-3 italic",
-    dangerouslySetInnerHTML: {
-      __html: body.text
-    }
-  }));
+  var body = _ref.body,
+      children = _ref.children;
+
+  if (body) {
+    return /*#__PURE__*/React.createElement(BannerUI, null, /*#__PURE__*/React.createElement("span", {
+      className: "heading-3 light-3 font-3 italic",
+      dangerouslySetInnerHTML: {
+        __html: body.text
+      }
+    }));
+  } else {
+    return /*#__PURE__*/React.createElement(BannerUI, null, children);
+  }
 }
 
 function _templateObject$1() {
@@ -472,19 +478,31 @@ var GridWrapperUI = styled__default('div')(_templateObject$5(), function (_ref) 
 });
 
 function Grid(_ref) {
-  var body = _ref.body;
-  return /*#__PURE__*/React.createElement(GridWrapperUI, {
-    dangerouslySetInnerHTML: {
-      __html: body
-    }
-  });
+  var body = _ref.body,
+      children = _ref.children;
+
+  if (body) {
+    return /*#__PURE__*/React.createElement(GridWrapperUI, {
+      dangerouslySetInnerHTML: {
+        __html: body
+      }
+    });
+  } else {
+    return /*#__PURE__*/React.createElement(GridWrapperUI, null, children);
+  }
 }
 
 function Cards (_ref) {
-  var body = _ref.body;
-  return /*#__PURE__*/React.createElement(CardsWrapperUI, null, /*#__PURE__*/React.createElement(Grid, {
-    body: body.text
-  }));
+  var body = _ref.body,
+      children = _ref.children;
+
+  if (body) {
+    return /*#__PURE__*/React.createElement(CardsWrapperUI, null, /*#__PURE__*/React.createElement(Grid, {
+      body: body.text
+    }));
+  } else {
+    return /*#__PURE__*/React.createElement(CardsWrapperUI, null, /*#__PURE__*/React.createElement(Grid, null, children));
+  }
 }
 
 function _templateObject$6() {
@@ -1606,7 +1624,7 @@ function Section (_ref) {
     }, /*#__PURE__*/React.createElement(SectionUI, {
       textAlign: textAlign,
       innerWidth: inner_width
-    }, title && getTitle(title, children[0].props.layout_style, children[0].props.show_title), children.length === 2 && children[0].props.sidebar.text ? /*#__PURE__*/React.createElement(ColWrapper, {
+    }, title && getTitle(title, children[0].props.layout_style, children[0].props.show_title), children.length === 2 && children[0].props && children[0].props.sidebar && children[0].props.sidebar.text ? /*#__PURE__*/React.createElement(ColWrapper, {
       key: "".concat(id, "-col-wrap")
     }, /*#__PURE__*/React.createElement(Col1, {
       key: "".concat(id, "-col-1")
@@ -1847,6 +1865,7 @@ var GlobalStyles = styled.createGlobalStyle(_templateObject$f(), function (_ref)
 
   for (var color in theme.colors) {
     colors += ".".concat(color, "\n         {\n          color: ").concat(theme.colors[color], ";\n         }\n       ");
+    colors += "a.".concat(color, ":active, a.").concat(color, ":link, a.").concat(color, ":hover, a.").concat(color, ":visited\n         {\n          color: ").concat(theme.colors[color], ";\n         }\n       ");
   }
 
   return colors;
@@ -2061,13 +2080,14 @@ function getPosts(apiUrl) {
             template: 'src/containers/post'
           };
         });
-        var list = routeData.map(function (post) {
-          var title = post.title,
-              id = post.id,
-              path = post.path;
+        var list = response.results.map(function (post) {
+          var _post$data = post.data,
+              meta = _post$data.meta,
+              title = _post$data.title,
+              id = post.id;
           return {
             id: id,
-            path: path,
+            path: meta[0].slug,
             title: title
           };
         });

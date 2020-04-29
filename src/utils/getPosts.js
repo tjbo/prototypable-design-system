@@ -21,9 +21,12 @@ export default function getPosts(apiUrl) {
             }
           })
 
-          const list = routeData.map((post) => {
-            const { title, id, path } = post
-            return { id, path, title }
+          const list = response.results.map((post) => {
+            const {
+              data: { meta, title },
+              id,
+            } = post
+            return { id, path: meta[0].slug, title }
           })
 
           routeData.push({

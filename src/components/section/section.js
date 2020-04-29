@@ -51,7 +51,10 @@ export default function ({
               children[0].props.layout_style,
               children[0].props.show_title,
             )}
-          {children.length === 2 && children[0].props.sidebar.text ? (
+          {children.length === 2 &&
+          children[0].props &&
+          children[0].props.sidebar &&
+          children[0].props.sidebar.text ? (
             <ColWrapper key={`${id}-col-wrap`}>
               <Col1 key={`${id}-col-1`}>{children[0]}</Col1>
               <Col2 key={`${id}-col-2`} sidebar_width={sidebar_width}>
