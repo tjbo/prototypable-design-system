@@ -17,7 +17,7 @@ export default function getPosts(apiUrl) {
                 }
               },
               path: data.meta[0].slug,
-              template: 'src/containers/post',
+              template: 'src/containers/_post',
             }
           })
 
