@@ -10,7 +10,7 @@ const getBgColor = ({ background, theme }) => {
 
 const getInnerWidth = ({ innerWidth, theme }) => {
   if (innerWidth === 'medium') {
-    return '600px'
+    return '750px'
   } else if (innerWidth === 'small') {
     return '550px'
   } else {
@@ -40,7 +40,7 @@ export const Col1 = styled('div')`
 `
 
 export const Col2 = styled('div')`
-  flex: 1;
+  flex: ${({ sidebar_width }) => sidebar_width};
   margin-left: ${({ theme }) => theme.unit(0.5)};
 `
 

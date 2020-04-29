@@ -7,6 +7,7 @@ import Grid from '../components/grid/'
 import Jumbotron from '../components/jumbotron/'
 import Quote from '../components/quote/'
 import Section from '../components/section/'
+import Form from '../components/form/form'
 
 export default function getComponent(data) {
   const wrapperComponent = {
@@ -20,6 +21,7 @@ export default function getComponent(data) {
     banner: Banner,
     box1: Box1,
     cards: Cards,
+    form: Form,
     default: 'div',
     faq: Faq,
     grid: Grid,
@@ -29,29 +31,26 @@ export default function getComponent(data) {
   const components = []
 
   components.push(
-    React.createElement(layoutComponent[data.data.layout_style] || 'div', {
-      ...data.data,
+    React.createElement(layoutComponent[data.layout_style] || 'div', {
+      ...data,
       key: `${data.id}-wrapper`,
     }),
   )
 
-  if (data.data.sidebar) {
+  if (data.sidebar) {
     components.push(
-      React.createElement(
-        layoutComponent[data.data.sidebar_layout_style] || 'div',
-        {
-          key: `${data.id}-sidebar`,
-          ...data.data,
-          id: data.id,
-        },
-      ),
+      React.createElement(layoutComponent[data.sidebar_layout_style] || 'div', {
+        key: `${data.id}-sidebar`,
+        ...data,
+        id: data.id,
+      }),
     )
   }
 
   return React.createElement(
     wrapperComponent[data.type],
     {
-      ...data.data,
+      ...data,
       key: data.id,
       id: data.id,
     },

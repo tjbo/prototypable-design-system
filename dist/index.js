@@ -1467,7 +1467,7 @@ function _templateObject5$3() {
 }
 
 function _templateObject4$5() {
-  var data = _taggedTemplateLiteral(["\n  flex: 1;\n  margin-left: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  flex: ", ";\n  margin-left: ", ";\n"]);
 
   _templateObject4$5 = function _templateObject4() {
     return data;
@@ -1524,7 +1524,7 @@ var getInnerWidth = function getInnerWidth(_ref2) {
       theme = _ref2.theme;
 
   if (innerWidth === 'medium') {
-    return '600px';
+    return '750px';
   } else if (innerWidth === 'small') {
     return '550px';
   } else {
@@ -1548,16 +1548,21 @@ var SectionUI = styled__default('div')(_templateObject2$7(), getInnerWidth, func
 });
 var Col1 = styled__default('div')(_templateObject3$6());
 var Col2 = styled__default('div')(_templateObject4$5(), function (_ref7) {
-  var theme = _ref7.theme;
+  var sidebar_width = _ref7.sidebar_width;
+  return sidebar_width;
+}, function (_ref8) {
+  var theme = _ref8.theme;
   return theme.unit(0.5);
 });
-var ColWrapper = styled__default('div')(_templateObject5$3(), function (_ref8) {
-  var theme = _ref8.theme;
+var ColWrapper = styled__default('div')(_templateObject5$3(), function (_ref9) {
+  var theme = _ref9.theme;
   return theme.breakPoints.tablet;
 }, Col1, Col2);
 
-function getTitle(title, layout_style, show_title) {
-  if (!title[0] || !title[0].text || layout_style === 'banner' || !show_title) {
+function getTitle(title, layout_style) {
+  var show_title = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+
+  if (!title[0] || !title[0].text || layout_style === 'banner' || !!!show_title) {
     return '';
   }
 
@@ -1586,6 +1591,8 @@ function Section (_ref) {
       isFullWidth = _ref$isFullWidth === void 0 ? false : _ref$isFullWidth,
       _ref$inner_width = _ref.inner_width,
       inner_width = _ref$inner_width === void 0 ? 'big' : _ref$inner_width,
+      _ref$sidebar_width = _ref.sidebar_width,
+      sidebar_width = _ref$sidebar_width === void 0 ? 1 : _ref$sidebar_width,
       _ref$title = _ref.title,
       title = _ref$title === void 0 ? '' : _ref$title;
 
@@ -1604,7 +1611,8 @@ function Section (_ref) {
     }, /*#__PURE__*/React.createElement(Col1, {
       key: "".concat(id, "-col-1")
     }, children[0]), /*#__PURE__*/React.createElement(Col2, {
-      key: "".concat(id, "-col-2")
+      key: "".concat(id, "-col-2"),
+      sidebar_width: sidebar_width
     }, children[1])) : children));
   }
 }
@@ -1636,7 +1644,7 @@ var robotoBoldWoff = "/fonts/roboto-v20-latin-700.woff";
 var robotoBoldWoff2 = "/fonts/roboto-v20-latin-700.woff2";
 
 function _templateObject$f() {
-  var data = _taggedTemplateLiteral(["\n\n/**\n * These values will not show up in content, but can be\n * queried by JavaScript to know which breakpoint is active.\n * Add or remove as many breakpoints as you like.\n */\nbody:before {\n  content: \"mobile\";\n  display: none;\n}\n\n\n@media (min-width: ", ") {\n  body:before {\n    content: \"tablet\";\n  }\n}\n\n@media (min-width: ", ") {\n  body:before {\n    content: \"desktop\";\n  }\n}\n\n\n\n/* pt-serif-regular - latin */\n@font-face {\n  font-family: 'PT Serif';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: local('PT Serif'), local('PTSerif-Regular'),\n       url(", ") format('woff2'), /* Super Modern Browsers */\n       url(", ") format('woff'), /* Modern Browsers */\n\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: local('Roboto Medium'), local('Roboto-Medium'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: local('Roboto Bold'), local('Roboto-Bold'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* css reset */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: 1.125rem;\n  line-height: 1.5;\n  margin: 0;\n  overflow: auto;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nimg {\n  max-width: 100%;\n  height: auto;\n}\n\niframe {\n  max-width: 100%;\n}\n\n\n/* link styles */\na:active, a:visited, a:hover, a:link {\n    color: ", ";\n}\n\n/* list and paragraph styles */\np, ul, code {\n  padding: 0;\n  margin-bottom: ", ";\n}\n\nb {\n  font-weight: bold;\n}\n\nul {\n  list-style: disc;\n  padding-left: ", ";\n};\n}\n\nli {\n  margin-bottom: ", ";\n  margin-left: ", ";\n}\n\ncode {\n  box-sizing: border-box;\n  background-color:  ", ";\n  display: block;\n  padding:  ", ";\n  color: ", ";\n  width: 100%;\n  font-family: 'Courier New', Courier, monospace;\n  white-space: normal;\n\n  font-size: ", ";\n\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n/* heading styles */\nh1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n  margin-bottom: ", ";\n  line-height: 125%;\n}\n\nh1, .heading-1 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh2, .heading-2 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh3, .heading-3 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh4, .heading-4 {\n  font-size: ", ";;\n  font-weight: 500;\n  margin-bottom: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh5, .heading-5 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh6, .heading-6 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh2 + h4 {\n  margin-top: -", ";\n}\n\n\n/* table styles */\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    width: 100%;\n  margin-bottom: ", ";\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td, th {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    th {\n      background-color: ", ";\n    }\n\n\n  }\n\n\n  @media (max-width: ", ") {\n    table.responsive-collapse {\n\n    table, thead, tbody, th, td, tr {\n\t\tdisplay: block;\n\t}\n\n  thead tr {\n\t\tposition: absolute;\n\t\ttop: -9999px;\n\t\tleft: -9999px;\n\t}\n    }\n\n  table.n-plus-2 {\n  td:nth-child(n+2) {\n    display: inline-block\n\t}\n  }\n\n\n\n  }\n\n\n/* makes a class for each color in theme */\n  ", "\n\n/* makes a class for each font in theme */\n", "\n\n/* random text styles */\nblockquote {\n  padding: ", ";\n  background-color:  ", ";\n  border:  ", ";\n  margin:  ", ";\n\n  p:last-child, ul:last-child {\n    margin-bottom: 0;\n  }\n\n}\n\n.italic {\n  font-style: italic;\n}\n\n.text-shadow-dark {\ntext-shadow: 1px 2px #000\n}\n\n.line-height-1 {\n  line-height: 1;\n}\n\n.bold {\n  font-weight: 700;\n}\n\n.lead {\n  font-size: ", ";\n  line-height: 130%;\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n\n"]);
+  var data = _taggedTemplateLiteral(["\n\n/**\n * These values will not show up in content, but can be\n * queried by JavaScript to know which breakpoint is active.\n * Add or remove as many breakpoints as you like.\n */\nbody:before {\n  content: \"mobile\";\n  display: none;\n}\n\n\n@media (min-width: ", ") {\n  body:before {\n    content: \"tablet\";\n  }\n}\n\n@media (min-width: ", ") {\n  body:before {\n    content: \"desktop\";\n  }\n}\n\n\n\n/* pt-serif-regular - latin */\n@font-face {\n  font-family: 'PT Serif';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: local('PT Serif'), local('PTSerif-Regular'),\n       url(", ") format('woff2'), /* Super Modern Browsers */\n       url(", ") format('woff'), /* Modern Browsers */\n\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: local('Roboto Medium'), local('Roboto-Medium'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: local('Roboto Bold'), local('Roboto-Bold'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* css reset */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: 1.125rem;\n  line-height: 1.5;\n  margin: 0;\n  overflow: auto;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nimg {\n  max-width: 100%;\n  height: auto;\n}\n\niframe {\n  max-width: 100%;\n}\n\n\n/* link styles */\na:active, a:visited, a:hover, a:link {\n    color: ", ";\n}\n\n/* list and paragraph styles */\np, ul, code {\n  padding: 0;\n  margin-bottom: ", ";\n}\n\nb {\n  font-weight: bold;\n}\n\nul {\n  list-style: disc;\n  padding-left: ", ";\n};\n}\n\nli {\n  margin-bottom: ", ";\n  margin-left: ", ";\n}\n\ncode {\n  box-sizing: border-box;\n  background-color:  ", ";\n  display: block;\n  padding:  ", ";\n  color: ", ";\n  width: 100%;\n  font-family: 'Courier New', Courier, monospace;\n  white-space: normal;\n\n  font-size: ", ";\n\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n/* heading styles */\nh1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n  margin-bottom: ", ";\n  line-height: 125%;\n}\n\nh1, .heading-1 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh2, .heading-2 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh3, .heading-3 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh4, .heading-4 {\n  font-size: ", ";;\n  font-weight: 500;\n  margin-bottom: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh5, .heading-5 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh6, .heading-6 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh1 + h2, h1 + h2.heading-2 {\n  margin-top: -", ";\n}\n\nh2 + h4 {\n  margin-top: -", ";\n}\n\n\n/* table styles */\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    width: 100%;\n  margin-bottom: ", ";\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td, th {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    th {\n      background-color: ", ";\n    }\n\n\n  }\n\n\n  @media (max-width: ", ") {\n    table.responsive-collapse {\n\n    table, thead, tbody, th, td, tr {\n\t\tdisplay: block;\n\t}\n\n  thead tr {\n\t\tposition: absolute;\n\t\ttop: -9999px;\n\t\tleft: -9999px;\n\t}\n    }\n\n  table.n-plus-2 {\n  td:nth-child(n+2) {\n    display: inline-block\n\t}\n  }\n\n\n\n  }\n\n\n/* makes a class for each color in theme */\n  ", "\n\n/* makes a class for each font in theme */\n", "\n\n/* random text styles */\nblockquote {\n  padding: ", ";\n  background-color:  ", ";\n  border:  ", ";\n  margin:  ", ";\n\n  p:last-child, ul:last-child {\n    margin-bottom: 0;\n  }\n\n}\n\n.italic {\n  font-style: italic;\n}\n\n.text-shadow-dark {\ntext-shadow: 1px 2px #000\n}\n\n.line-height-1 {\n  line-height: 1;\n}\n\n.line-height-1-2-0 {\n  line-height: 1;\n}\n\n.bold {\n  font-weight: 700;\n}\n\n.lead {\n  font-size: ", ";\n  line-height: 130%;\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n\n"]);
 
   _templateObject$f = function _templateObject() {
     return data;
@@ -1805,33 +1813,36 @@ var GlobalStyles = styled.createGlobalStyle(_templateObject$f(), function (_ref)
   return theme.unit(0.5);
 }, function (_ref54) {
   var theme = _ref54.theme;
-  return theme.border;
+  return theme.unit(0.5);
 }, function (_ref55) {
   var theme = _ref55.theme;
   return theme.border;
 }, function (_ref56) {
   var theme = _ref56.theme;
-  return theme.unit(1);
+  return theme.border;
 }, function (_ref57) {
   var theme = _ref57.theme;
-  return theme.border;
+  return theme.unit(1);
 }, function (_ref58) {
   var theme = _ref58.theme;
   return theme.border;
 }, function (_ref59) {
   var theme = _ref59.theme;
-  return theme.unit(0.25);
+  return theme.border;
 }, function (_ref60) {
   var theme = _ref60.theme;
-  return theme.unit(0.5);
+  return theme.unit(0.25);
 }, function (_ref61) {
   var theme = _ref61.theme;
-  return theme.colors['light-1'];
+  return theme.unit(0.5);
 }, function (_ref62) {
   var theme = _ref62.theme;
-  return theme.breakPoints.mobile;
+  return theme.colors['light-1'];
 }, function (_ref63) {
   var theme = _ref63.theme;
+  return theme.breakPoints.mobile;
+}, function (_ref64) {
+  var theme = _ref64.theme;
   var colors = '';
 
   for (var color in theme.colors) {
@@ -1839,8 +1850,8 @@ var GlobalStyles = styled.createGlobalStyle(_templateObject$f(), function (_ref)
   }
 
   return colors;
-}, function (_ref64) {
-  var theme = _ref64.theme;
+}, function (_ref65) {
+  var theme = _ref65.theme;
   var fonts = '';
 
   for (var font in theme.typography.fonts) {
@@ -1848,40 +1859,79 @@ var GlobalStyles = styled.createGlobalStyle(_templateObject$f(), function (_ref)
   }
 
   return fonts;
-}, function (_ref65) {
-  var theme = _ref65.theme;
-  return theme.unit(0.75);
 }, function (_ref66) {
   var theme = _ref66.theme;
-  return theme.colors['light-1'];
+  return theme.unit(0.75);
 }, function (_ref67) {
   var theme = _ref67.theme;
-  return theme.border;
+  return theme.colors['light-1'];
 }, function (_ref68) {
   var theme = _ref68.theme;
-  return "".concat(theme.unit(1), " 0");
+  return theme.border;
 }, function (_ref69) {
   var theme = _ref69.theme;
-  return theme.typography.sizes.desktop.md;
+  return "".concat(theme.unit(1), " 0");
 }, function (_ref70) {
   var theme = _ref70.theme;
-  return theme.typography.fonts['font-3'];
+  return theme.typography.sizes.desktop.md;
 }, function (_ref71) {
   var theme = _ref71.theme;
-  return theme.breakPoints.tablet;
+  return theme.typography.fonts['font-3'];
 }, function (_ref72) {
   var theme = _ref72.theme;
-  return theme.typography.sizes.tablet.md;
+  return theme.breakPoints.tablet;
 }, function (_ref73) {
   var theme = _ref73.theme;
-  return theme.breakPoints.mobile;
+  return theme.typography.sizes.tablet.md;
 }, function (_ref74) {
   var theme = _ref74.theme;
+  return theme.breakPoints.mobile;
+}, function (_ref75) {
+  var theme = _ref75.theme;
   return theme.typography.sizes.mobile.md;
 });
 
 function head () {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(GlobalStyles, null));
+}
+
+function _templateObject$g() {
+  var data = _taggedTemplateLiteral(["\n  form {\n    padding: ", ";\n    border: ", ";\n    background-color: ", ";\n  }\n\n  input,\n  textarea {\n    width: 100%;\n    min-width: 300px;\n    border: none;\n    height: ", ";\n    display: block;\n    margin-bottom: ", ";\n  }\n\n  textarea {\n    height: ", ";\n    resize: none;\n  }\n\n  label {\n    display: block;\n  }\n"]);
+
+  _templateObject$g = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+var FormWrapper = styled__default('div')(_templateObject$g(), function (_ref) {
+  var theme = _ref.theme;
+  return theme.unit(0.5);
+}, function (_ref2) {
+  var theme = _ref2.theme;
+  return theme.border;
+}, function (_ref3) {
+  var theme = _ref3.theme;
+  return theme.colors.light2;
+}, function (_ref4) {
+  var theme = _ref4.theme;
+  return theme.unit(1);
+}, function (_ref5) {
+  var theme = _ref5.theme;
+  return theme.unit(0.5);
+}, function (_ref6) {
+  var theme = _ref6.theme;
+  return theme.unit(3);
+});
+
+function Form(_ref) {
+  var sidebar = _ref.sidebar;
+  return /*#__PURE__*/React.createElement(FormWrapper, {
+    dangerouslySetInnerHTML: {
+      __html: sidebar.text
+    }
+  });
 }
 
 function getComponent(data) {
@@ -1895,25 +1945,26 @@ function getComponent(data) {
     banner: Banner,
     box1: Box1,
     cards: Cards,
+    form: Form,
     "default": 'div',
     faq: Faq,
     grid: Grid,
     quote: Quote
   };
   var components = [];
-  components.push(React.createElement(layoutComponent[data.data.layout_style] || 'div', _objectSpread2({}, data.data, {
+  components.push(React.createElement(layoutComponent[data.layout_style] || 'div', _objectSpread2({}, data, {
     key: "".concat(data.id, "-wrapper")
   })));
 
-  if (data.data.sidebar) {
-    components.push(React.createElement(layoutComponent[data.data.sidebar_layout_style] || 'div', _objectSpread2({
+  if (data.sidebar) {
+    components.push(React.createElement(layoutComponent[data.sidebar_layout_style] || 'div', _objectSpread2({
       key: "".concat(data.id, "-sidebar")
-    }, data.data, {
+    }, data, {
       id: data.id
     })));
   }
 
-  return React.createElement(wrapperComponent[data.type], _objectSpread2({}, data.data, {
+  return React.createElement(wrapperComponent[data.type], _objectSpread2({}, data, {
     key: data.id,
     id: data.id
   }), components);
@@ -1944,11 +1995,10 @@ function getPage(apiUrl, page) {
             data.sidebar = data.sidebar[0];
           }
 
-          return {
-            data: data,
+          return _objectSpread2({}, data, {
             id: id,
             type: type
-          };
+          });
         });
 
         return {
@@ -1962,25 +2012,29 @@ function getPage(apiUrl, page) {
 }
 
 function getPages(apiUrl) {
-  return Prismic$1.getApi(apiUrl).then(function (api) {
-    return api.query(Prismic$1.Predicates.at('document.type', 'page')).then(function (response) {
-      var promises = response.results.map(function (result) {
-        return getPage(apiUrl, result);
-      });
-      return Promise.all(promises).then(function (pages) {
-        return pages.map(function (_ref) {
-          var content = _ref.content,
-              meta = _ref.meta;
-          return {
-            path: meta.slug,
-            getData: function getData() {
-              return {
-                content: content,
-                meta: meta
-              };
-            },
-            template: 'src/containers/page'
-          };
+  return new Promise(function (resolve) {
+    return Prismic$1.getApi(apiUrl).then(function (api) {
+      return api.query(Prismic$1.Predicates.at('document.type', 'page')).then(function (response) {
+        var promises = response.results.map(function (result) {
+          return getPage(apiUrl, result);
+        });
+        return Promise.all(promises).then(function (pages) {
+          var _pages = pages.map(function (_ref) {
+            var content = _ref.content,
+                meta = _ref.meta;
+            return {
+              path: meta.slug,
+              getData: function getData() {
+                return {
+                  content: content,
+                  meta: meta
+                };
+              },
+              template: 'src/containers/page'
+            };
+          });
+
+          resolve(_pages);
         });
       });
     });
@@ -1988,26 +2042,45 @@ function getPages(apiUrl) {
 }
 
 function getPosts(apiUrl) {
-  return Prismic$1.getApi(apiUrl).then(function (api) {
-    return api.query(Prismic$1.Predicates.at('document.type', 'post')).then(function (response) {
-      var promises = response.results.map(function (result) {
-        return getPage(apiUrl, result);
-      });
-      return Promise.all(promises).then(function (pages) {
-        return pages.map(function (_ref) {
-          var content = _ref.content,
-              meta = _ref.meta;
+  return new Promise(function (resolve) {
+    return Prismic$1.getApi(apiUrl).then(function (api) {
+      return api.query(Prismic$1.Predicates.at('document.type', 'post')).then(function (response) {
+        var routeData = response.results.map(function (result) {
+          var first_publication_date = result.first_publication_date,
+              data = result.data,
+              id = result.id;
           return {
-            path: meta.slug,
             getData: function getData() {
-              return {
-                content: content,
-                meta: meta
-              };
+              return _objectSpread2({}, data, {
+                id: id,
+                first_publication_date: first_publication_date,
+                layout_style: 'post'
+              });
             },
+            path: data.meta[0].slug,
             template: 'src/containers/post'
           };
         });
+        var list = routeData.map(function (post) {
+          var title = post.title,
+              id = post.id,
+              path = post.path;
+          return {
+            id: id,
+            path: path,
+            title: title
+          };
+        });
+        routeData.push({
+          getData: function getData() {
+            return {
+              posts: list
+            };
+          },
+          path: '/blog/',
+          template: 'src/pages/blog'
+        });
+        resolve(routeData);
       });
     });
   });

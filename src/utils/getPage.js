@@ -25,7 +25,7 @@ export default function getPage(apiUrl, page) {
             }
 
             return {
-              data,
+              ...data,
               id,
               type,
             }

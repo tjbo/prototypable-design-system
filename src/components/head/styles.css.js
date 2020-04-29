@@ -278,6 +278,10 @@ h6, .heading-6 {
   }
 }
 
+h1 + h2, h1 + h2.heading-2 {
+  margin-top: -${({ theme }) => theme.unit(0.5)};
+}
+
 h2 + h4 {
   margin-top: -${({ theme }) => theme.unit(0.5)};
 }
@@ -389,6 +393,10 @@ text-shadow: 1px 2px #000
 }
 
 .line-height-1 {
+  line-height: 1;
+}
+
+.line-height-1-2-0 {
   line-height: 1;
 }
 
