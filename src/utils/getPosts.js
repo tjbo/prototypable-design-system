@@ -36,7 +36,7 @@ export default function getPosts(apiUrl) {
               }
             },
             path: '/blog/',
-            template: 'src/pages/blog',
+            template: 'src/containers/blog',
           })
 
           resolve(routeData)
