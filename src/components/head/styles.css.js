@@ -35,6 +35,7 @@ body:before {
 
 /* pt-serif-regular - latin */
 @font-face {
+  font-display: block;
   font-family: 'PT Serif';
   font-style: normal;
   font-weight: 400;
@@ -47,6 +48,7 @@ body:before {
 
 /* roboto-700 - latin */
 @font-face {
+  font-display: block;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
@@ -141,8 +143,24 @@ iframe {
 
 
 /* link styles */
-a:active, a:visited, a:hover, a:link {
-    color: ${({ theme }) => theme.colors['dark-3']};
+a:active {
+  color: ${({ theme }) => theme.colors['dark-3']};
+  text-decoration: none;
+}
+
+a:link {
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors['dark-3']};
+}
+
+a:hover {
+  color: ${({ theme }) => theme.colors['dark-3']};
+  text-decoration: underline;
+}
+
+a:visited {
+  color: ${({ theme }) => theme.colors['dark-3']};
+  text-decoration: none;
 }
 
 /* list and paragraph styles */
@@ -421,6 +439,51 @@ text-shadow: 1px 2px #000
   @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
    font-size: ${({ theme }) => theme.typography.sizes.mobile.md};
   }
+}
+
+/* Forms */
+input, textarea {
+    width: 100%;
+    border: ${({ theme }) => `1px solid ${theme.colors['dark-2']}`};
+    font-size: ${({ theme }) => theme.unit(0.5)};
+    display: block;
+    margin-bottom: ${({ theme }) => theme.unit(0.75)};
+    outline: none;
+    padding: ${({ theme }) => theme.unit(0.4)};
+     &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4);
+  }
+  }
+
+  textarea {
+    height: ${({ theme }) => theme.unit(3)};
+    resize: none;
+  }
+
+button {
+  background-color: ${({ theme }) => theme.colors['dark-2']};
+  border: 0;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-family: ${({ theme }) => theme.typography.fonts['font-2']};
+  font-size: ${({ theme }) => theme.unit(0.66)};
+  font-weight: 700;
+  height: ${({ theme }) => theme.unit(1.75)};
+  margin-top: ${({ theme }) => theme.unit(0.66)};
+  width: 100%;
+  /* max-width: ${({ maxWidth }) => maxWidth}px; */
+  background-image: linear-gradient(
+    to bottom,
+    #e52d27 0%,
+    #b31217 41%,
+    #e52d27 100%
+  );
+
+  border:1px solid #d02718;
+  box-shadow: inset 0px 1px 0px 0px #f5978e;
 }
 
 

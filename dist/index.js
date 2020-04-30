@@ -1662,7 +1662,7 @@ var robotoBoldWoff = "/fonts/roboto-v20-latin-700.woff";
 var robotoBoldWoff2 = "/fonts/roboto-v20-latin-700.woff2";
 
 function _templateObject$f() {
-  var data = _taggedTemplateLiteral(["\n\n/**\n * These values will not show up in content, but can be\n * queried by JavaScript to know which breakpoint is active.\n * Add or remove as many breakpoints as you like.\n */\nbody:before {\n  content: \"mobile\";\n  display: none;\n}\n\n\n@media (min-width: ", ") {\n  body:before {\n    content: \"tablet\";\n  }\n}\n\n@media (min-width: ", ") {\n  body:before {\n    content: \"desktop\";\n  }\n}\n\n\n\n/* pt-serif-regular - latin */\n@font-face {\n  font-family: 'PT Serif';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: local('PT Serif'), local('PTSerif-Regular'),\n       url(", ") format('woff2'), /* Super Modern Browsers */\n       url(", ") format('woff'), /* Modern Browsers */\n\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: local('Roboto Medium'), local('Roboto-Medium'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: local('Roboto Bold'), local('Roboto-Bold'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* css reset */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: 1.125rem;\n  line-height: 1.5;\n  margin: 0;\n  overflow: auto;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nimg {\n  max-width: 100%;\n  height: auto;\n}\n\niframe {\n  max-width: 100%;\n}\n\n\n/* link styles */\na:active, a:visited, a:hover, a:link {\n    color: ", ";\n}\n\n/* list and paragraph styles */\np, ul, code {\n  padding: 0;\n  margin-bottom: ", ";\n}\n\nb {\n  font-weight: bold;\n}\n\nul {\n  list-style: disc;\n  padding-left: ", ";\n};\n}\n\nli {\n  margin-bottom: ", ";\n  margin-left: ", ";\n}\n\ncode {\n  box-sizing: border-box;\n  background-color:  ", ";\n  display: block;\n  padding:  ", ";\n  color: ", ";\n  width: 100%;\n  font-family: 'Courier New', Courier, monospace;\n  white-space: normal;\n\n  font-size: ", ";\n\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n/* heading styles */\nh1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n  margin-bottom: ", ";\n  line-height: 125%;\n}\n\nh1, .heading-1 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh2, .heading-2 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh3, .heading-3 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh4, .heading-4 {\n  font-size: ", ";;\n  font-weight: 500;\n  margin-bottom: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh5, .heading-5 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh6, .heading-6 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh1 + h2, h1 + h2.heading-2 {\n  margin-top: -", ";\n}\n\nh2 + h4 {\n  margin-top: -", ";\n}\n\n\n/* table styles */\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    width: 100%;\n  margin-bottom: ", ";\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td, th {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    th {\n      background-color: ", ";\n    }\n\n\n  }\n\n\n  @media (max-width: ", ") {\n    table.responsive-collapse {\n\n    table, thead, tbody, th, td, tr {\n\t\tdisplay: block;\n\t}\n\n  thead tr {\n\t\tposition: absolute;\n\t\ttop: -9999px;\n\t\tleft: -9999px;\n\t}\n    }\n\n  table.n-plus-2 {\n  td:nth-child(n+2) {\n    display: inline-block\n\t}\n  }\n\n\n\n  }\n\n\n/* makes a class for each color in theme */\n  ", "\n\n/* makes a class for each font in theme */\n", "\n\n/* random text styles */\nblockquote {\n  padding: ", ";\n  background-color:  ", ";\n  border:  ", ";\n  margin:  ", ";\n\n  p:last-child, ul:last-child {\n    margin-bottom: 0;\n  }\n\n}\n\n.italic {\n  font-style: italic;\n}\n\n.text-shadow-dark {\ntext-shadow: 1px 2px #000\n}\n\n.line-height-1 {\n  line-height: 1;\n}\n\n.line-height-1-2-0 {\n  line-height: 1;\n}\n\n.bold {\n  font-weight: 700;\n}\n\n.lead {\n  font-size: ", ";\n  line-height: 130%;\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n\n"]);
+  var data = _taggedTemplateLiteral(["\n\n/**\n * These values will not show up in content, but can be\n * queried by JavaScript to know which breakpoint is active.\n * Add or remove as many breakpoints as you like.\n */\nbody:before {\n  content: \"mobile\";\n  display: none;\n}\n\n\n@media (min-width: ", ") {\n  body:before {\n    content: \"tablet\";\n  }\n}\n\n@media (min-width: ", ") {\n  body:before {\n    content: \"desktop\";\n  }\n}\n\n\n\n/* pt-serif-regular - latin */\n@font-face {\n  font-display: block;\n  font-family: 'PT Serif';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: local('PT Serif'), local('PTSerif-Regular'),\n       url(", ") format('woff2'), /* Super Modern Browsers */\n       url(", ") format('woff'), /* Modern Browsers */\n\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-display: block;\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: local('Roboto Medium'), local('Roboto-Medium'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: local('Roboto Bold'), local('Roboto-Bold'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* css reset */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: 1.125rem;\n  line-height: 1.5;\n  margin: 0;\n  overflow: auto;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nimg {\n  max-width: 100%;\n  height: auto;\n}\n\niframe {\n  max-width: 100%;\n}\n\n\n/* link styles */\na:active {\n  color: ", ";\n  text-decoration: none;\n}\n\na:link {\n  text-decoration: none;\n  color: ", ";\n}\n\na:hover {\n  color: ", ";\n  text-decoration: underline;\n}\n\na:visited {\n  color: ", ";\n  text-decoration: none;\n}\n\n/* list and paragraph styles */\np, ul, code {\n  padding: 0;\n  margin-bottom: ", ";\n}\n\nb {\n  font-weight: bold;\n}\n\nul {\n  list-style: disc;\n  padding-left: ", ";\n};\n}\n\nli {\n  margin-bottom: ", ";\n  margin-left: ", ";\n}\n\ncode {\n  box-sizing: border-box;\n  background-color:  ", ";\n  display: block;\n  padding:  ", ";\n  color: ", ";\n  width: 100%;\n  font-family: 'Courier New', Courier, monospace;\n  white-space: normal;\n\n  font-size: ", ";\n\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n/* heading styles */\nh1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n  margin-bottom: ", ";\n  line-height: 125%;\n}\n\nh1, .heading-1 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh2, .heading-2 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh3, .heading-3 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh4, .heading-4 {\n  font-size: ", ";;\n  font-weight: 500;\n  margin-bottom: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh5, .heading-5 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh6, .heading-6 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh1 + h2, h1 + h2.heading-2 {\n  margin-top: -", ";\n}\n\nh2 + h4 {\n  margin-top: -", ";\n}\n\n\n/* table styles */\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    width: 100%;\n  margin-bottom: ", ";\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td, th {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    th {\n      background-color: ", ";\n    }\n\n\n  }\n\n\n  @media (max-width: ", ") {\n    table.responsive-collapse {\n\n    table, thead, tbody, th, td, tr {\n\t\tdisplay: block;\n\t}\n\n  thead tr {\n\t\tposition: absolute;\n\t\ttop: -9999px;\n\t\tleft: -9999px;\n\t}\n    }\n\n  table.n-plus-2 {\n  td:nth-child(n+2) {\n    display: inline-block\n\t}\n  }\n\n\n\n  }\n\n\n/* makes a class for each color in theme */\n  ", "\n\n/* makes a class for each font in theme */\n", "\n\n/* random text styles */\nblockquote {\n  padding: ", ";\n  background-color:  ", ";\n  border:  ", ";\n  margin:  ", ";\n\n  p:last-child, ul:last-child {\n    margin-bottom: 0;\n  }\n\n}\n\n.italic {\n  font-style: italic;\n}\n\n.text-shadow-dark {\ntext-shadow: 1px 2px #000\n}\n\n.line-height-1 {\n  line-height: 1;\n}\n\n.line-height-1-2-0 {\n  line-height: 1;\n}\n\n.bold {\n  font-weight: 700;\n}\n\n.lead {\n  font-size: ", ";\n  line-height: 130%;\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n/* Forms */\ninput, textarea {\n    width: 100%;\n    border: ", ";\n    font-size: ", ";\n    display: block;\n    margin-bottom: ", ";\n    outline: none;\n    padding: ", ";\n     &:focus {\n      outline: none;\n      box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4);\n  }\n  }\n\n  textarea {\n    height: ", ";\n    resize: none;\n  }\n\nbutton {\n  background-color: ", ";\n  border: 0;\n  border-radius: 5px;\n  color: #fff;\n  cursor: pointer;\n  display: block;\n  font-family: ", ";\n  font-size: ", ";\n  font-weight: 700;\n  height: ", ";\n  margin-top: ", ";\n  width: 100%;\n  /* max-width: ", "px; */\n  background-image: linear-gradient(\n    to bottom,\n    #e52d27 0%,\n    #b31217 41%,\n    #e52d27 100%\n  );\n\n  border:1px solid #d02718;\n  box-shadow: inset 0px 1px 0px 0px #f5978e;\n}\n\n\n"]);
 
   _templateObject$f = function _templateObject() {
     return data;
@@ -1687,160 +1687,160 @@ var GlobalStyles = styled.createGlobalStyle(_templateObject$f(), function (_ref)
   return theme.colors['dark-3'];
 }, function (_ref6) {
   var theme = _ref6.theme;
-  return theme.unit(1);
+  return theme.colors['dark-3'];
 }, function (_ref7) {
   var theme = _ref7.theme;
-  return theme.unit(1);
+  return theme.colors['dark-3'];
 }, function (_ref8) {
   var theme = _ref8.theme;
-  return theme.unit(0.25);
+  return theme.colors['dark-3'];
 }, function (_ref9) {
   var theme = _ref9.theme;
-  return theme.unit(0.75);
+  return theme.unit(1);
 }, function (_ref10) {
   var theme = _ref10.theme;
-  return theme.colors['light-1'];
+  return theme.unit(1);
 }, function (_ref11) {
   var theme = _ref11.theme;
-  return theme.unit(0.5);
+  return theme.unit(0.25);
 }, function (_ref12) {
   var theme = _ref12.theme;
-  return theme.colors['dark-1'];
+  return theme.unit(0.75);
 }, function (_ref13) {
   var theme = _ref13.theme;
-  return theme.typography.sizes.desktop.sm;
+  return theme.colors['light-1'];
 }, function (_ref14) {
   var theme = _ref14.theme;
-  return theme.breakPoints.tablet;
+  return theme.unit(0.5);
 }, function (_ref15) {
   var theme = _ref15.theme;
-  return theme.typography.sizes.tablet.sm;
+  return theme.colors['dark-1'];
 }, function (_ref16) {
   var theme = _ref16.theme;
-  return theme.breakPoints.mobile;
+  return theme.typography.sizes.desktop.sm;
 }, function (_ref17) {
   var theme = _ref17.theme;
-  return theme.typography.sizes.mobile.xsm;
+  return theme.breakPoints.tablet;
 }, function (_ref18) {
   var theme = _ref18.theme;
-  return theme.typography.fonts['font-2'];
+  return theme.typography.sizes.tablet.sm;
 }, function (_ref19) {
   var theme = _ref19.theme;
-  return theme.unit(0.5);
+  return theme.breakPoints.mobile;
 }, function (_ref20) {
   var theme = _ref20.theme;
-  return theme.typography.sizes.desktop.xxlg;
+  return theme.typography.sizes.mobile.xsm;
 }, function (_ref21) {
   var theme = _ref21.theme;
-  return theme.breakPoints.tablet;
+  return theme.typography.fonts['font-2'];
 }, function (_ref22) {
   var theme = _ref22.theme;
-  return theme.typography.sizes.tablet.xxlg;
+  return theme.unit(0.5);
 }, function (_ref23) {
   var theme = _ref23.theme;
-  return theme.breakPoints.mobile;
+  return theme.typography.sizes.desktop.xxlg;
 }, function (_ref24) {
   var theme = _ref24.theme;
-  return theme.typography.sizes.mobile.xxlg;
+  return theme.breakPoints.tablet;
 }, function (_ref25) {
   var theme = _ref25.theme;
-  return theme.typography.sizes.desktop.xlg;
+  return theme.typography.sizes.tablet.xxlg;
 }, function (_ref26) {
   var theme = _ref26.theme;
-  return theme.breakPoints.tablet;
+  return theme.breakPoints.mobile;
 }, function (_ref27) {
   var theme = _ref27.theme;
-  return theme.typography.sizes.tablet.xlg;
+  return theme.typography.sizes.mobile.xxlg;
 }, function (_ref28) {
   var theme = _ref28.theme;
-  return theme.breakPoints.mobile;
+  return theme.typography.sizes.desktop.xlg;
 }, function (_ref29) {
   var theme = _ref29.theme;
-  return theme.typography.sizes.mobile.xlg;
+  return theme.breakPoints.tablet;
 }, function (_ref30) {
   var theme = _ref30.theme;
-  return theme.typography.sizes.desktop.lg;
+  return theme.typography.sizes.tablet.xlg;
 }, function (_ref31) {
   var theme = _ref31.theme;
-  return theme.breakPoints.tablet;
+  return theme.breakPoints.mobile;
 }, function (_ref32) {
   var theme = _ref32.theme;
-  return theme.typography.sizes.tablet.lg;
+  return theme.typography.sizes.mobile.xlg;
 }, function (_ref33) {
   var theme = _ref33.theme;
-  return theme.breakPoints.mobile;
+  return theme.typography.sizes.desktop.lg;
 }, function (_ref34) {
   var theme = _ref34.theme;
-  return theme.typography.sizes.mobile.lg;
+  return theme.breakPoints.tablet;
 }, function (_ref35) {
   var theme = _ref35.theme;
-  return theme.typography.sizes.desktop.md;
+  return theme.typography.sizes.tablet.lg;
 }, function (_ref36) {
   var theme = _ref36.theme;
-  return theme.unit(0.3);
+  return theme.breakPoints.mobile;
 }, function (_ref37) {
   var theme = _ref37.theme;
-  return theme.breakPoints.tablet;
+  return theme.typography.sizes.mobile.lg;
 }, function (_ref38) {
   var theme = _ref38.theme;
-  return theme.typography.sizes.tablet.md;
+  return theme.typography.sizes.desktop.md;
 }, function (_ref39) {
   var theme = _ref39.theme;
-  return theme.breakPoints.mobile;
+  return theme.unit(0.3);
 }, function (_ref40) {
   var theme = _ref40.theme;
-  return theme.typography.sizes.mobile.md;
+  return theme.breakPoints.tablet;
 }, function (_ref41) {
   var theme = _ref41.theme;
-  return theme.typography.fonts['font-1'];
+  return theme.typography.sizes.tablet.md;
 }, function (_ref42) {
   var theme = _ref42.theme;
-  return theme.typography.sizes.desktop.sm;
+  return theme.breakPoints.mobile;
 }, function (_ref43) {
   var theme = _ref43.theme;
-  return theme.breakPoints.tablet;
+  return theme.typography.sizes.mobile.md;
 }, function (_ref44) {
   var theme = _ref44.theme;
-  return theme.typography.sizes.tablet.sm;
+  return theme.typography.fonts['font-1'];
 }, function (_ref45) {
   var theme = _ref45.theme;
-  return theme.breakPoints.mobile;
+  return theme.typography.sizes.desktop.sm;
 }, function (_ref46) {
   var theme = _ref46.theme;
-  return theme.typography.sizes.mobile.sm;
+  return theme.breakPoints.tablet;
 }, function (_ref47) {
   var theme = _ref47.theme;
-  return theme.typography.fonts['font-1'];
+  return theme.typography.sizes.tablet.sm;
 }, function (_ref48) {
   var theme = _ref48.theme;
-  return theme.typography.sizes.desktop.xsm;
+  return theme.breakPoints.mobile;
 }, function (_ref49) {
   var theme = _ref49.theme;
-  return theme.breakPoints.tablet;
+  return theme.typography.sizes.mobile.sm;
 }, function (_ref50) {
   var theme = _ref50.theme;
-  return theme.typography.sizes.tablet.xsm;
+  return theme.typography.fonts['font-1'];
 }, function (_ref51) {
   var theme = _ref51.theme;
-  return theme.breakPoints.mobile;
+  return theme.typography.sizes.desktop.xsm;
 }, function (_ref52) {
   var theme = _ref52.theme;
-  return theme.typography.sizes.mobile.xsm;
+  return theme.breakPoints.tablet;
 }, function (_ref53) {
   var theme = _ref53.theme;
-  return theme.unit(0.5);
+  return theme.typography.sizes.tablet.xsm;
 }, function (_ref54) {
   var theme = _ref54.theme;
-  return theme.unit(0.5);
+  return theme.breakPoints.mobile;
 }, function (_ref55) {
   var theme = _ref55.theme;
-  return theme.border;
+  return theme.typography.sizes.mobile.xsm;
 }, function (_ref56) {
   var theme = _ref56.theme;
-  return theme.border;
+  return theme.unit(0.5);
 }, function (_ref57) {
   var theme = _ref57.theme;
-  return theme.unit(1);
+  return theme.unit(0.5);
 }, function (_ref58) {
   var theme = _ref58.theme;
   return theme.border;
@@ -1849,18 +1849,27 @@ var GlobalStyles = styled.createGlobalStyle(_templateObject$f(), function (_ref)
   return theme.border;
 }, function (_ref60) {
   var theme = _ref60.theme;
-  return theme.unit(0.25);
+  return theme.unit(1);
 }, function (_ref61) {
   var theme = _ref61.theme;
-  return theme.unit(0.5);
+  return theme.border;
 }, function (_ref62) {
   var theme = _ref62.theme;
-  return theme.colors['light-1'];
+  return theme.border;
 }, function (_ref63) {
   var theme = _ref63.theme;
-  return theme.breakPoints.mobile;
+  return theme.unit(0.25);
 }, function (_ref64) {
   var theme = _ref64.theme;
+  return theme.unit(0.5);
+}, function (_ref65) {
+  var theme = _ref65.theme;
+  return theme.colors['light-1'];
+}, function (_ref66) {
+  var theme = _ref66.theme;
+  return theme.breakPoints.mobile;
+}, function (_ref67) {
+  var theme = _ref67.theme;
   var colors = '';
 
   for (var color in theme.colors) {
@@ -1869,8 +1878,8 @@ var GlobalStyles = styled.createGlobalStyle(_templateObject$f(), function (_ref)
   }
 
   return colors;
-}, function (_ref65) {
-  var theme = _ref65.theme;
+}, function (_ref68) {
+  var theme = _ref68.theme;
   var fonts = '';
 
   for (var font in theme.typography.fonts) {
@@ -1878,36 +1887,69 @@ var GlobalStyles = styled.createGlobalStyle(_templateObject$f(), function (_ref)
   }
 
   return fonts;
-}, function (_ref66) {
-  var theme = _ref66.theme;
-  return theme.unit(0.75);
-}, function (_ref67) {
-  var theme = _ref67.theme;
-  return theme.colors['light-1'];
-}, function (_ref68) {
-  var theme = _ref68.theme;
-  return theme.border;
 }, function (_ref69) {
   var theme = _ref69.theme;
-  return "".concat(theme.unit(1), " 0");
+  return theme.unit(0.75);
 }, function (_ref70) {
   var theme = _ref70.theme;
-  return theme.typography.sizes.desktop.md;
+  return theme.colors['light-1'];
 }, function (_ref71) {
   var theme = _ref71.theme;
-  return theme.typography.fonts['font-3'];
+  return theme.border;
 }, function (_ref72) {
   var theme = _ref72.theme;
-  return theme.breakPoints.tablet;
+  return "".concat(theme.unit(1), " 0");
 }, function (_ref73) {
   var theme = _ref73.theme;
-  return theme.typography.sizes.tablet.md;
+  return theme.typography.sizes.desktop.md;
 }, function (_ref74) {
   var theme = _ref74.theme;
-  return theme.breakPoints.mobile;
+  return theme.typography.fonts['font-3'];
 }, function (_ref75) {
   var theme = _ref75.theme;
+  return theme.breakPoints.tablet;
+}, function (_ref76) {
+  var theme = _ref76.theme;
+  return theme.typography.sizes.tablet.md;
+}, function (_ref77) {
+  var theme = _ref77.theme;
+  return theme.breakPoints.mobile;
+}, function (_ref78) {
+  var theme = _ref78.theme;
   return theme.typography.sizes.mobile.md;
+}, function (_ref79) {
+  var theme = _ref79.theme;
+  return "1px solid ".concat(theme.colors['dark-2']);
+}, function (_ref80) {
+  var theme = _ref80.theme;
+  return theme.unit(0.5);
+}, function (_ref81) {
+  var theme = _ref81.theme;
+  return theme.unit(0.75);
+}, function (_ref82) {
+  var theme = _ref82.theme;
+  return theme.unit(0.4);
+}, function (_ref83) {
+  var theme = _ref83.theme;
+  return theme.unit(3);
+}, function (_ref84) {
+  var theme = _ref84.theme;
+  return theme.colors['dark-2'];
+}, function (_ref85) {
+  var theme = _ref85.theme;
+  return theme.typography.fonts['font-2'];
+}, function (_ref86) {
+  var theme = _ref86.theme;
+  return theme.unit(0.66);
+}, function (_ref87) {
+  var theme = _ref87.theme;
+  return theme.unit(1.75);
+}, function (_ref88) {
+  var theme = _ref88.theme;
+  return theme.unit(0.66);
+}, function (_ref89) {
+  var maxWidth = _ref89.maxWidth;
+  return maxWidth;
 });
 
 function head () {
@@ -1915,7 +1957,7 @@ function head () {
 }
 
 function _templateObject$g() {
-  var data = _taggedTemplateLiteral(["\n  form {\n    padding: ", ";\n    border: ", ";\n    background-color: ", ";\n  }\n\n  input,\n  textarea {\n    width: 100%;\n    min-width: 300px;\n    border: none;\n    height: ", ";\n    display: block;\n    margin-bottom: ", ";\n  }\n\n  textarea {\n    height: ", ";\n    resize: none;\n  }\n\n  label {\n    display: block;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  form {\n    padding: ", ";\n    /* border: ", "; */\n    background-color: ", ";\n  }\n\n  label {\n    display: block;\n  }\n"]);
 
   _templateObject$g = function _templateObject() {
     return data;
@@ -1933,15 +1975,6 @@ var FormWrapper = styled__default('div')(_templateObject$g(), function (_ref) {
 }, function (_ref3) {
   var theme = _ref3.theme;
   return theme.colors.light2;
-}, function (_ref4) {
-  var theme = _ref4.theme;
-  return theme.unit(1);
-}, function (_ref5) {
-  var theme = _ref5.theme;
-  return theme.unit(0.5);
-}, function (_ref6) {
-  var theme = _ref6.theme;
-  return theme.unit(3);
 });
 
 function Form(_ref) {
@@ -2040,13 +2073,17 @@ function getPages(apiUrl) {
         return Promise.all(promises).then(function (pages) {
           var _pages = pages.map(function (_ref) {
             var content = _ref.content,
-                meta = _ref.meta;
+                meta = _ref.meta,
+                page = _ref.page;
             return {
               path: meta.slug,
               getData: function getData() {
                 return {
                   content: content,
-                  meta: meta
+                  meta: meta,
+                  forms: {
+                    has_form: page.data.has_form
+                  }
                 };
               },
               template: 'src/containers/page'

@@ -10,19 +10,21 @@ export default function getPages(apiUrl) {
             return getPage(apiUrl, result)
           })
           return Promise.all(promises).then((pages) => {
-            const _pages = pages.map(({ content, meta }) => {
+            const _pages = pages.map(({ content, meta, page }) => {
               return {
                 path: meta.slug,
                 getData() {
                   return {
                     content,
                     meta,
+                    forms: {
+                      has_form: page.data.has_form,
+                    },
                   }
                 },
                 template: 'src/containers/page',
               }
             })
-
             resolve(_pages)
           })
         })
