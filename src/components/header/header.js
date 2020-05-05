@@ -53,10 +53,12 @@ class Container extends React.Component {
   }
 
   isDesktop() {
+    console.log('this', this.state.breakPoint)
     return this.state.breakPoint === 'desktop'
   }
 
   render() {
+    console.log('render header')
     const { children } = this.props
     const content = React.Children.map(children, (child) =>
       React.cloneElement(child, {

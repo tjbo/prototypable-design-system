@@ -1125,7 +1125,6 @@ var Dropdown$1 = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      console.log('dd', this.props);
       var _this$props = this.props,
           children = _this$props.children,
           isParentMenuOpen = _this$props.isParentMenuOpen,
@@ -1140,7 +1139,6 @@ var Dropdown$1 = /*#__PURE__*/function (_React$Component) {
       }, text, /*#__PURE__*/React.createElement(LinkArrowUI, {
         isOpen: isOpen
       })), /*#__PURE__*/React.createElement("ul", null, isOpen && React.Children.map(children, function (child) {
-        // console.log('child', child)
         return /*#__PURE__*/React.createElement("li", null, React.cloneElement(child, {
           onClick: function onClick(event) {
             isParentMenuOpen && _this2.props.closeParentMenu();
@@ -1363,6 +1361,7 @@ var Container$2 = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "isDesktop",
     value: function isDesktop() {
+      console.log('this', this.state.breakPoint);
       return this.state.breakPoint === 'desktop';
     }
   }, {
@@ -1370,6 +1369,7 @@ var Container$2 = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
+      console.log('render header');
       var children = this.props.children;
       var content = React.Children.map(children, function (child) {
         return React.cloneElement(child, {

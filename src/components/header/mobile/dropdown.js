@@ -18,7 +18,6 @@ export default class Dropdown extends React.Component {
   }
 
   render() {
-    console.log('dd', this.props)
     const { children, isParentMenuOpen, text } = this.props
     const { isOpen } = this.state
     return (
@@ -35,7 +34,6 @@ export default class Dropdown extends React.Component {
           <ul>
             {isOpen &&
               React.Children.map(children, (child) => {
-                // console.log('child', child)
                 return (
                   <li>
                     {React.cloneElement(child, {
