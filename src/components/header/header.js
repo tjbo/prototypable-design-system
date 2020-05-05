@@ -1,24 +1,23 @@
 import React from 'react'
-import {
-  BrandUI,
-  HeaderContainer,
-  HeaderUI,
-  NavLinkUI,
-  NavMobileMenuUI,
-  NavMenuTriggerUI,
-} from './header.css'
-import NavDropdown from './navDropdown'
-import TriggerIconUI from './triggerIcon'
-import { onShowModal, onHideModal } from '../body'
+import { addListener } from '../head/breakPoints'
+import DesktopHeader from './desktop/'
+import MobileHeader from './mobile/'
 
-class Header extends React.Component {
+class Container extends React.Component {
   state = {
     isOpen: false,
+    breakPoint: 'desktop',
+  }
+
+  onBreakPointChange = (breakPoint) => {
+    this.setState({ breakPoint })
   }
 
   componentDidMount() {
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', () => this.onResize())
+      const breakPoint = addListener(this.onBreakPointChange)
+      this.setState({ breakPoint })
     }
   }
 
@@ -53,63 +52,92 @@ class Header extends React.Component {
     )
   }
 
+  isDesktop() {
+    return this.state.breakPoint === 'desktop'
+  }
+
   render() {
     const { children } = this.props
-    const { isOpen } = this.state
-    const isWithNav = this.isWithNav()
+    const content = React.Children.map(children, (child) =>
+      React.cloneElement(child, {
+        isDesktop: this.isDesktop(),
+      }),
+    )
+
+    if (this.isDesktop()) {
+      return <DesktopHeader.Container>{content}</DesktopHeader.Container>
+    } else {
+      return <MobileHeader.Container>{content}</MobileHeader.Container>
+    }
+  }
+}
+
+function Brand({ children, isDesktop }) {
+  if (isDesktop) {
+    return <DesktopHeader.Brand>{children}</DesktopHeader.Brand>
+  } else {
+    return <MobileHeader.Brand>{children}</MobileHeader.Brand>
+  }
+}
+
+function Menu(props) {
+  const { isDesktop } = props
+  if (isDesktop) {
+    const { children } = props
+    const content = React.Children.map(children, (child) =>
+      React.cloneElement(child, {
+        ...child.props,
+        isDesktop,
+      }),
+    )
+    return <DesktopHeader.Menu>{content}</DesktopHeader.Menu>
+  } else {
+    const { children, closeParentMenu, isParentMenuOpen } = props
+    const content = React.Children.map(children, (child) =>
+      React.cloneElement(child, {
+        ...child.props,
+        closeParentMenu,
+        isDesktop,
+        isParentMenuOpen,
+      }),
+    )
+    return <MobileHeader.Menu {...{ ...props }}>{content}</MobileHeader.Menu>
+  }
+}
+
+function Link({ children, isDesktop }) {
+  if (isDesktop) {
+    return <DesktopHeader.Link>{children}</DesktopHeader.Link>
+  } else {
+    return <MobileHeader.Link>{children}</MobileHeader.Link>
+  }
+}
+
+function Dropdown(props) {
+  const { children, isDesktop, text } = props
+
+  if (isDesktop) {
     return (
-      <HeaderContainer>
-        <HeaderUI className={isOpen ? 'is-open' : 'is-closed'}>
-          {React.Children.map(children, (child) =>
-            React.cloneElement(child, {
-              closeParentMenu: this.toggleMenu,
-              isParentMenuOpen: isOpen,
-            }),
-          )}
-          {isWithNav ? (
-            <NavMenuTriggerUI onClick={this.toggleMenu}>
-              <TriggerIconUI isOpen={isOpen} />
-            </NavMenuTriggerUI>
-          ) : null}
-        </HeaderUI>
-      </HeaderContainer>
+      <DesktopHeader.Dropdown text={text}>{children}</DesktopHeader.Dropdown>
+    )
+  } else {
+    return (
+      <MobileHeader.Dropdown {...{ ...props }}>
+        {children}
+      </MobileHeader.Dropdown>
     )
   }
 }
 
-Header.Brand = function Brand({ children }) {
-  return (
-    <BrandUI>
-      <a href="/">{children}</a>
-    </BrandUI>
-  )
+function Divider() {
+  return <hr />
 }
 
-Header.NavMenu = function ({ children, isParentMenuOpen, closeParentMenu }) {
-  return (
-    <NavMobileMenuUI>
-      {React.Children.map(children, (child) =>
-        React.cloneElement(child, {
-          closeParentMenu,
-          isParentMenuOpen,
-        }),
-      )}
-    </NavMobileMenuUI>
-  )
+export default {
+  Brand,
+  Container,
+  Divider,
+  Dropdown,
+  Link,
+  Menu,
 }
-
-Header.NavLink = function ({ children, closeParentMenu, isParentMenuOpen }) {
-  return (
-    <NavLinkUI
-      onClick={(event) => {
-        isParentMenuOpen && closeParentMenu()
-        event.nativeEvent.stopPropagation()
-      }}
-    >
-      {children}
-    </NavLinkUI>
-  )
-}
-Header.NavDropdown = NavDropdown
-
-export default Header

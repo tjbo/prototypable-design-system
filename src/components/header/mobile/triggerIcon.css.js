@@ -1,7 +1,7 @@
-import makePixelValue from '../../utils/makePixelValue'
+import makePixelValue from '../../../utils/makePixelValue'
 
 const heightLine = 3
-const heightIcon = 20
+const heightIcon = 16
 const translateY = heightIcon / 2
 const translateY1 = makePixelValue(translateY)
 
@@ -40,7 +40,14 @@ export const Line3UI = styled(LineUI)`
   }};
 `
 
-export const TriggerIconUI = styled('div')`
+export const ContainerUI = styled('div')`
+  position: absolute;
+  padding: ${({ theme }) => theme.unit(0.5)};
+  right: 0;
+  top: 0;
+`
+
+export const ContainerInnerUI = styled('div')`
   display: block;
   height: ${makePixelValue(heightIcon)};
   margin: (${makePixelValue(heightIcon * 2)}) auto ${heightIcon} auto;
@@ -48,4 +55,5 @@ export const TriggerIconUI = styled('div')`
   position: relative;
   width: ${({ theme }) => theme.unit(1)};
   z-index: 9999;
+  cursor: pointer;
 `

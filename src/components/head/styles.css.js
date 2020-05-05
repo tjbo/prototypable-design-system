@@ -14,20 +14,20 @@ const GlobalStyles = createGlobalStyle`
  * Add or remove as many breakpoints as you like.
  */
 body:before {
-  content: "mobile";
+  content: "desktop";
   display: none;
 }
 
 
-@media (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
+@media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
   body:before {
     content: "tablet";
   }
 }
 
-@media (min-width: ${({ theme }) => theme.breakPoints.desktop}) {
+@media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
   body:before {
-    content: "desktop";
+    content: "mobile";
   }
 }
 
