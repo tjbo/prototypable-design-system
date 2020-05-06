@@ -23,27 +23,6 @@ export const ContainerInnerUI = styled('div')`
   padding-right: 75px;
 `
 
-export const BrandUI = styled('div')`
-  display: flex;
-  align-items: center;
-  font-size: ${({ theme }) => theme.unit(1.125)};
-  float: left;
-  margin: 0;
-  background-color: ${({ theme }) => theme.colors['dark-1']};
-  height: ${({ theme }) => theme.layout.desktop.headerHeight};
-  font-family: ${({ theme }) => theme.typography.fonts['font-2']};
-  font-weight: 500;
-  width: 40%;
-  text-transform: uppercase;
-  a:active,
-  a:visited,
-  a:hover,
-  a:link {
-    color: #fff;
-    text-decoration: none;
-  }
-`
-
 export const DropdownUI = styled('div')`
   box-sizing: border-box;
   cursor: pointer;

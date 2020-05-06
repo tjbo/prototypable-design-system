@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-  BrandUI,
-  ContainerInnerUI,
-  ContainerUI,
-  LinkUI,
-  MenuUI,
-} from './mobile.css'
+import { ContainerInnerUI, ContainerUI, LinkUI, MenuUI } from './mobile.css'
 import Trigger from './triggerIcon'
 import Dropdown from './dropdown'
 import { onShowModal, onHideModal } from '../../body'
@@ -64,11 +58,7 @@ class Container extends React.Component {
 }
 
 const Brand = function Brand({ children }) {
-  return (
-    <BrandUI>
-      <a href="/">{children}</a>
-    </BrandUI>
-  )
+  return children
 }
 
 function Link(props) {

@@ -22,30 +22,6 @@ export const ContainerInnerUI = styled('div')`
   z-index: 1;
 `
 
-export const BrandUI = styled('div')`
-  background-color: ${({ theme }) => theme.colors['dark-1']};
-  color: ${({ theme }) => theme.colors['light-1']};
-  display: flex;
-  align-items: center;
-  float: left;
-  font-family: ${({ theme }) => theme.typography.fonts['font-2']};
-  font-size: ${({ theme }) => theme.unit(0.66)};
-  font-weight: 500;
-  height: ${({ theme }) => theme.layout.mobile.headerHeight};
-  margin: 0;
-  text-align: left;
-  text-transform: uppercase;
-  width: 40%;
-
-  a:active,
-  a:visited,
-  a:hover,
-  a:link {
-    color: #fff;
-    text-decoration: none;
-  }
-`
-
 export const LinkUI = styled('div')`
   color: ${({ theme }) => theme.colors['light-1']};
   cursor: pointer;

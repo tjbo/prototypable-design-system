@@ -1,5 +1,4 @@
 import {
-  BrandUI,
   DropdownUI,
   ContainerInnerUI,
   ContainerUI,
@@ -16,11 +15,7 @@ function Container({ children }) {
 }
 
 const Brand = function Brand({ children }) {
-  return (
-    <BrandUI>
-      <a href="/">{children}</a>
-    </BrandUI>
-  )
+  return children
 }
 
 function Dropdown({ children, text }) {

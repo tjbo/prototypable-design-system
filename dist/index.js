@@ -226,7 +226,7 @@ var BodyUI = styled__default('div')(_templateObject$1(), function (_ref) {
   return theme.breakPoints.desktop;
 }, function (_ref3) {
   var theme = _ref3.theme;
-  return theme.layout.tablet.headerHeight;
+  return theme.layout.mobile.headerHeight;
 }, function (_ref4) {
   var theme = _ref4.theme;
   return theme.breakPoints.mobile;
@@ -657,18 +657,8 @@ if (typeof window !== 'undefined') {
   window.addEventListener('resize', refreshValue);
 }
 
-function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  position: relative;\n"]);
-
-  _templateObject6 = function _templateObject6() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject5$1() {
-  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  box-sizing: border-box;\n  display: flex;\n  font-family: ", ";\n  justify-content: center;\n  height: ", ";\n  a:visited,\n  a:link {\n    color: #fff;\n    text-decoration: none;\n  }\n  color: #fff;\n  padding: 0;\n  padding-left: ", ";\n  a:active,\n  a:hover {\n    color: ", ";\n    cursor: pointer;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  position: relative;\n"]);
 
   _templateObject5$1 = function _templateObject5() {
     return data;
@@ -678,7 +668,7 @@ function _templateObject5$1() {
 }
 
 function _templateObject4$2() {
-  var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  cursor: pointer;\n  display: block;\n  height: ", ";\n  position: relative;\n  float: left;\n\n  ul {\n    background-color: #fff;\n    box-sizing: border-box;\n    display: none;\n    list-style: none;\n    margin: 0;\n    width: 250px;\n    padding-left: 0;\n    position: relative;\n    z-index: 1;\n    border: ", ";\n    display: none;\n    color: ", ";\n    cursor: pointer;\n    position: absolute;\n    margin-right: -125px;\n    right: 50%;\n    top: 100%;\n\n    li {\n      box-sizing: border-box;\n      cursor: pointer;\n      margin-left: 0;\n      a {\n        :hover {\n          background-color: ", ";\n          color: #fff;\n          text-decoration: none;\n        }\n        box-sizing: border-box;\n        display: block;\n        font-family: ", ";\n        margin-left: 0;\n        min-width: 100%;\n        padding: ", ";\n      }\n    }\n  }\n\n  :hover {\n    ul {\n      display: block;\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  box-sizing: border-box;\n  display: flex;\n  font-family: ", ";\n  justify-content: center;\n  height: ", ";\n  a:visited,\n  a:link {\n    color: #fff;\n    text-decoration: none;\n  }\n  color: #fff;\n  padding: 0;\n  padding-left: ", ";\n  a:active,\n  a:hover {\n    color: ", ";\n    cursor: pointer;\n  }\n"]);
 
   _templateObject4$2 = function _templateObject4() {
     return data;
@@ -688,7 +678,7 @@ function _templateObject4$2() {
 }
 
 function _templateObject3$2() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  font-size: ", ";\n  float: left;\n  margin: 0;\n  background-color: ", ";\n  height: ", ";\n  font-family: ", ";\n  font-weight: 500;\n  width: 40%;\n  text-transform: uppercase;\n  a:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: #fff;\n    text-decoration: none;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  cursor: pointer;\n  display: block;\n  height: ", ";\n  position: relative;\n  float: left;\n\n  ul {\n    background-color: #fff;\n    box-sizing: border-box;\n    display: none;\n    list-style: none;\n    margin: 0;\n    width: 250px;\n    padding-left: 0;\n    position: relative;\n    z-index: 1;\n    border: ", ";\n    display: none;\n    color: ", ";\n    cursor: pointer;\n    position: absolute;\n    margin-right: -125px;\n    right: 50%;\n    top: 100%;\n\n    li {\n      box-sizing: border-box;\n      cursor: pointer;\n      margin-left: 0;\n      a {\n        :hover {\n          background-color: ", ";\n          color: #fff;\n          text-decoration: none;\n        }\n        box-sizing: border-box;\n        display: block;\n        font-family: ", ";\n        margin-left: 0;\n        min-width: 100%;\n        padding: ", ";\n      }\n    }\n  }\n\n  :hover {\n    ul {\n      display: block;\n    }\n  }\n"]);
 
   _templateObject3$2 = function _templateObject3() {
     return data;
@@ -734,52 +724,39 @@ var ContainerInnerUI = styled__default('div')(_templateObject2$2(), function (_r
   var theme = _ref5.theme;
   return "0 ".concat(theme.unit(0.75), " 0 ").concat(theme.unit(0.25));
 });
-var BrandUI = styled__default('div')(_templateObject3$2(), function (_ref6) {
+var DropdownUI = styled__default('div')(_templateObject3$2(), function (_ref6) {
   var theme = _ref6.theme;
-  return theme.unit(1.125);
+  return theme.layout.desktop.headerHeight;
 }, function (_ref7) {
   var theme = _ref7.theme;
-  return theme.colors['dark-1'];
+  return theme.border;
 }, function (_ref8) {
   var theme = _ref8.theme;
-  return theme.layout.desktop.headerHeight;
+  return theme.colors['dark-3'];
 }, function (_ref9) {
   var theme = _ref9.theme;
-  return theme.typography.fonts['font-2'];
-});
-var DropdownUI = styled__default('div')(_templateObject4$2(), function (_ref10) {
+  return theme.colors['dark-5'];
+}, function (_ref10) {
   var theme = _ref10.theme;
-  return theme.layout.desktop.headerHeight;
+  return theme.typography.fonts['font-2'];
 }, function (_ref11) {
   var theme = _ref11.theme;
-  return theme.border;
-}, function (_ref12) {
-  var theme = _ref12.theme;
-  return theme.colors['dark-3'];
-}, function (_ref13) {
-  var theme = _ref13.theme;
-  return theme.colors['dark-5'];
-}, function (_ref14) {
-  var theme = _ref14.theme;
-  return theme.typography.fonts['font-2'];
-}, function (_ref15) {
-  var theme = _ref15.theme;
   return theme.unit(0.25);
 });
-var LinkUI = styled__default('div')(_templateObject5$1(), function (_ref16) {
-  var theme = _ref16.theme;
+var LinkUI = styled__default('div')(_templateObject4$2(), function (_ref12) {
+  var theme = _ref12.theme;
   return theme.typography.fonts['font-2'];
-}, function (_ref17) {
-  var theme = _ref17.theme;
+}, function (_ref13) {
+  var theme = _ref13.theme;
   return theme.layout.desktop.headerHeight;
-}, function (_ref18) {
-  var theme = _ref18.theme;
+}, function (_ref14) {
+  var theme = _ref14.theme;
   return theme.unit(1);
-}, function (_ref19) {
-  var theme = _ref19.theme;
+}, function (_ref15) {
+  var theme = _ref15.theme;
   return theme.colors['dark-3'];
 });
-var MenuUI = styled__default('div')(_templateObject6());
+var MenuUI = styled__default('div')(_templateObject5$1());
 
 function Container(_ref) {
   var children = _ref.children;
@@ -788,9 +765,7 @@ function Container(_ref) {
 
 var Brand = function Brand(_ref2) {
   var children = _ref2.children;
-  return /*#__PURE__*/React.createElement(BrandUI, null, /*#__PURE__*/React.createElement("a", {
-    href: "/"
-  }, children));
+  return children;
 };
 
 function Dropdown(_ref3) {
@@ -819,18 +794,8 @@ var DesktopHeader = {
   Menu: Menu
 };
 
-function _templateObject5$2() {
-  var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  background-color: ", ";\n  display: block;\n  left: 0;\n  min-height: 100vh;\n  padding-top: ", ";\n  position: absolute;\n  top: 0;\n  height: 100%;\n  width: 100%;\n"]);
-
-  _templateObject5$2 = function _templateObject5() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject4$3() {
-  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  cursor: pointer;\n  box-sizing: border-box;\n  font-family: ", ";\n  font-size: ", ";\n  margin: 0;\n  padding: ", ";\n  position: relative;\n  text-align: center;\n  width: auto;\n  text-transform: uppercase;\n  width: 100%;\n  :hover {\n    background-color: ", ";\n    padding: ", ";\n  }\n  a:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: #fff;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  background-color: ", ";\n  display: block;\n  left: 0;\n  min-height: 100vh;\n  padding-top: ", ";\n  position: absolute;\n  top: 0;\n  height: 100%;\n  width: 100%;\n"]);
 
   _templateObject4$3 = function _templateObject4() {
     return data;
@@ -840,7 +805,7 @@ function _templateObject4$3() {
 }
 
 function _templateObject3$3() {
-  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  color: ", ";\n  display: flex;\n  align-items: center;\n  float: left;\n  font-family: ", ";\n  font-size: ", ";\n  font-weight: 500;\n  height: ", ";\n  margin: 0;\n  text-align: left;\n  text-transform: uppercase;\n  width: 40%;\n\n  a:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: #fff;\n    text-decoration: none;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  cursor: pointer;\n  box-sizing: border-box;\n  font-family: ", ";\n  font-size: ", ";\n  margin: 0;\n  padding: ", ";\n  position: relative;\n  text-align: center;\n  width: auto;\n  text-transform: uppercase;\n  width: 100%;\n  :hover {\n    background-color: ", ";\n    padding: ", ";\n  }\n  a:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: #fff;\n  }\n"]);
 
   _templateObject3$3 = function _templateObject3() {
     return data;
@@ -886,46 +851,30 @@ var ContainerInnerUI$1 = styled__default('div')(_templateObject2$3(), function (
   var theme = _ref5.theme;
   return "0 ".concat(theme.unit(0.75), " 0 ").concat(theme.unit(0.25));
 });
-var BrandUI$1 = styled__default('div')(_templateObject3$3(), function (_ref6) {
+var LinkUI$1 = styled__default('div')(_templateObject3$3(), function (_ref6) {
   var theme = _ref6.theme;
-  return theme.colors['dark-1'];
+  return theme.colors['light-1'];
 }, function (_ref7) {
   var theme = _ref7.theme;
-  return theme.colors['light-1'];
+  return theme.typography.fonts['font-2'];
 }, function (_ref8) {
   var theme = _ref8.theme;
-  return theme.typography.fonts['font-2'];
+  return theme.unit(0.75);
 }, function (_ref9) {
   var theme = _ref9.theme;
-  return theme.unit(0.66);
+  return theme.unit(0.25);
 }, function (_ref10) {
   var theme = _ref10.theme;
-  return theme.layout.mobile.headerHeight;
-});
-var LinkUI$1 = styled__default('div')(_templateObject4$3(), function (_ref11) {
+  return theme.colors['dark-5'];
+}, function (_ref11) {
   var theme = _ref11.theme;
-  return theme.colors['light-1'];
-}, function (_ref12) {
+  return theme.unit(0.25);
+});
+var MenuUI$1 = styled__default('nav')(_templateObject4$3(), function (_ref12) {
   var theme = _ref12.theme;
-  return theme.typography.fonts['font-2'];
+  return theme.colors['dark-3'];
 }, function (_ref13) {
   var theme = _ref13.theme;
-  return theme.unit(0.75);
-}, function (_ref14) {
-  var theme = _ref14.theme;
-  return theme.unit(0.25);
-}, function (_ref15) {
-  var theme = _ref15.theme;
-  return theme.colors['dark-5'];
-}, function (_ref16) {
-  var theme = _ref16.theme;
-  return theme.unit(0.25);
-});
-var MenuUI$1 = styled__default('nav')(_templateObject5$2(), function (_ref17) {
-  var theme = _ref17.theme;
-  return theme.colors['dark-3'];
-}, function (_ref18) {
-  var theme = _ref18.theme;
   return theme.layout.mobile.headerHeight;
 });
 
@@ -933,20 +882,20 @@ function makePixelValue(value) {
   return value + 'px';
 }
 
-function _templateObject6$1() {
+function _templateObject6() {
   var data = _taggedTemplateLiteral(["\n  display: block;\n  height: ", ";\n  margin: (", ") auto ", " auto;\n  margin-top: -", ";\n  position: relative;\n  width: ", ";\n  z-index: 9999;\n  cursor: pointer;\n"]);
 
-  _templateObject6$1 = function _templateObject6() {
+  _templateObject6 = function _templateObject6() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject5$3() {
+function _templateObject5$2() {
   var data = _taggedTemplateLiteral(["\n  position: absolute;\n  padding: ", ";\n  right: 0;\n  top: 0;\n"]);
 
-  _templateObject5$3 = function _templateObject5() {
+  _templateObject5$2 = function _templateObject5() {
     return data;
   };
 
@@ -1006,11 +955,11 @@ var Line2UI = styled__default(LineUI)(_templateObject3$4(), function (props) {
 var Line3UI = styled__default(LineUI)(_templateObject4$4(), function (props) {
   return props.isOpen ? "translateY(-".concat(translateY1, ") rotate(-45deg) translateX(0)") : 'rotate(0deg)';
 });
-var ContainerUI$2 = styled__default('div')(_templateObject5$3(), function (_ref) {
+var ContainerUI$2 = styled__default('div')(_templateObject5$2(), function (_ref) {
   var theme = _ref.theme;
   return theme.unit(0.5);
 });
-var ContainerInnerUI$2 = styled__default('div')(_templateObject6$1(), makePixelValue(heightIcon), makePixelValue(heightIcon * 2), heightIcon, function (_ref2) {
+var ContainerInnerUI$2 = styled__default('div')(_templateObject6(), makePixelValue(heightIcon), makePixelValue(heightIcon * 2), heightIcon, function (_ref2) {
   var theme = _ref2.theme;
   return theme.unit(0.125);
 }, function (_ref3) {
@@ -1237,9 +1186,7 @@ var Container$1 = /*#__PURE__*/function (_React$Component) {
 
 var Brand$1 = function Brand(_ref) {
   var children = _ref.children;
-  return /*#__PURE__*/React.createElement(BrandUI$1, null, /*#__PURE__*/React.createElement("a", {
-    href: "/"
-  }, children));
+  return children;
 };
 
 function Link$1(props) {
@@ -1703,10 +1650,10 @@ function Quote (_ref) {
   })), /*#__PURE__*/React.createElement(CloseQuoteUI, null, "\u201D"));
 }
 
-function _templateObject5$4() {
+function _templateObject5$3() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: row;\n\n  @media (max-width: ", ") {\n    flex-direction: column;\n\n    ", " {\n      min-width: 100%;\n    }\n\n    ", " {\n      margin-left: 0;\n    }\n  }\n"]);
 
-  _templateObject5$4 = function _templateObject5() {
+  _templateObject5$3 = function _templateObject5() {
     return data;
   };
 
@@ -1801,7 +1748,7 @@ var Col2 = styled__default('div')(_templateObject4$6(), function (_ref7) {
   var theme = _ref8.theme;
   return theme.unit(0.5);
 });
-var ColWrapper = styled__default('div')(_templateObject5$4(), function (_ref9) {
+var ColWrapper = styled__default('div')(_templateObject5$3(), function (_ref9) {
   var theme = _ref9.theme;
   return theme.breakPoints.tablet;
 }, Col1, Col2);

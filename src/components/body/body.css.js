@@ -3,7 +3,7 @@ export const BodyUI = styled('div')`
   min-height: 100vh;
 
   @media (max-width: ${({ theme }) => theme.breakPoints.desktop}) {
-    margin-top: ${({ theme }) => theme.layout.tablet.headerHeight};
+    margin-top: ${({ theme }) => theme.layout.mobile.headerHeight};
   }
 
   @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
