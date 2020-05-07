@@ -21,8 +21,9 @@ export default class Dropdown extends React.Component {
     const { children, isParentMenuOpen, text } = this.props
     const { isOpen } = this.state
     return (
-      <DropdownUI isOpen={isOpen}>
+      <DropdownUI>
         <LinkUI
+          isOpen={isOpen}
           onClick={() => {
             this.toggleMenu(!isOpen)
           }}

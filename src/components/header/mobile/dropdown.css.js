@@ -36,7 +36,7 @@ export const DropdownUI = styled('span')`
         display: inline-block;
         margin-left: 0;
         min-width: 100%;
-        padding: ${theme.unit(0.5)};
+        padding: ${theme.unit(0.25)};
         text-decoration: none;
       }
       a:hover {

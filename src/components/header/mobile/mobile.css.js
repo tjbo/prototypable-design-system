@@ -49,6 +49,7 @@ export const LinkUI = styled('div')`
     min-width: 100%;
     text-decoration: none;
   }
+  background-color: ${({ isOpen }) => isOpen && `${theme.colors['dark-5']}`};
 `
 
 export const MenuUI = styled('nav')`
@@ -62,4 +63,6 @@ export const MenuUI = styled('nav')`
   top: 0;
   height: 100%;
   width: 100%;
+  min-height: 100vh;
+  overflow: auto;
 `

@@ -2,6 +2,7 @@ import React from 'react'
 import DesktopHeader from './desktop/'
 import MobileHeader from './mobile/'
 import { Media } from 'react-breakpoints'
+import { DividerUI } from './header.css'
 
 class Container extends React.Component {
   render() {
@@ -90,7 +91,7 @@ function Dropdown(props) {
 }
 
 function Divider() {
-  return <hr />
+  return <DividerUI />
 }
 
 export default {
