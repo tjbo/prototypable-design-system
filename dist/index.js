@@ -286,9 +286,9 @@ var BodyUI = styled__default('div')(_templateObject$1(), theme.layout.desktop.he
 
 function body (_ref) {
   var children = _ref.children;
-  return /*#__PURE__*/React.createElement(ReactBreakpoints__default, {
+  return /*#__PURE__*/React.createElement(BodyUI, null, /*#__PURE__*/React.createElement(ReactBreakpoints__default, {
     breakpoints: theme.breakPoints
-  }, /*#__PURE__*/React.createElement(BodyUI, null, children));
+  }, children));
 }
 
 var onShowModal = function onShowModal() {
@@ -469,13 +469,7 @@ function _templateObject$5() {
 
   return data;
 }
-var GridWrapperUI = styled__default('div')(_templateObject$5(), theme.breakPointsAsPixel.tablet, theme.unit(0.5), function (_ref) {
-  var theme = _ref.theme;
-  return theme.breakPoints.mobile;
-}, function (_ref2) {
-  var theme = _ref2.theme;
-  return theme.breakPoints.tablet;
-}, theme.breakPointsAsPixel.mobile);
+var GridWrapperUI = styled__default('div')(_templateObject$5(), theme.breakPointsAsPixel.tablet, theme.unit(0.5), theme.breakPointsAsPixel.mobile, theme.breakPointsAsPixel.tablet, theme.breakPointsAsPixel.mobile);
 
 function Grid(_ref) {
   var body = _ref.body,
@@ -506,7 +500,7 @@ function Cards (_ref) {
 }
 
 function _templateObject$6() {
-  var data = _taggedTemplateLiteral(["\n  details {\n    display: flex;\n    border: ", ";\n    box-sizing: border-box;\n    margin-bottom: ", ";\n    padding: ", ";\n    background-color: #fff;\n    min-width: 100%;\n    h4 {\n      width: calc(100% - 20px);\n    }\n\n    summary {\n      width: 100%;\n      color: ", ";\n      cursor: pointer;\n      font-size: ", ";\n      font-weight: 500;\n      position: relative;\n      padding: 0;\n      &:after {\n        content: '';\n        color: ", ";\n        border: solid ", ";\n        border-width: 0 3px 3px 0;\n        display: inline-block;\n        padding: 4px;\n        transform: rotate(-135deg);\n        -webkit-transform: rotate(-135deg);\n        position: absolute;\n        right: 0;\n        top: 10px;\n      }\n      :focus &:after {\n      }\n      &:focus {\n        outline: none;\n      }\n      &::-webkit-details-marker {\n        display: none;\n      }\n    }\n  }\n\n  details[open] summary:after {\n    transform: rotate(45deg);\n    -webkit-transform: rotate(45deg);\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  details {\n    display: flex;\n    border: ", ";\n    box-sizing: border-box;\n    margin-bottom: ", ";\n    padding: ", ";\n    padding-bottom: ", ";\n    background-color: #fff;\n    min-width: 100%;\n\n    div:last-child {\n      margin-bottom: -", ";\n    }\n\n    h4 {\n      width: calc(100% - 20px);\n    }\n\n    summary {\n      width: 100%;\n      color: ", ";\n      cursor: pointer;\n      font-size: ", ";\n      font-weight: 500;\n      position: relative;\n      padding: 0;\n      &:after {\n        content: '';\n        color: ", ";\n        border: solid ", ";\n        border-width: 0 3px 3px 0;\n        display: inline-block;\n        padding: 4px;\n        transform: rotate(-135deg);\n        -webkit-transform: rotate(-135deg);\n        position: absolute;\n        right: 0;\n        top: 10px;\n      }\n      :focus &:after {\n      }\n      &:focus {\n        outline: none;\n      }\n      &::-webkit-details-marker {\n        display: none;\n      }\n    }\n  }\n\n  details[open] summary:after {\n    transform: rotate(45deg);\n    -webkit-transform: rotate(45deg);\n  }\n"]);
 
   _templateObject$6 = function _templateObject() {
     return data;
@@ -514,7 +508,7 @@ function _templateObject$6() {
 
   return data;
 }
-var FaqWrapperUI = styled__default('div')(_templateObject$6(), theme.border, theme.unit(1), theme.unit(1), theme.colors['dark-4'], theme.unit(0.66), theme.colors['dark-1'], theme.colors['dark-4']);
+var FaqWrapperUI = styled__default('div')(_templateObject$6(), theme.border, theme.unit(1), theme.unit(1), theme.unit(0.75), theme.unit(0.75), theme.colors['dark-4'], theme.unit(0.66), theme.colors['dark-1'], theme.colors['dark-4']);
 
 function Faq (_ref) {
   var body = _ref.body;

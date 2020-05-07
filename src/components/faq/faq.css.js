@@ -8,8 +8,14 @@ export const FaqWrapperUI = styled('div')`
     box-sizing: border-box;
     margin-bottom: ${theme.unit(1)};
     padding: ${theme.unit(1)};
+    padding-bottom: ${theme.unit(0.75)};
     background-color: #fff;
     min-width: 100%;
+
+    div:last-child {
+      margin-bottom: -${theme.unit(0.75)};
+    }
+
     h4 {
       width: calc(100% - 20px);
     }

@@ -4,8 +4,10 @@ import theme from '../../theme'
 
 export default function ({ children }) {
   return (
-    <ReactBreakpoints breakpoints={theme.breakPoints}>
-      <BodyUI>{children}</BodyUI>
-    </ReactBreakpoints>
+    <BodyUI>
+      <ReactBreakpoints breakpoints={theme.breakPoints}>
+        {children}
+      </ReactBreakpoints>
+    </BodyUI>
   )
 }

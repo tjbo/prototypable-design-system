@@ -20,9 +20,8 @@ export const GridWrapperUI = styled('div')`
     }
   }
 
-  @media (min-width: ${({ theme }) =>
-      theme.breakPoints.mobile}) and (max-width: ${({ theme }) =>
-      theme.breakPoints.tablet}) {
+  @media (min-width: ${theme.breakPointsAsPixel.mobile}) and (max-width: ${theme
+      .breakPointsAsPixel.tablet}) {
     .col {
       min-width: 49%;
       max-width: 49%;
