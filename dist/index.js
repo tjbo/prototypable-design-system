@@ -632,31 +632,30 @@ var DropdownUI = styled__default('div')(_templateObject3$2(), theme.layout.deskt
 var LinkUI = styled__default('div')(_templateObject4$2(), theme.typography.fonts['font-2'], theme.layout.desktop.headerHeight, theme.unit(1), theme.colors['dark-3']);
 var MenuUI = styled__default('div')(_templateObject5$1());
 
-function Container(_ref) {
-  var children = _ref.children;
-  return /*#__PURE__*/React.createElement(ContainerUI, null, /*#__PURE__*/React.createElement(ContainerInnerUI, null, children));
+function Container(props) {
+  return /*#__PURE__*/React.createElement(ContainerUI, null, /*#__PURE__*/React.createElement(ContainerInnerUI, null, props.children));
 }
 
-var Brand = function Brand(_ref2) {
-  var children = _ref2.children;
+var Brand = function Brand(_ref) {
+  var children = _ref.children;
   return children;
 };
 
-function Dropdown(_ref3) {
-  var children = _ref3.children,
-      text = _ref3.text;
+function Dropdown(_ref2) {
+  var children = _ref2.children,
+      text = _ref2.text;
   return /*#__PURE__*/React.createElement(DropdownUI, null, /*#__PURE__*/React.createElement(Link, null, text), /*#__PURE__*/React.createElement("ul", null, React.Children.map(children, function (child) {
     return /*#__PURE__*/React.createElement("li", null, React.cloneElement(child, {}));
   })));
 }
 
-function Link(_ref4) {
-  var children = _ref4.children;
+function Link(_ref3) {
+  var children = _ref3.children;
   return /*#__PURE__*/React.createElement(LinkUI, null, children);
 }
 
-function Menu(_ref5) {
-  var children = _ref5.children;
+function Menu(_ref4) {
+  var children = _ref4.children;
   return /*#__PURE__*/React.createElement(MenuUI, null, children);
 }
 
@@ -707,7 +706,7 @@ function _templateObject$9() {
 
   return data;
 }
-var ContainerUI$1 = styled__default('header')(_templateObject$9(), theme.colors['dark-1'], theme.layout.mobile.headerHeight);
+var ContainerUI$1 = styled__default('div')(_templateObject$9(), theme.colors['dark-1'], theme.layout.mobile.headerHeight);
 var ContainerInnerUI$1 = styled__default('div')(_templateObject2$3(), theme.colors['dark-1'], theme.layout.mobile.headerHeight, "0 ".concat(theme.unit(0.75), " 0 ").concat(theme.unit(0.25)));
 var LinkUI$1 = styled__default('div')(_templateObject3$3(), theme.colors['light-1'], theme.typography.fonts['font-2'], theme.unit(0.75), theme.unit(0.25), theme.colors['dark-5'], theme.unit(0.25));
 var MenuUI$1 = styled__default('nav')(_templateObject4$3(), theme.colors['dark-3'], theme.layout.mobile.headerHeight);
@@ -1037,15 +1036,17 @@ var Container$2 = /*#__PURE__*/function (_React$Component) {
   _createClass(Container, [{
     key: "render",
     value: function render() {
+      var _this = this;
+
       var children = this.props.children;
       return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref) {
         var breakpoints = _ref.breakpoints,
             currentBreakpoint = _ref.currentBreakpoint;
 
         if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
-          return /*#__PURE__*/React.createElement(DesktopHeader.Container, null, children);
+          return /*#__PURE__*/React.createElement(DesktopHeader.Container, _objectSpread2({}, _this.props));
         } else {
-          return /*#__PURE__*/React.createElement(MobileHeader.Container, null, children);
+          return /*#__PURE__*/React.createElement(MobileHeader.Container, _objectSpread2({}, _this.props));
         }
       });
     }

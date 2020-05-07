@@ -11,9 +11,9 @@ class Container extends React.Component {
       <Media>
         {({ breakpoints, currentBreakpoint }) => {
           if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
-            return <DesktopHeader.Container>{children}</DesktopHeader.Container>
+            return <DesktopHeader.Container {...{ ...this.props }} />
           } else {
-            return <MobileHeader.Container>{children}</MobileHeader.Container>
+            return <MobileHeader.Container {...{ ...this.props }} />
           }
         }}
       </Media>

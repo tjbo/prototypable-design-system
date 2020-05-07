@@ -1,6 +1,6 @@
 import theme from '../../../theme'
 
-export const ContainerUI = styled('header')`
+export const ContainerUI = styled('div')`
   box-sizing: border-box;
   position: fixed;
   z-index: 1;

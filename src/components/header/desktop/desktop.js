@@ -6,10 +6,10 @@ import {
   MenuUI,
 } from './desktop.css'
 
-function Container({ children }) {
+function Container(props) {
   return (
     <ContainerUI>
-      <ContainerInnerUI>{children}</ContainerInnerUI>
+      <ContainerInnerUI>{props.children}</ContainerInnerUI>
     </ContainerUI>
   )
 }
