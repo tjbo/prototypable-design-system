@@ -62,14 +62,21 @@ const Brand = function Brand({ children }) {
 }
 
 function Link(props) {
-  const { children, text } = props
-
-  return <LinkUI>{children}</LinkUI>
+  const { children, closeParentMenu, isParentMenuOpen } = props
+  return (
+    <LinkUI
+      onClick={(event) => {
+        isParentMenuOpen && closeParentMenu()
+        event.nativeEvent.stopPropagation()
+      }}
+    >
+      {children}
+    </LinkUI>
+  )
 }
 
 function Menu(props) {
   const { children, closeParentMenu, isParentMenuOpen } = props
-
   if (isParentMenuOpen) {
     const content = React.Children.map(children, (child) => {
       return React.cloneElement(child, {

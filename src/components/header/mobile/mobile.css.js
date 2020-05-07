@@ -36,7 +36,6 @@ export const LinkUI = styled('div')`
   text-align: center;
   width: auto;
   text-transform: uppercase;
-  width: 100%;
   :hover {
     background-color: ${theme.colors['dark-5']};
     padding: ${theme.unit(0.25)};
@@ -46,6 +45,9 @@ export const LinkUI = styled('div')`
   a:hover,
   a:link {
     color: #fff;
+    display: inline-block;
+    min-width: 100%;
+    text-decoration: none;
   }
 `
 

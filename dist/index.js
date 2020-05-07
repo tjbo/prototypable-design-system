@@ -291,7 +291,7 @@ function body (_ref) {
   }, /*#__PURE__*/React.createElement(BodyUI, null, children));
 }
 
-var onShowModal$1 = function onShowModal() {
+var onShowModal = function onShowModal() {
   if (typeof window !== 'undefined') {
     var scrollY = document.documentElement.style.getPropertyValue('--scroll-y');
     var body = document.body;
@@ -299,7 +299,7 @@ var onShowModal$1 = function onShowModal() {
     body.style.top = "-".concat(scrollY);
   }
 };
-var onHideModal$1 = function onHideModal() {
+var onHideModal = function onHideModal() {
   if (typeof window !== 'undefined') {
     var body = document.body;
     var scrollY = body.style.top;
@@ -679,7 +679,7 @@ function _templateObject4$3() {
 }
 
 function _templateObject3$3() {
-  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  cursor: pointer;\n  box-sizing: border-box;\n  font-family: ", ";\n  font-size: ", ";\n  margin: 0;\n  padding: ", ";\n  position: relative;\n  text-align: center;\n  width: auto;\n  text-transform: uppercase;\n  width: 100%;\n  :hover {\n    background-color: ", ";\n    padding: ", ";\n  }\n  a:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: #fff;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  cursor: pointer;\n  box-sizing: border-box;\n  font-family: ", ";\n  font-size: ", ";\n  margin: 0;\n  padding: ", ";\n  position: relative;\n  text-align: center;\n  width: auto;\n  text-transform: uppercase;\n  :hover {\n    background-color: ", ";\n    padding: ", ";\n  }\n  a:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: #fff;\n    display: inline-block;\n    min-width: 100%;\n    text-decoration: none;\n  }\n"]);
 
   _templateObject3$3 = function _templateObject3() {
     return data;
@@ -923,7 +923,7 @@ var Container$1 = /*#__PURE__*/function (_React$Component) {
           isOpen: false
         });
 
-        onHideModal$1();
+        onHideModal();
       }
     });
 
@@ -932,9 +932,9 @@ var Container$1 = /*#__PURE__*/function (_React$Component) {
         isOpen: !_this.state.isOpen
       }, function () {
         if (_this.state.isOpen) {
-          onShowModal$1();
+          onShowModal();
         } else {
-          onHideModal$1();
+          onHideModal();
         }
       });
     });
@@ -987,8 +987,14 @@ var Brand$1 = function Brand(_ref) {
 
 function Link$1(props) {
   var children = props.children,
-      text = props.text;
-  return /*#__PURE__*/React.createElement(LinkUI$1, null, children);
+      closeParentMenu = props.closeParentMenu,
+      isParentMenuOpen = props.isParentMenuOpen;
+  return /*#__PURE__*/React.createElement(LinkUI$1, {
+    onClick: function onClick(event) {
+      isParentMenuOpen && closeParentMenu();
+      event.nativeEvent.stopPropagation();
+    }
+  }, children);
 }
 
 function Menu$1(props) {
@@ -1023,61 +1029,12 @@ var Container$2 = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(Container);
 
   function Container() {
-    var _this;
-
     _classCallCheck(this, Container);
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _super.call.apply(_super, [this].concat(args));
-
-    _defineProperty(_assertThisInitialized(_this), "state", {
-      isOpen: false
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onLinkClick", function () {
-      _this.setState({
-        isOpen: false
-      });
-
-      onHideModal();
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onResize", function () {
-      if (_this.state.isOpen) {
-        _this.setState({
-          isOpen: false
-        });
-
-        onHideModal();
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "toggleMenu", function () {
-      _this.setState({
-        isOpen: !_this.state.isOpen
-      }, function () {
-        if (_this.state.isOpen) {
-          onShowModal();
-        } else {
-          onHideModal();
-        }
-      });
-    });
-
-    return _this;
+    return _super.apply(this, arguments);
   }
 
   _createClass(Container, [{
-    key: "isWithNav",
-    value: function isWithNav() {
-      return this.props.children.length > 1 && this.props.children.some(function (child) {
-        return child.props.children.length > 1;
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
       var children = this.props.children;
@@ -1097,75 +1054,63 @@ var Container$2 = /*#__PURE__*/function (_React$Component) {
   return Container;
 }(React.Component);
 
-function Brand$2(_ref2) {
-  var children = _ref2.children;
-  return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref3) {
-    var breakpoints = _ref3.breakpoints,
-        currentBreakpoint = _ref3.currentBreakpoint;
+function Brand$2(props) {
+  return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref2) {
+    var breakpoints = _ref2.breakpoints,
+        currentBreakpoint = _ref2.currentBreakpoint;
 
     if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
-      return /*#__PURE__*/React.createElement(DesktopHeader.Brand, null, children);
+      return /*#__PURE__*/React.createElement(DesktopHeader.Brand, _objectSpread2({}, props));
     } else {
-      return /*#__PURE__*/React.createElement(MobileHeader.Brand, null, children);
+      return /*#__PURE__*/React.createElement(MobileHeader.Brand, _objectSpread2({}, props));
     }
   });
 }
 
 function Menu$2(props) {
+  return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref3) {
+    var breakpoints = _ref3.breakpoints,
+        currentBreakpoint = _ref3.currentBreakpoint;
+    var children = props.children,
+        closeParentMenu = props.closeParentMenu,
+        isParentMenuOpen = props.isParentMenuOpen;
+    var content = React.Children.map(children, function (child) {
+      return React.cloneElement(child, _objectSpread2({}, child.props, {
+        closeParentMenu: closeParentMenu,
+        isParentMenuOpen: isParentMenuOpen
+      }));
+    });
+
+    if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+      return /*#__PURE__*/React.createElement(DesktopHeader.Menu, _objectSpread2({}, props), content);
+    } else {
+      return /*#__PURE__*/React.createElement(MobileHeader.Menu, _objectSpread2({}, props), content);
+    }
+  });
+}
+
+function Link$2(props) {
   return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref4) {
     var breakpoints = _ref4.breakpoints,
         currentBreakpoint = _ref4.currentBreakpoint;
 
     if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
-      var children = props.children;
-      var content = React.Children.map(children, function (child) {
-        return React.cloneElement(child, _objectSpread2({}, child.props));
-      });
-      return /*#__PURE__*/React.createElement(DesktopHeader.Menu, null, content);
+      return /*#__PURE__*/React.createElement(DesktopHeader.Link, _objectSpread2({}, props));
     } else {
-      var _children = props.children,
-          closeParentMenu = props.closeParentMenu,
-          isParentMenuOpen = props.isParentMenuOpen;
-
-      var _content = React.Children.map(_children, function (child) {
-        return React.cloneElement(child, _objectSpread2({}, child.props, {
-          closeParentMenu: closeParentMenu,
-          isParentMenuOpen: isParentMenuOpen
-        }));
-      });
-
-      return /*#__PURE__*/React.createElement(MobileHeader.Menu, _objectSpread2({}, props), _content);
-    }
-  });
-}
-
-function Link$2(_ref5) {
-  var children = _ref5.children;
-  return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref6) {
-    var breakpoints = _ref6.breakpoints,
-        currentBreakpoint = _ref6.currentBreakpoint;
-
-    if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
-      return /*#__PURE__*/React.createElement(DesktopHeader.Link, null, children);
-    } else {
-      return /*#__PURE__*/React.createElement(MobileHeader.Link, null, children);
+      return /*#__PURE__*/React.createElement(MobileHeader.Link, _objectSpread2({}, props));
     }
   });
 }
 
 function Dropdown$2(props) {
-  var children = props.children,
-      text = props.text;
-  return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref7) {
-    var breakpoints = _ref7.breakpoints,
-        currentBreakpoint = _ref7.currentBreakpoint;
+  return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref5) {
+    var breakpoints = _ref5.breakpoints,
+        currentBreakpoint = _ref5.currentBreakpoint;
 
     if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
-      return /*#__PURE__*/React.createElement(DesktopHeader.Dropdown, {
-        text: text
-      }, children);
+      return /*#__PURE__*/React.createElement(DesktopHeader.Dropdown, _objectSpread2({}, props));
     } else {
-      return /*#__PURE__*/React.createElement(MobileHeader.Dropdown, _objectSpread2({}, props), children);
+      return /*#__PURE__*/React.createElement(MobileHeader.Dropdown, _objectSpread2({}, props));
     }
   });
 }

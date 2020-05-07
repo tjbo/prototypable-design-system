@@ -4,41 +4,6 @@ import MobileHeader from './mobile/'
 import { Media } from 'react-breakpoints'
 
 class Container extends React.Component {
-  state = {
-    isOpen: false,
-  }
-
-  onLinkClick = () => {
-    this.setState({ isOpen: false })
-    onHideModal()
-  }
-
-  onResize = () => {
-    if (this.state.isOpen) {
-      this.setState({ isOpen: false })
-      onHideModal()
-    }
-  }
-
-  toggleMenu = () => {
-    this.setState({ isOpen: !this.state.isOpen }, () => {
-      if (this.state.isOpen) {
-        onShowModal()
-      } else {
-        onHideModal()
-      }
-    })
-  }
-
-  isWithNav() {
-    return (
-      this.props.children.length > 1 &&
-      this.props.children.some((child) => {
-        return child.props.children.length > 1
-      })
-    )
-  }
-
   render() {
     const { children } = this.props
 
@@ -56,14 +21,14 @@ class Container extends React.Component {
   }
 }
 
-function Brand({ children }) {
+function Brand(props) {
   return (
     <Media>
       {({ breakpoints, currentBreakpoint }) => {
         if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
-          return <DesktopHeader.Brand>{children}</DesktopHeader.Brand>
+          return <DesktopHeader.Brand {...{ ...props }} />
         } else {
-          return <MobileHeader.Brand>{children}</MobileHeader.Brand>
+          return <MobileHeader.Brand {...{ ...props }} />
         }
       }}
     </Media>
@@ -74,23 +39,19 @@ function Menu(props) {
   return (
     <Media>
       {({ breakpoints, currentBreakpoint }) => {
+        const { children, closeParentMenu, isParentMenuOpen } = props
+        const content = React.Children.map(children, (child) =>
+          React.cloneElement(child, {
+            ...child.props,
+            closeParentMenu,
+            isParentMenuOpen,
+          }),
+        )
         if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
-          const { children } = props
-          const content = React.Children.map(children, (child) =>
-            React.cloneElement(child, {
-              ...child.props,
-            }),
+          return (
+            <DesktopHeader.Menu {...{ ...props }}>{content}</DesktopHeader.Menu>
           )
-          return <DesktopHeader.Menu>{content}</DesktopHeader.Menu>
         } else {
-          const { children, closeParentMenu, isParentMenuOpen } = props
-          const content = React.Children.map(children, (child) =>
-            React.cloneElement(child, {
-              ...child.props,
-              closeParentMenu,
-              isParentMenuOpen,
-            }),
-          )
           return (
             <MobileHeader.Menu {...{ ...props }}>{content}</MobileHeader.Menu>
           )
@@ -100,14 +61,14 @@ function Menu(props) {
   )
 }
 
-function Link({ children }) {
+function Link(props) {
   return (
     <Media>
       {({ breakpoints, currentBreakpoint }) => {
         if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
-          return <DesktopHeader.Link>{children}</DesktopHeader.Link>
+          return <DesktopHeader.Link {...{ ...props }} />
         } else {
-          return <MobileHeader.Link>{children}</MobileHeader.Link>
+          return <MobileHeader.Link {...{ ...props }} />
         }
       }}
     </Media>
@@ -115,23 +76,13 @@ function Link({ children }) {
 }
 
 function Dropdown(props) {
-  const { children, text } = props
-
   return (
     <Media>
       {({ breakpoints, currentBreakpoint }) => {
         if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
-          return (
-            <DesktopHeader.Dropdown text={text}>
-              {children}
-            </DesktopHeader.Dropdown>
-          )
+          return <DesktopHeader.Dropdown {...{ ...props }} />
         } else {
-          return (
-            <MobileHeader.Dropdown {...{ ...props }}>
-              {children}
-            </MobileHeader.Dropdown>
-          )
+          return <MobileHeader.Dropdown {...{ ...props }} />
         }
       }}
     </Media>
