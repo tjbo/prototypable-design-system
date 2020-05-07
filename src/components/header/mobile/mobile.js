@@ -62,7 +62,6 @@ const Brand = function Brand({ children }) {
 }
 
 function Link(props) {
-  console.log('link', props)
   const { children, text } = props
 
   return <LinkUI>{children}</LinkUI>
@@ -79,7 +78,6 @@ function Menu(props) {
         isParentMenuOpen,
       })
     })
-    console.log('Menu in Mobile', content)
     return <MenuUI {...{ ...props }}>{content}</MenuUI>
   }
   return null

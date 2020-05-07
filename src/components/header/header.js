@@ -1,24 +1,11 @@
 import React from 'react'
-import { addListener } from '../head/breakPoints'
 import DesktopHeader from './desktop/'
 import MobileHeader from './mobile/'
+import { Media } from 'react-breakpoints'
 
 class Container extends React.Component {
   state = {
     isOpen: false,
-    breakPoint: 'desktop',
-  }
-
-  onBreakPointChange = (breakPoint) => {
-    this.setState({ breakPoint })
-  }
-
-  componentDidMount() {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('resize', () => this.onResize())
-      const breakPoint = addListener(this.onBreakPointChange)
-      this.setState({ breakPoint })
-    }
   }
 
   onLinkClick = () => {
@@ -52,83 +39,103 @@ class Container extends React.Component {
     )
   }
 
-  isDesktop() {
-    console.log('this', this.state.breakPoint)
-    return this.state.breakPoint === 'desktop'
-  }
-
   render() {
-    console.log('render header')
     const { children } = this.props
-    const content = React.Children.map(children, (child) =>
-      React.cloneElement(child, {
-        isDesktop: this.isDesktop(),
-      }),
-    )
 
-    if (this.isDesktop()) {
-      return <DesktopHeader.Container>{content}</DesktopHeader.Container>
-    } else {
-      return <MobileHeader.Container>{content}</MobileHeader.Container>
-    }
+    return (
+      <Media>
+        {({ breakpoints, currentBreakpoint }) => {
+          if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+            return <DesktopHeader.Container>{children}</DesktopHeader.Container>
+          } else {
+            return <MobileHeader.Container>{children}</MobileHeader.Container>
+          }
+        }}
+      </Media>
+    )
   }
 }
 
-function Brand({ children, isDesktop }) {
-  if (isDesktop) {
-    return <DesktopHeader.Brand>{children}</DesktopHeader.Brand>
-  } else {
-    return <MobileHeader.Brand>{children}</MobileHeader.Brand>
-  }
+function Brand({ children }) {
+  return (
+    <Media>
+      {({ breakpoints, currentBreakpoint }) => {
+        if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+          return <DesktopHeader.Brand>{children}</DesktopHeader.Brand>
+        } else {
+          return <MobileHeader.Brand>{children}</MobileHeader.Brand>
+        }
+      }}
+    </Media>
+  )
 }
 
 function Menu(props) {
-  const { isDesktop } = props
-  if (isDesktop) {
-    const { children } = props
-    const content = React.Children.map(children, (child) =>
-      React.cloneElement(child, {
-        ...child.props,
-        isDesktop,
-      }),
-    )
-    return <DesktopHeader.Menu>{content}</DesktopHeader.Menu>
-  } else {
-    const { children, closeParentMenu, isParentMenuOpen } = props
-    const content = React.Children.map(children, (child) =>
-      React.cloneElement(child, {
-        ...child.props,
-        closeParentMenu,
-        isDesktop,
-        isParentMenuOpen,
-      }),
-    )
-    return <MobileHeader.Menu {...{ ...props }}>{content}</MobileHeader.Menu>
-  }
+  return (
+    <Media>
+      {({ breakpoints, currentBreakpoint }) => {
+        if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+          const { children } = props
+          const content = React.Children.map(children, (child) =>
+            React.cloneElement(child, {
+              ...child.props,
+            }),
+          )
+          return <DesktopHeader.Menu>{content}</DesktopHeader.Menu>
+        } else {
+          const { children, closeParentMenu, isParentMenuOpen } = props
+          const content = React.Children.map(children, (child) =>
+            React.cloneElement(child, {
+              ...child.props,
+              closeParentMenu,
+              isParentMenuOpen,
+            }),
+          )
+          return (
+            <MobileHeader.Menu {...{ ...props }}>{content}</MobileHeader.Menu>
+          )
+        }
+      }}
+    </Media>
+  )
 }
 
-function Link({ children, isDesktop }) {
-  if (isDesktop) {
-    return <DesktopHeader.Link>{children}</DesktopHeader.Link>
-  } else {
-    return <MobileHeader.Link>{children}</MobileHeader.Link>
-  }
+function Link({ children }) {
+  return (
+    <Media>
+      {({ breakpoints, currentBreakpoint }) => {
+        if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+          return <DesktopHeader.Link>{children}</DesktopHeader.Link>
+        } else {
+          return <MobileHeader.Link>{children}</MobileHeader.Link>
+        }
+      }}
+    </Media>
+  )
 }
 
 function Dropdown(props) {
-  const { children, isDesktop, text } = props
+  const { children, text } = props
 
-  if (isDesktop) {
-    return (
-      <DesktopHeader.Dropdown text={text}>{children}</DesktopHeader.Dropdown>
-    )
-  } else {
-    return (
-      <MobileHeader.Dropdown {...{ ...props }}>
-        {children}
-      </MobileHeader.Dropdown>
-    )
-  }
+  return (
+    <Media>
+      {({ breakpoints, currentBreakpoint }) => {
+        if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+          return (
+            <DesktopHeader.Dropdown text={text}>
+              {children}
+            </DesktopHeader.Dropdown>
+          )
+        } else {
+          return (
+            <MobileHeader.Dropdown {...{ ...props }}>
+              {children}
+            </MobileHeader.Dropdown>
+          )
+        }
+      }}
+    </Media>
+  )
 }
 
 function Divider() {

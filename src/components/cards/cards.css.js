@@ -1,3 +1,4 @@
+import theme from '../../theme'
 import styled from 'styled-components'
 
 export const CardsWrapperUI = styled('div')`
@@ -8,7 +9,7 @@ export const CardsWrapperUI = styled('div')`
   .card {
     line-height: 1.75;
     background: #fff;
-    border: ${({ theme }) => theme.border};
+    border: ${theme.border};
 
     /* Position child elements relative to this element */
     .aspect-ratio-box {
@@ -33,7 +34,7 @@ export const CardsWrapperUI = styled('div')`
       height: 100%;
     }
     .content {
-      padding: ${({ theme }) => `${theme.unit(0.5)} ${theme.unit(0.66)}`};
+      padding: ${`${theme.unit(0.5)} ${theme.unit(0.66)}`};
     }
   }
 `

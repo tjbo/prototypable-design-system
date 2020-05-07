@@ -7,6 +7,8 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var React = _interopDefault(require('react'));
 var styled = require('styled-components');
 var styled__default = _interopDefault(styled);
+var ReactBreakpoints = require('react-breakpoints');
+var ReactBreakpoints__default = _interopDefault(ReactBreakpoints);
 var Prismic$1 = _interopDefault(require('prismic-javascript'));
 
 function Article(_ref) {
@@ -178,6 +180,72 @@ function _taggedTemplateLiteral(strings, raw) {
   }));
 }
 
+function makePixelValue(value) {
+  return value + 'px';
+}
+
+var _colors, _fonts;
+var _unit = 32;
+var theme = {
+  breakPoints: {
+    mobile: 600,
+    tablet: 1025,
+    desktop: 1280
+  },
+  breakPointsAsPixel: {
+    mobile: '600px',
+    tablet: '1025px',
+    desktop: '1280px'
+  },
+  colors: (_colors = {}, _defineProperty(_colors, 'dark-1', '#000000'), _defineProperty(_colors, 'dark-2', '#777777'), _defineProperty(_colors, 'dark-3', '#0090e7'), _defineProperty(_colors, 'dark-4', '#454545'), _defineProperty(_colors, 'dark-5', '#0066a3'), _defineProperty(_colors, 'light-1', '#f5faff'), _defineProperty(_colors, 'light-2', '36,139,204'), _defineProperty(_colors, 'light-3', '#ffffff'), _colors),
+  typography: {
+    fonts: (_fonts = {}, _defineProperty(_fonts, 'font-1', 'PT Serif'), _defineProperty(_fonts, 'font-2', 'Roboto'), _defineProperty(_fonts, 'font-3', 'PT Serif Caption'), _fonts),
+    sizes: {
+      desktop: {
+        xsm: '1rem',
+        // not used yet
+        sm: '1.125rem',
+        md: '1.5rem',
+        lg: '2.5rem',
+        xlg: '3.5rem',
+        xxlg: '4rem'
+      },
+      tablet: {
+        xsm: '.9rem',
+        sm: '1.125rem',
+        md: '1.5rem',
+        lg: '2rem',
+        xlg: '2.75rem',
+        xxlg: '3.25rem'
+      },
+      mobile: {
+        xsm: '.9rem',
+        sm: '1.125rem',
+        md: '1.5rem',
+        lg: '2rem',
+        xlg: '2.25rem',
+        xxlg: '3rem'
+      }
+    }
+  },
+  border: '1px solid #eee',
+  border2: '1px soild #454545',
+  unit: function unit(multiplier) {
+    return makePixelValue(multiplier * _unit);
+  },
+  layout: {
+    desktop: {
+      headerHeight: makePixelValue(2 * _unit)
+    },
+    mobile: {
+      headerHeight: makePixelValue(1.5 * _unit)
+    },
+    tablet: {
+      headerHeight: makePixelValue(2 * _unit)
+    }
+  }
+};
+
 function _templateObject() {
   var data = _taggedTemplateLiteral(["\n  color: #fff;\n  text-align: center;\n  padding: ", ";\n"]);
 
@@ -187,10 +255,7 @@ function _templateObject() {
 
   return data;
 }
-var BannerUI = styled__default('div')(_templateObject(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.unit(0.5);
-});
+var BannerUI = styled__default('div')(_templateObject(), theme.unit(0.5));
 
 function Banner (_ref) {
   var body = _ref.body,
@@ -217,27 +282,13 @@ function _templateObject$1() {
 
   return data;
 }
-
-var BodyUI = styled__default('div')(_templateObject$1(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.layout.desktop.headerHeight;
-}, function (_ref2) {
-  var theme = _ref2.theme;
-  return theme.breakPoints.desktop;
-}, function (_ref3) {
-  var theme = _ref3.theme;
-  return theme.layout.mobile.headerHeight;
-}, function (_ref4) {
-  var theme = _ref4.theme;
-  return theme.breakPoints.mobile;
-}, function (_ref5) {
-  var theme = _ref5.theme;
-  return theme.layout.mobile.headerHeight;
-});
+var BodyUI = styled__default('div')(_templateObject$1(), theme.layout.desktop.headerHeight, theme.breakPointsAsPixel.desktop, theme.layout.mobile.headerHeight, theme.breakPointsAsPixel.mobile, theme.layout.mobile.headerHeight);
 
 function body (_ref) {
   var children = _ref.children;
-  return /*#__PURE__*/React.createElement(BodyUI, null, children);
+  return /*#__PURE__*/React.createElement(ReactBreakpoints__default, {
+    breakpoints: theme.breakPoints
+  }, /*#__PURE__*/React.createElement(BodyUI, null, children));
 }
 
 var onShowModal$1 = function onShowModal() {
@@ -273,26 +324,7 @@ function _templateObject$2() {
 
   return data;
 }
-
-var BoxWrapper = styled__default('div')(_templateObject$2(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.border;
-}, function (_ref2) {
-  var theme = _ref2.theme;
-  return theme.unit(0.25);
-}, function (_ref3) {
-  var theme = _ref3.theme;
-  return theme.unit(0.5);
-}, function (_ref4) {
-  var theme = _ref4.theme;
-  return theme.unit(0.5);
-}, function (_ref5) {
-  var theme = _ref5.theme;
-  return theme.breakPoints.tablet;
-}, function (_ref6) {
-  var theme = _ref6.theme;
-  return theme.breakPoints.mobile;
-});
+var BoxWrapper = styled__default('div')(_templateObject$2(), theme.border, theme.unit(0.25), theme.unit(0.5), theme.unit(0.5), theme.breakPointsAsPixel.tablet, theme.breakPointsAsPixel.mobile);
 
 var Box1 = /*#__PURE__*/function (_React$Component) {
   _inherits(Box1, _React$Component);
@@ -328,27 +360,11 @@ function _templateObject$3() {
 
   return data;
 }
-
-var ButtonUI = styled__default('button')(_templateObject$3(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.colors['dark-2'];
-}, function (_ref2) {
-  var theme = _ref2.theme;
-  return theme.typography.fonts['font-2'];
-}, function (_ref3) {
-  var theme = _ref3.theme;
-  return theme.unit(0.75);
-}, function (_ref4) {
-  var theme = _ref4.theme;
-  return theme.unit(1.75);
-}, function (_ref5) {
-  var theme = _ref5.theme;
-  return theme.unit(0.66);
-}, function (_ref6) {
-  var maxWidth = _ref6.maxWidth;
+var ButtonUI = styled__default('button')(_templateObject$3(), theme.colors['dark-2'], theme.typography.fonts['font-2'], theme.unit(0.75), theme.unit(1.75), theme.unit(0.66), function (_ref) {
+  var maxWidth = _ref.maxWidth;
   return maxWidth;
-}, function (_ref7) {
-  var align = _ref7.align;
+}, function (_ref2) {
+  var align = _ref2.align;
 
   if (align === 'center') {
     return "margin-left: 50%;\n      transform: translateX(-50%);\n      ";
@@ -438,13 +454,7 @@ function _templateObject$4() {
 
   return data;
 }
-var CardsWrapperUI = styled__default('div')(_templateObject$4(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.border;
-}, function (_ref2) {
-  var theme = _ref2.theme;
-  return "".concat(theme.unit(0.5), " ").concat(theme.unit(0.66));
-});
+var CardsWrapperUI = styled__default('div')(_templateObject$4(), theme.border, "".concat(theme.unit(0.5), " ").concat(theme.unit(0.66)));
 var ContentUI = styled__default('div')(_templateObject2());
 var CardImageUI = styled__default('div')(_templateObject3());
 var FieldTitleUI = styled__default('b')(_templateObject4());
@@ -459,23 +469,13 @@ function _templateObject$5() {
 
   return data;
 }
-
-var GridWrapperUI = styled__default('div')(_templateObject$5(), function (_ref) {
+var GridWrapperUI = styled__default('div')(_templateObject$5(), theme.breakPointsAsPixel.tablet, theme.unit(0.5), function (_ref) {
   var theme = _ref.theme;
-  return theme.breakPoints.tablet;
+  return theme.breakPoints.mobile;
 }, function (_ref2) {
   var theme = _ref2.theme;
-  return theme.unit(0.5);
-}, function (_ref3) {
-  var theme = _ref3.theme;
-  return theme.breakPoints.mobile;
-}, function (_ref4) {
-  var theme = _ref4.theme;
   return theme.breakPoints.tablet;
-}, function (_ref5) {
-  var theme = _ref5.theme;
-  return theme.breakPoints.mobile;
-});
+}, theme.breakPointsAsPixel.mobile);
 
 function Grid(_ref) {
   var body = _ref.body,
@@ -514,28 +514,7 @@ function _templateObject$6() {
 
   return data;
 }
-var FaqWrapperUI = styled__default('div')(_templateObject$6(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.border;
-}, function (_ref2) {
-  var theme = _ref2.theme;
-  return theme.unit(1);
-}, function (_ref3) {
-  var theme = _ref3.theme;
-  return theme.unit(1);
-}, function (_ref4) {
-  var theme = _ref4.theme;
-  return theme.colors['dark-4'];
-}, function (_ref5) {
-  var theme = _ref5.theme;
-  return theme.unit(0.66);
-}, function (_ref6) {
-  var theme = _ref6.theme;
-  return theme.colors['dark-1'];
-}, function (_ref7) {
-  var theme = _ref7.theme;
-  return theme.colors['dark-4'];
-});
+var FaqWrapperUI = styled__default('div')(_templateObject$6(), theme.border, theme.unit(1), theme.unit(1), theme.colors['dark-4'], theme.unit(0.66), theme.colors['dark-1'], theme.colors['dark-4']);
 
 function Faq (_ref) {
   var body = _ref.body;
@@ -585,44 +564,10 @@ function _templateObject$7() {
 
   return data;
 }
-
-var FooterUI = styled__default('footer')(_templateObject$7(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.colors['dark-1'];
-});
+var FooterUI = styled__default('footer')(_templateObject$7(), theme.colors['dark-1']);
 var AddressUI = styled__default('address')(_templateObject2$1());
 var FinePrintUI = styled__default('div')(_templateObject3$1());
-var FooterUIInner = styled__default('div')(_templateObject4$1(), function (_ref2) {
-  var theme = _ref2.theme;
-  return theme.colors['dark-1'];
-}, function (_ref3) {
-  var theme = _ref3.theme;
-  return "".concat(theme.unit(0.5), " ").concat(theme.unit(0.75));
-}, function (_ref4) {
-  var theme = _ref4.theme;
-  return theme.unit(1);
-}, function (_ref5) {
-  var theme = _ref5.theme;
-  return theme.typography.fonts['font-1'];
-}, function (_ref6) {
-  var theme = _ref6.theme;
-  return theme.breakPoints.mobile;
-}, AddressUI, function (_ref7) {
-  var theme = _ref7.theme;
-  return theme.typography.fonts['font-2'];
-}, function (_ref8) {
-  var theme = _ref8.theme;
-  return theme.unit(0.65);
-}, function (_ref9) {
-  var theme = _ref9.theme;
-  return theme.typography.fonts['font-2'];
-}, FinePrintUI, function (_ref10) {
-  var theme = _ref10.theme;
-  return theme.unit(0.4);
-}, function (_ref11) {
-  var theme = _ref11.theme;
-  return theme.unit(1);
-});
+var FooterUIInner = styled__default('div')(_templateObject4$1(), theme.colors['dark-1'], "".concat(theme.unit(0.5), " ").concat(theme.unit(0.75)), theme.unit(1), theme.typography.fonts['font-1'], theme.breakPointsAsPixel.mobile, AddressUI, theme.typography.fonts['font-2'], theme.unit(0.65), theme.typography.fonts['font-2'], FinePrintUI, theme.unit(0.4), theme.unit(1));
 
 function Footer(_ref) {
   var children = _ref.children;
@@ -631,31 +576,6 @@ function Footer(_ref) {
 
 Footer.Address = AddressUI;
 Footer.FinePrint = FinePrintUI;
-
-var callbacks = [];
-var currentBreakpoint;
-
-function refreshValue() {
-  if (typeof window !== 'undefined') {
-    currentBreakpoint = window.getComputedStyle(document.querySelector('body'), ':before').getPropertyValue('content').replace(/\"/g, '');
-
-    for (var callback in callbacks) {
-      callbacks[callback](currentBreakpoint);
-    }
-  }
-}
-
-function addListener(callback) {
-  if (typeof window !== 'undefined') {
-    callbacks.push(callback);
-    currentBreakpoint = window.getComputedStyle(document.querySelector('body'), ':before').getPropertyValue('content').replace(/\"/g, '');
-    return currentBreakpoint;
-  }
-}
-
-if (typeof window !== 'undefined') {
-  window.addEventListener('resize', refreshValue);
-}
 
 function _templateObject5$1() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  position: relative;\n"]);
@@ -706,56 +626,10 @@ function _templateObject$8() {
 
   return data;
 }
-
-var ContainerUI = styled__default('header')(_templateObject$8(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.colors['dark-1'];
-}, function (_ref2) {
-  var theme = _ref2.theme;
-  return theme.layout.desktop.headerHeight;
-});
-var ContainerInnerUI = styled__default('div')(_templateObject2$2(), function (_ref3) {
-  var theme = _ref3.theme;
-  return theme.colors['dark-1'];
-}, function (_ref4) {
-  var theme = _ref4.theme;
-  return theme.layout.desktop.headerHeight;
-}, function (_ref5) {
-  var theme = _ref5.theme;
-  return "0 ".concat(theme.unit(0.75), " 0 ").concat(theme.unit(0.25));
-});
-var DropdownUI = styled__default('div')(_templateObject3$2(), function (_ref6) {
-  var theme = _ref6.theme;
-  return theme.layout.desktop.headerHeight;
-}, function (_ref7) {
-  var theme = _ref7.theme;
-  return theme.border;
-}, function (_ref8) {
-  var theme = _ref8.theme;
-  return theme.colors['dark-3'];
-}, function (_ref9) {
-  var theme = _ref9.theme;
-  return theme.colors['dark-5'];
-}, function (_ref10) {
-  var theme = _ref10.theme;
-  return theme.typography.fonts['font-2'];
-}, function (_ref11) {
-  var theme = _ref11.theme;
-  return theme.unit(0.25);
-});
-var LinkUI = styled__default('div')(_templateObject4$2(), function (_ref12) {
-  var theme = _ref12.theme;
-  return theme.typography.fonts['font-2'];
-}, function (_ref13) {
-  var theme = _ref13.theme;
-  return theme.layout.desktop.headerHeight;
-}, function (_ref14) {
-  var theme = _ref14.theme;
-  return theme.unit(1);
-}, function (_ref15) {
-  var theme = _ref15.theme;
-  return theme.colors['dark-3'];
-});
+var ContainerUI = styled__default('header')(_templateObject$8(), theme.colors['dark-1'], theme.layout.desktop.headerHeight);
+var ContainerInnerUI = styled__default('div')(_templateObject2$2(), theme.colors['dark-1'], theme.layout.desktop.headerHeight, "0 ".concat(theme.unit(0.75), " 0 ").concat(theme.unit(0.25)));
+var DropdownUI = styled__default('div')(_templateObject3$2(), theme.layout.desktop.headerHeight, theme.border, theme.colors['dark-3'], theme.colors['dark-5'], theme.typography.fonts['font-2'], theme.unit(0.25));
+var LinkUI = styled__default('div')(_templateObject4$2(), theme.typography.fonts['font-2'], theme.layout.desktop.headerHeight, theme.unit(1), theme.colors['dark-3']);
 var MenuUI = styled__default('div')(_templateObject5$1());
 
 function Container(_ref) {
@@ -833,54 +707,10 @@ function _templateObject$9() {
 
   return data;
 }
-
-var ContainerUI$1 = styled__default('header')(_templateObject$9(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.colors['dark-1'];
-}, function (_ref2) {
-  var theme = _ref2.theme;
-  return theme.layout.mobile.headerHeight;
-});
-var ContainerInnerUI$1 = styled__default('div')(_templateObject2$3(), function (_ref3) {
-  var theme = _ref3.theme;
-  return theme.colors['dark-1'];
-}, function (_ref4) {
-  var theme = _ref4.theme;
-  return theme.layout.mobile.headerHeight;
-}, function (_ref5) {
-  var theme = _ref5.theme;
-  return "0 ".concat(theme.unit(0.75), " 0 ").concat(theme.unit(0.25));
-});
-var LinkUI$1 = styled__default('div')(_templateObject3$3(), function (_ref6) {
-  var theme = _ref6.theme;
-  return theme.colors['light-1'];
-}, function (_ref7) {
-  var theme = _ref7.theme;
-  return theme.typography.fonts['font-2'];
-}, function (_ref8) {
-  var theme = _ref8.theme;
-  return theme.unit(0.75);
-}, function (_ref9) {
-  var theme = _ref9.theme;
-  return theme.unit(0.25);
-}, function (_ref10) {
-  var theme = _ref10.theme;
-  return theme.colors['dark-5'];
-}, function (_ref11) {
-  var theme = _ref11.theme;
-  return theme.unit(0.25);
-});
-var MenuUI$1 = styled__default('nav')(_templateObject4$3(), function (_ref12) {
-  var theme = _ref12.theme;
-  return theme.colors['dark-3'];
-}, function (_ref13) {
-  var theme = _ref13.theme;
-  return theme.layout.mobile.headerHeight;
-});
-
-function makePixelValue(value) {
-  return value + 'px';
-}
+var ContainerUI$1 = styled__default('header')(_templateObject$9(), theme.colors['dark-1'], theme.layout.mobile.headerHeight);
+var ContainerInnerUI$1 = styled__default('div')(_templateObject2$3(), theme.colors['dark-1'], theme.layout.mobile.headerHeight, "0 ".concat(theme.unit(0.75), " 0 ").concat(theme.unit(0.25)));
+var LinkUI$1 = styled__default('div')(_templateObject3$3(), theme.colors['light-1'], theme.typography.fonts['font-2'], theme.unit(0.75), theme.unit(0.25), theme.colors['dark-5'], theme.unit(0.25));
+var MenuUI$1 = styled__default('nav')(_templateObject4$3(), theme.colors['dark-3'], theme.layout.mobile.headerHeight);
 
 function _templateObject6() {
   var data = _taggedTemplateLiteral(["\n  display: block;\n  height: ", ";\n  margin: (", ") auto ", " auto;\n  margin-top: -", ";\n  position: relative;\n  width: ", ";\n  z-index: 9999;\n  cursor: pointer;\n"]);
@@ -955,17 +785,8 @@ var Line2UI = styled__default(LineUI)(_templateObject3$4(), function (props) {
 var Line3UI = styled__default(LineUI)(_templateObject4$4(), function (props) {
   return props.isOpen ? "translateY(-".concat(translateY1, ") rotate(-45deg) translateX(0)") : 'rotate(0deg)';
 });
-var ContainerUI$2 = styled__default('div')(_templateObject5$2(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.unit(0.5);
-});
-var ContainerInnerUI$2 = styled__default('div')(_templateObject6(), makePixelValue(heightIcon), makePixelValue(heightIcon * 2), heightIcon, function (_ref2) {
-  var theme = _ref2.theme;
-  return theme.unit(0.125);
-}, function (_ref3) {
-  var theme = _ref3.theme;
-  return theme.unit(1);
-});
+var ContainerUI$2 = styled__default('div')(_templateObject5$2(), theme.unit(0.5));
+var ContainerInnerUI$2 = styled__default('div')(_templateObject6(), makePixelValue(heightIcon), makePixelValue(heightIcon * 2), heightIcon, theme.unit(0.125), theme.unit(1));
 
 function TriggerIcon(_ref) {
   var isOpen = _ref.isOpen,
@@ -1001,36 +822,11 @@ function _templateObject$b() {
 
   return data;
 }
-
-var DropdownUI$1 = styled__default('span')(_templateObject$b(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.typography.fonts['font-2'];
-}, function (_ref2) {
-  var theme = _ref2.theme;
-  return theme.unit(0.75);
-}, function (_ref3) {
-  var theme = _ref3.theme;
-  return theme.unit(0.5);
-}, function (_ref4) {
-  var theme = _ref4.theme;
-  return theme.colors['dark-5'];
-});
-var LinkArrowUI = styled__default('div')(_templateObject2$5(), function (_ref5) {
-  var theme = _ref5.theme;
-  return theme.colors['light-1'];
-}, function (_ref6) {
-  var theme = _ref6.theme;
-  return theme.colors['light-1'];
-}, function (_ref7) {
-  var theme = _ref7.theme;
-  return theme.unit(2.5);
-}, function (_ref8) {
-  var isOpen = _ref8.isOpen;
+var DropdownUI$1 = styled__default('span')(_templateObject$b(), theme.typography.fonts['font-2'], theme.unit(0.75), theme.unit(0.5), theme.colors['dark-5']);
+var LinkArrowUI = styled__default('div')(_templateObject2$5(), theme.colors['light-1'], theme.colors['light-1'], theme.unit(2.5), function (_ref) {
+  var isOpen = _ref.isOpen;
   return isOpen ? "rotate(45deg)" : "rotate(-135deg)";
-}, function (_ref9) {
-  var theme = _ref9.theme;
-  return theme.unit(0.75);
-});
+}, theme.unit(0.75));
 
 var Dropdown$1 = /*#__PURE__*/function (_React$Component) {
   _inherits(Dropdown, _React$Component);
@@ -1190,7 +986,6 @@ var Brand$1 = function Brand(_ref) {
 };
 
 function Link$1(props) {
-  console.log('link', props);
   var children = props.children,
       text = props.text;
   return /*#__PURE__*/React.createElement(LinkUI$1, null, children);
@@ -1208,7 +1003,6 @@ function Menu$1(props) {
         isParentMenuOpen: isParentMenuOpen
       }));
     });
-    console.log('Menu in Mobile', content);
     return /*#__PURE__*/React.createElement(MenuUI$1, _objectSpread2({}, props), content);
   }
 
@@ -1240,14 +1034,7 @@ var Container$2 = /*#__PURE__*/function (_React$Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      isOpen: false,
-      breakPoint: 'desktop'
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onBreakPointChange", function (breakPoint) {
-      _this.setState({
-        breakPoint: breakPoint
-      });
+      isOpen: false
     });
 
     _defineProperty(_assertThisInitialized(_this), "onLinkClick", function () {
@@ -1284,21 +1071,6 @@ var Container$2 = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(Container, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      if (typeof window !== 'undefined') {
-        window.addEventListener('resize', function () {
-          return _this2.onResize();
-        });
-        var breakPoint = addListener(this.onBreakPointChange);
-        this.setState({
-          breakPoint: breakPoint
-        });
-      }
-    }
-  }, {
     key: "isWithNav",
     value: function isWithNav() {
       return this.props.children.length > 1 && this.props.children.some(function (child) {
@@ -1306,97 +1078,96 @@ var Container$2 = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "isDesktop",
-    value: function isDesktop() {
-      console.log('this', this.state.breakPoint);
-      return this.state.breakPoint === 'desktop';
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
-      console.log('render header');
       var children = this.props.children;
-      var content = React.Children.map(children, function (child) {
-        return React.cloneElement(child, {
-          isDesktop: _this3.isDesktop()
-        });
-      });
+      return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref) {
+        var breakpoints = _ref.breakpoints,
+            currentBreakpoint = _ref.currentBreakpoint;
 
-      if (this.isDesktop()) {
-        return /*#__PURE__*/React.createElement(DesktopHeader.Container, null, content);
-      } else {
-        return /*#__PURE__*/React.createElement(MobileHeader.Container, null, content);
-      }
+        if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+          return /*#__PURE__*/React.createElement(DesktopHeader.Container, null, children);
+        } else {
+          return /*#__PURE__*/React.createElement(MobileHeader.Container, null, children);
+        }
+      });
     }
   }]);
 
   return Container;
 }(React.Component);
 
-function Brand$2(_ref) {
-  var children = _ref.children,
-      isDesktop = _ref.isDesktop;
+function Brand$2(_ref2) {
+  var children = _ref2.children;
+  return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref3) {
+    var breakpoints = _ref3.breakpoints,
+        currentBreakpoint = _ref3.currentBreakpoint;
 
-  if (isDesktop) {
-    return /*#__PURE__*/React.createElement(DesktopHeader.Brand, null, children);
-  } else {
-    return /*#__PURE__*/React.createElement(MobileHeader.Brand, null, children);
-  }
+    if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+      return /*#__PURE__*/React.createElement(DesktopHeader.Brand, null, children);
+    } else {
+      return /*#__PURE__*/React.createElement(MobileHeader.Brand, null, children);
+    }
+  });
 }
 
 function Menu$2(props) {
-  var isDesktop = props.isDesktop;
+  return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref4) {
+    var breakpoints = _ref4.breakpoints,
+        currentBreakpoint = _ref4.currentBreakpoint;
 
-  if (isDesktop) {
-    var children = props.children;
-    var content = React.Children.map(children, function (child) {
-      return React.cloneElement(child, _objectSpread2({}, child.props, {
-        isDesktop: isDesktop
-      }));
-    });
-    return /*#__PURE__*/React.createElement(DesktopHeader.Menu, null, content);
-  } else {
-    var _children = props.children,
-        closeParentMenu = props.closeParentMenu,
-        isParentMenuOpen = props.isParentMenuOpen;
+    if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+      var children = props.children;
+      var content = React.Children.map(children, function (child) {
+        return React.cloneElement(child, _objectSpread2({}, child.props));
+      });
+      return /*#__PURE__*/React.createElement(DesktopHeader.Menu, null, content);
+    } else {
+      var _children = props.children,
+          closeParentMenu = props.closeParentMenu,
+          isParentMenuOpen = props.isParentMenuOpen;
 
-    var _content = React.Children.map(_children, function (child) {
-      return React.cloneElement(child, _objectSpread2({}, child.props, {
-        closeParentMenu: closeParentMenu,
-        isDesktop: isDesktop,
-        isParentMenuOpen: isParentMenuOpen
-      }));
-    });
+      var _content = React.Children.map(_children, function (child) {
+        return React.cloneElement(child, _objectSpread2({}, child.props, {
+          closeParentMenu: closeParentMenu,
+          isParentMenuOpen: isParentMenuOpen
+        }));
+      });
 
-    return /*#__PURE__*/React.createElement(MobileHeader.Menu, _objectSpread2({}, props), _content);
-  }
+      return /*#__PURE__*/React.createElement(MobileHeader.Menu, _objectSpread2({}, props), _content);
+    }
+  });
 }
 
-function Link$2(_ref2) {
-  var children = _ref2.children,
-      isDesktop = _ref2.isDesktop;
+function Link$2(_ref5) {
+  var children = _ref5.children;
+  return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref6) {
+    var breakpoints = _ref6.breakpoints,
+        currentBreakpoint = _ref6.currentBreakpoint;
 
-  if (isDesktop) {
-    return /*#__PURE__*/React.createElement(DesktopHeader.Link, null, children);
-  } else {
-    return /*#__PURE__*/React.createElement(MobileHeader.Link, null, children);
-  }
+    if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+      return /*#__PURE__*/React.createElement(DesktopHeader.Link, null, children);
+    } else {
+      return /*#__PURE__*/React.createElement(MobileHeader.Link, null, children);
+    }
+  });
 }
 
 function Dropdown$2(props) {
   var children = props.children,
-      isDesktop = props.isDesktop,
       text = props.text;
+  return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref7) {
+    var breakpoints = _ref7.breakpoints,
+        currentBreakpoint = _ref7.currentBreakpoint;
 
-  if (isDesktop) {
-    return /*#__PURE__*/React.createElement(DesktopHeader.Dropdown, {
-      text: text
-    }, children);
-  } else {
-    return /*#__PURE__*/React.createElement(MobileHeader.Dropdown, _objectSpread2({}, props), children);
-  }
+    if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+      return /*#__PURE__*/React.createElement(DesktopHeader.Dropdown, {
+        text: text
+      }, children);
+    } else {
+      return /*#__PURE__*/React.createElement(MobileHeader.Dropdown, _objectSpread2({}, props), children);
+    }
+  });
 }
 
 function Divider() {
@@ -1413,7 +1184,7 @@ var header = {
 };
 
 function _templateObject2$6() {
-  var data = _taggedTemplateLiteral(["\n  max-width: 100%;\n  img {\n    display: block;\n    width: 100%;\n    height: 100%;\n    object-fit: cover;\n  }\n\n  @media (min-width: ", ") {\n    min-height: calc(\n      100vh - ", "\n    );\n\n    img {\n      height: calc(100vh - ", ");\n    }\n  }\n\n  @media (max-width: ", ") {\n    min-height: calc(\n      100vh - ", "\n    );\n\n    img {\n      height: calc(100vh - ", ");\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  max-width: 100%;\n  img {\n    display: block;\n    width: 100%;\n    height: 100%;\n    object-fit: cover;\n  }\n\n  @media (min-width: ", ") {\n    min-height: calc(100vh - ", ");\n\n    img {\n      height: calc(100vh - ", ");\n    }\n  }\n\n  @media (max-width: ", ") {\n    min-height: calc(100vh - ", ");\n\n    img {\n      height: calc(100vh - ", ");\n    }\n  }\n"]);
 
   _templateObject2$6 = function _templateObject2() {
     return data;
@@ -1423,7 +1194,7 @@ function _templateObject2$6() {
 }
 
 function _templateObject$c() {
-  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  min-height: calc(100vh - ", ");\n  position: absolute;\n  top: ", ";\n  width: 100%;\n  text-align: center;\n\n  @media (min-width: ", ") {\n    min-height: calc(\n      100vh - ", "\n    );\n  }\n\n  @media (max-width: ", ") {\n    padding: 0 ", ";\n    min-height: calc(\n      100vh - ", "\n    );\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  min-height: calc(100vh - ", ");\n  position: absolute;\n  top: ", ";\n  width: 100%;\n  text-align: center;\n\n  @media (min-width: ", ") {\n    min-height: calc(100vh - ", ");\n  }\n\n  @media (max-width: ", ") {\n    padding: 0 ", ";\n    min-height: calc(100vh - ", ");\n  }\n"]);
 
   _templateObject$c = function _templateObject() {
     return data;
@@ -1431,47 +1202,8 @@ function _templateObject$c() {
 
   return data;
 }
-var ContentUI$1 = styled__default('div')(_templateObject$c(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.layout.desktop.headerHeight;
-}, function (_ref2) {
-  var theme = _ref2.theme;
-  return theme.unit(2.25);
-}, function (_ref3) {
-  var theme = _ref3.theme;
-  return theme.breakPoints.desktop;
-}, function (_ref4) {
-  var theme = _ref4.theme;
-  return theme.layout.tablet.headerHeight;
-}, function (_ref5) {
-  var theme = _ref5.theme;
-  return theme.breakPoints.tablet;
-}, function (_ref6) {
-  var theme = _ref6.theme;
-  return theme.unit(0.5);
-}, function (_ref7) {
-  var theme = _ref7.theme;
-  return theme.layout.mobile.headerHeight;
-});
-var ImageUI = styled__default('div')(_templateObject2$6(), function (_ref8) {
-  var theme = _ref8.theme;
-  return theme.breakPoints.desktop;
-}, function (_ref9) {
-  var theme = _ref9.theme;
-  return theme.layout.tablet.headerHeight;
-}, function (_ref10) {
-  var theme = _ref10.theme;
-  return theme.layout.tablet.headerHeight;
-}, function (_ref11) {
-  var theme = _ref11.theme;
-  return theme.breakPoints.tablet;
-}, function (_ref12) {
-  var theme = _ref12.theme;
-  return theme.layout.mobile.headerHeight;
-}, function (_ref13) {
-  var theme = _ref13.theme;
-  return theme.layout.mobile.headerHeight;
-});
+var ContentUI$1 = styled__default('div')(_templateObject$c(), theme.layout.desktop.headerHeight, theme.unit(2.25), theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, theme.unit(0.5), theme.layout.mobile.headerHeight);
+var ImageUI = styled__default('div')(_templateObject2$6(), theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, theme.layout.mobile.headerHeight, theme.layout.mobile.headerHeight);
 
 var sizes = ['360×640', '768×1024', '1024x768', '1366×768', '1600×900', '1920x1080'];
 
@@ -1506,7 +1238,7 @@ function Jumbotron (_ref) {
 }
 
 function _templateObject$d() {
-  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  min-height: calc(100vh - ", ");\n\n  @media (min-width: ", ") {\n    min-height: calc(\n      100vh - ", "\n    );\n  }\n\n  @media (max-width: ", ") {\n    min-height: calc(\n      100vh - ", "\n    );\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  min-height: calc(100vh - ", ");\n\n  @media (min-width: ", ") {\n    min-height: calc(100vh - ", ");\n  }\n\n  @media (max-width: ", ") {\n    min-height: calc(100vh - ", ");\n  }\n"]);
 
   _templateObject$d = function _templateObject() {
     return data;
@@ -1514,23 +1246,7 @@ function _templateObject$d() {
 
   return data;
 }
-
-var LoadingScreenContainerUI = styled__default('div')(_templateObject$d(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.layout.desktop.headerHeight;
-}, function (_ref2) {
-  var theme = _ref2.theme;
-  return theme.breakPoints.desktop;
-}, function (_ref3) {
-  var theme = _ref3.theme;
-  return theme.layout.tablet.headerHeight;
-}, function (_ref4) {
-  var theme = _ref4.theme;
-  return theme.breakPoints.tablet;
-}, function (_ref5) {
-  var theme = _ref5.theme;
-  return theme.layout.mobile.headerHeight;
-});
+var LoadingScreenContainerUI = styled__default('div')(_templateObject$d(), theme.layout.desktop.headerHeight, theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, theme.layout.mobile.headerHeight);
 
 function Loader() {
   return /*#__PURE__*/React.createElement("svg", {
@@ -1586,58 +1302,9 @@ function _templateObject$e() {
 
   return data;
 }
-
-var BoxWrapper$1 = styled__default('div')(_templateObject$e(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.unit(2);
-}, function (_ref2) {
-  var theme = _ref2.theme;
-  return theme.unit(1);
-}, function (_ref3) {
-  var theme = _ref3.theme;
-  return theme.colors['light-1'];
-}, function (_ref4) {
-  var theme = _ref4.theme;
-  return theme.breakPoints.tablet;
-}, function (_ref5) {
-  var theme = _ref5.theme;
-  return theme.unit(1);
-}, function (_ref6) {
-  var theme = _ref6.theme;
-  return theme.unit(2.5);
-});
-var OpenQuoteUI = styled__default('div')(_templateObject2$7(), function (_ref7) {
-  var theme = _ref7.theme;
-  return theme.colors['dark-3'];
-}, function (_ref8) {
-  var theme = _ref8.theme;
-  return theme.unit(2.5);
-}, function (_ref9) {
-  var theme = _ref9.theme;
-  return theme.unit(5);
-}, function (_ref10) {
-  var theme = _ref10.theme;
-  return theme.unit(0.25);
-}, function (_ref11) {
-  var theme = _ref11.theme;
-  return theme.unit(0.25);
-});
-var CloseQuoteUI = styled__default('div')(_templateObject3$5(), function (_ref12) {
-  var theme = _ref12.theme;
-  return theme.unit(2.5);
-}, function (_ref13) {
-  var theme = _ref13.theme;
-  return theme.colors['dark-3'];
-}, function (_ref14) {
-  var theme = _ref14.theme;
-  return theme.unit(5);
-}, function (_ref15) {
-  var theme = _ref15.theme;
-  return theme.unit(0.25);
-}, function (_ref16) {
-  var theme = _ref16.theme;
-  return theme.unit(0.25);
-});
+var BoxWrapper$1 = styled__default('div')(_templateObject$e(), theme.unit(2), theme.unit(1), theme.colors['light-1'], theme.breakPointsAsPixel.tablet, theme.unit(1), theme.unit(2.5));
+var OpenQuoteUI = styled__default('div')(_templateObject2$7(), theme.colors['dark-3'], theme.unit(2.5), theme.unit(5), theme.unit(0.25), theme.unit(0.25));
+var CloseQuoteUI = styled__default('div')(_templateObject3$5(), theme.unit(2.5), theme.colors['dark-3'], theme.unit(5), theme.unit(0.25), theme.unit(0.25));
 var DropQuoteUI = styled__default('div')(_templateObject4$5());
 
 function Quote (_ref) {
@@ -1701,8 +1368,7 @@ function _templateObject$f() {
 }
 
 var getBgColor = function getBgColor(_ref) {
-  var background = _ref.background,
-      theme = _ref.theme;
+  var background = _ref.background;
 
   if (background === 'light') {
     return theme.colors['light-1'];
@@ -1714,8 +1380,7 @@ var getBgColor = function getBgColor(_ref) {
 };
 
 var getInnerWidth = function getInnerWidth(_ref2) {
-  var innerWidth = _ref2.innerWidth,
-      theme = _ref2.theme;
+  var innerWidth = _ref2.innerWidth;
 
   if (innerWidth === 'medium') {
     return '750px';
@@ -1727,31 +1392,16 @@ var getInnerWidth = function getInnerWidth(_ref2) {
 };
 
 var SectionWrapperUI = styled__default('section')(_templateObject$f(), getBgColor);
-var SectionUI = styled__default('div')(_templateObject2$8(), getInnerWidth, function (_ref3) {
-  var theme = _ref3.theme;
-  return "".concat(theme.unit(1), " 0");
-}, function (_ref4) {
-  var textAlign = _ref4.textAlign;
+var SectionUI = styled__default('div')(_templateObject2$8(), getInnerWidth, "".concat(theme.unit(1), " 0"), function (_ref3) {
+  var textAlign = _ref3.textAlign;
   return textAlign;
-}, function (_ref5) {
-  var theme = _ref5.theme;
-  return theme.breakPoints.tablet;
-}, function (_ref6) {
-  var theme = _ref6.theme;
-  return "".concat(theme.unit(0.5));
-});
+}, theme.breakPointsAsPixel.tablet, theme.unit(0.5));
 var Col1 = styled__default('div')(_templateObject3$6());
-var Col2 = styled__default('div')(_templateObject4$6(), function (_ref7) {
-  var sidebar_width = _ref7.sidebar_width;
+var Col2 = styled__default('div')(_templateObject4$6(), function (_ref4) {
+  var sidebar_width = _ref4.sidebar_width;
   return sidebar_width;
-}, function (_ref8) {
-  var theme = _ref8.theme;
-  return theme.unit(0.5);
-});
-var ColWrapper = styled__default('div')(_templateObject5$3(), function (_ref9) {
-  var theme = _ref9.theme;
-  return theme.breakPoints.tablet;
-}, Col1, Col2);
+}, theme.unit(0.5));
+var ColWrapper = styled__default('div')(_templateObject5$3(), theme.breakPointsAsPixel.tablet, Col1, Col2);
 
 function getTitle(title, layout_style) {
   var show_title = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
@@ -1838,7 +1488,7 @@ var robotoBoldWoff = "/fonts/roboto-v20-latin-700.woff";
 var robotoBoldWoff2 = "/fonts/roboto-v20-latin-700.woff2";
 
 function _templateObject$g() {
-  var data = _taggedTemplateLiteral(["\n\n/**\n * These values will not show up in content, but can be\n * queried by JavaScript to know which breakpoint is active.\n * Add or remove as many breakpoints as you like.\n */\nbody:before {\n  content: \"desktop\";\n  display: none;\n}\n\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"tablet\";\n  }\n}\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"mobile\";\n  }\n}\n\n\n\n/* pt-serif-regular - latin */\n@font-face {\n  font-display: block;\n  font-family: 'PT Serif';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: local('PT Serif'), local('PTSerif-Regular'),\n       url(", ") format('woff2'), /* Super Modern Browsers */\n       url(", ") format('woff'), /* Modern Browsers */\n\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-display: block;\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: local('Roboto Medium'), local('Roboto-Medium'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: local('Roboto Bold'), local('Roboto-Bold'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* css reset */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: 1.125rem;\n  line-height: 1.5;\n  margin: 0;\n  overflow: auto;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nimg {\n  max-width: 100%;\n  height: auto;\n}\n\niframe {\n  max-width: 100%;\n}\n\n\n/* link styles */\na:active {\n  color: ", ";\n  text-decoration: none;\n}\n\na:link {\n  text-decoration: none;\n  color: ", ";\n}\n\na:hover {\n  color: ", ";\n  text-decoration: underline;\n}\n\na:visited {\n  color: ", ";\n  text-decoration: none;\n}\n\n/* list and paragraph styles */\np, ul, code {\n  padding: 0;\n  margin-bottom: ", ";\n}\n\nb {\n  font-weight: bold;\n}\n\nul {\n  list-style: disc;\n  padding-left: ", ";\n};\n}\n\nli {\n  margin-bottom: ", ";\n  margin-left: ", ";\n}\n\ncode {\n  box-sizing: border-box;\n  background-color:  ", ";\n  display: block;\n  padding:  ", ";\n  color: ", ";\n  width: 100%;\n  font-family: 'Courier New', Courier, monospace;\n  white-space: normal;\n\n  font-size: ", ";\n\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n/* heading styles */\nh1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n  margin-bottom: ", ";\n  line-height: 125%;\n}\n\nh1, .heading-1 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh2, .heading-2 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh3, .heading-3 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh4, .heading-4 {\n  font-size: ", ";;\n  font-weight: 500;\n  margin-bottom: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh5, .heading-5 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh6, .heading-6 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh1 + h2, h1 + h2.heading-2 {\n  margin-top: -", ";\n}\n\nh2 + h4 {\n  margin-top: -", ";\n}\n\n\n/* table styles */\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    width: 100%;\n  margin-bottom: ", ";\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td, th {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    th {\n      background-color: ", ";\n    }\n\n\n  }\n\n\n  @media (max-width: ", ") {\n    table.responsive-collapse {\n\n    table, thead, tbody, th, td, tr {\n\t\tdisplay: block;\n\t}\n\n  thead tr {\n\t\tposition: absolute;\n\t\ttop: -9999px;\n\t\tleft: -9999px;\n\t}\n    }\n\n  table.n-plus-2 {\n  td:nth-child(n+2) {\n    display: inline-block\n\t}\n  }\n\n\n\n  }\n\n\n/* makes a class for each color in theme */\n  ", "\n\n/* makes a class for each font in theme */\n", "\n\n/* random text styles */\nblockquote {\n  padding: ", ";\n  background-color:  ", ";\n  border:  ", ";\n  margin:  ", ";\n\n  p:last-child, ul:last-child {\n    margin-bottom: 0;\n  }\n\n}\n\n.italic {\n  font-style: italic;\n}\n\n.text-shadow-dark {\ntext-shadow: 1px 2px #000\n}\n\n.line-height-1 {\n  line-height: 1;\n}\n\n.line-height-1-2-0 {\n  line-height: 1;\n}\n\n.bold {\n  font-weight: 700;\n}\n\n.lead {\n  font-size: ", ";\n  line-height: 130%;\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n/* Forms */\ninput, textarea {\n    width: 100%;\n    border: ", ";\n    font-size: ", ";\n    display: block;\n    margin-bottom: ", ";\n    outline: none;\n    padding: ", ";\n     &:focus {\n      outline: none;\n      box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4);\n  }\n  }\n\n  textarea {\n    height: ", ";\n    resize: none;\n  }\n\nbutton {\n  background-color: ", ";\n  border: 0;\n  border-radius: 5px;\n  color: #fff;\n  cursor: pointer;\n  display: block;\n  font-family: ", ";\n  font-size: ", ";\n  font-weight: 700;\n  height: ", ";\n  margin-top: ", ";\n  width: 100%;\n  /* max-width: ", "px; */\n  background-image: linear-gradient(\n    to bottom,\n    #e52d27 0%,\n    #b31217 41%,\n    #e52d27 100%\n  );\n\n  border:1px solid #d02718;\n  box-shadow: inset 0px 1px 0px 0px #f5978e;\n}\n\n\n"]);
+  var data = _taggedTemplateLiteral(["\n\n/**\n * These values will not show up in content, but can be\n * queried by JavaScript to know which breakpoint is active.\n * Add or remove as many breakpoints as you like.\n */\nbody:before {\n  content: \"desktop\";\n  display: none;\n}\n\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"tablet\";\n  }\n}\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"mobile\";\n  }\n}\n\n\n\n/* pt-serif-regular - latin */\n@font-face {\n  font-display: block;\n  font-family: 'PT Serif';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: local('PT Serif'), local('PTSerif-Regular'),\n       url(", ") format('woff2'), /* Super Modern Browsers */\n       url(", ") format('woff'), /* Modern Browsers */\n\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-display: block;\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: local('Roboto Medium'), local('Roboto-Medium'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: local('Roboto Bold'), local('Roboto-Bold'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* css reset */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: 1.125rem;\n  line-height: 1.5;\n  margin: 0;\n  overflow: auto;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nimg {\n  max-width: 100%;\n  height: auto;\n}\n\niframe {\n  max-width: 100%;\n}\n\n\n/* link styles */\na:active {\n  color: ", ";\n  text-decoration: none;\n}\n\na:link {\n  text-decoration: none;\n  color: ", ";\n}\n\na:hover {\n  color: ", ";\n  text-decoration: underline;\n}\n\na:visited {\n  color: ", ";\n  text-decoration: none;\n}\n\n/* list and paragraph styles */\np, ul, code {\n  padding: 0;\n  margin-bottom: ", ";\n}\n\nb {\n  font-weight: bold;\n}\n\nul {\n  list-style: disc;\n  padding-left: ", ";\n};\n}\n\nli {\n  margin-bottom: ", ";\n  margin-left: ", ";\n}\n\ncode {\n  box-sizing: border-box;\n  background-color:  ", ";\n  display: block;\n  padding: ", ";\n  color: ", ";\n  width: 100%;\n  font-family: 'Courier New', Courier, monospace;\n  white-space: normal;\n\n  font-size: ", ";\n\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n/* heading styles */\nh1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n  margin-bottom: ", ";\n  line-height: 100%;\n}\n\nh1, .heading-1 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh2, .heading-2 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh3, .heading-3 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh4, .heading-4 {\n  font-size: ", ";;\n  font-weight: 500;\n  margin-bottom: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh5, .heading-5 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh6, .heading-6 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh1 + h2, h1 + h2.heading-2 {\n  margin-top: -", ";\n}\n\nh2 + h4 {\n  margin-top: -", ";\n}\n\n\n/* table styles */\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    width: 100%;\n  margin-bottom: ", ";\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td, th {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    th {\n      background-color: ", ";\n    }\n\n\n  }\n\n\n  @media (max-width: ", ") {\n    table.responsive-collapse {\n\n    table, thead, tbody, th, td, tr {\n\t\tdisplay: block;\n\t}\n\n  thead tr {\n\t\tposition: absolute;\n\t\ttop: -9999px;\n\t\tleft: -9999px;\n\t}\n    }\n\n  table.n-plus-2 {\n  td:nth-child(n+2) {\n    display: inline-block\n\t}\n  }\n\n\n\n  }\n\n\n/* makes a class for each color in theme */\n  ", "\n\n/* makes a class for each font in theme */\n", "\n\n/* random text styles */\nblockquote {\n  padding: ", ";\n  background-color: ", ";\n  border:  ", ";\n  margin:  ", ";\n\n  p:last-child, ul:last-child {\n    margin-bottom: 0;\n  }\n\n}\n\n.italic {\n  font-style: italic;\n}\n\n.text-shadow-dark {\ntext-shadow: 1px 2px #000\n}\n\n.line-height-1 {\n  line-height: 1;\n}\n\n.line-height-1-2-0 {\n  line-height: 1;\n}\n\n.bold {\n  font-weight: 700;\n}\n\n.lead {\n  font-size: ", ";\n  line-height: 130%;\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n/* Forms */\ninput, textarea {\n    width: 100%;\n    border: ", ";\n    font-size: ", ";\n    display: block;\n    margin-bottom: ", ";\n    outline: none;\n    padding: ", ";\n     &:focus {\n      outline: none;\n      box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4);\n  }\n  }\n\n  textarea {\n    height: ", ";\n    resize: none;\n  }\n\nbutton {\n  background-color: ", ";\n  border: 0;\n  border-radius: 5px;\n  color: #fff;\n  cursor: pointer;\n  display: block;\n  font-family: ", ";\n  font-size: ", ";\n  font-weight: 700;\n  height: ", ";\n  margin-top: ", ";\n  width: 100%;\n  /* max-width: ", "px; */\n  background-image: linear-gradient(\n    to bottom,\n    #e52d27 0%,\n    #b31217 41%,\n    #e52d27 100%\n  );\n\n  border:1px solid #d02718;\n  box-shadow: inset 0px 1px 0px 0px #f5978e;\n}\n\n\n"]);
 
   _templateObject$g = function _templateObject() {
     return data;
@@ -1846,206 +1496,7 @@ function _templateObject$g() {
 
   return data;
 }
-var GlobalStyles = styled.createGlobalStyle(_templateObject$g(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.breakPoints.tablet;
-}, function (_ref2) {
-  var theme = _ref2.theme;
-  return theme.breakPoints.mobile;
-}, ptSerifWoff2, ptSerifWoff, robotoMediumWoff2, robotoMediumWoff, robotoBoldWoff2, robotoBoldWoff, function (_ref3) {
-  var theme = _ref3.theme;
-  return theme.colors['dark-4'];
-}, function (_ref4) {
-  var theme = _ref4.theme;
-  return theme.typography.fonts['font-1'];
-}, function (_ref5) {
-  var theme = _ref5.theme;
-  return theme.colors['dark-3'];
-}, function (_ref6) {
-  var theme = _ref6.theme;
-  return theme.colors['dark-3'];
-}, function (_ref7) {
-  var theme = _ref7.theme;
-  return theme.colors['dark-3'];
-}, function (_ref8) {
-  var theme = _ref8.theme;
-  return theme.colors['dark-3'];
-}, function (_ref9) {
-  var theme = _ref9.theme;
-  return theme.unit(1);
-}, function (_ref10) {
-  var theme = _ref10.theme;
-  return theme.unit(1);
-}, function (_ref11) {
-  var theme = _ref11.theme;
-  return theme.unit(0.25);
-}, function (_ref12) {
-  var theme = _ref12.theme;
-  return theme.unit(0.75);
-}, function (_ref13) {
-  var theme = _ref13.theme;
-  return theme.colors['light-1'];
-}, function (_ref14) {
-  var theme = _ref14.theme;
-  return theme.unit(0.5);
-}, function (_ref15) {
-  var theme = _ref15.theme;
-  return theme.colors['dark-1'];
-}, function (_ref16) {
-  var theme = _ref16.theme;
-  return theme.typography.sizes.desktop.sm;
-}, function (_ref17) {
-  var theme = _ref17.theme;
-  return theme.breakPoints.tablet;
-}, function (_ref18) {
-  var theme = _ref18.theme;
-  return theme.typography.sizes.tablet.sm;
-}, function (_ref19) {
-  var theme = _ref19.theme;
-  return theme.breakPoints.mobile;
-}, function (_ref20) {
-  var theme = _ref20.theme;
-  return theme.typography.sizes.mobile.xsm;
-}, function (_ref21) {
-  var theme = _ref21.theme;
-  return theme.typography.fonts['font-2'];
-}, function (_ref22) {
-  var theme = _ref22.theme;
-  return theme.unit(0.5);
-}, function (_ref23) {
-  var theme = _ref23.theme;
-  return theme.typography.sizes.desktop.xxlg;
-}, function (_ref24) {
-  var theme = _ref24.theme;
-  return theme.breakPoints.tablet;
-}, function (_ref25) {
-  var theme = _ref25.theme;
-  return theme.typography.sizes.tablet.xxlg;
-}, function (_ref26) {
-  var theme = _ref26.theme;
-  return theme.breakPoints.mobile;
-}, function (_ref27) {
-  var theme = _ref27.theme;
-  return theme.typography.sizes.mobile.xxlg;
-}, function (_ref28) {
-  var theme = _ref28.theme;
-  return theme.typography.sizes.desktop.xlg;
-}, function (_ref29) {
-  var theme = _ref29.theme;
-  return theme.breakPoints.tablet;
-}, function (_ref30) {
-  var theme = _ref30.theme;
-  return theme.typography.sizes.tablet.xlg;
-}, function (_ref31) {
-  var theme = _ref31.theme;
-  return theme.breakPoints.mobile;
-}, function (_ref32) {
-  var theme = _ref32.theme;
-  return theme.typography.sizes.mobile.xlg;
-}, function (_ref33) {
-  var theme = _ref33.theme;
-  return theme.typography.sizes.desktop.lg;
-}, function (_ref34) {
-  var theme = _ref34.theme;
-  return theme.breakPoints.tablet;
-}, function (_ref35) {
-  var theme = _ref35.theme;
-  return theme.typography.sizes.tablet.lg;
-}, function (_ref36) {
-  var theme = _ref36.theme;
-  return theme.breakPoints.mobile;
-}, function (_ref37) {
-  var theme = _ref37.theme;
-  return theme.typography.sizes.mobile.lg;
-}, function (_ref38) {
-  var theme = _ref38.theme;
-  return theme.typography.sizes.desktop.md;
-}, function (_ref39) {
-  var theme = _ref39.theme;
-  return theme.unit(0.3);
-}, function (_ref40) {
-  var theme = _ref40.theme;
-  return theme.breakPoints.tablet;
-}, function (_ref41) {
-  var theme = _ref41.theme;
-  return theme.typography.sizes.tablet.md;
-}, function (_ref42) {
-  var theme = _ref42.theme;
-  return theme.breakPoints.mobile;
-}, function (_ref43) {
-  var theme = _ref43.theme;
-  return theme.typography.sizes.mobile.md;
-}, function (_ref44) {
-  var theme = _ref44.theme;
-  return theme.typography.fonts['font-1'];
-}, function (_ref45) {
-  var theme = _ref45.theme;
-  return theme.typography.sizes.desktop.sm;
-}, function (_ref46) {
-  var theme = _ref46.theme;
-  return theme.breakPoints.tablet;
-}, function (_ref47) {
-  var theme = _ref47.theme;
-  return theme.typography.sizes.tablet.sm;
-}, function (_ref48) {
-  var theme = _ref48.theme;
-  return theme.breakPoints.mobile;
-}, function (_ref49) {
-  var theme = _ref49.theme;
-  return theme.typography.sizes.mobile.sm;
-}, function (_ref50) {
-  var theme = _ref50.theme;
-  return theme.typography.fonts['font-1'];
-}, function (_ref51) {
-  var theme = _ref51.theme;
-  return theme.typography.sizes.desktop.xsm;
-}, function (_ref52) {
-  var theme = _ref52.theme;
-  return theme.breakPoints.tablet;
-}, function (_ref53) {
-  var theme = _ref53.theme;
-  return theme.typography.sizes.tablet.xsm;
-}, function (_ref54) {
-  var theme = _ref54.theme;
-  return theme.breakPoints.mobile;
-}, function (_ref55) {
-  var theme = _ref55.theme;
-  return theme.typography.sizes.mobile.xsm;
-}, function (_ref56) {
-  var theme = _ref56.theme;
-  return theme.unit(0.5);
-}, function (_ref57) {
-  var theme = _ref57.theme;
-  return theme.unit(0.5);
-}, function (_ref58) {
-  var theme = _ref58.theme;
-  return theme.border;
-}, function (_ref59) {
-  var theme = _ref59.theme;
-  return theme.border;
-}, function (_ref60) {
-  var theme = _ref60.theme;
-  return theme.unit(1);
-}, function (_ref61) {
-  var theme = _ref61.theme;
-  return theme.border;
-}, function (_ref62) {
-  var theme = _ref62.theme;
-  return theme.border;
-}, function (_ref63) {
-  var theme = _ref63.theme;
-  return theme.unit(0.25);
-}, function (_ref64) {
-  var theme = _ref64.theme;
-  return theme.unit(0.5);
-}, function (_ref65) {
-  var theme = _ref65.theme;
-  return theme.colors['light-1'];
-}, function (_ref66) {
-  var theme = _ref66.theme;
-  return theme.breakPoints.mobile;
-}, function (_ref67) {
-  var theme = _ref67.theme;
+var GlobalStyles = styled.createGlobalStyle(_templateObject$g(), theme.breakPointsAsPixel.tablet, theme.breakPointsAsPixel.mobile, ptSerifWoff2, ptSerifWoff, robotoMediumWoff2, robotoMediumWoff, robotoBoldWoff2, robotoBoldWoff, theme.colors['dark-4'], theme.typography.fonts['font-1'], theme.colors['dark-3'], theme.colors['dark-3'], theme.colors['dark-3'], theme.colors['dark-3'], theme.unit(1), theme.unit(1), theme.unit(0.25), theme.unit(0.75), theme.colors['light-1'], theme.unit(0.5), theme.colors['dark-1'], theme.typography.sizes.desktop.sm, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.sm, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xsm, theme.typography.fonts['font-2'], theme.unit(0.5), theme.typography.sizes.desktop.xxlg, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.xxlg, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xxlg, theme.typography.sizes.desktop.xlg, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.xlg, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xlg, theme.typography.sizes.desktop.lg, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.lg, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.lg, theme.typography.sizes.desktop.md, theme.unit(0.3), theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.md, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.md, theme.typography.fonts['font-1'], theme.typography.sizes.desktop.sm, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.sm, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.sm, theme.typography.fonts['font-1'], theme.typography.sizes.desktop.xsm, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.xsm, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xsm, theme.unit(0.5), theme.unit(0.5), theme.border, theme.border, theme.unit(1), theme.border, theme.border, theme.unit(0.25), theme.unit(0.5), theme.colors['light-1'], theme.breakPointsAsPixel.mobile, function () {
   var colors = '';
 
   for (var color in theme.colors) {
@@ -2054,8 +1505,7 @@ var GlobalStyles = styled.createGlobalStyle(_templateObject$g(), function (_ref)
   }
 
   return colors;
-}, function (_ref68) {
-  var theme = _ref68.theme;
+}, function () {
   var fonts = '';
 
   for (var font in theme.typography.fonts) {
@@ -2063,68 +1513,8 @@ var GlobalStyles = styled.createGlobalStyle(_templateObject$g(), function (_ref)
   }
 
   return fonts;
-}, function (_ref69) {
-  var theme = _ref69.theme;
-  return theme.unit(0.75);
-}, function (_ref70) {
-  var theme = _ref70.theme;
-  return theme.colors['light-1'];
-}, function (_ref71) {
-  var theme = _ref71.theme;
-  return theme.border;
-}, function (_ref72) {
-  var theme = _ref72.theme;
-  return "".concat(theme.unit(1), " 0");
-}, function (_ref73) {
-  var theme = _ref73.theme;
-  return theme.typography.sizes.desktop.md;
-}, function (_ref74) {
-  var theme = _ref74.theme;
-  return theme.typography.fonts['font-3'];
-}, function (_ref75) {
-  var theme = _ref75.theme;
-  return theme.breakPoints.tablet;
-}, function (_ref76) {
-  var theme = _ref76.theme;
-  return theme.typography.sizes.tablet.md;
-}, function (_ref77) {
-  var theme = _ref77.theme;
-  return theme.breakPoints.mobile;
-}, function (_ref78) {
-  var theme = _ref78.theme;
-  return theme.typography.sizes.mobile.md;
-}, function (_ref79) {
-  var theme = _ref79.theme;
-  return "1px solid ".concat(theme.colors['dark-2']);
-}, function (_ref80) {
-  var theme = _ref80.theme;
-  return theme.unit(0.5);
-}, function (_ref81) {
-  var theme = _ref81.theme;
-  return theme.unit(0.75);
-}, function (_ref82) {
-  var theme = _ref82.theme;
-  return theme.unit(0.4);
-}, function (_ref83) {
-  var theme = _ref83.theme;
-  return theme.unit(3);
-}, function (_ref84) {
-  var theme = _ref84.theme;
-  return theme.colors['dark-2'];
-}, function (_ref85) {
-  var theme = _ref85.theme;
-  return theme.typography.fonts['font-2'];
-}, function (_ref86) {
-  var theme = _ref86.theme;
-  return theme.unit(0.66);
-}, function (_ref87) {
-  var theme = _ref87.theme;
-  return theme.unit(1.75);
-}, function (_ref88) {
-  var theme = _ref88.theme;
-  return theme.unit(0.66);
-}, function (_ref89) {
-  var maxWidth = _ref89.maxWidth;
+}, theme.unit(0.75), theme.colors['light-1'], theme.border, "".concat(theme.unit(1), " 0"), theme.typography.sizes.desktop.md, theme.typography.fonts['font-3'], theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.md, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.md, "1px solid ".concat(theme.colors['dark-2']), theme.unit(0.5), theme.unit(0.75), theme.unit(0.4), theme.unit(3), theme.colors['dark-2'], theme.typography.fonts['font-2'], theme.unit(0.66), theme.unit(1.75), theme.unit(0.66), function (_ref) {
+  var maxWidth = _ref.maxWidth;
   return maxWidth;
 });
 
@@ -2141,17 +1531,7 @@ function _templateObject$h() {
 
   return data;
 }
-
-var FormWrapper = styled__default('div')(_templateObject$h(), function (_ref) {
-  var theme = _ref.theme;
-  return theme.unit(0.5);
-}, function (_ref2) {
-  var theme = _ref2.theme;
-  return theme.border;
-}, function (_ref3) {
-  var theme = _ref3.theme;
-  return theme.colors.light2;
-});
+var FormWrapper = styled__default('div')(_templateObject$h(), theme.unit(0.5), theme.border, theme.colors.light2);
 
 function Form(_ref) {
   var sidebar = _ref.sidebar;
@@ -2262,7 +1642,7 @@ function getPages(apiUrl) {
                   }
                 };
               },
-              template: 'src/containers/page'
+              template: meta.template ? "src/pages/".concat(meta.template) : 'src/pages/page'
             };
           });
 

@@ -22,7 +22,9 @@ export default function getPages(apiUrl) {
                     },
                   }
                 },
-                template: 'src/containers/page',
+                template: meta.template
+                  ? `src/pages/${meta.template}`
+                  : 'src/pages/page',
               }
             })
             resolve(_pages)

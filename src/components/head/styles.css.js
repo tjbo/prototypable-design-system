@@ -1,3 +1,4 @@
+import theme from '../../theme'
 import { createGlobalStyle } from 'styled-components'
 import ptSerifWoff2 from './fonts/pt-serif-v11-latin-regular.woff2'
 import ptSerifWoff from './fonts/pt-serif-v11-latin-regular.woff'
@@ -19,13 +20,13 @@ body:before {
 }
 
 
-@media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
+@media (max-width: ${theme.breakPointsAsPixel.tablet}) {
   body:before {
     content: "tablet";
   }
 }
 
-@media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+@media (max-width: ${theme.breakPointsAsPixel.mobile}) {
   body:before {
     content: "mobile";
   }
@@ -118,10 +119,10 @@ html {
 }
 
 body {
-  color: ${({ theme }) => theme.colors['dark-4']};
+  color: ${theme.colors['dark-4']};
   display: flex;
   flex-direction: column;
-  font-family: ${({ theme }) => theme.typography.fonts['font-1']};
+  font-family: ${theme.typography.fonts['font-1']};
   font-size: 1.125rem;
   line-height: 1.5;
   margin: 0;
@@ -144,29 +145,29 @@ iframe {
 
 /* link styles */
 a:active {
-  color: ${({ theme }) => theme.colors['dark-3']};
+  color: ${theme.colors['dark-3']};
   text-decoration: none;
 }
 
 a:link {
   text-decoration: none;
-  color: ${({ theme }) => theme.colors['dark-3']};
+  color: ${theme.colors['dark-3']};
 }
 
 a:hover {
-  color: ${({ theme }) => theme.colors['dark-3']};
+  color: ${theme.colors['dark-3']};
   text-decoration: underline;
 }
 
 a:visited {
-  color: ${({ theme }) => theme.colors['dark-3']};
+  color: ${theme.colors['dark-3']};
   text-decoration: none;
 }
 
 /* list and paragraph styles */
 p, ul, code {
   padding: 0;
-  margin-bottom: ${({ theme }) => theme.unit(1)};
+  margin-bottom: ${theme.unit(1)};
 }
 
 b {
@@ -175,150 +176,150 @@ b {
 
 ul {
   list-style: disc;
-  padding-left: ${({ theme }) => theme.unit(1)};
+  padding-left: ${theme.unit(1)};
 };
 }
 
 li {
-  margin-bottom: ${({ theme }) => theme.unit(0.25)};
-  margin-left: ${({ theme }) => theme.unit(0.75)};
+  margin-bottom: ${theme.unit(0.25)};
+  margin-left: ${theme.unit(0.75)};
 }
 
 code {
   box-sizing: border-box;
-  background-color:  ${({ theme }) => theme.colors['light-1']};
+  background-color:  ${theme.colors['light-1']};
   display: block;
-  padding:  ${({ theme }) => theme.unit(0.5)};
-  color: ${({ theme }) => theme.colors['dark-1']};
+  padding: ${theme.unit(0.5)};
+  color: ${theme.colors['dark-1']};
   width: 100%;
   font-family: 'Courier New', Courier, monospace;
   white-space: normal;
 
-  font-size: ${({ theme }) => theme.typography.sizes.desktop.sm};
+  font-size: ${theme.typography.sizes.desktop.sm};
 
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
-   font-size: ${({ theme }) => theme.typography.sizes.tablet.sm};
+  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
+   font-size: ${theme.typography.sizes.tablet.sm};
   }
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
-   font-size: ${({ theme }) => theme.typography.sizes.mobile.xsm};
+  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+   font-size: ${theme.typography.sizes.mobile.xsm};
   }
 }
 
 /* heading styles */
 h1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {
-  font-family: ${({ theme }) => theme.typography.fonts['font-2']};
+  font-family: ${theme.typography.fonts['font-2']};
   padding: 0;
   margin: 0;
-  margin-bottom: ${({ theme }) => theme.unit(0.5)};
-  line-height: 125%;
+  margin-bottom: ${theme.unit(0.5)};
+  line-height: 100%;
 }
 
 h1, .heading-1 {
-  font-size: ${({ theme }) => theme.typography.sizes.desktop.xxlg};
+  font-size: ${theme.typography.sizes.desktop.xxlg};
   font-weight: 500;
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
-   font-size: ${({ theme }) => theme.typography.sizes.tablet.xxlg};
+  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
+   font-size: ${theme.typography.sizes.tablet.xxlg};
   }
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
-   font-size: ${({ theme }) => theme.typography.sizes.mobile.xxlg};
+  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+   font-size: ${theme.typography.sizes.mobile.xxlg};
   }
 }
 
 h2, .heading-2 {
-  font-size: ${({ theme }) => theme.typography.sizes.desktop.xlg};
+  font-size: ${theme.typography.sizes.desktop.xlg};
   font-weight: 500;
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
-   font-size: ${({ theme }) => theme.typography.sizes.tablet.xlg};
+  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
+   font-size: ${theme.typography.sizes.tablet.xlg};
   }
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
-   font-size: ${({ theme }) => theme.typography.sizes.mobile.xlg};
+  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+   font-size: ${theme.typography.sizes.mobile.xlg};
   }
 }
 
 h3, .heading-3 {
-  font-size: ${({ theme }) => theme.typography.sizes.desktop.lg};
+  font-size: ${theme.typography.sizes.desktop.lg};
   font-weight: 500;
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
-   font-size: ${({ theme }) => theme.typography.sizes.tablet.lg};
+  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
+   font-size: ${theme.typography.sizes.tablet.lg};
   }
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
-   font-size: ${({ theme }) => theme.typography.sizes.mobile.lg};
+  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+   font-size: ${theme.typography.sizes.mobile.lg};
   }
 }
 
 h4, .heading-4 {
-  font-size: ${({ theme }) => theme.typography.sizes.desktop.md};;
+  font-size: ${theme.typography.sizes.desktop.md};;
   font-weight: 500;
-  margin-bottom: ${({ theme }) => theme.unit(0.3)};
+  margin-bottom: ${theme.unit(0.3)};
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
-   font-size: ${({ theme }) => theme.typography.sizes.tablet.md};
+  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
+   font-size: ${theme.typography.sizes.tablet.md};
   }
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
-   font-size: ${({ theme }) => theme.typography.sizes.mobile.md};
+  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+   font-size: ${theme.typography.sizes.mobile.md};
   }
 }
 
 h5, .heading-5 {
-  font-family: ${({ theme }) => theme.typography.fonts['font-1']};
-  font-size:  ${({ theme }) => theme.typography.sizes.desktop.sm};
+  font-family: ${theme.typography.fonts['font-1']};
+  font-size:  ${theme.typography.sizes.desktop.sm};
   font-weight: 500;
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
-   font-size: ${({ theme }) => theme.typography.sizes.tablet.sm};
+  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
+   font-size: ${theme.typography.sizes.tablet.sm};
   }
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
-   font-size: ${({ theme }) => theme.typography.sizes.mobile.sm};
+  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+   font-size: ${theme.typography.sizes.mobile.sm};
   }
 }
 
 h6, .heading-6 {
-  font-family: ${({ theme }) => theme.typography.fonts['font-1']};
-  font-size:  ${({ theme }) => theme.typography.sizes.desktop.xsm};
+  font-family: ${theme.typography.fonts['font-1']};
+  font-size:  ${theme.typography.sizes.desktop.xsm};
   font-weight: 500;
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
-   font-size: ${({ theme }) => theme.typography.sizes.tablet.xsm};
+  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
+   font-size: ${theme.typography.sizes.tablet.xsm};
   }
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
-   font-size: ${({ theme }) => theme.typography.sizes.mobile.xsm};
+  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+   font-size: ${theme.typography.sizes.mobile.xsm};
   }
 }
 
 h1 + h2, h1 + h2.heading-2 {
-  margin-top: -${({ theme }) => theme.unit(0.5)};
+  margin-top: -${theme.unit(0.5)};
 }
 
 h2 + h4 {
-  margin-top: -${({ theme }) => theme.unit(0.5)};
+  margin-top: -${theme.unit(0.5)};
 }
 
 
 /* table styles */
   table {
     border-collapse: collapse;
-    border-left: ${({ theme }) => theme.border};
-    border-right: ${({ theme }) => theme.border};
+    border-left: ${theme.border};
+    border-right: ${theme.border};
     margin: 0;
     width: 100%;
-  margin-bottom: ${({ theme }) => theme.unit(1)};
+  margin-bottom: ${theme.unit(1)};
     tr {
-      border-bottom: ${({ theme }) => theme.border};
+      border-bottom: ${theme.border};
       width: 100%;
     }
     tr:first-child {
-      border-top: ${({ theme }) => theme.border};
+      border-top: ${theme.border};
     }
     td:first-child {
       font-weight: 700;
@@ -326,19 +327,18 @@ h2 + h4 {
 
     td, th {
       background-color: #fff;
-      padding: ${({ theme }) => theme.unit(0.25)} ${({ theme }) =>
-  theme.unit(0.5)};
+      padding: ${theme.unit(0.25)} ${theme.unit(0.5)};
     }
 
     th {
-      background-color: ${({ theme }) => theme.colors['light-1']};
+      background-color: ${theme.colors['light-1']};
     }
 
 
   }
 
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
     table.responsive-collapse {
 
     table, thead, tbody, th, td, tr {
@@ -364,7 +364,7 @@ h2 + h4 {
 
 
 /* makes a class for each color in theme */
-  ${({ theme }) => {
+  ${() => {
     let colors = ''
     for (const color in theme.colors) {
       colors += `.${color}
@@ -382,7 +382,7 @@ h2 + h4 {
   }}
 
 /* makes a class for each font in theme */
-${({ theme }) => {
+${() => {
   let fonts = ''
   for (const font in theme.typography.fonts) {
     fonts += `.${font}
@@ -396,10 +396,10 @@ ${({ theme }) => {
 
 /* random text styles */
 blockquote {
-  padding: ${({ theme }) => theme.unit(0.75)};
-  background-color:  ${({ theme }) => theme.colors['light-1']};
-  border:  ${({ theme }) => theme.border};
-  margin:  ${({ theme }) => `${theme.unit(1)} 0`};
+  padding: ${theme.unit(0.75)};
+  background-color: ${theme.colors['light-1']};
+  border:  ${theme.border};
+  margin:  ${`${theme.unit(1)} 0`};
 
   p:last-child, ul:last-child {
     margin-bottom: 0;
@@ -428,28 +428,28 @@ text-shadow: 1px 2px #000
 }
 
 .lead {
-  font-size: ${({ theme }) => theme.typography.sizes.desktop.md};
+  font-size: ${theme.typography.sizes.desktop.md};
   line-height: 130%;
-  font-family: ${({ theme }) => theme.typography.fonts['font-3']};
+  font-family: ${theme.typography.fonts['font-3']};
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
-   font-size: ${({ theme }) => theme.typography.sizes.tablet.md};
+  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
+   font-size: ${theme.typography.sizes.tablet.md};
   }
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
-   font-size: ${({ theme }) => theme.typography.sizes.mobile.md};
+  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+   font-size: ${theme.typography.sizes.mobile.md};
   }
 }
 
 /* Forms */
 input, textarea {
     width: 100%;
-    border: ${({ theme }) => `1px solid ${theme.colors['dark-2']}`};
-    font-size: ${({ theme }) => theme.unit(0.5)};
+    border: ${`1px solid ${theme.colors['dark-2']}`};
+    font-size: ${theme.unit(0.5)};
     display: block;
-    margin-bottom: ${({ theme }) => theme.unit(0.75)};
+    margin-bottom: ${theme.unit(0.75)};
     outline: none;
-    padding: ${({ theme }) => theme.unit(0.4)};
+    padding: ${theme.unit(0.4)};
      &:focus {
       outline: none;
       box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4);
@@ -457,22 +457,22 @@ input, textarea {
   }
 
   textarea {
-    height: ${({ theme }) => theme.unit(3)};
+    height: ${theme.unit(3)};
     resize: none;
   }
 
 button {
-  background-color: ${({ theme }) => theme.colors['dark-2']};
+  background-color: ${theme.colors['dark-2']};
   border: 0;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
   display: block;
-  font-family: ${({ theme }) => theme.typography.fonts['font-2']};
-  font-size: ${({ theme }) => theme.unit(0.66)};
+  font-family: ${theme.typography.fonts['font-2']};
+  font-size: ${theme.unit(0.66)};
   font-weight: 700;
-  height: ${({ theme }) => theme.unit(1.75)};
-  margin-top: ${({ theme }) => theme.unit(0.66)};
+  height: ${theme.unit(1.75)};
+  margin-top: ${theme.unit(0.66)};
   width: 100%;
   /* max-width: ${({ maxWidth }) => maxWidth}px; */
   background-image: linear-gradient(

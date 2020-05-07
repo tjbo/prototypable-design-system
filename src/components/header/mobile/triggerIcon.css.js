@@ -1,4 +1,5 @@
 import makePixelValue from '../../../utils/makePixelValue'
+import theme from '../../../theme'
 
 const heightLine = 3
 const heightIcon = 16
@@ -42,7 +43,7 @@ export const Line3UI = styled(LineUI)`
 
 export const ContainerUI = styled('div')`
   position: absolute;
-  padding: ${({ theme }) => theme.unit(0.5)};
+  padding: ${theme.unit(0.5)};
   right: 0;
   top: 0;
 `
@@ -51,9 +52,9 @@ export const ContainerInnerUI = styled('div')`
   display: block;
   height: ${makePixelValue(heightIcon)};
   margin: (${makePixelValue(heightIcon * 2)}) auto ${heightIcon} auto;
-  margin-top: -${({ theme }) => theme.unit(0.125)};
+  margin-top: -${theme.unit(0.125)};
   position: relative;
-  width: ${({ theme }) => theme.unit(1)};
+  width: ${theme.unit(1)};
   z-index: 9999;
   cursor: pointer;
 `

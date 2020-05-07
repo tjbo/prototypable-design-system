@@ -1,10 +1,12 @@
+import theme from '../../theme'
+
 export const BoxWrapper = styled('div')`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  border: ${({ theme }) => theme.border};
-  padding: ${({ theme }) => theme.unit(0.25)} ${({ theme }) => theme.unit(0.5)};
-  margin-bottom: ${({ theme }) => theme.unit(0.5)};
+  border: ${theme.border};
+  padding: ${theme.unit(0.25)} ${theme.unit(0.5)};
+  margin-bottom: ${theme.unit(0.5)};
 
   .title {
     font-weight: bold;
@@ -20,7 +22,7 @@ export const BoxWrapper = styled('div')`
     }
   }
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
+  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
     ul {
       column-count: 3;
     }
@@ -32,7 +34,7 @@ export const BoxWrapper = styled('div')`
     }
   }
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
     ul {
       column-count: 1;
     }

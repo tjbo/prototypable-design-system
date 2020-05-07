@@ -1,3 +1,4 @@
+import theme from '../../theme'
 export const GridWrapperUI = styled('div')`
   * {
     box-sizing: border-box;
@@ -14,8 +15,8 @@ export const GridWrapperUI = styled('div')`
     margin-bottom: 1.25%;
     flex: 1;
 
-    @media (max-width: ${({ theme }) => theme.breakPoints.tablet}) {
-      margin-bottom: ${({ theme }) => theme.unit(0.5)};
+    @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
+      margin-bottom: ${theme.unit(0.5)};
     }
   }
 
@@ -28,7 +29,7 @@ export const GridWrapperUI = styled('div')`
     }
   }
 
-  @media (max-width: ${({ theme }) => theme.breakPoints.mobile}) {
+  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
     .col {
       display: block;
       min-width: 100%;
