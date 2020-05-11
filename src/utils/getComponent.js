@@ -4,6 +4,7 @@ import Card from '../components/card/'
 import Cards from '../components/cards/'
 import Faq from '../components/faq/'
 import Grid from '../components/grid/'
+import Image from '../components/image/'
 import Jumbotron from '../components/jumbotron/'
 import Quote from '../components/quote/'
 import Section from '../components/section/'
@@ -27,6 +28,7 @@ export default function getComponent(data) {
         Form,
         Faq,
         Grid,
+        Image,
         Quote,
       }}
       jsx={data.body.text}
