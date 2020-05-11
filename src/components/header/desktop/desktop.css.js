@@ -19,10 +19,8 @@ export const ContainerInnerUI = styled('div')`
   height: ${theme.layout.desktop.headerHeight};
   flex-direction: row;
   justify-content: space-between;
-  padding: ${`0 ${theme.unit(0.75)} 0 ${theme.unit(0.25)}`};
   width: 100%;
   z-index: 1;
-  padding-right: 75px;
 `
 
 export const DropdownUI = styled('div')`
@@ -79,6 +77,15 @@ export const DropdownUI = styled('div')`
   }
 `
 
+export const BrandUI = styled('div')`
+  display: flex;
+  align-items: center;
+  height: ${theme.layout.desktop.headerHeight};
+  min-width: 140px;
+  margin-left: ${theme.unit(0.25)};
+  /* margin-right: 100px; */
+`
+
 export const LinkUI = styled('div')`
   align-items: center;
   box-sizing: border-box;
@@ -96,8 +103,8 @@ export const LinkUI = styled('div')`
   padding-left: ${theme.unit(1)};
   a:active,
   a:hover {
-    color: ${theme.colors['dark-3']};
     cursor: pointer;
+    text-decoration: underline;
   }
   text-transform: uppercase;
 `
@@ -105,4 +112,26 @@ export const LinkUI = styled('div')`
 export const MenuUI = styled('div')`
   display: flex;
   position: relative;
+`
+
+export const ContactUI = styled('div')`
+  margin-left: ${theme.unit(1)};
+  font-family: ${theme.typography.fonts['font-2']};
+  border-left: ${theme.unit(1)};
+  color: #fff;
+  font-size: ${theme.unit(0.45)};
+  display: flex;
+  background-color: ${theme.colors['dark-2']};
+  padding: 0 ${theme.unit(0.75)};
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  a:active,
+  a:link,
+  a:hover,
+  a:visited {
+    color: #fff;
+  }
 `

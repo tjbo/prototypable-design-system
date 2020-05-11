@@ -92,6 +92,20 @@ function Divider() {
   return <DividerUI />
 }
 
+function Contact(props) {
+  return (
+    <Media>
+      {({ breakpoints, currentBreakpoint }) => {
+        if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+          return <DesktopHeader.Contact {...{ ...props }} />
+        } else {
+          return null
+        }
+      }}
+    </Media>
+  )
+}
+
 export default {
   Brand,
   Container,
@@ -99,4 +113,5 @@ export default {
   Dropdown,
   Link,
   Menu,
+  Contact,
 }

@@ -35,8 +35,10 @@ export const FooterUIInner = styled('div')`
       color: #fff;
       text-decoration: none;
       font-family: ${theme.typography.fonts['font-2']};
-      font-size: ${theme.unit(0.65)};
+    }
+    a:first-child {
       text-transform: uppercase;
+      font-size: ${theme.unit(0.65)};
     }
     font-family: ${theme.typography.fonts['font-2']};
   }

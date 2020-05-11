@@ -189,7 +189,7 @@ var theme = {
     tablet: '1025px',
     desktop: '1280px'
   },
-  colors: (_colors = {}, _defineProperty(_colors, 'dark-1', '#000000'), _defineProperty(_colors, 'dark-2', '#777777'), _defineProperty(_colors, 'dark-3', '#0090e7'), _defineProperty(_colors, 'dark-4', '#454545'), _defineProperty(_colors, 'dark-5', '#0066a3'), _defineProperty(_colors, 'light-1', '#f5faff'), _defineProperty(_colors, 'light-2', '36,139,204'), _defineProperty(_colors, 'light-3', '#ffffff'), _colors),
+  colors: (_colors = {}, _defineProperty(_colors, 'dark-1', '#000000'), _defineProperty(_colors, 'dark-2', '#D40000'), _defineProperty(_colors, 'dark-3', '#0090e7'), _defineProperty(_colors, 'dark-4', '#454545'), _defineProperty(_colors, 'dark-5', '#0066a3'), _defineProperty(_colors, 'light-1', '#f5faff'), _defineProperty(_colors, 'light-2', '36,139,204'), _defineProperty(_colors, 'light-3', '#ffffff'), _colors),
   typography: {
     fonts: (_fonts = {}, _defineProperty(_fonts, 'font-1', 'PT Serif'), _defineProperty(_fonts, 'font-2', 'Roboto'), _defineProperty(_fonts, 'font-3', 'PT Serif Caption'), _fonts),
     sizes: {
@@ -307,8 +307,18 @@ Grid.Col = function (_ref2) {
   }, children);
 };
 
+function _templateObject5() {
+  var data = _taggedTemplateLiteral(["\n  top: ", ";\n  left: ", ";\n"]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n  blockquote {\n    border: none;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  padding: ", " ", ";\n  margin: 0;\n  blockquote {\n    font-family: ", ";\n    border: none;\n    color: ", ";\n    margin: 0;\n  }\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -318,7 +328,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  display: block;\n  height: ", ";\n  color: ", ";\n  opacity: 0.5;\n  font-size: ", ";\n  line-height: 1;\n  position: absolute;\n  bottom: ", ";\n  right: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  bottom: ", ";\n  right: ", ";\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -328,7 +338,7 @@ function _templateObject3() {
 }
 
 function _templateObject2$2() {
-  var data = _taggedTemplateLiteral(["\n  display: block;\n  color: ", ";\n  height: ", ";\n  opacity: 0.5;\n  font-size: ", ";\n  line-height: 1;\n  position: absolute;\n  top: ", ";\n  left: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: block;\n  color: ", ";\n  height: ", ";\n  font-size: ", ";\n  line-height: 1;\n  opacity: 0.5;\n  position: absolute;\n"]);
 
   _templateObject2$2 = function _templateObject2() {
     return data;
@@ -338,7 +348,7 @@ function _templateObject2$2() {
 }
 
 function _templateObject$2() {
-  var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  width: 100%;\n  display: block;\n  padding: ", " ", ";\n  background: ", ";\n  position: relative;\n  @media (max-width: ", ") {\n    padding: ", " ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  width: 100%;\n  display: block;\n  background: ", ";\n  position: relative;\n  @media (max-width: ", ") {\n    padding: ", " ", ";\n  }\n"]);
 
   _templateObject$2 = function _templateObject() {
     return data;
@@ -346,10 +356,11 @@ function _templateObject$2() {
 
   return data;
 }
-var BoxWrapper = styled__default('div')(_templateObject$2(), theme.unit(2), theme.unit(1), theme.colors['light-1'], theme.breakPointsAsPixel.tablet, theme.unit(1), theme.unit(2.5));
-var OpenQuoteUI = styled__default('div')(_templateObject2$2(), theme.colors['dark-3'], theme.unit(2.5), theme.unit(5), theme.unit(0.25), theme.unit(0.25));
-var CloseQuoteUI = styled__default('div')(_templateObject3(), theme.unit(2.5), theme.colors['dark-3'], theme.unit(5), theme.unit(0.25), theme.unit(0.25));
-var DropQuoteUI = styled__default('div')(_templateObject4());
+var BoxWrapper = styled__default('div')(_templateObject$2(), theme.colors['light-1'], theme.breakPointsAsPixel.tablet, theme.unit(1), theme.unit(2.5));
+var QuoteUI = styled__default('div')(_templateObject2$2(), theme.colors['dark-3'], theme.unit(2.5), theme.unit(5));
+var CloseQuoteUI = styled__default(QuoteUI)(_templateObject3(), theme.unit(0), theme.unit(0.25));
+var DropQuoteUI = styled__default('div')(_templateObject4(), theme.unit(2), theme.unit(1), theme.typography.fonts['font-3'], theme.colors['dark-1']);
+var OpenQuoteUI = styled__default(QuoteUI)(_templateObject5(), theme.unit(0.25), theme.unit(0.25));
 
 function Quote (_ref) {
   var children = _ref.children;
@@ -631,7 +642,7 @@ Faq.Summary = function (_ref3) {
 };
 
 function _templateObject4$1() {
-  var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  display: flex;\n  justify-content: space-between;\n  background-color: ", ";\n  padding: ", ";\n  padding-right: ", ";\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n    flex-direction: column;\n    text-align: center;\n  }\n\n  ", " {\n    color: #fff;\n    white-space: nowrap;\n    font-style: normal;\n    a:active,\n    a:visited,\n    a:hover,\n    a:link {\n      color: #fff;\n      text-decoration: none;\n      font-family: ", ";\n      font-size: ", ";\n      text-transform: uppercase;\n    }\n    font-family: ", ";\n  }\n\n  ", " {\n    font-size: ", ";\n    color: #fff;\n    margin-right: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  display: flex;\n  justify-content: space-between;\n  background-color: ", ";\n  padding: ", ";\n  padding-right: ", ";\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n    flex-direction: column;\n    text-align: center;\n  }\n\n  ", " {\n    color: #fff;\n    white-space: nowrap;\n    font-style: normal;\n    a:active,\n    a:visited,\n    a:hover,\n    a:link {\n      color: #fff;\n      text-decoration: none;\n      font-family: ", ";\n    }\n    a:first-child {\n      text-transform: uppercase;\n      font-size: ", ";\n    }\n    font-family: ", ";\n  }\n\n  ", " {\n    font-size: ", ";\n    color: #fff;\n    margin-right: ", ";\n  }\n"]);
 
   _templateObject4$1 = function _templateObject4() {
     return data;
@@ -682,10 +693,30 @@ function Footer(_ref) {
 Footer.Address = AddressUI;
 Footer.FinePrint = FinePrintUI;
 
-function _templateObject5() {
+function _templateObject7() {
+  var data = _taggedTemplateLiteral(["\n  margin-left: ", ";\n  font-family: ", ";\n  border-left: ", ";\n  color: #fff;\n  font-size: ", ";\n  display: flex;\n  background-color: ", ";\n  padding: 0 ", ";\n  align-items: center;\n  justify-content: center;\n\n  flex-direction: column;\n\n  a:active,\n  a:link,\n  a:hover,\n  a:visited {\n    color: #fff;\n  }\n"]);
+
+  _templateObject7 = function _templateObject7() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject6() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  position: relative;\n"]);
 
-  _templateObject5 = function _templateObject5() {
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5$1() {
+  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  box-sizing: border-box;\n  display: flex;\n  font-family: ", ";\n  justify-content: center;\n  height: ", ";\n  a:visited,\n  a:link {\n    color: #fff;\n    text-decoration: none;\n  }\n  color: #fff;\n  padding: 0;\n  padding-left: ", ";\n  a:active,\n  a:hover {\n    cursor: pointer;\n    text-decoration: underline;\n  }\n  text-transform: uppercase;\n"]);
+
+  _templateObject5$1 = function _templateObject5() {
     return data;
   };
 
@@ -693,7 +724,7 @@ function _templateObject5() {
 }
 
 function _templateObject4$2() {
-  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  box-sizing: border-box;\n  display: flex;\n  font-family: ", ";\n  justify-content: center;\n  height: ", ";\n  a:visited,\n  a:link {\n    color: #fff;\n    text-decoration: none;\n  }\n  color: #fff;\n  padding: 0;\n  padding-left: ", ";\n  a:active,\n  a:hover {\n    color: ", ";\n    cursor: pointer;\n  }\n  text-transform: uppercase;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  height: ", ";\n  min-width: 140px;\n  margin-left: ", ";\n  /* margin-right: 100px; */\n"]);
 
   _templateObject4$2 = function _templateObject4() {
     return data;
@@ -713,7 +744,7 @@ function _templateObject3$3() {
 }
 
 function _templateObject2$6() {
-  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  background-color: ", ";\n  box-sizing: border-box;\n  display: flex;\n  height: ", ";\n  flex-direction: row;\n  justify-content: space-between;\n  padding: ", ";\n  width: 100%;\n  z-index: 1;\n  padding-right: 75px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  background-color: ", ";\n  box-sizing: border-box;\n  display: flex;\n  height: ", ";\n  flex-direction: row;\n  justify-content: space-between;\n  width: 100%;\n  z-index: 1;\n"]);
 
   _templateObject2$6 = function _templateObject2() {
     return data;
@@ -732,36 +763,44 @@ function _templateObject$a() {
   return data;
 }
 var ContainerUI = styled__default('header')(_templateObject$a(), theme.colors['dark-1'], theme.layout.desktop.headerHeight);
-var ContainerInnerUI = styled__default('div')(_templateObject2$6(), theme.colors['dark-1'], theme.layout.desktop.headerHeight, "0 ".concat(theme.unit(0.75), " 0 ").concat(theme.unit(0.25)));
+var ContainerInnerUI = styled__default('div')(_templateObject2$6(), theme.colors['dark-1'], theme.layout.desktop.headerHeight);
 var DropdownUI = styled__default('div')(_templateObject3$3(), theme.layout.desktop.headerHeight, theme.border, theme.colors['dark-3'], theme.colors['dark-5'], theme.typography.fonts['font-2'], theme.unit(0.25));
-var LinkUI = styled__default('div')(_templateObject4$2(), theme.typography.fonts['font-2'], theme.layout.desktop.headerHeight, theme.unit(1), theme.colors['dark-3']);
-var MenuUI = styled__default('div')(_templateObject5());
+var BrandUI = styled__default('div')(_templateObject4$2(), theme.layout.desktop.headerHeight, theme.unit(0.25));
+var LinkUI = styled__default('div')(_templateObject5$1(), theme.typography.fonts['font-2'], theme.layout.desktop.headerHeight, theme.unit(1));
+var MenuUI = styled__default('div')(_templateObject6());
+var ContactUI = styled__default('div')(_templateObject7(), theme.unit(1), theme.typography.fonts['font-2'], theme.unit(1), theme.unit(0.45), theme.colors['dark-2'], theme.unit(0.75));
 
-function Container(props) {
-  return /*#__PURE__*/React.createElement(ContainerUI, null, /*#__PURE__*/React.createElement(ContainerInnerUI, null, props.children));
+function Container(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/React.createElement(ContainerUI, null, /*#__PURE__*/React.createElement(ContainerInnerUI, null, children));
 }
 
-var Brand = function Brand(_ref) {
-  var children = _ref.children;
-  return children;
+var Brand = function Brand(_ref2) {
+  var children = _ref2.children;
+  return /*#__PURE__*/React.createElement(BrandUI, null, children);
 };
 
-function Dropdown(_ref2) {
-  var children = _ref2.children,
-      text = _ref2.text;
+function Dropdown(_ref3) {
+  var children = _ref3.children,
+      text = _ref3.text;
   return /*#__PURE__*/React.createElement(DropdownUI, null, /*#__PURE__*/React.createElement(Link, null, text), /*#__PURE__*/React.createElement("ul", null, React.Children.map(children, function (child) {
     return /*#__PURE__*/React.createElement("li", null, React.cloneElement(child, {}));
   })));
 }
 
-function Link(_ref3) {
-  var children = _ref3.children;
+function Link(_ref4) {
+  var children = _ref4.children;
   return /*#__PURE__*/React.createElement(LinkUI, null, children);
 }
 
-function Menu(_ref4) {
-  var children = _ref4.children;
+function Menu(_ref5) {
+  var children = _ref5.children;
   return /*#__PURE__*/React.createElement(MenuUI, null, children);
+}
+
+function Contact(_ref6) {
+  var children = _ref6.children;
+  return /*#__PURE__*/React.createElement(ContactUI, null, children);
 }
 
 var DesktopHeader = {
@@ -769,7 +808,8 @@ var DesktopHeader = {
   Container: Container,
   Dropdown: Dropdown,
   Link: Link,
-  Menu: Menu
+  Menu: Menu,
+  Contact: Contact
 };
 
 function _templateObject4$3() {
@@ -819,20 +859,20 @@ var LinkUI$1 = styled__default('div')(_templateObject3$4(), theme.colors['light-
 });
 var MenuUI$1 = styled__default('nav')(_templateObject4$3(), theme.colors['dark-3'], theme.layout.mobile.headerHeight);
 
-function _templateObject6() {
+function _templateObject6$1() {
   var data = _taggedTemplateLiteral(["\n  display: block;\n  height: ", ";\n  margin: (", ") auto ", " auto;\n  margin-top: -", ";\n  position: relative;\n  width: ", ";\n  z-index: 9999;\n  cursor: pointer;\n"]);
 
-  _templateObject6 = function _templateObject6() {
+  _templateObject6$1 = function _templateObject6() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject5$1() {
+function _templateObject5$2() {
   var data = _taggedTemplateLiteral(["\n  position: absolute;\n  padding: ", ";\n  right: 0;\n  top: 0;\n"]);
 
-  _templateObject5$1 = function _templateObject5() {
+  _templateObject5$2 = function _templateObject5() {
     return data;
   };
 
@@ -892,8 +932,8 @@ var Line2UI = styled__default(LineUI)(_templateObject3$5(), function (props) {
 var Line3UI = styled__default(LineUI)(_templateObject4$4(), function (props) {
   return props.isOpen ? "translateY(-".concat(translateY1, ") rotate(-45deg) translateX(0)") : 'rotate(0deg)';
 });
-var ContainerUI$2 = styled__default('div')(_templateObject5$1(), theme.unit(0.5));
-var ContainerInnerUI$2 = styled__default('div')(_templateObject6(), makePixelValue(heightIcon), makePixelValue(heightIcon * 2), heightIcon, theme.unit(0.125), theme.unit(1));
+var ContainerUI$2 = styled__default('div')(_templateObject5$2(), theme.unit(0.5));
+var ContainerInnerUI$2 = styled__default('div')(_templateObject6$1(), makePixelValue(heightIcon), makePixelValue(heightIcon * 2), heightIcon, theme.unit(0.125), theme.unit(1));
 
 function TriggerIcon(_ref) {
   var isOpen = _ref.isOpen,
@@ -1237,13 +1277,27 @@ function Divider() {
   return /*#__PURE__*/React.createElement(DividerUI, null);
 }
 
+function Contact$1(props) {
+  return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref6) {
+    var breakpoints = _ref6.breakpoints,
+        currentBreakpoint = _ref6.currentBreakpoint;
+
+    if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+      return /*#__PURE__*/React.createElement(DesktopHeader.Contact, _objectSpread2({}, props));
+    } else {
+      return null;
+    }
+  });
+}
+
 var header = {
   Brand: Brand$2,
   Container: Container$2,
   Divider: Divider,
   Dropdown: Dropdown$2,
   Link: Link$2,
-  Menu: Menu$2
+  Menu: Menu$2,
+  Contact: Contact$1
 };
 
 function _templateObject2$a() {

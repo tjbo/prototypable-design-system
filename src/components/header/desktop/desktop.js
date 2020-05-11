@@ -1,21 +1,23 @@
 import {
+  BrandUI,
   DropdownUI,
   ContainerInnerUI,
   ContainerUI,
   LinkUI,
   MenuUI,
+  ContactUI,
 } from './desktop.css'
 
-function Container(props) {
+function Container({ children }) {
   return (
     <ContainerUI>
-      <ContainerInnerUI>{props.children}</ContainerInnerUI>
+      <ContainerInnerUI>{children}</ContainerInnerUI>
     </ContainerUI>
   )
 }
 
 const Brand = function Brand({ children }) {
-  return children
+  return <BrandUI>{children}</BrandUI>
 }
 
 function Dropdown({ children, text }) {
@@ -39,10 +41,15 @@ function Menu({ children }) {
   return <MenuUI>{children}</MenuUI>
 }
 
+function Contact({ children }) {
+  return <ContactUI>{children}</ContactUI>
+}
+
 export default {
   Brand,
   Container,
   Dropdown,
   Link,
   Menu,
+  Contact,
 }
