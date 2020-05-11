@@ -1,6 +1,6 @@
 import React from 'react'
-import Card from './cards'
-import data from './cards.mocks'
+import Card from './card'
+import data from './card.mocks'
 
 export default {
   title: 'Card',

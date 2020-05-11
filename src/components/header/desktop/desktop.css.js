@@ -99,6 +99,7 @@ export const LinkUI = styled('div')`
     color: ${theme.colors['dark-3']};
     cursor: pointer;
   }
+  text-transform: uppercase;
 `
 
 export const MenuUI = styled('div')`

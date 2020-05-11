@@ -1,6 +1,6 @@
 import Article from '../components/article/'
 import Banner from '../components/banner/'
-import Box1 from '../components/box1/'
+import Card from '../components/card/'
 import Cards from '../components/cards/'
 import Faq from '../components/faq/'
 import Grid from '../components/grid/'
@@ -8,6 +8,7 @@ import Jumbotron from '../components/jumbotron/'
 import Quote from '../components/quote/'
 import Section from '../components/section/'
 import Form from '../components/form/form'
+import JsxParser from 'react-jsx-parser'
 
 export default function getComponent(data) {
   const wrapperComponent = {
@@ -16,36 +17,21 @@ export default function getComponent(data) {
     component_section_rich_text: Section,
   }
 
-  const layoutComponent = {
-    article: Article,
-    banner: Banner,
-    box1: Box1,
-    cards: Cards,
-    form: Form,
-    default: 'div',
-    faq: Faq,
-    grid: Grid,
-    quote: Quote,
-  }
-
-  const components = []
-
-  components.push(
-    React.createElement(layoutComponent[data.layout_style] || 'div', {
-      ...data,
-      key: `${data.id}-wrapper`,
-    }),
+  const content = (
+    <JsxParser
+      components={{
+        Article,
+        Banner,
+        Card,
+        Cards,
+        Form,
+        Faq,
+        Grid,
+        Quote,
+      }}
+      jsx={data.body.text}
+    ></JsxParser>
   )
-
-  if (data.sidebar) {
-    components.push(
-      React.createElement(layoutComponent[data.sidebar_layout_style] || 'div', {
-        key: `${data.id}-sidebar`,
-        ...data,
-        id: data.id,
-      }),
-    )
-  }
 
   return React.createElement(
     wrapperComponent[data.type],
@@ -54,6 +40,6 @@ export default function getComponent(data) {
       key: data.id,
       id: data.id,
     },
-    components,
+    content,
   )
 }

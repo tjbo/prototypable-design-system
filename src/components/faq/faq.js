@@ -1,5 +1,15 @@
-import { FaqWrapperUI } from './faq.css'
+import { DetailsUI, SummaryUI } from './faq.css'
 
-export default function ({ body }) {
-  return <FaqWrapperUI dangerouslySetInnerHTML={{ __html: body.text }} />
+function Faq({ children }) {
+  return children
 }
+
+Faq.Details = function ({ children }) {
+  return <DetailsUI>{children}</DetailsUI>
+}
+
+Faq.Summary = function ({ children }) {
+  return <SummaryUI>{children}</SummaryUI>
+}
+
+export default Faq

@@ -1,38 +1,29 @@
 import theme from '../../theme'
-export const GridWrapperUI = styled('div')`
-  * {
-    box-sizing: border-box;
-  }
 
+export const ColUI = styled('div')`
   display: flex;
+  margin-bottom: 2%;
+  width: ${({ width }) => width};
+`
+
+export const GridUI = styled('div')`
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
-  flex-wrap: wrap;
-
-  .col {
-    min-width: 32.5%;
-    max-width: 32.5%;
-    margin-bottom: 1.25%;
-    flex: 1;
-
-    @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
-      margin-bottom: ${theme.unit(0.5)};
-    }
-  }
+  align-items: flex-start;
+  align-content: flex-start;
 
   @media (min-width: ${theme.breakPointsAsPixel.mobile}) and (max-width: ${theme
       .breakPointsAsPixel.tablet}) {
-    .col {
-      min-width: 49%;
-      max-width: 49%;
+    ${ColUI} {
+      width: ${({ collapse }) => (collapse === 'tablet' ? '100%' : '49%')};
     }
   }
-
   @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
-    .col {
+    ${ColUI} {
       display: block;
-      min-width: 100%;
-      max-width: 100%;
+      width: 100%;
     }
   }
 `

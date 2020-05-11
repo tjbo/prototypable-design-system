@@ -1,4 +1,4 @@
-import theme from '../../theme'
+import theme from '../../../theme'
 
 export const BoxWrapper = styled('div')`
   box-sizing: border-box;
@@ -7,7 +7,6 @@ export const BoxWrapper = styled('div')`
   border: ${theme.border};
   padding: ${theme.unit(0.25)} ${theme.unit(0.5)};
   margin-bottom: ${theme.unit(0.5)};
-
   .title {
     font-weight: bold;
     flex-grow: 0;
@@ -21,19 +20,16 @@ export const BoxWrapper = styled('div')`
       margin-left: 0;
     }
   }
-
   @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
     ul {
       column-count: 3;
     }
   }
-
   @media (max-width: 800px) {
     ul {
       column-count: 2;
     }
   }
-
   @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
     ul {
       column-count: 1;

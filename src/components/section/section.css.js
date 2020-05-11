@@ -36,29 +36,3 @@ export const SectionUI = styled('div')`
     padding: ${theme.unit(0.5)};
   }
 `
-
-export const Col1 = styled('div')`
-  flex: 2;
-`
-
-export const Col2 = styled('div')`
-  flex: ${({ sidebar_width }) => sidebar_width};
-  margin-left: ${theme.unit(0.5)};
-`
-
-export const ColWrapper = styled('div')`
-  display: flex;
-  flex-direction: row;
-
-  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
-    flex-direction: column;
-
-    ${Col1} {
-      min-width: 100%;
-    }
-
-    ${Col2} {
-      margin-left: 0;
-    }
-  }
-`

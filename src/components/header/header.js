@@ -6,8 +6,6 @@ import { DividerUI } from './header.css'
 
 class Container extends React.Component {
   render() {
-    const { children } = this.props
-
     return (
       <Media>
         {({ breakpoints, currentBreakpoint }) => {

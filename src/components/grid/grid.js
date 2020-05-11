@@ -1,11 +1,12 @@
-import { GridWrapperUI } from './grid.css'
+import { ColUI, GridUI } from './grid.css'
 
-function Grid({ body, children }) {
-  if (body) {
-    return <GridWrapperUI dangerouslySetInnerHTML={{ __html: body }} />
-  } else {
-    return <GridWrapperUI>{children}</GridWrapperUI>
-  }
+function Grid({ children, collapse = '' }) {
+  console.log('collapse', collapse)
+  return <GridUI collapse={collapse}>{children}</GridUI>
+}
+
+Grid.Col = function ({ children, width = '32%' }) {
+  return <ColUI width={width}>{children}</ColUI>
 }
 
 export default Grid
