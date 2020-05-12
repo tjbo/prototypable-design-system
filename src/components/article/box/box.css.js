@@ -7,6 +7,8 @@ export const BoxWrapper = styled('div')`
   border: ${theme.border};
   padding: ${theme.unit(0.25)} ${theme.unit(0.5)};
   margin-bottom: ${theme.unit(0.5)};
+  width: 100%;
+
   .title {
     font-weight: bold;
     flex-grow: 0;
