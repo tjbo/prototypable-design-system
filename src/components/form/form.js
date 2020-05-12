@@ -1,5 +1,11 @@
-import { FormWrapper } from './form.css'
+import { FormUI } from './form.css'
+import Input from './input'
 
-export default function Form({ sidebar }) {
-  return <FormWrapper dangerouslySetInnerHTML={{ __html: sidebar.text }} />
+function Form({ children }) {
+  return <FormUI>{children}</FormUI>
+  // return <FormWrapper dangerouslySetInnerHTML={{ __html: sidebar.text }} />
 }
+
+Form.Input = Input
+
+export default Form

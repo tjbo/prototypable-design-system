@@ -7,6 +7,9 @@ export default function getPosts(apiUrl) {
           const routeData = response.results.map((result) => {
             const { first_publication_date, data, id } = result
 
+            data.body = data.body[0]
+            data.type = 'blog_post'
+
             return {
               getData() {
                 return {

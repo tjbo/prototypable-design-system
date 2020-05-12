@@ -661,6 +661,66 @@ Faq.Summary = function (_ref3) {
   return /*#__PURE__*/React.createElement(SummaryUI, null, children);
 };
 
+function _templateObject$a() {
+  var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  box-sizing: border-box;\n  padding: ", ";\n  width: 100%;\n"]);
+
+  _templateObject$a = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var FormUI = styled__default('form')(_templateObject$a(), theme.colors['light-1'], theme.unit(0.75));
+
+function _templateObject3$2() {
+  var data = _taggedTemplateLiteral(["\n  font-family: ", ";\n  font-size: ", ";\n"]);
+
+  _templateObject3$2 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2$5() {
+  var data = _taggedTemplateLiteral(["\n  border: none;\n  box-sizing: border-box;\n  display: block;\n  font-size: ", ";\n  margin: 0;\n  padding: ", ";\n  width: 100%;\n  &:focus {\n    outline: none;\n    box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4);\n  }\n"]);
+
+  _templateObject2$5 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$b() {
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  margin-bottom: ", ";\n"]);
+
+  _templateObject$b = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var ContainerUI$1 = styled__default('div')(_templateObject$b(), theme.unit(0.25));
+var InputUI = styled__default('input')(_templateObject2$5(), theme.unit(0.5), theme.unit(0.4));
+var LabelUI = styled__default('label')(_templateObject3$2(), theme.typography.fonts['font-2'], theme.unit(0.5));
+
+function getLabel(label) {
+  return /*#__PURE__*/React.createElement(LabelUI, null, label);
+}
+
+function Input(_ref) {
+  var label = _ref.label;
+  return /*#__PURE__*/React.createElement(ContainerUI$1, null, getLabel(label), /*#__PURE__*/React.createElement(InputUI, null));
+}
+
+function Form(_ref) {
+  var children = _ref.children;
+  return /*#__PURE__*/React.createElement(FormUI, null, children); // return <FormWrapper dangerouslySetInnerHTML={{ __html: sidebar.text }} />
+}
+
+Form.Input = Input;
+
 function _templateObject4$1() {
   var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  display: flex;\n  justify-content: space-between;\n  background-color: ", ";\n  padding: ", ";\n  padding-right: ", ";\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n    flex-direction: column;\n    text-align: center;\n  }\n\n  ", " {\n    color: #fff;\n    white-space: nowrap;\n    font-style: normal;\n    a:active,\n    a:visited,\n    a:hover,\n    a:link {\n      color: #fff;\n      text-decoration: none;\n      font-family: ", ";\n    }\n    a:first-child {\n      text-transform: uppercase;\n      font-size: ", ";\n    }\n    font-family: ", ";\n  }\n\n  ", " {\n    font-size: ", ";\n    color: #fff;\n    margin-right: ", ";\n  }\n"]);
 
@@ -671,38 +731,38 @@ function _templateObject4$1() {
   return data;
 }
 
-function _templateObject3$2() {
+function _templateObject3$3() {
   var data = _taggedTemplateLiteral([""]);
 
-  _templateObject3$2 = function _templateObject3() {
+  _templateObject3$3 = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$5() {
+function _templateObject2$6() {
   var data = _taggedTemplateLiteral([""]);
 
-  _templateObject2$5 = function _templateObject2() {
+  _templateObject2$6 = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$a() {
+function _templateObject$c() {
   var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  display: block;\n  background-color: ", ";\n  max-width: 100%;\n  flex-shrink: 0;\n"]);
 
-  _templateObject$a = function _templateObject() {
+  _templateObject$c = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var FooterUI = styled__default('footer')(_templateObject$a(), theme.colors['dark-1']);
-var AddressUI = styled__default('address')(_templateObject2$5());
-var FinePrintUI = styled__default('div')(_templateObject3$2());
+var FooterUI = styled__default('footer')(_templateObject$c(), theme.colors['dark-1']);
+var AddressUI = styled__default('address')(_templateObject2$6());
+var FinePrintUI = styled__default('div')(_templateObject3$3());
 var FooterUIInner = styled__default('div')(_templateObject4$1(), theme.colors['dark-1'], "".concat(theme.unit(0.5), " ").concat(theme.unit(0.75)), theme.unit(1), theme.typography.fonts['font-1'], theme.breakPointsAsPixel.mobile, AddressUI, theme.typography.fonts['font-2'], theme.unit(0.65), theme.typography.fonts['font-2'], FinePrintUI, theme.unit(0.4), theme.unit(1));
 
 function Footer(_ref) {
@@ -753,38 +813,38 @@ function _templateObject4$2() {
   return data;
 }
 
-function _templateObject3$3() {
+function _templateObject3$4() {
   var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  cursor: pointer;\n  display: block;\n  height: ", ";\n  position: relative;\n  float: left;\n\n  ul {\n    background-color: #fff;\n    box-sizing: border-box;\n    display: none;\n    list-style: none;\n    margin: 0;\n    width: 250px;\n    padding-left: 0;\n    position: relative;\n    z-index: 1;\n    border: ", ";\n    display: none;\n    color: ", ";\n    cursor: pointer;\n    position: absolute;\n    margin-right: -125px;\n    right: 50%;\n    top: 100%;\n\n    li {\n      box-sizing: border-box;\n      cursor: pointer;\n      margin-left: 0;\n      a {\n        :hover {\n          background-color: ", ";\n          color: #fff;\n          text-decoration: none;\n        }\n        box-sizing: border-box;\n        display: block;\n        font-family: ", ";\n        margin-left: 0;\n        min-width: 100%;\n        padding: ", ";\n      }\n    }\n  }\n\n  :hover {\n    ul {\n      display: block;\n    }\n  }\n"]);
 
-  _templateObject3$3 = function _templateObject3() {
+  _templateObject3$4 = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$6() {
+function _templateObject2$7() {
   var data = _taggedTemplateLiteral(["\n  align-items: center;\n  background-color: ", ";\n  box-sizing: border-box;\n  display: flex;\n  height: ", ";\n  flex-direction: row;\n  justify-content: space-between;\n  width: 100%;\n  z-index: 1;\n"]);
 
-  _templateObject2$6 = function _templateObject2() {
+  _templateObject2$7 = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$b() {
+function _templateObject$d() {
   var data = _taggedTemplateLiteral(["\n  background-color: ", ";\n  box-sizing: border-box;\n  display: block;\n  height: ", ";\n  width: 100%;\n  position: fixed;\n  top: 0;\n  z-index: 1;\n"]);
 
-  _templateObject$b = function _templateObject() {
+  _templateObject$d = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var ContainerUI$1 = styled__default('header')(_templateObject$b(), theme.colors['dark-1'], theme.layout.desktop.headerHeight);
-var ContainerInnerUI = styled__default('div')(_templateObject2$6(), theme.colors['dark-1'], theme.layout.desktop.headerHeight);
-var DropdownUI = styled__default('div')(_templateObject3$3(), theme.layout.desktop.headerHeight, theme.border, theme.colors['dark-3'], theme.colors['dark-5'], theme.typography.fonts['font-2'], theme.unit(0.25));
+var ContainerUI$2 = styled__default('header')(_templateObject$d(), theme.colors['dark-1'], theme.layout.desktop.headerHeight);
+var ContainerInnerUI = styled__default('div')(_templateObject2$7(), theme.colors['dark-1'], theme.layout.desktop.headerHeight);
+var DropdownUI = styled__default('div')(_templateObject3$4(), theme.layout.desktop.headerHeight, theme.border, theme.colors['dark-3'], theme.colors['dark-5'], theme.typography.fonts['font-2'], theme.unit(0.25));
 var BrandUI = styled__default('div')(_templateObject4$2(), theme.layout.desktop.headerHeight, theme.unit(0.25));
 var LinkUI = styled__default('div')(_templateObject5$1(), theme.typography.fonts['font-2'], theme.layout.desktop.headerHeight, theme.unit(1));
 var MenuUI = styled__default('div')(_templateObject6());
@@ -792,7 +852,7 @@ var ContactUI = styled__default('div')(_templateObject7(), theme.unit(1), theme.
 
 function Container(_ref) {
   var children = _ref.children;
-  return /*#__PURE__*/React.createElement(ContainerUI$1, null, /*#__PURE__*/React.createElement(ContainerInnerUI, null, children));
+  return /*#__PURE__*/React.createElement(ContainerUI$2, null, /*#__PURE__*/React.createElement(ContainerInnerUI, null, children));
 }
 
 var Brand = function Brand(_ref2) {
@@ -842,38 +902,38 @@ function _templateObject4$3() {
   return data;
 }
 
-function _templateObject3$4() {
+function _templateObject3$5() {
   var data = _taggedTemplateLiteral(["\n  color: ", ";\n  cursor: pointer;\n  box-sizing: border-box;\n  font-family: ", ";\n  font-size: ", ";\n  margin: 0;\n  padding: ", ";\n  position: relative;\n  text-align: center;\n  width: auto;\n  text-transform: uppercase;\n  :hover {\n    background-color: ", ";\n    padding: ", ";\n  }\n  a:active,\n  a:visited,\n  a:hover,\n  a:link {\n    color: #fff;\n    display: inline-block;\n    min-width: 100%;\n    text-decoration: none;\n  }\n  background-color: ", ";\n"]);
 
-  _templateObject3$4 = function _templateObject3() {
+  _templateObject3$5 = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$7() {
+function _templateObject2$8() {
   var data = _taggedTemplateLiteral(["\n  align-items: center;\n  background-color: ", ";\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: row;\n  height: ", ";\n  justify-content: space-between;\n  padding: ", ";\n  width: 100%;\n  z-index: 1;\n"]);
 
-  _templateObject2$7 = function _templateObject2() {
+  _templateObject2$8 = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$c() {
+function _templateObject$e() {
   var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  position: fixed;\n  z-index: 1;\n  top: 0;\n  display: block;\n  background-color: ", ";\n  height: ", ";\n  width: 100%;\n"]);
 
-  _templateObject$c = function _templateObject() {
+  _templateObject$e = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var ContainerUI$2 = styled__default('div')(_templateObject$c(), theme.colors['dark-1'], theme.layout.mobile.headerHeight);
-var ContainerInnerUI$1 = styled__default('div')(_templateObject2$7(), theme.colors['dark-1'], theme.layout.mobile.headerHeight, "0 ".concat(theme.unit(0.75), " 0 ").concat(theme.unit(0.25)));
-var LinkUI$1 = styled__default('div')(_templateObject3$4(), theme.colors['light-1'], theme.typography.fonts['font-2'], theme.unit(0.75), theme.unit(0.25), theme.colors['dark-5'], theme.unit(0.25), function (_ref) {
+var ContainerUI$3 = styled__default('div')(_templateObject$e(), theme.colors['dark-1'], theme.layout.mobile.headerHeight);
+var ContainerInnerUI$1 = styled__default('div')(_templateObject2$8(), theme.colors['dark-1'], theme.layout.mobile.headerHeight, "0 ".concat(theme.unit(0.75), " 0 ").concat(theme.unit(0.25)));
+var LinkUI$1 = styled__default('div')(_templateObject3$5(), theme.colors['light-1'], theme.typography.fonts['font-2'], theme.unit(0.75), theme.unit(0.25), theme.colors['dark-5'], theme.unit(0.25), function (_ref) {
   var isOpen = _ref.isOpen;
   return isOpen && "".concat(theme.colors['dark-5']);
 });
@@ -909,30 +969,30 @@ function _templateObject4$4() {
   return data;
 }
 
-function _templateObject3$5() {
+function _templateObject3$6() {
   var data = _taggedTemplateLiteral(["\n  top: 50%;\n  opacity: ", ";\n"]);
 
-  _templateObject3$5 = function _templateObject3() {
+  _templateObject3$6 = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$8() {
+function _templateObject2$9() {
   var data = _taggedTemplateLiteral(["\n  top: 0;\n  transform: ", ";\n"]);
 
-  _templateObject2$8 = function _templateObject2() {
+  _templateObject2$9 = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$d() {
+function _templateObject$f() {
   var data = _taggedTemplateLiteral(["\n  background: #fff;\n  border-radius: (", ");\n  display: block;\n  height: ", ";\n  left: 0;\n  position: absolute;\n  transition: transform 500ms ease;\n  width: 100%;\n"]);
 
-  _templateObject$d = function _templateObject() {
+  _templateObject$f = function _templateObject() {
     return data;
   };
 
@@ -942,23 +1002,23 @@ var heightLine = 3;
 var heightIcon = 16;
 var translateY = heightIcon / 2;
 var translateY1 = makePixelValue(translateY);
-var LineUI = styled__default('span')(_templateObject$d(), makePixelValue(heightLine / 2), makePixelValue(heightLine));
-var Line1UI = styled__default(LineUI)(_templateObject2$8(), function (props) {
+var LineUI = styled__default('span')(_templateObject$f(), makePixelValue(heightLine / 2), makePixelValue(heightLine));
+var Line1UI = styled__default(LineUI)(_templateObject2$9(), function (props) {
   return props.isOpen ? "translateY(".concat(translateY1, ") rotate(45deg) translateX(0)") : 'rotate(0deg)';
 });
-var Line2UI = styled__default(LineUI)(_templateObject3$5(), function (props) {
+var Line2UI = styled__default(LineUI)(_templateObject3$6(), function (props) {
   return props.isOpen ? "0" : '1';
 });
 var Line3UI = styled__default(LineUI)(_templateObject4$4(), function (props) {
   return props.isOpen ? "translateY(-".concat(translateY1, ") rotate(-45deg) translateX(0)") : 'rotate(0deg)';
 });
-var ContainerUI$3 = styled__default('div')(_templateObject5$2(), theme.unit(0.5));
+var ContainerUI$4 = styled__default('div')(_templateObject5$2(), theme.unit(0.5));
 var ContainerInnerUI$2 = styled__default('div')(_templateObject6$1(), makePixelValue(heightIcon), makePixelValue(heightIcon * 2), heightIcon, theme.unit(0.125), theme.unit(1));
 
 function TriggerIcon(_ref) {
   var isOpen = _ref.isOpen,
       onClick = _ref.onClick;
-  return /*#__PURE__*/React.createElement(ContainerUI$3, {
+  return /*#__PURE__*/React.createElement(ContainerUI$4, {
     isOpen: isOpen,
     onClick: onClick
   }, /*#__PURE__*/React.createElement(ContainerInnerUI$2, null, /*#__PURE__*/React.createElement(Line1UI, {
@@ -970,27 +1030,27 @@ function TriggerIcon(_ref) {
   })));
 }
 
-function _templateObject2$9() {
+function _templateObject2$a() {
   var data = _taggedTemplateLiteral(["\n  position: relative;\n  &:after {\n    content: '';\n    color: ", ";\n    border: solid ", ";\n    border-width: 0 4px 4px 0;\n    display: inline-block;\n    margin-left: ", ";\n    padding: 4px;\n    transform: ", ";\n    position: absolute;\n    top: -", ";\n  }\n"]);
 
-  _templateObject2$9 = function _templateObject2() {
+  _templateObject2$a = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$e() {
+function _templateObject$g() {
   var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  cursor: pointer;\n  font-family: ", ";\n  display: block;\n  position: relative;\n\n  ul {\n    position: relative;\n    box-sizing: border-box;\n    display: block;\n    list-style: none;\n    margin: 0;\n    padding-left: 0;\n    z-index: 1;\n    min-width: 100%;\n\n    li {\n      cursor: pointer;\n      display: flex;\n      font-size: ", ";\n      justify-content: center;\n      align-content: center;\n      box-sizing: border-box;\n      min-width: 100%;\n      margin-left: 0;\n      text-align: center;\n      text-transform: uppercase;\n      a:active,\n      a:hover,\n      a:link,\n      a:visited {\n        color: #fff;\n        display: inline-block;\n        margin-left: 0;\n        min-width: 100%;\n        padding: ", ";\n        text-decoration: none;\n      }\n      a:hover {\n        background-color: ", ";\n      }\n    }\n  }\n  :hover {\n    ul {\n      display: block;\n    }\n  }\n"]);
 
-  _templateObject$e = function _templateObject() {
+  _templateObject$g = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var DropdownUI$1 = styled__default('span')(_templateObject$e(), theme.typography.fonts['font-2'], theme.unit(0.75), theme.unit(0.25), theme.colors['dark-5']);
-var LinkArrowUI = styled__default('div')(_templateObject2$9(), theme.colors['light-1'], theme.colors['light-1'], theme.unit(2.5), function (_ref) {
+var DropdownUI$1 = styled__default('span')(_templateObject$g(), theme.typography.fonts['font-2'], theme.unit(0.75), theme.unit(0.25), theme.colors['dark-5']);
+var LinkArrowUI = styled__default('div')(_templateObject2$a(), theme.colors['light-1'], theme.colors['light-1'], theme.unit(2.5), function (_ref) {
   var isOpen = _ref.isOpen;
   return isOpen ? "rotate(45deg)" : "rotate(-135deg)";
 }, theme.unit(0.75));
@@ -1131,7 +1191,7 @@ var Container$1 = /*#__PURE__*/function (_React$Component) {
 
       var children = this.props.children;
       var isOpen = this.state.isOpen;
-      return /*#__PURE__*/React.createElement(ContainerUI$2, null, /*#__PURE__*/React.createElement(ContainerInnerUI$1, null, /*#__PURE__*/React.createElement(TriggerIcon, {
+      return /*#__PURE__*/React.createElement(ContainerUI$3, null, /*#__PURE__*/React.createElement(ContainerInnerUI$1, null, /*#__PURE__*/React.createElement(TriggerIcon, {
         isOpen: isOpen,
         onClick: this.toggleMenu
       }), React.Children.map(children, function (child) {
@@ -1189,16 +1249,16 @@ var MobileHeader = {
   Menu: Menu$1
 };
 
-function _templateObject$f() {
+function _templateObject$h() {
   var data = _taggedTemplateLiteral(["\n  margin: 0;\n  padding: 0;\n  border-top: ", ";\n  min-width: 100%;\n  display: block;\n"]);
 
-  _templateObject$f = function _templateObject() {
+  _templateObject$h = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var DividerUI = styled__default('div')(_templateObject$f(), theme.border);
+var DividerUI = styled__default('div')(_templateObject$h(), theme.border);
 
 var Container$2 = /*#__PURE__*/function (_React$Component) {
   _inherits(Container, _React$Component);
@@ -1320,28 +1380,28 @@ var header = {
   Contact: Contact$1
 };
 
-function _templateObject2$a() {
+function _templateObject2$b() {
   var data = _taggedTemplateLiteral(["\n  ", "\n"]);
 
-  _templateObject2$a = function _templateObject2() {
+  _templateObject2$b = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$g() {
+function _templateObject$i() {
   var data = _taggedTemplateLiteral(["\n  display: block;\n  position: relative;\n  width: 100%;\n"]);
 
-  _templateObject$g = function _templateObject() {
+  _templateObject$i = function _templateObject() {
     return data;
   };
 
   return data;
 }
 
-var ImageContainerUI = styled__default('div')(_templateObject$g());
-var ImageUI = styled__default('img')(_templateObject2$a(), function (_ref) {
+var ImageContainerUI = styled__default('div')(_templateObject$i());
+var ImageUI = styled__default('img')(_templateObject2$b(), function (_ref) {
   var align = _ref.align;
 
   if (align === 'center') {
@@ -1364,27 +1424,27 @@ function Image(_ref) {
   }));
 }
 
-function _templateObject2$b() {
+function _templateObject2$c() {
   var data = _taggedTemplateLiteral(["\n  max-width: 100%;\n  img {\n    display: block;\n    width: 100%;\n    height: 100%;\n    object-fit: cover;\n  }\n\n  @media (min-width: ", ") {\n    min-height: calc(100vh - ", ");\n\n    img {\n      height: calc(100vh - ", ");\n    }\n  }\n\n  @media (max-width: ", ") {\n    min-height: calc(100vh - ", ");\n\n    img {\n      height: calc(100vh - ", ");\n    }\n  }\n"]);
 
-  _templateObject2$b = function _templateObject2() {
+  _templateObject2$c = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$h() {
+function _templateObject$j() {
   var data = _taggedTemplateLiteral(["\n  align-items: center;\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  min-height: calc(100vh - ", ");\n  position: absolute;\n  top: ", ";\n  width: 100%;\n  text-align: center;\n\n  @media (min-width: ", ") {\n    min-height: calc(100vh - ", ");\n  }\n\n  @media (max-width: ", ") {\n    padding: 0 ", ";\n    min-height: calc(100vh - ", ");\n  }\n"]);
 
-  _templateObject$h = function _templateObject() {
+  _templateObject$j = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var ContentUI$2 = styled__default('div')(_templateObject$h(), theme.layout.desktop.headerHeight, theme.unit(2.25), theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, theme.unit(0.5), theme.layout.mobile.headerHeight);
-var ImageUI$1 = styled__default('div')(_templateObject2$b(), theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, theme.layout.mobile.headerHeight, theme.layout.mobile.headerHeight);
+var ContentUI$2 = styled__default('div')(_templateObject$j(), theme.layout.desktop.headerHeight, theme.unit(2.25), theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, theme.unit(0.5), theme.layout.mobile.headerHeight);
+var ImageUI$1 = styled__default('div')(_templateObject2$c(), theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, theme.layout.mobile.headerHeight, theme.layout.mobile.headerHeight);
 
 var sizes = ['360×640', '768×1024', '1024x768', '1366×768', '1600×900', '1920x1080'];
 
@@ -1418,16 +1478,16 @@ function Jumbotron (_ref) {
   }));
 }
 
-function _templateObject$i() {
+function _templateObject$k() {
   var data = _taggedTemplateLiteral(["\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  min-height: calc(100vh - ", ");\n\n  @media (min-width: ", ") {\n    min-height: calc(100vh - ", ");\n  }\n\n  @media (max-width: ", ") {\n    min-height: calc(100vh - ", ");\n  }\n"]);
 
-  _templateObject$i = function _templateObject() {
+  _templateObject$k = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var LoadingScreenContainerUI = styled__default('div')(_templateObject$i(), theme.layout.desktop.headerHeight, theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, theme.layout.mobile.headerHeight);
+var LoadingScreenContainerUI = styled__default('div')(_templateObject$k(), theme.layout.desktop.headerHeight, theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, theme.layout.mobile.headerHeight);
 
 function Loader() {
   return /*#__PURE__*/React.createElement("svg", {
@@ -1454,38 +1514,38 @@ function _templateObject4$5() {
   return data;
 }
 
-function _templateObject3$6() {
+function _templateObject3$7() {
   var data = _taggedTemplateLiteral(["\n  display: block;\n  height: ", ";\n  color: ", ";\n  opacity: 0.5;\n  font-size: ", ";\n  line-height: 1;\n  position: absolute;\n  bottom: ", ";\n  right: ", ";\n"]);
 
-  _templateObject3$6 = function _templateObject3() {
+  _templateObject3$7 = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$c() {
+function _templateObject2$d() {
   var data = _taggedTemplateLiteral(["\n  display: block;\n  color: ", ";\n  height: ", ";\n  opacity: 0.5;\n  font-size: ", ";\n  line-height: 1;\n  position: absolute;\n  top: ", ";\n  left: ", ";\n"]);
 
-  _templateObject2$c = function _templateObject2() {
+  _templateObject2$d = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$j() {
+function _templateObject$l() {
   var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  width: 100%;\n  display: block;\n  padding: ", " ", ";\n  background: ", ";\n  position: relative;\n\n  @media (max-width: ", ") {\n    padding: ", " ", ";\n  }\n"]);
 
-  _templateObject$j = function _templateObject() {
+  _templateObject$l = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var BoxWrapper$2 = styled__default('div')(_templateObject$j(), theme.unit(2), theme.unit(1), theme.colors['light-1'], theme.breakPointsAsPixel.tablet, theme.unit(1), theme.unit(2.5));
-var OpenQuoteUI$1 = styled__default('div')(_templateObject2$c(), theme.colors['dark-3'], theme.unit(2.5), theme.unit(5), theme.unit(0.25), theme.unit(0.25));
-var CloseQuoteUI$1 = styled__default('div')(_templateObject3$6(), theme.unit(2.5), theme.colors['dark-3'], theme.unit(5), theme.unit(0.25), theme.unit(0.25));
+var BoxWrapper$2 = styled__default('div')(_templateObject$l(), theme.unit(2), theme.unit(1), theme.colors['light-1'], theme.breakPointsAsPixel.tablet, theme.unit(1), theme.unit(2.5));
+var OpenQuoteUI$1 = styled__default('div')(_templateObject2$d(), theme.colors['dark-3'], theme.unit(2.5), theme.unit(5), theme.unit(0.25), theme.unit(0.25));
+var CloseQuoteUI$1 = styled__default('div')(_templateObject3$7(), theme.unit(2.5), theme.colors['dark-3'], theme.unit(5), theme.unit(0.25), theme.unit(0.25));
 var DropQuoteUI$1 = styled__default('div')(_templateObject4$5());
 
 function Quote$1 (_ref) {
@@ -1498,20 +1558,20 @@ function Quote$1 (_ref) {
   })), /*#__PURE__*/React.createElement(CloseQuoteUI$1, null, "\u201D"));
 }
 
-function _templateObject2$d() {
+function _templateObject2$e() {
   var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  max-width: ", ";\n  margin: 0 auto;\n  padding: ", ";\n  text-align: ", ";\n\n  @media (max-width: ", ") {\n    padding: ", ";\n  }\n"]);
 
-  _templateObject2$d = function _templateObject2() {
+  _templateObject2$e = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$k() {
+function _templateObject$m() {
   var data = _taggedTemplateLiteral(["\n  width: 100%;\n  background-color: ", ";\n"]);
 
-  _templateObject$k = function _templateObject() {
+  _templateObject$m = function _templateObject() {
     return data;
   };
 
@@ -1536,14 +1596,14 @@ var getInnerWidth = function getInnerWidth(_ref2) {
   if (innerWidth === 'medium') {
     return '750px';
   } else if (innerWidth === 'small') {
-    return '550px';
+    return theme.unit(18);
   } else {
     return theme.unit(33);
   }
 };
 
-var SectionWrapperUI = styled__default('section')(_templateObject$k(), getBgColor);
-var SectionUI = styled__default('div')(_templateObject2$d(), getInnerWidth, "".concat(theme.unit(1), " 0"), function (_ref3) {
+var SectionWrapperUI = styled__default('section')(_templateObject$m(), getBgColor);
+var SectionUI = styled__default('div')(_templateObject2$e(), getInnerWidth, "".concat(theme.unit(1), " 0"), function (_ref3) {
   var textAlign = _ref3.textAlign;
   return textAlign;
 }, theme.breakPointsAsPixel.tablet, theme.unit(0.5));
@@ -1600,16 +1660,16 @@ var robotoBoldWoff = "/fonts/roboto-v20-latin-700.woff";
 
 var robotoBoldWoff2 = "/fonts/roboto-v20-latin-700.woff2";
 
-function _templateObject$l() {
-  var data = _taggedTemplateLiteral(["\n\n/**\n * These values will not show up in content, but can be\n * queried by JavaScript to know which breakpoint is active.\n * Add or remove as many breakpoints as you like.\n */\nbody:before {\n  content: \"desktop\";\n  display: none;\n}\n\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"tablet\";\n  }\n}\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"mobile\";\n  }\n}\n\n\n\n/* pt-serif-regular - latin */\n@font-face {\n  font-display: block;\n  font-family: 'PT Serif';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: local('PT Serif'), local('PTSerif-Regular'),\n       url(", ") format('woff2'), /* Super Modern Browsers */\n       url(", ") format('woff'), /* Modern Browsers */\n\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-display: block;\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: local('Roboto Medium'), local('Roboto-Medium'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: local('Roboto Bold'), local('Roboto-Bold'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* css reset */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: 1.125rem;\n  line-height: 1.5;\n  margin: 0;\n  overflow: auto;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nimg {\n  max-width: 100%;\n  height: auto;\n}\n\niframe {\n  max-width: 100%;\n}\n\n\n/* link styles */\na:active {\n  color: ", ";\n  text-decoration: none;\n}\n\na:link {\n  text-decoration: none;\n  color: ", ";\n}\n\na:hover {\n  color: ", ";\n  text-decoration: underline;\n}\n\na:visited {\n  color: ", ";\n  text-decoration: none;\n}\n\n/* list and paragraph styles */\np, ul, code {\n  padding: 0;\n  margin-bottom: ", ";\n}\n\nb {\n  font-weight: bold;\n}\n\nul {\n  list-style: disc;\n  padding-left: ", ";\n};\n}\n\nli {\n  margin-bottom: ", ";\n  margin-left: ", ";\n}\n\ncode {\n  box-sizing: border-box;\n  background-color:  ", ";\n  display: block;\n  padding: ", ";\n  color: ", ";\n  width: 100%;\n  font-family: 'Courier New', Courier, monospace;\n  white-space: normal;\n\n  font-size: ", ";\n\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n/* heading styles */\nh1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n  margin-bottom: ", ";\n  line-height: 100%;\n}\n\nh1, .heading-1 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh2, .heading-2 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh3, .heading-3 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh4, .heading-4 {\n  font-size: ", ";;\n  font-weight: 500;\n  margin-bottom: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh5, .heading-5 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh6, .heading-6 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh1 + h2, h1 + h2.heading-2 {\n  margin-top: -", ";\n}\n\nh2 + h4 {\n  margin-top: -", ";\n}\n\n\n/* table styles */\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    width: 100%;\n  margin-bottom: ", ";\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td, th {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    th {\n      background-color: ", ";\n    }\n\n\n  }\n\n\n  @media (max-width: ", ") {\n    table.responsive-collapse {\n\n    table, thead, tbody, th, td, tr {\n\t\tdisplay: block;\n\t}\n\n  thead tr {\n\t\tposition: absolute;\n\t\ttop: -9999px;\n\t\tleft: -9999px;\n\t}\n    }\n\n  table.n-plus-2 {\n  td:nth-child(n+2) {\n    display: inline-block\n\t}\n  }\n\n\n\n  }\n\n\n/* makes a class for each color in theme */\n  ", "\n\n/* makes a class for each font in theme */\n", "\n\n/* random text styles */\nblockquote {\n  padding: ", ";\n  background-color: ", ";\n  border:  ", ";\n  margin:  ", ";\n\n  p:last-child, ul:last-child {\n    margin-bottom: 0;\n  }\n\n}\n\n.italic {\n  font-style: italic;\n}\n\n.text-shadow-dark {\ntext-shadow: 1px 2px #000\n}\n\n.line-height-1 {\n  line-height: 1;\n}\n\n.line-height-1-2-0 {\n  line-height: 1;\n}\n\n.bold {\n  font-weight: 700;\n}\n\n.lead {\n  font-size: ", ";\n  line-height: 130%;\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n/* Forms */\ninput, textarea {\n    width: 100%;\n    border: ", ";\n    font-size: ", ";\n    display: block;\n    margin-bottom: ", ";\n    outline: none;\n    padding: ", ";\n     &:focus {\n      outline: none;\n      box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4);\n  }\n  }\n\n  textarea {\n    height: ", ";\n    resize: none;\n  }\n\nbutton {\n  background-color: ", ";\n  border: 0;\n  color: #fff;\n  cursor: pointer;\n  display: block;\n  font-family: ", ";\n  font-size: ", ";\n  text-transform: uppercase;\n  font-weight: 700;\n  height: ", ";\n  margin-top: ", ";\n  width: 100%;\n  /* max-width: ", "px; */\n  background-image: linear-gradient(\n    to bottom,\n    #e52d27 0%,\n    #e52d27 100%\n  );\n  background-color: #e52d27;\n\n  border:1px solid #d02718;\n  /* box-shadow: inset 0px 1px 0px 0px #f5978e; */\n}\n\n\n"]);
+function _templateObject$n() {
+  var data = _taggedTemplateLiteral(["\n\n/**\n * These values will not show up in content, but can be\n * queried by JavaScript to know which breakpoint is active.\n * Add or remove as many breakpoints as you like.\n */\nbody:before {\n  content: \"desktop\";\n  display: none;\n}\n\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"tablet\";\n  }\n}\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"mobile\";\n  }\n}\n\n\n\n/* pt-serif-regular - latin */\n@font-face {\n  font-display: block;\n  font-family: 'PT Serif';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: local('PT Serif'), local('PTSerif-Regular'),\n       url(", ") format('woff2'), /* Super Modern Browsers */\n       url(", ") format('woff'), /* Modern Browsers */\n\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-display: block;\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: local('Roboto Medium'), local('Roboto-Medium'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: local('Roboto Bold'), local('Roboto-Bold'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* css reset */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: 1.125rem;\n  line-height: 1.5;\n  margin: 0;\n  overflow: auto;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nimg {\n  max-width: 100%;\n  height: auto;\n}\n\niframe {\n  max-width: 100%;\n}\n\n\n/* link styles */\na:active {\n  color: ", ";\n  text-decoration: none;\n}\n\na:link {\n  text-decoration: none;\n  color: ", ";\n}\n\na:hover {\n  color: ", ";\n  text-decoration: underline;\n}\n\na:visited {\n  color: ", ";\n  text-decoration: none;\n}\n\n/* list and paragraph styles */\np, ul, code {\n  padding: 0;\n  margin-bottom: ", ";\n}\n\nb {\n  font-weight: bold;\n}\n\nul {\n  list-style: disc;\n  padding-left: ", ";\n};\n}\n\nli {\n  margin-bottom: ", ";\n  margin-left: ", ";\n}\n\ncode {\n  box-sizing: border-box;\n  background-color:  ", ";\n  display: block;\n  padding: ", ";\n  color: ", ";\n  width: 100%;\n  font-family: 'Courier New', Courier, monospace;\n  white-space: normal;\n\n  font-size: ", ";\n\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n/* heading styles */\nh1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n  margin-bottom: ", ";\n  line-height: 100%;\n}\n\nh1, .heading-1 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh2, .heading-2 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh3, .heading-3 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh4, .heading-4 {\n  font-size: ", ";;\n  font-weight: 500;\n  margin-bottom: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh5, .heading-5 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh6, .heading-6 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh1 + h2, h1 + h2.heading-2 {\n  margin-top: -", ";\n}\n\nh2 + h4 {\n  margin-top: -", ";\n}\n\n\n/* table styles */\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    width: 100%;\n  margin-bottom: ", ";\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td, th {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    th {\n      background-color: ", ";\n    }\n\n\n  }\n\n\n  @media (max-width: ", ") {\n    table.responsive-collapse {\n\n    table, thead, tbody, th, td, tr {\n\t\tdisplay: block;\n\t}\n\n  thead tr {\n\t\tposition: absolute;\n\t\ttop: -9999px;\n\t\tleft: -9999px;\n\t}\n    }\n\n  table.n-plus-2 {\n  td:nth-child(n+2) {\n    display: inline-block\n\t}\n  }\n\n\n\n  }\n\n\n/* makes a class for each color in theme */\n  ", "\n\n/* makes a class for each font in theme */\n", "\n\n/* random text styles */\nblockquote {\n  padding: ", ";\n  background-color: ", ";\n  border:  ", ";\n  margin:  ", ";\n\n  p:last-child, ul:last-child {\n    margin-bottom: 0;\n  }\n\n}\n\n.italic {\n  font-style: italic;\n}\n\n.text-shadow-dark {\ntext-shadow: 1px 2px #000\n}\n\n.line-height-1 {\n  line-height: 1;\n}\n\n.line-height-1-2-0 {\n  line-height: 1;\n}\n\n.bold {\n  font-weight: 700;\n}\n\n.lead {\n  font-size: ", ";\n  line-height: 130%;\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nbutton {\n  background-color: ", ";\n  border: 0;\n  color: #fff;\n  cursor: pointer;\n  display: block;\n  font-family: ", ";\n  font-size: ", ";\n  text-transform: uppercase;\n  font-weight: 700;\n  height: ", ";\n  margin-top: ", ";\n  width: 100%;\n  /* max-width: ", "px; */\n  background-image: linear-gradient(\n    to bottom,\n    #e52d27 0%,\n    #e52d27 100%\n  );\n  background-color: #e52d27;\n\n  border:1px solid #d02718;\n  /* box-shadow: inset 0px 1px 0px 0px #f5978e; */\n}\n\n\n"]);
 
-  _templateObject$l = function _templateObject() {
+  _templateObject$n = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var GlobalStyles = styled.createGlobalStyle(_templateObject$l(), theme.breakPointsAsPixel.tablet, theme.breakPointsAsPixel.mobile, ptSerifWoff2, ptSerifWoff, robotoMediumWoff2, robotoMediumWoff, robotoBoldWoff2, robotoBoldWoff, theme.colors['dark-4'], theme.typography.fonts['font-1'], theme.colors['dark-3'], theme.colors['dark-3'], theme.colors['dark-3'], theme.colors['dark-3'], theme.unit(1), theme.unit(1), theme.unit(0.25), theme.unit(0.75), theme.colors['light-1'], theme.unit(0.5), theme.colors['dark-1'], theme.typography.sizes.desktop.sm, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.sm, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xsm, theme.typography.fonts['font-2'], theme.unit(0.5), theme.typography.sizes.desktop.xxlg, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.xxlg, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xxlg, theme.typography.sizes.desktop.xlg, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.xlg, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xlg, theme.typography.sizes.desktop.lg, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.lg, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.lg, theme.typography.sizes.desktop.md, theme.unit(0.3), theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.md, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.md, theme.typography.fonts['font-1'], theme.typography.sizes.desktop.sm, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.sm, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.sm, theme.typography.fonts['font-1'], theme.typography.sizes.desktop.xsm, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.xsm, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xsm, theme.unit(0.5), theme.unit(0.5), theme.border, theme.border, theme.unit(1), theme.border, theme.border, theme.unit(0.25), theme.unit(0.5), theme.colors['light-1'], theme.breakPointsAsPixel.mobile, function () {
+var GlobalStyles = styled.createGlobalStyle(_templateObject$n(), theme.breakPointsAsPixel.tablet, theme.breakPointsAsPixel.mobile, ptSerifWoff2, ptSerifWoff, robotoMediumWoff2, robotoMediumWoff, robotoBoldWoff2, robotoBoldWoff, theme.colors['dark-4'], theme.typography.fonts['font-1'], theme.colors['dark-3'], theme.colors['dark-3'], theme.colors['dark-3'], theme.colors['dark-3'], theme.unit(1), theme.unit(1), theme.unit(0.25), theme.unit(0.75), theme.colors['light-1'], theme.unit(0.5), theme.colors['dark-1'], theme.typography.sizes.desktop.sm, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.sm, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xsm, theme.typography.fonts['font-2'], theme.unit(0.5), theme.typography.sizes.desktop.xxlg, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.xxlg, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xxlg, theme.typography.sizes.desktop.xlg, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.xlg, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xlg, theme.typography.sizes.desktop.lg, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.lg, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.lg, theme.typography.sizes.desktop.md, theme.unit(0.3), theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.md, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.md, theme.typography.fonts['font-1'], theme.typography.sizes.desktop.sm, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.sm, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.sm, theme.typography.fonts['font-1'], theme.typography.sizes.desktop.xsm, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.xsm, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xsm, theme.unit(0.5), theme.unit(0.5), theme.border, theme.border, theme.unit(1), theme.border, theme.border, theme.unit(0.25), theme.unit(0.5), theme.colors['light-1'], theme.breakPointsAsPixel.mobile, function () {
   var colors = '';
 
   for (var color in theme.colors) {
@@ -1626,7 +1686,7 @@ var GlobalStyles = styled.createGlobalStyle(_templateObject$l(), theme.breakPoin
   }
 
   return fonts;
-}, theme.unit(0.75), theme.colors['light-1'], theme.border, "".concat(theme.unit(1), " 0"), theme.typography.sizes.desktop.md, theme.typography.fonts['font-3'], theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.md, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.md, "1px solid ".concat(theme.colors['dark-2']), theme.unit(0.5), theme.unit(0.75), theme.unit(0.4), theme.unit(3), theme.colors['dark-2'], theme.typography.fonts['font-2'], theme.unit(0.6), theme.unit(1.75), theme.unit(0.66), function (_ref) {
+}, theme.unit(0.75), theme.colors['light-1'], theme.border, "".concat(theme.unit(1), " 0"), theme.typography.sizes.desktop.md, theme.typography.fonts['font-3'], theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.md, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.md, theme.colors['dark-2'], theme.typography.fonts['font-2'], theme.unit(0.6), theme.unit(1.75), theme.unit(0.66), function (_ref) {
   var maxWidth = _ref.maxWidth;
   return maxWidth;
 });
@@ -1635,28 +1695,9 @@ function head () {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(GlobalStyles, null));
 }
 
-function _templateObject$m() {
-  var data = _taggedTemplateLiteral(["\n  form {\n    padding: ", ";\n    /* border: ", "; */\n    background-color: ", ";\n  }\n\n  label {\n    display: block;\n  }\n"]);
-
-  _templateObject$m = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-var FormWrapper = styled__default('div')(_templateObject$m(), theme.unit(0.5), theme.border, theme.colors.light2);
-
-function Form(_ref) {
-  var sidebar = _ref.sidebar;
-  return /*#__PURE__*/React.createElement(FormWrapper, {
-    dangerouslySetInnerHTML: {
-      __html: sidebar.text
-    }
-  });
-}
-
 function getComponent(data) {
   var wrapperComponent = {
+    blog_post: Section,
     component_section: Section,
     component_jumbotron: Jumbotron,
     component_section_rich_text: Section
@@ -1764,6 +1805,8 @@ function getPosts(apiUrl) {
           var first_publication_date = result.first_publication_date,
               data = result.data,
               id = result.id;
+          data.body = data.body[0];
+          data.type = 'blog_post';
           return {
             getData: function getData() {
               return _objectSpread2(_objectSpread2({}, data), {}, {
@@ -1818,6 +1861,7 @@ exports.Card = Card;
 exports.Cards = Cards;
 exports.Faq = Faq;
 exports.Footer = Footer;
+exports.Form = Form;
 exports.Grid = Grid;
 exports.Head = head;
 exports.Header = header;

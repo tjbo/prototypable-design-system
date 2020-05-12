@@ -441,26 +441,6 @@ text-shadow: 1px 2px #000
   }
 }
 
-/* Forms */
-input, textarea {
-    width: 100%;
-    border: ${`1px solid ${theme.colors['dark-2']}`};
-    font-size: ${theme.unit(0.5)};
-    display: block;
-    margin-bottom: ${theme.unit(0.75)};
-    outline: none;
-    padding: ${theme.unit(0.4)};
-     &:focus {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4);
-  }
-  }
-
-  textarea {
-    height: ${theme.unit(3)};
-    resize: none;
-  }
-
 button {
   background-color: ${theme.colors['dark-2']};
   border: 0;

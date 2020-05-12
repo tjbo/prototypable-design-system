@@ -13,6 +13,7 @@ import JsxParser from 'react-jsx-parser'
 
 export default function getComponent(data) {
   const wrapperComponent = {
+    blog_post: Section,
     component_section: Section,
     component_jumbotron: Jumbotron,
     component_section_rich_text: Section,

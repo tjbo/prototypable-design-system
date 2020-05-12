@@ -1,12 +1,8 @@
 import theme from '../../theme'
-export const FormWrapper = styled('div')`
-  form {
-    padding: ${theme.unit(0.5)};
-    /* border: ${theme.border}; */
-    background-color: ${theme.colors.light2};
-  }
 
-  label {
-    display: block;
-  }
+export const FormUI = styled('form')`
+  background-color: ${theme.colors['light-1']};
+  box-sizing: border-box;
+  padding: ${theme.unit(0.75)};
+  width: 100%;
 `
