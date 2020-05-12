@@ -13,7 +13,7 @@ export const dark = () => <Section hasBgDarkColor>{paragraphs}</Section>
 
 export const light = () => <Section hasBgLightColor>{paragraphs}</Section>
 
-export const full = () => <Section isFullWidth>{paragraphs}</Section>
+export const full = () => <Section is_full_width>{paragraphs}</Section>
 
 export const big = () => <Section innerWidth="big">{paragraphs}</Section>
 

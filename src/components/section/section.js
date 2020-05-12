@@ -4,10 +4,10 @@ export default function ({
   children = [],
   textAlign = 'left',
   background = 'default',
-  isFullWidth = false,
+  is_full_width = false,
   inner_width = 'big',
 }) {
-  if (isFullWidth) {
+  if (is_full_width) {
     return (
       <SectionWrapperUI background={background}>{children}</SectionWrapperUI>
     )

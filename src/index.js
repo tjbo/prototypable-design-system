@@ -1,6 +1,7 @@
 export { default as Article } from './components/article'
 export { default as Banner } from './components/banner/banner'
 export { default as Body } from './components/body'
+export { default as BreadCrumb } from './components/breadCrumb'
 export { default as Button } from './components/button/button'
 export { default as Card } from './components/card/'
 export { default as Cards } from './components/cards/'

@@ -7,21 +7,21 @@ export default {
 }
 
 export const Default = () => (
-  <Header>
+  <Header.Container>
     <Header.Brand>SOMELONGBRANDNAMEGOES</Header.Brand>
-    <Header.NavMenu>
-      <Header.NavLink>
+    <Header.Menu>
+      <Header.Link>
         <a href="/">Home</a>
-      </Header.NavLink>
-      <Header.NavLink>
+      </Header.Link>
+      <Header.Link>
         <a href="/">About</a>
-      </Header.NavLink>
-      <Header.NavLink>
+      </Header.Link>
+      <Header.Link>
         <a href="/">Blog</a>
-      </Header.NavLink>
-      <Header.NavLink>
+      </Header.Link>
+      <Header.Link>
         <a href="/">Contact</a>
-      </Header.NavLink>
-    </Header.NavMenu>
-  </Header>
+      </Header.Link>
+    </Header.Menu>
+  </Header.Container>
 )
