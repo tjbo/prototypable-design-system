@@ -1,7 +1,6 @@
 import { ColUI, GridUI } from './grid.css'
 
 function Grid({ children, collapse = '' }) {
-  console.log('collapse', collapse)
   return <GridUI collapse={collapse}>{children}</GridUI>
 }
 

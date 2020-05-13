@@ -7,7 +7,7 @@ function Article({ children, collapse }) {
   return <Grid collapse={collapse}>{children}</Grid>
 }
 
-Article.Content = function ({ children, width = '66%' }) {
+Article.Content = function ({ children, width = '64%' }) {
   return (
     <Grid.Col width={width}>
       <ContentUI>{children}</ContentUI>
@@ -15,7 +15,7 @@ Article.Content = function ({ children, width = '66%' }) {
   )
 }
 
-Article.Sidebar = function ({ children, width = '33%', styling = '' }) {
+Article.Sidebar = function ({ children, width = '32%', styling = '' }) {
   let _children = children
 
   if (styling === 'quote') {

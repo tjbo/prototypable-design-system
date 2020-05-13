@@ -4,19 +4,19 @@ const unit = 32
 
 export default {
   breakPoints: {
-    mobile: 600,
-    tablet: 1025,
+    mobile: 608,
+    tablet: 960,
     desktop: 1280,
   },
   breakPointsAsPixel: {
-    mobile: '600px',
-    tablet: '1025px',
+    mobile: '608px',
+    tablet: '960px',
     desktop: '1280px',
   },
   colors: {
     ['dark-1']: '#000000',
     ['dark-2']: '#D40000',
-    ['dark-3']: '#0090e7',
+    ['dark-3']: '#0091ea',
     ['dark-4']: '#454545',
     ['dark-5']: '#0066a3',
     ['light-1']: '#f5faff',
@@ -56,7 +56,6 @@ export default {
       },
     },
   },
-
   border: '1px solid #eee',
   border2: '1px soild #454545',
   unit(multiplier) {

@@ -9,8 +9,8 @@ var styled = require('styled-components');
 var styled__default = _interopDefault(styled);
 var ReactBreakpoints = require('react-breakpoints');
 var ReactBreakpoints__default = _interopDefault(ReactBreakpoints);
-var JsxParser = _interopDefault(require('react-jsx-parser'));
 var Prismic$1 = _interopDefault(require('prismic-javascript'));
+var JsxParser = _interopDefault(require('react-jsx-parser'));
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -182,16 +182,16 @@ var _colors, _fonts;
 var _unit = 32;
 var theme = {
   breakPoints: {
-    mobile: 600,
-    tablet: 1025,
+    mobile: 608,
+    tablet: 960,
     desktop: 1280
   },
   breakPointsAsPixel: {
-    mobile: '600px',
-    tablet: '1025px',
+    mobile: '608px',
+    tablet: '960px',
     desktop: '1280px'
   },
-  colors: (_colors = {}, _defineProperty(_colors, 'dark-1', '#000000'), _defineProperty(_colors, 'dark-2', '#D40000'), _defineProperty(_colors, 'dark-3', '#0090e7'), _defineProperty(_colors, 'dark-4', '#454545'), _defineProperty(_colors, 'dark-5', '#0066a3'), _defineProperty(_colors, 'light-1', '#f5faff'), _defineProperty(_colors, 'light-2', '36,139,204'), _defineProperty(_colors, 'light-3', '#ffffff'), _colors),
+  colors: (_colors = {}, _defineProperty(_colors, 'dark-1', '#000000'), _defineProperty(_colors, 'dark-2', '#D40000'), _defineProperty(_colors, 'dark-3', '#0091ea'), _defineProperty(_colors, 'dark-4', '#454545'), _defineProperty(_colors, 'dark-5', '#0066a3'), _defineProperty(_colors, 'light-1', '#f5faff'), _defineProperty(_colors, 'light-2', '36,139,204'), _defineProperty(_colors, 'light-3', '#ffffff'), _colors),
   typography: {
     fonts: (_fonts = {}, _defineProperty(_fonts, 'font-1', 'PT Serif'), _defineProperty(_fonts, 'font-2', 'Roboto'), _defineProperty(_fonts, 'font-3', 'PT Serif Caption'), _fonts),
     sizes: {
@@ -263,7 +263,7 @@ var ContentUI = styled__default('div')(_templateObject());
 var SidebarUI = styled__default('div')(_templateObject2(), theme.breakPointsAsPixel.tablet, theme.breakPointsAsPixel.mobile);
 
 function _templateObject2$1() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-between;\n  width: 100%;\n  align-items: flex-start;\n  align-content: flex-start;\n\n  @media (min-width: ", ") and (max-width: ", ") {\n    ", " {\n      width: ", ";\n    }\n  }\n  @media (max-width: ", ") {\n    ", " {\n      display: block;\n      width: 100%;\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-wrap: wrap;\n  width: 100%;\n  align-items: flex-start;\n  align-content: flex-start;\n\n  @media (min-width: ", ") and (max-width: ", ") {\n    ", " {\n      width: ", ";\n    }\n  }\n  @media (max-width: ", ") {\n    ", " {\n      display: block;\n      width: 100%;\n    }\n  }\n"]);
 
   _templateObject2$1 = function _templateObject2() {
     return data;
@@ -273,7 +273,7 @@ function _templateObject2$1() {
 }
 
 function _templateObject$1() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  margin-bottom: 2%;\n  width: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  margin: 5px;\n  width: ", ";\n  align-self: stretch;\n"]);
 
   _templateObject$1 = function _templateObject() {
     return data;
@@ -283,18 +283,17 @@ function _templateObject$1() {
 }
 var ColUI = styled__default('div')(_templateObject$1(), function (_ref) {
   var width = _ref.width;
-  return width;
+  return "calc(".concat(width, " - 10px)");
 });
 var GridUI = styled__default('div')(_templateObject2$1(), theme.breakPointsAsPixel.mobile, theme.breakPointsAsPixel.tablet, ColUI, function (_ref2) {
   var collapse = _ref2.collapse;
-  return collapse === 'tablet' ? '100%' : '49%';
+  return collapse === 'tablet' ? '100%' : "calc(50% - 10px)";
 }, theme.breakPointsAsPixel.mobile, ColUI);
 
 function Grid(_ref) {
   var children = _ref.children,
       _ref$collapse = _ref.collapse,
       collapse = _ref$collapse === void 0 ? '' : _ref$collapse;
-  console.log('collapse', collapse);
   return /*#__PURE__*/React.createElement(GridUI, {
     collapse: collapse
   }, children);
@@ -414,7 +413,7 @@ function Article(_ref) {
 Article.Content = function (_ref2) {
   var children = _ref2.children,
       _ref2$width = _ref2.width,
-      width = _ref2$width === void 0 ? '66%' : _ref2$width;
+      width = _ref2$width === void 0 ? '64%' : _ref2$width;
   return /*#__PURE__*/React.createElement(Grid.Col, {
     width: width
   }, /*#__PURE__*/React.createElement(ContentUI, null, children));
@@ -423,7 +422,7 @@ Article.Content = function (_ref2) {
 Article.Sidebar = function (_ref3) {
   var children = _ref3.children,
       _ref3$width = _ref3.width,
-      width = _ref3$width === void 0 ? '33%' : _ref3$width,
+      width = _ref3$width === void 0 ? '32%' : _ref3$width,
       _ref3$styling = _ref3.styling,
       styling = _ref3$styling === void 0 ? '' : _ref3$styling;
   var _children = children;
@@ -1447,20 +1446,6 @@ var ContentUI$2 = styled__default('div')(_templateObject$j(), theme.layout.deskt
 var ImageUI$1 = styled__default('div')(_templateObject2$c(), theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, theme.layout.mobile.headerHeight, theme.layout.mobile.headerHeight);
 
 var sizes = ['360×640', '768×1024', '1024x768', '1366×768', '1600×900', '1920x1080'];
-
-function getSrcSets(image) {
-  if (!image) {
-    return null;
-  }
-
-  return sizes.map(function (size) {
-    var _image$size = image[size],
-        width = _image$size.dimensions.width,
-        url = _image$size.url;
-    return "".concat(url, " ").concat(width, "w");
-  }).join(',');
-}
-
 function Jumbotron (_ref) {
   var body = _ref.body,
       id = _ref.id,
@@ -1469,7 +1454,7 @@ function Jumbotron (_ref) {
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(ImageUI$1, {
     key: "".concat(id, "-jumbotron-image")
   }, /*#__PURE__*/React.createElement("img", {
-    srcSet: getSrcSets(image)
+    srcSet: utils.getSrcSets(sizes, image)
   })), /*#__PURE__*/React.createElement(ContentUI$2, {
     dangerouslySetInnerHTML: {
       __html: body && body.text
@@ -1695,33 +1680,6 @@ function head () {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(GlobalStyles, null));
 }
 
-function getComponent(data) {
-  var wrapperComponent = {
-    blog_post: Section,
-    component_section: Section,
-    component_jumbotron: Jumbotron,
-    component_section_rich_text: Section
-  };
-  var content = /*#__PURE__*/React.createElement(JsxParser, {
-    components: {
-      Article: Article,
-      Banner: Banner,
-      Card: Card,
-      Cards: Cards,
-      Form: Form,
-      Faq: Faq,
-      Grid: Grid,
-      Image: Image,
-      Quote: Quote$1
-    },
-    jsx: data.body.text
-  });
-  return React.createElement(wrapperComponent[data.type], _objectSpread2(_objectSpread2({}, data), {}, {
-    key: data.id,
-    id: data.id
-  }), content);
-}
-
 var Prismic = require('prismic-javascript');
 
 function getPage(apiUrl, page) {
@@ -1821,11 +1779,13 @@ function getPosts(apiUrl) {
         });
         var list = response.results.map(function (post) {
           var _post$data = post.data,
+              image = _post$data.image,
               meta = _post$data.meta,
               title = _post$data.title,
               id = post.id;
           return {
             id: id,
+            image: image,
             path: meta[0].slug,
             title: title
           };
@@ -1845,10 +1805,57 @@ function getPosts(apiUrl) {
   });
 }
 
+function getComponent(data) {
+  var wrapperComponent = {
+    blog_post: Section,
+    component_section: Section,
+    component_jumbotron: Jumbotron,
+    component_section_rich_text: Section
+  };
+  var content = /*#__PURE__*/React.createElement(JsxParser, {
+    components: {
+      Article: Article,
+      Banner: Banner,
+      Card: Card,
+      Cards: Cards,
+      Form: Form,
+      Faq: Faq,
+      Grid: Grid,
+      Image: Image,
+      Quote: Quote$1
+    },
+    jsx: data.body.text
+  });
+  return React.createElement(wrapperComponent[data.type], _objectSpread2(_objectSpread2({}, data), {}, {
+    key: data.id,
+    id: data.id
+  }), content);
+}
+
+function getSrcSets(sizes, data) {
+  if (!data) {
+    return null;
+  }
+
+  var srcSets = sizes.map(function (size) {
+    return data[size];
+  });
+  srcSets.push({
+    dimensions: data.dimensions,
+    url: data.url
+  });
+  return srcSets.map(function (_ref) {
+    var url = _ref.url,
+        width = _ref.dimensions.width;
+    return "".concat(url, " ").concat(width, "w");
+  }).join(',');
+}
+
 var utils = {
   getComponent: getComponent,
   getPages: getPages,
   getPosts: getPosts,
+  getSrcSets: getSrcSets,
   makePixelValue: makePixelValue
 };
 

@@ -2,14 +2,14 @@ import theme from '../../theme'
 
 export const ColUI = styled('div')`
   display: flex;
-  margin-bottom: 2%;
-  width: ${({ width }) => width};
+  margin: 5px;
+  width: ${({ width }) => `calc(${width} - 10px)`};
+  align-self: stretch;
 `
 
 export const GridUI = styled('div')`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   width: 100%;
   align-items: flex-start;
   align-content: flex-start;
@@ -17,7 +17,8 @@ export const GridUI = styled('div')`
   @media (min-width: ${theme.breakPointsAsPixel.mobile}) and (max-width: ${theme
       .breakPointsAsPixel.tablet}) {
     ${ColUI} {
-      width: ${({ collapse }) => (collapse === 'tablet' ? '100%' : '49%')};
+      width: ${({ collapse }) =>
+        collapse === 'tablet' ? '100%' : `calc(50% - 10px)`};
     }
   }
   @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
