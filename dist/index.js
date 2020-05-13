@@ -273,7 +273,7 @@ function _templateObject2$1() {
 }
 
 function _templateObject$1() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  margin: 5px;\n  width: ", ";\n  align-self: stretch;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  margin: 5px;\n  width: ", ";\n  align-self: ", ";\n"]);
 
   _templateObject$1 = function _templateObject() {
     return data;
@@ -284,9 +284,12 @@ function _templateObject$1() {
 var ColUI = styled__default('div')(_templateObject$1(), function (_ref) {
   var width = _ref.width;
   return "calc(".concat(width, " - 10px)");
+}, function (_ref2) {
+  var stretch = _ref2.stretch;
+  return stretch ? 'stretch' : 'flex-start';
 });
-var GridUI = styled__default('div')(_templateObject2$1(), theme.breakPointsAsPixel.mobile, theme.breakPointsAsPixel.tablet, ColUI, function (_ref2) {
-  var collapse = _ref2.collapse;
+var GridUI = styled__default('div')(_templateObject2$1(), theme.breakPointsAsPixel.mobile, theme.breakPointsAsPixel.tablet, ColUI, function (_ref3) {
+  var collapse = _ref3.collapse;
   return collapse === 'tablet' ? '100%' : "calc(50% - 10px)";
 }, theme.breakPointsAsPixel.mobile, ColUI);
 
@@ -302,8 +305,11 @@ function Grid(_ref) {
 Grid.Col = function (_ref2) {
   var children = _ref2.children,
       _ref2$width = _ref2.width,
-      width = _ref2$width === void 0 ? '32%' : _ref2$width;
+      width = _ref2$width === void 0 ? '32%' : _ref2$width,
+      _ref2$stretch = _ref2.stretch,
+      stretch = _ref2$stretch === void 0 ? false : _ref2$stretch;
   return /*#__PURE__*/React.createElement(ColUI, {
+    stretch: stretch,
     width: width
   }, children);
 };
@@ -604,7 +610,8 @@ var AspectRatioUI = styled__default('div')(_templateObject3$1());
 function Card(_ref) {
   var children = _ref.children;
   return /*#__PURE__*/React.createElement(Grid.Col, {
-    width: "32%"
+    width: "32%",
+    stretch: true
   }, /*#__PURE__*/React.createElement(CardUI, null, children));
 }
 

@@ -4,7 +4,7 @@ export const ColUI = styled('div')`
   display: flex;
   margin: 5px;
   width: ${({ width }) => `calc(${width} - 10px)`};
-  align-self: stretch;
+  align-self: ${({ stretch }) => (stretch ? 'stretch' : 'flex-start')};
 `
 
 export const GridUI = styled('div')`
