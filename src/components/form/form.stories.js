@@ -8,7 +8,14 @@ export default {
 
 export const Default = () => (
   <Form>
-    <Form.Input label="Name" />
-    <Form.Input label="Email" />
+    <Form.Input label="Name" name="name" validationRules="required|alpha" />
+    <Form.Input label="Email" name="email" validationRules="required|email" />
+    <Form.Input
+      label="Message"
+      name="message"
+      type="textarea"
+      validationRules="required"
+    />
+    <Form.Button type="submit">Send Us A Message</Form.Button>
   </Form>
 )

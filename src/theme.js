@@ -22,6 +22,7 @@ export default {
     ['light-1']: '#f5faff',
     ['light-2']: '36,139,204',
     ['light-3']: '#ffffff',
+    ['error']: '#D40000',
   },
   typography: {
     fonts: {

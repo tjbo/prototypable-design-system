@@ -305,7 +305,6 @@ h2 + h4 {
   margin-top: -${theme.unit(0.5)};
 }
 
-
 /* table styles */
   table {
     border-collapse: collapse;
@@ -333,8 +332,6 @@ h2 + h4 {
     th {
       background-color: ${theme.colors['light-1']};
     }
-
-
   }
 
 
@@ -357,9 +354,6 @@ h2 + h4 {
     display: inline-block
 	}
   }
-
-
-
   }
 
 
@@ -440,33 +434,6 @@ text-shadow: 1px 2px #000
    font-size: ${theme.typography.sizes.mobile.md};
   }
 }
-
-button {
-  background-color: ${theme.colors['dark-2']};
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-  display: block;
-  font-family: ${theme.typography.fonts['font-2']};
-  font-size: ${theme.unit(0.6)};
-  text-transform: uppercase;
-  font-weight: 700;
-  height: ${theme.unit(1.75)};
-  margin-top: ${theme.unit(0.66)};
-  width: 100%;
-  /* max-width: ${({ maxWidth }) => maxWidth}px; */
-  background-image: linear-gradient(
-    to bottom,
-    #e52d27 0%,
-    #e52d27 100%
-  );
-  background-color: #e52d27;
-
-  border:1px solid #d02718;
-  /* box-shadow: inset 0px 1px 0px 0px #f5978e; */
-}
-
-
 `
 
 export default GlobalStyles
