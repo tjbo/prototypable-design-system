@@ -1,7 +1,7 @@
 var Prismic = require('prismic-javascript')
 
-export default function getPage(apiUrl, page) {
-  return Prismic.getApi(apiUrl).then(function (api) {
+export default function getPage(apiUrl, page, apiToken) {
+  return Prismic.getApi(apiUrl, { accessToken: apiToken }).then(function (api) {
     return api
       .query(Prismic.Predicates.at('document.id', page.id))
       .then((response) => {

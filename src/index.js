@@ -17,4 +17,16 @@ export { default as Quote } from './components/quote'
 export { default as Section } from './components/section/'
 export { default as ScrollToTop } from './components/scrollToTop/'
 export { default as Head } from './components/head/head'
-export { default as utils } from './utils/'
+
+import getComponent from './utils/getComponent'
+import getPages from './utils/getPages'
+import getPosts from './utils/getPosts'
+import makePixelValue from './utils/makePixelValue'
+
+// this needs to be exported like this, otherwise weird transpile errors from rollup
+export const utils = {
+  getComponent,
+  getPages,
+  getPosts,
+  makePixelValue,
+}

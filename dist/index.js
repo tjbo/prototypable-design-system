@@ -9,8 +9,8 @@ var styled = require('styled-components');
 var styled__default = _interopDefault(styled);
 var ReactBreakpoints = require('react-breakpoints');
 var ReactBreakpoints__default = _interopDefault(ReactBreakpoints);
-var Prismic$1 = _interopDefault(require('prismic-javascript'));
 var JsxParser = _interopDefault(require('react-jsx-parser'));
+var Prismic$1 = _interopDefault(require('prismic-javascript'));
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -47,6 +47,24 @@ function _defineProperty(obj, key, value) {
   }
 
   return obj;
+}
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
 }
 
 function ownKeys(object, enumerableOnly) {
@@ -191,7 +209,7 @@ var theme = {
     tablet: '960px',
     desktop: '1280px'
   },
-  colors: (_colors = {}, _defineProperty(_colors, 'dark-1', '#000000'), _defineProperty(_colors, 'dark-2', '#D40000'), _defineProperty(_colors, 'dark-3', '#0091ea'), _defineProperty(_colors, 'dark-4', '#454545'), _defineProperty(_colors, 'dark-5', '#0066a3'), _defineProperty(_colors, 'light-1', '#f5faff'), _defineProperty(_colors, 'light-2', '36,139,204'), _defineProperty(_colors, 'light-3', '#ffffff'), _colors),
+  colors: (_colors = {}, _defineProperty(_colors, 'dark-1', '#000000'), _defineProperty(_colors, 'dark-2', '#D40000'), _defineProperty(_colors, 'dark-3', '#0091ea'), _defineProperty(_colors, 'dark-4', '#454545'), _defineProperty(_colors, 'dark-5', '#0066a3'), _defineProperty(_colors, 'light-1', '#f5faff'), _defineProperty(_colors, 'light-2', '36,139,204'), _defineProperty(_colors, 'light-3', '#ffffff'), _defineProperty(_colors, 'error', '#D40000'), _colors),
   typography: {
     fonts: (_fonts = {}, _defineProperty(_fonts, 'font-1', 'PT Serif'), _defineProperty(_fonts, 'font-2', 'Roboto'), _defineProperty(_fonts, 'font-3', 'PT Serif Caption'), _fonts),
     sizes: {
@@ -542,36 +560,13 @@ var ButtonUI = styled__default('button')(_templateObject$7(), theme.colors['dark
   }
 });
 
-var DefaultLink = function DefaultLink(href) {
-  return /*#__PURE__*/React.createElement("a", {
-    href: href
-  });
-};
-
-function button (props) {
-  var align = props.align,
-      href = props.href,
-      _props$text = props.text,
-      text = _props$text === void 0 ? 'Submit' : _props$text,
-      onClick = props.onClick,
-      _props$maxWidth = props.maxWidth,
-      maxWidth = _props$maxWidth === void 0 ? 300 : _props$maxWidth,
-      _props$link = props.link,
-      link = _props$link === void 0 ? DefaultLink : _props$link;
-
-  if (href && link) {
-    return /*#__PURE__*/React.createElement(ButtonUI, {
-      align: align,
-      onClick: onClick,
-      maxWidth: maxWidth
-    });
-  } else {
-    return /*#__PURE__*/React.createElement(ButtonUI, {
-      align: align,
-      onClick: onClick,
-      maxWidth: maxWidth
-    }, text);
-  }
+function Button (_ref) {
+  var children = _ref.children,
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'button' : _ref$type;
+  return /*#__PURE__*/React.createElement(ButtonUI, {
+    type: type
+  }, children);
 }
 
 function _templateObject3$1() {
@@ -676,7 +671,27 @@ function _templateObject$a() {
 
   return data;
 }
-var FormUI = styled__default('form')(_templateObject$a(), theme.colors['light-1'], theme.unit(0.75));
+var FormUI = styled__default('div')(_templateObject$a(), theme.colors['light-1'], theme.unit(0.75));
+
+function hexToRgb(hex) {
+  // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+    return r + r + g + g + b + b;
+  });
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? "".concat(parseInt(result[1], 16), ",").concat(parseInt(result[2], 16), ",").concat(parseInt(result[3], 16)) : null;
+}
+
+function _templateObject4$1() {
+  var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  display: block;\n  font-size: ", ";\n  color: ", ";\n  height: ", ";\n  padding-top: ", ";\n"]);
+
+  _templateObject4$1 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
 
 function _templateObject3$2() {
   var data = _taggedTemplateLiteral(["\n  font-family: ", ";\n  font-size: ", ";\n"]);
@@ -689,7 +704,7 @@ function _templateObject3$2() {
 }
 
 function _templateObject2$5() {
-  var data = _taggedTemplateLiteral(["\n  border: none;\n  box-sizing: border-box;\n  display: block;\n  font-size: ", ";\n  margin: 0;\n  padding: ", ";\n  width: 100%;\n  &:focus {\n    outline: none;\n    box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.4);\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  border: none;\n  box-sizing: border-box;\n  display: block;\n  font-size: ", ";\n  margin: 0;\n  padding: ", ";\n  resize: none;\n  width: 100%;\n\n  box-shadow: ", ";\n\n  &:focus {\n    border: none;\n    outline: none;\n    box-shadow: ", ";\n  }\n"]);
 
   _templateObject2$5 = function _templateObject2() {
     return data;
@@ -708,29 +723,133 @@ function _templateObject$b() {
   return data;
 }
 var ContainerUI$1 = styled__default('div')(_templateObject$b(), theme.unit(0.25));
-var InputUI = styled__default('input')(_templateObject2$5(), theme.unit(0.5), theme.unit(0.4));
+var InputUI = styled__default('input')(_templateObject2$5(), theme.unit(0.5), theme.unit(0.4), function (_ref) {
+  var isValid = _ref.isValid;
+  return isValid ? "" : "0 0 0 3px rgba(".concat(hexToRgb(theme.colors['error']), ", 0.4)");
+}, function (_ref2) {
+  var isValid = _ref2.isValid;
+  return isValid ? "0 0 0 3px rgba(".concat(hexToRgb(theme.colors['dark-3']), ", 0.5)") : "0 0 0 3px rgba(".concat(hexToRgb(theme.colors['error']), ", 0.7)");
+});
 var LabelUI = styled__default('label')(_templateObject3$2(), theme.typography.fonts['font-2'], theme.unit(0.5));
+var ValidationUI = styled__default('div')(_templateObject4$1(), theme.unit(0.5), theme.colors['error'], theme.unit(1), theme.unit(0.125));
 
 function getLabel(label) {
   return /*#__PURE__*/React.createElement(LabelUI, null, label);
 }
 
-function Input(_ref) {
-  var label = _ref.label;
-  return /*#__PURE__*/React.createElement(ContainerUI$1, null, getLabel(label), /*#__PURE__*/React.createElement(InputUI, null));
+function getComponent(type, onChange, isValid, name) {
+  var props = {
+    isValid: isValid,
+    onChange: onChange.bind(null, name)
+  };
+
+  if (type === 'textarea') {
+    return /*#__PURE__*/React.createElement(InputUI, _extends({
+      as: "textarea",
+      rows: "5"
+    }, _objectSpread2({}, props)));
+  } else {
+    return /*#__PURE__*/React.createElement(InputUI, _objectSpread2({}, props));
+  }
 }
 
-function Form(_ref) {
-  var children = _ref.children;
-  return /*#__PURE__*/React.createElement(FormUI, null, children); // return <FormWrapper dangerouslySetInnerHTML={{ __html: sidebar.text }} />
+function Input(_ref) {
+  var isValidating = _ref.isValidating,
+      label = _ref.label,
+      onChange = _ref.onChange,
+      name = _ref.name,
+      _ref$type = _ref.type,
+      type = _ref$type === void 0 ? 'input' : _ref$type,
+      _ref$validationRules = _ref.validationRules,
+      validationRules = _ref$validationRules === void 0 ? '' : _ref$validationRules,
+      validator = _ref.validator,
+      value = _ref.value;
+  var validationMessage = validator.message(name, value, validationRules);
+  var isValid = isValidating ? !!!validationMessage : true;
+  return /*#__PURE__*/React.createElement(ContainerUI$1, null, getLabel(label), getComponent(type, onChange, isValid, name), /*#__PURE__*/React.createElement(ValidationUI, null, validator.message(name, value, validationRules)));
 }
+
+var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
+
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+var simpleReactValidator_min = createCommonjsModule(function (module, exports) {
+// Simple React Validator v1.4.6 | Created By Dockwa | MIT License | 2017 - Present
+!function(e,t){module.exports=t(React);}(commonjsGlobal,function(s){function f(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){if("undefined"==typeof Symbol||!(Symbol.iterator in Object(e)))return;var r=[],n=!0,s=!1,a=void 0;try{for(var i,u=e[Symbol.iterator]();!(n=(i=u.next()).done)&&(r.push(i.value),!t||r.length!==t);n=!0);}catch(e){s=!0,a=e;}finally{try{n||null==u.return||u.return();}finally{if(s)throw a}}return r}(e,t)||u(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function p(e){if("undefined"==typeof Symbol||null==e[Symbol.iterator]){if(Array.isArray(e)||(e=u(e))){var t=0,r=function(){};return {s:r,n:function(){return t>=e.length?{done:!0}:{done:!1,value:e[t++]}},e:function(e){throw e},f:r}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var n,s,a=!0,i=!1;return {s:function(){n=e[Symbol.iterator]();},n:function(){var e=n.next();return a=e.done,e},e:function(e){i=!0,s=e;},f:function(){try{a||null==n.return||n.return();}finally{if(i)throw s}}}}function u(e,t){if(e){if("string"==typeof e)return n(e,t);var r=Object.prototype.toString.call(e).slice(8,-1);return "Object"===r&&e.constructor&&(r=e.constructor.name),"Map"===r||"Set"===r?Array.from(r):"Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)?n(e,t):void 0}}function n(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=new Array(t);r<t;r++)n[r]=e[r];return n}function a(e){return (a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function i(t,e){var r=Object.keys(t);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(t);e&&(n=n.filter(function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable})),r.push.apply(r,n);}return r}function d(t){for(var e=1;e<arguments.length;e++){var r=null!=arguments[e]?arguments[e]:{};e%2?i(Object(r),!0).forEach(function(e){l(t,e,r[e]);}):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):i(Object(r)).forEach(function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e));});}return t}function o(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n);}}function e(e,t,r){return t&&o(e.prototype,t),r&&o(e,r),e}function l(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}var t=function(){function n(){var r=this,e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:{};!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,n),l(this,"showMessageFor",function(e){r.visibleFields.includes(e)||r.visibleFields.push(e),r.helpers.forceUpdateIfNeeded();}),l(this,"hideMessageFor",function(e){var t=r.visibleFields.indexOf(e);-1<t&&r.visibleFields.splice(t,1),r.helpers.forceUpdateIfNeeded();}),l(this,"helpers",{parent:this,passes:function(e,t,r,n){return n.hasOwnProperty(e)?!(this.isRequired(e,n)||!this.isBlank(t))||!1!==n[e].rule(t,r,this.parent):(console.error("Rule Not Found: There is no rule with the name ".concat(e,".")),!0)},isRequired:function(e,t){return t[e].hasOwnProperty("required")&&t[e].required},isBlank:function(e){return null==e||this.testRegex(e,/^[\s]*$/)},normalizeValues:function(e,t){return [this.valueOrEmptyString(e),this.getValidation(t),this.getOptions(t)]},getValidation:function(e){return e===Object(e)&&Object.keys(e).length?Object.keys(e)[0]:e.split(":")[0]},getOptions:function(e){if(e===Object(e)&&Object.values(e).length){var t=Object.values(e)[0];return Array.isArray(t)?t:[t]}return 1<(t=e.split(":")).length?t[1].split(","):[]},valueOrEmptyString:function(e){return null==e?"":e},toSentence:function(e){return e.slice(0,-2).join(", ")+(e.slice(0,-2).length?", ":"")+e.slice(-2).join(2<e.length?", or ":" or ")},testRegex:function(e,t){return null!==e.toString().match(t)},forceUpdateIfNeeded:function(){this.parent.autoForceUpdate&&this.parent.autoForceUpdate.forceUpdate();},message:function(e,t,r,n){r.messages=r.messages||{};var s=r.messages[e]||r.messages.default||this.parent.messages[e]||this.parent.messages.default||n[e].message;return s.replace(":attribute",this.humanizeFieldName(t))},humanizeFieldName:function(e){return e.replace(/([A-Z])/g," $1").replace(/_/g," ").toLowerCase()},element:function(e,t){var r=t.element||this.parent.element;return r(e,t.className)},momentInstalled:function(){return !(!window||!window.moment)||(console.warn("Date validators require using momentjs https://momentjs.com and moment objects."),!1)},size:function(e,t){return "string"===t||void 0===t||"array"===t?e.length:"num"===t?parseFloat(e):void 0},sizeText:function(e){return "string"===e||void 0===e?" characters":"array"===e?" elements":""}}),this.fields={},this.visibleFields=[],this.errorMessages={},this.messagesShown=!1,this.rules=d({accepted:{message:"The :attribute must be accepted.",rule:function(e){return !0===e},required:!0},after:{message:"The :attribute must be after :date.",rule:function(e,t){return r.helpers.momentInstalled()&&moment.isMoment(e)&&e.isAfter(t[0],"day")},messageReplace:function(e,t){return e.replace(":date",t[0].format("MM/DD/YYYY"))}},after_or_equal:{message:"The :attribute must be after or on :date.",rule:function(e,t){return r.helpers.momentInstalled()&&moment.isMoment(e)&&e.isSameOrAfter(t[0],"day")},messageReplace:function(e,t){return e.replace(":date",t[0].format("MM/DD/YYYY"))}},alpha:{message:"The :attribute may only contain letters.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z]*$/i)}},alpha_space:{message:"The :attribute may only contain letters and spaces.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z\s]*$/i)}},alpha_num:{message:"The :attribute may only contain letters and numbers.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z0-9]*$/i)}},alpha_num_space:{message:"The :attribute may only contain letters, numbers, and spaces.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z0-9\s]*$/i)}},alpha_num_dash:{message:"The :attribute may only contain letters, numbers, and dashes.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z0-9_-]*$/i)}},alpha_num_dash_space:{message:"The :attribute may only contain letters, numbers, dashes, and spaces.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z0-9_-\s]*$/i)}},array:{message:"The :attribute must be an array.",rule:function(e){return Array.isArray(e)}},before:{message:"The :attribute must be before :date.",rule:function(e,t){return r.helpers.momentInstalled()&&moment.isMoment(e)&&e.isBefore(t[0],"day")},messageReplace:function(e,t){return e.replace(":date",t[0].format("MM/DD/YYYY"))}},before_or_equal:{message:"The :attribute must be before or on :date.",rule:function(e,t){return r.helpers.momentInstalled()&&moment.isMoment(e)&&e.isSameOrBefore(t[0],"day")},messageReplace:function(e,t){return e.replace(":date",t[0].format("MM/DD/YYYY"))}},between:{message:"The :attribute must be between :min and :max:type.",rule:function(e,t){return r.helpers.size(e,t[2])>=parseFloat(t[0])&&r.helpers.size(e,t[2])<=parseFloat(t[1])},messageReplace:function(e,t){return e.replace(":min",t[0]).replace(":max",t[1]).replace(":type",r.helpers.sizeText(t[2]))}},boolean:{message:"The :attribute must be a boolean.",rule:function(e){return !1===e||!0===e}},card_exp:{message:"The :attribute must be a valid expiration date.",rule:function(e){return r.helpers.testRegex(e,/^(([0]?[1-9]{1})|([1]{1}[0-2]{1}))\s?\/\s?(\d{2}|\d{4})$/)}},card_num:{message:"The :attribute must be a valid credit card number.",rule:function(e){return r.helpers.testRegex(e,/^\d{4}\s?\d{4,6}\s?\d{4,5}\s?\d{0,8}$/)}},currency:{message:"The :attribute must be a valid currency.",rule:function(e){return r.helpers.testRegex(e,/^\$?(\d{1,3})(\,?\d{3})*\.?\d{0,2}$/)}},date:{message:"The :attribute must be a date.",rule:function(e){return r.helpers.momentInstalled()&&moment.isMoment(e)}},date_equals:{message:"The :attribute must be on :date.",rule:function(e,t){return r.helpers.momentInstalled()&&moment.isMoment(e)&&e.isSame(t[0],"day")},messageReplace:function(e,t){return e.replace(":date",t[0].format("MM/DD/YYYY"))}},email:{message:"The :attribute must be a valid email address.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i)}},in:{message:"The selected :attribute must be :values.",rule:function(e,t){return t.includes(e)},messageReplace:function(e,t){return e.replace(":values",r.helpers.toSentence(t))}},integer:{message:"The :attribute must be an integer.",rule:function(e){return r.helpers.testRegex(e,/^\d*$/)}},max:{message:"The :attribute may not be greater than :max:type.",rule:function(e,t){return r.helpers.size(e,t[1])<=parseFloat(t[0])},messageReplace:function(e,t){return e.replace(":max",t[0]).replace(":type",r.helpers.sizeText(t[1]))}},min:{message:"The :attribute must be at least :min:type.",rule:function(e,t){return r.helpers.size(e,t[1])>=parseFloat(t[0])},messageReplace:function(e,t){return e.replace(":min",t[0]).replace(":type",r.helpers.sizeText(t[1]))}},not_in:{message:"The selected :attribute must not be :values.",rule:function(e,t){return !t.includes(e)},messageReplace:function(e,t){return e.replace(":values",r.helpers.toSentence(t))}},not_regex:{message:"The :attribute must not match the required pattern.",rule:function(e,t){return !r.helpers.testRegex(e,"string"==typeof t[0]||t[0]instanceof String?new RegExp(t[0]):t[0])}},numeric:{message:"The :attribute must be a number.",rule:function(e){return r.helpers.testRegex(e,/^\-?\d*\.?\d+$/)}},phone:{message:"The :attribute must be a valid phone number.",rule:function(e){return r.helpers.testRegex(e,/^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)$/)&&!r.helpers.testRegex(e,/^\b(\d)\1{8,}\b$/)}},regex:{message:"The :attribute must match the required pattern.",rule:function(e,t){return r.helpers.testRegex(e,"string"==typeof t[0]||t[0]instanceof String?new RegExp(t[0]):t[0])}},required:{message:"The :attribute field is required.",rule:function(e){return !r.helpers.isBlank(e)},required:!0},size:{message:"The :attribute must be :size:type.",rule:function(e,t){return r.helpers.size(e,t[1])==parseFloat(t[0])},messageReplace:function(e,t){return e.replace(":size",t[0]).replace(":type",r.helpers.sizeText(t[1]))}},string:{message:"The :attribute must be a string.",rule:function(e){return a(e)===a("string")}},typeof:{message:"The :attribute is not the correct type of :type.",rule:function(e,t){return a(e)===a(t[0])},messageReplace:function(e,t){return e.replace(":type",a(t[0]))}},url:{message:"The :attribute must be a url.",rule:function(e){return r.helpers.testRegex(e,/^https?:\/\/[-a-z0-9@:%._\+~#=]{1,256}\.[a-z0-9()]{2,6}\b([-a-z0-9()@:%_\+.~#?&//=]*)$/i)}}},e.validators||{}),e.locale&&!n.locales.hasOwnProperty(e.locale)&&console.warn("Locale not found! Make sure it is spelled correctly and the locale file is loaded.");var t=n.locales[e.locale]||{};Object.keys(this.rules).forEach(function(e){r.rules[e].message=t[e]||r.rules[e].message;}),this.messages=e.messages||{},this.className=e.className,this.autoForceUpdate=e.autoForceUpdate||!1,!1===e.element?this.element=function(e){return e}:e.hasOwnProperty("element")?this.element=e.element:"object"===("undefined"==typeof navigator?"undefined":a(navigator))&&"ReactNative"===navigator.product?this.element=function(e){return e}:this.element=function(e,t){return s.createElement("div",{className:t||r.className||"srv-validation-message"},e)};}return e(n,null,[{key:"addLocale",value:function(e,t){this.locales[e]=t;}}]),e(n,[{key:"getErrorMessages",value:function(){return this.errorMessages}},{key:"showMessages",value:function(){this.messagesShown=!0,this.helpers.forceUpdateIfNeeded();}},{key:"hideMessages",value:function(){this.messagesShown=!1,this.helpers.forceUpdateIfNeeded();}},{key:"allValid",value:function(){for(var e in this.fields)if(!1===this.fieldValid(e))return !1;return !0}},{key:"fieldValid",value:function(e){return this.fields.hasOwnProperty(e)&&!0===this.fields[e]}},{key:"purgeFields",value:function(){this.fields={},this.errorMessages={};}},{key:"messageWhenPresent",value:function(e){var t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:{};if(!this.helpers.isBlank(e)&&this.messagesShown)return this.helpers.element(e,t)}},{key:"messageAlways",value:function(e,t){var r=2<arguments.length&&void 0!==arguments[2]?arguments[2]:{};if(console.warn("The messageAlways() method is deprecated in SimpleReactValidator. Please see the documentation and switch to the messageWhenPresent() method."),t&&this.messagesShown)return this.helpers.element(t,r)}},{key:"check",value:function(e,t){var r=2<arguments.length&&void 0!==arguments[2]?arguments[2]:{};Array.isArray(t)||(t=t.split("|"));var n,s=r.validators?d({},this.rules,{},r.validators):this.rules,a=p(t);try{for(a.s();!(n=a.n()).done;){var i=n.value,u=f(this.helpers.normalizeValues(e,i),3),o=u[0],l=u[1],c=u[2];if(!this.helpers.passes(l,o,c,s))return !1}}catch(e){a.e(e);}finally{a.f();}return !0}},{key:"message",value:function(e,t,r){var n=3<arguments.length&&void 0!==arguments[3]?arguments[3]:{};this.errorMessages[e]=null,this.fields[e]=!0,Array.isArray(r)||(r=r.split("|"));var s,a=n.validators?d({},this.rules,{},n.validators):this.rules,i=p(r);try{for(i.s();!(s=i.n()).done;){var u=s.value,o=f(this.helpers.normalizeValues(t,u),3),l=o[0],c=o[1],m=o[2];if(!this.helpers.passes(c,l,m,a)){this.fields[e]=!1;var h=this.helpers.message(c,e,n,a);if(0<m.length&&a[c].hasOwnProperty("messageReplace")&&(h=a[c].messageReplace(h,m)),this.errorMessages[e]=h,this.messagesShown||this.visibleFields.includes(e))return this.helpers.element(h,n)}}}catch(e){i.e(e);}finally{i.f();}}}]),n}();return l(t,"version","1.4.6"),l(t,"locales",{en:{}}),t});
+});
+
+var Form = /*#__PURE__*/function (_React$Component) {
+  _inherits(Form, _React$Component);
+
+  var _super = _createSuper(Form);
+
+  function Form(props) {
+    var _this;
+
+    _classCallCheck(this, Form);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "onFieldChange", function (name, element) {
+      _this.setState(_defineProperty({}, name, element.target.value));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onSubmit", function (event) {
+      event.preventDefault();
+
+      if (_this.validator.allValid()) {
+        return true;
+      } else {
+        _this.setState({
+          isValidating: true
+        });
+
+        _this.validator.showMessages();
+
+        return false;
+      }
+    });
+
+    _this.validator = new simpleReactValidator_min({
+      autoForceUpdate: _assertThisInitialized(_this)
+    });
+    _this.state = {
+      isValidating: false
+    };
+    return _this;
+  }
+
+  _createClass(Form, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var children = this.props.children;
+      return /*#__PURE__*/React.createElement(FormUI, null, /*#__PURE__*/React.createElement("form", {
+        onSubmit: this.onSubmit
+      }, React.Children.map(children, function (child) {
+        return React.cloneElement(child, _objectSpread2(_objectSpread2({}, child.props), {}, {
+          isValidating: _this2.state.isValidating,
+          onChange: _this2.onFieldChange,
+          validator: _this2.validator,
+          value: _this2.state[child.props.name]
+        }));
+      })));
+    }
+  }]);
+
+  return Form;
+}(React.Component);
 
 Form.Input = Input;
+Form.Button = Button;
 
-function _templateObject4$1() {
+function _templateObject4$2() {
   var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  display: flex;\n  justify-content: space-between;\n  background-color: ", ";\n  padding: ", ";\n  padding-right: ", ";\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n    flex-direction: column;\n    text-align: center;\n  }\n\n  ", " {\n    color: #fff;\n    white-space: nowrap;\n    font-style: normal;\n    a:active,\n    a:visited,\n    a:hover,\n    a:link {\n      color: #fff;\n      text-decoration: none;\n      font-family: ", ";\n    }\n    a:first-child {\n      text-transform: uppercase;\n      font-size: ", ";\n    }\n    font-family: ", ";\n  }\n\n  ", " {\n    font-size: ", ";\n    color: #fff;\n    margin-right: ", ";\n  }\n"]);
 
-  _templateObject4$1 = function _templateObject4() {
+  _templateObject4$2 = function _templateObject4() {
     return data;
   };
 
@@ -769,7 +888,7 @@ function _templateObject$c() {
 var FooterUI = styled__default('footer')(_templateObject$c(), theme.colors['dark-1']);
 var AddressUI = styled__default('address')(_templateObject2$6());
 var FinePrintUI = styled__default('div')(_templateObject3$3());
-var FooterUIInner = styled__default('div')(_templateObject4$1(), theme.colors['dark-1'], "".concat(theme.unit(0.5), " ").concat(theme.unit(0.75)), theme.unit(1), theme.typography.fonts['font-1'], theme.breakPointsAsPixel.mobile, AddressUI, theme.typography.fonts['font-2'], theme.unit(0.65), theme.typography.fonts['font-2'], FinePrintUI, theme.unit(0.4), theme.unit(1));
+var FooterUIInner = styled__default('div')(_templateObject4$2(), theme.colors['dark-1'], "".concat(theme.unit(0.5), " ").concat(theme.unit(0.75)), theme.unit(1), theme.typography.fonts['font-1'], theme.breakPointsAsPixel.mobile, AddressUI, theme.typography.fonts['font-2'], theme.unit(0.65), theme.typography.fonts['font-2'], FinePrintUI, theme.unit(0.4), theme.unit(1));
 
 function Footer(_ref) {
   var children = _ref.children;
@@ -809,10 +928,10 @@ function _templateObject5$1() {
   return data;
 }
 
-function _templateObject4$2() {
+function _templateObject4$3() {
   var data = _taggedTemplateLiteral(["\n  display: flex;\n  align-items: center;\n  height: ", ";\n  min-width: 140px;\n  margin-left: ", ";\n  /* margin-right: 100px; */\n"]);
 
-  _templateObject4$2 = function _templateObject4() {
+  _templateObject4$3 = function _templateObject4() {
     return data;
   };
 
@@ -851,7 +970,7 @@ function _templateObject$d() {
 var ContainerUI$2 = styled__default('header')(_templateObject$d(), theme.colors['dark-1'], theme.layout.desktop.headerHeight);
 var ContainerInnerUI = styled__default('div')(_templateObject2$7(), theme.colors['dark-1'], theme.layout.desktop.headerHeight);
 var DropdownUI = styled__default('div')(_templateObject3$4(), theme.layout.desktop.headerHeight, theme.border, theme.colors['dark-3'], theme.colors['dark-5'], theme.typography.fonts['font-2'], theme.unit(0.25));
-var BrandUI = styled__default('div')(_templateObject4$2(), theme.layout.desktop.headerHeight, theme.unit(0.25));
+var BrandUI = styled__default('div')(_templateObject4$3(), theme.layout.desktop.headerHeight, theme.unit(0.25));
 var LinkUI = styled__default('div')(_templateObject5$1(), theme.typography.fonts['font-2'], theme.layout.desktop.headerHeight, theme.unit(1));
 var MenuUI = styled__default('div')(_templateObject6());
 var ContactUI = styled__default('div')(_templateObject7(), theme.unit(1), theme.typography.fonts['font-2'], theme.unit(1), theme.unit(0.45), theme.colors['dark-2'], theme.unit(0.75));
@@ -898,10 +1017,10 @@ var DesktopHeader = {
   Contact: Contact
 };
 
-function _templateObject4$3() {
+function _templateObject4$4() {
   var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  background-color: ", ";\n  display: block;\n  left: 0;\n  min-height: 100vh;\n  padding-top: ", ";\n  position: absolute;\n  top: 0;\n  height: 100%;\n  width: 100%;\n  min-height: 100vh;\n  overflow: auto;\n"]);
 
-  _templateObject4$3 = function _templateObject4() {
+  _templateObject4$4 = function _templateObject4() {
     return data;
   };
 
@@ -943,7 +1062,7 @@ var LinkUI$1 = styled__default('div')(_templateObject3$5(), theme.colors['light-
   var isOpen = _ref.isOpen;
   return isOpen && "".concat(theme.colors['dark-5']);
 });
-var MenuUI$1 = styled__default('nav')(_templateObject4$3(), theme.colors['dark-3'], theme.layout.mobile.headerHeight);
+var MenuUI$1 = styled__default('nav')(_templateObject4$4(), theme.colors['dark-3'], theme.layout.mobile.headerHeight);
 
 function _templateObject6$1() {
   var data = _taggedTemplateLiteral(["\n  display: block;\n  height: ", ";\n  margin: (", ") auto ", " auto;\n  margin-top: -", ";\n  position: relative;\n  width: ", ";\n  z-index: 9999;\n  cursor: pointer;\n"]);
@@ -965,10 +1084,10 @@ function _templateObject5$2() {
   return data;
 }
 
-function _templateObject4$4() {
+function _templateObject4$5() {
   var data = _taggedTemplateLiteral(["\n  top: 100%;\n  transform: ", ";\n"]);
 
-  _templateObject4$4 = function _templateObject4() {
+  _templateObject4$5 = function _templateObject4() {
     return data;
   };
 
@@ -1015,7 +1134,7 @@ var Line1UI = styled__default(LineUI)(_templateObject2$9(), function (props) {
 var Line2UI = styled__default(LineUI)(_templateObject3$6(), function (props) {
   return props.isOpen ? "0" : '1';
 });
-var Line3UI = styled__default(LineUI)(_templateObject4$4(), function (props) {
+var Line3UI = styled__default(LineUI)(_templateObject4$5(), function (props) {
   return props.isOpen ? "translateY(-".concat(translateY1, ") rotate(-45deg) translateX(0)") : 'rotate(0deg)';
 });
 var ContainerUI$4 = styled__default('div')(_templateObject5$2(), theme.unit(0.5));
@@ -1496,10 +1615,10 @@ function Loading() {
   return /*#__PURE__*/React.createElement(LoadingScreenContainerUI, null, /*#__PURE__*/React.createElement(Loader, null), 'Loading');
 }
 
-function _templateObject4$5() {
+function _templateObject4$6() {
   var data = _taggedTemplateLiteral(["\n  blockquote {\n    border: none;\n  }\n"]);
 
-  _templateObject4$5 = function _templateObject4() {
+  _templateObject4$6 = function _templateObject4() {
     return data;
   };
 
@@ -1538,7 +1657,7 @@ function _templateObject$l() {
 var BoxWrapper$2 = styled__default('div')(_templateObject$l(), theme.unit(2), theme.unit(1), theme.colors['light-1'], theme.breakPointsAsPixel.tablet, theme.unit(1), theme.unit(2.5));
 var OpenQuoteUI$1 = styled__default('div')(_templateObject2$d(), theme.colors['dark-3'], theme.unit(2.5), theme.unit(5), theme.unit(0.25), theme.unit(0.25));
 var CloseQuoteUI$1 = styled__default('div')(_templateObject3$7(), theme.unit(2.5), theme.colors['dark-3'], theme.unit(5), theme.unit(0.25), theme.unit(0.25));
-var DropQuoteUI$1 = styled__default('div')(_templateObject4$5());
+var DropQuoteUI$1 = styled__default('div')(_templateObject4$6());
 
 function Quote$1 (_ref) {
   var sidebar = _ref.sidebar;
@@ -1653,7 +1772,7 @@ var robotoBoldWoff = "/fonts/roboto-v20-latin-700.woff";
 var robotoBoldWoff2 = "/fonts/roboto-v20-latin-700.woff2";
 
 function _templateObject$n() {
-  var data = _taggedTemplateLiteral(["\n\n/**\n * These values will not show up in content, but can be\n * queried by JavaScript to know which breakpoint is active.\n * Add or remove as many breakpoints as you like.\n */\nbody:before {\n  content: \"desktop\";\n  display: none;\n}\n\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"tablet\";\n  }\n}\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"mobile\";\n  }\n}\n\n\n\n/* pt-serif-regular - latin */\n@font-face {\n  font-display: block;\n  font-family: 'PT Serif';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: local('PT Serif'), local('PTSerif-Regular'),\n       url(", ") format('woff2'), /* Super Modern Browsers */\n       url(", ") format('woff'), /* Modern Browsers */\n\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-display: block;\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: local('Roboto Medium'), local('Roboto-Medium'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: local('Roboto Bold'), local('Roboto-Bold'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* css reset */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: 1.125rem;\n  line-height: 1.5;\n  margin: 0;\n  overflow: auto;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nimg {\n  max-width: 100%;\n  height: auto;\n}\n\niframe {\n  max-width: 100%;\n}\n\n\n/* link styles */\na:active {\n  color: ", ";\n  text-decoration: none;\n}\n\na:link {\n  text-decoration: none;\n  color: ", ";\n}\n\na:hover {\n  color: ", ";\n  text-decoration: underline;\n}\n\na:visited {\n  color: ", ";\n  text-decoration: none;\n}\n\n/* list and paragraph styles */\np, ul, code {\n  padding: 0;\n  margin-bottom: ", ";\n}\n\nb {\n  font-weight: bold;\n}\n\nul {\n  list-style: disc;\n  padding-left: ", ";\n};\n}\n\nli {\n  margin-bottom: ", ";\n  margin-left: ", ";\n}\n\ncode {\n  box-sizing: border-box;\n  background-color:  ", ";\n  display: block;\n  padding: ", ";\n  color: ", ";\n  width: 100%;\n  font-family: 'Courier New', Courier, monospace;\n  white-space: normal;\n\n  font-size: ", ";\n\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n/* heading styles */\nh1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n  margin-bottom: ", ";\n  line-height: 100%;\n}\n\nh1, .heading-1 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh2, .heading-2 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh3, .heading-3 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh4, .heading-4 {\n  font-size: ", ";;\n  font-weight: 500;\n  margin-bottom: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh5, .heading-5 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh6, .heading-6 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh1 + h2, h1 + h2.heading-2 {\n  margin-top: -", ";\n}\n\nh2 + h4 {\n  margin-top: -", ";\n}\n\n\n/* table styles */\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    width: 100%;\n  margin-bottom: ", ";\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td, th {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    th {\n      background-color: ", ";\n    }\n\n\n  }\n\n\n  @media (max-width: ", ") {\n    table.responsive-collapse {\n\n    table, thead, tbody, th, td, tr {\n\t\tdisplay: block;\n\t}\n\n  thead tr {\n\t\tposition: absolute;\n\t\ttop: -9999px;\n\t\tleft: -9999px;\n\t}\n    }\n\n  table.n-plus-2 {\n  td:nth-child(n+2) {\n    display: inline-block\n\t}\n  }\n\n\n\n  }\n\n\n/* makes a class for each color in theme */\n  ", "\n\n/* makes a class for each font in theme */\n", "\n\n/* random text styles */\nblockquote {\n  padding: ", ";\n  background-color: ", ";\n  border:  ", ";\n  margin:  ", ";\n\n  p:last-child, ul:last-child {\n    margin-bottom: 0;\n  }\n\n}\n\n.italic {\n  font-style: italic;\n}\n\n.text-shadow-dark {\ntext-shadow: 1px 2px #000\n}\n\n.line-height-1 {\n  line-height: 1;\n}\n\n.line-height-1-2-0 {\n  line-height: 1;\n}\n\n.bold {\n  font-weight: 700;\n}\n\n.lead {\n  font-size: ", ";\n  line-height: 130%;\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nbutton {\n  background-color: ", ";\n  border: 0;\n  color: #fff;\n  cursor: pointer;\n  display: block;\n  font-family: ", ";\n  font-size: ", ";\n  text-transform: uppercase;\n  font-weight: 700;\n  height: ", ";\n  margin-top: ", ";\n  width: 100%;\n  /* max-width: ", "px; */\n  background-image: linear-gradient(\n    to bottom,\n    #e52d27 0%,\n    #e52d27 100%\n  );\n  background-color: #e52d27;\n\n  border:1px solid #d02718;\n  /* box-shadow: inset 0px 1px 0px 0px #f5978e; */\n}\n\n\n"]);
+  var data = _taggedTemplateLiteral(["\n\n/**\n * These values will not show up in content, but can be\n * queried by JavaScript to know which breakpoint is active.\n * Add or remove as many breakpoints as you like.\n */\nbody:before {\n  content: \"desktop\";\n  display: none;\n}\n\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"tablet\";\n  }\n}\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"mobile\";\n  }\n}\n\n\n\n/* pt-serif-regular - latin */\n@font-face {\n  font-display: block;\n  font-family: 'PT Serif';\n  font-style: normal;\n  font-weight: 400;\n  font-display: swap;\n  src: local('PT Serif'), local('PTSerif-Regular'),\n       url(", ") format('woff2'), /* Super Modern Browsers */\n       url(", ") format('woff'), /* Modern Browsers */\n\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-display: block;\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  font-display: swap;\n  src: local('Roboto Medium'), local('Roboto-Medium'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* roboto-700 - latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 700;\n  font-display: swap;\n  src: local('Roboto Bold'), local('Roboto-Bold'),\n       url(", ") format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */\n       url(", ") format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */\n}\n\n/* css reset */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: 1.125rem;\n  line-height: 1.5;\n  margin: 0;\n  overflow: auto;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nimg {\n  max-width: 100%;\n  height: auto;\n}\n\niframe {\n  max-width: 100%;\n}\n\n\n/* link styles */\na:active {\n  color: ", ";\n  text-decoration: none;\n}\n\na:link {\n  text-decoration: none;\n  color: ", ";\n}\n\na:hover {\n  color: ", ";\n  text-decoration: underline;\n}\n\na:visited {\n  color: ", ";\n  text-decoration: none;\n}\n\n/* list and paragraph styles */\np, ul, code {\n  padding: 0;\n  margin-bottom: ", ";\n}\n\nb {\n  font-weight: bold;\n}\n\nul {\n  list-style: disc;\n  padding-left: ", ";\n};\n}\n\nli {\n  margin-bottom: ", ";\n  margin-left: ", ";\n}\n\ncode {\n  box-sizing: border-box;\n  background-color:  ", ";\n  display: block;\n  padding: ", ";\n  color: ", ";\n  width: 100%;\n  font-family: 'Courier New', Courier, monospace;\n  white-space: normal;\n\n  font-size: ", ";\n\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n/* heading styles */\nh1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n  margin-bottom: ", ";\n  line-height: 100%;\n}\n\nh1, .heading-1 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh2, .heading-2 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh3, .heading-3 {\n  font-size: ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh4, .heading-4 {\n  font-size: ", ";;\n  font-weight: 500;\n  margin-bottom: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh5, .heading-5 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh6, .heading-6 {\n  font-family: ", ";\n  font-size:  ", ";\n  font-weight: 500;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh1 + h2, h1 + h2.heading-2 {\n  margin-top: -", ";\n}\n\nh2 + h4 {\n  margin-top: -", ";\n}\n\n/* table styles */\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    width: 100%;\n  margin-bottom: ", ";\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td, th {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    th {\n      background-color: ", ";\n    }\n  }\n\n\n  @media (max-width: ", ") {\n    table.responsive-collapse {\n\n    table, thead, tbody, th, td, tr {\n\t\tdisplay: block;\n\t}\n\n  thead tr {\n\t\tposition: absolute;\n\t\ttop: -9999px;\n\t\tleft: -9999px;\n\t}\n    }\n\n  table.n-plus-2 {\n  td:nth-child(n+2) {\n    display: inline-block\n\t}\n  }\n  }\n\n\n/* makes a class for each color in theme */\n  ", "\n\n/* makes a class for each font in theme */\n", "\n\n/* random text styles */\nblockquote {\n  padding: ", ";\n  background-color: ", ";\n  border:  ", ";\n  margin:  ", ";\n\n  p:last-child, ul:last-child {\n    margin-bottom: 0;\n  }\n\n}\n\n.italic {\n  font-style: italic;\n}\n\n.text-shadow-dark {\ntext-shadow: 1px 2px #000\n}\n\n.line-height-1 {\n  line-height: 1;\n}\n\n.line-height-1-2-0 {\n  line-height: 1;\n}\n\n.bold {\n  font-weight: 700;\n}\n\n.lead {\n  font-size: ", ";\n  line-height: 130%;\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n"]);
 
   _templateObject$n = function _templateObject() {
     return data;
@@ -1678,19 +1797,45 @@ var GlobalStyles = styled.createGlobalStyle(_templateObject$n(), theme.breakPoin
   }
 
   return fonts;
-}, theme.unit(0.75), theme.colors['light-1'], theme.border, "".concat(theme.unit(1), " 0"), theme.typography.sizes.desktop.md, theme.typography.fonts['font-3'], theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.md, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.md, theme.colors['dark-2'], theme.typography.fonts['font-2'], theme.unit(0.6), theme.unit(1.75), theme.unit(0.66), function (_ref) {
-  var maxWidth = _ref.maxWidth;
-  return maxWidth;
-});
+}, theme.unit(0.75), theme.colors['light-1'], theme.border, "".concat(theme.unit(1), " 0"), theme.typography.sizes.desktop.md, theme.typography.fonts['font-3'], theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.md, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.md);
 
 function head () {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(GlobalStyles, null));
 }
 
+function getComponent$1(data) {
+  var wrapperComponent = {
+    blog_post: Section,
+    component_section: Section,
+    component_jumbotron: Jumbotron,
+    component_section_rich_text: Section
+  };
+  var content = /*#__PURE__*/React.createElement(JsxParser, {
+    components: {
+      Article: Article,
+      Banner: Banner,
+      Card: Card,
+      Cards: Cards,
+      Form: Form,
+      Faq: Faq,
+      Grid: Grid,
+      Image: Image,
+      Quote: Quote$1
+    },
+    jsx: data.body.text
+  });
+  return React.createElement(wrapperComponent[data.type], _objectSpread2(_objectSpread2({}, data), {}, {
+    key: data.id,
+    id: data.id
+  }), content);
+}
+
 var Prismic = require('prismic-javascript');
 
-function getPage(apiUrl, page) {
-  return Prismic.getApi(apiUrl).then(function (api) {
+function getPage(apiUrl, page, apiToken) {
+  return Prismic.getApi(apiUrl, {
+    accessToken: apiToken
+  }).then(function (api) {
     return api.query(Prismic.Predicates.at('document.id', page.id)).then(function (response) {
       var data = response.results[0].data;
 
@@ -1728,27 +1873,27 @@ function getPage(apiUrl, page) {
   });
 }
 
-function getPages(apiUrl) {
+function getPages(apiUrl, apiToken) {
   return new Promise(function (resolve) {
-    return Prismic$1.getApi(apiUrl).then(function (api) {
+    return Prismic$1.getApi(apiUrl, {
+      accessToken: apiToken
+    }).then(function (api) {
       return api.query(Prismic$1.Predicates.at('document.type', 'page')).then(function (response) {
         var promises = response.results.map(function (result) {
-          return getPage(apiUrl, result);
+          return getPage(apiUrl, result, apiToken);
         });
         return Promise.all(promises).then(function (pages) {
           var _pages = pages.map(function (_ref) {
             var content = _ref.content,
                 meta = _ref.meta,
                 page = _ref.page;
+            console.log(meta.slug, content);
             return {
               path: meta.slug,
               getData: function getData() {
                 return {
                   content: content,
-                  meta: meta,
-                  forms: {
-                    has_form: page.data.has_form
-                  }
+                  meta: meta
                 };
               },
               template: meta.template ? "src/pages/".concat(meta.template) : 'src/pages/page'
@@ -1762,9 +1907,11 @@ function getPages(apiUrl) {
   });
 }
 
-function getPosts(apiUrl) {
+function getPosts(apiUrl, apiToken) {
   return new Promise(function (resolve) {
-    return Prismic$1.getApi(apiUrl).then(function (api) {
+    return Prismic$1.getApi(apiUrl, {
+      accessToken: apiToken
+    }).then(function (api) {
       return api.query(Prismic$1.Predicates.at('document.type', 'post')).then(function (response) {
         var routeData = response.results.map(function (result) {
           var first_publication_date = result.first_publication_date,
@@ -1812,57 +1959,10 @@ function getPosts(apiUrl) {
   });
 }
 
-function getComponent(data) {
-  var wrapperComponent = {
-    blog_post: Section,
-    component_section: Section,
-    component_jumbotron: Jumbotron,
-    component_section_rich_text: Section
-  };
-  var content = /*#__PURE__*/React.createElement(JsxParser, {
-    components: {
-      Article: Article,
-      Banner: Banner,
-      Card: Card,
-      Cards: Cards,
-      Form: Form,
-      Faq: Faq,
-      Grid: Grid,
-      Image: Image,
-      Quote: Quote$1
-    },
-    jsx: data.body.text
-  });
-  return React.createElement(wrapperComponent[data.type], _objectSpread2(_objectSpread2({}, data), {}, {
-    key: data.id,
-    id: data.id
-  }), content);
-}
-
-function getSrcSets(sizes, data) {
-  if (!data) {
-    return null;
-  }
-
-  var srcSets = sizes.map(function (size) {
-    return data[size];
-  });
-  srcSets.push({
-    dimensions: data.dimensions,
-    url: data.url
-  });
-  return srcSets.map(function (_ref) {
-    var url = _ref.url,
-        width = _ref.dimensions.width;
-    return "".concat(url, " ").concat(width, "w");
-  }).join(',');
-}
-
 var utils = {
-  getComponent: getComponent,
+  getComponent: getComponent$1,
   getPages: getPages,
   getPosts: getPosts,
-  getSrcSets: getSrcSets,
   makePixelValue: makePixelValue
 };
 
@@ -1870,7 +1970,7 @@ exports.Article = Article;
 exports.Banner = Banner;
 exports.Body = body;
 exports.BreadCrumb = BreadCrumb;
-exports.Button = button;
+exports.Button = Button;
 exports.Card = Card;
 exports.Cards = Cards;
 exports.Faq = Faq;
