@@ -1,5 +1,14 @@
 import { ButtonUI } from './button.css'
 
-export default function ({ children, type = 'button' }) {
-  return <ButtonUI type={type}>{children}</ButtonUI>
+export default function ({
+  children,
+  onClick,
+  maxWidth = 250,
+  type = 'button',
+}) {
+  return (
+    <ButtonUI maxWidth={maxWidth} type={type} onClick={onClick}>
+      {children}
+    </ButtonUI>
+  )
 }

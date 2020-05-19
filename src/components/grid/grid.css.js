@@ -5,6 +5,8 @@ export const ColUI = styled('div')`
   margin: 5px;
   width: ${({ width }) => `calc(${width} - 10px)`};
   align-self: ${({ stretch }) => (stretch ? 'stretch' : 'flex-start')};
+  justify-content: ${({ justifyContent }) => justifyContent};
+  border: 1px solid red;
 `
 
 export const GridUI = styled('div')`

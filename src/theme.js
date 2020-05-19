@@ -23,6 +23,8 @@ export default {
     ['light-2']: '36,139,204',
     ['light-3']: '#ffffff',
     ['error']: '#D40000',
+    ['success']: '#23c567',
+    ['caution']: '#ffd05b',
   },
   typography: {
     fonts: {

@@ -9,14 +9,15 @@ export const ContainerUI = styled('div')`
 
 export const InputUI = styled('input')`
   border: none;
-  box-sizing: border-box;
+  box-sizing: content-box;
   display: block;
-  font-size: ${theme.unit(0.5)};
+  max-width: ${({ maxWidth }) => maxWidth};
+  width: 100%;
+  font-size: ${({ size }) =>
+    size === 'big' ? theme.unit(0.75) : theme.unit(0.5)};
   margin: 0;
   padding: ${theme.unit(0.4)};
   resize: none;
-  width: 100%;
-
   box-shadow: ${({ isValid }) =>
     isValid ? `` : `0 0 0 3px rgba(${hexToRgb(theme.colors['error'])}, 0.4)`};
 
@@ -28,6 +29,14 @@ export const InputUI = styled('input')`
         ? `0 0 0 3px rgba(${hexToRgb(theme.colors['dark-3'])}, 0.5)`
         : `0 0 0 3px rgba(${hexToRgb(theme.colors['error'])}, 0.7)`};
   }
+
+  ${({ isSelectable }) =>
+    !isSelectable &&
+    `
+    pointer-events: none;
+    user-select: none;
+  `}
+  text-align: ${({ textAlign }) => textAlign};
 `
 
 export const LabelUI = styled('label')`

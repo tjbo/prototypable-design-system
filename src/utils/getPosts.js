@@ -1,4 +1,9 @@
+<<<<<<< Updated upstream
 export default function getPosts(apiUrl, apiToken) {
+=======
+var Prismic = require('prismic-javascript')
+export default function getPosts(apiUrl) {
+>>>>>>> Stashed changes
   return new Promise((resolve) => {
     return Prismic.getApi(apiUrl, { accessToken: apiToken }).then(function (
       api,
