@@ -1,19 +1,27 @@
 import GlobalStyles from './styles.css'
+import WebfontLoader from '@dr-kobros/react-webfont-loader'
 
-const config = {
-  google: {
-    families: ['Roboto:500,700', 'PT Serif:400,700'],
-  },
-}
-
-function withFontLoader(component) {
+function WithFontLoader() {
   if (typeof window !== 'undefined') {
-    const WebfontLoader = require('@dr-kobros/react-webfont-loader')
-    return <WebfontLoader config={config}>{component}</WebfontLoader>
+    const config = {
+      google: {
+        families: ['PT Serif:400,700', 'Roboto:500,700'],
+      },
+    }
+    return (
+      <WebfontLoader config={config}>
+        <GlobalStyles />
+      </WebfontLoader>
+    )
   }
-  return component
+
+  return <GlobalStyles />
 }
 
 export default function () {
-  return <React.Fragment>{withFontLoader(<GlobalStyles />)}</React.Fragment>
+  return (
+    <React.Fragment>
+      <WithFontLoader />
+    </React.Fragment>
+  )
 }
