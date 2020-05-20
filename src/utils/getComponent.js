@@ -36,6 +36,7 @@ export default function getComponent(data, id, type) {
         }}
         jsx={block.text}
         key={short.generate()}
+        renderInWrapper={false}
       ></JsxParser>
     )
   })

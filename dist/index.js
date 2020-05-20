@@ -2833,7 +2833,8 @@ function getComponent$1(data, id, type) {
         Quote: Quote$1
       },
       jsx: block.text,
-      key: _short.generate()
+      key: _short.generate(),
+      renderInWrapper: false
     });
   });
   return React.createElement(wrapperComponent[type], _objectSpread2(_objectSpread2({}, data), {}, {
