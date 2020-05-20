@@ -1,6 +1,7 @@
 var short = require('short-uuid')
 
 export default function (data, defaultTitle, defaultDescription) {
+  console.log(data)
   const ogDescription =
     data.og_description || data.meta_description || defaultDescription
   const ogImage = data.og_image

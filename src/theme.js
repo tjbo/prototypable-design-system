@@ -28,7 +28,7 @@ export default {
     fonts: {
       ['font-1']: 'PT Serif',
       ['font-2']: 'Roboto',
-      ['font-3']: 'PT Serif Caption',
+      ['font-3']: 'Roboto',
     },
     sizes: {
       desktop: {
