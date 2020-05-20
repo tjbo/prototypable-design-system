@@ -1939,6 +1939,8 @@ function getPosts(apiUrl, apiToken) {
   });
 }
 
+var _short$1 = require('short-uuid');
+
 function getMetaTags (data, defaultTitle, defaultDescription) {
   var ogDescription = data.og_description || data.meta_description || defaultDescription;
   var ogImage = data.og_image;
@@ -1949,20 +1951,27 @@ function getMetaTags (data, defaultTitle, defaultDescription) {
   var metaNoindex = data.meta_noindex;
   return [/*#__PURE__*/React.createElement("meta", {
     property: "og:description",
-    content: ogDescription
+    content: ogDescription,
+    key: _short$1.generate()
   }), /*#__PURE__*/React.createElement("meta", {
     property: "og:image",
-    content: ogImage
+    content: ogImage,
+    key: _short$1.generate()
   }), /*#__PURE__*/React.createElement("meta", {
     property: "og:title",
-    content: ogTitle
+    content: ogTitle,
+    key: _short$1.generate()
   }), /*#__PURE__*/React.createElement("meta", {
     property: "og:type",
-    content: ogType
+    content: ogType,
+    key: _short$1.generate()
   }), /*#__PURE__*/React.createElement("meta", {
     name: "description",
-    content: metaDescription
-  }), /*#__PURE__*/React.createElement("title", null, metaTitle), metaNoindex ? /*#__PURE__*/React.createElement("meta", {
+    content: metaDescription,
+    key: _short$1.generate()
+  }), /*#__PURE__*/React.createElement("title", {
+    key: _short$1.generate()
+  }, metaTitle), metaNoindex ? /*#__PURE__*/React.createElement("meta", {
     name: "robots",
     content: "noindex"
   }) : null];

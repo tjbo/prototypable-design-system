@@ -1,3 +1,5 @@
+var short = require('short-uuid')
+
 export default function (data, defaultTitle, defaultDescription) {
   const ogDescription =
     data.og_description || data.meta_description || defaultDescription
@@ -10,12 +12,20 @@ export default function (data, defaultTitle, defaultDescription) {
   const metaNoindex = data.meta_noindex
 
   return [
-    <meta property="og:description" content={ogDescription} />,
-    <meta property="og:image" content={ogImage} />,
-    <meta property="og:title" content={ogTitle} />,
-    <meta property="og:type" content={ogType} />,
-    <meta name="description" content={metaDescription} />,
-    <title>{metaTitle}</title>,
+    <meta
+      property="og:description"
+      content={ogDescription}
+      key={short.generate()}
+    />,
+    <meta property="og:image" content={ogImage} key={short.generate()} />,
+    <meta property="og:title" content={ogTitle} key={short.generate()} />,
+    <meta property="og:type" content={ogType} key={short.generate()} />,
+    <meta
+      name="description"
+      content={metaDescription}
+      key={short.generate()}
+    />,
+    <title key={short.generate()}>{metaTitle}</title>,
     metaNoindex ? <meta name="robots" content="noindex" /> : null,
   ]
 }
