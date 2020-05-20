@@ -1,6 +1,6 @@
 import React from 'react'
 import { ContentUI, ImageUI } from './jumbotron.css'
-import { utils } from '../../'
+import getSrcSets from '../../utils/getSrcSets'
 
 const sizes = [
   '360×640',
@@ -11,18 +11,17 @@ const sizes = [
   '1920x1080',
 ]
 
-export default function ({ body, id, image = null }) {
+export default function ({ children, body, id, image = null }) {
+  const content = body.map((block) => {
+    return block.text
+  })
+
   return (
     <div>
       <ImageUI key={`${id}-jumbotron-image`}>
-        <img srcSet={utils.getSrcSets(sizes, image)} />
+        <img srcSet={getSrcSets(sizes, image)} />
       </ImageUI>
-      <ContentUI
-        dangerouslySetInnerHTML={{
-          __html: body && body.text,
-        }}
-        key={`${id}-jumbotron-content`}
-      ></ContentUI>
+      <ContentUI>{children}</ContentUI>
     </div>
   )
 }

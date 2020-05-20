@@ -11,7 +11,7 @@ import Section from '../components/section/'
 import Form from '../components/form/form'
 import JsxParser from 'react-jsx-parser'
 
-export default function getComponent(data) {
+export default function getComponent(data, id, type) {
   const wrapperComponent = {
     blog_post: Section,
     component_section: Section,
@@ -19,29 +19,31 @@ export default function getComponent(data) {
     component_section_rich_text: Section,
   }
 
-  const content = (
-    <JsxParser
-      components={{
-        Article,
-        Banner,
-        Card,
-        Cards,
-        Form,
-        Faq,
-        Grid,
-        Image,
-        Quote,
-      }}
-      jsx={data.body.text}
-    ></JsxParser>
-  )
+  const content = data.body.map((block) => {
+    return (
+      <JsxParser
+        components={{
+          Article,
+          Banner,
+          Card,
+          Cards,
+          Form,
+          Faq,
+          Grid,
+          Image,
+          Quote,
+        }}
+        jsx={block.text}
+      ></JsxParser>
+    )
+  })
 
   return React.createElement(
-    wrapperComponent[data.type],
+    wrapperComponent[type],
     {
       ...data,
-      key: data.id,
-      id: data.id,
+      key: id,
+      id: id,
     },
     content,
   )

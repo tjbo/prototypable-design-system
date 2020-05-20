@@ -1,37 +1,19 @@
 var Prismic = require('prismic-javascript')
 
-export default function getPage(apiUrl, page, apiToken) {
-  return Prismic.getApi(apiUrl, { accessToken: apiToken }).then(function (api) {
-    return api
-      .query(Prismic.Predicates.at('document.id', page.id))
-      .then((response) => {
-        const { data } = response.results[0]
-
-        const meta = {
-          title: data.title[0].text,
-          ...data.meta[0],
-        }
-        const ids = data.body.map((section) => {
-          return section.section.id
-        })
-        return api.getByIDs(ids).then(function (_response) {
-          const content = _response.results.map((result) => {
-            const { data, id, type } = result
-
-            data.body = data.body[0]
-
-            if (data.sidebar) {
-              data.sidebar = data.sidebar[0]
-            }
-
-            return {
-              ...data,
-              id,
-              type,
-            }
-          })
-          return { content, meta, page }
-        })
+export default function getPage(api, id) {
+  return api
+    .query(Prismic.Predicates.at('document.id', id))
+    .then((response) => {
+      const { data } = response.results[0]
+      const ids = data.body.map((section) => {
+        return section.section.id
       })
-  })
+      return api.getByIDs(ids).then((response) => {
+        const sections = response.results
+        return {
+          ...data,
+          body: sections,
+        }
+      })
+    })
 }

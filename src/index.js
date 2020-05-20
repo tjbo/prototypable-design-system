@@ -21,12 +21,16 @@ export { default as Head } from './components/head/head'
 import getComponent from './utils/getComponent'
 import getPages from './utils/getPages'
 import getPosts from './utils/getPosts'
+import getMetaTags from './utils/getMetaTags'
+import getSrcSets from './utils/getSrcSets'
 import makePixelValue from './utils/makePixelValue'
 
 // this needs to be exported like this, otherwise weird transpile errors from rollup
 export const utils = {
   getComponent,
+  getMetaTags,
   getPages,
   getPosts,
+  getSrcSets,
   makePixelValue,
 }

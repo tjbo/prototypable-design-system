@@ -7,11 +7,8 @@ export default function getPosts(apiUrl, apiToken) {
         .query(Prismic.Predicates.at('document.type', 'post'))
         .then((response) => {
           const routeData = response.results.map((result) => {
-            const { first_publication_date, data, id } = result
-
-            data.body = data.body[0]
+            const { data, id, first_publication_date } = result
             data.type = 'blog_post'
-
             return {
               getData() {
                 return {
@@ -21,17 +18,19 @@ export default function getPosts(apiUrl, apiToken) {
                   layout_style: 'post',
                 }
               },
-              path: data.meta[0].slug,
+              path: data.slug,
               template: 'src/containers/_post',
             }
           })
 
-          const list = response.results.map((post) => {
-            const {
-              data: { image, meta, title },
+          const list = response.results.map(({ data, id }) => {
+            const { image, title, slug } = data
+            return {
               id,
-            } = post
-            return { id, image, path: meta[0].slug, title }
+              image,
+              path: slug,
+              title,
+            }
           })
 
           routeData.push({

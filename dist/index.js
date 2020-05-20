@@ -1571,22 +1571,40 @@ function _templateObject$j() {
 var ContentUI$2 = styled__default('div')(_templateObject$j(), theme.layout.desktop.headerHeight, theme.unit(2.25), theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, theme.unit(0.5), theme.layout.mobile.headerHeight);
 var ImageUI$1 = styled__default('div')(_templateObject2$c(), theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, theme.layout.mobile.headerHeight, theme.layout.mobile.headerHeight);
 
+function getSrcSets(sizes, data) {
+  if (!data) {
+    return null;
+  }
+
+  var srcSets = sizes.map(function (size) {
+    return data[size];
+  });
+  srcSets.push({
+    dimensions: data.dimensions,
+    url: data.url
+  });
+  return srcSets.map(function (_ref) {
+    var url = _ref.url,
+        width = _ref.dimensions.width;
+    return "".concat(url, " ").concat(width, "w");
+  }).join(',');
+}
+
 var sizes = ['360×640', '768×1024', '1024x768', '1366×768', '1600×900', '1920x1080'];
 function Jumbotron (_ref) {
-  var body = _ref.body,
+  var children = _ref.children,
+      body = _ref.body,
       id = _ref.id,
       _ref$image = _ref.image,
       image = _ref$image === void 0 ? null : _ref$image;
+  var content = body.map(function (block) {
+    return block.text;
+  });
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(ImageUI$1, {
     key: "".concat(id, "-jumbotron-image")
   }, /*#__PURE__*/React.createElement("img", {
-    srcSet: utils.getSrcSets(sizes, image)
-  })), /*#__PURE__*/React.createElement(ContentUI$2, {
-    dangerouslySetInnerHTML: {
-      __html: body && body.text
-    },
-    key: "".concat(id, "-jumbotron-content")
-  }));
+    srcSet: getSrcSets(sizes, image)
+  })), /*#__PURE__*/React.createElement(ContentUI$2, null, children));
 }
 
 function _templateObject$k() {
@@ -1803,104 +1821,69 @@ function head () {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(GlobalStyles, null));
 }
 
-function getComponent$1(data) {
+function getComponent$1(data, id, type) {
   var wrapperComponent = {
     blog_post: Section,
     component_section: Section,
     component_jumbotron: Jumbotron,
     component_section_rich_text: Section
   };
-  var content = /*#__PURE__*/React.createElement(JsxParser, {
-    components: {
-      Article: Article,
-      Banner: Banner,
-      Card: Card,
-      Cards: Cards,
-      Form: Form,
-      Faq: Faq,
-      Grid: Grid,
-      Image: Image,
-      Quote: Quote$1
-    },
-    jsx: data.body.text
+  var content = data.body.map(function (block) {
+    return /*#__PURE__*/React.createElement(JsxParser, {
+      components: {
+        Article: Article,
+        Banner: Banner,
+        Card: Card,
+        Cards: Cards,
+        Form: Form,
+        Faq: Faq,
+        Grid: Grid,
+        Image: Image,
+        Quote: Quote$1
+      },
+      jsx: block.text
+    });
   });
-  return React.createElement(wrapperComponent[data.type], _objectSpread2(_objectSpread2({}, data), {}, {
-    key: data.id,
-    id: data.id
+  return React.createElement(wrapperComponent[type], _objectSpread2(_objectSpread2({}, data), {}, {
+    key: id,
+    id: id
   }), content);
 }
 
 var Prismic = require('prismic-javascript');
 
-function getPage(apiUrl, page, apiToken) {
-  return Prismic.getApi(apiUrl, {
-    accessToken: apiToken
-  }).then(function (api) {
-    return api.query(Prismic.Predicates.at('document.id', page.id)).then(function (response) {
-      var data = response.results[0].data;
-
-      var meta = _objectSpread2({
-        title: data.title[0].text
-      }, data.meta[0]);
-
-      var ids = data.body.map(function (section) {
-        return section.section.id;
-      });
-      return api.getByIDs(ids).then(function (_response) {
-        var content = _response.results.map(function (result) {
-          var data = result.data,
-              id = result.id,
-              type = result.type;
-          data.body = data.body[0];
-
-          if (data.sidebar) {
-            data.sidebar = data.sidebar[0];
-          }
-
-          return _objectSpread2(_objectSpread2({}, data), {}, {
-            id: id,
-            type: type
-          });
-        });
-
-        return {
-          content: content,
-          meta: meta,
-          page: page
-        };
+function getPage(api, id) {
+  return api.query(Prismic.Predicates.at('document.id', id)).then(function (response) {
+    var data = response.results[0].data;
+    var ids = data.body.map(function (section) {
+      return section.section.id;
+    });
+    return api.getByIDs(ids).then(function (response) {
+      var sections = response.results;
+      return _objectSpread2(_objectSpread2({}, data), {}, {
+        body: sections
       });
     });
   });
 }
 
-function getPages(apiUrl, apiToken) {
-  return new Promise(function (resolve) {
-    return Prismic$1.getApi(apiUrl, {
-      accessToken: apiToken
-    }).then(function (api) {
-      return api.query(Prismic$1.Predicates.at('document.type', 'page')).then(function (response) {
-        var promises = response.results.map(function (result) {
-          return getPage(apiUrl, result, apiToken);
-        });
-        return Promise.all(promises).then(function (pages) {
-          var _pages = pages.map(function (_ref) {
-            var content = _ref.content,
-                meta = _ref.meta,
-                page = _ref.page;
-            console.log(meta.slug, content);
-            return {
-              path: meta.slug,
-              getData: function getData() {
-                return {
-                  content: content,
-                  meta: meta
-                };
-              },
-              template: meta.template ? "src/pages/".concat(meta.template) : 'src/pages/page'
-            };
-          });
-
-          resolve(_pages);
+function getPages(apiEndpoint, apiToken) {
+  return Prismic$1.getApi(apiEndpoint, {
+    accessToken: apiToken
+  }).then(function (api) {
+    return api.query(Prismic$1.Predicates.at('document.type', 'page')).then(function (response) {
+      var promises = response.results.map(function (result) {
+        return getPage(api, result.id);
+      });
+      return Promise.all(promises).then(function (pages) {
+        return pages.map(function (pageData) {
+          return {
+            path: pageData.slug,
+            getData: function getData() {
+              return pageData;
+            },
+            template: pageData.template && pageData.template !== 'default' ? "src/pages/".concat(pageData.template) : 'src/pages/page'
+          };
         });
       });
     });
@@ -1914,10 +1897,9 @@ function getPosts(apiUrl, apiToken) {
     }).then(function (api) {
       return api.query(Prismic$1.Predicates.at('document.type', 'post')).then(function (response) {
         var routeData = response.results.map(function (result) {
-          var first_publication_date = result.first_publication_date,
-              data = result.data,
-              id = result.id;
-          data.body = data.body[0];
+          var data = result.data,
+              id = result.id,
+              first_publication_date = result.first_publication_date;
           data.type = 'blog_post';
           return {
             getData: function getData() {
@@ -1927,20 +1909,20 @@ function getPosts(apiUrl, apiToken) {
                 layout_style: 'post'
               });
             },
-            path: data.meta[0].slug,
+            path: data.slug,
             template: 'src/containers/_post'
           };
         });
-        var list = response.results.map(function (post) {
-          var _post$data = post.data,
-              image = _post$data.image,
-              meta = _post$data.meta,
-              title = _post$data.title,
-              id = post.id;
+        var list = response.results.map(function (_ref) {
+          var data = _ref.data,
+              id = _ref.id;
+          var image = data.image,
+              title = data.title,
+              slug = data.slug;
           return {
             id: id,
             image: image,
-            path: meta[0].slug,
+            path: slug,
             title: title
           };
         });
@@ -1959,10 +1941,41 @@ function getPosts(apiUrl, apiToken) {
   });
 }
 
+function getMetaTags (data, defaultTitle, defaultDescription) {
+  var ogDescription = data.og_description || data.meta_description || defaultDescription;
+  var ogImage = data.og_image;
+  var ogTitle = data.og_title || data.meta_title || defaultTitle;
+  var ogType = data.og_type;
+  var metaDescription = data.meta_description || data.og_description || defaultDescription;
+  var metaTitle = data.meta_title || data.og_title || defaultTitle;
+  var metaNoindex = data.meta_noindex;
+  return [/*#__PURE__*/React.createElement("meta", {
+    property: "og:description",
+    content: ogDescription
+  }), /*#__PURE__*/React.createElement("meta", {
+    property: "og:image",
+    content: ogImage
+  }), /*#__PURE__*/React.createElement("meta", {
+    property: "og:title",
+    content: ogTitle
+  }), /*#__PURE__*/React.createElement("meta", {
+    property: "og:type",
+    content: ogType
+  }), /*#__PURE__*/React.createElement("meta", {
+    name: "description",
+    content: metaDescription
+  }), /*#__PURE__*/React.createElement("title", null, metaTitle), metaNoindex ? /*#__PURE__*/React.createElement("meta", {
+    name: "robots",
+    content: "noindex"
+  }) : null];
+}
+
 var utils = {
   getComponent: getComponent$1,
+  getMetaTags: getMetaTags,
   getPages: getPages,
   getPosts: getPosts,
+  getSrcSets: getSrcSets,
   makePixelValue: makePixelValue
 };
 
