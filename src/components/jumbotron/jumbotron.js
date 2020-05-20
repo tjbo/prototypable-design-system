@@ -12,13 +12,9 @@ const sizes = [
 ]
 
 export default function ({ children, body, id, image = null }) {
-  const content = body.map((block) => {
-    return block.text
-  })
-
   return (
     <div>
-      <ImageUI key={`${id}-jumbotron-image`}>
+      <ImageUI>
         <img srcSet={getSrcSets(sizes, image)} />
       </ImageUI>
       <ContentUI>{children}</ContentUI>

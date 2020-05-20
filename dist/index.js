@@ -1597,12 +1597,7 @@ function Jumbotron (_ref) {
       id = _ref.id,
       _ref$image = _ref.image,
       image = _ref$image === void 0 ? null : _ref$image;
-  var content = body.map(function (block) {
-    return block.text;
-  });
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(ImageUI$1, {
-    key: "".concat(id, "-jumbotron-image")
-  }, /*#__PURE__*/React.createElement("img", {
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(ImageUI$1, null, /*#__PURE__*/React.createElement("img", {
     srcSet: getSrcSets(sizes, image)
   })), /*#__PURE__*/React.createElement(ContentUI$2, null, children));
 }
@@ -1821,6 +1816,8 @@ function head () {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(GlobalStyles, null));
 }
 
+var _short = require('short-uuid');
+
 function getComponent$1(data, id, type) {
   var wrapperComponent = {
     blog_post: Section,
@@ -1841,11 +1838,12 @@ function getComponent$1(data, id, type) {
         Image: Image,
         Quote: Quote$1
       },
-      jsx: block.text
+      jsx: block.text,
+      key: _short.generate()
     });
   });
   return React.createElement(wrapperComponent[type], _objectSpread2(_objectSpread2({}, data), {}, {
-    key: id,
+    key: "".concat(type, "-").concat(id),
     id: id
   }), content);
 }

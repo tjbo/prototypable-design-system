@@ -10,6 +10,7 @@ import Quote from '../components/quote/'
 import Section from '../components/section/'
 import Form from '../components/form/form'
 import JsxParser from 'react-jsx-parser'
+var short = require('short-uuid')
 
 export default function getComponent(data, id, type) {
   const wrapperComponent = {
@@ -34,6 +35,7 @@ export default function getComponent(data, id, type) {
           Quote,
         }}
         jsx={block.text}
+        key={short.generate()}
       ></JsxParser>
     )
   })
@@ -42,7 +44,7 @@ export default function getComponent(data, id, type) {
     wrapperComponent[type],
     {
       ...data,
-      key: id,
+      key: `${type}-${id}`,
       id: id,
     },
     content,
