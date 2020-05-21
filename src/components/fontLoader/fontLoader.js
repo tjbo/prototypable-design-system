@@ -4,7 +4,7 @@ export default class FontLoader extends React.Component {
   }
 
   componentWillMount() {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
       var FontFaceObserver = require('fontfaceobserver')
       const font = new FontFaceObserver('Roboto')
       font.load().then(() => {
