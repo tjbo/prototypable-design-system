@@ -2,6 +2,7 @@ import theme from '../../theme'
 
 export const ColUI = styled('div')`
   display: flex;
+  flex-direction: column;
   margin: 5px;
   width: ${({ width }) => `calc(${width} - 10px)`};
   align-self: ${({ stretch }) => (stretch ? 'stretch' : 'flex-start')};

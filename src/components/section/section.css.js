@@ -14,7 +14,7 @@ const getInnerWidth = ({ innerWidth }) => {
   if (innerWidth === 'medium') {
     return '750px'
   } else if (innerWidth === 'small') {
-    return theme.unit(18)
+    return theme.unit(19)
   } else {
     return theme.unit(33)
   }

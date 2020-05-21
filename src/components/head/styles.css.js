@@ -3,6 +3,31 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
 
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+000-5FF;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+   url('/fonts/roboto-v20-latin-700.woff2') format('woff2'),
+   url('/fonts/roboto-v20-latin-700.woff') format('woff');
+
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+000-5FF;
+  src: local('Roboto'), local('Roboto-Regular'),
+  url('/fonts/roboto-v20-latin-regular.woff2')
+  format('woff2'),
+  url('/fonts/roboto-v20-latin-regular.woff')
+  format('woff');
+ }
+
 /**
  * These values will not show up in content, but can be
  * queried by JavaScript to know which breakpoint is active.
@@ -124,7 +149,7 @@ a:visited {
 /* list and paragraph styles */
 p, ul, code {
   padding: 0;
-  margin-bottom: ${theme.unit(1)};
+  margin-bottom: ${theme.unit(0.75)};
 }
 
 b {
@@ -133,13 +158,12 @@ b {
 
 ul {
   list-style: disc;
-  padding-left: ${theme.unit(1)};
-};
+  margin-left: ${theme.unit(1)};
+  margin-right: ${theme.unit(0.5)};
 }
 
 li {
-  margin-bottom: ${theme.unit(0.25)};
-  margin-left: ${theme.unit(0.75)};
+  margin-bottom: ${theme.unit(1)};
 }
 
 code {
@@ -166,16 +190,16 @@ code {
 
 /* heading styles */
 h1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {
-  font-family: ${theme.typography.fonts['font-2']};
+  font-family: ${theme.typography.fonts['font-3']};
   padding: 0;
   margin: 0;
-  margin-bottom: ${theme.unit(0.5)};
-  line-height: 100%;
+  font-weight: 700;
+  margin-bottom: ${theme.unit(0.75)};
+  line-height: 120%;
 }
 
 h1, .heading-1 {
   font-size: ${theme.typography.sizes.desktop.xxlg};
-  font-weight: 500;
 
   @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
    font-size: ${theme.typography.sizes.tablet.xxlg};
@@ -188,7 +212,6 @@ h1, .heading-1 {
 
 h2, .heading-2 {
   font-size: ${theme.typography.sizes.desktop.xlg};
-  font-weight: 500;
 
   @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
    font-size: ${theme.typography.sizes.tablet.xlg};
@@ -200,8 +223,8 @@ h2, .heading-2 {
 }
 
 h3, .heading-3 {
+  font-style: normal;
   font-size: ${theme.typography.sizes.desktop.lg};
-  font-weight: 500;
 
   @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
    font-size: ${theme.typography.sizes.tablet.lg};
@@ -214,8 +237,6 @@ h3, .heading-3 {
 
 h4, .heading-4 {
   font-size: ${theme.typography.sizes.desktop.md};;
-  font-weight: 500;
-  margin-bottom: ${theme.unit(0.3)};
 
   @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
    font-size: ${theme.typography.sizes.tablet.md};
@@ -229,7 +250,6 @@ h4, .heading-4 {
 h5, .heading-5 {
   font-family: ${theme.typography.fonts['font-1']};
   font-size:  ${theme.typography.sizes.desktop.sm};
-  font-weight: 500;
 
   @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
    font-size: ${theme.typography.sizes.tablet.sm};
@@ -243,7 +263,6 @@ h5, .heading-5 {
 h6, .heading-6 {
   font-family: ${theme.typography.fonts['font-1']};
   font-size:  ${theme.typography.sizes.desktop.xsm};
-  font-weight: 500;
 
   @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
    font-size: ${theme.typography.sizes.tablet.xsm};
@@ -255,11 +274,11 @@ h6, .heading-6 {
 }
 
 h1 + h2, h1 + h2.heading-2 {
-  margin-top: -${theme.unit(0.5)};
+  margin-top: -${theme.unit(0.75)};
 }
 
 h2 + h4 {
-  margin-top: -${theme.unit(0.5)};
+  margin-top: -${theme.unit(0.75)};
 }
 
 /* table styles */
@@ -346,17 +365,6 @@ ${() => {
 }}
 
 /* random text styles */
-blockquote {
-  padding: ${theme.unit(0.75)};
-  background-color: ${theme.colors['light-1']};
-  border:  ${theme.border};
-  margin:  ${`${theme.unit(1)} 0`};
-
-  p:last-child, ul:last-child {
-    margin-bottom: 0;
-  }
-
-}
 
 .italic {
   font-style: italic;

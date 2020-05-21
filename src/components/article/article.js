@@ -20,11 +20,13 @@ Article.Sidebar = function ({ children, width = '32%', styling = '' }) {
 
   if (styling === 'quote') {
     _children = <Quote>{children}</Quote>
-  } else if (styling === 'box') {
-    _children = <Box>{children}</Box>
   }
 
   return <Grid.Col width={width}>{_children}</Grid.Col>
+}
+
+Article.Box = function ({ children }) {
+  return <Box>{children}</Box>
 }
 
 export default Article

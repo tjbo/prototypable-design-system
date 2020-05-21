@@ -1,5 +1,6 @@
 import Article from '../components/article/'
 import Banner from '../components/banner/'
+import BlockQuote from '../components/blockQuote/'
 import Card from '../components/card/'
 import Cards from '../components/cards/'
 import Faq from '../components/faq/'
@@ -12,7 +13,7 @@ import Form from '../components/form/form'
 import JsxParser from 'react-jsx-parser'
 var short = require('short-uuid')
 
-export default function getComponent(data, id, type) {
+export default function getComponent(data, id, type, before) {
   const wrapperComponent = {
     blog_post: Section,
     component_section: Section,
@@ -26,6 +27,7 @@ export default function getComponent(data, id, type) {
         components={{
           Article,
           Banner,
+          BlockQuote,
           Card,
           Cards,
           Form,
@@ -48,6 +50,6 @@ export default function getComponent(data, id, type) {
       key: `${type}-${id}`,
       id: id,
     },
-    content,
+    [before, content],
   )
 }

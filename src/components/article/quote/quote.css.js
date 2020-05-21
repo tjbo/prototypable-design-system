@@ -27,7 +27,7 @@ export const CloseQuoteUI = styled(QuoteUI)`
 `
 
 export const DropQuoteUI = styled('div')`
-  padding: ${theme.unit(2)} ${theme.unit(1)};
+  padding: ${theme.unit(2.5)} ${theme.unit(1)} ${theme.unit(2)} ${theme.unit(1)};
   margin: 0;
   blockquote {
     font-family: ${theme.typography.fonts['font-3']};

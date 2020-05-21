@@ -26,7 +26,7 @@ export default {
   },
   typography: {
     fonts: {
-      ['font-1']: 'PT Serif',
+      ['font-1']: 'Roboto',
       ['font-2']: 'Roboto',
       ['font-3']: 'Roboto',
     },
@@ -35,16 +35,16 @@ export default {
         xsm: '1rem', // not used yet
         sm: '1.125rem',
         md: '1.5rem',
-        lg: '2.5rem',
-        xlg: '3.5rem',
-        xxlg: '4rem',
+        lg: '2rem',
+        xlg: '2.5rem',
+        xxlg: '3.25rem',
       },
       tablet: {
         xsm: '.9rem',
         sm: '1.125rem',
         md: '1.5rem',
         lg: '2rem',
-        xlg: '2.75rem',
+        xlg: '2.5rem',
         xxlg: '3.25rem',
       },
       mobile: {

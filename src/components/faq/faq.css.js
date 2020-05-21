@@ -7,7 +7,8 @@ export const DetailsUI = styled('details')`
   box-sizing: border-box;
   margin-bottom: ${theme.unit(1)};
   padding: ${theme.unit(1)};
-  padding-bottom: ${theme.unit(0.75)};
+  padding-bottom: ${theme.unit(0.25)};
+
   background-color: #fff;
   min-width: 100%;
 
@@ -19,10 +20,16 @@ export const DetailsUI = styled('details')`
     width: calc(100% - 20px);
   }
 
-  details[open] summary:after {
+  ${({ open }) =>
+    open &&
+    `
+    summary:after {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
-  }
+    }
+    padding-bottom: ${theme.unit(0.75)};
+
+    `}
 `
 
 export const SummaryUI = styled('summary')`
