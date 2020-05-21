@@ -1,5 +1,3 @@
-var FontFaceObserver = require('fontfaceobserver')
-
 export default class FontLoader extends React.Component {
   state = {
     isReady: false,
@@ -7,6 +5,7 @@ export default class FontLoader extends React.Component {
 
   componentWillMount() {
     if (typeof window !== 'undefined') {
+      var FontFaceObserver = require('fontfaceobserver')
       const font = new FontFaceObserver('Roboto')
       font.load().then(() => {
         this.setState({ isReady: true })
