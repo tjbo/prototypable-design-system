@@ -987,242 +987,217 @@ var FontLoader = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(FontLoader, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      console.log('cdm'); // react static blows up when rollup trys to hoist this, need to work on a better way to
+      // build things between react static and proto lib
+
+      if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+        var FontFaceObserver = function () {
+          function l(a, b) {
+            document.addEventListener ? a.addEventListener('scroll', b, !1) : a.attachEvent('scroll', b);
+          }
+
+          function m(a) {
+            document.body ? a() : document.addEventListener ? document.addEventListener('DOMContentLoaded', function c() {
+              document.removeEventListener('DOMContentLoaded', c);
+              a();
+            }) : document.attachEvent('onreadystatechange', function k() {
+              if ('interactive' == document.readyState || 'complete' == document.readyState) document.detachEvent('onreadystatechange', k), a();
+            });
+          }
+
+          function t(a) {
+            this.a = document.createElement('div');
+            this.a.setAttribute('aria-hidden', 'true');
+            this.a.appendChild(document.createTextNode(a));
+            this.b = document.createElement('span');
+            this.c = document.createElement('span');
+            this.h = document.createElement('span');
+            this.f = document.createElement('span');
+            this.g = -1;
+            this.b.style.cssText = 'max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;';
+            this.c.style.cssText = 'max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;';
+            this.f.style.cssText = 'max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;';
+            this.h.style.cssText = 'display:inline-block;width:200%;height:200%;font-size:16px;max-width:none;';
+            this.b.appendChild(this.h);
+            this.c.appendChild(this.f);
+            this.a.appendChild(this.b);
+            this.a.appendChild(this.c);
+          }
+
+          function u(a, b) {
+            a.a.style.cssText = 'max-width:none;min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;white-space:nowrap;font-synthesis:none;font:' + b + ';';
+          }
+
+          function z(a) {
+            var b = a.a.offsetWidth,
+                c = b + 100;
+            a.f.style.width = c + 'px';
+            a.c.scrollLeft = c;
+            a.b.scrollLeft = a.b.scrollWidth + 100;
+            return a.g !== b ? (a.g = b, !0) : !1;
+          }
+
+          function A(a, b) {
+            function c() {
+              var a = k;
+              z(a) && a.a.parentNode && b(a.g);
+            }
+
+            var k = a;
+            l(a.b, c);
+            l(a.c, c);
+            z(a);
+          }
+
+          function B(a, b) {
+            var c = b || {};
+            this.family = a;
+            this.style = c.style || 'normal';
+            this.weight = c.weight || 'normal';
+            this.stretch = c.stretch || 'normal';
+          }
+
+          var C = null,
+              D = null,
+              E = null,
+              F = null;
+
+          function G() {
+            if (null === D) if (J() && /Apple/.test(window.navigator.vendor)) {
+              var a = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(window.navigator.userAgent);
+              D = !!a && 603 > parseInt(a[1], 10);
+            } else D = !1;
+            return D;
+          }
+
+          function J() {
+            null === F && (F = !!document.fonts);
+            return F;
+          }
+
+          function K() {
+            if (null === E) {
+              var a = document.createElement('div');
+
+              try {
+                a.style.font = 'condensed 100px sans-serif';
+              } catch (b) {}
+
+              E = '' !== a.style.font;
+            }
+
+            return E;
+          }
+
+          function L(a, b) {
+            return [a.style, a.weight, K() ? a.stretch : '', '100px', b].join(' ');
+          }
+
+          B.prototype.load = function (a, b) {
+            var c = this,
+                k = a || 'BESbswy',
+                r = 0,
+                n = b || 3e3,
+                H = new Date().getTime();
+            return new Promise(function (a, b) {
+              if (J() && !G()) {
+                var M = new Promise(function (a, b) {
+                  function e() {
+                    new Date().getTime() - H >= n ? b(Error('' + n + 'ms timeout exceeded')) : document.fonts.load(L(c, '"' + c.family + '"'), k).then(function (c) {
+                      1 <= c.length ? a() : setTimeout(e, 25);
+                    }, b);
+                  }
+
+                  e();
+                }),
+                    N = new Promise(function (a, c) {
+                  r = setTimeout(function () {
+                    c(Error('' + n + 'ms timeout exceeded'));
+                  }, n);
+                });
+                Promise.race([N, M]).then(function () {
+                  clearTimeout(r);
+                  a(c);
+                }, b);
+              } else m(function () {
+                function v() {
+                  var b;
+                  if (b = -1 != f && -1 != g || -1 != f && -1 != h || -1 != g && -1 != h) (b = f != g && f != h && g != h) || (null === C && (b = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent), C = !!b && (536 > parseInt(b[1], 10) || 536 === parseInt(b[1], 10) && 11 >= parseInt(b[2], 10))), b = C && (f == w && g == w && h == w || f == x && g == x && h == x || f == y && g == y && h == y)), b = !b;
+                  b && (d.parentNode && d.parentNode.removeChild(d), clearTimeout(r), a(c));
+                }
+
+                function I() {
+                  if (new Date().getTime() - H >= n) d.parentNode && d.parentNode.removeChild(d), b(Error('' + n + 'ms timeout exceeded'));else {
+                    var a = document.hidden;
+                    if (!0 === a || void 0 === a) f = e.a.offsetWidth, g = p.a.offsetWidth, h = q.a.offsetWidth, v();
+                    r = setTimeout(I, 50);
+                  }
+                }
+
+                var e = new t(k),
+                    p = new t(k),
+                    q = new t(k),
+                    f = -1,
+                    g = -1,
+                    h = -1,
+                    w = -1,
+                    x = -1,
+                    y = -1,
+                    d = document.createElement('div');
+                d.dir = 'ltr';
+                u(e, L(c, 'sans-serif'));
+                u(p, L(c, 'serif'));
+                u(q, L(c, 'monospace'));
+                d.appendChild(e.a);
+                d.appendChild(p.a);
+                d.appendChild(q.a);
+                document.body.appendChild(d);
+                w = e.a.offsetWidth;
+                x = p.a.offsetWidth;
+                y = q.a.offsetWidth;
+                I();
+                A(e, function (a) {
+                  f = a;
+                  v();
+                });
+                u(e, L(c, '"' + c.family + '",sans-serif'));
+                A(p, function (a) {
+                  g = a;
+                  v();
+                });
+                u(p, L(c, '"' + c.family + '",serif'));
+                A(q, function (a) {
+                  h = a;
+                  v();
+                });
+                u(q, L(c, '"' + c.family + '",monospace'));
+              });
+            });
+          };
+
+          return B;
+        }();
+
+        var font = new FontFaceObserver('Roboto');
+        font.load().then(function () {
+          _this2.setState({
+            isReady: true
+          });
+        });
+      } else {
+        this.setState({
+          isReady: true
+        });
+      }
+    }
+  }, {
     key: "render",
-    // componentDidMount() {
-    //   // react static blows up when rollup trys to hoist this, need to work on a better way to
-    //   // build things between react static and proto lib
-    //   if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-    //     const FontFaceObserver = (function () {
-    //       function l(a, b) {
-    //         document.addEventListener
-    //           ? a.addEventListener('scroll', b, !1)
-    //           : a.attachEvent('scroll', b)
-    //       }
-    //       function m(a) {
-    //         document.body
-    //           ? a()
-    //           : document.addEventListener
-    //           ? document.addEventListener('DOMContentLoaded', function c() {
-    //               document.removeEventListener('DOMContentLoaded', c)
-    //               a()
-    //             })
-    //           : document.attachEvent('onreadystatechange', function k() {
-    //               if (
-    //                 'interactive' == document.readyState ||
-    //                 'complete' == document.readyState
-    //               )
-    //                 document.detachEvent('onreadystatechange', k), a()
-    //             })
-    //       }
-    //       function t(a) {
-    //         this.a = document.createElement('div')
-    //         this.a.setAttribute('aria-hidden', 'true')
-    //         this.a.appendChild(document.createTextNode(a))
-    //         this.b = document.createElement('span')
-    //         this.c = document.createElement('span')
-    //         this.h = document.createElement('span')
-    //         this.f = document.createElement('span')
-    //         this.g = -1
-    //         this.b.style.cssText =
-    //           'max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;'
-    //         this.c.style.cssText =
-    //           'max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;'
-    //         this.f.style.cssText =
-    //           'max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;'
-    //         this.h.style.cssText =
-    //           'display:inline-block;width:200%;height:200%;font-size:16px;max-width:none;'
-    //         this.b.appendChild(this.h)
-    //         this.c.appendChild(this.f)
-    //         this.a.appendChild(this.b)
-    //         this.a.appendChild(this.c)
-    //       }
-    //       function u(a, b) {
-    //         a.a.style.cssText =
-    //           'max-width:none;min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;white-space:nowrap;font-synthesis:none;font:' +
-    //           b +
-    //           ';'
-    //       }
-    //       function z(a) {
-    //         var b = a.a.offsetWidth,
-    //           c = b + 100
-    //         a.f.style.width = c + 'px'
-    //         a.c.scrollLeft = c
-    //         a.b.scrollLeft = a.b.scrollWidth + 100
-    //         return a.g !== b ? ((a.g = b), !0) : !1
-    //       }
-    //       function A(a, b) {
-    //         function c() {
-    //           var a = k
-    //           z(a) && a.a.parentNode && b(a.g)
-    //         }
-    //         var k = a
-    //         l(a.b, c)
-    //         l(a.c, c)
-    //         z(a)
-    //       }
-    //       function B(a, b) {
-    //         var c = b || {}
-    //         this.family = a
-    //         this.style = c.style || 'normal'
-    //         this.weight = c.weight || 'normal'
-    //         this.stretch = c.stretch || 'normal'
-    //       }
-    //       var C = null,
-    //         D = null,
-    //         E = null,
-    //         F = null
-    //       function G() {
-    //         if (null === D)
-    //           if (J() && /Apple/.test(window.navigator.vendor)) {
-    //             var a = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))(?:\.([0-9]+))/.exec(
-    //               window.navigator.userAgent,
-    //             )
-    //             D = !!a && 603 > parseInt(a[1], 10)
-    //           } else D = !1
-    //         return D
-    //       }
-    //       function J() {
-    //         null === F && (F = !!document.fonts)
-    //         return F
-    //       }
-    //       function K() {
-    //         if (null === E) {
-    //           var a = document.createElement('div')
-    //           try {
-    //             a.style.font = 'condensed 100px sans-serif'
-    //           } catch (b) {}
-    //           E = '' !== a.style.font
-    //         }
-    //         return E
-    //       }
-    //       function L(a, b) {
-    //         return [a.style, a.weight, K() ? a.stretch : '', '100px', b].join(' ')
-    //       }
-    //       B.prototype.load = function (a, b) {
-    //         var c = this,
-    //           k = a || 'BESbswy',
-    //           r = 0,
-    //           n = b || 3e3,
-    //           H = new Date().getTime()
-    //         return new Promise(function (a, b) {
-    //           if (J() && !G()) {
-    //             var M = new Promise(function (a, b) {
-    //                 function e() {
-    //                   new Date().getTime() - H >= n
-    //                     ? b(Error('' + n + 'ms timeout exceeded'))
-    //                     : document.fonts
-    //                         .load(L(c, '"' + c.family + '"'), k)
-    //                         .then(function (c) {
-    //                           1 <= c.length ? a() : setTimeout(e, 25)
-    //                         }, b)
-    //                 }
-    //                 e()
-    //               }),
-    //               N = new Promise(function (a, c) {
-    //                 r = setTimeout(function () {
-    //                   c(Error('' + n + 'ms timeout exceeded'))
-    //                 }, n)
-    //               })
-    //             Promise.race([N, M]).then(function () {
-    //               clearTimeout(r)
-    //               a(c)
-    //             }, b)
-    //           } else
-    //             m(function () {
-    //               function v() {
-    //                 var b
-    //                 if (
-    //                   (b =
-    //                     (-1 != f && -1 != g) ||
-    //                     (-1 != f && -1 != h) ||
-    //                     (-1 != g && -1 != h))
-    //                 )
-    //                   (b = f != g && f != h && g != h) ||
-    //                     (null === C &&
-    //                       ((b = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(
-    //                         window.navigator.userAgent,
-    //                       )),
-    //                       (C =
-    //                         !!b &&
-    //                         (536 > parseInt(b[1], 10) ||
-    //                           (536 === parseInt(b[1], 10) &&
-    //                             11 >= parseInt(b[2], 10))))),
-    //                     (b =
-    //                       C &&
-    //                       ((f == w && g == w && h == w) ||
-    //                         (f == x && g == x && h == x) ||
-    //                         (f == y && g == y && h == y)))),
-    //                     (b = !b)
-    //                 b &&
-    //                   (d.parentNode && d.parentNode.removeChild(d),
-    //                   clearTimeout(r),
-    //                   a(c))
-    //               }
-    //               function I() {
-    //                 if (new Date().getTime() - H >= n)
-    //                   d.parentNode && d.parentNode.removeChild(d),
-    //                     b(Error('' + n + 'ms timeout exceeded'))
-    //                 else {
-    //                   var a = document.hidden
-    //                   if (!0 === a || void 0 === a)
-    //                     (f = e.a.offsetWidth),
-    //                       (g = p.a.offsetWidth),
-    //                       (h = q.a.offsetWidth),
-    //                       v()
-    //                   r = setTimeout(I, 50)
-    //                 }
-    //               }
-    //               var e = new t(k),
-    //                 p = new t(k),
-    //                 q = new t(k),
-    //                 f = -1,
-    //                 g = -1,
-    //                 h = -1,
-    //                 w = -1,
-    //                 x = -1,
-    //                 y = -1,
-    //                 d = document.createElement('div')
-    //               d.dir = 'ltr'
-    //               u(e, L(c, 'sans-serif'))
-    //               u(p, L(c, 'serif'))
-    //               u(q, L(c, 'monospace'))
-    //               d.appendChild(e.a)
-    //               d.appendChild(p.a)
-    //               d.appendChild(q.a)
-    //               document.body.appendChild(d)
-    //               w = e.a.offsetWidth
-    //               x = p.a.offsetWidth
-    //               y = q.a.offsetWidth
-    //               I()
-    //               A(e, function (a) {
-    //                 f = a
-    //                 v()
-    //               })
-    //               u(e, L(c, '"' + c.family + '",sans-serif'))
-    //               A(p, function (a) {
-    //                 g = a
-    //                 v()
-    //               })
-    //               u(p, L(c, '"' + c.family + '",serif'))
-    //               A(q, function (a) {
-    //                 h = a
-    //                 v()
-    //               })
-    //               u(q, L(c, '"' + c.family + '",monospace'))
-    //             })
-    //         })
-    //       }
-    //       return B
-    //     })()
-    //     const font = new FontFaceObserver('Roboto')
-    //     font.load().then(() => {
-    //       this.setState({ isReady: true })
-    //     })
-    //   } else {
-    //     this.setState({ isReady: true })
-    //   }
-    // }
     value: function render() {
+      console.log('render');
       var children = this.props.children;
       var isReady = this.state.isReady;
       return !isReady ? null : children;
@@ -2107,7 +2082,7 @@ function ScrollToTop(_ref) {
 }
 
 function _templateObject$o() {
-  var data = _taggedTemplateLiteral(["\nhtml, body {\n  height: 100%;\n}\n\nbody {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n}\n\n#root {\n  height: 100%;\n}\n\n@font-face {\n  font-family: 'Roboto';\n  font-weight: 700;\n  font-style: normal;\n  unicode-range: U+000-5FF;\n  src: local('Roboto Bold'), local('Roboto-Bold'),\n   url('/fonts/roboto-v20-latin-700.woff2') format('woff2'),\n   url('/fonts/roboto-v20-latin-700.woff') format('woff');\n\n\n@font-face {\n  font-family: 'Roboto';\n  font-weight: 400;\n  font-style: normal;\n  unicode-range: U+000-5FF;\n  src: local('Roboto'), local('Roboto-Regular'),\n  url('/fonts/roboto-v20-latin-regular.woff2')\n  format('woff2'),\n  url('/fonts/roboto-v20-latin-regular.woff')\n  format('woff');\n }\n\n/**\n * These values will not show up in content, but can be\n * queried by JavaScript to know which breakpoint is active.\n * Add or remove as many breakpoints as you like.\n */\nbody:before {\n  content: \"desktop\";\n  display: none;\n}\n\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"tablet\";\n  }\n}\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"mobile\";\n  }\n}\n\n\n/* css reset */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: 1.125rem;\n  line-height: 1.5;\n  margin: 0;\n  overflow: auto;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nimg {\n  max-width: 100%;\n  height: auto;\n}\n\niframe {\n  max-width: 100%;\n}\n\n\n/* link styles */\na:active {\n  color: ", ";\n  text-decoration: none;\n}\n\na:link {\n  text-decoration: none;\n  color: ", ";\n}\n\na:hover {\n  color: ", ";\n  text-decoration: underline;\n}\n\na:visited {\n  color: ", ";\n  text-decoration: none;\n}\n\n/* list and paragraph styles */\np, ul, code {\n  padding: 0;\n  margin-bottom: ", ";\n}\n\nb {\n  font-weight: bold;\n}\n\nul {\n  list-style: disc;\n  margin-left: ", ";\n  margin-right: ", ";\n}\n\nli {\n  margin-bottom: ", ";\n}\n\ncode {\n  box-sizing: border-box;\n  background-color:  ", ";\n  display: block;\n  padding: ", ";\n  color: ", ";\n  width: 100%;\n  font-family: 'Courier New', Courier, monospace;\n  white-space: normal;\n\n  font-size: ", ";\n\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n/* heading styles */\nh1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n  font-weight: 700;\n  margin-bottom: ", ";\n  line-height: 120%;\n}\n\nh1, .heading-1 {\n  font-size: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh2, .heading-2 {\n  font-size: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh3, .heading-3 {\n  font-style: normal;\n  font-size: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh4, .heading-4 {\n  font-size: ", ";;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh5, .heading-5 {\n  font-family: ", ";\n  font-size:  ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh6, .heading-6 {\n  font-family: ", ";\n  font-size:  ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh1 + h2, h1 + h2.heading-2 {\n  margin-top: -", ";\n}\n\nh2 + h4 {\n  margin-top: -", ";\n}\n\n/* table styles */\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    width: 100%;\n  margin-bottom: ", ";\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td, th {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    th {\n      background-color: ", ";\n    }\n  }\n\n\n  @media (max-width: ", ") {\n    table.responsive-collapse {\n\n    table, thead, tbody, th, td, tr {\n\t\tdisplay: block;\n\t}\n\n  thead tr {\n\t\tposition: absolute;\n\t\ttop: -9999px;\n\t\tleft: -9999px;\n\t}\n    }\n\n  table.n-plus-2 {\n  td:nth-child(n+2) {\n    display: inline-block\n\t}\n  }\n  }\n\n\n/* makes a class for each color in theme */\n  ", "\n\n/* makes a class for each font in theme */\n", "\n\n/* random text styles */\n\n.italic {\n  font-style: italic;\n}\n\n.text-shadow-dark {\ntext-shadow: 1px 2px #000\n}\n\n.line-height-1 {\n  line-height: 1;\n}\n\n.line-height-1-2-0 {\n  line-height: 1;\n}\n\n.bold {\n  font-weight: 700;\n}\n\n.lead {\n  font-size: ", ";\n  line-height: 130%;\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n"]);
+  var data = _taggedTemplateLiteral(["\nhtml, body {\n  height: 100%;\n}\n\nbody {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n}\n\n#root {\n  height: 100%;\n}\n\n@font-face {\n  font-family: 'Roboto';\n  font-weight: 700;\n  font-style: normal;\n  src: url('/fonts/roboto-v20-latin-700.woff2') format('woff2'),\n   url('/fonts/roboto-v20-latin-700.woff') format('woff');\n}\n\n@font-face {\n  font-family: 'Roboto';\n  font-weight: 400;\n  font-style: normal;\n  unicode-range: U+000-5FF;\n  src: url('/fonts/roboto-v20-latin-regular.woff2') format('woff2'),\n  url('/fonts/roboto-v20-latin-regular.woff') format('woff');\n }\n\n/**\n * These values will not show up in content, but can be\n * queried by JavaScript to know which breakpoint is active.\n * Add or remove as many breakpoints as you like.\n */\nbody:before {\n  content: \"desktop\";\n  display: none;\n}\n\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"tablet\";\n  }\n}\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"mobile\";\n  }\n}\n\n\n/* css reset */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: 1.125rem;\n  line-height: 1.5;\n  margin: 0;\n  overflow: auto;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nimg {\n  max-width: 100%;\n  height: auto;\n}\n\niframe {\n  max-width: 100%;\n}\n\n\n/* link styles */\na:active {\n  color: ", ";\n  text-decoration: none;\n}\n\na:link {\n  text-decoration: none;\n  color: ", ";\n}\n\na:hover {\n  color: ", ";\n  text-decoration: underline;\n}\n\na:visited {\n  color: ", ";\n  text-decoration: none;\n}\n\n/* list and paragraph styles */\np, ul, code {\n  padding: 0;\n  margin-bottom: ", ";\n}\n\nb {\n  font-weight: bold;\n}\n\nul {\n  list-style: disc;\n  margin-left: ", ";\n  margin-right: ", ";\n}\n\nli {\n  margin-bottom: ", ";\n}\n\ncode {\n  box-sizing: border-box;\n  background-color:  ", ";\n  display: block;\n  padding: ", ";\n  color: ", ";\n  width: 100%;\n  font-family: 'Courier New', Courier, monospace;\n  white-space: normal;\n\n  font-size: ", ";\n\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n/* heading styles */\nh1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n  font-weight: 700;\n  margin-bottom: ", ";\n  line-height: 120%;\n}\n\nh1, .heading-1 {\n  font-size: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh2, .heading-2 {\n  font-size: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh3, .heading-3 {\n  font-style: normal;\n  font-size: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh4, .heading-4 {\n  font-size: ", ";;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh5, .heading-5 {\n  font-family: ", ";\n  font-size:  ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh6, .heading-6 {\n  font-family: ", ";\n  font-size:  ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh1 + h2, h1 + h2.heading-2 {\n  margin-top: -", ";\n}\n\nh2 + h4 {\n  margin-top: -", ";\n}\n\n/* table styles */\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    width: 100%;\n  margin-bottom: ", ";\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td, th {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    th {\n      background-color: ", ";\n    }\n  }\n\n\n  @media (max-width: ", ") {\n    table.responsive-collapse {\n\n    table, thead, tbody, th, td, tr {\n\t\tdisplay: block;\n\t}\n\n  thead tr {\n\t\tposition: absolute;\n\t\ttop: -9999px;\n\t\tleft: -9999px;\n\t}\n    }\n\n  table.n-plus-2 {\n  td:nth-child(n+2) {\n    display: inline-block\n\t}\n  }\n  }\n\n\n/* makes a class for each color in theme */\n  ", "\n\n/* makes a class for each font in theme */\n", "\n\n/* random text styles */\n\n.italic {\n  font-style: italic;\n}\n\n.text-shadow-dark {\ntext-shadow: 1px 2px #000\n}\n\n.line-height-1 {\n  line-height: 1;\n}\n\n.line-height-1-2-0 {\n  line-height: 1;\n}\n\n.bold {\n  font-weight: 700;\n}\n\n.lead {\n  font-size: ", ";\n  line-height: 130%;\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n"]);
 
   _templateObject$o = function _templateObject() {
     return data;

@@ -20,22 +20,17 @@ body {
   font-family: 'Roboto';
   font-weight: 700;
   font-style: normal;
-  unicode-range: U+000-5FF;
-  src: local('Roboto Bold'), local('Roboto-Bold'),
-   url('/fonts/roboto-v20-latin-700.woff2') format('woff2'),
+  src: url('/fonts/roboto-v20-latin-700.woff2') format('woff2'),
    url('/fonts/roboto-v20-latin-700.woff') format('woff');
-
+}
 
 @font-face {
   font-family: 'Roboto';
   font-weight: 400;
   font-style: normal;
   unicode-range: U+000-5FF;
-  src: local('Roboto'), local('Roboto-Regular'),
-  url('/fonts/roboto-v20-latin-regular.woff2')
-  format('woff2'),
-  url('/fonts/roboto-v20-latin-regular.woff')
-  format('woff');
+  src: url('/fonts/roboto-v20-latin-regular.woff2') format('woff2'),
+  url('/fonts/roboto-v20-latin-regular.woff') format('woff');
  }
 
 /**
