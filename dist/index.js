@@ -2107,8 +2107,38 @@ var GlobalStyles = styled.createGlobalStyle(_templateObject$o(), theme.breakPoin
   return fonts;
 }, theme.typography.sizes.desktop.md, theme.typography.fonts['font-3'], theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.md, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.md);
 
+var FontFaceObserver = require('fontfaceobserver');
+
+var font = new FontFaceObserver('Roboto');
+font.load().then(function () {
+  console.log('My Family has loaded');
+});
 function head () {
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(GlobalStyles, null));
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("link", {
+    rel: "preload",
+    as: "style",
+    href: "/fonts/roboto-v20-latin-300.woff",
+    type: "font/woff",
+    crossOrigin: "anonymous"
+  }), /*#__PURE__*/React.createElement("link", {
+    rel: "preload",
+    as: "style",
+    href: "/fonts/roboto-v20-latin-300.woff2",
+    type: "font/woff2",
+    crossOrigin: "anonymous"
+  }), /*#__PURE__*/React.createElement("link", {
+    rel: "preload",
+    as: "style",
+    href: "/fonts/roboto-v20-latin-700.woff",
+    type: "font/woff",
+    crossOrigin: "anonymous"
+  }), /*#__PURE__*/React.createElement("link", {
+    rel: "preload",
+    as: "style",
+    href: "/fonts/roboto-v20-latin-700.woff2",
+    type: "font/woff2",
+    crossOrigin: "anonymous"
+  }), /*#__PURE__*/React.createElement(GlobalStyles, null));
 }
 
 function _templateObject$p() {
