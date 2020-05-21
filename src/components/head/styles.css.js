@@ -2,13 +2,24 @@ import theme from '../../theme'
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
+html, body {
+  height: 100%;
+}
 
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
 
 @font-face {
   font-family: 'Roboto';
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
   unicode-range: U+000-5FF;
   src: local('Roboto Bold'), local('Roboto-Bold'),
    url('/fonts/roboto-v20-latin-700.woff2') format('woff2'),
@@ -19,7 +30,6 @@ const GlobalStyles = createGlobalStyle`
   font-family: 'Roboto';
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
   unicode-range: U+000-5FF;
   src: local('Roboto'), local('Roboto-Regular'),
   url('/fonts/roboto-v20-latin-regular.woff2')
@@ -163,7 +173,7 @@ ul {
 }
 
 li {
-  margin-bottom: ${theme.unit(1)};
+  margin-bottom: ${theme.unit(0.75)};
 }
 
 code {

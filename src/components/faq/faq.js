@@ -4,7 +4,7 @@ function Faq({ children }) {
   return children
 }
 
-Faq.Details = class extends React.Component {
+class Details extends React.Component {
   state = {
     isOpen: false,
   }
@@ -23,6 +23,8 @@ Faq.Details = class extends React.Component {
     )
   }
 }
+
+Faq.Details = Details
 
 Faq.Summary = function ({ children }) {
   return <SummaryUI>{children}</SummaryUI>
