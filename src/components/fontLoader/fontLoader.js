@@ -4,6 +4,8 @@ export default class FontLoader extends React.Component {
   }
 
   componentWillMount() {
+    // react static blows up when rollup trys to hoist this, need to work on a better way to
+    // build things between react static and proto lib
     if (typeof window !== 'undefined' && typeof document !== 'undefined') {
       /* Font Face Observer v2.1.0 - © Bram Stein. License: BSD-3-Clause */ ;(function () {
         function l(a, b) {
