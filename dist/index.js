@@ -12,22 +12,6 @@ var ReactBreakpoints__default = _interopDefault(ReactBreakpoints);
 var JsxParser = _interopDefault(require('react-jsx-parser'));
 var Prismic$1 = _interopDefault(require('prismic-javascript'));
 
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function (obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function (obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
@@ -1010,8 +994,7 @@ var FontLoader = /*#__PURE__*/function (_React$Component) {
       // react static blows up when rollup trys to hoist this, need to work on a better way to
       // build things between react static and proto lib
       if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-
-        (function () {
+        var FontFaceObserver = function () {
           function l(a, b) {
             document.addEventListener ? a.addEventListener('scroll', b, !1) : a.attachEvent('scroll', b);
           }
@@ -1195,9 +1178,8 @@ var FontLoader = /*#__PURE__*/function (_React$Component) {
             });
           };
 
-          'object' === (typeof module === "undefined" ? "undefined" : _typeof(module)) ? module.exports = B : (window.FontFaceObserver = B, window.FontFaceObserver.prototype.load = B.prototype.load);
-        })(); // var FontFaceObserver = require('fontfaceobserver')
-
+          return B;
+        }();
 
         var font = new FontFaceObserver('Roboto');
         font.load().then(function () {

@@ -7,8 +7,7 @@ export default class FontLoader extends React.Component {
     // react static blows up when rollup trys to hoist this, need to work on a better way to
     // build things between react static and proto lib
     if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-      /* Font Face Observer v2.1.0 - © Bram Stein. License: BSD-3-Clause */
-      const FontFaceObserver = function () {
+      const FontFaceObserver = (function () {
         function l(a, b) {
           document.addEventListener
             ? a.addEventListener('scroll', b, !1)
@@ -228,12 +227,9 @@ export default class FontLoader extends React.Component {
               })
           })
         }
-        'object' === typeof module
-          ? (module.exports = B)
-          : ((window.FontFaceObserver = B),
-            (window.FontFaceObserver.prototype.load = B.prototype.load))
-      }
-      // var FontFaceObserver = require('fontfaceobserver')
+        return B
+      })()
+
       const font = new FontFaceObserver('Roboto')
       font.load().then(() => {
         this.setState({ isReady: true })
