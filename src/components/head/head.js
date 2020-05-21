@@ -1,13 +1,5 @@
 import GlobalStyles from './styles.css'
 
-var FontFaceObserver = require('fontfaceobserver')
-
-var font = new FontFaceObserver('Roboto')
-
-font.load().then(function () {
-  console.log('My Family has loaded')
-})
-
 export default function () {
   return (
     <React.Fragment>
