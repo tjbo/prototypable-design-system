@@ -4,9 +4,14 @@ function Grid({ children, collapse = '' }) {
   return <GridUI collapse={collapse}>{children}</GridUI>
 }
 
-Grid.Col = function ({ children, width = '32%', stretch = false }) {
+Grid.Col = function ({
+  children,
+  width = '32%',
+  justifyContent = 'flex-start',
+  stretch = false,
+}) {
   return (
-    <ColUI stretch={stretch} width={width}>
+    <ColUI justifyContent={justifyContent} stretch={stretch} width={width}>
       {children}
     </ColUI>
   )

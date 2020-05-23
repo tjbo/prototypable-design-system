@@ -1,3 +1,4 @@
+var Prismic = require('prismic-javascript')
 import getPage from './getPage'
 
 export default function getPages(apiEndpoint, apiToken) {

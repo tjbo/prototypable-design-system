@@ -4,10 +4,28 @@ function getLabel(label) {
   return <LabelUI>{label}</LabelUI>
 }
 
-function getComponent(type, onChange, isValid, name) {
+function getComponent(
+  type,
+  onChange,
+  isSelectable,
+  isValid,
+  maxWidth,
+  name,
+  readOnly,
+  size,
+  textAlign,
+  value,
+) {
   const props = {
+    isSelectable,
     isValid,
-    onChange: onChange.bind(null, name),
+    onChange: onChange,
+    maxWidth,
+    name,
+    readOnly,
+    size,
+    textAlign,
+    value,
   }
 
   if (type === 'textarea') {
@@ -19,25 +37,48 @@ function getComponent(type, onChange, isValid, name) {
 
 export default function Input({
   isValidating,
+  isSelectable = true,
   label,
   onChange,
   name,
   type = 'input',
+  readOnly = false,
+  size = 'normal',
+  textAlign = 'left',
   validationRules = '',
   validator,
-  value,
+  value = '',
+  withContainer = true,
+  maxWidth = '100%',
 }) {
-  const validationMessage = validator.message(name, value, validationRules)
+  const hasValidation = !!validationRules.length
+  const validationMessage =
+    hasValidation && validator.message(name, value, validationRules)
 
   const isValid = isValidating ? !!!validationMessage : true
 
-  return (
-    <ContainerUI>
+  const children = (
+    <div>
       {getLabel(label)}
-      {getComponent(type, onChange, isValid, name)}
-      <ValidationUI>
-        {validator.message(name, value, validationRules)}
-      </ValidationUI>
-    </ContainerUI>
+      {getComponent(
+        type,
+        onChange,
+        isSelectable,
+        isValid,
+        maxWidth,
+        name,
+        readOnly,
+        size,
+        textAlign,
+        value,
+      )}
+      {hasValidation && (
+        <ValidationUI>
+          {validator.message(name, value, validationRules)}
+        </ValidationUI>
+      )}
+    </div>
   )
+
+  return withContainer ? <ContainerUI>{children}</ContainerUI> : children
 }
