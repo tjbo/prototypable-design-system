@@ -1,13 +1,13 @@
 import theme from '../../theme'
 
 export const ButtonUI = styled('button')`
-  background-color: ${theme.colors['dark-2']};
+  background-color: ${theme.colors.dark2};
   border: 0;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
   display: block;
-  font-family: ${theme.typography.fonts['font-2']};
+  font-family: ${theme.typography.fonts.font1};
   font-size: ${theme.unit(0.75)};
   font-weight: 700;
   height: ${theme.unit(1.75)};

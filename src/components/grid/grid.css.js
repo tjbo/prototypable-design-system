@@ -5,11 +5,12 @@ export const ColUI = styled('div')`
   flex-direction: column;
   margin: 5px;
   width: ${({ width }) => `calc(${width} - 10px)`};
-  align-self: ${({ stretch }) => (stretch ? 'stretch' : 'flex-start')};
+  align-self: stretch;
 `
 
 export const GridUI = styled('div')`
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
   align-items: flex-start;

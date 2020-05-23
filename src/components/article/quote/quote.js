@@ -5,7 +5,7 @@ export default function ({ children }) {
     <BoxWrapper>
       <OpenQuoteUI>“</OpenQuoteUI>
       <DropQuoteUI>
-        <blockquote className="heading-3 italic font-2">{children}</blockquote>
+        <blockquote className="heading-3 italic font1">{children}</blockquote>
       </DropQuoteUI>
       <CloseQuoteUI>”</CloseQuoteUI>
     </BoxWrapper>

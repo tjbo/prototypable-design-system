@@ -54,7 +54,6 @@ function getSpaceAfter({ spaceAfter }) {
 }
 
 function getColor({ color }) {
-  console.log(color, theme.colors[color])
   return theme.colors[color]
 }
 
@@ -95,3 +94,5 @@ export const AnchorUI = styled('div')`
     margin-top: calc(${theme.layout.mobile.headerHeight} + ${theme.unit(0.5)});
   } */
 `
+
+export const IconUI = styled('img')``

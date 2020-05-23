@@ -5,7 +5,7 @@ export const BoxWrapper = styled('div')`
   width: 100%;
   display: block;
   padding: ${theme.unit(2)} ${theme.unit(1)};
-  background: ${theme.colors['light-1']};
+  background: ${theme.colors.light1};
   position: relative;
 
   @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
@@ -15,7 +15,7 @@ export const BoxWrapper = styled('div')`
 
 export const OpenQuoteUI = styled('div')`
   display: block;
-  color: ${theme.colors['dark-3']};
+  color: ${theme.colors.dark3};
   height: ${theme.unit(2.5)};
   opacity: 0.5;
   font-size: ${theme.unit(5)};
@@ -28,7 +28,7 @@ export const OpenQuoteUI = styled('div')`
 export const CloseQuoteUI = styled('div')`
   display: block;
   height: ${theme.unit(2.5)};
-  color: ${theme.colors['dark-3']};
+  color: ${theme.colors.dark3};
   opacity: 0.5;
   font-size: ${theme.unit(5)};
   line-height: 1;

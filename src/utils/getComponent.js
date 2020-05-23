@@ -9,6 +9,7 @@ import Image from '../components/image/'
 import Jumbotron from '../components/jumbotron/'
 import Quote from '../components/quote/'
 import Section from '../components/section/'
+import Title from '../components/title'
 import Form from '../components/form/form'
 import JsxParser from 'react-jsx-parser'
 var short = require('short-uuid')
@@ -34,6 +35,7 @@ export default function getComponent(data, id, type, before) {
           Faq,
           Grid,
           Image,
+          Title,
           Quote,
         }}
         jsx={block.text}

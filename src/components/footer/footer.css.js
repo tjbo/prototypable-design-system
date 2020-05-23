@@ -2,7 +2,7 @@ import theme from '../../theme'
 export const FooterUI = styled('footer')`
   box-sizing: border-box;
   display: block;
-  background-color: ${theme.colors['dark-1']};
+  background-color: ${theme.colors.dark1};
   max-width: 100%;
   flex-shrink: 0;
 `
@@ -14,10 +14,10 @@ export const FooterUIInner = styled('div')`
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  background-color: ${theme.colors['dark-1']};
+  background-color: ${theme.colors.dark1};
   padding: ${`${theme.unit(0.5)} ${theme.unit(0.75)}`};
   padding-right: ${theme.unit(1)};
-  font-family: ${theme.typography.fonts['font-1']};
+  font-family: ${theme.typography.fonts.font1};
 
   @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
     flex-direction: column;
@@ -34,13 +34,13 @@ export const FooterUIInner = styled('div')`
     a:link {
       color: #fff;
       text-decoration: none;
-      font-family: ${theme.typography.fonts['font-2']};
+      font-family: ${theme.typography.fonts.font1};
     }
     a:first-child {
       text-transform: uppercase;
       font-size: ${theme.unit(0.65)};
     }
-    font-family: ${theme.typography.fonts['font-2']};
+    font-family: ${theme.typography.fonts.font1};
   }
 
   ${FinePrintUI} {

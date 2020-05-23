@@ -9,6 +9,7 @@ var styled = require('styled-components');
 var styled__default = _interopDefault(styled);
 var ReactBreakpoints = require('react-breakpoints');
 var ReactBreakpoints__default = _interopDefault(ReactBreakpoints);
+var reactIs = _interopDefault(require('react-is'));
 var JsxParser = _interopDefault(require('react-jsx-parser'));
 var Prismic$1 = _interopDefault(require('prismic-javascript'));
 
@@ -196,7 +197,6 @@ function makePixelValue(value) {
   return value + 'px';
 }
 
-var _colors, _fonts;
 var _unit = 32;
 var theme = {
   breakPoints: {
@@ -209,9 +209,21 @@ var theme = {
     tablet: '960px',
     desktop: '1280px'
   },
-  colors: (_colors = {}, _defineProperty(_colors, 'dark-1', '#000000'), _defineProperty(_colors, 'dark-2', '#D40000'), _defineProperty(_colors, 'dark-3', '#0091ea'), _defineProperty(_colors, 'dark-4', '#454545'), _defineProperty(_colors, 'dark-5', '#0066a3'), _defineProperty(_colors, 'light-1', '#f5faff'), _defineProperty(_colors, 'light-2', '36,139,204'), _defineProperty(_colors, 'light-3', '#ffffff'), _defineProperty(_colors, 'error', '#D40000'), _colors),
+  colors: {
+    dark1: '#000000',
+    dark2: '#D40000',
+    dark3: '#0091ea',
+    dark4: '#454545',
+    dark5: '#0066a3',
+    light1: '#f5faff',
+    light2: '36,139,204',
+    light3: '#ffffff',
+    error: '#D40000'
+  },
   typography: {
-    fonts: (_fonts = {}, _defineProperty(_fonts, 'font-1', 'Roboto'), _defineProperty(_fonts, 'font-2', 'Roboto'), _defineProperty(_fonts, 'font-3', 'Roboto'), _fonts),
+    fonts: {
+      font1: 'Roboto'
+    },
     sizes: {
       desktop: {
         xsm: '1rem',
@@ -281,7 +293,7 @@ var ContentUI = styled__default('div')(_templateObject());
 var SidebarUI = styled__default('div')(_templateObject2(), theme.breakPointsAsPixel.tablet, theme.breakPointsAsPixel.mobile);
 
 function _templateObject2$1() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-wrap: wrap;\n  width: 100%;\n  align-items: flex-start;\n  align-content: flex-start;\n\n  @media (min-width: ", ") and (max-width: ", ") {\n    ", " {\n      width: ", ";\n    }\n  }\n  @media (max-width: ", ") {\n    ", " {\n      display: block;\n      width: 100%;\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  width: 100%;\n  align-items: flex-start;\n  align-content: flex-start;\n\n  @media (min-width: ", ") and (max-width: ", ") {\n    ", " {\n      width: ", ";\n    }\n  }\n  @media (max-width: ", ") {\n    ", " {\n      display: block;\n      width: 100%;\n    }\n  }\n"]);
 
   _templateObject2$1 = function _templateObject2() {
     return data;
@@ -291,7 +303,7 @@ function _templateObject2$1() {
 }
 
 function _templateObject$1() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  margin: 5px;\n  width: ", ";\n  align-self: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  margin: 5px;\n  width: ", ";\n  align-self: stretch;\n"]);
 
   _templateObject$1 = function _templateObject() {
     return data;
@@ -302,12 +314,9 @@ function _templateObject$1() {
 var ColUI = styled__default('div')(_templateObject$1(), function (_ref) {
   var width = _ref.width;
   return "calc(".concat(width, " - 10px)");
-}, function (_ref2) {
-  var stretch = _ref2.stretch;
-  return stretch ? 'stretch' : 'flex-start';
 });
-var GridUI = styled__default('div')(_templateObject2$1(), theme.breakPointsAsPixel.mobile, theme.breakPointsAsPixel.tablet, ColUI, function (_ref3) {
-  var collapse = _ref3.collapse;
+var GridUI = styled__default('div')(_templateObject2$1(), theme.breakPointsAsPixel.mobile, theme.breakPointsAsPixel.tablet, ColUI, function (_ref2) {
+  var collapse = _ref2.collapse;
   return collapse === 'tablet' ? '100%' : "calc(50% - 10px)";
 }, theme.breakPointsAsPixel.mobile, ColUI);
 
@@ -381,16 +390,16 @@ function _templateObject$2() {
 
   return data;
 }
-var BoxWrapper = styled__default('div')(_templateObject$2(), theme.colors['light-1'], theme.breakPointsAsPixel.tablet, theme.unit(1), theme.unit(2.5));
-var QuoteUI = styled__default('div')(_templateObject2$2(), theme.colors['dark-3'], theme.unit(2.5), theme.unit(5));
+var BoxWrapper = styled__default('div')(_templateObject$2(), theme.colors.light1, theme.breakPointsAsPixel.tablet, theme.unit(1), theme.unit(2.5));
+var QuoteUI = styled__default('div')(_templateObject2$2(), theme.colors.dark3, theme.unit(2.5), theme.unit(5));
 var CloseQuoteUI = styled__default(QuoteUI)(_templateObject3(), theme.unit(0), theme.unit(0.25));
-var DropQuoteUI = styled__default('div')(_templateObject4(), theme.unit(2.5), theme.unit(1), theme.unit(2), theme.unit(1), theme.typography.fonts['font-3'], theme.colors['dark-1']);
+var DropQuoteUI = styled__default('div')(_templateObject4(), theme.unit(2.5), theme.unit(1), theme.unit(2), theme.unit(1), theme.typography.fonts['font-3'], theme.colors.dark1);
 var OpenQuoteUI = styled__default(QuoteUI)(_templateObject5(), theme.unit(0.25), theme.unit(0.25));
 
 function Quote (_ref) {
   var children = _ref.children;
   return /*#__PURE__*/React.createElement(BoxWrapper, null, /*#__PURE__*/React.createElement(OpenQuoteUI, null, "\u201C"), /*#__PURE__*/React.createElement(DropQuoteUI, null, /*#__PURE__*/React.createElement("blockquote", {
-    className: "heading-3 italic font-2"
+    className: "heading-3 italic font1"
   }, children)), /*#__PURE__*/React.createElement(CloseQuoteUI, null, "\u201D"));
 }
 
@@ -446,15 +455,8 @@ Article.Content = function (_ref2) {
 Article.Sidebar = function (_ref3) {
   var children = _ref3.children,
       _ref3$width = _ref3.width,
-      width = _ref3$width === void 0 ? '32%' : _ref3$width,
-      _ref3$styling = _ref3.styling,
-      styling = _ref3$styling === void 0 ? '' : _ref3$styling;
+      width = _ref3$width === void 0 ? '32%' : _ref3$width;
   var _children = children;
-
-  if (styling === 'quote') {
-    _children = /*#__PURE__*/React.createElement(Quote, null, children);
-  }
-
   return /*#__PURE__*/React.createElement(Grid.Col, {
     width: width
   }, _children);
@@ -463,6 +465,11 @@ Article.Sidebar = function (_ref3) {
 Article.Box = function (_ref4) {
   var children = _ref4.children;
   return /*#__PURE__*/React.createElement(Box, null, children);
+};
+
+Article.Quote = function (_ref5) {
+  var children = _ref5.children;
+  return /*#__PURE__*/React.createElement(Quote, null, children);
 };
 
 function _templateObject$4() {
@@ -532,7 +539,7 @@ function _templateObject$6() {
 
   return data;
 }
-var ContainerUI = styled__default('div')(_templateObject$6(), theme.unit(0.5), theme.colors['light-1'], theme.colors['dark-3'], theme.typography.fonts['font-2']);
+var ContainerUI = styled__default('div')(_templateObject$6(), theme.unit(0.5), theme.colors.light1, theme.colors.dark3, theme.typography.fonts.font1);
 
 function BreadCrumb(_ref) {
   var parts = _ref.parts;
@@ -550,7 +557,7 @@ function _templateObject$7() {
 
   return data;
 }
-var ButtonUI = styled__default('button')(_templateObject$7(), theme.colors['dark-2'], theme.typography.fonts['font-2'], theme.unit(0.75), theme.unit(1.75), theme.unit(0.66), function (_ref) {
+var ButtonUI = styled__default('button')(_templateObject$7(), theme.colors.dark2, theme.typography.fonts.font1, theme.unit(0.75), theme.unit(1.75), theme.unit(0.66), function (_ref) {
   var maxWidth = _ref.maxWidth;
   return maxWidth;
 }, function (_ref2) {
@@ -593,7 +600,7 @@ function _templateObject2$3() {
 }
 
 function _templateObject$8() {
-  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n  display: block;\n  background: #fff;\n  border: ", ";\n  line-height: 1.75;\n  width: 100%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n  display: block;\n  background: #fff;\n  border: ", ";\n  line-height: 1.75;\n  width: 100%;\n  min-height: 100%;\n"]);
 
   _templateObject$8 = function _templateObject() {
     return data;
@@ -668,7 +675,7 @@ var DetailsUI = styled__default('details')(_templateObject$a(), theme.border, th
   var open = _ref.open;
   return open && "\n    summary:after {\n    transform: rotate(45deg);\n    -webkit-transform: rotate(45deg);\n    }\n    padding-bottom: ".concat(theme.unit(0.75), ";\n\n    ");
 });
-var SummaryUI = styled__default('summary')(_templateObject2$4(), theme.colors['dark-4'], theme.unit(0.66), theme.colors['dark-1'], theme.colors['dark-4']);
+var SummaryUI = styled__default('summary')(_templateObject2$4(), theme.colors.dark4, theme.unit(0.66), theme.colors.dark1, theme.colors.dark4);
 
 function Faq(_ref) {
   var children = _ref.children;
@@ -736,7 +743,7 @@ function _templateObject$b() {
 
   return data;
 }
-var FormUI = styled__default('div')(_templateObject$b(), theme.colors['light-1'], theme.unit(0.75));
+var FormUI = styled__default('div')(_templateObject$b(), theme.colors.light1, theme.unit(0.75));
 
 function hexToRgb(hex) {
   // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
@@ -790,13 +797,13 @@ function _templateObject$c() {
 var ContainerUI$2 = styled__default('div')(_templateObject$c(), theme.unit(0.25));
 var InputUI = styled__default('input')(_templateObject2$5(), theme.unit(0.5), theme.unit(0.4), function (_ref) {
   var isValid = _ref.isValid;
-  return isValid ? "" : "0 0 0 3px rgba(".concat(hexToRgb(theme.colors['error']), ", 0.4)");
+  return isValid ? "" : "0 0 0 3px rgba(".concat(hexToRgb(theme.colors.error), ", 0.4)");
 }, function (_ref2) {
   var isValid = _ref2.isValid;
-  return isValid ? "0 0 0 3px rgba(".concat(hexToRgb(theme.colors['dark-3']), ", 0.5)") : "0 0 0 3px rgba(".concat(hexToRgb(theme.colors['error']), ", 0.7)");
+  return isValid ? "0 0 0 3px rgba(".concat(hexToRgb(theme.colors.dark3), ", 0.5)") : "0 0 0 3px rgba(".concat(hexToRgb(theme.colors.error), ", 0.7)");
 });
-var LabelUI = styled__default('label')(_templateObject3$2(), theme.typography.fonts['font-2'], theme.unit(0.5));
-var ValidationUI = styled__default('div')(_templateObject4$1(), theme.unit(0.5), theme.colors['error'], theme.unit(1), theme.unit(0.125));
+var LabelUI = styled__default('label')(_templateObject3$2(), theme.typography.fonts.font1, theme.unit(0.5));
+var ValidationUI = styled__default('div')(_templateObject4$1(), theme.unit(0.5), theme.colors.error, theme.unit(1), theme.unit(0.125));
 
 function getLabel(label) {
   return /*#__PURE__*/React.createElement(LabelUI, null, label);
@@ -950,10 +957,10 @@ function _templateObject$d() {
 
   return data;
 }
-var FooterUI = styled__default('footer')(_templateObject$d(), theme.colors['dark-1']);
+var FooterUI = styled__default('footer')(_templateObject$d(), theme.colors.dark1);
 var AddressUI = styled__default('address')(_templateObject2$6());
 var FinePrintUI = styled__default('div')(_templateObject3$3());
-var FooterUIInner = styled__default('div')(_templateObject4$2(), theme.colors['dark-1'], "".concat(theme.unit(0.5), " ").concat(theme.unit(0.75)), theme.unit(1), theme.typography.fonts['font-1'], theme.breakPointsAsPixel.mobile, AddressUI, theme.typography.fonts['font-2'], theme.unit(0.65), theme.typography.fonts['font-2'], FinePrintUI, theme.unit(0.4), theme.unit(1));
+var FooterUIInner = styled__default('div')(_templateObject4$2(), theme.colors.dark1, "".concat(theme.unit(0.5), " ").concat(theme.unit(0.75)), theme.unit(1), theme.typography.fonts.font1, theme.breakPointsAsPixel.mobile, AddressUI, theme.typography.fonts.font1, theme.unit(0.65), theme.typography.fonts.font1, FinePrintUI, theme.unit(0.4), theme.unit(1));
 
 function Footer(_ref) {
   var children = _ref.children;
@@ -1276,13 +1283,13 @@ function _templateObject$e() {
 
   return data;
 }
-var ContainerUI$3 = styled__default('header')(_templateObject$e(), theme.colors['dark-1'], theme.layout.desktop.headerHeight);
-var ContainerInnerUI = styled__default('div')(_templateObject2$7(), theme.colors['dark-1'], theme.layout.desktop.headerHeight);
-var DropdownUI = styled__default('div')(_templateObject3$4(), theme.layout.desktop.headerHeight, theme.border, theme.colors['dark-3'], theme.colors['dark-5'], theme.typography.fonts['font-2'], theme.unit(0.25));
+var ContainerUI$3 = styled__default('header')(_templateObject$e(), theme.colors.dark1, theme.layout.desktop.headerHeight);
+var ContainerInnerUI = styled__default('div')(_templateObject2$7(), theme.colors.dark1, theme.layout.desktop.headerHeight);
+var DropdownUI = styled__default('div')(_templateObject3$4(), theme.layout.desktop.headerHeight, theme.border, theme.colors.dark3, theme.colors.dark5, theme.typography.fonts.font1, theme.unit(0.25));
 var BrandUI = styled__default('div')(_templateObject4$3(), theme.layout.desktop.headerHeight, theme.unit(0.25));
-var LinkUI = styled__default('div')(_templateObject5$1(), theme.typography.fonts['font-2'], theme.layout.desktop.headerHeight, theme.unit(1));
+var LinkUI = styled__default('div')(_templateObject5$1(), theme.typography.fonts.font1, theme.layout.desktop.headerHeight, theme.unit(1));
 var MenuUI = styled__default('div')(_templateObject6());
-var ContactUI = styled__default('div')(_templateObject7(), theme.unit(1), theme.typography.fonts['font-2'], theme.unit(1), theme.unit(0.45), theme.colors['dark-2'], theme.unit(0.75));
+var ContactUI = styled__default('div')(_templateObject7(), theme.unit(1), theme.typography.fonts.font1, theme.unit(1), theme.unit(0.45), theme.colors.dark2, theme.unit(0.75));
 
 function Container(_ref) {
   var children = _ref.children;
@@ -1365,13 +1372,13 @@ function _templateObject$f() {
 
   return data;
 }
-var ContainerUI$4 = styled__default('div')(_templateObject$f(), theme.colors['dark-1'], theme.layout.mobile.headerHeight);
-var ContainerInnerUI$1 = styled__default('div')(_templateObject2$8(), theme.colors['dark-1'], theme.layout.mobile.headerHeight, "0 ".concat(theme.unit(0.75), " 0 ").concat(theme.unit(0.25)));
-var LinkUI$1 = styled__default('div')(_templateObject3$5(), theme.colors['light-1'], theme.typography.fonts['font-2'], theme.unit(0.75), theme.unit(0.25), theme.colors['dark-5'], theme.unit(0.25), function (_ref) {
+var ContainerUI$4 = styled__default('div')(_templateObject$f(), theme.colors.dark1, theme.layout.mobile.headerHeight);
+var ContainerInnerUI$1 = styled__default('div')(_templateObject2$8(), theme.colors.dark1, theme.layout.mobile.headerHeight, "0 ".concat(theme.unit(0.75), " 0 ").concat(theme.unit(0.25)));
+var LinkUI$1 = styled__default('div')(_templateObject3$5(), theme.colors.light1, theme.typography.fonts.font1, theme.unit(0.75), theme.unit(0.25), theme.colors.dark5, theme.unit(0.25), function (_ref) {
   var isOpen = _ref.isOpen;
-  return isOpen && "".concat(theme.colors['dark-5']);
+  return isOpen && "".concat(theme.colors.dark5);
 });
-var MenuUI$1 = styled__default('nav')(_templateObject4$4(), theme.colors['dark-3'], theme.layout.mobile.headerHeight);
+var MenuUI$1 = styled__default('nav')(_templateObject4$4(), theme.colors.dark3, theme.layout.mobile.headerHeight);
 
 function _templateObject6$1() {
   var data = _taggedTemplateLiteral(["\n  display: block;\n  height: ", ";\n  margin: (", ") auto ", " auto;\n  margin-top: -", ";\n  position: relative;\n  width: ", ";\n  z-index: 9999;\n  cursor: pointer;\n"]);
@@ -1483,8 +1490,8 @@ function _templateObject$h() {
 
   return data;
 }
-var DropdownUI$1 = styled__default('span')(_templateObject$h(), theme.typography.fonts['font-2'], theme.unit(0.75), theme.unit(0.25), theme.colors['dark-5']);
-var LinkArrowUI = styled__default('div')(_templateObject2$a(), theme.colors['light-1'], theme.colors['light-1'], theme.unit(2.5), function (_ref) {
+var DropdownUI$1 = styled__default('span')(_templateObject$h(), theme.typography.fonts.font1, theme.unit(0.75), theme.unit(0.25), theme.colors.dark5);
+var LinkArrowUI = styled__default('div')(_templateObject2$a(), theme.colors.light1, theme.colors.light1, theme.unit(2.5), function (_ref) {
   var isOpen = _ref.isOpen;
   return isOpen ? "rotate(45deg)" : "rotate(-135deg)";
 }, theme.unit(0.75));
@@ -1976,15 +1983,15 @@ function _templateObject$m() {
 
   return data;
 }
-var BoxWrapper$2 = styled__default('div')(_templateObject$m(), theme.unit(2), theme.unit(1), theme.colors['light-1'], theme.breakPointsAsPixel.tablet, theme.unit(1), theme.unit(2.5));
-var OpenQuoteUI$1 = styled__default('div')(_templateObject2$d(), theme.colors['dark-3'], theme.unit(2.5), theme.unit(5), theme.unit(0.25), theme.unit(0.25));
-var CloseQuoteUI$1 = styled__default('div')(_templateObject3$7(), theme.unit(2.5), theme.colors['dark-3'], theme.unit(5), theme.unit(0.25), theme.unit(0.25));
+var BoxWrapper$2 = styled__default('div')(_templateObject$m(), theme.unit(2), theme.unit(1), theme.colors.light1, theme.breakPointsAsPixel.tablet, theme.unit(1), theme.unit(2.5));
+var OpenQuoteUI$1 = styled__default('div')(_templateObject2$d(), theme.colors.dark3, theme.unit(2.5), theme.unit(5), theme.unit(0.25), theme.unit(0.25));
+var CloseQuoteUI$1 = styled__default('div')(_templateObject3$7(), theme.unit(2.5), theme.colors.dark3, theme.unit(5), theme.unit(0.25), theme.unit(0.25));
 var DropQuoteUI$1 = styled__default('div')(_templateObject4$6());
 
 function Quote$1 (_ref) {
   var sidebar = _ref.sidebar;
   return /*#__PURE__*/React.createElement(BoxWrapper$2, null, /*#__PURE__*/React.createElement(OpenQuoteUI$1, null, "\u201C"), /*#__PURE__*/React.createElement(DropQuoteUI$1, null, /*#__PURE__*/React.createElement("blockquote", {
-    className: "heading-3 italic ['font-2']",
+    className: "heading-3 italic font1",
     dangerouslySetInnerHTML: {
       __html: sidebar.text
     }
@@ -2015,9 +2022,9 @@ var getBgColor = function getBgColor(_ref) {
   var background = _ref.background;
 
   if (background === 'light') {
-    return theme.colors['light-1'];
+    return theme.colors.light1;
   } else if (background === 'dark') {
-    return theme.colors['dark-3'];
+    return theme.colors.dark3;
   } else {
     return '#fff';
   }
@@ -2081,8 +2088,28 @@ function ScrollToTop(_ref) {
   }
 }
 
+function _templateObject3$8() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject3$8 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2$f() {
+  var data = _taggedTemplateLiteral(["\n  display: block;\n  height: ", ";\n  margin-top: -", ";\n  visibility: hidden;\n\n  /* @media (min-width: ", ") and (max-width: ", ") {\n    height: calc(", " + ", ");\n    margin-top: calc(", " + ", ");\n  }\n  @media (max-width: ", ") {\n    height: calc(", " + ", ");\n    margin-top: calc(", " + ", ");\n  } */\n"]);
+
+  _templateObject2$f = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject$o() {
-  var data = _taggedTemplateLiteral(["\nhtml, body {\n  height: 100%;\n}\n\nbody {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n}\n\n#root {\n  height: 100%;\n}\n\n@font-face {\n  font-family: 'Roboto';\n  font-weight: 700;\n  font-style: normal;\n  src: url('/fonts/roboto-v20-latin-700.woff2') format('woff2'),\n   url('/fonts/roboto-v20-latin-700.woff') format('woff');\n}\n\n@font-face {\n  font-family: 'Roboto';\n  font-weight: 400;\n  font-style: normal;\n  unicode-range: U+000-5FF;\n  src: url('/fonts/roboto-v20-latin-regular.woff2') format('woff2'),\n  url('/fonts/roboto-v20-latin-regular.woff') format('woff');\n }\n\n/**\n * These values will not show up in content, but can be\n * queried by JavaScript to know which breakpoint is active.\n * Add or remove as many breakpoints as you like.\n */\nbody:before {\n  content: \"desktop\";\n  display: none;\n}\n\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"tablet\";\n  }\n}\n\n@media (max-width: ", ") {\n  body:before {\n    content: \"mobile\";\n  }\n}\n\n\n/* css reset */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: 1.125rem;\n  line-height: 1.5;\n  margin: 0;\n  overflow: auto;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nimg {\n  max-width: 100%;\n  height: auto;\n}\n\niframe {\n  max-width: 100%;\n}\n\n\n/* link styles */\na:active {\n  color: ", ";\n  text-decoration: none;\n}\n\na:link {\n  text-decoration: none;\n  color: ", ";\n}\n\na:hover {\n  color: ", ";\n  text-decoration: underline;\n}\n\na:visited {\n  color: ", ";\n  text-decoration: none;\n}\n\n/* list and paragraph styles */\np, ul, code {\n  padding: 0;\n  margin-bottom: ", ";\n}\n\nb {\n  font-weight: bold;\n}\n\nul {\n  list-style: disc;\n  margin-left: ", ";\n  margin-right: ", ";\n}\n\nli {\n  margin-bottom: ", ";\n}\n\ncode {\n  box-sizing: border-box;\n  background-color:  ", ";\n  display: block;\n  padding: ", ";\n  color: ", ";\n  width: 100%;\n  font-family: 'Courier New', Courier, monospace;\n  white-space: normal;\n\n  font-size: ", ";\n\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n/* heading styles */\nh1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {\n  font-family: ", ";\n  padding: 0;\n  margin: 0;\n  font-weight: 700;\n  margin-bottom: ", ";\n  line-height: 120%;\n}\n\nh1, .heading-1 {\n  font-size: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh2, .heading-2 {\n  font-size: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh3, .heading-3 {\n  font-style: normal;\n  font-size: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh4, .heading-4 {\n  font-size: ", ";;\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh5, .heading-5 {\n  font-family: ", ";\n  font-size:  ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh6, .heading-6 {\n  font-family: ", ";\n  font-size:  ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\nh1 + h2, h1 + h2.heading-2 {\n  margin-top: -", ";\n}\n\nh2 + h4 {\n  margin-top: -", ";\n}\n\n/* table styles */\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    width: 100%;\n  margin-bottom: ", ";\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td, th {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    th {\n      background-color: ", ";\n    }\n  }\n\n\n  @media (max-width: ", ") {\n    table.responsive-collapse {\n\n    table, thead, tbody, th, td, tr {\n\t\tdisplay: block;\n\t}\n\n  thead tr {\n\t\tposition: absolute;\n\t\ttop: -9999px;\n\t\tleft: -9999px;\n\t}\n    }\n\n  table.n-plus-2 {\n  td:nth-child(n+2) {\n    display: inline-block\n\t}\n  }\n  }\n\n\n/* makes a class for each color in theme */\n  ", "\n\n/* makes a class for each font in theme */\n", "\n\n/* random text styles */\n\n.italic {\n  font-style: italic;\n}\n\n.text-shadow-dark {\ntext-shadow: 1px 2px #000\n}\n\n.line-height-1 {\n  line-height: 1;\n}\n\n.line-height-1-2-0 {\n  line-height: 1;\n}\n\n.bold {\n  font-weight: 700;\n}\n\n.lead {\n  font-size: ", ";\n  line-height: 130%;\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n"]);
+  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  font-family: ", ";\n  font-size: ", ";\n  font-style: ", ";\n  font-weight: 700;\n  line-height: 120%;\n  margin: 0;\n  margin-bottom: ", ";\n  padding: 0;\n  text-shadow: ", ";\n"]);
 
   _templateObject$o = function _templateObject() {
     return data;
@@ -2090,31 +2117,981 @@ function _templateObject$o() {
 
   return data;
 }
-var GlobalStyles = styled.createGlobalStyle(_templateObject$o(), theme.breakPointsAsPixel.tablet, theme.breakPointsAsPixel.mobile, theme.colors['dark-4'], theme.typography.fonts['font-1'], theme.colors['dark-3'], theme.colors['dark-3'], theme.colors['dark-3'], theme.colors['dark-3'], theme.unit(0.75), theme.unit(1), theme.unit(0.5), theme.unit(0.75), theme.colors['light-1'], theme.unit(0.5), theme.colors['dark-1'], theme.typography.sizes.desktop.sm, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.sm, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xsm, theme.typography.fonts['font-3'], theme.unit(0.75), theme.typography.sizes.desktop.xxlg, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.xxlg, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xxlg, theme.typography.sizes.desktop.xlg, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.xlg, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xlg, theme.typography.sizes.desktop.lg, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.lg, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.lg, theme.typography.sizes.desktop.md, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.md, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.md, theme.typography.fonts['font-1'], theme.typography.sizes.desktop.sm, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.sm, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.sm, theme.typography.fonts['font-1'], theme.typography.sizes.desktop.xsm, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.xsm, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xsm, theme.unit(0.75), theme.unit(0.75), theme.border, theme.border, theme.unit(1), theme.border, theme.border, theme.unit(0.25), theme.unit(0.5), theme.colors['light-1'], theme.breakPointsAsPixel.mobile, function () {
-  var colors = '';
 
-  for (var color in theme.colors) {
-    colors += ".".concat(color, "\n         {\n          color: ").concat(theme.colors[color], ";\n         }\n       ");
-    colors += "a.".concat(color, ":active, a.").concat(color, ":link, a.").concat(color, ":hover, a.").concat(color, ":visited\n         {\n          color: ").concat(theme.colors[color], ";\n         }\n       ");
+function getFontSize(_ref, mediaQuery) {
+  var as = _ref.as,
+      styling = _ref.styling;
+  var styles = {
+    h1: {
+      desktop: theme.typography.sizes.desktop.xxlg,
+      tablet: theme.typography.sizes.tablet.xxlg,
+      mobile: theme.typography.sizes.mobile.xxlg
+    },
+    h2: {
+      desktop: theme.typography.sizes.desktop.xlg,
+      tablet: theme.typography.sizes.tablet.xlg,
+      mobile: theme.typography.sizes.mobile.xlg
+    },
+    h3: {
+      desktop: theme.typography.sizes.desktop.lg,
+      tablet: theme.typography.sizes.tablet.lg,
+      mobile: theme.typography.sizes.mobile.lg
+    },
+    h4: {
+      desktop: theme.typography.sizes.desktop.md,
+      tablet: theme.typography.sizes.tablet.md,
+      mobile: theme.typography.sizes.mobile.md
+    },
+    h5: {
+      desktop: theme.typography.sizes.desktop.sm,
+      tablet: theme.typography.sizes.tablet.sm,
+      mobile: theme.typography.sizes.mobile.sm
+    },
+    h6: {
+      desktop: theme.typography.sizes.desktop.xsm,
+      tablet: theme.typography.sizes.tablet.xsm,
+      mobile: theme.typography.sizes.mobile.xsm
+    }
+  };
+
+  if (styling) {
+    return styles[styling][mediaQuery];
+  } else {
+    return styles[as][mediaQuery];
   }
-
-  return colors;
-}, function () {
-  var fonts = '';
-
-  for (var font in theme.typography.fonts) {
-    fonts += ".".concat(font, "\n         {\n          font-family: ").concat(theme.typography.fonts[font], ";\n         }\n       ");
-  }
-
-  return fonts;
-}, theme.typography.sizes.desktop.md, theme.typography.fonts['font-3'], theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.md, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.md);
-
-function head () {
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(GlobalStyles, null));
 }
 
+function getSpaceAfter(_ref2) {
+  var spaceAfter = _ref2.spaceAfter;
+
+  if (spaceAfter === 'none') {
+    return 0;
+  } else if (spaceAfter === 'small') {
+    return theme.unit(0.25);
+  } else if (spaceAfter === 'medium') {
+    return theme.unit(0.5);
+  } else {
+    return theme.unit(0.75);
+  }
+}
+
+function getColor(_ref3) {
+  var color = _ref3.color;
+  return theme.colors[color];
+}
+
+function getTextShadow(_ref4) {
+  var shadow = _ref4.shadow;
+
+  if (shadow === 'dark') {
+    return "1px 2px ".concat(theme.colors.dark1);
+  }
+
+  return 'none';
+}
+
+var TitleUI = styled__default('span')(_templateObject$o(), getColor, theme.typography.fonts['font-3'], function (props) {
+  return getFontSize(props, 'desktop');
+}, function (props) {
+  return props.fontStyle;
+}, getSpaceAfter, getTextShadow);
+var AnchorUI = styled__default('div')(_templateObject2$f(), theme.layout.desktop.headerHeight, theme.layout.desktop.headerHeight, theme.breakPointsAsPixel.mobile, theme.breakPointsAsPixel.tablet, theme.layout.tablet.headerHeight, theme.unit(0.5), theme.layout.tablet.headerHeight, theme.unit(0.5), theme.breakPointsAsPixel.mobile, theme.layout.mobile.headerHeight, theme.unit(0.5), theme.layout.mobile.headerHeight, theme.unit(0.5));
+var IconUI = styled__default('img')(_templateObject3$8());
+
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+/* eslint-disable no-unused-vars */
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function shouldUseNative() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
+}
+
+var objectAssign = shouldUseNative() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject(target);
+	var symbols;
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
+
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
+
+		if (getOwnPropertySymbols) {
+			symbols = getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
+
+	return to;
+};
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+var ReactPropTypesSecret_1 = ReactPropTypesSecret;
+
+var printWarning = function() {};
+
+if (process.env.NODE_ENV !== 'production') {
+  var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
+  var loggedTypeFailures = {};
+  var has = Function.call.bind(Object.prototype.hasOwnProperty);
+
+  printWarning = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+/**
+ * Assert that the values match with the type specs.
+ * Error messages are memorized and will only be shown once.
+ *
+ * @param {object} typeSpecs Map of name to a ReactPropType
+ * @param {object} values Runtime values that need to be type-checked
+ * @param {string} location e.g. "prop", "context", "child context"
+ * @param {string} componentName Name of the component for error messages.
+ * @param {?Function} getStack Returns the component stack.
+ * @private
+ */
+function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
+  if (process.env.NODE_ENV !== 'production') {
+    for (var typeSpecName in typeSpecs) {
+      if (has(typeSpecs, typeSpecName)) {
+        var error;
+        // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            var err = Error(
+              (componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' +
+              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.'
+            );
+            err.name = 'Invariant Violation';
+            throw err;
+          }
+          error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret$1);
+        } catch (ex) {
+          error = ex;
+        }
+        if (error && !(error instanceof Error)) {
+          printWarning(
+            (componentName || 'React class') + ': type specification of ' +
+            location + ' `' + typeSpecName + '` is invalid; the type checker ' +
+            'function must return `null` or an `Error` but returned a ' + typeof error + '. ' +
+            'You may have forgotten to pass an argument to the type checker ' +
+            'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' +
+            'shape all require an argument).'
+          );
+        }
+        if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures[error.message] = true;
+
+          var stack = getStack ? getStack() : '';
+
+          printWarning(
+            'Failed ' + location + ' type: ' + error.message + (stack != null ? stack : '')
+          );
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Resets warning cache when testing.
+ *
+ * @private
+ */
+checkPropTypes.resetWarningCache = function() {
+  if (process.env.NODE_ENV !== 'production') {
+    loggedTypeFailures = {};
+  }
+};
+
+var checkPropTypes_1 = checkPropTypes;
+
+var has$1 = Function.call.bind(Object.prototype.hasOwnProperty);
+var printWarning$1 = function() {};
+
+if (process.env.NODE_ENV !== 'production') {
+  printWarning$1 = function(text) {
+    var message = 'Warning: ' + text;
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+}
+
+function emptyFunctionThatReturnsNull() {
+  return null;
+}
+
+var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+  var ANONYMOUS = '<<anonymous>>';
+
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    elementType: createElementTypeTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker,
+    exact: createStrictShapeTypeChecker,
+  };
+
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+  /*eslint-disable no-self-compare*/
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+  function PropTypeError(message) {
+    this.message = message;
+    this.stack = '';
+  }
+  // Make `instanceof Error` still work for returned errors.
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if (process.env.NODE_ENV !== 'production') {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret_1) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          var err = new Error(
+            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+            'Use `PropTypes.checkPropTypes()` to call them. ' +
+            'Read more at http://fb.me/use-check-prop-types'
+          );
+          err.name = 'Invariant Violation';
+          throw err;
+        } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+          if (
+            !manualPropTypeCallCache[cacheKey] &&
+            // Avoid spamming the console because they are often not actionable except for lib authors
+            manualPropTypeWarningCount < 3
+          ) {
+            printWarning$1(
+              'You are manually calling a React.PropTypes validation ' +
+              'function for the `' + propFullName + '` prop on `' + componentName  + '`. This is deprecated ' +
+              'and will throw in the standalone `prop-types` package. ' +
+              'You may be seeing this warning due to a third-party PropTypes ' +
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
+            );
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunctionThatReturnsNull);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+      var propValue = props[propName];
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret_1);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!reactIs.isValidElementType(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement type.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+      if (process.env.NODE_ENV !== 'production') {
+        if (arguments.length > 1) {
+          printWarning$1(
+            'Invalid arguments supplied to oneOf, expected an array, got ' + arguments.length + ' arguments. ' +
+            'A common mistake is to write oneOf(x, y, z) instead of oneOf([x, y, z]).'
+          );
+        } else {
+          printWarning$1('Invalid argument supplied to oneOf, expected an array.');
+        }
+      }
+      return emptyFunctionThatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues, function replacer(key, value) {
+        var type = getPreciseType(value);
+        if (type === 'symbol') {
+          return String(value);
+        }
+        return value;
+      });
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + String(propValue) + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+      for (var key in propValue) {
+        if (has$1(propValue, key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1);
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+      process.env.NODE_ENV !== 'production' ? printWarning$1('Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      return emptyFunctionThatReturnsNull;
+    }
+
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (typeof checker !== 'function') {
+        printWarning$1(
+          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
+          'received ' + getPostfixForTypeWarning(checker) + ' at index ' + i + '.'
+        );
+        return emptyFunctionThatReturnsNull;
+      }
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret_1) == null) {
+          return null;
+        }
+      }
+
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      for (var key in shapeTypes) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          continue;
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createStrictShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      // We need to check all keys in case some are required but missing from
+      // props.
+      var allKeys = objectAssign({}, props[propName], shapeTypes);
+      for (var key in allKeys) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          return new PropTypeError(
+            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
+            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
+            '\nValid keys: ' +  JSON.stringify(Object.keys(shapeTypes), null, '  ')
+          );
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+
+    return createChainableTypeChecker(validate);
+  }
+
+  function isNode(propValue) {
+    switch (typeof propValue) {
+      case 'number':
+      case 'string':
+      case 'undefined':
+        return true;
+      case 'boolean':
+        return !propValue;
+      case 'object':
+        if (Array.isArray(propValue)) {
+          return propValue.every(isNode);
+        }
+        if (propValue === null || isValidElement(propValue)) {
+          return true;
+        }
+
+        var iteratorFn = getIteratorFn(propValue);
+        if (iteratorFn) {
+          var iterator = iteratorFn.call(propValue);
+          var step;
+          if (iteratorFn !== propValue.entries) {
+            while (!(step = iterator.next()).done) {
+              if (!isNode(step.value)) {
+                return false;
+              }
+            }
+          } else {
+            // Iterator will provide entry [k,v] tuples rather than values.
+            while (!(step = iterator.next()).done) {
+              var entry = step.value;
+              if (entry) {
+                if (!isNode(entry[1])) {
+                  return false;
+                }
+              }
+            }
+          }
+        } else {
+          return false;
+        }
+
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  function isSymbol(propType, propValue) {
+    // Native Symbol.
+    if (propType === 'symbol') {
+      return true;
+    }
+
+    // falsy value can't be a Symbol
+    if (!propValue) {
+      return false;
+    }
+
+    // 19.4.3.5 Symbol.prototype[@@toStringTag] === 'Symbol'
+    if (propValue['@@toStringTag'] === 'Symbol') {
+      return true;
+    }
+
+    // Fallback for non-spec compliant Symbols which are polyfilled.
+    if (typeof Symbol === 'function' && propValue instanceof Symbol) {
+      return true;
+    }
+
+    return false;
+  }
+
+  // Equivalent of `typeof` but with special handling for array and regexp.
+  function getPropType(propValue) {
+    var propType = typeof propValue;
+    if (Array.isArray(propValue)) {
+      return 'array';
+    }
+    if (propValue instanceof RegExp) {
+      // Old webkits (at least until Android 4.0) return 'function' rather than
+      // 'object' for typeof a RegExp. We'll normalize this here so that /bla/
+      // passes PropTypes.object.
+      return 'object';
+    }
+    if (isSymbol(propType, propValue)) {
+      return 'symbol';
+    }
+    return propType;
+  }
+
+  // This handles more types than `getPropType`. Only used for error messages.
+  // See `createPrimitiveTypeChecker`.
+  function getPreciseType(propValue) {
+    if (typeof propValue === 'undefined' || propValue === null) {
+      return '' + propValue;
+    }
+    var propType = getPropType(propValue);
+    if (propType === 'object') {
+      if (propValue instanceof Date) {
+        return 'date';
+      } else if (propValue instanceof RegExp) {
+        return 'regexp';
+      }
+    }
+    return propType;
+  }
+
+  // Returns a string that is postfixed to a warning about an invalid type.
+  // For example, "undefined" or "of type array"
+  function getPostfixForTypeWarning(value) {
+    var type = getPreciseType(value);
+    switch (type) {
+      case 'array':
+      case 'object':
+        return 'an ' + type;
+      case 'boolean':
+      case 'date':
+      case 'regexp':
+        return 'a ' + type;
+      default:
+        return type;
+    }
+  }
+
+  // Returns class name of the object, if any.
+  function getClassName(propValue) {
+    if (!propValue.constructor || !propValue.constructor.name) {
+      return ANONYMOUS;
+    }
+    return propValue.constructor.name;
+  }
+
+  ReactPropTypes.checkPropTypes = checkPropTypes_1;
+  ReactPropTypes.resetWarningCache = checkPropTypes_1.resetWarningCache;
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+function emptyFunction() {}
+function emptyFunctionWithReset() {}
+emptyFunctionWithReset.resetWarningCache = emptyFunction;
+
+var factoryWithThrowingShims = function() {
+  function shim(props, propName, componentName, location, propFullName, secret) {
+    if (secret === ReactPropTypesSecret_1) {
+      // It is still safe when called from React.
+      return;
+    }
+    var err = new Error(
+      'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+      'Use PropTypes.checkPropTypes() to call them. ' +
+      'Read more at http://fb.me/use-check-prop-types'
+    );
+    err.name = 'Invariant Violation';
+    throw err;
+  }  shim.isRequired = shim;
+  function getShim() {
+    return shim;
+  }  // Important!
+  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+  var ReactPropTypes = {
+    array: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    elementType: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim,
+    exact: getShim,
+
+    checkPropTypes: emptyFunctionWithReset,
+    resetWarningCache: emptyFunction
+  };
+
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+var propTypes = createCommonjsModule(function (module) {
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var ReactIs = reactIs;
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = factoryWithTypeCheckers(ReactIs.isElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = factoryWithThrowingShims();
+}
+});
+
+function Title(_ref) {
+  var _ref$as = _ref.as,
+      as = _ref$as === void 0 ? 'h3' : _ref$as,
+      children = _ref.children,
+      _ref$color = _ref.color,
+      color = _ref$color === void 0 ? 'dark1' : _ref$color,
+      _ref$icon = _ref.icon,
+      icon = _ref$icon === void 0 ? '' : _ref$icon,
+      _ref$id = _ref.id,
+      id = _ref$id === void 0 ? '' : _ref$id,
+      _ref$fontStyle = _ref.fontStyle,
+      fontStyle = _ref$fontStyle === void 0 ? 'normal' : _ref$fontStyle,
+      _ref$shadow = _ref.shadow,
+      shadow = _ref$shadow === void 0 ? 'none' : _ref$shadow,
+      _ref$spaceAfter = _ref.spaceAfter,
+      spaceAfter = _ref$spaceAfter === void 0 ? 'default' : _ref$spaceAfter,
+      styling = _ref.styling;
+  var content = /*#__PURE__*/React.createElement(TitleUI, {
+    as: as,
+    icon: icon,
+    id: id,
+    color: color,
+    fontStyle: fontStyle,
+    shadow: shadow,
+    spaceAfter: spaceAfter,
+    styling: styling
+  }, children, icon ? /*#__PURE__*/React.createElement(IconUI, {
+    src: "icons/".concat(icon)
+  }) : null);
+
+  if (id) {
+    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(AnchorUI, {
+      id: id
+    }), content);
+  }
+
+  return content;
+}
+Title.propTypes = {
+  as: propTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
+  color: propTypes.oneOf(Object.keys(theme.colors)),
+  fontStyle: propTypes.oneOf(['normal', 'italic', 'oblique']),
+  styling: propTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
+  shadow: propTypes.oneOf(['none', 'dark']),
+  spaceAfter: propTypes.oneOf(['none', 'small', 'medium', 'default'])
+};
+
 function _templateObject$p() {
-  var data = _taggedTemplateLiteral(["\n  padding: ", ";\n  background-color: ", ";\n  border: ", ";\n  margin: ", ";\n  padding-bottom: 0;\n"]);
+  var data = _taggedTemplateLiteral(["\nhtml, body {\n  height: 100%;\n}\n\nbody {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n}\n\n#root {\n  height: 100%;\n}\n\n@font-face {\n  font-family: 'Roboto';\n  font-weight: 500;\n  font-style: normal;\n  src: url('/fonts/roboto-v20-latin-500.woff2') format('woff2'),\n   url('/fonts/roboto-v20-latin-500.woff') format('woff');\n}\n\n@font-face {\n  font-family: 'Roboto';\n  font-weight: 400;\n  font-style: normal;\n  unicode-range: U+000-5FF;\n  src: url('/fonts/roboto-v20-latin-regular.woff2') format('woff2'),\n  url('/fonts/roboto-v20-latin-regular.woff') format('woff');\n }\n\n/* css reset */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: 1.125rem;\n  line-height: 1.5;\n  margin: 0;\n  overflow: auto;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nimg {\n  max-width: 100%;\n  height: auto;\n}\n\niframe {\n  max-width: 100%;\n}\n\n\n/* link styles */\na:active {\n  color: ", ";\n  text-decoration: none;\n}\n\na:link {\n  text-decoration: none;\n  color: ", ";\n}\n\na:hover {\n  color: ", ";\n  text-decoration: underline;\n}\n\na:visited {\n  color: ", ";\n  text-decoration: none;\n}\n\n/* list and paragraph styles */\np, ul, code {\n  padding: 0;\n  margin-bottom: ", ";\n}\n\nb {\n  font-weight: bold;\n}\n\nul {\n  list-style: disc;\n  margin-left: ", ";\n  margin-right: ", ";\n}\n\nli {\n  margin-bottom: ", ";\n}\n\ncode {\n  box-sizing: border-box;\n  background-color:  ", ";\n  display: block;\n  padding: ", ";\n  color: ", ";\n  width: 100%;\n  font-family: 'Courier New', Courier, monospace;\n  white-space: normal;\n\n  font-size: ", ";\n\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n\n/* table styles */\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    width: 100%;\n  margin-bottom: ", ";\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td, th {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    th {\n      background-color: ", ";\n    }\n  }\n\n\n  @media (max-width: ", ") {\n    table.responsive-collapse {\n\n    table, thead, tbody, th, td, tr {\n\t\tdisplay: block;\n\t}\n\n  thead tr {\n\t\tposition: absolute;\n\t\ttop: -9999px;\n\t\tleft: -9999px;\n\t}\n    }\n\n  table.n-plus-2 {\n  td:nth-child(n+2) {\n    display: inline-block\n\t}\n  }\n  }\n\n\n.lead {\n  font-size: ", ";\n  line-height: 130%;\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n"]);
 
   _templateObject$p = function _templateObject() {
     return data;
@@ -2122,7 +3099,22 @@ function _templateObject$p() {
 
   return data;
 }
-var ContainerUI$6 = styled__default('blockquote')(_templateObject$p(), theme.unit(0.75), theme.colors['light-1'], theme.border, "".concat(theme.unit(1), " 0"));
+var GlobalStyles = styled.createGlobalStyle(_templateObject$p(), theme.colors.dark4, theme.typography.fonts.font1, theme.colors.dark3, theme.colors.dark3, theme.colors.dark3, theme.colors.dark3, theme.unit(0.75), theme.unit(1), theme.unit(0.5), theme.unit(0.75), theme.colors.light1, theme.unit(0.5), theme.colors.dark1, theme.typography.sizes.desktop.sm, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.sm, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xsm, theme.border, theme.border, theme.unit(1), theme.border, theme.border, theme.unit(0.25), theme.unit(0.5), theme.colors.light1, theme.breakPointsAsPixel.mobile, theme.typography.sizes.desktop.md, theme.typography.fonts['font-3'], theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.md, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.md);
+
+function head () {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(GlobalStyles, null));
+}
+
+function _templateObject$q() {
+  var data = _taggedTemplateLiteral(["\n  padding: ", ";\n  background-color: ", ";\n  border: ", ";\n  margin: ", ";\n  padding-bottom: 0;\n"]);
+
+  _templateObject$q = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var ContainerUI$6 = styled__default('blockquote')(_templateObject$q(), theme.unit(0.75), theme.colors.light1, theme.border, "".concat(theme.unit(1), " 0"));
 
 function BlockQuote (_ref) {
   var children = _ref.children;
@@ -2150,6 +3142,7 @@ function getComponent$1(data, id, type, before) {
         Faq: Faq,
         Grid: Grid,
         Image: Image,
+        Title: Title,
         Quote: Quote$1
       },
       jsx: block.text,
@@ -2322,4 +3315,5 @@ exports.LoadingScreen = Loading;
 exports.Quote = Quote$1;
 exports.ScrollToTop = ScrollToTop;
 exports.Section = Section;
+exports.Title = Title;
 exports.utils = utils;

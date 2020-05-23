@@ -4,7 +4,7 @@ export const BoxWrapper = styled('div')`
   box-sizing: border-box;
   width: 100%;
   display: block;
-  background: ${theme.colors['light-1']};
+  background: ${theme.colors.light1};
   position: relative;
   @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
     padding: ${theme.unit(1)} ${theme.unit(2.5)};
@@ -13,7 +13,7 @@ export const BoxWrapper = styled('div')`
 
 export const QuoteUI = styled('div')`
   display: block;
-  color: ${theme.colors['dark-3']};
+  color: ${theme.colors.dark3};
   height: ${theme.unit(2.5)};
   font-size: ${theme.unit(5)};
   line-height: 1;
@@ -32,7 +32,7 @@ export const DropQuoteUI = styled('div')`
   blockquote {
     font-family: ${theme.typography.fonts['font-3']};
     border: none;
-    color: ${theme.colors['dark-1']};
+    color: ${theme.colors.dark1};
     margin: 0;
   }
 `

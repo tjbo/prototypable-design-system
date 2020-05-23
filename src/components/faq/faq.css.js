@@ -34,7 +34,7 @@ export const DetailsUI = styled('details')`
 
 export const SummaryUI = styled('summary')`
   width: 100%;
-  color: ${theme.colors['dark-4']};
+  color: ${theme.colors.dark4};
   cursor: pointer;
   font-size: ${theme.unit(0.66)};
   font-weight: 500;
@@ -42,8 +42,8 @@ export const SummaryUI = styled('summary')`
   padding: 0;
   &:after {
     content: '';
-    color: ${theme.colors['dark-1']};
-    border: solid ${theme.colors['dark-4']};
+    color: ${theme.colors.dark1};
+    border: solid ${theme.colors.dark4};
     border-width: 0 3px 3px 0;
     display: inline-block;
     padding: 4px;

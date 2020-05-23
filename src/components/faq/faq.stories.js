@@ -1,11 +1,12 @@
 import Faq from './faq'
+import Section from '../section'
 
 export default {
   title: 'Faq',
 }
 
 export const Default = () => (
-  <div>
+  <Section>
     <Faq>
       <Faq.Details>
         <Faq.Summary>
@@ -36,5 +37,5 @@ export const Default = () => (
         </ul>
       </Faq.Details>
     </Faq>
-  </div>
+  </Section>
 )

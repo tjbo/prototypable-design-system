@@ -2,9 +2,9 @@ import theme from '../../theme'
 
 const getBgColor = ({ background }) => {
   if (background === 'light') {
-    return theme.colors['light-1']
+    return theme.colors.light1
   } else if (background === 'dark') {
-    return theme.colors['dark-3']
+    return theme.colors.dark3
   } else {
     return '#fff'
   }

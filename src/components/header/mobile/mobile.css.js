@@ -6,14 +6,14 @@ export const ContainerUI = styled('div')`
   z-index: 1;
   top: 0;
   display: block;
-  background-color: ${theme.colors['dark-1']};
+  background-color: ${theme.colors.dark1};
   height: ${theme.layout.mobile.headerHeight};
   width: 100%;
 `
 
 export const ContainerInnerUI = styled('div')`
   align-items: center;
-  background-color: ${theme.colors['dark-1']};
+  background-color: ${theme.colors.dark1};
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -25,10 +25,10 @@ export const ContainerInnerUI = styled('div')`
 `
 
 export const LinkUI = styled('div')`
-  color: ${theme.colors['light-1']};
+  color: ${theme.colors.light1};
   cursor: pointer;
   box-sizing: border-box;
-  font-family: ${theme.typography.fonts['font-2']};
+  font-family: ${theme.typography.fonts.font1};
   font-size: ${theme.unit(0.75)};
   margin: 0;
   padding: ${theme.unit(0.25)};
@@ -37,7 +37,7 @@ export const LinkUI = styled('div')`
   width: auto;
   text-transform: uppercase;
   :hover {
-    background-color: ${theme.colors['dark-5']};
+    background-color: ${theme.colors.dark5};
     padding: ${theme.unit(0.25)};
   }
   a:active,
@@ -49,12 +49,12 @@ export const LinkUI = styled('div')`
     min-width: 100%;
     text-decoration: none;
   }
-  background-color: ${({ isOpen }) => isOpen && `${theme.colors['dark-5']}`};
+  background-color: ${({ isOpen }) => isOpen && `${theme.colors.dark5}`};
 `
 
 export const MenuUI = styled('nav')`
   box-sizing: border-box;
-  background-color: ${theme.colors['dark-3']};
+  background-color: ${theme.colors.dark3};
   display: block;
   left: 0;
   min-height: 100vh;

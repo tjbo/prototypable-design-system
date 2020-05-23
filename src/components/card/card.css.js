@@ -10,6 +10,7 @@ export const CardUI = styled('div')`
   border: ${theme.border};
   line-height: 1.75;
   width: 100%;
+  min-height: 100%;
 `
 
 export const ContentUI = styled('div')`

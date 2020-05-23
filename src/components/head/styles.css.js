@@ -18,10 +18,10 @@ body {
 
 @font-face {
   font-family: 'Roboto';
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
-  src: url('/fonts/roboto-v20-latin-700.woff2') format('woff2'),
-   url('/fonts/roboto-v20-latin-700.woff') format('woff');
+  src: url('/fonts/roboto-v20-latin-500.woff2') format('woff2'),
+   url('/fonts/roboto-v20-latin-500.woff') format('woff');
 }
 
 @font-face {
@@ -32,30 +32,6 @@ body {
   src: url('/fonts/roboto-v20-latin-regular.woff2') format('woff2'),
   url('/fonts/roboto-v20-latin-regular.woff') format('woff');
  }
-
-/**
- * These values will not show up in content, but can be
- * queried by JavaScript to know which breakpoint is active.
- * Add or remove as many breakpoints as you like.
- */
-body:before {
-  content: "desktop";
-  display: none;
-}
-
-
-@media (max-width: ${theme.breakPointsAsPixel.tablet}) {
-  body:before {
-    content: "tablet";
-  }
-}
-
-@media (max-width: ${theme.breakPointsAsPixel.mobile}) {
-  body:before {
-    content: "mobile";
-  }
-}
-
 
 /* css reset */
 html, body, div, span, applet, object, iframe,
@@ -106,10 +82,10 @@ html {
 }
 
 body {
-  color: ${theme.colors['dark-4']};
+  color: ${theme.colors.dark4};
   display: flex;
   flex-direction: column;
-  font-family: ${theme.typography.fonts['font-1']};
+  font-family: ${theme.typography.fonts.font1};
   font-size: 1.125rem;
   line-height: 1.5;
   margin: 0;
@@ -132,22 +108,22 @@ iframe {
 
 /* link styles */
 a:active {
-  color: ${theme.colors['dark-3']};
+  color: ${theme.colors.dark3};
   text-decoration: none;
 }
 
 a:link {
   text-decoration: none;
-  color: ${theme.colors['dark-3']};
+  color: ${theme.colors.dark3};
 }
 
 a:hover {
-  color: ${theme.colors['dark-3']};
+  color: ${theme.colors.dark3};
   text-decoration: underline;
 }
 
 a:visited {
-  color: ${theme.colors['dark-3']};
+  color: ${theme.colors.dark3};
   text-decoration: none;
 }
 
@@ -173,10 +149,10 @@ li {
 
 code {
   box-sizing: border-box;
-  background-color:  ${theme.colors['light-1']};
+  background-color:  ${theme.colors.light1};
   display: block;
   padding: ${theme.unit(0.5)};
-  color: ${theme.colors['dark-1']};
+  color: ${theme.colors.dark1};
   width: 100%;
   font-family: 'Courier New', Courier, monospace;
   white-space: normal;
@@ -193,98 +169,6 @@ code {
   }
 }
 
-/* heading styles */
-h1, h2, h3, h4, h5, .heading-1, .heading-2, .heading-3, .heading-4, .heading-5, .heading-6 {
-  font-family: ${theme.typography.fonts['font-3']};
-  padding: 0;
-  margin: 0;
-  font-weight: 700;
-  margin-bottom: ${theme.unit(0.75)};
-  line-height: 120%;
-}
-
-h1, .heading-1 {
-  font-size: ${theme.typography.sizes.desktop.xxlg};
-
-  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
-   font-size: ${theme.typography.sizes.tablet.xxlg};
-  }
-
-  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
-   font-size: ${theme.typography.sizes.mobile.xxlg};
-  }
-}
-
-h2, .heading-2 {
-  font-size: ${theme.typography.sizes.desktop.xlg};
-
-  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
-   font-size: ${theme.typography.sizes.tablet.xlg};
-  }
-
-  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
-   font-size: ${theme.typography.sizes.mobile.xlg};
-  }
-}
-
-h3, .heading-3 {
-  font-style: normal;
-  font-size: ${theme.typography.sizes.desktop.lg};
-
-  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
-   font-size: ${theme.typography.sizes.tablet.lg};
-  }
-
-  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
-   font-size: ${theme.typography.sizes.mobile.lg};
-  }
-}
-
-h4, .heading-4 {
-  font-size: ${theme.typography.sizes.desktop.md};;
-
-  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
-   font-size: ${theme.typography.sizes.tablet.md};
-  }
-
-  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
-   font-size: ${theme.typography.sizes.mobile.md};
-  }
-}
-
-h5, .heading-5 {
-  font-family: ${theme.typography.fonts['font-1']};
-  font-size:  ${theme.typography.sizes.desktop.sm};
-
-  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
-   font-size: ${theme.typography.sizes.tablet.sm};
-  }
-
-  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
-   font-size: ${theme.typography.sizes.mobile.sm};
-  }
-}
-
-h6, .heading-6 {
-  font-family: ${theme.typography.fonts['font-1']};
-  font-size:  ${theme.typography.sizes.desktop.xsm};
-
-  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
-   font-size: ${theme.typography.sizes.tablet.xsm};
-  }
-
-  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
-   font-size: ${theme.typography.sizes.mobile.xsm};
-  }
-}
-
-h1 + h2, h1 + h2.heading-2 {
-  margin-top: -${theme.unit(0.75)};
-}
-
-h2 + h4 {
-  margin-top: -${theme.unit(0.75)};
-}
 
 /* table styles */
   table {
@@ -311,7 +195,7 @@ h2 + h4 {
     }
 
     th {
-      background-color: ${theme.colors['light-1']};
+      background-color: ${theme.colors.light1};
     }
   }
 
@@ -337,59 +221,6 @@ h2 + h4 {
   }
   }
 
-
-/* makes a class for each color in theme */
-  ${() => {
-    let colors = ''
-    for (const color in theme.colors) {
-      colors += `.${color}
-         {
-          color: ${theme.colors[color]};
-         }
-       `
-      colors += `a.${color}:active, a.${color}:link, a.${color}:hover, a.${color}:visited
-         {
-          color: ${theme.colors[color]};
-         }
-       `
-    }
-    return colors
-  }}
-
-/* makes a class for each font in theme */
-${() => {
-  let fonts = ''
-  for (const font in theme.typography.fonts) {
-    fonts += `.${font}
-         {
-          font-family: ${theme.typography.fonts[font]};
-         }
-       `
-  }
-  return fonts
-}}
-
-/* random text styles */
-
-.italic {
-  font-style: italic;
-}
-
-.text-shadow-dark {
-text-shadow: 1px 2px #000
-}
-
-.line-height-1 {
-  line-height: 1;
-}
-
-.line-height-1-2-0 {
-  line-height: 1;
-}
-
-.bold {
-  font-weight: 700;
-}
 
 .lead {
   font-size: ${theme.typography.sizes.desktop.md};

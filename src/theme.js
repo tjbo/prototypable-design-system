@@ -14,21 +14,19 @@ export default {
     desktop: '1280px',
   },
   colors: {
-    ['dark-1']: '#000000',
-    ['dark-2']: '#D40000',
-    ['dark-3']: '#0091ea',
-    ['dark-4']: '#454545',
-    ['dark-5']: '#0066a3',
-    ['light-1']: '#f5faff',
-    ['light-2']: '36,139,204',
-    ['light-3']: '#ffffff',
-    ['error']: '#D40000',
+    dark1: '#000000',
+    dark2: '#D40000',
+    dark3: '#0091ea',
+    dark4: '#454545',
+    dark5: '#0066a3',
+    light1: '#f5faff',
+    light2: '36,139,204',
+    light3: '#ffffff',
+    error: '#D40000',
   },
   typography: {
     fonts: {
-      ['font-1']: 'Roboto',
-      ['font-2']: 'Roboto',
-      ['font-3']: 'Roboto',
+      font1: 'Roboto',
     },
     sizes: {
       desktop: {

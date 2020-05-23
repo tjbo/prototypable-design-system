@@ -6,8 +6,8 @@ export const ContainerUI = styled('div')`
   justify-content: space-around;
   padding: 1em;
   text-transform: uppercase;
-  background-color: ${theme.colors['light-1']};
-  color: ${theme.colors['dark-3']};
+  background-color: ${theme.colors.light1};
+  color: ${theme.colors.dark3};
   font-weight: bold;
-  font-family: ${theme.typography.fonts['font-2']};
+  font-family: ${theme.typography.fonts.font1};
 `

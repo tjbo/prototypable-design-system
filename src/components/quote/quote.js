@@ -6,7 +6,7 @@ export default function ({ sidebar }) {
       <OpenQuoteUI>“</OpenQuoteUI>
       <DropQuoteUI>
         <blockquote
-          className="heading-3 italic ['font-2']"
+          className="heading-3 italic font1"
           dangerouslySetInnerHTML={{ __html: sidebar.text }}
         />
       </DropQuoteUI>

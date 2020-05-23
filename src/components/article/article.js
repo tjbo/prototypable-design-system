@@ -15,18 +15,17 @@ Article.Content = function ({ children, width = '64%' }) {
   )
 }
 
-Article.Sidebar = function ({ children, width = '32%', styling = '' }) {
+Article.Sidebar = function ({ children, width = '32%' }) {
   let _children = children
-
-  if (styling === 'quote') {
-    _children = <Quote>{children}</Quote>
-  }
-
   return <Grid.Col width={width}>{_children}</Grid.Col>
 }
 
 Article.Box = function ({ children }) {
   return <Box>{children}</Box>
+}
+
+Article.Quote = function ({ children }) {
+  return <Quote>{children}</Quote>
 }
 
 export default Article
