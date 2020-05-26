@@ -7,10 +7,16 @@ export default function getSrcSets(sizes, data) {
     return data[size]
   })
 
-  srcSets.push({
-    dimensions: data.dimensions,
-    url: data.url,
-  })
+  if (data && data.url) {
+    srcSets.push({
+      dimensions: data.dimensions,
+      url: data.url,
+    })
+  }
+
+  if (!srcSets.length) {
+    return
+  }
 
   return srcSets
     .map(({ url, dimensions: { width } }) => {

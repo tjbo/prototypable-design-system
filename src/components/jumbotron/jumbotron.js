@@ -1,8 +1,8 @@
 import React from 'react'
-import { ContentUI, ImageUI } from './jumbotron.css'
+import { ContainerUI, ContentUI, ImageUI } from './jumbotron.css'
 import getSrcSets from '../../utils/getSrcSets'
 
-const sizes = [
+const fullSizes = [
   '360×640',
   '768×1024',
   '1024x768',
@@ -11,13 +11,13 @@ const sizes = [
   '1920x1080',
 ]
 
-export default function ({ children, body, id, image = null }) {
+export default function ({ children, image = null, size = 'full' }) {
   return (
-    <div>
+    <ContainerUI size={size}>
       <ImageUI>
-        <img srcSet={getSrcSets(sizes, image)} />
+        <img srcSet={getSrcSets(fullSizes, image)} />
       </ImageUI>
       <ContentUI>{children}</ContentUI>
-    </div>
+    </ContainerUI>
   )
 }

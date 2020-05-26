@@ -5,6 +5,7 @@ import Card from '../components/card/'
 import Cards from '../components/cards/'
 import Faq from '../components/faq/'
 import Grid from '../components/grid/'
+import Icon from '../components/icon/'
 import Image from '../components/image/'
 import Jumbotron from '../components/jumbotron/'
 import Quote from '../components/quote/'
@@ -34,6 +35,7 @@ export default function getComponent(data, id, type, before) {
           Form,
           Faq,
           Grid,
+          Icon,
           Image,
           Title,
           Quote,

@@ -304,7 +304,7 @@ function _templateObject2$1() {
 }
 
 function _templateObject$1() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  margin: 5px;\n  width: ", ";\n  align-self: stretch;\n"]);
+  var data = _taggedTemplateLiteral(["\n  align-items: ", ";\n  display: flex;\n  flex-direction: column;\n  margin: 5px;\n  width: ", ";\n  align-self: flex-start;\n  max-width: ", ";\n"]);
 
   _templateObject$1 = function _templateObject() {
     return data;
@@ -313,11 +313,17 @@ function _templateObject$1() {
   return data;
 }
 var ColUI = styled__default('div')(_templateObject$1(), function (_ref) {
-  var width = _ref.width;
+  var alignItems = _ref.alignItems;
+  return alignItems;
+}, function (_ref2) {
+  var width = _ref2.width;
   return "calc(".concat(width, " - 10px)");
+}, function (_ref3) {
+  var maxWidth = _ref3.maxWidth;
+  return maxWidth ? maxWidth : 'initial';
 });
-var GridUI = styled__default('div')(_templateObject2$1(), theme.breakPointsAsPixel.mobile, theme.breakPointsAsPixel.tablet, ColUI, function (_ref2) {
-  var collapse = _ref2.collapse;
+var GridUI = styled__default('div')(_templateObject2$1(), theme.breakPointsAsPixel.mobile, theme.breakPointsAsPixel.tablet, ColUI, function (_ref4) {
+  var collapse = _ref4.collapse;
   return collapse === 'tablet' ? '100%' : "calc(50% - 10px)";
 }, theme.breakPointsAsPixel.mobile, ColUI);
 
@@ -331,15 +337,21 @@ function Grid(_ref) {
 }
 
 Grid.Col = function (_ref2) {
-  var children = _ref2.children,
+  var _ref2$alignItems = _ref2.alignItems,
+      alignItems = _ref2$alignItems === void 0 ? 'flex-start' : _ref2$alignItems,
+      children = _ref2.children,
+      maxWidth = _ref2.maxWidth,
       _ref2$width = _ref2.width,
       width = _ref2$width === void 0 ? '32%' : _ref2$width,
       _ref2$justifyContent = _ref2.justifyContent,
       justifyContent = _ref2$justifyContent === void 0 ? 'flex-start' : _ref2$justifyContent,
       _ref2$stretch = _ref2.stretch,
       stretch = _ref2$stretch === void 0 ? false : _ref2$stretch;
+  console.log('dsafas', alignItems);
   return /*#__PURE__*/React.createElement(ColUI, {
+    alignItems: alignItems,
     justifyContent: justifyContent,
+    maxWidth: maxWidth,
     stretch: stretch,
     width: width
   }, children);
@@ -599,7 +611,7 @@ function _templateObject3$1() {
 }
 
 function _templateObject2$3() {
-  var data = _taggedTemplateLiteral(["\n  background: #fff;\n  padding: ", ";\n  width: 100%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  align-items: ", ";\n  justify-content: ", ";\n  padding: ", ";\n  width: 100%;\n"]);
 
   _templateObject2$3 = function _templateObject2() {
     return data;
@@ -609,7 +621,7 @@ function _templateObject2$3() {
 }
 
 function _templateObject$8() {
-  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n  display: block;\n  background: #fff;\n  border: ", ";\n  line-height: 1.75;\n  width: 100%;\n  min-height: 100%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n  display: block;\n  background: #fff;\n  border: ", ";\n  line-height: 1.75;\n  width: 100%;\n  background-color: ", ";\n\n  ", "\n"]);
 
   _templateObject$8 = function _templateObject() {
     return data;
@@ -617,16 +629,47 @@ function _templateObject$8() {
 
   return data;
 }
-var CardUI = styled__default('div')(_templateObject$8(), theme.border);
-var ContentUI$1 = styled__default('div')(_templateObject2$3(), "".concat(theme.unit(0.5), " ").concat(theme.unit(0.66)));
+var CardUI = styled__default('div')(_templateObject$8(), theme.border, theme.colors.light3, function (_ref) {
+  var asLink = _ref.asLink;
+  return asLink && "\n  :hover {\n    border: 1px solid ".concat(theme.colors.dark3, ";\n    background-color: ").concat(theme.colors.dark3, ";\n    cursor: pointer;\n  }\n  ");
+});
+var ContentUI$1 = styled__default('div')(_templateObject2$3(), function (_ref2) {
+  var alignItems = _ref2.alignItems;
+  return alignItems;
+}, function (_ref3) {
+  var justifyContent = _ref3.justifyContent;
+  return justifyContent;
+}, "".concat(theme.unit(0.5), " ").concat(theme.unit(0.66)));
 var AspectRatioUI = styled__default('div')(_templateObject3$1());
 
 function Card(_ref) {
-  var children = _ref.children;
+  var children = _ref.children,
+      _ref$href = _ref.href,
+      href = _ref$href === void 0 ? '' : _ref$href,
+      _ref$maxWidth = _ref.maxWidth,
+      maxWidth = _ref$maxWidth === void 0 ? null : _ref$maxWidth,
+      _ref$width = _ref.width,
+      width = _ref$width === void 0 ? '32%' : _ref$width;
+  var asLink = !!href;
+
+  function onClick() {
+    if (asLink) {
+      var loc = document.location.toString().split('#')[0];
+      document.location = loc + href;
+      return false;
+    } else {
+      event.preventDefault();
+    }
+  }
+
   return /*#__PURE__*/React.createElement(Grid.Col, {
-    width: "32%",
+    maxWidth: maxWidth,
+    width: width,
     stretch: true
-  }, /*#__PURE__*/React.createElement(CardUI, null, children));
+  }, /*#__PURE__*/React.createElement(CardUI, {
+    asLink: asLink,
+    onClick: onClick
+  }, children));
 }
 
 Card.Image = function (_ref2) {
@@ -635,8 +678,13 @@ Card.Image = function (_ref2) {
 };
 
 Card.Content = function (_ref3) {
-  var children = _ref3.children;
-  return /*#__PURE__*/React.createElement(ContentUI$1, null, children);
+  var alignItems = _ref3.alignItems,
+      justifyContent = _ref3.justifyContent,
+      children = _ref3.children;
+  return /*#__PURE__*/React.createElement(ContentUI$1, {
+    alignItems: alignItems,
+    justifyContent: justifyContent
+  }, children);
 };
 
 function Cards (_ref) {
@@ -2352,6 +2400,27 @@ var header = {
   Contact: Contact$1
 };
 
+function _templateObject$n() {
+  var data = _taggedTemplateLiteral(["\n  max-width: 30px;\n"]);
+
+  _templateObject$n = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+var IconUI = styled__default('img')(_templateObject$n());
+
+function Icon(_ref) {
+  var alt = _ref.alt,
+      src = _ref.src;
+  return /*#__PURE__*/React.createElement(IconUI, {
+    src: src,
+    alt: alt
+  });
+}
+
 function _templateObject2$f() {
   var data = _taggedTemplateLiteral(["\n  ", "\n"]);
 
@@ -2362,17 +2431,17 @@ function _templateObject2$f() {
   return data;
 }
 
-function _templateObject$n() {
+function _templateObject$o() {
   var data = _taggedTemplateLiteral(["\n  display: block;\n  position: relative;\n  width: 100%;\n"]);
 
-  _templateObject$n = function _templateObject() {
+  _templateObject$o = function _templateObject() {
     return data;
   };
 
   return data;
 }
 
-var ImageContainerUI$1 = styled__default('div')(_templateObject$n());
+var ImageContainerUI$1 = styled__default('div')(_templateObject$o());
 var ImageUI$1 = styled__default('img')(_templateObject2$f(), function (_ref) {
   var align = _ref.align;
 
@@ -2396,8 +2465,18 @@ function Image(_ref) {
   }));
 }
 
+function _templateObject3$9() {
+  var data = _taggedTemplateLiteral(["\n  max-width: 100%;\n  max-height: inherit;\n  img {\n    display: block;\n    width: 100%;\n    max-height: inherit;\n    object-fit: cover;\n  }\n"]);
+
+  _templateObject3$9 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject2$g() {
-  var data = _taggedTemplateLiteral(["\n  max-width: 100%;\n  img {\n    display: block;\n    width: 100%;\n    height: 100%;\n    object-fit: cover;\n  }\n\n  @media (min-width: ", ") {\n    min-height: calc(100vh - ", ");\n\n    img {\n      height: calc(100vh - ", ");\n    }\n  }\n\n  @media (max-width: ", ") {\n    min-height: calc(100vh - ", ");\n\n    img {\n      height: calc(100vh - ", ");\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  max-height: inherit;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  text-align: center;\n  top: 0;\n"]);
 
   _templateObject2$g = function _templateObject2() {
     return data;
@@ -2406,17 +2485,21 @@ function _templateObject2$g() {
   return data;
 }
 
-function _templateObject$o() {
-  var data = _taggedTemplateLiteral(["\n  align-items: center;\n  box-sizing: border-box;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  min-height: calc(100vh - ", ");\n  position: absolute;\n  top: ", ";\n  width: 100%;\n  text-align: center;\n\n  @media (min-width: ", ") {\n    min-height: calc(100vh - ", ");\n  }\n\n  @media (max-width: ", ") {\n    padding: 0 ", ";\n    min-height: calc(100vh - ", ");\n  }\n"]);
+function _templateObject$p() {
+  var data = _taggedTemplateLiteral(["\n  max-height: ", ";\n  margin-top: ", ";\n  position: relative;\n  width: 100%;\n"]);
 
-  _templateObject$o = function _templateObject() {
+  _templateObject$p = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var ContentUI$3 = styled__default('div')(_templateObject$o(), theme.layout.desktop.headerHeight, theme.unit(2.25), theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, theme.unit(0.5), theme.layout.mobile.headerHeight);
-var ImageUI$2 = styled__default('div')(_templateObject2$g(), theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, theme.layout.mobile.headerHeight, theme.layout.mobile.headerHeight);
+var ContainerUI$9 = styled__default('div')(_templateObject$p(), function (_ref) {
+  var size = _ref.size;
+  return size === 'half' ? '50vh' : '100vh';
+}, theme.layout.desktop.headerHeight);
+var ContentUI$3 = styled__default('div')(_templateObject2$g());
+var ImageUI$2 = styled__default('div')(_templateObject3$9());
 
 function getSrcSets(sizes, data) {
   if (!data) {
@@ -2426,10 +2509,18 @@ function getSrcSets(sizes, data) {
   var srcSets = sizes.map(function (size) {
     return data[size];
   });
-  srcSets.push({
-    dimensions: data.dimensions,
-    url: data.url
-  });
+
+  if (data && data.url) {
+    srcSets.push({
+      dimensions: data.dimensions,
+      url: data.url
+    });
+  }
+
+  if (!srcSets.length) {
+    return;
+  }
+
   return srcSets.map(function (_ref) {
     var url = _ref.url,
         width = _ref.dimensions.width;
@@ -2437,28 +2528,30 @@ function getSrcSets(sizes, data) {
   }).join(',');
 }
 
-var sizes = ['360×640', '768×1024', '1024x768', '1366×768', '1600×900', '1920x1080'];
+var fullSizes = ['360×640', '768×1024', '1024x768', '1366×768', '1600×900', '1920x1080'];
 function Jumbotron (_ref) {
   var children = _ref.children,
-      body = _ref.body,
-      id = _ref.id,
       _ref$image = _ref.image,
-      image = _ref$image === void 0 ? null : _ref$image;
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(ImageUI$2, null, /*#__PURE__*/React.createElement("img", {
-    srcSet: getSrcSets(sizes, image)
+      image = _ref$image === void 0 ? null : _ref$image,
+      _ref$size = _ref.size,
+      size = _ref$size === void 0 ? 'full' : _ref$size;
+  return /*#__PURE__*/React.createElement(ContainerUI$9, {
+    size: size
+  }, /*#__PURE__*/React.createElement(ImageUI$2, null, /*#__PURE__*/React.createElement("img", {
+    srcSet: getSrcSets(fullSizes, image)
   })), /*#__PURE__*/React.createElement(ContentUI$3, null, children));
 }
 
-function _templateObject$p() {
+function _templateObject$q() {
   var data = _taggedTemplateLiteral(["\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  min-height: calc(100vh - ", ");\n\n  @media (min-width: ", ") {\n    min-height: calc(100vh - ", ");\n  }\n\n  @media (max-width: ", ") {\n    min-height: calc(100vh - ", ");\n  }\n"]);
 
-  _templateObject$p = function _templateObject() {
+  _templateObject$q = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var LoadingScreenContainerUI = styled__default('div')(_templateObject$p(), theme.layout.desktop.headerHeight, theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, theme.layout.mobile.headerHeight);
+var LoadingScreenContainerUI = styled__default('div')(_templateObject$q(), theme.layout.desktop.headerHeight, theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, theme.layout.mobile.headerHeight);
 
 function Loader() {
   return /*#__PURE__*/React.createElement("svg", {
@@ -2485,10 +2578,10 @@ function _templateObject4$7() {
   return data;
 }
 
-function _templateObject3$9() {
+function _templateObject3$a() {
   var data = _taggedTemplateLiteral(["\n  display: block;\n  height: ", ";\n  color: ", ";\n  opacity: 0.5;\n  font-size: ", ";\n  line-height: 1;\n  position: absolute;\n  bottom: ", ";\n  right: ", ";\n"]);
 
-  _templateObject3$9 = function _templateObject3() {
+  _templateObject3$a = function _templateObject3() {
     return data;
   };
 
@@ -2505,18 +2598,18 @@ function _templateObject2$h() {
   return data;
 }
 
-function _templateObject$q() {
+function _templateObject$r() {
   var data = _taggedTemplateLiteral(["\n  box-sizing: border-box;\n  width: 100%;\n  display: block;\n  padding: ", " ", ";\n  background: ", ";\n  position: relative;\n\n  @media (max-width: ", ") {\n    padding: ", " ", ";\n  }\n"]);
 
-  _templateObject$q = function _templateObject() {
+  _templateObject$r = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var BoxWrapper$2 = styled__default('div')(_templateObject$q(), theme.unit(2), theme.unit(1), theme.colors.light1, theme.breakPointsAsPixel.tablet, theme.unit(1), theme.unit(2.5));
+var BoxWrapper$2 = styled__default('div')(_templateObject$r(), theme.unit(2), theme.unit(1), theme.colors.light1, theme.breakPointsAsPixel.tablet, theme.unit(1), theme.unit(2.5));
 var OpenQuoteUI$1 = styled__default('div')(_templateObject2$h(), theme.colors.dark3, theme.unit(2.5), theme.unit(5), theme.unit(0.25), theme.unit(0.25));
-var CloseQuoteUI$1 = styled__default('div')(_templateObject3$9(), theme.unit(2.5), theme.colors.dark3, theme.unit(5), theme.unit(0.25), theme.unit(0.25));
+var CloseQuoteUI$1 = styled__default('div')(_templateObject3$a(), theme.unit(2.5), theme.colors.dark3, theme.unit(5), theme.unit(0.25), theme.unit(0.25));
 var DropQuoteUI$1 = styled__default('div')(_templateObject4$7());
 
 function Quote$1 (_ref) {
@@ -2539,10 +2632,10 @@ function _templateObject2$i() {
   return data;
 }
 
-function _templateObject$r() {
+function _templateObject$s() {
   var data = _taggedTemplateLiteral(["\n  width: 100%;\n  background-color: ", ";\n"]);
 
-  _templateObject$r = function _templateObject() {
+  _templateObject$s = function _templateObject() {
     return data;
   };
 
@@ -2552,7 +2645,9 @@ function _templateObject$r() {
 var getBgColor = function getBgColor(_ref) {
   var background = _ref.background;
 
-  if (background === 'light') {
+  if (background === 'transparent') {
+    return 'transparent';
+  } else if (background === 'light') {
     return theme.colors.light1;
   } else if (background === 'dark') {
     return theme.colors.dark3;
@@ -2573,13 +2668,13 @@ var getInnerWidth = function getInnerWidth(_ref2) {
   }
 };
 
-var SectionWrapperUI = styled__default('section')(_templateObject$r(), getBgColor);
+var SectionWrapperUI = styled__default('section')(_templateObject$s(), getBgColor);
 var SectionUI = styled__default('div')(_templateObject2$i(), getInnerWidth, "".concat(theme.unit(1), " 0"), function (_ref3) {
   var textAlign = _ref3.textAlign;
   return textAlign;
 }, theme.breakPointsAsPixel.tablet, theme.unit(0.5));
 
-function Section (_ref) {
+function Section(_ref) {
   var _ref$children = _ref.children,
       children = _ref$children === void 0 ? [] : _ref$children,
       _ref$textAlign = _ref.textAlign,
@@ -2619,10 +2714,10 @@ function ScrollToTop(_ref) {
   }
 }
 
-function _templateObject3$a() {
-  var data = _taggedTemplateLiteral([""]);
+function _templateObject3$b() {
+  var data = _taggedTemplateLiteral(["\n  width: ", ";\n  height: ", ";\n  margin-bottom: ", ";\n  margin-right: ", ";\n"]);
 
-  _templateObject3$a = function _templateObject3() {
+  _templateObject3$b = function _templateObject3() {
     return data;
   };
 
@@ -2630,7 +2725,7 @@ function _templateObject3$a() {
 }
 
 function _templateObject2$j() {
-  var data = _taggedTemplateLiteral(["\n  display: block;\n  height: ", ";\n  margin-top: -", ";\n  visibility: hidden;\n\n  /* @media (min-width: ", ") and (max-width: ", ") {\n    height: calc(", " + ", ");\n    margin-top: calc(", " + ", ");\n  }\n  @media (max-width: ", ") {\n    height: calc(", " + ", ");\n    margin-top: calc(", " + ", ");\n  } */\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: block;\n  height: ", ";\n  margin-top: -", ";\n  visibility: hidden;\n"]);
 
   _templateObject2$j = function _templateObject2() {
     return data;
@@ -2639,10 +2734,10 @@ function _templateObject2$j() {
   return data;
 }
 
-function _templateObject$s() {
-  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  font-family: ", ";\n  font-size: ", ";\n  font-style: ", ";\n  font-weight: 700;\n  line-height: 120%;\n  margin: 0;\n  margin-bottom: ", ";\n  padding: 0;\n  text-shadow: ", ";\n"]);
+function _templateObject$t() {
+  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  font-family: ", ";\n  font-size: ", ";\n\n  @media (min-width: ", ") and (max-width: ", ") {\n    font-size: ", ";\n  }\n  @media (max-width: ", ") {\n    font-size: ", ";\n  }\n\n  font-style: ", ";\n  font-weight: 700;\n  line-height: 120%;\n  margin: 0;\n  margin-bottom: ", ";\n  margin-top: ", ";\n  padding: 0;\n  text-shadow: ", ";\n"]);
 
-  _templateObject$s = function _templateObject() {
+  _templateObject$t = function _templateObject() {
     return data;
   };
 
@@ -2651,7 +2746,9 @@ function _templateObject$s() {
 
 function getFontSize(_ref, mediaQuery) {
   var as = _ref.as,
-      styling = _ref.styling;
+      styling = _ref.styling,
+      mobileStyling = _ref.mobileStyling,
+      tabletStyling = _ref.tabletStyling;
   var styles = {
     h1: {
       desktop: theme.typography.sizes.desktop.xxlg,
@@ -2685,7 +2782,11 @@ function getFontSize(_ref, mediaQuery) {
     }
   };
 
-  if (styling) {
+  if (!!mobileStyling && mediaQuery === 'mobile') {
+    return styles[mobileStyling][mediaQuery];
+  } else if (!!tabletStyling && mediaQuery === 'tablet') {
+    return styles[tabletStyling][mediaQuery];
+  } else if (styling) {
     return styles[styling][mediaQuery];
   } else {
     return styles[as][mediaQuery];
@@ -2706,28 +2807,46 @@ function getSpaceAfter(_ref2) {
   }
 }
 
-function getColor(_ref3) {
-  var color = _ref3.color;
+function getSpaceBefore(_ref3) {
+  var spaceBefore = _ref3.spaceBefore;
+
+  if (spaceBefore === 'small') {
+    return theme.unit(0.25);
+  } else if (spaceBefore === 'medium') {
+    return theme.unit(0.5);
+  } else {
+    return 0;
+  }
+}
+
+function getColor(_ref4) {
+  var color = _ref4.color;
   return theme.colors[color];
 }
 
-function getTextShadow(_ref4) {
-  var shadow = _ref4.shadow;
+function getTextShadow(_ref5) {
+  var shadow = _ref5.shadow;
 
   if (shadow === 'dark') {
-    return "1px 2px ".concat(theme.colors.dark1);
+    return "2px 3px ".concat(theme.colors.dark1);
+  } else if (shadow === 'light') {
+    return "1px 2px ".concat(theme.colors.light3);
   }
 
   return 'none';
 }
 
-var TitleUI$2 = styled__default('span')(_templateObject$s(), getColor, theme.typography.fonts['font-3'], function (props) {
+var TitleUI$2 = styled__default('span')(_templateObject$t(), getColor, theme.typography.fonts['font-3'], function (props) {
   return getFontSize(props, 'desktop');
+}, theme.breakPointsAsPixel.mobile, theme.breakPointsAsPixel.tablet, function (props) {
+  return getFontSize(props, 'tablet');
+}, theme.breakPointsAsPixel.mobile, function (props) {
+  return getFontSize(props, 'mobile');
 }, function (props) {
   return props.fontStyle;
-}, getSpaceAfter, getTextShadow);
-var AnchorUI = styled__default('div')(_templateObject2$j(), theme.layout.desktop.headerHeight, theme.layout.desktop.headerHeight, theme.breakPointsAsPixel.mobile, theme.breakPointsAsPixel.tablet, theme.layout.tablet.headerHeight, theme.unit(0.5), theme.layout.tablet.headerHeight, theme.unit(0.5), theme.breakPointsAsPixel.mobile, theme.layout.mobile.headerHeight, theme.unit(0.5), theme.layout.mobile.headerHeight, theme.unit(0.5));
-var IconUI = styled__default('img')(_templateObject3$a());
+}, getSpaceAfter, getSpaceBefore, getTextShadow);
+var AnchorUI = styled__default('div')(_templateObject2$j(), theme.layout.desktop.headerHeight, theme.layout.desktop.headerHeight);
+var IconUI$1 = styled__default('img')(_templateObject3$b(), theme.unit(1), theme.unit(1), getSpaceAfter, theme.unit(0.125));
 
 /*
 object-assign
@@ -3584,18 +3703,27 @@ function Title(_ref) {
       id = _ref$id === void 0 ? '' : _ref$id,
       _ref$fontStyle = _ref.fontStyle,
       fontStyle = _ref$fontStyle === void 0 ? 'normal' : _ref$fontStyle,
+      _ref$mobileStyling = _ref.mobileStyling,
+      mobileStyling = _ref$mobileStyling === void 0 ? '' : _ref$mobileStyling,
       _ref$shadow = _ref.shadow,
       shadow = _ref$shadow === void 0 ? 'none' : _ref$shadow,
+      _ref$spaceBefore = _ref.spaceBefore,
+      spaceBefore = _ref$spaceBefore === void 0 ? 'none' : _ref$spaceBefore,
       _ref$spaceAfter = _ref.spaceAfter,
       spaceAfter = _ref$spaceAfter === void 0 ? 'default' : _ref$spaceAfter,
-      styling = _ref.styling;
+      styling = _ref.styling,
+      _ref$tabletStyling = _ref.tabletStyling,
+      tabletStyling = _ref$tabletStyling === void 0 ? '' : _ref$tabletStyling;
   var content = /*#__PURE__*/React.createElement(TitleUI$2, {
     as: as,
     id: id,
     color: color,
     fontStyle: fontStyle,
+    mobileStyling: mobileStyling,
     shadow: shadow,
+    spaceBefore: spaceBefore,
     spaceAfter: spaceAfter,
+    tabletStyling: tabletStyling,
     styling: styling
   }, children);
 
@@ -3616,23 +3744,8 @@ Title.propTypes = {
   spaceAfter: propTypes.oneOf(['none', 'small', 'medium', 'default'])
 };
 
-function _templateObject$t() {
-  var data = _taggedTemplateLiteral(["\nhtml, body {\n  height: 100%;\n}\n\nbody {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n}\n\n#root {\n  height: 100%;\n}\n\n@font-face {\n  font-family: 'Roboto';\n  font-weight: 500;\n  font-style: normal;\n  src: url('/fonts/roboto-v20-latin-500.woff2') format('woff2'),\n   url('/fonts/roboto-v20-latin-500.woff') format('woff');\n}\n\n@font-face {\n  font-family: 'Roboto';\n  font-weight: 400;\n  font-style: normal;\n  unicode-range: U+000-5FF;\n  src: url('/fonts/roboto-v20-latin-regular.woff2') format('woff2'),\n  url('/fonts/roboto-v20-latin-regular.woff') format('woff');\n }\n\n/* css reset */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: 1.125rem;\n  line-height: 1.5;\n  margin: 0;\n  overflow: auto;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nimg {\n  max-width: 100%;\n  height: auto;\n}\n\niframe {\n  max-width: 100%;\n}\n\n\n/* link styles */\na:active {\n  color: ", ";\n  text-decoration: none;\n}\n\na:link {\n  text-decoration: none;\n  color: ", ";\n}\n\na:hover {\n  color: ", ";\n  text-decoration: underline;\n}\n\na:visited {\n  color: ", ";\n  text-decoration: none;\n}\n\n/* list and paragraph styles */\np, ul, code {\n  padding: 0;\n  margin-bottom: ", ";\n}\n\nb {\n  font-weight: bold;\n}\n\nul {\n  list-style: disc;\n  margin-left: ", ";\n  margin-right: ", ";\n}\n\nli {\n  margin-bottom: ", ";\n}\n\ncode {\n  box-sizing: border-box;\n  background-color:  ", ";\n  display: block;\n  padding: ", ";\n  color: ", ";\n  width: 100%;\n  font-family: 'Courier New', Courier, monospace;\n  white-space: normal;\n\n  font-size: ", ";\n\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n\n/* table styles */\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    width: 100%;\n  margin-bottom: ", ";\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td, th {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    th {\n      background-color: ", ";\n    }\n  }\n\n\n  @media (max-width: ", ") {\n    table.responsive-collapse {\n\n    table, thead, tbody, th, td, tr {\n\t\tdisplay: block;\n\t}\n\n  thead tr {\n\t\tposition: absolute;\n\t\ttop: -9999px;\n\t\tleft: -9999px;\n\t}\n    }\n\n  table.n-plus-2 {\n  td:nth-child(n+2) {\n    display: inline-block\n\t}\n  }\n  }\n\n\n.lead {\n  font-size: ", ";\n  line-height: 130%;\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n"]);
-
-  _templateObject$t = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-var GlobalStyles = styled.createGlobalStyle(_templateObject$t(), theme.colors.dark4, theme.typography.fonts.font1, theme.colors.dark3, theme.colors.dark3, theme.colors.dark3, theme.colors.dark3, theme.unit(0.75), theme.unit(1), theme.unit(0.5), theme.unit(0.75), theme.colors.light1, theme.unit(0.5), theme.colors.dark1, theme.typography.sizes.desktop.sm, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.sm, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xsm, theme.border, theme.border, theme.unit(1), theme.border, theme.border, theme.unit(0.25), theme.unit(0.5), theme.colors.light1, theme.breakPointsAsPixel.mobile, theme.typography.sizes.desktop.md, theme.typography.fonts['font-3'], theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.md, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.md);
-
-function head () {
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(GlobalStyles, null));
-}
-
 function _templateObject$u() {
-  var data = _taggedTemplateLiteral(["\n  padding: ", ";\n  background-color: ", ";\n  border: ", ";\n  margin: ", ";\n  padding-bottom: 0;\n"]);
+  var data = _taggedTemplateLiteral(["\nhtml, body {\n  height: 100%;\n}\n\nbody {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n}\n\n#root {\n  height: 100%;\n}\n\n@font-face {\n  font-family: 'Roboto';\n  font-weight: 500;\n  font-style: normal;\n  src: url('/fonts/roboto-v20-latin-500.woff2') format('woff2'),\n   url('/fonts/roboto-v20-latin-500.woff') format('woff');\n}\n\n@font-face {\n  font-family: 'Roboto';\n  font-weight: 400;\n  font-style: normal;\n  unicode-range: U+000-5FF;\n  src: url('/fonts/roboto-v20-latin-regular.woff2') format('woff2'),\n  url('/fonts/roboto-v20-latin-regular.woff') format('woff');\n }\n\n/* css reset */\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n\tmargin: 0;\n\tpadding: 0;\n\tborder: 0;\n\tfont-size: 100%;\n\tfont: inherit;\n\tvertical-align: baseline;\n}\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n\tdisplay: block;\n}\nbody {\n\tline-height: 1;\n}\n\nblockquote, q {\n\tquotes: none;\n}\nblockquote:before, blockquote:after,\nq:before, q:after {\n\tcontent: '';\n\tcontent: none;\n}\ntable {\n\tborder-collapse: collapse;\n\tborder-spacing: 0;\n}\n\nhtml {\n  font-size: 100%;\n}\n\nbody {\n  color: ", ";\n  display: flex;\n  flex-direction: column;\n  font-family: ", ";\n  font-size: 1.125rem;\n  line-height: 1.5;\n  margin: 0;\n  overflow: auto;\n  padding: 0;\n  .is-modal-open {\n    overflow: none;\n  }\n}\n\nimg {\n  max-width: 100%;\n  height: auto;\n}\n\niframe {\n  max-width: 100%;\n}\n\n\n/* link styles */\na:active {\n  color: ", ";\n  text-decoration: none;\n}\n\na:link {\n  text-decoration: none;\n  color: ", ";\n}\n\na:hover {\n  color: ", ";\n  text-decoration: underline;\n}\n\na:visited {\n  color: ", ";\n  text-decoration: none;\n}\n\n/* list and paragraph styles */\np, ul, code {\n  padding: 0;\n  margin-bottom: ", ";\n}\n\nb {\n  font-weight: bold;\n}\n\nul {\n  list-style: disc;\n  margin-left: ", ";\n  margin-right: ", ";\n}\n\nli {\n  margin-bottom: ", ";\n}\n\ncode {\n  box-sizing: border-box;\n  background-color:  ", ";\n  display: block;\n  padding: ", ";\n  color: ", ";\n  width: 100%;\n  font-family: 'Courier New', Courier, monospace;\n  white-space: normal;\n\n  font-size: ", ";\n\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n\n\n/* table styles */\n  table {\n    border-collapse: collapse;\n    border-left: ", ";\n    border-right: ", ";\n    margin: 0;\n    width: 100%;\n  margin-bottom: ", ";\n    tr {\n      border-bottom: ", ";\n      width: 100%;\n    }\n    tr:first-child {\n      border-top: ", ";\n    }\n    td:first-child {\n      font-weight: 700;\n    }\n\n    td, th {\n      background-color: #fff;\n      padding: ", " ", ";\n    }\n\n    th {\n      background-color: ", ";\n    }\n  }\n\n\n  @media (max-width: ", ") {\n    table.responsive-collapse {\n\n    table, thead, tbody, th, td, tr {\n\t\tdisplay: block;\n\t}\n\n  thead tr {\n\t\tposition: absolute;\n\t\ttop: -9999px;\n\t\tleft: -9999px;\n\t}\n    }\n\n  table.n-plus-2 {\n  td:nth-child(n+2) {\n    display: inline-block\n\t}\n  }\n  }\n\n\n.lead {\n  font-size: ", ";\n  line-height: 130%;\n  font-family: ", ";\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n\n  @media (max-width: ", ") {\n   font-size: ", ";\n  }\n}\n"]);
 
   _templateObject$u = function _templateObject() {
     return data;
@@ -3640,11 +3753,26 @@ function _templateObject$u() {
 
   return data;
 }
-var ContainerUI$9 = styled__default('blockquote')(_templateObject$u(), theme.unit(0.75), theme.colors.light1, theme.border, "".concat(theme.unit(1), " 0"));
+var GlobalStyles = styled.createGlobalStyle(_templateObject$u(), theme.colors.dark4, theme.typography.fonts.font1, theme.colors.dark3, theme.colors.dark3, theme.colors.dark3, theme.colors.dark3, theme.unit(0.75), theme.unit(1), theme.unit(0.5), theme.unit(0.75), theme.colors.light1, theme.unit(0.5), theme.colors.dark1, theme.typography.sizes.desktop.sm, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.sm, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xsm, theme.border, theme.border, theme.unit(1), theme.border, theme.border, theme.unit(0.25), theme.unit(0.5), theme.colors.light1, theme.breakPointsAsPixel.mobile, theme.typography.sizes.desktop.md, theme.typography.fonts['font-3'], theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.md, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.md);
+
+function head () {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(GlobalStyles, null));
+}
+
+function _templateObject$v() {
+  var data = _taggedTemplateLiteral(["\n  padding: ", ";\n  background-color: ", ";\n  border: ", ";\n  margin: ", ";\n  padding-bottom: 0;\n"]);
+
+  _templateObject$v = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var ContainerUI$a = styled__default('blockquote')(_templateObject$v(), theme.unit(0.75), theme.colors.light1, theme.border, "".concat(theme.unit(1), " 0"));
 
 function BlockQuote (_ref) {
   var children = _ref.children;
-  return /*#__PURE__*/React.createElement(ContainerUI$9, null, children);
+  return /*#__PURE__*/React.createElement(ContainerUI$a, null, children);
 }
 
 var _short$2 = require('short-uuid');
@@ -3667,6 +3795,7 @@ function getComponent$1(data, id, type, before) {
         Form: Form,
         Faq: Faq,
         Grid: Grid,
+        Icon: Icon,
         Image: Image,
         Title: Title,
         Quote: Quote$1
@@ -3836,6 +3965,7 @@ exports.Form = Form;
 exports.Grid = Grid;
 exports.Head = head;
 exports.Header = header;
+exports.Icon = Icon;
 exports.Image = Image;
 exports.Jumbotron = Jumbotron;
 exports.LoadingScreen = Loading;

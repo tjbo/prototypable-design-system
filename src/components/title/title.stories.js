@@ -14,6 +14,12 @@ export const Default = () => (
         Almost before we knew it, we had left the ground.
       </Title>
     </Section>
+
+    <Section>
+      <Title as="h1" styling="h3">
+        Almost before we knew it, we had left the ground.
+      </Title>
+    </Section>
     <Section background="dark">
       <Title as="h2" styling="h1" color="light3">
         Almost before we knew it, we had left the ground.
@@ -68,4 +74,12 @@ export const Default = () => (
       </Title>
     </Section>
   </div>
+)
+
+export const TitleWithIcon = () => (
+  <Section>
+    <Title as="h1" styling="h3">
+      Buy
+    </Title>
+  </Section>
 )

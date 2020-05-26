@@ -8,9 +8,12 @@ export default function Title({
   color = 'dark1',
   id = '',
   fontStyle = 'normal',
+  mobileStyling = '',
   shadow = 'none',
+  spaceBefore = 'none',
   spaceAfter = 'default',
   styling,
+  tabletStyling = '',
 }) {
   const content = (
     <TitleUI
@@ -18,8 +21,11 @@ export default function Title({
       id={id}
       color={color}
       fontStyle={fontStyle}
+      mobileStyling={mobileStyling}
       shadow={shadow}
+      spaceBefore={spaceBefore}
       spaceAfter={spaceAfter}
+      tabletStyling={tabletStyling}
       styling={styling}
     >
       {children}

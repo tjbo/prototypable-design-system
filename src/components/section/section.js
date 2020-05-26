@@ -1,6 +1,6 @@
 import { SectionUI, SectionWrapperUI } from './section.css'
 
-export default function ({
+function Section({
   children = [],
   textAlign = 'left',
   background = 'default',
@@ -22,3 +22,5 @@ export default function ({
     return null
   }
 }
+
+export default Section
