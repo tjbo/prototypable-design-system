@@ -128,7 +128,7 @@ a:visited {
 }
 
 /* list and paragraph styles */
-p, ul, code {
+p, ul, ol, code {
   padding: 0;
   margin-bottom: ${theme.unit(0.75)};
 }
@@ -139,6 +139,11 @@ b {
 
 ul {
   list-style: disc;
+  margin-left: ${theme.unit(1)};
+  margin-right: ${theme.unit(0.5)};
+}
+
+ol {
   margin-left: ${theme.unit(1)};
   margin-right: ${theme.unit(0.5)};
 }
