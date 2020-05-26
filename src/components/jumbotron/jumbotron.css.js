@@ -3,9 +3,13 @@ import theme from '../../theme'
 
 export const ContainerUI = styled('div')`
   max-height: ${({ size }) => (size === 'half' ? '50vh' : '100vh')};
-  margin-top: 0;
+  margin-top: ${theme.layout.desktop.headerHeight};
   position: relative;
   width: 100%;
+
+  @media (max-width: ${theme.breakPointsAsPixel.desktop}) {
+    margin-top: ${theme.layout.tablet.headerHeight};
+  }
 `
 
 export const ContentUI = styled('div')`
@@ -28,23 +32,7 @@ export const ImageUI = styled('div')`
   img {
     display: block;
     width: 100%;
-    max-height:inherit;
+    max-height: inherit;
     object-fit: cover;
   }
-
-  /* @media (min-width: ${theme.breakPointsAsPixel.desktop}) {
-    min-height: calc(50vh - ${theme.layout.tablet.headerHeight});
-
-    img {
-      height: calc(50vh - ${theme.layout.tablet.headerHeight});
-    }
-  }
-
-  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
-    min-height: calc(50vh - ${theme.layout.mobile.headerHeight});
-
-    img {
-      height: calc(50vh - ${theme.layout.mobile.headerHeight});
-    }
-  } */
 `

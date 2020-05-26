@@ -68,7 +68,7 @@ export default {
       headerHeight: makePixelValue(1.5 * unit),
     },
     tablet: {
-      headerHeight: makePixelValue(2 * unit),
+      headerHeight: makePixelValue(1.5 * unit),
     },
   },
 }
