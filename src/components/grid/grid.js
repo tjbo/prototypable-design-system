@@ -1,17 +1,16 @@
 import { ColUI, GridUI } from './grid.css'
 
-function Grid({ children, collapse = '' }) {
-  return <GridUI collapse={collapse}>{children}</GridUI>
+function Grid({ alignItems = 'flex-start', children, collapse = '' }) {
+  return (
+    <GridUI alignItems={alignItems} collapse={collapse}>
+      {children}
+    </GridUI>
+  )
 }
 
-Grid.Col = function ({
-  children,
-  width = '32%',
-  justifyContent = 'flex-start',
-  stretch = false,
-}) {
+Grid.Col = function ({ children, maxWidth = 'initial', width = '32%' }) {
   return (
-    <ColUI justifyContent={justifyContent} stretch={stretch} width={width}>
+    <ColUI maxWidth={maxWidth} width={width}>
       {children}
     </ColUI>
   )

@@ -1,5 +1,5 @@
 import Grid from '../grid/'
 
-export default function ({ children }) {
-  return <Grid>{children}</Grid>
+export default function ({ alignItems, children }) {
+  return <Grid alignItems={alignItems}>{children}</Grid>
 }

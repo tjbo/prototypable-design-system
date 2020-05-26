@@ -266,7 +266,7 @@ var theme = {
       headerHeight: makePixelValue(1.5 * _unit)
     },
     tablet: {
-      headerHeight: makePixelValue(2 * _unit)
+      headerHeight: makePixelValue(1.5 * _unit)
     }
   }
 };
@@ -294,7 +294,7 @@ var ContentUI = styled__default('div')(_templateObject());
 var SidebarUI = styled__default('div')(_templateObject2(), theme.breakPointsAsPixel.tablet, theme.breakPointsAsPixel.mobile);
 
 function _templateObject2$1() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  width: 100%;\n  align-items: flex-start;\n  align-content: flex-start;\n\n  @media (min-width: ", ") and (max-width: ", ") {\n    ", " {\n      width: ", ";\n    }\n  }\n  @media (max-width: ", ") {\n    ", " {\n      display: block;\n      width: 100%;\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  width: 100%;\n  align-items: ", ";\n  align-content: flex-start;\n\n  @media (min-width: ", ") and (max-width: ", ") {\n    ", " {\n      width: ", ";\n    }\n  }\n  @media (max-width: ", ") {\n    ", " {\n      display: block;\n      width: 100%;\n    }\n  }\n"]);
 
   _templateObject2$1 = function _templateObject2() {
     return data;
@@ -304,7 +304,7 @@ function _templateObject2$1() {
 }
 
 function _templateObject$1() {
-  var data = _taggedTemplateLiteral(["\n  align-items: ", ";\n  display: flex;\n  flex-direction: column;\n  margin: 5px;\n  width: ", ";\n  align-self: flex-start;\n  max-width: ", ";\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  margin: 5px;\n  width: ", ";\n  max-width: ", ";\n"]);
 
   _templateObject$1 = function _templateObject() {
     return data;
@@ -313,46 +313,40 @@ function _templateObject$1() {
   return data;
 }
 var ColUI = styled__default('div')(_templateObject$1(), function (_ref) {
-  var alignItems = _ref.alignItems;
-  return alignItems;
-}, function (_ref2) {
-  var width = _ref2.width;
+  var width = _ref.width;
   return "calc(".concat(width, " - 10px)");
-}, function (_ref3) {
-  var maxWidth = _ref3.maxWidth;
-  return maxWidth ? maxWidth : 'initial';
+}, function (_ref2) {
+  var maxWidth = _ref2.maxWidth;
+  return maxWidth;
 });
-var GridUI = styled__default('div')(_templateObject2$1(), theme.breakPointsAsPixel.mobile, theme.breakPointsAsPixel.tablet, ColUI, function (_ref4) {
+var GridUI = styled__default('div')(_templateObject2$1(), function (_ref3) {
+  var alignItems = _ref3.alignItems;
+  return alignItems;
+}, theme.breakPointsAsPixel.mobile, theme.breakPointsAsPixel.tablet, ColUI, function (_ref4) {
   var collapse = _ref4.collapse;
   return collapse === 'tablet' ? '100%' : "calc(50% - 10px)";
 }, theme.breakPointsAsPixel.mobile, ColUI);
 
 function Grid(_ref) {
-  var children = _ref.children,
+  var _ref$alignItems = _ref.alignItems,
+      alignItems = _ref$alignItems === void 0 ? 'flex-start' : _ref$alignItems,
+      children = _ref.children,
       _ref$collapse = _ref.collapse,
       collapse = _ref$collapse === void 0 ? '' : _ref$collapse;
   return /*#__PURE__*/React.createElement(GridUI, {
+    alignItems: alignItems,
     collapse: collapse
   }, children);
 }
 
 Grid.Col = function (_ref2) {
-  var _ref2$alignItems = _ref2.alignItems,
-      alignItems = _ref2$alignItems === void 0 ? 'flex-start' : _ref2$alignItems,
-      children = _ref2.children,
-      maxWidth = _ref2.maxWidth,
+  var children = _ref2.children,
+      _ref2$maxWidth = _ref2.maxWidth,
+      maxWidth = _ref2$maxWidth === void 0 ? 'initial' : _ref2$maxWidth,
       _ref2$width = _ref2.width,
-      width = _ref2$width === void 0 ? '32%' : _ref2$width,
-      _ref2$justifyContent = _ref2.justifyContent,
-      justifyContent = _ref2$justifyContent === void 0 ? 'flex-start' : _ref2$justifyContent,
-      _ref2$stretch = _ref2.stretch,
-      stretch = _ref2$stretch === void 0 ? false : _ref2$stretch;
-  console.log('dsafas', alignItems);
+      width = _ref2$width === void 0 ? '32%' : _ref2$width;
   return /*#__PURE__*/React.createElement(ColUI, {
-    alignItems: alignItems,
-    justifyContent: justifyContent,
     maxWidth: maxWidth,
-    stretch: stretch,
     width: width
   }, children);
 };
@@ -611,7 +605,7 @@ function _templateObject3$1() {
 }
 
 function _templateObject2$3() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  align-items: ", ";\n  justify-content: ", ";\n  padding: ", ";\n  width: 100%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: column;\n  padding: ", ";\n  width: 100%;\n"]);
 
   _templateObject2$3 = function _templateObject2() {
     return data;
@@ -621,7 +615,7 @@ function _templateObject2$3() {
 }
 
 function _templateObject$8() {
-  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n  display: block;\n  background: #fff;\n  border: ", ";\n  line-height: 1.75;\n  width: 100%;\n  background-color: ", ";\n\n  ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n  display: block;\n  background: #fff;\n  border: ", ";\n  line-height: 1.75;\n  width: 100%;\n  height: 100%;\n  background-color: ", ";\n\n  ", "\n"]);
 
   _templateObject$8 = function _templateObject() {
     return data;
@@ -633,13 +627,7 @@ var CardUI = styled__default('div')(_templateObject$8(), theme.border, theme.col
   var asLink = _ref.asLink;
   return asLink && "\n  :hover {\n    border: 1px solid ".concat(theme.colors.dark3, ";\n    background-color: ").concat(theme.colors.dark3, ";\n    cursor: pointer;\n  }\n  ");
 });
-var ContentUI$1 = styled__default('div')(_templateObject2$3(), function (_ref2) {
-  var alignItems = _ref2.alignItems;
-  return alignItems;
-}, function (_ref3) {
-  var justifyContent = _ref3.justifyContent;
-  return justifyContent;
-}, "".concat(theme.unit(0.5), " ").concat(theme.unit(0.66)));
+var ContentUI$1 = styled__default('div')(_templateObject2$3(), "".concat(theme.unit(0.5), " ").concat(theme.unit(0.66)));
 var AspectRatioUI = styled__default('div')(_templateObject3$1());
 
 function Card(_ref) {
@@ -664,8 +652,7 @@ function Card(_ref) {
 
   return /*#__PURE__*/React.createElement(Grid.Col, {
     maxWidth: maxWidth,
-    width: width,
-    stretch: true
+    width: width
   }, /*#__PURE__*/React.createElement(CardUI, {
     asLink: asLink,
     onClick: onClick
@@ -688,8 +675,11 @@ Card.Content = function (_ref3) {
 };
 
 function Cards (_ref) {
-  var children = _ref.children;
-  return /*#__PURE__*/React.createElement(Grid, null, children);
+  var alignItems = _ref.alignItems,
+      children = _ref.children;
+  return /*#__PURE__*/React.createElement(Grid, {
+    alignItems: alignItems
+  }, children);
 }
 
 function _templateObject$9() {
@@ -2486,7 +2476,7 @@ function _templateObject2$g() {
 }
 
 function _templateObject$p() {
-  var data = _taggedTemplateLiteral(["\n  max-height: ", ";\n  margin-top: ", ";\n  position: relative;\n  width: 100%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  max-height: ", ";\n  margin-top: ", ";\n  position: relative;\n  width: 100%;\n\n  @media (max-width: ", ") {\n    margin-top: ", ";\n  }\n"]);
 
   _templateObject$p = function _templateObject() {
     return data;
@@ -2497,7 +2487,7 @@ function _templateObject$p() {
 var ContainerUI$9 = styled__default('div')(_templateObject$p(), function (_ref) {
   var size = _ref.size;
   return size === 'half' ? '50vh' : '100vh';
-}, theme.layout.desktop.headerHeight);
+}, theme.layout.desktop.headerHeight, theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight);
 var ContentUI$3 = styled__default('div')(_templateObject2$g());
 var ImageUI$2 = styled__default('div')(_templateObject3$9());
 

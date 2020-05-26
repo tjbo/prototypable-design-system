@@ -5,7 +5,7 @@ export const ColUI = styled('div')`
   flex-direction: column;
   margin: 5px;
   width: ${({ width }) => `calc(${width} - 10px)`};
-  align-self: stretch;
+  max-width: ${({ maxWidth }) => maxWidth};
 `
 
 export const GridUI = styled('div')`
@@ -13,7 +13,7 @@ export const GridUI = styled('div')`
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
-  align-items: flex-start;
+  align-items: ${({ alignItems }) => alignItems};
   align-content: flex-start;
 
   @media (min-width: ${theme.breakPointsAsPixel.mobile}) and (max-width: ${theme

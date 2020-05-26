@@ -7,7 +7,7 @@ export default {
 
 export function Default() {
   return (
-    <Grid>
+    <Grid alignItems="stretch">
       <Grid.Col>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eleifend
         volutpat arcu, id congue mi ullamcorper at. Proin sit amet hendrerit
