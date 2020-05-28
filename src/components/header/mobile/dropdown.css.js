@@ -25,6 +25,7 @@ export const DropdownUI = styled('span')`
       align-content: center;
       box-sizing: border-box;
       min-width: 100%;
+      margin-bottom: 0;
       margin-left: 0;
       text-align: center;
       text-transform: uppercase;
