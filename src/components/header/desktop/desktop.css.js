@@ -53,6 +53,7 @@ export const DropdownUI = styled('div')`
     li {
       box-sizing: border-box;
       cursor: pointer;
+      margin-bottom: 0;
       margin-left: 0;
       a {
         :hover {

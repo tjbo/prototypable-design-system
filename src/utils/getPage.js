@@ -1,6 +1,6 @@
 var Prismic = require('prismic-javascript')
 
-export default function getPage(api, id) {
+export default function getPage(api, id, fetchLinks) {
   return api
     .query(Prismic.Predicates.at('document.id', id))
     .then((response) => {
@@ -8,7 +8,7 @@ export default function getPage(api, id) {
       const ids = data.body.map((section) => {
         return section.section.id
       })
-      return api.getByIDs(ids).then((response) => {
+      return api.getByIDs(ids, { fetchLinks }).then((response) => {
         const sections = response.results
         return {
           ...data,

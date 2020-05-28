@@ -1,9 +1,9 @@
 var short = require('short-uuid')
 
-export default function (data, defaultTitle, defaultDescription) {
+export default function (data, defaultTitle, defaultDescription, defaultImage) {
   const ogDescription =
     data.og_description || data.meta_description || defaultDescription
-  const ogImage = data.og_image
+  const ogImage = data.og_image || defaultImage
   const ogTitle = data.og_title || data.meta_title || defaultTitle
   const ogType = data.og_type
   const metaDescription =
