@@ -1915,6 +1915,16 @@ function Section(_ref) {
   }
 }
 
+function toProperCase (str) {
+  return str.split(' ').map(function (w) {
+    return w[0].toUpperCase() + w.substr(1).toLowerCase();
+  }).join(' ');
+}
+
+function formatTitle(title) {
+  return toProperCase(title.replace(/_/g, ' '));
+}
+
 function getImage(image) {
   if (!image) {
     return;
@@ -1935,7 +1945,7 @@ function getContent(title, content) {
         key = _content2[0],
         value = _content2[1];
 
-    return /*#__PURE__*/React.createElement("div", null, key, " : ", value);
+    return /*#__PURE__*/React.createElement("div", null, formatTitle(key), ": ", value);
   }));
 }
 
@@ -1943,7 +1953,6 @@ function CardsSection (_ref) {
   var cards = _ref.cards,
       _ref$showTitle = _ref.showTitle,
       showTitle = _ref$showTitle === void 0 ? true : _ref$showTitle;
-  console.log('show title', cards);
   return /*#__PURE__*/React.createElement(Section, {
     background: "light"
   }, showTitle ? /*#__PURE__*/React.createElement(Title, {

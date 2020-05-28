@@ -3,6 +3,11 @@ import Cards from '../cards'
 import getSrcSets from '../../utils/getSrcSets'
 import Title from '../title'
 import Section from '../section'
+import toProperCase from '../../utils/toProperCase'
+
+function formatTitle(title) {
+  return toProperCase(title.replace(/_/g, ' '))
+}
 
 function getImage(image) {
   if (!image) {
@@ -25,7 +30,7 @@ function getContent(title, content) {
         const [key, value] = _content
         return (
           <div>
-            {key} : {value}
+            {formatTitle(key)}: {value}
           </div>
         )
       })}
@@ -34,7 +39,6 @@ function getContent(title, content) {
 }
 
 export default function ({ cards, showTitle = true }) {
-  console.log('show title', cards)
   return (
     <Section background="light">
       {showTitle ? <Title as="h3">Recently Funded Loans</Title> : null}
