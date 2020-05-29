@@ -3915,15 +3915,23 @@ function BlockQuote (_ref) {
 
 var _short$2 = require('short-uuid');
 
-function getComponent$1(data, id, type, before) {
+function getComponent$1(_ref) {
+  var data = _ref.data,
+      id = _ref.id,
+      type = _ref.type;
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+    before: function before() {},
+    dataComponent: function dataComponent() {}
+  };
   var wrapperComponent = {
     blog_post: Section,
+    component_data: options.dataComponent,
     component_cards: CardsSection,
     component_section: Section,
     component_jumbotron: Jumbotron,
     component_section_rich_text: Section
   };
-  var content = data.body && data.body.map(function (block) {
+  var content = type !== 'component_data' && data.body && data.body.map(function (block) {
     return /*#__PURE__*/React.createElement(JsxParser, {
       components: {
         Article: Article,
@@ -3947,7 +3955,7 @@ function getComponent$1(data, id, type, before) {
   return React.createElement(wrapperComponent[type], _objectSpread2(_objectSpread2({}, data), {}, {
     key: "".concat(type, "-").concat(id),
     id: id
-  }), [before, content]);
+  }), [options.before, content]);
 }
 
 function getPosts(apiUrl, apiToken, type) {
@@ -3982,23 +3990,29 @@ function getPage(api, id, fetchLinks) {
 }
 
 var Prismic$1 = require('prismic-javascript');
-function getPages(apiEndpoint, apiToken, fetchLinks) {
+function getPages(apiEndpoint, apiToken, options) {
   return Prismic$1.getApi(apiEndpoint, {
     accessToken: apiToken
   }).then(function (api) {
     return api.query(Prismic$1.Predicates.at('document.type', 'page')).then(function (response) {
       var promises = response.results.map(function (result) {
-        return getPage(api, result.id, fetchLinks);
+        return getPage(api, result.id, options.fetchLinks);
       });
       return Promise.all(promises).then(function (pages) {
         return pages.map(function (pageData) {
-          return {
-            path: pageData.slug,
-            getData: function getData() {
-              return pageData;
-            },
-            template: pageData.template && pageData.template !== 'default' ? "src/pages/".concat(pageData.template) : 'src/pages/page'
-          };
+          pageData.dynamicData = options.insertData.find(function (data) {
+            if (data.slug === pageData.slug) {
+              return data.data;
+            }
+          });
+
+          if (pageData.template && pageData.template !== 'default') {
+            pageData.template = "src/pages/".concat(pageData.template);
+          } else {
+            pageData.template = 'src/pages/page';
+          }
+
+          return pageData;
         });
       });
     });
@@ -4006,51 +4020,12 @@ function getPages(apiEndpoint, apiToken, fetchLinks) {
 }
 
 function getPosts$1(apiUrl, apiToken) {
-  return new Promise(function (resolve) {
-    return Prismic$2.getApi(apiUrl, {
-      accessToken: apiToken
-    }).then(function (api) {
-      return api.query(Prismic$2.Predicates.at('document.type', 'post')).then(function (response) {
-        var routeData = response.results.map(function (result) {
-          var data = result.data,
-              id = result.id,
-              first_publication_date = result.first_publication_date;
-          data.type = 'blog_post';
-          return {
-            getData: function getData() {
-              return _objectSpread2(_objectSpread2({}, data), {}, {
-                id: id,
-                first_publication_date: first_publication_date,
-                layout_style: 'post'
-              });
-            },
-            path: data.slug,
-            template: 'src/containers/_post'
-          };
-        });
-        var list = response.results.map(function (_ref) {
-          var data = _ref.data,
-              id = _ref.id;
-          var image = data.image,
-              title = data.title,
-              slug = data.slug;
-          return {
-            id: id,
-            image: image,
-            path: slug,
-            title: title
-          };
-        });
-        routeData.push({
-          getData: function getData() {
-            return {
-              posts: list
-            };
-          },
-          path: '/blog/',
-          template: 'src/containers/blog'
-        });
-        resolve(routeData);
+  return Prismic$2.getApi(apiUrl, {
+    accessToken: apiToken
+  }).then(function (api) {
+    return api.query(Prismic$2.Predicates.at('document.type', 'post')).then(function (response) {
+      return response.results.map(function (post) {
+        return post;
       });
     });
   });

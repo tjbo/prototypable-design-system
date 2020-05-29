@@ -1,26 +1,27 @@
 var Prismic = require('prismic-javascript')
 import getPage from './getPage'
 
-export default function getPages(apiEndpoint, apiToken, fetchLinks) {
+export default function getPages(apiEndpoint, apiToken, options) {
   return Prismic.getApi(apiEndpoint, { accessToken: apiToken }).then((api) => {
     return api
       .query(Prismic.Predicates.at('document.type', 'page'))
       .then((response) => {
         const promises = response.results.map((result) => {
-          return getPage(api, result.id, fetchLinks)
+          return getPage(api, result.id, options.fetchLinks)
         })
         return Promise.all(promises).then((pages) => {
           return pages.map((pageData) => {
-            return {
-              path: pageData.slug,
-              getData() {
-                return pageData
-              },
-              template:
-                pageData.template && pageData.template !== 'default'
-                  ? `src/pages/${pageData.template}`
-                  : 'src/pages/page',
+            pageData.dynamicData = options.insertData.find((data) => {
+              if (data.slug === pageData.slug) {
+                return data.data
+              }
+            })
+            if (pageData.template && pageData.template !== 'default') {
+              pageData.template = `src/pages/${pageData.template}`
+            } else {
+              pageData.template = 'src/pages/page'
             }
+            return pageData
           })
         })
       })

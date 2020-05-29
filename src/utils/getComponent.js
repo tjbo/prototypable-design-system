@@ -16,9 +16,13 @@ import Form from '../components/form/form'
 import JsxParser from 'react-jsx-parser'
 var short = require('short-uuid')
 
-export default function getComponent(data, id, type, before) {
+export default function getComponent(
+  { data, id, type },
+  options = { before: () => {}, dataComponent: () => {} },
+) {
   const wrapperComponent = {
     blog_post: Section,
+    component_data: options.dataComponent,
     component_cards: CardsSection,
     component_section: Section,
     component_jumbotron: Jumbotron,
@@ -26,6 +30,7 @@ export default function getComponent(data, id, type, before) {
   }
 
   const content =
+    type !== 'component_data' &&
     data.body &&
     data.body.map((block) => {
       return (
@@ -58,6 +63,6 @@ export default function getComponent(data, id, type, before) {
       key: `${type}-${id}`,
       id: id,
     },
-    [before, content],
+    [options.before, content],
   )
 }
