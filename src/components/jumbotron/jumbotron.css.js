@@ -3,6 +3,8 @@ import theme from '../../theme'
 
 export const ContainerUI = styled('div')`
   max-height: ${({ size }) => (size === 'half' ? '50vh' : '100vh')};
+  min-height: ${({ size }) => (size === 'half' ? '50vh' : '100vh')};
+
   margin-top: ${theme.layout.desktop.headerHeight};
   position: relative;
   width: 100%;
