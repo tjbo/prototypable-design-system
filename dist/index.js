@@ -414,7 +414,7 @@ function _templateObject$1() {
 
   return data;
 }
-var ColUI = styled__default('div')(_templateObject$1(), theme.unit(0.5), function (_ref) {
+var ColUI = styled__default('div')(_templateObject$1(), theme.unit(0.25), function (_ref) {
   var width = _ref.width;
   return width;
 }, function (_ref2) {
@@ -425,7 +425,7 @@ var ColInnerUI = styled__default('div')(_templateObject2$1());
 var GridUI = styled__default('div')(_templateObject3(), theme.unit(1), function (_ref3) {
   var alignItems = _ref3.alignItems;
   return alignItems;
-}, theme.unit(0.5), theme.breakPointsAsPixel.mobile, theme.breakPointsAsPixel.tablet, ColUI, function (_ref4) {
+}, theme.unit(0.25), theme.breakPointsAsPixel.mobile, theme.breakPointsAsPixel.tablet, ColUI, function (_ref4) {
   var collapse = _ref4.collapse;
   return collapse === 'tablet' ? "calc(100% + ".concat(theme.unit(0.25), ")") : "calc(50%)";
 }, theme.breakPointsAsPixel.mobile, ColUI);
