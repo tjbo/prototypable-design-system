@@ -18,7 +18,7 @@ export const GridUI = styled('div')`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: calc(100% + ${theme.unit(1)});
+  width: calc(100% + ${theme.unit(0.5)});
   align-items: ${({ alignItems }) => alignItems};
   align-content: flex-start;
   margin-left: -${theme.unit(0.25)};

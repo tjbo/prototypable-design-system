@@ -338,10 +338,10 @@ var theme = {
       mobile: {
         xsm: '.9rem',
         sm: '1.125rem',
-        md: '1.5rem',
-        lg: '2rem',
-        xlg: '2.25rem',
-        xxlg: '3rem'
+        md: '1.375rem',
+        lg: '1.75rem',
+        xlg: '2.0rem',
+        xxlg: '2.5rem'
       }
     }
   },
@@ -422,7 +422,7 @@ var ColUI = styled__default('div')(_templateObject$1(), theme.unit(0.25), functi
   return maxWidth;
 });
 var ColInnerUI = styled__default('div')(_templateObject2$1());
-var GridUI = styled__default('div')(_templateObject3(), theme.unit(1), function (_ref3) {
+var GridUI = styled__default('div')(_templateObject3(), theme.unit(0.5), function (_ref3) {
   var alignItems = _ref3.alignItems;
   return alignItems;
 }, theme.unit(0.25), theme.breakPointsAsPixel.mobile, theme.breakPointsAsPixel.tablet, ColUI, function (_ref4) {
