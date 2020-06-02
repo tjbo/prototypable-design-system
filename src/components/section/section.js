@@ -1,4 +1,4 @@
-import { SectionUI, SectionWrapperUI } from './section.css'
+import { SectionUI, SectionInnerUI, SectionWrapperUI } from './section.css'
 
 function Section({
   children = [],
@@ -15,7 +15,7 @@ function Section({
     return (
       <SectionWrapperUI background={background}>
         <SectionUI textAlign={textAlign} innerWidth={inner_width}>
-          {children}
+          <SectionInnerUI>{children}</SectionInnerUI>
         </SectionUI>
       </SectionWrapperUI>
     )

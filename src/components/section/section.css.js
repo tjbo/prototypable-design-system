@@ -29,7 +29,6 @@ export const SectionWrapperUI = styled('section')`
   background-color: ${getBgColor};
   justify-content: center;
   align-items: center;
-  padding: ${theme.unit(0.5)} ${theme.unit(0.25)};
 `
 
 export const SectionUI = styled('div')`
@@ -38,5 +37,11 @@ export const SectionUI = styled('div')`
   width: ${getInnerWidth};
   position: relative;
   margin: 0 auto;
+  padding: ${theme.unit(0.5)} ${theme.unit(0.375)};
+  width: 100%;
   text-align: ${({ textAlign }) => textAlign};
+`
+
+export const SectionInnerUI = styled('div')`
+  width: 100%;
 `
