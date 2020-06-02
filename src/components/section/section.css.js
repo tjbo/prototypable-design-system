@@ -37,7 +37,7 @@ export const SectionUI = styled('div')`
   width: ${getInnerWidth};
   position: relative;
   margin: 0 auto;
-  padding: ${theme.unit(0.5)} ${theme.unit(0.375)};
+  padding: ${theme.unit(0.75)} ${theme.unit(0.375)};
   width: 100%;
   text-align: ${({ textAlign }) => textAlign};
 `

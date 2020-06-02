@@ -2,14 +2,54 @@ import styled from 'styled-components'
 import theme from '../../theme'
 
 export const ContainerUI = styled('div')`
-  max-height: ${({ size }) => (size === 'half' ? '50vh' : '100vh')};
-  height: ${({ size }) => (size === 'half' ? '50vh' : '100vh')};
+  height: ${({ size }) =>
+    size === 'half'
+      ? `calc(50vh - ${theme.layout.desktop.headerHeight})`
+      : `calc(100vh - ${theme.layout.desktop.headerHeight})`};
+  max-height: ${({ size }) =>
+    size === 'half'
+      ? `calc(50vh - ${theme.layout.desktop.headerHeight})`
+      : `calc(100vh - ${theme.layout.desktop.headerHeight})`};
+  min-height: ${({ size }) =>
+    size === 'half'
+      ? `calc(50vh - ${theme.layout.desktop.headerHeight})`
+      : `calc(100vh - ${theme.layout.desktop.headerHeight})`};
   margin-top: ${theme.layout.desktop.headerHeight};
   position: relative;
   width: 100%;
 
   @media (max-width: ${theme.breakPointsAsPixel.desktop}) {
+    height: ${({ size }) =>
+      size === 'half'
+        ? `calc(50vh - ${theme.layout.tablet.headerHeight})`
+        : `calc(100vh - ${theme.layout.tablet.headerHeight})`};
+    max-height: ${({ size }) =>
+      size === 'half'
+        ? `calc(50vh - ${theme.layout.tablet.headerHeight})`
+        : `calc(100vh - ${theme.layout.tablet.headerHeight})`};
+    min-height: ${({ size }) =>
+      size === 'half'
+        ? `calc(50vh - ${theme.layout.tablet.headerHeight})`
+        : `calc(100vh - ${theme.layout.tablet.headerHeight})`};
+
     margin-top: ${theme.layout.tablet.headerHeight};
+  }
+
+  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
+    height: ${({ size }) =>
+      size === 'half'
+        ? `calc(50vh - ${theme.layout.mobile.headerHeight})`
+        : `calc(100vh - ${theme.layout.mobile.headerHeight})`};
+    max-height: ${({ size }) =>
+      size === 'half'
+        ? `calc(50vh - ${theme.layout.mobile.headerHeight})`
+        : `calc(100vh - ${theme.layout.mobile.headerHeight})`};
+    min-height: ${({ size }) =>
+      size === 'half'
+        ? `calc(50vh - ${theme.layout.mobile.headerHeight})`
+        : `calc(100vh - ${theme.layout.mobile.headerHeight})`};
+
+    margin-top: ${theme.layout.mobile.headerHeight};
   }
 `
 

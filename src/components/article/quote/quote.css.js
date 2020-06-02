@@ -10,7 +10,7 @@ export const BoxWrapper = styled('div')`
 
 export const QuoteUI = styled('span')`
   color: ${theme.colors.dark3};
-  line-height: 1;
+  line-height: ${theme.unit(4)};
   font-size: ${theme.unit(4)};
   opacity: 0.5;
   position: absolute;

@@ -485,7 +485,7 @@ function _templateObject3$1() {
 }
 
 function _templateObject2$2() {
-  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  line-height: 1;\n  font-size: ", ";\n  opacity: 0.5;\n  position: absolute;\n"]);
+  var data = _taggedTemplateLiteral(["\n  color: ", ";\n  line-height: ", ";\n  font-size: ", ";\n  opacity: 0.5;\n  position: absolute;\n"]);
 
   _templateObject2$2 = function _templateObject2() {
     return data;
@@ -504,7 +504,7 @@ function _templateObject$2() {
   return data;
 }
 var BoxWrapper = styled__default('div')(_templateObject$2(), theme.colors.light1);
-var QuoteUI = styled__default('span')(_templateObject2$2(), theme.colors.dark3, theme.unit(4));
+var QuoteUI = styled__default('span')(_templateObject2$2(), theme.colors.dark3, theme.unit(4), theme.unit(4));
 var OpenQuoteUI = styled__default(QuoteUI)(_templateObject3$1(), theme.unit(0.375), theme.unit(0.125));
 var CloseQuoteUI = styled__default(QuoteUI)(_templateObject4());
 var DropQuoteUI = styled__default('div')(_templateObject5(), theme.unit(1), theme.unit(2), theme.colors.dark1);
@@ -1919,7 +1919,7 @@ var getInnerWidth = function getInnerWidth(_ref2) {
 };
 
 var SectionWrapperUI = styled__default('section')(_templateObject$b(), getBgColor);
-var SectionUI = styled__default('div')(_templateObject2$5(), getInnerWidth, getInnerWidth, theme.unit(0.5), theme.unit(0.375), function (_ref3) {
+var SectionUI = styled__default('div')(_templateObject2$5(), getInnerWidth, getInnerWidth, theme.unit(0.75), theme.unit(0.375), function (_ref3) {
   var textAlign = _ref3.textAlign;
   return textAlign;
 });
@@ -3795,7 +3795,7 @@ function _templateObject2$i() {
 }
 
 function _templateObject$s() {
-  var data = _taggedTemplateLiteral(["\n  max-height: ", ";\n  height: ", ";\n  margin-top: ", ";\n  position: relative;\n  width: 100%;\n\n  @media (max-width: ", ") {\n    margin-top: ", ";\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  height: ", ";\n  max-height: ", ";\n  min-height: ", ";\n  margin-top: ", ";\n  position: relative;\n  width: 100%;\n\n  @media (max-width: ", ") {\n    height: ", ";\n    max-height: ", ";\n    min-height: ", ";\n\n    margin-top: ", ";\n  }\n\n  @media (max-width: ", ") {\n    height: ", ";\n    max-height: ", ";\n    min-height: ", ";\n\n    margin-top: ", ";\n  }\n"]);
 
   _templateObject$s = function _templateObject() {
     return data;
@@ -3805,11 +3805,32 @@ function _templateObject$s() {
 }
 var ContainerUI$a = styled__default('div')(_templateObject$s(), function (_ref) {
   var size = _ref.size;
-  return size === 'half' ? '50vh' : '100vh';
+  return size === 'half' ? "calc(50vh - ".concat(theme.layout.desktop.headerHeight, ")") : "calc(100vh - ".concat(theme.layout.desktop.headerHeight, ")");
 }, function (_ref2) {
   var size = _ref2.size;
-  return size === 'half' ? '50vh' : '100vh';
-}, theme.layout.desktop.headerHeight, theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight);
+  return size === 'half' ? "calc(50vh - ".concat(theme.layout.desktop.headerHeight, ")") : "calc(100vh - ".concat(theme.layout.desktop.headerHeight, ")");
+}, function (_ref3) {
+  var size = _ref3.size;
+  return size === 'half' ? "calc(50vh - ".concat(theme.layout.desktop.headerHeight, ")") : "calc(100vh - ".concat(theme.layout.desktop.headerHeight, ")");
+}, theme.layout.desktop.headerHeight, theme.breakPointsAsPixel.desktop, function (_ref4) {
+  var size = _ref4.size;
+  return size === 'half' ? "calc(50vh - ".concat(theme.layout.tablet.headerHeight, ")") : "calc(100vh - ".concat(theme.layout.tablet.headerHeight, ")");
+}, function (_ref5) {
+  var size = _ref5.size;
+  return size === 'half' ? "calc(50vh - ".concat(theme.layout.tablet.headerHeight, ")") : "calc(100vh - ".concat(theme.layout.tablet.headerHeight, ")");
+}, function (_ref6) {
+  var size = _ref6.size;
+  return size === 'half' ? "calc(50vh - ".concat(theme.layout.tablet.headerHeight, ")") : "calc(100vh - ".concat(theme.layout.tablet.headerHeight, ")");
+}, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, function (_ref7) {
+  var size = _ref7.size;
+  return size === 'half' ? "calc(50vh - ".concat(theme.layout.mobile.headerHeight, ")") : "calc(100vh - ".concat(theme.layout.mobile.headerHeight, ")");
+}, function (_ref8) {
+  var size = _ref8.size;
+  return size === 'half' ? "calc(50vh - ".concat(theme.layout.mobile.headerHeight, ")") : "calc(100vh - ".concat(theme.layout.mobile.headerHeight, ")");
+}, function (_ref9) {
+  var size = _ref9.size;
+  return size === 'half' ? "calc(50vh - ".concat(theme.layout.mobile.headerHeight, ")") : "calc(100vh - ".concat(theme.layout.mobile.headerHeight, ")");
+}, theme.layout.mobile.headerHeight);
 var ContentUI$3 = styled__default('div')(_templateObject2$i());
 var ImageUI$2 = styled__default('div')(_templateObject3$c());
 
