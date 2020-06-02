@@ -23,18 +23,20 @@ const getInnerWidth = ({ innerWidth }) => {
 }
 
 export const SectionWrapperUI = styled('section')`
+  box-sizing: border-box;
+  display: flex;
   width: 100%;
   background-color: ${getBgColor};
+  justify-content: center;
+  align-items: center;
+  padding: ${theme.unit(0.5)} ${theme.unit(0.25)};
 `
 
 export const SectionUI = styled('div')`
   box-sizing: border-box;
   max-width: ${getInnerWidth};
+  width: ${getInnerWidth};
+  position: relative;
   margin: 0 auto;
-  padding: ${`${theme.unit(1)} 0`};
   text-align: ${({ textAlign }) => textAlign};
-
-  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
-    padding: ${theme.unit(0.5)};
-  }
 `

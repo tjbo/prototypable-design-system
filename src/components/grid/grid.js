@@ -1,4 +1,4 @@
-import { ColUI, GridUI } from './grid.css'
+import { ColUI, ColInnerUI, GridUI } from './grid.css'
 
 function Grid({ alignItems = 'flex-start', children, collapse = '' }) {
   return (
@@ -11,7 +11,7 @@ function Grid({ alignItems = 'flex-start', children, collapse = '' }) {
 Grid.Col = function ({ children, maxWidth = 'initial', width = '32%' }) {
   return (
     <ColUI maxWidth={maxWidth} width={width}>
-      {children}
+      <ColInnerUI>{children}</ColInnerUI>
     </ColUI>
   )
 }

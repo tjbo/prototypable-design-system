@@ -1,7 +1,7 @@
 import Grid from '../grid'
 import { AspectRatioUI, CardUI, ContentUI } from './card.css'
 
-function Card({ children, href = '', maxWidth = null, width = '32%' }) {
+function Card({ children, href = '', maxWidth = null, width = '33.33%' }) {
   const asLink = !!href
 
   function onClick() {

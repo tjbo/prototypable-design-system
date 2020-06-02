@@ -7,7 +7,7 @@ function Article({ children, collapse }) {
   return <Grid collapse={collapse}>{children}</Grid>
 }
 
-Article.Content = function ({ children, width = '64%' }) {
+Article.Content = function ({ children, width = '66%' }) {
   return (
     <Grid.Col width={width}>
       <ContentUI>{children}</ContentUI>
@@ -15,7 +15,7 @@ Article.Content = function ({ children, width = '64%' }) {
   )
 }
 
-Article.Sidebar = function ({ children, width = '32%' }) {
+Article.Sidebar = function ({ children, width = '34%' }) {
   let _children = children
   return <Grid.Col width={width}>{_children}</Grid.Col>
 }
