@@ -4,7 +4,8 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var React = _interopDefault(require('react'));
+var React = require('react');
+var React__default = _interopDefault(React);
 var styled = require('styled-components');
 var styled__default = _interopDefault(styled);
 var ReactBreakpoints = require('react-breakpoints');
@@ -436,7 +437,7 @@ function Grid(_ref) {
       children = _ref.children,
       _ref$collapse = _ref.collapse,
       collapse = _ref$collapse === void 0 ? '' : _ref$collapse;
-  return /*#__PURE__*/React.createElement(GridUI, {
+  return /*#__PURE__*/React__default.createElement(GridUI, {
     alignItems: alignItems,
     collapse: collapse
   }, children);
@@ -448,10 +449,10 @@ Grid.Col = function (_ref2) {
       maxWidth = _ref2$maxWidth === void 0 ? 'initial' : _ref2$maxWidth,
       _ref2$width = _ref2.width,
       width = _ref2$width === void 0 ? '32%' : _ref2$width;
-  return /*#__PURE__*/React.createElement(ColUI, {
+  return /*#__PURE__*/React__default.createElement(ColUI, {
     maxWidth: maxWidth,
     width: width
-  }, /*#__PURE__*/React.createElement(ColInnerUI, null, children));
+  }, /*#__PURE__*/React__default.createElement(ColInnerUI, null, children));
 };
 
 function _templateObject5() {
@@ -511,7 +512,7 @@ var DropQuoteUI = styled__default('div')(_templateObject5(), theme.unit(1), them
 
 function Quote (_ref) {
   var children = _ref.children;
-  return /*#__PURE__*/React.createElement(BoxWrapper, null, /*#__PURE__*/React.createElement(OpenQuoteUI, null, "\u201C"), /*#__PURE__*/React.createElement(DropQuoteUI, null, /*#__PURE__*/React.createElement("blockquote", null, children)));
+  return /*#__PURE__*/React__default.createElement(BoxWrapper, null, /*#__PURE__*/React__default.createElement(OpenQuoteUI, null, "\u201C"), /*#__PURE__*/React__default.createElement(DropQuoteUI, null, /*#__PURE__*/React__default.createElement("blockquote", null, children)));
 }
 
 function _templateObject$3() {
@@ -539,17 +540,17 @@ var Box = /*#__PURE__*/function (_React$Component) {
   _createClass(Box, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement(BoxWrapper$1, null, this.props.children);
+      return /*#__PURE__*/React__default.createElement(BoxWrapper$1, null, this.props.children);
     }
   }]);
 
   return Box;
-}(React.Component);
+}(React__default.Component);
 
 function Article(_ref) {
   var children = _ref.children,
       collapse = _ref.collapse;
-  return /*#__PURE__*/React.createElement(Grid, {
+  return /*#__PURE__*/React__default.createElement(Grid, {
     collapse: collapse
   }, children);
 }
@@ -558,9 +559,9 @@ Article.Content = function (_ref2) {
   var children = _ref2.children,
       _ref2$width = _ref2.width,
       width = _ref2$width === void 0 ? '66%' : _ref2$width;
-  return /*#__PURE__*/React.createElement(Grid.Col, {
+  return /*#__PURE__*/React__default.createElement(Grid.Col, {
     width: width
-  }, /*#__PURE__*/React.createElement(ContentUI, null, children));
+  }, /*#__PURE__*/React__default.createElement(ContentUI, null, children));
 };
 
 Article.Sidebar = function (_ref3) {
@@ -568,19 +569,19 @@ Article.Sidebar = function (_ref3) {
       _ref3$width = _ref3.width,
       width = _ref3$width === void 0 ? '34%' : _ref3$width;
   var _children = children;
-  return /*#__PURE__*/React.createElement(Grid.Col, {
+  return /*#__PURE__*/React__default.createElement(Grid.Col, {
     width: width
   }, _children);
 };
 
 Article.Box = function (_ref4) {
   var children = _ref4.children;
-  return /*#__PURE__*/React.createElement(Box, null, children);
+  return /*#__PURE__*/React__default.createElement(Box, null, children);
 };
 
 Article.Quote = function (_ref5) {
   var children = _ref5.children;
-  return /*#__PURE__*/React.createElement(Quote, null, children);
+  return /*#__PURE__*/React__default.createElement(Quote, null, children);
 };
 
 function _templateObject$4() {
@@ -596,7 +597,7 @@ var BannerUI = styled__default('div')(_templateObject$4(), theme.unit(0.5));
 
 function Banner (_ref) {
   var children = _ref.children;
-  return /*#__PURE__*/React.createElement(BannerUI, null, children);
+  return /*#__PURE__*/React__default.createElement(BannerUI, null, children);
 }
 
 function _templateObject$5() {
@@ -612,7 +613,7 @@ var BodyUI = styled__default('div')(_templateObject$5(), theme.layout.desktop.he
 
 function body (_ref) {
   var children = _ref.children;
-  return /*#__PURE__*/React.createElement(BodyUI, null, /*#__PURE__*/React.createElement(ReactBreakpoints__default, {
+  return /*#__PURE__*/React__default.createElement(BodyUI, null, /*#__PURE__*/React__default.createElement(ReactBreakpoints__default, {
     breakpoints: theme.breakPoints
   }, children));
 }
@@ -654,7 +655,7 @@ var ContainerUI = styled__default('blockquote')(_templateObject$6(), theme.unit(
 
 function BlockQuote (_ref) {
   var children = _ref.children;
-  return /*#__PURE__*/React.createElement(ContainerUI, null, children);
+  return /*#__PURE__*/React__default.createElement(ContainerUI, null, children);
 }
 
 function _templateObject$7() {
@@ -670,7 +671,7 @@ var ContainerUI$1 = styled__default('div')(_templateObject$7(), theme.unit(0.5),
 
 function BreadCrumb(_ref) {
   var parts = _ref.parts;
-  return /*#__PURE__*/React.createElement(ContainerUI$1, null, /*#__PURE__*/React.createElement("div", null, parts.map(function (part) {
+  return /*#__PURE__*/React__default.createElement(ContainerUI$1, null, /*#__PURE__*/React__default.createElement("div", null, parts.map(function (part) {
     return part;
   })));
 }
@@ -704,7 +705,7 @@ function Button (_ref) {
       maxWidth = _ref$maxWidth === void 0 ? 250 : _ref$maxWidth,
       _ref$type = _ref.type,
       type = _ref$type === void 0 ? 'button' : _ref$type;
-  return /*#__PURE__*/React.createElement(ButtonUI, {
+  return /*#__PURE__*/React__default.createElement(ButtonUI, {
     maxWidth: maxWidth,
     type: type,
     onClick: onClick
@@ -767,10 +768,10 @@ function Card(_ref) {
     }
   }
 
-  return /*#__PURE__*/React.createElement(Grid.Col, {
+  return /*#__PURE__*/React__default.createElement(Grid.Col, {
     maxWidth: maxWidth,
     width: width
-  }, /*#__PURE__*/React.createElement(CardUI, {
+  }, /*#__PURE__*/React__default.createElement(CardUI, {
     asLink: asLink,
     onClick: onClick
   }, children));
@@ -778,14 +779,14 @@ function Card(_ref) {
 
 Card.Image = function (_ref2) {
   var children = _ref2.children;
-  return /*#__PURE__*/React.createElement(AspectRatioUI, null, children);
+  return /*#__PURE__*/React__default.createElement(AspectRatioUI, null, children);
 };
 
 Card.Content = function (_ref3) {
   var alignItems = _ref3.alignItems,
       justifyContent = _ref3.justifyContent,
       children = _ref3.children;
-  return /*#__PURE__*/React.createElement(ContentUI$1, {
+  return /*#__PURE__*/React__default.createElement(ContentUI$1, {
     alignItems: alignItems,
     justifyContent: justifyContent
   }, children);
@@ -794,7 +795,7 @@ Card.Content = function (_ref3) {
 function Cards (_ref) {
   var alignItems = _ref.alignItems,
       children = _ref.children;
-  return /*#__PURE__*/React.createElement(Grid, {
+  return /*#__PURE__*/React__default.createElement(Grid, {
     alignItems: alignItems
   }, children);
 }
@@ -1832,7 +1833,7 @@ function Title(_ref) {
       styling = _ref.styling,
       _ref$tabletStyling = _ref.tabletStyling,
       tabletStyling = _ref$tabletStyling === void 0 ? '' : _ref$tabletStyling;
-  var content = /*#__PURE__*/React.createElement(TitleUI, {
+  var content = /*#__PURE__*/React__default.createElement(TitleUI, {
     as: as,
     id: id,
     color: color,
@@ -1846,7 +1847,7 @@ function Title(_ref) {
   }, children);
 
   if (id) {
-    return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(AnchorUI, {
+    return /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(AnchorUI, {
       id: id
     }), content);
   }
@@ -1938,16 +1939,16 @@ function Section(_ref) {
       inner_width = _ref$inner_width === void 0 ? 'big' : _ref$inner_width;
 
   if (is_full_width) {
-    return /*#__PURE__*/React.createElement(SectionWrapperUI, {
+    return /*#__PURE__*/React__default.createElement(SectionWrapperUI, {
       background: background
     }, children);
   } else {
-    return /*#__PURE__*/React.createElement(SectionWrapperUI, {
+    return /*#__PURE__*/React__default.createElement(SectionWrapperUI, {
       background: background
-    }, /*#__PURE__*/React.createElement(SectionUI, {
+    }, /*#__PURE__*/React__default.createElement(SectionUI, {
       textAlign: textAlign,
       innerWidth: inner_width
-    }, /*#__PURE__*/React.createElement(SectionInnerUI, null, children)));
+    }, /*#__PURE__*/React__default.createElement(SectionInnerUI, null, children)));
   }
 }
 
@@ -1966,14 +1967,14 @@ function getImage(image) {
     return;
   }
 
-  return /*#__PURE__*/React.createElement(Card.Image, null, /*#__PURE__*/React.createElement("img", {
+  return /*#__PURE__*/React__default.createElement(Card.Image, null, /*#__PURE__*/React__default.createElement("img", {
     src: image.url,
     srcSet: getSrcSets(image)
   }));
 }
 
 function getContent(title, content) {
-  return /*#__PURE__*/React.createElement(Card.Content, null, /*#__PURE__*/React.createElement(Title, {
+  return /*#__PURE__*/React__default.createElement(Card.Content, null, /*#__PURE__*/React__default.createElement(Title, {
     as: "h4",
     spaceAfter: "small"
   }, title[0].text), Object.entries(content).map(function (_content) {
@@ -1981,7 +1982,7 @@ function getContent(title, content) {
         key = _content2[0],
         value = _content2[1];
 
-    return /*#__PURE__*/React.createElement("div", null, formatTitle(key), ": ", value);
+    return /*#__PURE__*/React__default.createElement("div", null, formatTitle(key), ": ", value);
   }));
 }
 
@@ -1989,11 +1990,11 @@ function CardsSection (_ref) {
   var cards = _ref.cards,
       _ref$showTitle = _ref.showTitle,
       showTitle = _ref$showTitle === void 0 ? true : _ref$showTitle;
-  return /*#__PURE__*/React.createElement(Section, {
+  return /*#__PURE__*/React__default.createElement(Section, {
     background: "light"
-  }, showTitle ? /*#__PURE__*/React.createElement(Title, {
+  }, showTitle ? /*#__PURE__*/React__default.createElement(Title, {
     as: "h3"
-  }, "Recently Funded Loans") : null, /*#__PURE__*/React.createElement(Cards, null, cards.map(function (card) {
+  }, "Recently Funded Loans") : null, /*#__PURE__*/React__default.createElement(Cards, null, cards.map(function (card) {
     if (!card.card.data) {
       return;
     }
@@ -2003,7 +2004,7 @@ function CardsSection (_ref) {
         title = _card$card$data.title,
         rest = _objectWithoutProperties(_card$card$data, ["image", "title"]);
 
-    return /*#__PURE__*/React.createElement(Card, null, getImage(image), getContent(title, rest));
+    return /*#__PURE__*/React__default.createElement(Card, null, getImage(image), getContent(title, rest));
   })));
 }
 
@@ -2021,7 +2022,7 @@ var ContainerUI$2 = styled__default('div')(_templateObject$c());
 
 function content (_ref) {
   var children = _ref.children;
-  return /*#__PURE__*/React.createElement(ContainerUI$2, null, children);
+  return /*#__PURE__*/React__default.createElement(ContainerUI$2, null, children);
 }
 
 function _templateObject2$6() {
@@ -2089,7 +2090,7 @@ var Details = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var children = this.props.children;
-      return /*#__PURE__*/React.createElement(DetailsUI, {
+      return /*#__PURE__*/React__default.createElement(DetailsUI, {
         onClick: this.toggle,
         open: this.state.isOpen
       }, children);
@@ -2097,13 +2098,13 @@ var Details = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return Details;
-}(React.Component);
+}(React__default.Component);
 
 Faq.Details = Details;
 
 Faq.Summary = function (_ref2) {
   var children = _ref2.children;
-  return /*#__PURE__*/React.createElement(SummaryUI, null, children);
+  return /*#__PURE__*/React__default.createElement(SummaryUI, null, children);
 };
 
 function _templateObject$e() {
@@ -2190,7 +2191,7 @@ var LabelUI = styled__default('label')(_templateObject3$5(), theme.typography.fo
 var ValidationUI = styled__default('div')(_templateObject4$1(), theme.unit(0.5), theme.colors.error, theme.unit(1), theme.unit(0.125));
 
 function getLabel(label) {
-  return /*#__PURE__*/React.createElement(LabelUI, null, label);
+  return /*#__PURE__*/React__default.createElement(LabelUI, null, label);
 }
 
 function getComponent(type, onChange, isSelectable, isValid, maxWidth, name, readOnly, size, textAlign, value) {
@@ -2207,12 +2208,12 @@ function getComponent(type, onChange, isSelectable, isValid, maxWidth, name, rea
   };
 
   if (type === 'textarea') {
-    return /*#__PURE__*/React.createElement(InputUI, _extends({
+    return /*#__PURE__*/React__default.createElement(InputUI, _extends({
       as: "textarea",
       rows: "5"
     }, _objectSpread2({}, props)));
   } else {
-    return /*#__PURE__*/React.createElement(InputUI, _objectSpread2({}, props));
+    return /*#__PURE__*/React__default.createElement(InputUI, _objectSpread2({}, props));
   }
 }
 
@@ -2243,8 +2244,8 @@ function Input(_ref) {
   var hasValidation = !!validationRules.length;
   var validationMessage = hasValidation && validator.message(name, value, validationRules);
   var isValid = isValidating ? !!!validationMessage : true;
-  var children = /*#__PURE__*/React.createElement("div", null, getLabel(label), getComponent(type, onChange, isSelectable, isValid, maxWidth, name, readOnly, size, textAlign, value), hasValidation && /*#__PURE__*/React.createElement(ValidationUI, null, validator.message(name, value, validationRules)));
-  return withContainer ? /*#__PURE__*/React.createElement(ContainerUI$3, null, children) : children;
+  var children = /*#__PURE__*/React__default.createElement("div", null, getLabel(label), getComponent(type, onChange, isSelectable, isValid, maxWidth, name, readOnly, size, textAlign, value), hasValidation && /*#__PURE__*/React__default.createElement(ValidationUI, null, validator.message(name, value, validationRules)));
+  return withContainer ? /*#__PURE__*/React__default.createElement(ContainerUI$3, null, children) : children;
 }
 
 function _templateObject2$8() {
@@ -2380,26 +2381,26 @@ function CheckMark(_ref) {
       isChecked = _ref$isChecked === void 0 ? false : _ref$isChecked;
 
   if (isChecked) {
-    return /*#__PURE__*/React.createElement("svg", {
+    return /*#__PURE__*/React__default.createElement("svg", {
       version: "1.1",
       id: "Layer_1",
       viewBox: "0 0 444.237 444.237",
       height: "22",
       width: "22"
-    }, /*#__PURE__*/React.createElement("path", {
+    }, /*#__PURE__*/React__default.createElement("path", {
       d: "M376.471,439.859H45.176C20.262,439.859,0,419.597,0,394.682V93.506 c0-24.915,20.262-45.176,45.176-45.176h331.294c24.915,0,45.176,20.262,45.176,45.176v301.176 C421.647,419.597,401.385,439.859,376.471,439.859z M60.235,379.623h301.176V108.565H60.235V379.623z"
-    }), /*#__PURE__*/React.createElement("path", {
+    }), /*#__PURE__*/React__default.createElement("path", {
       d: "M218.353,349.506c-10.963,0-21.414-4.781-28.589-13.146L99.411,230.948 c-13.53-15.789-11.701-39.552,4.088-53.082c15.782-13.545,39.544-11.716,53.09,4.081l59.068,68.909L402.342,25.741 c28.898-40.478,59.144-18.063,30.118,22.588l-183.477,285.41c-6.731,9.419-17.416,15.217-28.973,15.729 C219.452,349.491,218.903,349.506,218.353,349.506z",
       fill: theme.colors['success']
     }));
   } else {
-    return /*#__PURE__*/React.createElement("svg", {
+    return /*#__PURE__*/React__default.createElement("svg", {
       version: "1.1",
       id: "Layer_1",
       viewBox: "0 0 444.237 444.237",
       height: "22",
       width: "22"
-    }, /*#__PURE__*/React.createElement("path", {
+    }, /*#__PURE__*/React__default.createElement("path", {
       d: "M376.471,439.859H45.176C20.262,439.859,0,419.597,0,394.682V93.506 c0-24.915,20.262-45.176,45.176-45.176h331.294c24.915,0,45.176,20.262,45.176,45.176v301.176 C421.647,419.597,401.385,439.859,376.471,439.859z M60.235,379.623h301.176V108.565H60.235V379.623z"
     }));
   }
@@ -2417,7 +2418,7 @@ function RadioCard (_ref) {
       value = _ref.value,
       types = _ref.types;
   var isChecked = selectedValue === value;
-  return /*#__PURE__*/React.createElement(ContainerUI$5, {
+  return /*#__PURE__*/React__default.createElement(ContainerUI$5, {
     onClick: function onClick(e) {
       return _onChange(value);
     },
@@ -2430,10 +2431,10 @@ function RadioCard (_ref) {
         _onChange(value);
       }
     }
-  }, /*#__PURE__*/React.createElement(ImageContainerUI, null, /*#__PURE__*/React.createElement(ImageUI, {
+  }, /*#__PURE__*/React__default.createElement(ImageContainerUI, null, /*#__PURE__*/React__default.createElement(ImageUI, {
     src: image,
     selected: isChecked
-  })), /*#__PURE__*/React.createElement(CardContentUI, null, /*#__PURE__*/React.createElement(CardRadioInputContainerUI, null, /*#__PURE__*/React.createElement(CardRadioInputUI, {
+  })), /*#__PURE__*/React__default.createElement(CardContentUI, null, /*#__PURE__*/React__default.createElement(CardRadioInputContainerUI, null, /*#__PURE__*/React__default.createElement(CardRadioInputUI, {
     checked: isChecked,
     type: "radio",
     name: "property_type",
@@ -2441,7 +2442,7 @@ function RadioCard (_ref) {
       return _onChange(value);
     },
     tabIndex: "-1"
-  })), /*#__PURE__*/React.createElement(ContentUI$2, null, /*#__PURE__*/React.createElement(TitleUI$1, null, title, " ", /*#__PURE__*/React.createElement(CheckMark, {
+  })), /*#__PURE__*/React__default.createElement(ContentUI$2, null, /*#__PURE__*/React__default.createElement(TitleUI$1, null, title, " ", /*#__PURE__*/React__default.createElement(CheckMark, {
     isChecked: isChecked
   })), content)));
 }
@@ -2467,23 +2468,23 @@ var RadioCards = /*#__PURE__*/function (_React$Component) {
           onChange = _this$props.onChange,
           value = _this$props.value;
       var children = cards.map(function (card, index) {
-        return /*#__PURE__*/React.createElement(RadioCard, _extends({}, _objectSpread2({}, card), {
+        return /*#__PURE__*/React__default.createElement(RadioCard, _extends({}, _objectSpread2({}, card), {
           key: _short$1.generate(),
           onChange: onChange,
           selectedValue: value
         }));
       });
-      children.splice(2, 0, /*#__PURE__*/React.createElement(BreakUI, null));
-      return /*#__PURE__*/React.createElement(ContainerUI$4, null, children);
+      children.splice(2, 0, /*#__PURE__*/React__default.createElement(BreakUI, null));
+      return /*#__PURE__*/React__default.createElement(ContainerUI$4, null, children);
     }
   }]);
 
   return RadioCards;
-}(React.Component);
+}(React__default.Component);
 
 var simpleReactValidator_min = createCommonjsModule(function (module, exports) {
 // Simple React Validator v1.4.6 | Created By Dockwa | MIT License | 2017 - Present
-!function(e,t){module.exports=t(React);}(commonjsGlobal,function(s){function f(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){if("undefined"==typeof Symbol||!(Symbol.iterator in Object(e)))return;var r=[],n=!0,s=!1,a=void 0;try{for(var i,u=e[Symbol.iterator]();!(n=(i=u.next()).done)&&(r.push(i.value),!t||r.length!==t);n=!0);}catch(e){s=!0,a=e;}finally{try{n||null==u.return||u.return();}finally{if(s)throw a}}return r}(e,t)||u(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function p(e){if("undefined"==typeof Symbol||null==e[Symbol.iterator]){if(Array.isArray(e)||(e=u(e))){var t=0,r=function(){};return {s:r,n:function(){return t>=e.length?{done:!0}:{done:!1,value:e[t++]}},e:function(e){throw e},f:r}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var n,s,a=!0,i=!1;return {s:function(){n=e[Symbol.iterator]();},n:function(){var e=n.next();return a=e.done,e},e:function(e){i=!0,s=e;},f:function(){try{a||null==n.return||n.return();}finally{if(i)throw s}}}}function u(e,t){if(e){if("string"==typeof e)return n(e,t);var r=Object.prototype.toString.call(e).slice(8,-1);return "Object"===r&&e.constructor&&(r=e.constructor.name),"Map"===r||"Set"===r?Array.from(r):"Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)?n(e,t):void 0}}function n(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=new Array(t);r<t;r++)n[r]=e[r];return n}function a(e){return (a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function i(t,e){var r=Object.keys(t);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(t);e&&(n=n.filter(function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable})),r.push.apply(r,n);}return r}function d(t){for(var e=1;e<arguments.length;e++){var r=null!=arguments[e]?arguments[e]:{};e%2?i(Object(r),!0).forEach(function(e){l(t,e,r[e]);}):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):i(Object(r)).forEach(function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e));});}return t}function o(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n);}}function e(e,t,r){return t&&o(e.prototype,t),r&&o(e,r),e}function l(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}var t=function(){function n(){var r=this,e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:{};!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,n),l(this,"showMessageFor",function(e){r.visibleFields.includes(e)||r.visibleFields.push(e),r.helpers.forceUpdateIfNeeded();}),l(this,"hideMessageFor",function(e){var t=r.visibleFields.indexOf(e);-1<t&&r.visibleFields.splice(t,1),r.helpers.forceUpdateIfNeeded();}),l(this,"helpers",{parent:this,passes:function(e,t,r,n){return n.hasOwnProperty(e)?!(this.isRequired(e,n)||!this.isBlank(t))||!1!==n[e].rule(t,r,this.parent):(console.error("Rule Not Found: There is no rule with the name ".concat(e,".")),!0)},isRequired:function(e,t){return t[e].hasOwnProperty("required")&&t[e].required},isBlank:function(e){return null==e||this.testRegex(e,/^[\s]*$/)},normalizeValues:function(e,t){return [this.valueOrEmptyString(e),this.getValidation(t),this.getOptions(t)]},getValidation:function(e){return e===Object(e)&&Object.keys(e).length?Object.keys(e)[0]:e.split(":")[0]},getOptions:function(e){if(e===Object(e)&&Object.values(e).length){var t=Object.values(e)[0];return Array.isArray(t)?t:[t]}return 1<(t=e.split(":")).length?t[1].split(","):[]},valueOrEmptyString:function(e){return null==e?"":e},toSentence:function(e){return e.slice(0,-2).join(", ")+(e.slice(0,-2).length?", ":"")+e.slice(-2).join(2<e.length?", or ":" or ")},testRegex:function(e,t){return null!==e.toString().match(t)},forceUpdateIfNeeded:function(){this.parent.autoForceUpdate&&this.parent.autoForceUpdate.forceUpdate();},message:function(e,t,r,n){r.messages=r.messages||{};var s=r.messages[e]||r.messages.default||this.parent.messages[e]||this.parent.messages.default||n[e].message;return s.replace(":attribute",this.humanizeFieldName(t))},humanizeFieldName:function(e){return e.replace(/([A-Z])/g," $1").replace(/_/g," ").toLowerCase()},element:function(e,t){var r=t.element||this.parent.element;return r(e,t.className)},momentInstalled:function(){return !(!window||!window.moment)||(console.warn("Date validators require using momentjs https://momentjs.com and moment objects."),!1)},size:function(e,t){return "string"===t||void 0===t||"array"===t?e.length:"num"===t?parseFloat(e):void 0},sizeText:function(e){return "string"===e||void 0===e?" characters":"array"===e?" elements":""}}),this.fields={},this.visibleFields=[],this.errorMessages={},this.messagesShown=!1,this.rules=d({accepted:{message:"The :attribute must be accepted.",rule:function(e){return !0===e},required:!0},after:{message:"The :attribute must be after :date.",rule:function(e,t){return r.helpers.momentInstalled()&&moment.isMoment(e)&&e.isAfter(t[0],"day")},messageReplace:function(e,t){return e.replace(":date",t[0].format("MM/DD/YYYY"))}},after_or_equal:{message:"The :attribute must be after or on :date.",rule:function(e,t){return r.helpers.momentInstalled()&&moment.isMoment(e)&&e.isSameOrAfter(t[0],"day")},messageReplace:function(e,t){return e.replace(":date",t[0].format("MM/DD/YYYY"))}},alpha:{message:"The :attribute may only contain letters.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z]*$/i)}},alpha_space:{message:"The :attribute may only contain letters and spaces.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z\s]*$/i)}},alpha_num:{message:"The :attribute may only contain letters and numbers.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z0-9]*$/i)}},alpha_num_space:{message:"The :attribute may only contain letters, numbers, and spaces.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z0-9\s]*$/i)}},alpha_num_dash:{message:"The :attribute may only contain letters, numbers, and dashes.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z0-9_-]*$/i)}},alpha_num_dash_space:{message:"The :attribute may only contain letters, numbers, dashes, and spaces.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z0-9_-\s]*$/i)}},array:{message:"The :attribute must be an array.",rule:function(e){return Array.isArray(e)}},before:{message:"The :attribute must be before :date.",rule:function(e,t){return r.helpers.momentInstalled()&&moment.isMoment(e)&&e.isBefore(t[0],"day")},messageReplace:function(e,t){return e.replace(":date",t[0].format("MM/DD/YYYY"))}},before_or_equal:{message:"The :attribute must be before or on :date.",rule:function(e,t){return r.helpers.momentInstalled()&&moment.isMoment(e)&&e.isSameOrBefore(t[0],"day")},messageReplace:function(e,t){return e.replace(":date",t[0].format("MM/DD/YYYY"))}},between:{message:"The :attribute must be between :min and :max:type.",rule:function(e,t){return r.helpers.size(e,t[2])>=parseFloat(t[0])&&r.helpers.size(e,t[2])<=parseFloat(t[1])},messageReplace:function(e,t){return e.replace(":min",t[0]).replace(":max",t[1]).replace(":type",r.helpers.sizeText(t[2]))}},boolean:{message:"The :attribute must be a boolean.",rule:function(e){return !1===e||!0===e}},card_exp:{message:"The :attribute must be a valid expiration date.",rule:function(e){return r.helpers.testRegex(e,/^(([0]?[1-9]{1})|([1]{1}[0-2]{1}))\s?\/\s?(\d{2}|\d{4})$/)}},card_num:{message:"The :attribute must be a valid credit card number.",rule:function(e){return r.helpers.testRegex(e,/^\d{4}\s?\d{4,6}\s?\d{4,5}\s?\d{0,8}$/)}},currency:{message:"The :attribute must be a valid currency.",rule:function(e){return r.helpers.testRegex(e,/^\$?(\d{1,3})(\,?\d{3})*\.?\d{0,2}$/)}},date:{message:"The :attribute must be a date.",rule:function(e){return r.helpers.momentInstalled()&&moment.isMoment(e)}},date_equals:{message:"The :attribute must be on :date.",rule:function(e,t){return r.helpers.momentInstalled()&&moment.isMoment(e)&&e.isSame(t[0],"day")},messageReplace:function(e,t){return e.replace(":date",t[0].format("MM/DD/YYYY"))}},email:{message:"The :attribute must be a valid email address.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i)}},in:{message:"The selected :attribute must be :values.",rule:function(e,t){return t.includes(e)},messageReplace:function(e,t){return e.replace(":values",r.helpers.toSentence(t))}},integer:{message:"The :attribute must be an integer.",rule:function(e){return r.helpers.testRegex(e,/^\d*$/)}},max:{message:"The :attribute may not be greater than :max:type.",rule:function(e,t){return r.helpers.size(e,t[1])<=parseFloat(t[0])},messageReplace:function(e,t){return e.replace(":max",t[0]).replace(":type",r.helpers.sizeText(t[1]))}},min:{message:"The :attribute must be at least :min:type.",rule:function(e,t){return r.helpers.size(e,t[1])>=parseFloat(t[0])},messageReplace:function(e,t){return e.replace(":min",t[0]).replace(":type",r.helpers.sizeText(t[1]))}},not_in:{message:"The selected :attribute must not be :values.",rule:function(e,t){return !t.includes(e)},messageReplace:function(e,t){return e.replace(":values",r.helpers.toSentence(t))}},not_regex:{message:"The :attribute must not match the required pattern.",rule:function(e,t){return !r.helpers.testRegex(e,"string"==typeof t[0]||t[0]instanceof String?new RegExp(t[0]):t[0])}},numeric:{message:"The :attribute must be a number.",rule:function(e){return r.helpers.testRegex(e,/^\-?\d*\.?\d+$/)}},phone:{message:"The :attribute must be a valid phone number.",rule:function(e){return r.helpers.testRegex(e,/^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)$/)&&!r.helpers.testRegex(e,/^\b(\d)\1{8,}\b$/)}},regex:{message:"The :attribute must match the required pattern.",rule:function(e,t){return r.helpers.testRegex(e,"string"==typeof t[0]||t[0]instanceof String?new RegExp(t[0]):t[0])}},required:{message:"The :attribute field is required.",rule:function(e){return !r.helpers.isBlank(e)},required:!0},size:{message:"The :attribute must be :size:type.",rule:function(e,t){return r.helpers.size(e,t[1])==parseFloat(t[0])},messageReplace:function(e,t){return e.replace(":size",t[0]).replace(":type",r.helpers.sizeText(t[1]))}},string:{message:"The :attribute must be a string.",rule:function(e){return a(e)===a("string")}},typeof:{message:"The :attribute is not the correct type of :type.",rule:function(e,t){return a(e)===a(t[0])},messageReplace:function(e,t){return e.replace(":type",a(t[0]))}},url:{message:"The :attribute must be a url.",rule:function(e){return r.helpers.testRegex(e,/^https?:\/\/[-a-z0-9@:%._\+~#=]{1,256}\.[a-z0-9()]{2,6}\b([-a-z0-9()@:%_\+.~#?&//=]*)$/i)}}},e.validators||{}),e.locale&&!n.locales.hasOwnProperty(e.locale)&&console.warn("Locale not found! Make sure it is spelled correctly and the locale file is loaded.");var t=n.locales[e.locale]||{};Object.keys(this.rules).forEach(function(e){r.rules[e].message=t[e]||r.rules[e].message;}),this.messages=e.messages||{},this.className=e.className,this.autoForceUpdate=e.autoForceUpdate||!1,!1===e.element?this.element=function(e){return e}:e.hasOwnProperty("element")?this.element=e.element:"object"===("undefined"==typeof navigator?"undefined":a(navigator))&&"ReactNative"===navigator.product?this.element=function(e){return e}:this.element=function(e,t){return s.createElement("div",{className:t||r.className||"srv-validation-message"},e)};}return e(n,null,[{key:"addLocale",value:function(e,t){this.locales[e]=t;}}]),e(n,[{key:"getErrorMessages",value:function(){return this.errorMessages}},{key:"showMessages",value:function(){this.messagesShown=!0,this.helpers.forceUpdateIfNeeded();}},{key:"hideMessages",value:function(){this.messagesShown=!1,this.helpers.forceUpdateIfNeeded();}},{key:"allValid",value:function(){for(var e in this.fields)if(!1===this.fieldValid(e))return !1;return !0}},{key:"fieldValid",value:function(e){return this.fields.hasOwnProperty(e)&&!0===this.fields[e]}},{key:"purgeFields",value:function(){this.fields={},this.errorMessages={};}},{key:"messageWhenPresent",value:function(e){var t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:{};if(!this.helpers.isBlank(e)&&this.messagesShown)return this.helpers.element(e,t)}},{key:"messageAlways",value:function(e,t){var r=2<arguments.length&&void 0!==arguments[2]?arguments[2]:{};if(console.warn("The messageAlways() method is deprecated in SimpleReactValidator. Please see the documentation and switch to the messageWhenPresent() method."),t&&this.messagesShown)return this.helpers.element(t,r)}},{key:"check",value:function(e,t){var r=2<arguments.length&&void 0!==arguments[2]?arguments[2]:{};Array.isArray(t)||(t=t.split("|"));var n,s=r.validators?d({},this.rules,{},r.validators):this.rules,a=p(t);try{for(a.s();!(n=a.n()).done;){var i=n.value,u=f(this.helpers.normalizeValues(e,i),3),o=u[0],l=u[1],c=u[2];if(!this.helpers.passes(l,o,c,s))return !1}}catch(e){a.e(e);}finally{a.f();}return !0}},{key:"message",value:function(e,t,r){var n=3<arguments.length&&void 0!==arguments[3]?arguments[3]:{};this.errorMessages[e]=null,this.fields[e]=!0,Array.isArray(r)||(r=r.split("|"));var s,a=n.validators?d({},this.rules,{},n.validators):this.rules,i=p(r);try{for(i.s();!(s=i.n()).done;){var u=s.value,o=f(this.helpers.normalizeValues(t,u),3),l=o[0],c=o[1],m=o[2];if(!this.helpers.passes(c,l,m,a)){this.fields[e]=!1;var h=this.helpers.message(c,e,n,a);if(0<m.length&&a[c].hasOwnProperty("messageReplace")&&(h=a[c].messageReplace(h,m)),this.errorMessages[e]=h,this.messagesShown||this.visibleFields.includes(e))return this.helpers.element(h,n)}}}catch(e){i.e(e);}finally{i.f();}}}]),n}();return l(t,"version","1.4.6"),l(t,"locales",{en:{}}),t});
+!function(e,t){module.exports=t(React__default);}(commonjsGlobal,function(s){function f(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){if("undefined"==typeof Symbol||!(Symbol.iterator in Object(e)))return;var r=[],n=!0,s=!1,a=void 0;try{for(var i,u=e[Symbol.iterator]();!(n=(i=u.next()).done)&&(r.push(i.value),!t||r.length!==t);n=!0);}catch(e){s=!0,a=e;}finally{try{n||null==u.return||u.return();}finally{if(s)throw a}}return r}(e,t)||u(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function p(e){if("undefined"==typeof Symbol||null==e[Symbol.iterator]){if(Array.isArray(e)||(e=u(e))){var t=0,r=function(){};return {s:r,n:function(){return t>=e.length?{done:!0}:{done:!1,value:e[t++]}},e:function(e){throw e},f:r}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var n,s,a=!0,i=!1;return {s:function(){n=e[Symbol.iterator]();},n:function(){var e=n.next();return a=e.done,e},e:function(e){i=!0,s=e;},f:function(){try{a||null==n.return||n.return();}finally{if(i)throw s}}}}function u(e,t){if(e){if("string"==typeof e)return n(e,t);var r=Object.prototype.toString.call(e).slice(8,-1);return "Object"===r&&e.constructor&&(r=e.constructor.name),"Map"===r||"Set"===r?Array.from(r):"Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)?n(e,t):void 0}}function n(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=new Array(t);r<t;r++)n[r]=e[r];return n}function a(e){return (a="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function i(t,e){var r=Object.keys(t);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(t);e&&(n=n.filter(function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable})),r.push.apply(r,n);}return r}function d(t){for(var e=1;e<arguments.length;e++){var r=null!=arguments[e]?arguments[e]:{};e%2?i(Object(r),!0).forEach(function(e){l(t,e,r[e]);}):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(r)):i(Object(r)).forEach(function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(r,e));});}return t}function o(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n);}}function e(e,t,r){return t&&o(e.prototype,t),r&&o(e,r),e}function l(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}var t=function(){function n(){var r=this,e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:{};!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,n),l(this,"showMessageFor",function(e){r.visibleFields.includes(e)||r.visibleFields.push(e),r.helpers.forceUpdateIfNeeded();}),l(this,"hideMessageFor",function(e){var t=r.visibleFields.indexOf(e);-1<t&&r.visibleFields.splice(t,1),r.helpers.forceUpdateIfNeeded();}),l(this,"helpers",{parent:this,passes:function(e,t,r,n){return n.hasOwnProperty(e)?!(this.isRequired(e,n)||!this.isBlank(t))||!1!==n[e].rule(t,r,this.parent):(console.error("Rule Not Found: There is no rule with the name ".concat(e,".")),!0)},isRequired:function(e,t){return t[e].hasOwnProperty("required")&&t[e].required},isBlank:function(e){return null==e||this.testRegex(e,/^[\s]*$/)},normalizeValues:function(e,t){return [this.valueOrEmptyString(e),this.getValidation(t),this.getOptions(t)]},getValidation:function(e){return e===Object(e)&&Object.keys(e).length?Object.keys(e)[0]:e.split(":")[0]},getOptions:function(e){if(e===Object(e)&&Object.values(e).length){var t=Object.values(e)[0];return Array.isArray(t)?t:[t]}return 1<(t=e.split(":")).length?t[1].split(","):[]},valueOrEmptyString:function(e){return null==e?"":e},toSentence:function(e){return e.slice(0,-2).join(", ")+(e.slice(0,-2).length?", ":"")+e.slice(-2).join(2<e.length?", or ":" or ")},testRegex:function(e,t){return null!==e.toString().match(t)},forceUpdateIfNeeded:function(){this.parent.autoForceUpdate&&this.parent.autoForceUpdate.forceUpdate();},message:function(e,t,r,n){r.messages=r.messages||{};var s=r.messages[e]||r.messages.default||this.parent.messages[e]||this.parent.messages.default||n[e].message;return s.replace(":attribute",this.humanizeFieldName(t))},humanizeFieldName:function(e){return e.replace(/([A-Z])/g," $1").replace(/_/g," ").toLowerCase()},element:function(e,t){var r=t.element||this.parent.element;return r(e,t.className)},momentInstalled:function(){return !(!window||!window.moment)||(console.warn("Date validators require using momentjs https://momentjs.com and moment objects."),!1)},size:function(e,t){return "string"===t||void 0===t||"array"===t?e.length:"num"===t?parseFloat(e):void 0},sizeText:function(e){return "string"===e||void 0===e?" characters":"array"===e?" elements":""}}),this.fields={},this.visibleFields=[],this.errorMessages={},this.messagesShown=!1,this.rules=d({accepted:{message:"The :attribute must be accepted.",rule:function(e){return !0===e},required:!0},after:{message:"The :attribute must be after :date.",rule:function(e,t){return r.helpers.momentInstalled()&&moment.isMoment(e)&&e.isAfter(t[0],"day")},messageReplace:function(e,t){return e.replace(":date",t[0].format("MM/DD/YYYY"))}},after_or_equal:{message:"The :attribute must be after or on :date.",rule:function(e,t){return r.helpers.momentInstalled()&&moment.isMoment(e)&&e.isSameOrAfter(t[0],"day")},messageReplace:function(e,t){return e.replace(":date",t[0].format("MM/DD/YYYY"))}},alpha:{message:"The :attribute may only contain letters.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z]*$/i)}},alpha_space:{message:"The :attribute may only contain letters and spaces.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z\s]*$/i)}},alpha_num:{message:"The :attribute may only contain letters and numbers.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z0-9]*$/i)}},alpha_num_space:{message:"The :attribute may only contain letters, numbers, and spaces.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z0-9\s]*$/i)}},alpha_num_dash:{message:"The :attribute may only contain letters, numbers, and dashes.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z0-9_-]*$/i)}},alpha_num_dash_space:{message:"The :attribute may only contain letters, numbers, dashes, and spaces.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z0-9_-\s]*$/i)}},array:{message:"The :attribute must be an array.",rule:function(e){return Array.isArray(e)}},before:{message:"The :attribute must be before :date.",rule:function(e,t){return r.helpers.momentInstalled()&&moment.isMoment(e)&&e.isBefore(t[0],"day")},messageReplace:function(e,t){return e.replace(":date",t[0].format("MM/DD/YYYY"))}},before_or_equal:{message:"The :attribute must be before or on :date.",rule:function(e,t){return r.helpers.momentInstalled()&&moment.isMoment(e)&&e.isSameOrBefore(t[0],"day")},messageReplace:function(e,t){return e.replace(":date",t[0].format("MM/DD/YYYY"))}},between:{message:"The :attribute must be between :min and :max:type.",rule:function(e,t){return r.helpers.size(e,t[2])>=parseFloat(t[0])&&r.helpers.size(e,t[2])<=parseFloat(t[1])},messageReplace:function(e,t){return e.replace(":min",t[0]).replace(":max",t[1]).replace(":type",r.helpers.sizeText(t[2]))}},boolean:{message:"The :attribute must be a boolean.",rule:function(e){return !1===e||!0===e}},card_exp:{message:"The :attribute must be a valid expiration date.",rule:function(e){return r.helpers.testRegex(e,/^(([0]?[1-9]{1})|([1]{1}[0-2]{1}))\s?\/\s?(\d{2}|\d{4})$/)}},card_num:{message:"The :attribute must be a valid credit card number.",rule:function(e){return r.helpers.testRegex(e,/^\d{4}\s?\d{4,6}\s?\d{4,5}\s?\d{0,8}$/)}},currency:{message:"The :attribute must be a valid currency.",rule:function(e){return r.helpers.testRegex(e,/^\$?(\d{1,3})(\,?\d{3})*\.?\d{0,2}$/)}},date:{message:"The :attribute must be a date.",rule:function(e){return r.helpers.momentInstalled()&&moment.isMoment(e)}},date_equals:{message:"The :attribute must be on :date.",rule:function(e,t){return r.helpers.momentInstalled()&&moment.isMoment(e)&&e.isSame(t[0],"day")},messageReplace:function(e,t){return e.replace(":date",t[0].format("MM/DD/YYYY"))}},email:{message:"The :attribute must be a valid email address.",rule:function(e){return r.helpers.testRegex(e,/^[A-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i)}},in:{message:"The selected :attribute must be :values.",rule:function(e,t){return t.includes(e)},messageReplace:function(e,t){return e.replace(":values",r.helpers.toSentence(t))}},integer:{message:"The :attribute must be an integer.",rule:function(e){return r.helpers.testRegex(e,/^\d*$/)}},max:{message:"The :attribute may not be greater than :max:type.",rule:function(e,t){return r.helpers.size(e,t[1])<=parseFloat(t[0])},messageReplace:function(e,t){return e.replace(":max",t[0]).replace(":type",r.helpers.sizeText(t[1]))}},min:{message:"The :attribute must be at least :min:type.",rule:function(e,t){return r.helpers.size(e,t[1])>=parseFloat(t[0])},messageReplace:function(e,t){return e.replace(":min",t[0]).replace(":type",r.helpers.sizeText(t[1]))}},not_in:{message:"The selected :attribute must not be :values.",rule:function(e,t){return !t.includes(e)},messageReplace:function(e,t){return e.replace(":values",r.helpers.toSentence(t))}},not_regex:{message:"The :attribute must not match the required pattern.",rule:function(e,t){return !r.helpers.testRegex(e,"string"==typeof t[0]||t[0]instanceof String?new RegExp(t[0]):t[0])}},numeric:{message:"The :attribute must be a number.",rule:function(e){return r.helpers.testRegex(e,/^\-?\d*\.?\d+$/)}},phone:{message:"The :attribute must be a valid phone number.",rule:function(e){return r.helpers.testRegex(e,/^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)$/)&&!r.helpers.testRegex(e,/^\b(\d)\1{8,}\b$/)}},regex:{message:"The :attribute must match the required pattern.",rule:function(e,t){return r.helpers.testRegex(e,"string"==typeof t[0]||t[0]instanceof String?new RegExp(t[0]):t[0])}},required:{message:"The :attribute field is required.",rule:function(e){return !r.helpers.isBlank(e)},required:!0},size:{message:"The :attribute must be :size:type.",rule:function(e,t){return r.helpers.size(e,t[1])==parseFloat(t[0])},messageReplace:function(e,t){return e.replace(":size",t[0]).replace(":type",r.helpers.sizeText(t[1]))}},string:{message:"The :attribute must be a string.",rule:function(e){return a(e)===a("string")}},typeof:{message:"The :attribute is not the correct type of :type.",rule:function(e,t){return a(e)===a(t[0])},messageReplace:function(e,t){return e.replace(":type",a(t[0]))}},url:{message:"The :attribute must be a url.",rule:function(e){return r.helpers.testRegex(e,/^https?:\/\/[-a-z0-9@:%._\+~#=]{1,256}\.[a-z0-9()]{2,6}\b([-a-z0-9()@:%_\+.~#?&//=]*)$/i)}}},e.validators||{}),e.locale&&!n.locales.hasOwnProperty(e.locale)&&console.warn("Locale not found! Make sure it is spelled correctly and the locale file is loaded.");var t=n.locales[e.locale]||{};Object.keys(this.rules).forEach(function(e){r.rules[e].message=t[e]||r.rules[e].message;}),this.messages=e.messages||{},this.className=e.className,this.autoForceUpdate=e.autoForceUpdate||!1,!1===e.element?this.element=function(e){return e}:e.hasOwnProperty("element")?this.element=e.element:"object"===("undefined"==typeof navigator?"undefined":a(navigator))&&"ReactNative"===navigator.product?this.element=function(e){return e}:this.element=function(e,t){return s.createElement("div",{className:t||r.className||"srv-validation-message"},e)};}return e(n,null,[{key:"addLocale",value:function(e,t){this.locales[e]=t;}}]),e(n,[{key:"getErrorMessages",value:function(){return this.errorMessages}},{key:"showMessages",value:function(){this.messagesShown=!0,this.helpers.forceUpdateIfNeeded();}},{key:"hideMessages",value:function(){this.messagesShown=!1,this.helpers.forceUpdateIfNeeded();}},{key:"allValid",value:function(){for(var e in this.fields)if(!1===this.fieldValid(e))return !1;return !0}},{key:"fieldValid",value:function(e){return this.fields.hasOwnProperty(e)&&!0===this.fields[e]}},{key:"purgeFields",value:function(){this.fields={},this.errorMessages={};}},{key:"messageWhenPresent",value:function(e){var t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:{};if(!this.helpers.isBlank(e)&&this.messagesShown)return this.helpers.element(e,t)}},{key:"messageAlways",value:function(e,t){var r=2<arguments.length&&void 0!==arguments[2]?arguments[2]:{};if(console.warn("The messageAlways() method is deprecated in SimpleReactValidator. Please see the documentation and switch to the messageWhenPresent() method."),t&&this.messagesShown)return this.helpers.element(t,r)}},{key:"check",value:function(e,t){var r=2<arguments.length&&void 0!==arguments[2]?arguments[2]:{};Array.isArray(t)||(t=t.split("|"));var n,s=r.validators?d({},this.rules,{},r.validators):this.rules,a=p(t);try{for(a.s();!(n=a.n()).done;){var i=n.value,u=f(this.helpers.normalizeValues(e,i),3),o=u[0],l=u[1],c=u[2];if(!this.helpers.passes(l,o,c,s))return !1}}catch(e){a.e(e);}finally{a.f();}return !0}},{key:"message",value:function(e,t,r){var n=3<arguments.length&&void 0!==arguments[3]?arguments[3]:{};this.errorMessages[e]=null,this.fields[e]=!0,Array.isArray(r)||(r=r.split("|"));var s,a=n.validators?d({},this.rules,{},n.validators):this.rules,i=p(r);try{for(i.s();!(s=i.n()).done;){var u=s.value,o=f(this.helpers.normalizeValues(t,u),3),l=o[0],c=o[1],m=o[2];if(!this.helpers.passes(c,l,m,a)){this.fields[e]=!1;var h=this.helpers.message(c,e,n,a);if(0<m.length&&a[c].hasOwnProperty("messageReplace")&&(h=a[c].messageReplace(h,m)),this.errorMessages[e]=h,this.messagesShown||this.visibleFields.includes(e))return this.helpers.element(h,n)}}}catch(e){i.e(e);}finally{i.f();}}}]),n}();return l(t,"version","1.4.6"),l(t,"locales",{en:{}}),t});
 });
 
 function _templateObject2$a() {
@@ -2560,7 +2561,7 @@ var InputSlider = /*#__PURE__*/function (_React$Component) {
           _onChange = _this$props3.onChange,
           step = _this$props3.step,
           value = _this$props3.value;
-      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(TitleContainerUI, null, /*#__PURE__*/React.createElement(TitleUI$2, null, label), /*#__PURE__*/React.createElement(Input, {
+      return /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(TitleContainerUI, null, /*#__PURE__*/React__default.createElement(TitleUI$2, null, label), /*#__PURE__*/React__default.createElement(Input, {
         isSelectable: false,
         value: value && this.formatString(value),
         readOnly: true,
@@ -2568,7 +2569,7 @@ var InputSlider = /*#__PURE__*/function (_React$Component) {
         size: "big",
         textAlign: "center",
         withContainer: false
-      })), /*#__PURE__*/React.createElement(Slider, {
+      })), /*#__PURE__*/React__default.createElement(Slider, {
         axis: axis,
         onChange: function onChange(value) {
           return _onChange(value.x);
@@ -2597,7 +2598,7 @@ var InputSlider = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return InputSlider;
-}(React.Component);
+}(React__default.Component);
 
 _defineProperty(InputSlider, "defaultProps", {
   axis: 'x',
@@ -2614,7 +2615,7 @@ function Header(_ref) {
   var step = _ref.step,
       steps = _ref.steps;
   console.log(step, 'of', steps);
-  return /*#__PURE__*/React.createElement("div", null, step + 1, " of ", steps);
+  return /*#__PURE__*/React__default.createElement("div", null, step + 1, " of ", steps);
 }
 
 function _templateObject3$7() {
@@ -2654,18 +2655,18 @@ function Footer(_ref) {
   var onNextStep = _ref.onNextStep,
       onPrevStep = _ref.onPrevStep,
       step = _ref.step;
-  return /*#__PURE__*/React.createElement(ContainerUI$6, null, step > 0 ? /*#__PURE__*/React.createElement(GoBackUI, {
+  return /*#__PURE__*/React__default.createElement(ContainerUI$6, null, step > 0 ? /*#__PURE__*/React__default.createElement(GoBackUI, {
     href: "#",
     onClick: onPrevStep
-  }, "Go Back") : null, /*#__PURE__*/React.createElement(ButtonUI$1, {
+  }, "Go Back") : null, /*#__PURE__*/React__default.createElement(ButtonUI$1, {
     onClick: onNextStep
   }, "Next"));
 }
 
 function Step(props) {
   var children = props.children;
-  return React.Children.map(children, function (child, index) {
-    return React.cloneElement(child, _objectSpread2(_objectSpread2({}, child.props), {}, {
+  return React__default.Children.map(children, function (child, index) {
+    return React__default.cloneElement(child, _objectSpread2(_objectSpread2({}, child.props), {}, {
       onChange: props.onChange.bind(null, child.props.name),
       value: props.values[child.props.name]
     }));
@@ -2739,10 +2740,10 @@ var Form = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       var children = this.props.children;
-      return /*#__PURE__*/React.createElement(FormUI, null, /*#__PURE__*/React.createElement("form", {
+      return /*#__PURE__*/React__default.createElement(FormUI, null, /*#__PURE__*/React__default.createElement("form", {
         onSubmit: this.onSubmit
-      }, React.Children.map(children, function (child) {
-        return React.cloneElement(child, _objectSpread2(_objectSpread2({}, child.props), {}, {
+      }, React__default.Children.map(children, function (child) {
+        return React__default.cloneElement(child, _objectSpread2(_objectSpread2({}, child.props), {}, {
           isValidating: _this2.state.isValidating,
           onChange: _this2.onFieldChange.bind(_this2, child.props.name),
           validator: _this2.validator,
@@ -2757,9 +2758,9 @@ var Form = /*#__PURE__*/function (_React$Component) {
 
       var children = this.props.children;
 
-      var _children = React.Children.map(children, function (child, index) {
+      var _children = React__default.Children.map(children, function (child, index) {
         if (_this3.state.step === index) {
-          return React.cloneElement(child, _objectSpread2(_objectSpread2({}, child.props), {}, {
+          return React__default.cloneElement(child, _objectSpread2(_objectSpread2({}, child.props), {}, {
             isValidating: _this3.state.isValidating,
             onChange: _this3.onFieldChange,
             step: index + 1,
@@ -2769,12 +2770,12 @@ var Form = /*#__PURE__*/function (_React$Component) {
         }
       });
 
-      return /*#__PURE__*/React.createElement(FormUI, null, /*#__PURE__*/React.createElement(Step.Header, {
+      return /*#__PURE__*/React__default.createElement(FormUI, null, /*#__PURE__*/React__default.createElement(Step.Header, {
         step: this.state.step,
-        steps: React.Children.count(children)
-      }), /*#__PURE__*/React.createElement("form", {
+        steps: React__default.Children.count(children)
+      }), /*#__PURE__*/React__default.createElement("form", {
         onSubmit: this.onSubmit
-      }, _children), /*#__PURE__*/React.createElement(Step.Footer, {
+      }, _children), /*#__PURE__*/React__default.createElement(Step.Footer, {
         onNextStep: this.onNextStep,
         onPrevStep: this.onPrevStep,
         step: this.state.step
@@ -2794,7 +2795,7 @@ var Form = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return Form;
-}(React.Component);
+}(React__default.Component);
 
 _defineProperty(Form, "defaultProps", {
   isMultiStep: false
@@ -2852,7 +2853,7 @@ var FooterUIInner = styled__default('div')(_templateObject4$3(), theme.colors.da
 
 function Footer$1(_ref) {
   var children = _ref.children;
-  return /*#__PURE__*/React.createElement(FooterUI, null, /*#__PURE__*/React.createElement(FooterUIInner, null, children));
+  return /*#__PURE__*/React__default.createElement(FooterUI, null, /*#__PURE__*/React__default.createElement(FooterUIInner, null, children));
 }
 
 Footer$1.Address = AddressUI;
@@ -3100,7 +3101,7 @@ var FontLoader = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return FontLoader;
-}(React.Component);
+}(React__default.Component);
 
 function _templateObject7$1() {
   var data = _taggedTemplateLiteral(["\n  margin-left: ", ";\n  font-family: ", ";\n  border-left: ", ";\n  color: #fff;\n  font-size: ", ";\n  display: flex;\n  background-color: ", ";\n  padding: 0 ", ";\n  align-items: center;\n  justify-content: center;\n\n  flex-direction: column;\n\n  a:active,\n  a:link,\n  a:hover,\n  a:visited {\n    color: #fff;\n  }\n"]);
@@ -3181,35 +3182,35 @@ var ContactUI = styled__default('div')(_templateObject7$1(), theme.unit(1), them
 
 function Container(_ref) {
   var children = _ref.children;
-  return /*#__PURE__*/React.createElement(ContainerUI$7, null, /*#__PURE__*/React.createElement(ContainerInnerUI, null, children));
+  return /*#__PURE__*/React__default.createElement(ContainerUI$7, null, /*#__PURE__*/React__default.createElement(ContainerInnerUI, null, children));
 }
 
 var Brand = function Brand(_ref2) {
   var children = _ref2.children;
-  return /*#__PURE__*/React.createElement(BrandUI, null, children);
+  return /*#__PURE__*/React__default.createElement(BrandUI, null, children);
 };
 
 function Dropdown(_ref3) {
   var children = _ref3.children,
       text = _ref3.text;
-  return /*#__PURE__*/React.createElement(DropdownUI, null, /*#__PURE__*/React.createElement(Link, null, text), /*#__PURE__*/React.createElement("ul", null, React.Children.map(children, function (child) {
-    return /*#__PURE__*/React.createElement("li", null, React.cloneElement(child, {}));
+  return /*#__PURE__*/React__default.createElement(DropdownUI, null, /*#__PURE__*/React__default.createElement(Link, null, text), /*#__PURE__*/React__default.createElement("ul", null, React__default.Children.map(children, function (child) {
+    return /*#__PURE__*/React__default.createElement("li", null, React__default.cloneElement(child, {}));
   })));
 }
 
 function Link(_ref4) {
   var children = _ref4.children;
-  return /*#__PURE__*/React.createElement(LinkUI, null, children);
+  return /*#__PURE__*/React__default.createElement(LinkUI, null, children);
 }
 
 function Menu(_ref5) {
   var children = _ref5.children;
-  return /*#__PURE__*/React.createElement(MenuUI, null, children);
+  return /*#__PURE__*/React__default.createElement(MenuUI, null, children);
 }
 
 function Contact(_ref6) {
   var children = _ref6.children;
-  return /*#__PURE__*/React.createElement(ContactUI, null, children);
+  return /*#__PURE__*/React__default.createElement(ContactUI, null, children);
 }
 
 var DesktopHeader = {
@@ -3347,14 +3348,14 @@ var ContainerInnerUI$2 = styled__default('div')(_templateObject6$2(), makePixelV
 function TriggerIcon(_ref) {
   var isOpen = _ref.isOpen,
       onClick = _ref.onClick;
-  return /*#__PURE__*/React.createElement(ContainerUI$9, {
+  return /*#__PURE__*/React__default.createElement(ContainerUI$9, {
     isOpen: isOpen,
     onClick: onClick
-  }, /*#__PURE__*/React.createElement(ContainerInnerUI$2, null, /*#__PURE__*/React.createElement(Line1UI, {
+  }, /*#__PURE__*/React__default.createElement(ContainerInnerUI$2, null, /*#__PURE__*/React__default.createElement(Line1UI, {
     isOpen: isOpen
-  }), /*#__PURE__*/React.createElement(Line2UI, {
+  }), /*#__PURE__*/React__default.createElement(Line2UI, {
     isOpen: isOpen
-  }), /*#__PURE__*/React.createElement(Line3UI, {
+  }), /*#__PURE__*/React__default.createElement(Line3UI, {
     isOpen: isOpen
   })));
 }
@@ -3431,15 +3432,15 @@ var Dropdown$1 = /*#__PURE__*/function (_React$Component) {
           isParentMenuOpen = _this$props.isParentMenuOpen,
           text = _this$props.text;
       var isOpen = this.state.isOpen;
-      return /*#__PURE__*/React.createElement(DropdownUI$1, null, /*#__PURE__*/React.createElement(LinkUI$1, {
+      return /*#__PURE__*/React__default.createElement(DropdownUI$1, null, /*#__PURE__*/React__default.createElement(LinkUI$1, {
         isOpen: isOpen,
         onClick: function onClick() {
           _this2.toggleMenu(!isOpen);
         }
-      }, text, /*#__PURE__*/React.createElement(LinkArrowUI, {
+      }, text, /*#__PURE__*/React__default.createElement(LinkArrowUI, {
         isOpen: isOpen
-      })), /*#__PURE__*/React.createElement("ul", null, isOpen && React.Children.map(children, function (child) {
-        return /*#__PURE__*/React.createElement("li", null, React.cloneElement(child, {
+      })), /*#__PURE__*/React__default.createElement("ul", null, isOpen && React__default.Children.map(children, function (child) {
+        return /*#__PURE__*/React__default.createElement("li", null, React__default.cloneElement(child, {
           onClick: function onClick(event) {
             isParentMenuOpen && _this2.props.closeParentMenu();
             event.nativeEvent.stopPropagation();
@@ -3450,7 +3451,7 @@ var Dropdown$1 = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return Dropdown;
-}(React.Component);
+}(React__default.Component);
 
 var Container$1 = /*#__PURE__*/function (_React$Component) {
   _inherits(Container, _React$Component);
@@ -3520,11 +3521,11 @@ var Container$1 = /*#__PURE__*/function (_React$Component) {
 
       var children = this.props.children;
       var isOpen = this.state.isOpen;
-      return /*#__PURE__*/React.createElement(ContainerUI$8, null, /*#__PURE__*/React.createElement(ContainerInnerUI$1, null, /*#__PURE__*/React.createElement(TriggerIcon, {
+      return /*#__PURE__*/React__default.createElement(ContainerUI$8, null, /*#__PURE__*/React__default.createElement(ContainerInnerUI$1, null, /*#__PURE__*/React__default.createElement(TriggerIcon, {
         isOpen: isOpen,
         onClick: this.toggleMenu
-      }), React.Children.map(children, function (child) {
-        return React.cloneElement(child, _objectSpread2(_objectSpread2({}, child.props), {}, {
+      }), React__default.Children.map(children, function (child) {
+        return React__default.cloneElement(child, _objectSpread2(_objectSpread2({}, child.props), {}, {
           closeParentMenu: _this3.toggleMenu,
           isParentMenuOpen: isOpen
         }));
@@ -3533,7 +3534,7 @@ var Container$1 = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return Container;
-}(React.Component);
+}(React__default.Component);
 
 var Brand$1 = function Brand(_ref) {
   var children = _ref.children;
@@ -3544,7 +3545,7 @@ function Link$1(props) {
   var children = props.children,
       closeParentMenu = props.closeParentMenu,
       isParentMenuOpen = props.isParentMenuOpen;
-  return /*#__PURE__*/React.createElement(LinkUI$1, {
+  return /*#__PURE__*/React__default.createElement(LinkUI$1, {
     onClick: function onClick(event) {
       isParentMenuOpen && closeParentMenu();
       event.nativeEvent.stopPropagation();
@@ -3558,13 +3559,13 @@ function Menu$1(props) {
       isParentMenuOpen = props.isParentMenuOpen;
 
   if (isParentMenuOpen) {
-    var content = React.Children.map(children, function (child) {
-      return React.cloneElement(child, _objectSpread2(_objectSpread2({}, child.props), {}, {
+    var content = React__default.Children.map(children, function (child) {
+      return React__default.cloneElement(child, _objectSpread2(_objectSpread2({}, child.props), {}, {
         closeParentMenu: closeParentMenu,
         isParentMenuOpen: isParentMenuOpen
       }));
     });
-    return /*#__PURE__*/React.createElement(MenuUI$1, _objectSpread2({}, props), content);
+    return /*#__PURE__*/React__default.createElement(MenuUI$1, _objectSpread2({}, props), content);
   }
 
   return null;
@@ -3605,94 +3606,94 @@ var Container$2 = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref) {
+      return /*#__PURE__*/React__default.createElement(ReactBreakpoints.Media, null, function (_ref) {
         var breakpoints = _ref.breakpoints,
             currentBreakpoint = _ref.currentBreakpoint;
 
         if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
-          return /*#__PURE__*/React.createElement(DesktopHeader.Container, _objectSpread2({}, _this.props));
+          return /*#__PURE__*/React__default.createElement(DesktopHeader.Container, _objectSpread2({}, _this.props));
         } else {
-          return /*#__PURE__*/React.createElement(MobileHeader.Container, _objectSpread2({}, _this.props));
+          return /*#__PURE__*/React__default.createElement(MobileHeader.Container, _objectSpread2({}, _this.props));
         }
       });
     }
   }]);
 
   return Container;
-}(React.Component);
+}(React__default.Component);
 
 function Brand$2(props) {
-  return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref2) {
+  return /*#__PURE__*/React__default.createElement(ReactBreakpoints.Media, null, function (_ref2) {
     var breakpoints = _ref2.breakpoints,
         currentBreakpoint = _ref2.currentBreakpoint;
 
     if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
-      return /*#__PURE__*/React.createElement(DesktopHeader.Brand, _objectSpread2({}, props));
+      return /*#__PURE__*/React__default.createElement(DesktopHeader.Brand, _objectSpread2({}, props));
     } else {
-      return /*#__PURE__*/React.createElement(MobileHeader.Brand, _objectSpread2({}, props));
+      return /*#__PURE__*/React__default.createElement(MobileHeader.Brand, _objectSpread2({}, props));
     }
   });
 }
 
 function Menu$2(props) {
-  return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref3) {
+  return /*#__PURE__*/React__default.createElement(ReactBreakpoints.Media, null, function (_ref3) {
     var breakpoints = _ref3.breakpoints,
         currentBreakpoint = _ref3.currentBreakpoint;
     var children = props.children,
         closeParentMenu = props.closeParentMenu,
         isParentMenuOpen = props.isParentMenuOpen;
-    var content = React.Children.map(children, function (child) {
-      return React.cloneElement(child, _objectSpread2(_objectSpread2({}, child.props), {}, {
+    var content = React__default.Children.map(children, function (child) {
+      return React__default.cloneElement(child, _objectSpread2(_objectSpread2({}, child.props), {}, {
         closeParentMenu: closeParentMenu,
         isParentMenuOpen: isParentMenuOpen
       }));
     });
 
     if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
-      return /*#__PURE__*/React.createElement(DesktopHeader.Menu, _objectSpread2({}, props), content);
+      return /*#__PURE__*/React__default.createElement(DesktopHeader.Menu, _objectSpread2({}, props), content);
     } else {
-      return /*#__PURE__*/React.createElement(MobileHeader.Menu, _objectSpread2({}, props), content);
+      return /*#__PURE__*/React__default.createElement(MobileHeader.Menu, _objectSpread2({}, props), content);
     }
   });
 }
 
 function Link$2(props) {
-  return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref4) {
+  return /*#__PURE__*/React__default.createElement(ReactBreakpoints.Media, null, function (_ref4) {
     var breakpoints = _ref4.breakpoints,
         currentBreakpoint = _ref4.currentBreakpoint;
 
     if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
-      return /*#__PURE__*/React.createElement(DesktopHeader.Link, _objectSpread2({}, props));
+      return /*#__PURE__*/React__default.createElement(DesktopHeader.Link, _objectSpread2({}, props));
     } else {
-      return /*#__PURE__*/React.createElement(MobileHeader.Link, _objectSpread2({}, props));
+      return /*#__PURE__*/React__default.createElement(MobileHeader.Link, _objectSpread2({}, props));
     }
   });
 }
 
 function Dropdown$2(props) {
-  return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref5) {
+  return /*#__PURE__*/React__default.createElement(ReactBreakpoints.Media, null, function (_ref5) {
     var breakpoints = _ref5.breakpoints,
         currentBreakpoint = _ref5.currentBreakpoint;
 
     if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
-      return /*#__PURE__*/React.createElement(DesktopHeader.Dropdown, _objectSpread2({}, props));
+      return /*#__PURE__*/React__default.createElement(DesktopHeader.Dropdown, _objectSpread2({}, props));
     } else {
-      return /*#__PURE__*/React.createElement(MobileHeader.Dropdown, _objectSpread2({}, props));
+      return /*#__PURE__*/React__default.createElement(MobileHeader.Dropdown, _objectSpread2({}, props));
     }
   });
 }
 
 function Divider() {
-  return /*#__PURE__*/React.createElement(DividerUI, null);
+  return /*#__PURE__*/React__default.createElement(DividerUI, null);
 }
 
 function Contact$1(props) {
-  return /*#__PURE__*/React.createElement(ReactBreakpoints.Media, null, function (_ref6) {
+  return /*#__PURE__*/React__default.createElement(ReactBreakpoints.Media, null, function (_ref6) {
     var breakpoints = _ref6.breakpoints,
         currentBreakpoint = _ref6.currentBreakpoint;
 
     if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
-      return /*#__PURE__*/React.createElement(DesktopHeader.Contact, _objectSpread2({}, props));
+      return /*#__PURE__*/React__default.createElement(DesktopHeader.Contact, _objectSpread2({}, props));
     } else {
       return null;
     }
@@ -3724,7 +3725,7 @@ var IconUI$1 = styled__default('img')(_templateObject$q());
 function Icon(_ref) {
   var alt = _ref.alt,
       src = _ref.src;
-  return /*#__PURE__*/React.createElement(IconUI$1, {
+  return /*#__PURE__*/React__default.createElement(IconUI$1, {
     src: src,
     alt: alt
   });
@@ -3765,7 +3766,7 @@ function Image(_ref) {
       height = _ref.height,
       width = _ref.width,
       src = _ref.src;
-  return /*#__PURE__*/React.createElement(ImageContainerUI$1, null, /*#__PURE__*/React.createElement(ImageUI$1, {
+  return /*#__PURE__*/React__default.createElement(ImageContainerUI$1, null, /*#__PURE__*/React__default.createElement(ImageUI$1, {
     align: align,
     alt: alt,
     height: height,
@@ -3841,11 +3842,11 @@ function Jumbotron (_ref) {
       image = _ref$image === void 0 ? null : _ref$image,
       _ref$size = _ref.size,
       size = _ref$size === void 0 ? 'full' : _ref$size;
-  return /*#__PURE__*/React.createElement(ContainerUI$a, {
+  return /*#__PURE__*/React__default.createElement(ContainerUI$a, {
     size: size
-  }, /*#__PURE__*/React.createElement(ImageUI$2, null, /*#__PURE__*/React.createElement("img", {
+  }, /*#__PURE__*/React__default.createElement(ImageUI$2, null, /*#__PURE__*/React__default.createElement("img", {
     srcSet: getSrcSets(fullSizes, image)
-  })), /*#__PURE__*/React.createElement(ContentUI$3, null, children));
+  })), /*#__PURE__*/React__default.createElement(ContentUI$3, null, children));
 }
 
 function _templateObject$t() {
@@ -3860,18 +3861,18 @@ function _templateObject$t() {
 var LoadingScreenContainerUI = styled__default('div')(_templateObject$t(), theme.layout.desktop.headerHeight, theme.breakPointsAsPixel.desktop, theme.layout.tablet.headerHeight, theme.breakPointsAsPixel.tablet, theme.layout.mobile.headerHeight);
 
 function Loader() {
-  return /*#__PURE__*/React.createElement("svg", {
+  return /*#__PURE__*/React__default.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg" // width={config.unit(1)}
     // height={config.unit(1)}
     ,
     viewBox: "0 0 512 512"
-  }, /*#__PURE__*/React.createElement("path", {
+  }, /*#__PURE__*/React__default.createElement("path", {
     d: "M256.001 0c-8.284 0-15 6.716-15 15v96.4c0 8.284 6.716 15 15 15s15-6.716 15-15V15c0-8.284-6.716-15-15-15zM256.001 385.601c-8.284 0-15 6.716-15 15V497c0 8.284 6.716 15 15 15s15-6.716 15-15v-96.399c0-8.285-6.716-15-15-15zM196.691 123.272l-48.2-83.485c-4.142-7.175-13.316-9.633-20.49-5.49-7.174 4.142-9.632 13.316-5.49 20.49l48.2 83.485c2.778 4.813 7.82 7.502 13.004 7.502 2.545 0 5.124-.648 7.486-2.012 7.174-4.142 9.632-13.316 5.49-20.49zM389.491 457.212l-48.199-83.483c-4.142-7.175-13.316-9.633-20.49-5.49-7.174 4.142-9.632 13.316-5.49 20.49l48.199 83.483c2.778 4.813 7.82 7.502 13.004 7.502 2.545 0 5.124-.648 7.486-2.012 7.174-4.142 9.632-13.316 5.49-20.49zM138.274 170.711L54.788 122.51c-7.176-4.144-16.348-1.685-20.49 5.49-4.142 7.174-1.684 16.348 5.49 20.49l83.486 48.202a14.928 14.928 0 007.486 2.012c5.184 0 10.226-2.69 13.004-7.503 4.142-7.174 1.684-16.348-5.49-20.49zM472.213 363.51l-83.484-48.199c-7.176-4.142-16.349-1.684-20.49 5.491-4.142 7.175-1.684 16.349 5.49 20.49l83.484 48.199a14.93 14.93 0 007.486 2.012c5.184 0 10.227-2.69 13.004-7.502 4.142-7.176 1.684-16.35-5.49-20.491zM111.401 241.002H15c-8.284 0-15 6.716-15 15s6.716 15 15 15h96.401c8.284 0 15-6.716 15-15s-6.716-15-15-15zM497 241.002h-96.398c-8.284 0-15 6.716-15 15s6.716 15 15 15H497c8.284 0 15-6.716 15-15s-6.716-15-15-15zM143.765 320.802c-4.142-7.175-13.314-9.633-20.49-5.49l-83.486 48.2c-7.174 4.142-9.632 13.316-5.49 20.49 2.778 4.813 7.82 7.502 13.004 7.502 2.545 0 5.124-.648 7.486-2.012l83.486-48.2c7.174-4.142 9.632-13.316 5.49-20.49zM477.702 128.003c-4.142-7.175-13.315-9.632-20.49-5.49l-83.484 48.2c-7.174 4.141-9.632 13.315-5.49 20.489 2.778 4.813 7.82 7.503 13.004 7.503a14.93 14.93 0 007.486-2.012l83.484-48.2c7.174-4.142 9.632-13.316 5.49-20.49zM191.201 368.239c-7.174-4.144-16.349-1.685-20.49 5.49l-48.2 83.485c-4.142 7.174-1.684 16.348 5.49 20.49a14.928 14.928 0 007.486 2.012c5.184 0 10.227-2.69 13.004-7.502l48.2-83.485c4.142-7.174 1.684-16.348-5.49-20.49zM384.001 34.3c-7.175-4.144-16.349-1.685-20.49 5.49l-48.199 83.483c-4.143 7.174-1.685 16.348 5.49 20.49a14.928 14.928 0 007.486 2.012c5.184 0 10.226-2.69 13.004-7.502l48.199-83.483c4.142-7.174 1.684-16.348-5.49-20.49z"
   }));
 }
 
 function Loading() {
-  return /*#__PURE__*/React.createElement(LoadingScreenContainerUI, null, /*#__PURE__*/React.createElement(Loader, null), 'Loading');
+  return /*#__PURE__*/React__default.createElement(LoadingScreenContainerUI, null, /*#__PURE__*/React__default.createElement(Loader, null), 'Loading');
 }
 
 function _templateObject4$7() {
@@ -3920,12 +3921,12 @@ var DropQuoteUI$1 = styled__default('div')(_templateObject4$7());
 
 function Quote$1 (_ref) {
   var sidebar = _ref.sidebar;
-  return /*#__PURE__*/React.createElement(BoxWrapper$2, null, /*#__PURE__*/React.createElement(OpenQuoteUI$1, null, "\u201C"), /*#__PURE__*/React.createElement(DropQuoteUI$1, null, /*#__PURE__*/React.createElement("blockquote", {
+  return /*#__PURE__*/React__default.createElement(BoxWrapper$2, null, /*#__PURE__*/React__default.createElement(OpenQuoteUI$1, null, "\u201C"), /*#__PURE__*/React__default.createElement(DropQuoteUI$1, null, /*#__PURE__*/React__default.createElement("blockquote", {
     className: "heading-3 italic font1",
     dangerouslySetInnerHTML: {
       __html: sidebar.text
     }
-  })), /*#__PURE__*/React.createElement(CloseQuoteUI$1, null, "\u201D"));
+  })), /*#__PURE__*/React__default.createElement(CloseQuoteUI$1, null, "\u201D"));
 }
 
 function ScrollToTop(_ref) {
@@ -3933,7 +3934,7 @@ function ScrollToTop(_ref) {
       location = _ref.location;
 
   if (typeof window !== 'undefined') {
-    React.useEffect(function () {
+    React__default.useEffect(function () {
       return window.scrollTo(0, 0);
     }, [location.pathname]);
     return children;
@@ -3954,7 +3955,7 @@ function _templateObject$v() {
 var GlobalStyles = styled.createGlobalStyle(_templateObject$v(), theme.colors.dark4, theme.typography.fonts.font1, theme.colors.dark3, theme.colors.dark3, theme.colors.dark3, theme.colors.dark3, theme.unit(0.75), theme.unit(1), theme.unit(0.5), theme.unit(1), theme.unit(0.5), theme.unit(0.75), theme.colors.light1, theme.unit(0.5), theme.colors.dark1, theme.typography.sizes.desktop.sm, theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.sm, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.xsm, theme.border, theme.border, theme.unit(1), theme.border, theme.border, theme.unit(0.25), theme.unit(0.5), theme.colors.light1, theme.breakPointsAsPixel.mobile, theme.typography.sizes.desktop.md, theme.typography.fonts['font-3'], theme.breakPointsAsPixel.tablet, theme.typography.sizes.tablet.md, theme.breakPointsAsPixel.mobile, theme.typography.sizes.mobile.md);
 
 function head () {
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(GlobalStyles, null));
+  return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement(GlobalStyles, null));
 }
 
 var _short$2 = require('short-uuid');
@@ -3975,7 +3976,7 @@ function getComponent$1(_ref) {
     component_section_rich_text: Section
   };
   var content = type !== 'component_data' && data.body && data.body.map(function (block) {
-    return /*#__PURE__*/React.createElement(JsxParser, {
+    return /*#__PURE__*/React__default.createElement(JsxParser, {
       components: {
         Article: Article,
         Banner: Banner,
@@ -3995,7 +3996,7 @@ function getComponent$1(_ref) {
       renderInWrapper: false
     });
   });
-  return React.createElement(wrapperComponent[type], _objectSpread2(_objectSpread2({}, data), {}, {
+  return React__default.createElement(wrapperComponent[type], _objectSpread2(_objectSpread2({}, data), {}, {
     key: "".concat(type, "-").concat(id),
     id: id
   }), [content]);
@@ -4084,32 +4085,44 @@ function getMetaTags (data, defaultTitle, defaultDescription, defaultImage) {
   var metaDescription = data.meta_description || data.og_description || defaultDescription;
   var metaTitle = data.meta_title || data.og_title || defaultTitle;
   var metaNoindex = data.meta_noindex;
-  return [/*#__PURE__*/React.createElement("meta", {
+  return [/*#__PURE__*/React__default.createElement("meta", {
     property: "og:description",
     content: ogDescription,
     key: _short$3.generate()
-  }), /*#__PURE__*/React.createElement("meta", {
+  }), /*#__PURE__*/React__default.createElement("meta", {
     property: "og:image",
     content: ogImage,
     key: _short$3.generate()
-  }), /*#__PURE__*/React.createElement("meta", {
+  }), /*#__PURE__*/React__default.createElement("meta", {
     property: "og:title",
     content: ogTitle,
     key: _short$3.generate()
-  }), /*#__PURE__*/React.createElement("meta", {
+  }), /*#__PURE__*/React__default.createElement("meta", {
     property: "og:type",
     content: ogType,
     key: _short$3.generate()
-  }), /*#__PURE__*/React.createElement("meta", {
+  }), /*#__PURE__*/React__default.createElement("meta", {
     name: "description",
     content: metaDescription,
     key: _short$3.generate()
-  }), /*#__PURE__*/React.createElement("title", {
+  }), /*#__PURE__*/React__default.createElement("title", {
     key: _short$3.generate()
-  }, metaTitle), metaNoindex ? /*#__PURE__*/React.createElement("meta", {
+  }, metaTitle), metaNoindex ? /*#__PURE__*/React__default.createElement("meta", {
     name: "robots",
     content: "noindex"
   }) : null];
+}
+
+function useScript (url) {
+  React.useEffect(function () {
+    var script = document.createElement('script');
+    script.src = url;
+    script.async = true;
+    document.body.appendChild(script);
+    return function () {
+      document.body.removeChild(script);
+    };
+  }, [url]);
 }
 
 var utils = {
@@ -4119,7 +4132,8 @@ var utils = {
   getPages: getPages,
   getPosts: getPosts$1,
   getSrcSets: getSrcSets,
-  makePixelValue: makePixelValue
+  makePixelValue: makePixelValue,
+  useScript: useScript
 };
 
 exports.Article = Article;

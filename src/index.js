@@ -31,6 +31,7 @@ import getPosts from './utils/getPosts'
 import getMetaTags from './utils/getMetaTags'
 import getSrcSets from './utils/getSrcSets'
 import makePixelValue from './utils/makePixelValue'
+import useScript from './utils/useScript'
 
 // this needs to be exported like this, otherwise weird transpile errors from rollup
 export const utils = {
@@ -41,4 +42,5 @@ export const utils = {
   getPosts,
   getSrcSets,
   makePixelValue,
+  useScript,
 }
