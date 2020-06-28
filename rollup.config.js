@@ -21,6 +21,7 @@ export default {
       React: 'react',
       styled: 'styled-components',
       Prismic: 'prismic-javascript',
+      PrismicReactJs: 'prismic-reactjs',
     }),
     resolve(),
     commonjs(),

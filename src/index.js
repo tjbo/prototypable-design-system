@@ -25,6 +25,7 @@ export { default as Title } from './components/title'
 export { default as Head } from './components/head/head'
 
 import getComponent from './utils/getComponent'
+import getComponentsFromSlices from './utils/getComponentsFromSlices'
 import getContentByType from './utils/getContentByType'
 import getPages from './utils/getPages'
 import getPosts from './utils/getPosts'
@@ -36,6 +37,7 @@ import useScript from './utils/useScript'
 // this needs to be exported like this, otherwise weird transpile errors from rollup
 export const utils = {
   getComponent,
+  getComponentsFromSlices,
   getContentByType,
   getMetaTags,
   getPages,

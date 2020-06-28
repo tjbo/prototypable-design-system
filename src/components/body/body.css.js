@@ -10,4 +10,12 @@ export const BodyUI = styled('div')`
   @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
     margin-top: ${theme.layout.mobile.headerHeight};
   }
+
+  strong {
+    font-weight: bold;
+  }
+
+  em {
+    font-style: italic;
+  }
 `
