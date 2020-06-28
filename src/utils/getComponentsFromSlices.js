@@ -8,10 +8,11 @@ var short = require('short-uuid')
 
 export default function getComponentFromSlices(slices) {
   return slices.map((slice) => {
-    const string = reactElementToJSXString(
-      PrismicReactJs.RichText.render(slice.primary.text),
-      { useFragmentShortSyntax: false },
-    )
+    const parsePrismic = PrismicReactJs.RichText.render(slice.primary.text)
+
+    const string = reactElementToJSXString(parsePrismic, {
+      useFragmentShortSyntax: false,
+    })
 
     const parsedComponents = (
       <JsxParser
@@ -33,6 +34,7 @@ export default function getComponentFromSlices(slices) {
           },
           Title,
         }}
+        disableFragments={false}
         jsx={string}
         key={short.generate()}
         renderInWrapper={false}

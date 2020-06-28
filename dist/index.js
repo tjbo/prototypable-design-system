@@ -1974,7 +1974,7 @@ function getImage(image) {
 
   return /*#__PURE__*/React__default.createElement(Card.Image, null, /*#__PURE__*/React__default.createElement("img", {
     src: image.url,
-    srcSet: getSrcSets(image)
+    srcSet: getSrcSets(['600x338', '960x540'], image)
   }));
 }
 
@@ -6588,7 +6588,8 @@ var _short$3 = require('short-uuid');
 
 function getComponentFromSlices(slices) {
   return slices.map(function (slice) {
-    var string = reactElementToJSXString(PrismicReactJs.RichText.render(slice.primary.text), {
+    var parsePrismic = PrismicReactJs.RichText.render(slice.primary.text);
+    var string = reactElementToJSXString(parsePrismic, {
       useFragmentShortSyntax: false
     });
     var parsedComponents = /*#__PURE__*/React__default.createElement(JsxParser, {
@@ -6625,6 +6626,7 @@ function getComponentFromSlices(slices) {
         },
         Title: Title
       },
+      disableFragments: false,
       jsx: string,
       key: _short$3.generate(),
       renderInWrapper: false

@@ -15,7 +15,7 @@ function getImage(image) {
   }
   return (
     <Card.Image>
-      <img src={image.url} srcSet={getSrcSets(image)} />
+      <img src={image.url} srcSet={getSrcSets(['600x338', '960x540'], image)} />
     </Card.Image>
   )
 }
