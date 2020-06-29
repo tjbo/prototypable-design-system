@@ -4,10 +4,12 @@ export default function getSrcSets(sizes, data) {
   }
 
   const srcSets = sizes.map((size) => {
-    return data[size]
+    if (!!data[size]) {
+      return data[size]
+    }
   })
 
-  if (data && data.url) {
+  if (data && data.dimensions && data.url) {
     srcSets.push({
       dimensions: data.dimensions,
       url: data.url,
@@ -18,7 +20,9 @@ export default function getSrcSets(sizes, data) {
     return
   }
 
+  //remove empty values
   return srcSets
+    .filter((value) => Object.keys(value).length !== 0)
     .map(({ url, dimensions: { width } }) => {
       return `${url} ${width}w`
     })

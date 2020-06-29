@@ -807,10 +807,12 @@ function getSrcSets(sizes, data) {
   }
 
   var srcSets = sizes.map(function (size) {
-    return data[size];
+    if (!!data[size]) {
+      return data[size];
+    }
   });
 
-  if (data && data.url) {
+  if (data && data.dimensions && data.url) {
     srcSets.push({
       dimensions: data.dimensions,
       url: data.url
@@ -819,9 +821,12 @@ function getSrcSets(sizes, data) {
 
   if (!srcSets.length) {
     return;
-  }
+  } //remove empty values
 
-  return srcSets.map(function (_ref) {
+
+  return srcSets.filter(function (value) {
+    return Object.keys(value).length !== 0;
+  }).map(function (_ref) {
     var url = _ref.url,
         width = _ref.dimensions.width;
     return "".concat(url, " ").concat(width, "w");
@@ -6584,58 +6589,87 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_react__;
 
 var PrismicReactJs = unwrapExports(prismicReactjs);
 
+function _templateObject$w() {
+  var data = _taggedTemplateLiteral(["\n  margin-bottom: ", ";\n"]);
+
+  _templateObject$w = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var ImgUI = styled__default('img')(_templateObject$w(), theme.unit(0.5));
+
+function ResponsiveImage (_ref) {
+  var data = _ref.data,
+      sizes = _ref.sizes;
+  return /*#__PURE__*/React__default.createElement(ImgUI, {
+    src: data.url,
+    srcSet: getSrcSets(sizes, data)
+  });
+}
+
 var _short$3 = require('short-uuid');
 
 function getComponentFromSlices(slices) {
   return slices.map(function (slice) {
-    var parsePrismic = PrismicReactJs.RichText.render(slice.primary.text);
-    var string = reactElementToJSXString(parsePrismic, {
-      useFragmentShortSyntax: false
-    });
-    var parsedComponents = /*#__PURE__*/React__default.createElement(JsxParser, {
-      components: {
-        h1: function h1(_ref) {
-          var children = _ref.children;
-          return /*#__PURE__*/React__default.createElement(Title, {
-            as: "h1"
-          }, children);
+    if (slice.slice_type !== 'responsive_image') {
+      var parsePrismic = PrismicReactJs.RichText.render(slice.primary.text);
+      var string = reactElementToJSXString(parsePrismic, {
+        useFragmentShortSyntax: false
+      });
+      var parsedComponents = /*#__PURE__*/React__default.createElement(JsxParser, {
+        components: {
+          h1: function h1(_ref) {
+            var children = _ref.children;
+            return /*#__PURE__*/React__default.createElement(Title, {
+              as: "h1"
+            }, children);
+          },
+          h2: function h2(_ref2) {
+            var children = _ref2.children;
+            return /*#__PURE__*/React__default.createElement(Title, {
+              as: "h2"
+            }, children);
+          },
+          h3: function h3(_ref3) {
+            var children = _ref3.children;
+            return /*#__PURE__*/React__default.createElement(Title, {
+              as: "h3"
+            }, children);
+          },
+          h4: function h4(_ref4) {
+            var children = _ref4.children;
+            return /*#__PURE__*/React__default.createElement(Title, {
+              as: "h4"
+            }, children);
+          },
+          h5: function h5(_ref5) {
+            var children = _ref5.children;
+            return /*#__PURE__*/React__default.createElement(Title, {
+              as: "h5"
+            }, children);
+          },
+          Title: Title
         },
-        h2: function h2(_ref2) {
-          var children = _ref2.children;
-          return /*#__PURE__*/React__default.createElement(Title, {
-            as: "h2"
-          }, children);
-        },
-        h3: function h3(_ref3) {
-          var children = _ref3.children;
-          return /*#__PURE__*/React__default.createElement(Title, {
-            as: "h3"
-          }, children);
-        },
-        h4: function h4(_ref4) {
-          var children = _ref4.children;
-          return /*#__PURE__*/React__default.createElement(Title, {
-            as: "h4"
-          }, children);
-        },
-        h5: function h5(_ref5) {
-          var children = _ref5.children;
-          return /*#__PURE__*/React__default.createElement(Title, {
-            as: "h5"
-          }, children);
-        },
-        Title: Title
-      },
-      disableFragments: false,
-      jsx: string,
-      key: _short$3.generate(),
-      renderInWrapper: false
-    });
-    var wrapperComponent = {
-      text: 'div',
-      highlighted_box: BlockQuote
-    };
-    return React__default.createElement(wrapperComponent[slice.slice_type], {}, [parsedComponents]);
+        disableFragments: false,
+        jsx: string,
+        key: _short$3.generate(),
+        renderInWrapper: false
+      });
+      var wrapperComponent = {
+        text: 'div',
+        highlighted_box: BlockQuote
+      };
+      return React__default.createElement(wrapperComponent[slice.slice_type], {}, [parsedComponents]);
+    }
+
+    if (slice.slice_type === 'responsive_image') {
+      return /*#__PURE__*/React__default.createElement(ResponsiveImage, {
+        data: slice.primary.image1,
+        sizes: ['768x506', '1024x674', '1366x900', '1600x1056']
+      });
+    }
   });
 }
 
