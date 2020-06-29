@@ -78,4 +78,6 @@ export const ImageUI = styled('div')`
     max-height: inherit;
     object-fit: cover;
   }
+  position: relative;
+  z-index: -1;
 `

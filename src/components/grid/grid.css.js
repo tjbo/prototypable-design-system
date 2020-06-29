@@ -4,9 +4,22 @@ export const ColUI = styled('div')`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  padding: ${theme.unit(0.25)};
+  padding: ${({ horizontalPadding, verticalPadding }) =>
+    `${theme.unit(verticalPadding)} ${theme.unit(horizontalPadding)}`};
   width: ${({ width }) => width};
   max-width: ${({ maxWidth }) => maxWidth};
+  text-align: ${({ textAlign }) => textAlign};
+
+  ${({ isSticky }) => {
+    return (
+      isSticky &&
+      `
+      position: sticky;
+      top: 100px;
+      align-self: flex-start;
+  `
+    )
+  }}
 `
 
 export const ColInnerUI = styled('div')`

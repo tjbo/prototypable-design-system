@@ -9,6 +9,7 @@ export const ContainerUI = styled('div')`
   background-color: ${theme.colors.dark1};
   height: ${theme.layout.mobile.headerHeight};
   width: 100%;
+  z-index: 99;
 `
 
 export const ContainerInnerUI = styled('div')`

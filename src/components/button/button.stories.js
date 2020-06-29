@@ -7,10 +7,16 @@ export default {
   component: Button,
 }
 
-export const Default = () => <Button onClick={action('clicked')} />
+export const Default = () => (
+  <Button align="center" onClick={action('clicked')}>
+    Click on This
+  </Button>
+)
 
 export const Center = () => (
-  <Button align="center" onClick={action('clicked')} />
+  <Button align="center" onClick={action('clicked')}>
+    Click on This
+  </Button>
 )
 
 export const Right = () => <Button align="right" onClick={action('clicked')} />

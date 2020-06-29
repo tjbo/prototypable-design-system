@@ -4,12 +4,12 @@ import hexToRgb from '../../../utils/hexToRgb'
 export const ContainerUI = styled('div')`
   display: flex;
   flex-direction: column;
-  margin-bottom: ${theme.unit(0.25)};
+  height: auto;
 `
 
 export const InputUI = styled('input')`
   border: none;
-  box-sizing: content-box;
+  box-sizing: border-box;
   display: block;
   max-width: ${({ maxWidth }) => maxWidth};
   width: 100%;

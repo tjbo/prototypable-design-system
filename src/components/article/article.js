@@ -2,6 +2,7 @@ import { ContentUI, SidebarUI } from './article.css'
 import Grid from '../grid/'
 import Quote from './quote/'
 import Box from './box/'
+import Sticky from './sticky'
 
 function Article({ children, collapse }) {
   return <Grid collapse={collapse}>{children}</Grid>
@@ -22,6 +23,10 @@ Article.Sidebar = function ({ children, width = '34%' }) {
 
 Article.Box = function ({ children }) {
   return <Box>{children}</Box>
+}
+
+Article.StickySidebar = function ({ children }) {
+  return <Sticky>{children}</Sticky>
 }
 
 Article.Quote = function ({ children }) {

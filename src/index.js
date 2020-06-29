@@ -17,13 +17,20 @@ export { default as Header } from './components/header/header'
 export { default as Icon } from './components/icon'
 export { default as Image } from './components/image/'
 export { default as Jumbotron } from './components/jumbotron'
+export { default as Layout } from './components/layout'
 export { default as LoadingScreen } from './components/loadingScreen'
+export { default as Modal } from './components/modal'
 export { default as Quote } from './components/quote'
 export { default as Section } from './components/section'
 export { default as ScrollToTop } from './components/scrollToTop'
+export { default as SMS } from './components/sms'
+export { default as Social } from './components/social'
+export { default as StickyBox } from './components/stickyBox'
+export { default as Tabs } from './components/tabs'
 export { default as Title } from './components/title'
 export { default as Head } from './components/head/head'
 
+import encodeData from './utils/encodeData'
 import getComponent from './utils/getComponent'
 import getComponentsFromSlices from './utils/getComponentsFromSlices'
 import getContentByType from './utils/getContentByType'
@@ -36,6 +43,7 @@ import useScript from './utils/useScript'
 
 // this needs to be exported like this, otherwise weird transpile errors from rollup
 export const utils = {
+  encodeData,
   getComponent,
   getComponentsFromSlices,
   getContentByType,

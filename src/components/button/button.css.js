@@ -6,12 +6,14 @@ export const ButtonUI = styled('button')`
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: ${theme.typography.fonts.font1};
-  font-size: ${theme.unit(0.75)};
+  font-size: ${theme.unit(0.6)};
   font-weight: 700;
-  height: ${theme.unit(1.75)};
-  margin-top: ${theme.unit(0.66)};
+  padding: ${theme.unit(0.25)};
+
   width: 100%;
   max-width: ${({ maxWidth }) => maxWidth}px;
   background-image: linear-gradient(

@@ -6,6 +6,7 @@ export default {
   breakPoints: {
     mobile: 608,
     tablet: 960,
+    bigTablet: 1024,
     desktop: 1280,
   },
   breakPointsAsPixel: {
@@ -20,9 +21,10 @@ export default {
     dark4: '#454545',
     dark5: '#0066a3',
     light1: '#f5faff',
-    light2: '36,139,204',
+    light2: '#efefef',
     light3: '#ffffff',
     error: '#D40000',
+    success: '#009918',
   },
   typography: {
     fonts: {

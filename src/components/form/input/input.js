@@ -19,7 +19,7 @@ function getComponent(
   const props = {
     isSelectable,
     isValid,
-    onChange: onChange,
+    onChange,
     maxWidth,
     name,
     readOnly,
@@ -57,12 +57,16 @@ export default function Input({
 
   const isValid = isValidating ? !!!validationMessage : true
 
+  const _onChange = function (event) {
+    onChange(event.target.value)
+  }
+
   const children = (
     <div>
       {getLabel(label)}
       {getComponent(
         type,
-        onChange,
+        _onChange,
         isSelectable,
         isValid,
         maxWidth,
@@ -70,7 +74,7 @@ export default function Input({
         readOnly,
         size,
         textAlign,
-        value,
+        value || '',
       )}
       {hasValidation && (
         <ValidationUI>

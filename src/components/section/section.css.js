@@ -29,6 +29,7 @@ export const SectionWrapperUI = styled('section')`
   background-color: ${getBgColor};
   justify-content: center;
   align-items: center;
+  position: relative;
 `
 
 export const SectionUI = styled('div')`

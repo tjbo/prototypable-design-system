@@ -18,11 +18,11 @@ var short = require('short-uuid')
 
 export default function getComponent(
   { data, id, type },
-  options = { dataComponent: () => {} },
+  { afterComponent = () => null, dataComponent = () => null } = {},
 ) {
   const wrapperComponent = {
-    blog_post: Section,
-    component_data: options.dataComponent,
+    blog_post: 'div',
+    component_data: dataComponent,
     component_cards: CardsSection,
     component_section: Section,
     component_jumbotron: Jumbotron,
@@ -63,6 +63,6 @@ export default function getComponent(
       key: `${type}-${id}`,
       id: id,
     },
-    [content],
+    [content, afterComponent()],
   )
 }

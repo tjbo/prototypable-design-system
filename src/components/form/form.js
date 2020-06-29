@@ -20,12 +20,7 @@ class Form extends React.Component {
     }
   }
 
-  onFieldChange = (name, elementOrValue) => {
-    const value =
-      (elementOrValue &&
-        elementOrValue.target &&
-        elementOrValue.target.value) ||
-      elementOrValue
+  onFieldChange = (name, value) => {
     this.setState({ [name]: value })
   }
 
@@ -40,7 +35,9 @@ class Form extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault()
+
     if (this.validator.allValid()) {
+      this.props.onSubmit(this.state)
       return true
     } else {
       this.setState({ isValidating: true })

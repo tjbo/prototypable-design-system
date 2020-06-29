@@ -8,9 +8,24 @@ function Grid({ alignItems = 'flex-start', children, collapse = '' }) {
   )
 }
 
-Grid.Col = function ({ children, maxWidth = 'initial', width = '32%' }) {
+Grid.Col = function ({
+  children,
+  isSticky = false,
+  horizontalPadding = 0.25,
+  maxWidth = 'initial',
+  verticalPadding = 0.25,
+  textAlign = 'left',
+  width = '32%',
+}) {
   return (
-    <ColUI maxWidth={maxWidth} width={width}>
+    <ColUI
+      horizontalPadding={horizontalPadding}
+      isSticky={isSticky}
+      maxWidth={maxWidth}
+      verticalPadding={verticalPadding}
+      textAlign={textAlign}
+      width={width}
+    >
       <ColInnerUI>{children}</ColInnerUI>
     </ColUI>
   )

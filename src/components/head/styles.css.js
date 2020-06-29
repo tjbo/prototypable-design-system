@@ -86,8 +86,8 @@ body {
   display: flex;
   flex-direction: column;
   font-family: ${theme.typography.fonts.font1};
-  font-size: 1.125rem;
-  line-height: 1.5;
+  font-size: 1.15rem;
+  line-height: 1.55;
   margin: 0;
   overflow: auto;
   padding: 0;
