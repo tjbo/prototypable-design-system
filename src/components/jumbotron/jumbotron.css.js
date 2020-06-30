@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import theme from '../../theme'
+import { TitleUI } from '../title/title.css'
 
 export const ContainerUI = styled('div')`
   height: ${({ size }) =>
@@ -65,6 +66,12 @@ export const ContentUI = styled('div')`
   height: 100%;
   text-align: center;
   top: 0;
+
+  ${TitleUI} {
+    color: #fff;
+    text-shadow: 2px 3px ${theme.colors.dark1};
+    margin-bottom: 0;
+  }
 `
 
 export const ImageUI = styled('div')`

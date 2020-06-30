@@ -2,6 +2,7 @@ import { ContentUI, SidebarUI } from './article.css'
 import Grid from '../grid/'
 import Quote from './quote/'
 import Box from './box/'
+import Title from '../title'
 
 function Article({ children, collapse }) {
   return <Grid collapse={collapse}>{children}</Grid>
@@ -25,7 +26,13 @@ Article.Box = function ({ children }) {
 }
 
 Article.Quote = function ({ children }) {
-  return <Quote>{children}</Quote>
+  return (
+    <Quote>
+      <Title as="h3" fontStyle="italic">
+        {children}
+      </Title>
+    </Quote>
+  )
 }
 
 export default Article

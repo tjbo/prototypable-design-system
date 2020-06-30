@@ -4,7 +4,6 @@ export default class FontLoader extends React.Component {
   }
 
   componentDidMount() {
-    console.log('cdm')
     // react static blows up when rollup trys to hoist this, need to work on a better way to
     // build things between react static and proto lib
     if (typeof window !== 'undefined' && typeof document !== 'undefined') {
@@ -241,7 +240,6 @@ export default class FontLoader extends React.Component {
   }
 
   render() {
-    console.log('render')
     const { children } = this.props
     const { isReady } = this.state
 

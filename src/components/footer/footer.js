@@ -1,14 +1,30 @@
-import { AddressUI, FinePrintUI, FooterUI, FooterUIInner } from './footer.css'
+import {
+  AddressUI,
+  FinePrintUI,
+  ContainerUI,
+  LinkItemUI,
+  LinkUI,
+  LinksUI,
+  InnerUI,
+} from './footer.css'
 
 function Footer({ children }) {
   return (
-    <FooterUI>
-      <FooterUIInner>{children}</FooterUIInner>
-    </FooterUI>
+    <ContainerUI>
+      <InnerUI>{children}</InnerUI>
+    </ContainerUI>
   )
 }
 
 Footer.Address = AddressUI
 Footer.FinePrint = FinePrintUI
+Footer.Links = LinksUI
+Footer.Link = function ({ children, href }) {
+  return (
+    <LinkItemUI>
+      <LinkUI href={href}>{children}</LinkUI>
+    </LinkItemUI>
+  )
+}
 
 export default Footer

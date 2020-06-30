@@ -1,4 +1,5 @@
 import theme from '../../theme'
+import getSpaceAfter from '../../utils/getSpaceAfter'
 
 function getFontSize(
   { as, styling, mobileStyling, tabletStyling },
@@ -45,18 +46,6 @@ function getFontSize(
     return styles[styling][mediaQuery]
   } else {
     return styles[as][mediaQuery]
-  }
-}
-
-function getSpaceAfter({ spaceAfter }) {
-  if (spaceAfter === 'none') {
-    return 0
-  } else if (spaceAfter === 'small') {
-    return theme.unit(0.25)
-  } else if (spaceAfter === 'medium') {
-    return theme.unit(0.5)
-  } else {
-    return theme.unit(0.75)
   }
 }
 

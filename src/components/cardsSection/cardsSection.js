@@ -38,16 +38,16 @@ function getContent(title, content) {
   )
 }
 
-export default function ({ cards, showTitle = true }) {
+export default function ({ cards, showTitle = true, title = '' }) {
   return (
     <Section background="light">
-      {showTitle ? <Title as="h3">Recently Funded Loans</Title> : null}
+      {showTitle ? <Title as="h3">{title}</Title> : null}
       <Cards>
         {cards.map((card) => {
-          if (!card.card.data) {
+          if (!card.data) {
             return
           }
-          const { image, title, ...rest } = card.card.data
+          const { image, title, ...rest } = card.data
 
           return (
             <Card>

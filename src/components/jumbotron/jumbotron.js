@@ -2,14 +2,7 @@ import React from 'react'
 import { ContainerUI, ContentUI, ImageUI } from './jumbotron.css'
 import getSrcSets from '../../utils/getSrcSets'
 
-const fullSizes = [
-  '360×640',
-  '768×1024',
-  '1024x768',
-  '1366×768',
-  '1600×900',
-  '1920x1080',
-]
+const fullSizes = ['360×640', '768×1024', '1366×768', '1600×900', '1920x1080']
 
 export default function ({ children, image = null, size = 'full' }) {
   return (

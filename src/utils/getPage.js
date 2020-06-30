@@ -5,14 +5,31 @@ export default function getPage(api, id, fetchLinks) {
     .query(Prismic.Predicates.at('document.id', id))
     .then((response) => {
       const { data } = response.results[0]
-      const ids = data.body.map((section) => {
-        return section.section.id
+
+      const contentWithLinks = data.body1.filter((slice) => {
+        return (
+          slice.slice_type === 'linked_component_section' ||
+          slice.slice_type === 'cards'
+        )
       })
+
+      const ids = contentWithLinks.reduce((accumulator, slice) => {
+        if (slice.slice_type === 'linked_component_section') {
+          return [...accumulator, slice.primary.body2.id]
+        } else if (slice.slice_type === 'cards') {
+          const _ids = slice.items.map((item) => {
+            return item.cards.id
+          })
+          return accumulator.concat(_ids)
+        }
+        return accumulator
+      }, new Array())
+
       return api.getByIDs(ids, { fetchLinks }).then((response) => {
         const sections = response.results
         return {
           ...data,
-          body: sections,
+          linkedContent: sections,
         }
       })
     })
