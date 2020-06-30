@@ -6745,21 +6745,24 @@ function getComponentsFromSlices(slices, linkedContent) {
         background: slice.primary.background
       }, /*#__PURE__*/React__default.createElement(Banner, null, _parsedComponents3));
     } else if (type === 'faq') {
+      var _slice$primary = slice.primary,
+          intro = _slice$primary.intro,
+          title1 = _slice$primary.title1;
       return /*#__PURE__*/React__default.createElement(Section, {
         background: "light"
       }, /*#__PURE__*/React__default.createElement(Title, {
         as: "h3"
-      }, slice.primary.title1), slice.items.map(function (item) {
+      }, title1), intro && /*#__PURE__*/React__default.createElement(Article, null, /*#__PURE__*/React__default.createElement(Article.Content, null, parsePrismicToReactComponents(intro))), slice.items.map(function (item) {
         return /*#__PURE__*/React__default.createElement(Faq, null, /*#__PURE__*/React__default.createElement(Faq.Details, null, /*#__PURE__*/React__default.createElement(Faq.Summary, null, /*#__PURE__*/React__default.createElement(Title, {
           as: "h4"
         }, item.question)), parsePrismicToReactComponents(item.answer)));
       }));
     } else if (type == 'article') {
-      var _slice$primary = slice.primary,
-          _background = _slice$primary.background,
-          body2 = _slice$primary.body2,
-          sidebar = _slice$primary.sidebar,
-          sidebar_style = _slice$primary.sidebar_style;
+      var _slice$primary2 = slice.primary,
+          _background = _slice$primary2.background,
+          body2 = _slice$primary2.body2,
+          sidebar = _slice$primary2.sidebar,
+          sidebar_style = _slice$primary2.sidebar_style;
       return /*#__PURE__*/React__default.createElement(Section, {
         background: _background
       }, /*#__PURE__*/React__default.createElement(Article, null, /*#__PURE__*/React__default.createElement(Article.Content, null, parsePrismicToReactComponents(body2)), /*#__PURE__*/React__default.createElement(Article.Sidebar, null, sidebar_style === 'quote' && /*#__PURE__*/React__default.createElement(Article.Quote, null, parsePrismicToReactComponents(sidebar)))));

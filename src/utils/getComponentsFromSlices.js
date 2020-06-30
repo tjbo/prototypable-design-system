@@ -121,9 +121,20 @@ export default function getComponentsFromSlices(slices, linkedContent) {
         </Section>
       )
     } else if (type === 'faq') {
+      const { intro, title1 } = slice.primary
+
       return (
         <Section background="light">
-          <Title as="h3">{slice.primary.title1}</Title>
+          <Title as="h3">{title1}</Title>
+
+          {intro && (
+            <Article>
+              <Article.Content>
+                {parsePrismicToReactComponents(intro)}
+              </Article.Content>
+            </Article>
+          )}
+
           {slice.items.map((item) => {
             return (
               <Faq>
