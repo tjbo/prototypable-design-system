@@ -1,4 +1,5 @@
 import theme from '../../theme'
+import getSpaceBefore from '../../utils/getSpaceBefore'
 import getSpaceAfter from '../../utils/getSpaceAfter'
 
 function getFontSize(
@@ -46,16 +47,6 @@ function getFontSize(
     return styles[styling][mediaQuery]
   } else {
     return styles[as][mediaQuery]
-  }
-}
-
-function getSpaceBefore({ spaceBefore }) {
-  if (spaceBefore === 'small') {
-    return theme.unit(0.25)
-  } else if (spaceBefore === 'medium') {
-    return theme.unit(0.5)
-  } else {
-    return 0
   }
 }
 

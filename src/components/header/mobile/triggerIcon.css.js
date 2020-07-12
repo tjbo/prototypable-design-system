@@ -46,6 +46,7 @@ export const ContainerUI = styled('div')`
   padding: ${theme.unit(0.5)};
   right: 0;
   top: 0;
+  cursor: pointer;
 `
 
 export const ContainerInnerUI = styled('div')`

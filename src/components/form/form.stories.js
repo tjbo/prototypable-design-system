@@ -1,6 +1,6 @@
 import React from 'react'
 import Form from './form'
-import Grid from '../grid/'
+import Section from '../section'
 
 export default {
   title: 'Form',
@@ -8,17 +8,19 @@ export default {
 }
 
 export const Default = () => (
-  <Form>
-    <Form.Input label="Name" name="name" validationRules="required|alpha" />
-    <Form.Input label="Email" name="email" validationRules="required|email" />
-    <Form.Input
-      label="Message"
-      name="message"
-      type="textarea"
-      validationRules="required"
-    />
-    <Form.Button type="submit">Send Us A Message</Form.Button>
-  </Form>
+  <Section>
+    <Form>
+      <Form.Input label="Name" name="name" validationRules="required|alpha" />
+      <Form.Input label="Email" name="email" validationRules="required|email" />
+      <Form.Input
+        label="Message"
+        name="message"
+        type="textarea"
+        validationRules="required"
+      />
+      <Form.Button type="submit">Send Us A Message</Form.Button>
+    </Form>
+  </Section>
 )
 
 const cards = [

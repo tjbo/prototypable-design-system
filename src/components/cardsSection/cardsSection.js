@@ -4,6 +4,7 @@ import getSrcSets from '../../utils/getSrcSets'
 import Title from '../title'
 import Section from '../section'
 import toProperCase from '../../utils/toProperCase'
+var short = require('short-uuid')
 
 function formatTitle(title) {
   return toProperCase(title.replace(/_/g, ' '))
@@ -15,7 +16,11 @@ function getImage(image) {
   }
   return (
     <Card.Image>
-      <img src={image.url} srcSet={getSrcSets(['600x338', '960x540'], image)} />
+      <img
+        loading="lazy"
+        src={image.url}
+        srcSet={getSrcSets(['600x338', '960x540'], image)}
+      />
     </Card.Image>
   )
 }
@@ -38,9 +43,14 @@ function getContent(title, content) {
   )
 }
 
-export default function ({ cards, showTitle = true, title = '' }) {
+export default function ({
+  background = 'light',
+  cards,
+  showTitle = true,
+  title = '',
+}) {
   return (
-    <Section background="light">
+    <Section background={background}>
       {showTitle ? <Title as="h3">{title}</Title> : null}
       <Cards>
         {cards.map((card) => {
@@ -50,7 +60,7 @@ export default function ({ cards, showTitle = true, title = '' }) {
           const { image, title, ...rest } = card.data
 
           return (
-            <Card>
+            <Card key={short.generate()}>
               {getImage(image)}
               {getContent(title, rest)}
             </Card>

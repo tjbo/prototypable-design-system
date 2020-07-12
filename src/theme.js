@@ -6,6 +6,7 @@ export default {
   breakPoints: {
     mobile: 608,
     tablet: 960,
+    bigTablet: 1024,
     desktop: 1280,
   },
   breakPointsAsPixel: {
@@ -17,12 +18,14 @@ export default {
     dark1: '#000000',
     dark2: '#D40000',
     dark3: '#0091ea',
-    dark4: '#454545',
+    dark4: '#565656',
     dark5: '#0066a3',
-    light1: '#f5faff',
-    light2: '36,139,204',
+    light1: '#f9f9f9',
+    light2: '#f9f9f9',
     light3: '#ffffff',
     error: '#D40000',
+    success: '#009918',
+    white: '#ffffff',
   },
   typography: {
     fonts: {
@@ -35,7 +38,7 @@ export default {
         md: '1.5rem',
         lg: '2rem',
         xlg: '2.5rem',
-        xxlg: '3.25rem',
+        xxlg: '3.0rem',
       },
       tablet: {
         xsm: '.9rem',
@@ -43,7 +46,7 @@ export default {
         md: '1.5rem',
         lg: '2rem',
         xlg: '2.5rem',
-        xxlg: '3.25rem',
+        xxlg: '3.0rem',
       },
       mobile: {
         xsm: '.9rem',
@@ -62,7 +65,7 @@ export default {
   },
   layout: {
     desktop: {
-      headerHeight: makePixelValue(2 * unit),
+      headerHeight: makePixelValue(3.5 * unit),
     },
     mobile: {
       headerHeight: makePixelValue(1.5 * unit),

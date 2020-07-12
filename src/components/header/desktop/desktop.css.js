@@ -1,19 +1,38 @@
 import theme from '../../../theme'
+import { keyframes, css } from 'styled-components'
+
+const pulseColor = (_style) => {
+  console.log('flip color', _style)
+  return keyframes`
+    to {
+      color: ${_style === 'light' ? '#fff ' : '#000'};
+    }
+
+    from {
+      color:  ${_style === 'light' ? '#000' : '#fff'};
+    }
+    `
+}
 
 export const ContainerUI = styled('header')`
-  background-color: ${theme.colors.dark1};
+  background-color: transparent;
   box-sizing: border-box;
   display: block;
   height: ${theme.layout.desktop.headerHeight};
   width: 100%;
-  position: fixed;
+  position: relative;
   top: 0;
   z-index: 1;
+  background-color: ${({ isTransparent }) =>
+    isTransparent ? 'transparent' : '#f7f7f7'};
+
+  border-bottom: ${({ isTransparent }) =>
+    isTransparent ? '1px solid transparent' : '1px solid #d3d3d3'};
 `
 
 export const ContainerInnerUI = styled('div')`
   align-items: center;
-  background-color: ${theme.colors.dark1};
+  background-color: transparent;
   box-sizing: border-box;
   display: flex;
   height: ${theme.layout.desktop.headerHeight};
@@ -21,6 +40,8 @@ export const ContainerInnerUI = styled('div')`
   justify-content: space-between;
   width: 100%;
   z-index: 1;
+  padding-right: ${theme.unit(1.5)};
+  padding-left: ${theme.unit(1.5)};
 `
 
 export const DropdownUI = styled('div')`
@@ -32,7 +53,7 @@ export const DropdownUI = styled('div')`
   float: left;
 
   ul {
-    background-color: #fff;
+    background-color: #efefef;
     box-sizing: border-box;
     display: none;
     list-style: none;
@@ -42,13 +63,12 @@ export const DropdownUI = styled('div')`
     position: relative;
     z-index: 1;
     border: ${theme.border};
-    display: none;
-    color: ${theme.colors.dark3};
     cursor: pointer;
     position: absolute;
-    margin-right: -125px;
-    right: 50%;
-    top: 100%;
+    margin: 0;
+    left: 50%;
+    transform: translatex(-50%);
+    top: 85px;
 
     li {
       box-sizing: border-box;
@@ -58,7 +78,6 @@ export const DropdownUI = styled('div')`
       a {
         :hover {
           background-color: ${theme.colors.dark5};
-          color: #fff;
           text-decoration: none;
         }
         box-sizing: border-box;
@@ -68,6 +87,20 @@ export const DropdownUI = styled('div')`
         min-width: 100%;
         padding: ${theme.unit(0.25)};
       }
+    }
+
+    :before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translatex(-50%);
+      top: -13px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 13px 13px 13px;
+      border-color: transparent transparent #efefef transparent;
+      z-index: 9999;
     }
   }
 
@@ -79,12 +112,17 @@ export const DropdownUI = styled('div')`
 `
 
 export const BrandUI = styled('div')`
+  box-sizing: border-box;
   display: flex;
   align-items: center;
+  justify-content: center;
   height: ${theme.layout.desktop.headerHeight};
-  min-width: 140px;
-  margin-left: ${theme.unit(0.25)};
-  /* margin-right: 100px; */
+  padding: ${theme.unit(0.5)};
+  padding-left: 0;
+
+  img {
+    max-height: 100%;
+  }
 `
 
 export const LinkUI = styled('div')`
@@ -92,16 +130,14 @@ export const LinkUI = styled('div')`
   box-sizing: border-box;
   display: flex;
   font-family: ${theme.typography.fonts.font1};
+  font-weight: 500;
   justify-content: center;
   height: ${theme.layout.desktop.headerHeight};
   a:visited,
   a:link {
-    color: #fff;
     text-decoration: none;
   }
-  color: #fff;
-  padding: 0;
-  padding-left: ${theme.unit(1)};
+  padding: 0 ${theme.unit(0.25)};
   a:active,
   a:hover {
     cursor: pointer;
@@ -110,29 +146,26 @@ export const LinkUI = styled('div')`
   text-transform: uppercase;
 `
 
+export const HighlightUI = styled('div')`
+  padding: ${theme.unit(0.075)} ${theme.unit(0.5)};
+  background-color: ${theme.colors.dark2};
+`
+
 export const MenuUI = styled('div')`
   display: flex;
   position: relative;
-`
 
-export const ContactUI = styled('div')`
-  margin-left: ${theme.unit(1)};
-  font-family: ${theme.typography.fonts.font1};
-  border-left: ${theme.unit(1)};
-  color: #fff;
-  font-size: ${theme.unit(0.45)};
-  display: flex;
-  background-color: ${theme.colors.dark2};
-  padding: 0 ${theme.unit(0.75)};
-  align-items: center;
-  justify-content: center;
-
-  flex-direction: column;
-
-  a:active,
-  a:link,
-  a:hover,
-  a:visited {
+  ${LinkUI}, ${LinkUI} a {
+    animation: ${({ animate, style }) =>
+      animate
+        ? css`
+            ${pulseColor(style)} 1s linear 1
+          `
+        : 'none'};
+    color: ${({ style }) => (style === 'light' ? '#fff' : '#000')};
+  }
+  ${LinkUI} ${HighlightUI} a {
+    animation: 'none';
     color: #fff;
   }
 `

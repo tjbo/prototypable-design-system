@@ -50,5 +50,5 @@ Title.propTypes = {
   fontStyle: PropTypes.oneOf(['normal', 'italic', 'oblique']),
   styling: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
   shadow: PropTypes.oneOf(['none', 'dark']),
-  spaceAfter: PropTypes.oneOf(['none', 'small', 'medium', 'default']),
+  spaceAfter: PropTypes.oneOf(['none', 'tiny', 'small', 'medium', 'default']),
 }

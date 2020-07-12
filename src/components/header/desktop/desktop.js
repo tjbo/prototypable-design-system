@@ -3,27 +3,38 @@ import {
   DropdownUI,
   ContainerInnerUI,
   ContainerUI,
+  HighlightUI,
   LinkUI,
   MenuUI,
-  ContactUI,
 } from './desktop.css'
 
-function Container({ children }) {
-  return (
-    <ContainerUI>
-      <ContainerInnerUI>{children}</ContainerInnerUI>
-    </ContainerUI>
-  )
+class Container extends React.Component {
+  render() {
+    const { children, isTransparent, style } = this.props
+
+    return (
+      <ContainerUI style={style} isTransparent={isTransparent}>
+        <ContainerInnerUI>
+          {React.Children.map(children, (child) => {
+            return React.cloneElement(child, {
+              ...child.props,
+              style: style,
+            })
+          })}
+        </ContainerInnerUI>
+      </ContainerUI>
+    )
+  }
 }
 
-const Brand = function Brand({ children }) {
-  return <BrandUI>{children}</BrandUI>
+const Brand = function Brand({ children, _style }) {
+  return <BrandUI style={_style}>{children}</BrandUI>
 }
 
 function Dropdown({ children, text }) {
   return (
     <DropdownUI>
-      <Link>{text}</Link>
+      <LinkUI>{text}</LinkUI>
       <ul>
         {React.Children.map(children, (child) => (
           <li>{React.cloneElement(child, {})}</li>
@@ -33,16 +44,35 @@ function Dropdown({ children, text }) {
   )
 }
 
-function Link({ children }) {
-  return <LinkUI>{children}</LinkUI>
+class Link extends React.Component {
+  render() {
+    const { children, asHighlight } = this.props
+    if (asHighlight) {
+      return (
+        <LinkUI>
+          <HighlightUI>{children}</HighlightUI>
+        </LinkUI>
+      )
+    }
+    return <LinkUI>{children}</LinkUI>
+  }
 }
 
-function Menu({ children }) {
-  return <MenuUI>{children}</MenuUI>
-}
+class Menu extends React.Component {
+  static animate = false
 
-function Contact({ children }) {
-  return <ContactUI>{children}</ContactUI>
+  componentWillUpdate(prevProps) {
+    this.animate = !(this.props.style === prevProps.style)
+  }
+
+  render() {
+    const { children, style } = this.props
+    return (
+      <MenuUI animate={this.animate} style={style}>
+        {children}
+      </MenuUI>
+    )
+  }
 }
 
 export default {
@@ -51,5 +81,4 @@ export default {
   Dropdown,
   Link,
   Menu,
-  Contact,
 }

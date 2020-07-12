@@ -1,16 +1,45 @@
 import React from 'react'
-import { ContainerUI, ContentUI, ImageUI } from './jumbotron.css'
-import getSrcSets from '../../utils/getSrcSets'
+import { ContainerUI, ContentUI, ImageUI, MainContentUI } from './jumbotron.css'
+import Button from '../button'
+import ResponsiveImage from '../responsiveImage'
 
-const fullSizes = ['360×640', '768×1024', '1366×768', '1600×900', '1920x1080']
+const sizes = {
+  half: ['375x375', '414x414', '1280x400', '1366x384', '1440x450', '1920x540'],
+  full: ['375×667', '414×816', '360×780', '1366×768', '1440×900', '1920×1080'],
+}
 
-export default function ({ children, image = null, size = 'full' }) {
+export default function ({
+  children,
+  hasNavShift = false,
+  alignItems = 'center',
+  hasCta = true,
+  justifyContent = 'center',
+  image = null,
+  linkComponent,
+  textAlign = 'center',
+  size = 'full',
+}) {
+  console.log('hasNavShift', hasNavShift)
   return (
-    <ContainerUI size={size}>
+    <ContainerUI
+      size={size}
+      alignItems={alignItems}
+      hasNavShift={hasNavShift}
+      justifyContent={justifyContent}
+      textAlign={textAlign}
+    >
       <ImageUI>
-        <img srcSet={getSrcSets(fullSizes, image)} />
+        <ResponsiveImage aspectRatio={null} data={image} sizes={sizes[size]} />
       </ImageUI>
-      <ContentUI>{children}</ContentUI>
+      <ContentUI>
+        <MainContentUI>{children}</MainContentUI>
+        {hasCta && <p></p>}
+        {hasCta && (
+          <Button to="/contact/" linkComponent={linkComponent}>
+            Get Funded Today
+          </Button>
+        )}
+      </ContentUI>
     </ContainerUI>
   )
 }

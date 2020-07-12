@@ -41,7 +41,7 @@ export function Quote() {
 
         <Article.Sidebar>
           <Article.Quote>
-            <Title as="h3" spaceAfter="0">
+            <Title as="h3" spaceAfter="none">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor.
             </Title>

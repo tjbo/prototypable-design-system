@@ -1,10 +1,21 @@
-import { ContainerUI, InputUI, LabelUI, ValidationUI } from './input.css'
+import {
+  ContainerUI,
+  InputUI,
+  LabelUI,
+  SpaceUI,
+  ValidationUI,
+} from './input.css'
 
-function getLabel(label) {
-  return <LabelUI>{label}</LabelUI>
+function getLabel(label, affixLabel, asHoneyPot) {
+  return (
+    <LabelUI asHoneyPot={asHoneyPot}>
+      {label} {affixLabel}
+    </LabelUI>
+  )
 }
 
 function getComponent(
+  asHoneyPot,
   type,
   onChange,
   isSelectable,
@@ -17,25 +28,30 @@ function getComponent(
   value,
 ) {
   const props = {
+    asHoneyPot,
+    autoComplete: 'off',
     isSelectable,
     isValid,
-    onChange: onChange,
+    onChange,
     maxWidth,
     name,
     readOnly,
     size,
     textAlign,
+    type,
     value,
   }
 
   if (type === 'textarea') {
-    return <InputUI as="textarea" rows="5" {...{ ...props }} />
+    return <InputUI as="textarea" rows="3" {...{ ...props }} />
   } else {
     return <InputUI {...{ ...props }} />
   }
 }
 
 export default function Input({
+  asHoneyPot = false,
+  affixLabel = '',
   isValidating,
   isSelectable = true,
   label,
@@ -57,12 +73,17 @@ export default function Input({
 
   const isValid = isValidating ? !!!validationMessage : true
 
+  const _onChange = function (event) {
+    onChange(event.target.value)
+  }
+
   const children = (
     <div>
-      {getLabel(label)}
+      {getLabel(label, affixLabel, asHoneyPot)}
       {getComponent(
+        asHoneyPot,
         type,
-        onChange,
+        _onChange,
         isSelectable,
         isValid,
         maxWidth,
@@ -70,12 +91,14 @@ export default function Input({
         readOnly,
         size,
         textAlign,
-        value,
+        value || '',
       )}
-      {hasValidation && (
+      {hasValidation ? (
         <ValidationUI>
           {validator.message(name, value, validationRules)}
         </ValidationUI>
+      ) : (
+        <SpaceUI />
       )}
     </div>
   )

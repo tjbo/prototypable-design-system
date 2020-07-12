@@ -9,7 +9,7 @@ import path from 'path'
 export default {
   input: './src/index.js',
   output: {
-    file: './dist/index.js',
+    dir: './dist',
     format: 'cjs',
   },
   plugins: [

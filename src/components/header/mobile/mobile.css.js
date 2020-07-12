@@ -2,7 +2,7 @@ import theme from '../../../theme'
 
 export const ContainerUI = styled('div')`
   box-sizing: border-box;
-  position: fixed;
+  position: sticky;
   z-index: 1;
   top: 0;
   display: block;

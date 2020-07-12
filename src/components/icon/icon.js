@@ -1,5 +1,23 @@
-import { IconUI } from './icon.css'
+import { lazy, Suspense } from 'react'
 
-export default function Icon({ alt, src }) {
-  return <IconUI src={src} alt={alt} />
+const icons = {
+  money: lazy(() => import('../../svgs/money')),
+  mortgage: lazy(() => import('../../svgs/mortgage')),
+  mortgage2: lazy(() => import('../../svgs/mortgage2')),
+  handshake: lazy(() => import('../../svgs/handshake')),
+  percentage: lazy(() => import('../../svgs/percentage')),
+}
+
+export default function Icon({ name }) {
+  console.log('name', name)
+  const Component = icons[name]
+
+  if (Component) {
+    return (
+      <Suspense fallback={null}>
+        <Component />
+      </Suspense>
+    )
+  }
+  return null
 }
