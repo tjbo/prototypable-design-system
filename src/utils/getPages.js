@@ -12,7 +12,7 @@ export default function getPages(apiEndpoint, apiToken, options) {
         return Promise.all(promises).then((pages) => {
           return pages.map((pageData) => {
             pageData.dynamicData = options.insertData.find((data) => {
-              if (data.slug === pageData.slug) {
+              if (data.path === pageData.path) {
                 return data.data
               }
             })

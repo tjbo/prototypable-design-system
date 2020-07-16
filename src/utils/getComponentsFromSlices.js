@@ -95,11 +95,15 @@ export default function getComponentsFromSlices(slices, linkedContent, path) {
         />
       )
     } else if (type === 'jumobotron') {
-      const { align_items, body2, justify_content, text_align } = slice.primary
+      const {
+        align_items,
+        body2,
+        justify_content,
+        overlay,
+        text_align,
+      } = slice.primary
 
       const parsedComponents = parsePrismicToReactComponents(body2)
-
-      console.log('slice', index)
 
       return (
         <Jumbotron
@@ -108,6 +112,7 @@ export default function getComponentsFromSlices(slices, linkedContent, path) {
           justifyContent={justify_content}
           key={short.generate()}
           image={slice.primary.image}
+          overlay={overlay}
           textAlign={text_align}
         >
           {parsedComponents}
@@ -166,6 +171,7 @@ export default function getComponentsFromSlices(slices, linkedContent, path) {
       )
     } else if (type == 'article') {
       const { background, body2, sidebar, sidebar_style } = slice.primary
+
       return (
         <Section background={background} key={short.generate()}>
           <Article>
@@ -178,12 +184,38 @@ export default function getComponentsFromSlices(slices, linkedContent, path) {
                   {parsePrismicToReactComponents(sidebar)}
                 </Article.Quote>
               )}
+
+              {sidebar_style === 'default' && (
+                <Article.Box>
+                  {parsePrismicToReactComponents(sidebar)}
+                </Article.Box>
+              )}
             </Article.Sidebar>
           </Article>
         </Section>
       )
+    } else if (type === 'article_w_linked') {
+      const { body2, linked_sidebar_section } = slice.primary
+      const sidebar = getLinkedContentById(
+        linkedContent,
+        linked_sidebar_section.id,
+      )
+
+      return (
+        <div>
+          <Section inner_width="medium">
+            {parsePrismicToReactComponents(body2)}
+          </Section>
+        </div>
+      )
     } else if (type === 'half_banner_with_image') {
-      const { align_items, body2, justify_content, text_align } = slice.primary
+      const {
+        align_items,
+        body2,
+        justify_content,
+        overlay,
+        text_align,
+      } = slice.primary
 
       const parsedComponents = parsePrismicToReactComponents(body2)
 
@@ -192,6 +224,7 @@ export default function getComponentsFromSlices(slices, linkedContent, path) {
           alignItems={align_items}
           hasNavShift={false}
           justifyContent={justify_content}
+          overlay={overlay}
           key={short.generate()}
           image={slice.primary.image}
           size="half"

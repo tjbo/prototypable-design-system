@@ -8,7 +8,6 @@ export default function ({
   spaceAfter = 'medium',
   src,
 }) {
-  console.log('data', data)
   const img = (
     <ImgUI
       loading="lazy"

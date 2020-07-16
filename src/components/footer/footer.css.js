@@ -54,6 +54,15 @@ export const LinksUI = styled('ul')`
   margin: 0;
   padding: 0;
   list-style: none;
+
+  li {
+    a:active,
+    a:link,
+    a:hover,
+    a:visited {
+      color: #fff;
+    }
+  }
 `
 
 export const LinkItemUI = styled('li')`

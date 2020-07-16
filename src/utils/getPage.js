@@ -9,6 +9,7 @@ export default function getPage(api, id, fetchLinks) {
       const contentWithLinks = data.body1.filter((slice) => {
         return (
           slice.slice_type === 'linked_component_section' ||
+          slice.slice_type === 'article_w_linked' ||
           slice.slice_type === 'cards'
         )
       })
@@ -21,6 +22,8 @@ export default function getPage(api, id, fetchLinks) {
             return item.cards.id
           })
           return accumulator.concat(_ids)
+        } else if (slice.slice_type === 'article_w_linked') {
+          return [...accumulator, slice.primary.linked_sidebar_section.id]
         }
         return accumulator
       }, new Array())

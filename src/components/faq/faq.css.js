@@ -36,8 +36,6 @@ export const SummaryUI = styled('summary')`
   width: 100%;
   color: ${theme.colors.dark4};
   cursor: pointer;
-  font-size: ${theme.unit(0.66)};
-  font-weight: 500;
   position: relative;
   padding: 0;
   &:after {

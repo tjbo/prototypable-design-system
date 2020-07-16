@@ -61,7 +61,7 @@ class Link extends React.Component {
 class Menu extends React.Component {
   static animate = false
 
-  componentWillUpdate(prevProps) {
+  UNSAFE_componentWillUpdate(prevProps) {
     this.animate = !(this.props.style === prevProps.style)
   }
 

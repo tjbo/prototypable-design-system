@@ -3,7 +3,6 @@ import {
   FinePrintUI,
   ContainerUI,
   LinkItemUI,
-  LinkUI,
   LinksUI,
   InnerUI,
 } from './footer.css'
@@ -20,11 +19,7 @@ Footer.Address = AddressUI
 Footer.FinePrint = FinePrintUI
 Footer.Links = LinksUI
 Footer.Link = function ({ children, href }) {
-  return (
-    <LinkItemUI>
-      <LinkUI href={href}>{children}</LinkUI>
-    </LinkItemUI>
-  )
+  return <LinkItemUI>{children}</LinkItemUI>
 }
 
 export default Footer

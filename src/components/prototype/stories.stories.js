@@ -1,3 +1,4 @@
+import Article from '../article'
 import Grid from '../grid'
 import Title from '../title'
 import Section from '../section'
@@ -155,6 +156,90 @@ export function ContactForm() {
           </Text>
         </Grid.Col>
       </Grid>
+    </Section>
+  )
+}
+
+export function ArticlePromo() {
+  return (
+    <Section background="light">
+      <Article>
+        <Article.Content width="66%">
+          <Title as="h3">Some Title Goes Here</Title>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mattis
+            nibh id velit sagittis aliquam.
+          </p>
+          <p>
+            Nulla libero est, iaculis et dolor placerat, cursus tempor urna.
+            Pellentesque vitae magna odio. Donec diam mi, rutrum a sollicitudin
+            nec, egestas ac justo.
+          </p>
+          <p>
+            Donec et dolor sagittis, venenatis metus vitae, dictum dui. Vivamus
+            vehicula nec sapien sed venenatis. Praesent eu turpis sit amet velit
+            viverra volutpat quis id quam.
+          </p>
+          <p>
+            Nulla libero est, iaculis et dolor placerat, cursus tempor urna.
+            Pellentesque vitae magna odio. Donec diam mi, rutrum a sollicitudin
+            nec, egestas ac justo.
+          </p>
+          <p>
+            Donec et dolor sagittis, venenatis metus vitae, dictum dui. Vivamus
+            vehicula nec sapien sed venenatis. Praesent eu turpis sit amet velit
+            viverra volutpat quis id quam.
+          </p>
+
+          <Grid direction="row" alignItems="center" justifyContent="center">
+            <Grid.Col
+              width="33%"
+              alignSelf="center"
+              justifyContent="center"
+              textAlign="center"
+              verticalPadding=".5"
+            >
+              <div style={{ maxWidth: '33%', margin: '0 auto' }}>
+                <Icon name="rocket" />
+              </div>
+              <Text color="dark4" as="h5">
+                Fast Approval
+              </Text>
+            </Grid.Col>
+
+            <Grid.Col
+              width="33%"
+              alignSelf="center"
+              justifyContent="center"
+              textAlign="center"
+              verticalPadding=".5"
+            >
+              <div style={{ maxWidth: '33%', margin: '0 auto' }}>
+                <Icon name="like" />
+              </div>
+              <Text color="dark4" as="h5">
+                Simple Process
+              </Text>
+            </Grid.Col>
+
+            <Grid.Col
+              width="33%"
+              alignSelf="center"
+              justifyContent="center"
+              textAlign="center"
+              verticalPadding=".5"
+            >
+              <div style={{ maxWidth: '33%', margin: '0 auto' }}>
+                <Icon name="percentage" />
+              </div>
+              <Text color="dark4" as="h5">
+                Competitive Rates
+              </Text>
+            </Grid.Col>
+          </Grid>
+        </Article.Content>
+        <Article.Sidebar width="33%"></Article.Sidebar>
+      </Article>
     </Section>
   )
 }

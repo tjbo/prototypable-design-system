@@ -20,6 +20,7 @@ export default {
     dark3: '#0091ea',
     dark4: '#565656',
     dark5: '#0066a3',
+    dark6: '#dddddd',
     light1: '#f9f9f9',
     light2: '#f9f9f9',
     light3: '#ffffff',

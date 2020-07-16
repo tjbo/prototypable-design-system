@@ -34,7 +34,7 @@ function getContent(title, content) {
       {Object.entries(content).map((_content) => {
         const [key, value] = _content
         return (
-          <div>
+          <div key={short.generate()}>
             {formatTitle(key)}: {value}
           </div>
         )

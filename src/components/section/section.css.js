@@ -6,7 +6,7 @@ const getBgColor = ({ background }) => {
   } else if (background === 'light') {
     return theme.colors.light1
   } else if (background === 'dark') {
-    return theme.colors.dark3
+    return theme.colors.dark6
   } else {
     return '#fff'
   }
@@ -14,7 +14,7 @@ const getBgColor = ({ background }) => {
 
 const getInnerWidth = ({ innerWidth }) => {
   if (innerWidth === 'medium') {
-    return '750px'
+    return theme.unit(21)
   } else if (innerWidth === 'small') {
     return theme.unit(18)
   } else {
