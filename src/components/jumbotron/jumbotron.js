@@ -1,5 +1,11 @@
 import React from 'react'
-import { ContainerUI, ContentUI, ImageUI, MainContentUI } from './jumbotron.css'
+import {
+  ContainerUI,
+  ContentUI,
+  ImageUI,
+  MainContentUI,
+  OverlayUI,
+} from './jumbotron.css'
 import Button from '../button'
 import ResponsiveImage from '../responsiveImage'
 
@@ -10,16 +16,17 @@ const sizes = {
 
 export default function ({
   children,
+  hasContentVerticalOffset = false,
   hasNavShift = false,
   alignItems = 'center',
   hasCta = true,
   justifyContent = 'center',
   image = null,
+  overlay = 0,
   linkComponent,
   textAlign = 'center',
   size = 'full',
 }) {
-  console.log('hasNavShift', hasNavShift)
   return (
     <ContainerUI
       size={size}
@@ -30,12 +37,15 @@ export default function ({
     >
       <ImageUI>
         <ResponsiveImage aspectRatio={null} data={image} sizes={sizes[size]} />
+        <OverlayUI overlay={overlay} />
       </ImageUI>
-      <ContentUI>
-        <MainContentUI>{children}</MainContentUI>
-        {hasCta && <p></p>}
+      <ContentUI
+        justifyContent={justifyContent}
+        hasVerticalOffset={hasContentVerticalOffset}
+      >
+        <MainContentUI maxWidth="768">{children}</MainContentUI>
         {hasCta && (
-          <Button to="/contact/" linkComponent={linkComponent}>
+          <Button to="/about/contact/" linkComponent={linkComponent}>
             Get Funded Today
           </Button>
         )}
