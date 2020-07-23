@@ -16,7 +16,6 @@ export const ButtonUI = styled('button')`
   width: 100%;
   max-width: ${({ maxWidth }) => maxWidth}px;
   margin: 0 auto;
-
   background-image: linear-gradient(
     to bottom,
     #e52d27 0%,
@@ -35,6 +34,13 @@ export const ButtonUI = styled('button')`
 
   border:1px solid #d02718;
   box-shadow: inset 0px 1px 0px 0px #f5978e;
+
+  a:active,
+  a:link,
+  a:hover,
+  a:visited {
+    color: ${theme.colors.white};
+  }
 `
 
 export const ButtonContainerUI = styled('div')`

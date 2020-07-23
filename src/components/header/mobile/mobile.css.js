@@ -1,4 +1,24 @@
+import { css, keyframes } from 'styled-components'
 import theme from '../../../theme'
+
+const pulseColor = (isTransparent) => {
+  return keyframes`
+    to {
+        background-color: ${
+          isTransparent === false ? '#f7f7f7 ' : 'transparent'
+        };
+    }
+    from {
+        background-color:  ${
+          isTransparent === false ? 'transparent' : '#f7f7f7'
+        };
+    }
+    `
+}
+
+export const BrandContainerUI = styled('div')`
+  max-width: 170px;
+`
 
 export const ContainerUI = styled('div')`
   box-sizing: border-box;
@@ -6,14 +26,25 @@ export const ContainerUI = styled('div')`
   z-index: 1;
   top: 0;
   display: block;
-  background-color: ${theme.colors.dark1};
   height: ${theme.layout.mobile.headerHeight};
   width: 100%;
+
+  background-color: ${({ isTransparent, style }) =>
+    isTransparent ? 'transparent' : '#f7f7f7'};
+
+  border-bottom: ${({ isTransparent }) =>
+    isTransparent ? '1px solid transparent' : '1px solid #d3d3d3'};
+
+  animation: ${({ animate, isTransparent }) =>
+    animate
+      ? css`
+          ${pulseColor(isTransparent)} 500ms linear 1
+        `
+      : 'none'};
 `
 
 export const ContainerInnerUI = styled('div')`
   align-items: center;
-  background-color: ${theme.colors.dark1};
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
@@ -22,6 +53,11 @@ export const ContainerInnerUI = styled('div')`
   padding: ${`0 ${theme.unit(0.75)} 0 ${theme.unit(0.25)}`};
   width: 100%;
   z-index: 1;
+`
+
+export const HighlightUI = styled('div')`
+  margin: 0;
+  padding: ${theme.unit(0.25)};
 `
 
 export const LinkUI = styled('div')`
@@ -45,7 +81,6 @@ export const LinkUI = styled('div')`
   a:hover,
   a:link {
     color: #fff;
-    display: inline-block;
     min-width: 100%;
     text-decoration: none;
   }

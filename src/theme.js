@@ -17,9 +17,9 @@ export default {
   colors: {
     dark1: '#000000',
     dark2: '#D40000',
-    dark3: '#0091ea',
+    dark3: '#000080',
     dark4: '#565656',
-    dark5: '#0066a3',
+    dark5: '#0042B6',
     dark6: '#dddddd',
     light1: '#f9f9f9',
     light2: '#f9f9f9',
@@ -64,15 +64,29 @@ export default {
   unit(multiplier) {
     return makePixelValue(multiplier * unit)
   },
+  unitAsNumber(multiplier) {
+    return multiplier * unit
+  },
   layout: {
     desktop: {
       headerHeight: makePixelValue(3.5 * unit),
     },
     mobile: {
-      headerHeight: makePixelValue(1.5 * unit),
+      headerHeight: makePixelValue(2.5 * unit),
     },
     tablet: {
-      headerHeight: makePixelValue(1.5 * unit),
+      headerHeight: makePixelValue(2.5 * unit),
+    },
+  },
+  layoutAsNumber: {
+    desktop: {
+      headerHeight: 3.5 * unit,
+    },
+    mobile: {
+      headerHeight: 2.5 * unit,
+    },
+    tablet: {
+      headerHeight: 2.5 * unit,
     },
   },
 }

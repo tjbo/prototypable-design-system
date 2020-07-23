@@ -1,26 +1,33 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
 import Button from './button'
+import Section from '../section'
 
 export default {
   title: 'Button',
   component: Button,
 }
 
-export const Default = () => <Button onClick={action('clicked')} />
-
-export const Center = () => (
-  <Button align="center" onClick={action('clicked')} />
+export const Default = () => (
+  <Section>
+    <Button align="center" onClick={action('clicked')}>
+      Click on This
+    </Button>
+  </Section>
 )
 
-export const Right = () => <Button align="right" onClick={action('clicked')} />
+export const SMSIcon = () => (
+  <Section>
+    <Button align="center" icon="sms" onClick={action('clicked')}>
+      Click on This
+    </Button>
+  </Section>
+)
 
-class MockLink extends React.Component {
-  render() {
-    return <a href=""></a>
-  }
-}
-
-export const Link = () => (
-  <Button link={MockLink} href="/thing" onClick={action('clicked')} />
+export const EmailIcon = () => (
+  <Section>
+    <Button align="center" icon="email" onClick={action('clicked')}>
+      Click on This
+    </Button>
+  </Section>
 )

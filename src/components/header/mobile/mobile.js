@@ -1,17 +1,37 @@
 import React from 'react'
-import { ContainerInnerUI, ContainerUI, LinkUI, MenuUI } from './mobile.css'
+import {
+  BrandContainerUI,
+  ContainerInnerUI,
+  ContainerUI,
+  HighlightUI,
+  LinkUI,
+  MenuUI,
+} from './mobile.css'
 import Trigger from './triggerIcon'
 import Dropdown from './dropdown'
 import { onShowModal, onHideModal } from '../../body'
+import Button from '../../button'
+import theme from '../../../theme'
 
 class Container extends React.Component {
   state = {
     isOpen: false,
+    isScrollTopLimit: false,
+  }
+
+  UNSAFE_componentWillUpdate(nextProps, nextState) {
+    if (
+      nextProps.style !== this.props.style ||
+      nextState.isScrollTopLimit !== this.state.isScrollTopLimit
+    ) {
+      this.animate = true
+    }
   }
 
   componentDidMount() {
     if (typeof window !== 'undefined') {
       window.addEventListener('resize', () => this.onResize())
+      window.addEventListener('scroll', () => this.onScroll())
     }
   }
 
@@ -19,6 +39,16 @@ class Container extends React.Component {
     if (this.state.isOpen) {
       this.setState({ isOpen: false })
       onHideModal()
+    }
+  }
+
+  onScroll = () => {
+    const scrollTop =
+      document.body.scrollTop || document.documentElement.scrollTop
+    if (scrollTop >= theme.layoutAsNumber.mobile.headerHeight) {
+      this.setState({ isScrollTopLimit: true })
+    } else {
+      this.setState({ isScrollTopLimit: false })
     }
   }
 
@@ -37,18 +67,27 @@ class Container extends React.Component {
   }
 
   render() {
-    const { children } = this.props
-    const { isOpen } = this.state
+    const { children, isTransparent, style } = this.props
+    const { isOpen, isScrollTopLimit } = this.state
+    const _style = isScrollTopLimit ? 'dark' : style
+    const _isTransparent = isScrollTopLimit ? false : isTransparent
 
     return (
-      <ContainerUI>
+      <ContainerUI animate={this.animate} isTransparent={_isTransparent}>
         <ContainerInnerUI>
-          <Trigger isOpen={isOpen} onClick={this.toggleMenu} />
+          <Trigger
+            isAnimated={this.animate}
+            isOpen={isOpen}
+            onClick={this.toggleMenu}
+            style={_style}
+          />
           {React.Children.map(children, (child) => {
             return React.cloneElement(child, {
               ...child.props,
               closeParentMenu: this.toggleMenu,
+              isAnimated: this.animate,
               isParentMenuOpen: isOpen,
+              style: _style,
             })
           })}
         </ContainerInnerUI>
@@ -57,12 +96,41 @@ class Container extends React.Component {
   }
 }
 
-const Brand = function Brand({ children }) {
-  return children
+const Brand = function Brand({ children, isAnimated, style }) {
+  return (
+    <BrandContainerUI>
+      {React.Children.map(children, (child) => {
+        return React.cloneElement(child, {
+          ...child.props,
+          isAnimated,
+          style,
+        })
+      })}
+    </BrandContainerUI>
+  )
 }
 
 function Link(props) {
-  const { children, closeParentMenu, isParentMenuOpen } = props
+  const { asHighlight, children, closeParentMenu, isParentMenuOpen } = props
+
+  const beforeText = asHighlight ? 'Call Us -' : ''
+
+  if (asHighlight) {
+    return (
+      <HighlightUI>
+        <Button
+          onClick={(event) => {
+            event.nativeEvent.stopPropagation()
+            window.location.href = 'tel://' + children
+          }}
+        >
+          {beforeText}
+          {children}
+        </Button>
+      </HighlightUI>
+    )
+  }
+
   return (
     <LinkUI
       onClick={(event) => {

@@ -77,7 +77,11 @@ function parsePrismicToReactComponents(text) {
   )
 }
 
-export default function getComponentsFromSlices(slices, linkedContent, path) {
+export default function getComponentsFromSlices({
+  slices,
+  linkedContent,
+  options = {},
+}) {
   return slices.map((slice, index) => {
     const type = slice.slice_type
 
@@ -98,6 +102,7 @@ export default function getComponentsFromSlices(slices, linkedContent, path) {
       const {
         align_items,
         body2,
+        call_to_action,
         justify_content,
         overlay,
         text_align,
@@ -105,22 +110,27 @@ export default function getComponentsFromSlices(slices, linkedContent, path) {
 
       const parsedComponents = parsePrismicToReactComponents(body2)
 
-      return (
-        <Jumbotron
-          alignItems={align_items}
-          hasNavShift={index === 0 ? true : false}
-          justifyContent={justify_content}
-          key={short.generate()}
-          image={slice.primary.image}
-          overlay={overlay}
-          textAlign={text_align}
-        >
-          {parsedComponents}
-        </Jumbotron>
+      return React.createElement(
+        Jumbotron,
+        {
+          alignItems: align_items,
+          callToActionHref: options.callToActionHref,
+          callToActionText: call_to_action || options.callToActionText,
+          hasNavShift: true,
+          hasContentVerticalOffset: true,
+          justifyContent: justify_content,
+          key: short.generate(),
+          image: slice.primary.image,
+          overlay,
+          routerLinkComponent: options.routerLinkComponent,
+          textAlign: text_align,
+        },
+        parsedComponents,
       )
     } else if (type === 'linked_component_section') {
       const data = getLinkedContentById(linkedContent, slice.primary.body2.id)
-      const { background, body, inner_width } = data[0].data
+      const { background } = slice.primary
+      const { body, inner_width } = data[0].data
 
       const parsedComponents = parsePrismicToReactComponents(body[0])
 
@@ -130,11 +140,14 @@ export default function getComponentsFromSlices(slices, linkedContent, path) {
         </Section>
       )
     } else if (type === 'cards') {
+      const { background } = slice.primary
+
       const data = slice.items.map((card) => {
         return getLinkedContentById(linkedContent, card.cards.id)[0]
       })
       return (
         <CardsSection
+          background={background}
           cards={data}
           key={short.generate()}
           title={slice.primary.title1}
@@ -146,8 +159,7 @@ export default function getComponentsFromSlices(slices, linkedContent, path) {
       return (
         <Section background="light" key={short.generate()}>
           <Title as="h3">{title1}</Title>
-
-          {intro && (
+          {intro && !!intro.length && !!intro[0].text.length && (
             <Article>
               <Article.Content>
                 {parsePrismicToReactComponents(intro)}
@@ -172,6 +184,7 @@ export default function getComponentsFromSlices(slices, linkedContent, path) {
     } else if (type == 'article') {
       const { background, body2, sidebar, sidebar_style } = slice.primary
 
+      console.log('bool', sidebar, !!sidebar.length)
       return (
         <Section background={background} key={short.generate()}>
           <Article>
@@ -185,10 +198,19 @@ export default function getComponentsFromSlices(slices, linkedContent, path) {
                 </Article.Quote>
               )}
 
-              {sidebar_style === 'default' && (
-                <Article.Box>
+              {sidebar_style === 'default' &&
+                !!sidebar[0] &&
+                !!sidebar[0].text.length &&
+                !!sidebar.length && (
+                  <Article.Box>
+                    {parsePrismicToReactComponents(sidebar)}
+                  </Article.Box>
+                )}
+
+              {sidebar_style === 'facts' && (
+                <Article.Facts>
                   {parsePrismicToReactComponents(sidebar)}
-                </Article.Box>
+                </Article.Facts>
               )}
             </Article.Sidebar>
           </Article>
@@ -212,6 +234,7 @@ export default function getComponentsFromSlices(slices, linkedContent, path) {
       const {
         align_items,
         body2,
+        call_to_action,
         justify_content,
         overlay,
         text_align,
@@ -222,11 +245,14 @@ export default function getComponentsFromSlices(slices, linkedContent, path) {
       return (
         <Jumbotron
           alignItems={align_items}
+          callToActionText={call_to_action || options.callToActionText}
+          callToActionHref={options.callToActionHref}
           hasNavShift={false}
           justifyContent={justify_content}
           overlay={overlay}
           key={short.generate()}
           image={slice.primary.image}
+          routerLinkComponent={options.routerLinkComponent}
           size="half"
           textAlign={text_align}
         >
@@ -234,9 +260,7 @@ export default function getComponentsFromSlices(slices, linkedContent, path) {
         </Jumbotron>
       )
     } else if (type === 'dynamic_content') {
-      return slice.items.filter((item) => {
-        return item.condition_value === path
-      })
+      return slice
     }
   })
 }

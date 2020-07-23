@@ -1,6 +1,7 @@
 import theme from '../../../theme'
 
 export const BoxWrapper = styled('div')`
+  background-color: ${theme.colors.white};
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

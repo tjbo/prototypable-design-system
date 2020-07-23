@@ -1,6 +1,6 @@
 import theme from '../../theme'
 
-function getCollaspe({ collapse }) {
+function getCollaspe({ collapse = 'never' }) {
   if (collapse === 'never') {
     return ''
   }
@@ -53,10 +53,10 @@ export const ColInnerUI = styled('div')`
 export const GridUI = styled('div')`
   box-sizing: border-box;
   display: flex;
-  flex-direction: ${({ direction }) => direction};
+  flex-direction: ${({ direction = 'column' }) => direction};
   flex-wrap: wrap;
   width: calc(100% + ${theme.unit(0.5)});
-  align-items: ${({ alignItems }) => alignItems};
+  align-items: ${({ alignItems = 'flex-start' }) => alignItems};
   align-content: flex-start;
   margin-left: -${theme.unit(0.25)};
 

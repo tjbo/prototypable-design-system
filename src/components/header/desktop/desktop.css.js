@@ -1,8 +1,8 @@
 import theme from '../../../theme'
 import { keyframes, css } from 'styled-components'
+import hexToRgb from '../../../utils/hexToRgb'
 
 const pulseColor = (_style) => {
-  console.log('flip color', _style)
   return keyframes`
     to {
       color: ${_style === 'light' ? '#fff ' : '#000'};
@@ -53,7 +53,7 @@ export const DropdownUI = styled('div')`
   float: left;
 
   ul {
-    background-color: #efefef;
+    background-color: rgba(${hexToRgb(theme.colors.dark3)}, 1);
     box-sizing: border-box;
     display: none;
     list-style: none;
@@ -62,7 +62,6 @@ export const DropdownUI = styled('div')`
     padding-left: 0;
     position: relative;
     z-index: 1;
-    border: ${theme.border};
     cursor: pointer;
     position: absolute;
     margin: 0;
@@ -76,6 +75,7 @@ export const DropdownUI = styled('div')`
       margin-bottom: 0;
       margin-left: 0;
       a {
+        color: #fff;
         :hover {
           background-color: ${theme.colors.dark5};
           text-decoration: none;
@@ -99,7 +99,8 @@ export const DropdownUI = styled('div')`
       height: 0;
       border-style: solid;
       border-width: 0 13px 13px 13px;
-      border-color: transparent transparent #efefef transparent;
+      border-color: transparent transparent
+        rgba(${hexToRgb(theme.colors.dark3)}, 1) transparent;
       z-index: 9999;
     }
   }
@@ -117,6 +118,7 @@ export const BrandUI = styled('div')`
   align-items: center;
   justify-content: center;
   height: ${theme.layout.desktop.headerHeight};
+  max-width: 230px;
   padding: ${theme.unit(0.5)};
   padding-left: 0;
 
@@ -147,6 +149,7 @@ export const LinkUI = styled('div')`
 `
 
 export const HighlightUI = styled('div')`
+  cursor: pointer;
   padding: ${theme.unit(0.075)} ${theme.unit(0.5)};
   background-color: ${theme.colors.dark2};
 `

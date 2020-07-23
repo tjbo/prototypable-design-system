@@ -9,6 +9,14 @@ import {
 } from './desktop.css'
 
 class Container extends React.Component {
+  static isAnimated = false
+
+  UNSAFE_componentWillUpdate(nextProps, nextState) {
+    if (nextProps.style !== this.props.style) {
+      this.isAnimated = true
+    }
+  }
+
   render() {
     const { children, isTransparent, style } = this.props
 
@@ -18,6 +26,7 @@ class Container extends React.Component {
           {React.Children.map(children, (child) => {
             return React.cloneElement(child, {
               ...child.props,
+              isAnimated: this.isAnimated,
               style: style,
             })
           })}
@@ -27,8 +36,18 @@ class Container extends React.Component {
   }
 }
 
-const Brand = function Brand({ children, _style }) {
-  return <BrandUI style={_style}>{children}</BrandUI>
+const Brand = function Brand({ children, isAnimated, style }) {
+  return (
+    <BrandUI style={style}>
+      {React.Children.map(children, (child) => {
+        return React.cloneElement(child, {
+          ...child.props,
+          isAnimated,
+          style,
+        })
+      })}
+    </BrandUI>
+  )
 }
 
 function Dropdown({ children, text }) {
@@ -49,7 +68,12 @@ class Link extends React.Component {
     const { children, asHighlight } = this.props
     if (asHighlight) {
       return (
-        <LinkUI>
+        <LinkUI
+          onClick={(event) => {
+            event.nativeEvent.stopPropagation()
+            window.location.href = 'tel://' + children
+          }}
+        >
           <HighlightUI>{children}</HighlightUI>
         </LinkUI>
       )

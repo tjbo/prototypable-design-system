@@ -6,7 +6,8 @@ const heightIcon = 16
 const translateY = heightIcon / 2
 const translateY1 = makePixelValue(translateY)
 
-const LineUI = styled('span')`
+function getDefaultStyles() {
+  return `
   background: #fff;
   border-radius: (${makePixelValue(heightLine / 2)});
   display: block;
@@ -16,7 +17,10 @@ const LineUI = styled('span')`
   transition: transform 500ms ease;
   width: 100%;
 `
-export const Line1UI = styled(LineUI)`
+}
+
+export const Line1UI = styled('span')`
+  ${getDefaultStyles()};
   top: 0;
   transform: ${(props) => {
     return props.isOpen
@@ -25,14 +29,16 @@ export const Line1UI = styled(LineUI)`
   }};
 `
 
-export const Line2UI = styled(LineUI)`
+export const Line2UI = styled('span')`
+  ${getDefaultStyles()};
   top: 50%;
   opacity: ${(props) => {
     return props.isOpen ? `0` : '1'
   }};
 `
 
-export const Line3UI = styled(LineUI)`
+export const Line3UI = styled('span')`
+  ${getDefaultStyles()};
   top: 100%;
   transform: ${(props) => {
     return props.isOpen

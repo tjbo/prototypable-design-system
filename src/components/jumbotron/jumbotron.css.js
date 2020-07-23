@@ -20,7 +20,6 @@ export const ContainerUI = styled('div')`
   padding: 0;
   text-align: ${({ textAlign }) => textAlign};
   width: 100%;
-  z-index: -1;
 `
 
 export const OverlayUI = styled('div')`
@@ -32,8 +31,8 @@ export const OverlayUI = styled('div')`
   background: ${({ overlay }) =>
     `rgba(0, 0, 0, ${parseInt(overlay, 10) / 100})`};
   position: absolute;
-  z-index: 1;
   pointer-events: none;
+  z-index: 1;
 `
 
 export const ContentUI = styled('div')`
@@ -58,12 +57,11 @@ export const ContentUI = styled('div')`
     margin-left: ${theme.unit(0.5)};
     margin-right: ${theme.unit(0.5)};
   }
-
-  z-index: 2;
 `
 
 export const MainContentUI = styled('div')`
   display: block;
+  position: relative;
 
   ${TitleUI} {
     color: #fff;

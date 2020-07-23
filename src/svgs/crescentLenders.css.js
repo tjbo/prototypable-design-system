@@ -1,14 +1,14 @@
 import styled, { css, keyframes } from 'styled-components'
 
-const pulseColor = (_style) => {
+const pulseColor = (style) => {
   return keyframes`
 
     to {
-        fill: ${_style === 'light' ? '#fff ' : '#000'};
+        fill: ${style === 'light' ? '#fff ' : '#000'};
     }
 
     from {
-        fill:  ${_style === 'light' ? '#000' : '#fff'};
+        fill:  ${style === 'light' ? '#000' : '#fff'};
     }
     `
 }
@@ -18,7 +18,7 @@ export const AnimateFillUI = styled('path')`
   animation: ${({ animate, style }) =>
     animate
       ? css`
-          ${pulseColor(style)} 1s linear 1
+          ${pulseColor(style)} 500ms linear 1
         `
       : 'none'};
 `

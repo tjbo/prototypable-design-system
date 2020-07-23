@@ -15,6 +15,8 @@ const sizes = {
 }
 
 export default function ({
+  callToActionText,
+  callToActionHref,
   children,
   hasContentVerticalOffset = false,
   hasNavShift = false,
@@ -23,7 +25,7 @@ export default function ({
   justifyContent = 'center',
   image = null,
   overlay = 0,
-  linkComponent,
+  routerLinkComponent,
   textAlign = 'center',
   size = 'full',
 }) {
@@ -35,21 +37,24 @@ export default function ({
       justifyContent={justifyContent}
       textAlign={textAlign}
     >
-      <ImageUI>
-        <ResponsiveImage aspectRatio={null} data={image} sizes={sizes[size]} />
-        <OverlayUI overlay={overlay} />
-      </ImageUI>
       <ContentUI
         justifyContent={justifyContent}
         hasVerticalOffset={hasContentVerticalOffset}
       >
         <MainContentUI maxWidth="768">{children}</MainContentUI>
         {hasCta && (
-          <Button to="/about/contact/" linkComponent={linkComponent}>
-            Get Funded Today
+          <Button
+            to={callToActionHref}
+            routerLinkComponent={routerLinkComponent}
+          >
+            {callToActionText}
           </Button>
         )}
       </ContentUI>
+      <ImageUI>
+        <OverlayUI overlay={overlay} />
+        <ResponsiveImage aspectRatio={null} data={image} sizes={sizes[size]} />
+      </ImageUI>
     </ContainerUI>
   )
 }
