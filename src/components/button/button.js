@@ -1,6 +1,7 @@
 import { ButtonUI, ButtonContainerUI, IconContainerUI } from './button.css'
 import SMS from '../../svgs/sms'
 import Email from '../../svgs/email'
+import PropTypes from 'prop-types'
 
 function getIconComponent(icon) {
   const icons = {
@@ -42,13 +43,12 @@ function getButton({ children, icon, onClick, maxWidth, type }) {
   )
 }
 
-export default function ({
+function Button({
   children,
   href = '',
   icon = '',
   routerLinkComponent = null,
   onClick,
-  maxWidth = 250,
   to = '',
   type = 'button',
 }) {
@@ -59,7 +59,6 @@ export default function ({
             children,
             href,
             icon,
-            maxWidth,
             to,
             routerLinkComponent,
             type,
@@ -67,10 +66,20 @@ export default function ({
         : getButton({
             children,
             icon,
-            maxWidth,
             onClick,
             type,
           })}
     </ButtonContainerUI>
   )
 }
+
+Button.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  href: PropTypes.string,
+  icon: PropTypes.oneOf(['email', 'sms']),
+  onClick: PropTypes.func,
+  to: PropTypes.string,
+  type: PropTypes.oneOf(['button', 'submit']),
+}
+
+export default Button

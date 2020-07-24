@@ -12,9 +12,8 @@ export const ButtonUI = styled('button')`
   font-family: ${theme.typography.fonts.font1};
   font-size: ${theme.unit(0.6)};
   font-weight: 700;
-  padding: ${theme.unit(0.25)};
-  width: 100%;
-  max-width: ${({ maxWidth }) => maxWidth}px;
+  padding: ${theme.unit(0.25)} ${theme.unit(0.5)};
+  width: auto;
   margin: 0 auto;
   background-image: linear-gradient(
     to bottom,
@@ -44,7 +43,9 @@ export const ButtonUI = styled('button')`
 `
 
 export const ButtonContainerUI = styled('div')`
-  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  width: auto;
 `
 
 export const IconContainerUI = styled('div')`
