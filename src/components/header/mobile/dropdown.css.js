@@ -33,7 +33,7 @@ export const DropdownUI = styled('span')`
       a:hover,
       a:link,
       a:visited {
-        color: #fff;
+        color: ${theme.colors.dark3};
         display: inline-block;
         margin-left: 0;
         min-width: 100%;
@@ -41,7 +41,7 @@ export const DropdownUI = styled('span')`
         text-decoration: none;
       }
       a:hover {
-        background-color: ${theme.colors.dark5};
+        background-color: ${theme.colors.light1};
       }
     }
   }
@@ -56,8 +56,8 @@ export const LinkArrowUI = styled('div')`
   position: relative;
   &:after {
     content: '';
-    color: ${theme.colors.light1};
-    border: solid ${theme.colors.light1};
+    color: ${theme.colors.dark3};
+    border: solid ${theme.colors.dark3};
     border-width: 0 4px 4px 0;
     display: inline-block;
     margin-left: ${theme.unit(2.5)};

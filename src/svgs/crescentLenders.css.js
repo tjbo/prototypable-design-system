@@ -15,8 +15,8 @@ const pulseColor = (style) => {
 
 export const AnimateFillUI = styled('path')`
   fill: ${({ style }) => (style === 'light' ? '#fff' : '#000')};
-  animation: ${({ animate, style }) =>
-    animate
+  animation: ${({ isAnimated, style }) =>
+    isAnimated
       ? css`
           ${pulseColor(style)} 500ms linear 1
         `

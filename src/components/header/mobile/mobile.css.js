@@ -5,12 +5,12 @@ const pulseColor = (isTransparent) => {
   return keyframes`
     to {
         background-color: ${
-          isTransparent === false ? '#f7f7f7 ' : 'transparent'
+          isTransparent === false ? theme.colors.light3 : 'transparent'
         };
     }
     from {
         background-color:  ${
-          isTransparent === false ? 'transparent' : '#f7f7f7'
+          isTransparent === false ? 'transparent' : theme.colors.light3
         };
     }
     `
@@ -30,7 +30,7 @@ export const ContainerUI = styled('div')`
   width: 100%;
 
   background-color: ${({ isTransparent, style }) =>
-    isTransparent ? 'transparent' : '#f7f7f7'};
+    isTransparent ? 'transparent' : theme.colors.light3};
 
   border-bottom: ${({ isTransparent }) =>
     isTransparent ? '1px solid transparent' : '1px solid #d3d3d3'};
@@ -61,7 +61,7 @@ export const HighlightUI = styled('div')`
 `
 
 export const LinkUI = styled('div')`
-  color: ${theme.colors.light1};
+  color: ${theme.colors.dark3};
   cursor: pointer;
   box-sizing: border-box;
   font-family: ${theme.typography.fonts.font1};
@@ -80,7 +80,8 @@ export const LinkUI = styled('div')`
   a:visited,
   a:hover,
   a:link {
-    color: #fff;
+    color: ${theme.colors.dark3};
+    display: inline-block;
     min-width: 100%;
     text-decoration: none;
   }
@@ -89,7 +90,7 @@ export const LinkUI = styled('div')`
 
 export const MenuUI = styled('nav')`
   box-sizing: border-box;
-  background-color: ${theme.colors.dark3};
+  background-color: ${theme.colors.light3};
   display: block;
   left: 0;
   min-height: 100vh;

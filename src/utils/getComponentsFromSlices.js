@@ -182,9 +182,14 @@ export default function getComponentsFromSlices({
         </Section>
       )
     } else if (type == 'article') {
-      const { background, body2, sidebar, sidebar_style } = slice.primary
+      const {
+        background,
+        body2,
+        sidebar,
+        sidebar_style,
+        sidebar_title,
+      } = slice.primary
 
-      console.log('bool', sidebar, !!sidebar.length)
       return (
         <Section background={background} key={short.generate()}>
           <Article>
@@ -208,7 +213,7 @@ export default function getComponentsFromSlices({
                 )}
 
               {sidebar_style === 'facts' && (
-                <Article.Facts>
+                <Article.Facts title={sidebar_title}>
                   {parsePrismicToReactComponents(sidebar)}
                 </Article.Facts>
               )}

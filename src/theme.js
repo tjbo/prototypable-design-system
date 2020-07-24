@@ -22,11 +22,12 @@ export default {
     dark5: '#0042B6',
     dark6: '#dddddd',
     light1: '#f9f9f9',
-    light2: '#f9f9f9',
+    light2: '#f7f7f7',
     light3: '#ffffff',
     error: '#D40000',
     success: '#009918',
     white: '#ffffff',
+    black: '#000000',
   },
   typography: {
     fonts: {

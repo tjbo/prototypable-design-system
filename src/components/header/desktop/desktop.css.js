@@ -24,7 +24,7 @@ export const ContainerUI = styled('header')`
   top: 0;
   z-index: 1;
   background-color: ${({ isTransparent }) =>
-    isTransparent ? 'transparent' : '#f7f7f7'};
+    isTransparent ? 'transparent' : theme.colors.light3};
 
   border-bottom: ${({ isTransparent }) =>
     isTransparent ? '1px solid transparent' : '1px solid #d3d3d3'};

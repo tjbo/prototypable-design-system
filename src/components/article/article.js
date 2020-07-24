@@ -27,8 +27,8 @@ Article.Box = function ({ children }) {
   return <Box>{children}</Box>
 }
 
-Article.Facts = function ({ children }) {
-  return <Facts>{children}</Facts>
+Article.Facts = function ({ children, title }) {
+  return <Facts title={title}>{children}</Facts>
 }
 
 Article.StickySidebar = function ({ children }) {

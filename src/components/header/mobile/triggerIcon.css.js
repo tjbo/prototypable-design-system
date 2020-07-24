@@ -1,14 +1,40 @@
 import makePixelValue from '../../../utils/makePixelValue'
 import theme from '../../../theme'
+import { css, keyframes } from 'styled-components'
 
-const heightLine = 3
-const heightIcon = 16
+const heightLine = 5
+const heightIcon = 25
 const translateY = heightIcon / 2
 const translateY1 = makePixelValue(translateY)
 
-function getDefaultStyles() {
+const pulseColor = (style) => {
+  return keyframes`
+
+    to {
+        background: ${
+          style === 'light' ? theme.colors.white : theme.colors.black
+        };
+    }
+
+    from {
+        background:  ${
+          style === 'light' ? theme.colors.black : theme.colors.white
+        };
+    }
+    `
+}
+
+function getDefaultStyles({ isAnimated, style, isOpen }) {
+  const _style = isOpen ? 'dark' : style
+
   return `
-  background: #fff;
+  background: ${_style === 'light' || isOpen ? '#fff ' : theme.colors.black};
+  animation: ${({ isAnimated, isOpen }) =>
+    isAnimated
+      ? css`
+          ${pulseColor(_style)} 500ms linear 1
+        `
+      : 'none'};
   border-radius: (${makePixelValue(heightLine / 2)});
   display: block;
   height: ${makePixelValue(heightLine)};
@@ -20,7 +46,7 @@ function getDefaultStyles() {
 }
 
 export const Line1UI = styled('span')`
-  ${getDefaultStyles()};
+  ${getDefaultStyles};
   top: 0;
   transform: ${(props) => {
     return props.isOpen
@@ -30,7 +56,7 @@ export const Line1UI = styled('span')`
 `
 
 export const Line2UI = styled('span')`
-  ${getDefaultStyles()};
+  ${getDefaultStyles};
   top: 50%;
   opacity: ${(props) => {
     return props.isOpen ? `0` : '1'
@@ -38,7 +64,7 @@ export const Line2UI = styled('span')`
 `
 
 export const Line3UI = styled('span')`
-  ${getDefaultStyles()};
+  ${getDefaultStyles};
   top: 100%;
   transform: ${(props) => {
     return props.isOpen
@@ -58,10 +84,10 @@ export const ContainerUI = styled('div')`
 export const ContainerInnerUI = styled('div')`
   display: block;
   height: ${makePixelValue(heightIcon)};
-  margin: (${makePixelValue(heightIcon * 2)}) auto ${heightIcon} auto;
-  margin-top: -${theme.unit(0.125)};
+  margin: (${makePixelValue(heightIcon * 2.5)}) auto ${heightIcon} auto;
+  margin-top: ${theme.unit(0.125)};
   position: relative;
-  width: ${theme.unit(1)};
+  width: ${theme.unit(1.5)};
   z-index: 9999;
   cursor: pointer;
 `
