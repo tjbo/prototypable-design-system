@@ -48,6 +48,7 @@ class Form extends React.Component {
 
   renderForm() {
     const { children } = this.props
+    this.validator.purgeFields()
     return (
       <FormUI>
         <form onSubmit={this.onSubmit}>
