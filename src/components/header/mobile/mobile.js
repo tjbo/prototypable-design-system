@@ -12,6 +12,7 @@ import SubMenu from './submenu'
 import { onShowModal, onHideModal } from '../../body'
 import Button from '../../button'
 import theme from '../../../theme'
+import throttle from 'lodash.throttle'
 
 class Container extends React.Component {
   state = {
@@ -32,8 +33,14 @@ class Container extends React.Component {
 
   componentDidMount() {
     if (typeof window !== 'undefined') {
-      window.addEventListener('resize', () => this.onResize())
-      window.addEventListener('scroll', () => this.onScroll())
+      window.addEventListener(
+        'resize',
+        throttle(() => this.onResize(), 300),
+      )
+      window.addEventListener(
+        'scroll',
+        throttle(() => this.onScroll(), 300),
+      )
     }
   }
   componentWillUnmount() {
