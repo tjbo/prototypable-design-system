@@ -54,7 +54,8 @@ class Container extends React.Component {
     if (
       nextState.isOpen === this.state.isOpen &&
       nextState.subMenu === this.state.subMenu &&
-      nextState.isScrollTopLimit === this.state.isScrollTopLimit
+      nextState.isScrollTopLimit === this.state.isScrollTopLimit &&
+      nextProps.path === this.props.path
     ) {
       return false
     }
