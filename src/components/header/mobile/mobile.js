@@ -36,6 +36,12 @@ class Container extends React.Component {
       window.addEventListener('scroll', () => this.onScroll())
     }
   }
+  componentWillUnmount() {
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('resize', () => this.onResize())
+      window.removeEventListener('scroll', () => this.onScroll())
+    }
+  }
 
   shouldComponentUpdate(nextProps, nextState) {
     if (
@@ -57,12 +63,14 @@ class Container extends React.Component {
   }
 
   onScroll = () => {
-    const scrollTop =
-      document.body.scrollTop || document.documentElement.scrollTop
-    if (scrollTop >= theme.layoutAsNumber.mobile.headerHeight) {
-      this.setState({ isScrollTopLimit: true })
-    } else {
-      this.setState({ isScrollTopLimit: false })
+    if (typeof window !== 'undefined') {
+      const scrollTop =
+        document.body.scrollTop || document.documentElement.scrollTop
+      if (scrollTop >= theme.layoutAsNumber.mobile.headerHeight) {
+        this.setState({ isScrollTopLimit: true })
+      } else {
+        this.setState({ isScrollTopLimit: false })
+      }
     }
   }
 
