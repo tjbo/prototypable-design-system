@@ -8,7 +8,7 @@ import {
   MenuUI,
 } from './mobile.css'
 import Trigger from './triggerIcon'
-import Dropdown from './dropdown'
+import SubMenu from './submenu'
 import { onShowModal, onHideModal } from '../../body'
 import Button from '../../button'
 import theme from '../../../theme'
@@ -17,14 +17,16 @@ class Container extends React.Component {
   state = {
     isOpen: false,
     isScrollTopLimit: false,
+    subMenu: '',
   }
 
-  UNSAFE_componentWillUpdate(nextProps, nextState) {
-    if (
-      nextProps.style !== this.props.style ||
-      nextState.isScrollTopLimit !== this.state.isScrollTopLimit
-    ) {
-      this.animate = true
+  componentDidUpdate(nextProps, nextState) {
+    if (nextProps.headerStyle !== this.props.headerStyle) {
+      this.setState({ isContainerAnimated: true })
+    }
+
+    if (nextState.isOpen !== this.state.isOpen) {
+      this.setState({ isMenuAnimated: true })
     }
   }
 
@@ -33,6 +35,18 @@ class Container extends React.Component {
       window.addEventListener('resize', () => this.onResize())
       window.addEventListener('scroll', () => this.onScroll())
     }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (
+      nextState.isOpen === this.state.isOpen &&
+      nextState.subMenu === this.state.subMenu &&
+      nextState.isScrollTopLimit === this.state.isScrollTopLimit
+    ) {
+      return false
+    }
+
+    return true
   }
 
   onResize = () => {
@@ -66,28 +80,46 @@ class Container extends React.Component {
     })
   }
 
+  toggleSubMenu = (name) => {
+    this.setState({ subMenu: name })
+  }
+
   render() {
-    const { children, isTransparent, style } = this.props
-    const { isOpen, isScrollTopLimit } = this.state
-    const _style = isScrollTopLimit ? 'dark' : style
-    const _isTransparent = isScrollTopLimit ? false : isTransparent
+    const { children, isTransparent, headerStyle } = this.props
+    const {
+      isOpen,
+      isContainerAnimated,
+      isMenuAnimated,
+      isScrollTopLimit,
+      subMenu,
+    } = this.state
+
+    const _style = isScrollTopLimit || isOpen ? 'dark' : headerStyle
+    const _isTransparent = isScrollTopLimit || isOpen ? false : isTransparent
 
     return (
-      <ContainerUI animate={this.animate} isTransparent={_isTransparent}>
+      <ContainerUI
+        isAnimated={isContainerAnimated}
+        isTransparent={_isTransparent}
+      >
         <ContainerInnerUI>
           <Trigger
-            isAnimated={this.animate}
+            isAnimated={isContainerAnimated}
             isOpen={isOpen}
             onClick={this.toggleMenu}
-            style={_style}
+            isTransparent={_isTransparent}
+            headerStyle={_style}
           />
           {React.Children.map(children, (child) => {
             return React.cloneElement(child, {
               ...child.props,
               closeParentMenu: this.toggleMenu,
-              isAnimated: this.animate,
+              isAnimated: isMenuAnimated,
+              isContainerAnimated: isContainerAnimated,
               isParentMenuOpen: isOpen,
-              style: _style,
+              headerStyle: _style,
+              toggleSubMenu: this.toggleSubMenu,
+              subMenu,
             })
           })}
         </ContainerInnerUI>
@@ -96,14 +128,14 @@ class Container extends React.Component {
   }
 }
 
-const Brand = function Brand({ children, isAnimated, style }) {
+const Brand = function Brand({ children, isContainerAnimated, headerStyle }) {
   return (
     <BrandContainerUI>
       {React.Children.map(children, (child) => {
         return React.cloneElement(child, {
           ...child.props,
-          isAnimated,
-          style,
+          isAnimated: isContainerAnimated,
+          headerStyle,
         })
       })}
     </BrandContainerUI>
@@ -144,24 +176,30 @@ function Link(props) {
 }
 
 function Menu(props) {
-  const { children, closeParentMenu, isParentMenuOpen } = props
-  if (isParentMenuOpen) {
-    const content = React.Children.map(children, (child) => {
-      return React.cloneElement(child, {
-        ...child.props,
-        closeParentMenu,
-        isParentMenuOpen,
-      })
+  const {
+    children,
+    closeParentMenu,
+    isAnimated,
+    isParentMenuOpen,
+    subMenu,
+    toggleSubMenu,
+  } = props
+  const content = React.Children.map(children, (child) => {
+    return React.cloneElement(child, {
+      ...child.props,
+      closeParentMenu,
+      isParentMenuOpen,
+      subMenu,
+      toggleSubMenu,
     })
-    return <MenuUI {...{ ...props }}>{content}</MenuUI>
-  }
-  return null
+  })
+  return <MenuUI {...{ isAnimated, isParentMenuOpen }}>{content}</MenuUI>
 }
 
 export default {
   Brand,
   Container,
-  Dropdown,
+  SubMenu,
   Link,
   Menu,
 }

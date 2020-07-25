@@ -3,44 +3,44 @@ import theme from '../../../theme'
 import { css, keyframes } from 'styled-components'
 
 const heightLine = 5
-const heightIcon = 25
+const heightIcon = 22.5
 const translateY = heightIcon / 2
 const translateY1 = makePixelValue(translateY)
 
-const pulseColor = (style) => {
-  return keyframes`
-
+const pulseColor = ({ headerStyle, isAnimated }) => {
+  const _keyframes = keyframes`
     to {
-        background: ${
-          style === 'light' ? theme.colors.white : theme.colors.black
+        background:${
+          headerStyle === 'light' ? theme.colors.white : theme.colors.black
         };
     }
 
     from {
         background:  ${
-          style === 'light' ? theme.colors.black : theme.colors.white
+          headerStyle === 'light' ? theme.colors.black : theme.colors.white
         };
     }
     `
+
+  return isAnimated
+    ? css`
+        ${_keyframes} ${theme.animation.speed.default} ease-in-out 1
+      `
+    : 'none'
 }
 
-function getDefaultStyles({ isAnimated, style, isOpen }) {
-  const _style = isOpen ? 'dark' : style
-
+function getDefaultStyles({ isAnimated, headerStyle, isOpen }) {
   return `
-  background: ${_style === 'light' || isOpen ? '#fff ' : theme.colors.black};
-  animation: ${({ isAnimated, isOpen }) =>
-    isAnimated
-      ? css`
-          ${pulseColor(_style)} 500ms linear 1
-        `
-      : 'none'};
+  background: ${
+    headerStyle === 'light' ? theme.colors.white : theme.colors.black
+  };
+
   border-radius: (${makePixelValue(heightLine / 2)});
   display: block;
   height: ${makePixelValue(heightLine)};
   left: 0;
   position: absolute;
-  transition: transform 500ms ease;
+  transition: transform ${theme.animation.speed.default} ease-in-out;
   width: 100%;
 `
 }
@@ -53,6 +53,7 @@ export const Line1UI = styled('span')`
       ? `translateY(${translateY1}) rotate(45deg) translateX(0)`
       : 'rotate(0deg)'
   }};
+  animation: ${pulseColor};
 `
 
 export const Line2UI = styled('span')`
@@ -61,6 +62,7 @@ export const Line2UI = styled('span')`
   opacity: ${(props) => {
     return props.isOpen ? `0` : '1'
   }};
+  animation: ${pulseColor};
 `
 
 export const Line3UI = styled('span')`
@@ -71,6 +73,7 @@ export const Line3UI = styled('span')`
       ? `translateY(-${translateY1}) rotate(-45deg) translateX(0)`
       : 'rotate(0deg)'
   }};
+  animation: ${pulseColor};
 `
 
 export const ContainerUI = styled('div')`
@@ -85,9 +88,10 @@ export const ContainerInnerUI = styled('div')`
   display: block;
   height: ${makePixelValue(heightIcon)};
   margin: (${makePixelValue(heightIcon * 2.5)}) auto ${heightIcon} auto;
-  margin-top: ${theme.unit(0.125)};
+  margin-top: ${theme.unit(0.375)};
+  margin-right: ${theme.unit(0.375)};
   position: relative;
-  width: ${theme.unit(1.5)};
+  width: ${theme.unit(1.25)};
   z-index: 9999;
   cursor: pointer;
 `

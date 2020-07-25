@@ -3,6 +3,12 @@ import makePixelValue from './utils/makePixelValue'
 const unit = 32
 
 export default {
+  animation: {
+    speed: {
+      quick: '300ms',
+      default: '400ms',
+    },
+  },
   breakPoints: {
     mobile: 608,
     tablet: 960,

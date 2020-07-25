@@ -1,70 +1,50 @@
 import React from 'react'
 import Header from './header'
-import Section from '../section'
+import Body from '../body'
+import Content from '../content'
+import Icon from '../icon'
 
 export default {
   title: 'Header',
   component: Header,
 }
 
-export const Default = () => (
-  <Header.Container style="dark">
-    <Header.Brand>
-      <img
-        src="https://www.crescentlenders.com/images/logo-white-953x349-transparent.png"
-        width="250"
-      />
-    </Header.Brand>
-    <Header.Menu>
-      <Header.Link>
-        <a href="/">Home</a>
-      </Header.Link>
-      <Header.Dropdown text="About">
-        <a to="/about/our-team/">Our Team</a>
-        <a to="/about/recently-funded-deals/">Recent Deals</a>
-        <a to="/about/our-team/">Thing 2</a>
-        <a to="/about/recently-funded-deals/">Thing 3</a>
-      </Header.Dropdown>
-      <Header.Link>
-        <a href="/">Blog</a>
-      </Header.Link>
-      <Header.Link asHighlight={true}>
-        <a href="/">213-474-3131</a>
-      </Header.Link>
-      <Header.Link>
-        <a href="mailto:info@crescentlenders.com">info@crescentlenders.com</a>
-      </Header.Link>
-    </Header.Menu>
-  </Header.Container>
-)
+function Link({ children }) {
+  return <a href="">{children}</a>
+}
 
-export const DarkStyle = () => (
-  <Header.Container isTransparent={true} style="dark">
+const style = 'dark'
+
+export const Default = () => (
+  <Header.Container headerStyle={style} isTransparent={false}>
     <Header.Brand>
-      <img
-        src="https://www.crescentlenders.com/images/logo-white-953x349-transparent.png"
-        width="250"
-      />
+      <Icon name="crescent-lenders" headerStyle={style} />
     </Header.Brand>
     <Header.Menu>
       <Header.Link>
-        <a href="/">Home</a>
+        <Link to="/">Home</Link>
       </Header.Link>
-      <Header.Dropdown text="About">
-        <a to="/about/our-team/">Our Team</a>
-        <a to="/about/recently-funded-deals/">Recent Deals</a>
-        <a to="/about/our-team/">Thing 2</a>
-        <a to="/about/recently-funded-deals/">Thing 3</a>
-      </Header.Dropdown>
+      <Header.SubMenu text="About">
+        <Header.Link>
+          <Link to="/about/our-team/">Our Team</Link>
+        </Header.Link>
+        <Header.Link>
+          <Link to="/about/recently-funded-deals/">Recent Deals</Link>
+        </Header.Link>
+        <Header.Link>
+          <Link to="/about/broker-referral/">Brokers</Link>
+        </Header.Link>
+        <Header.Link>
+          <Link to="/about/broker-referral/">Brokers</Link>
+        </Header.Link>
+      </Header.SubMenu>
       <Header.Link>
-        <a href="/">Blog</a>
-      </Header.Link>
-      <Header.Link asHighlight={true}>
-        <a href="/">213-474-3131</a>
+        <Link to="/blog/">Blog</Link>
       </Header.Link>
       <Header.Link>
-        <a href="mailto:info@crescentlenders.com">info@crescentlenders.com</a>
+        <Link to="/about/contact/">CONTACT</Link>
       </Header.Link>
+      <Header.Link asHighlight={true}>213-474-3131</Header.Link>
     </Header.Menu>
   </Header.Container>
 )

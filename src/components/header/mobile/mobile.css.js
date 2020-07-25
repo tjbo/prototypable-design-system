@@ -16,6 +16,18 @@ const pulseColor = (isTransparent) => {
     `
 }
 
+const slideIn = (isParentMenuOpen) => {
+  return keyframes`
+  to {
+    left: ${isParentMenuOpen ? '0%' : '-100%'}
+  }
+
+  from {
+    left:  ${isParentMenuOpen ? '-100%' : '0%'}
+  }
+  `
+}
+
 export const BrandContainerUI = styled('div')`
   max-width: 170px;
 `
@@ -23,22 +35,23 @@ export const BrandContainerUI = styled('div')`
 export const ContainerUI = styled('div')`
   box-sizing: border-box;
   position: sticky;
-  z-index: 1;
   top: 0;
+  z-index: 1;
   display: block;
   height: ${theme.layout.mobile.headerHeight};
-  width: 100%;
+  min-width: 100vw;
 
-  background-color: ${({ isTransparent, style }) =>
+  background-color: ${({ isTransparent }) =>
     isTransparent ? 'transparent' : theme.colors.light3};
 
   border-bottom: ${({ isTransparent }) =>
     isTransparent ? '1px solid transparent' : '1px solid #d3d3d3'};
 
-  animation: ${({ animate, isTransparent }) =>
-    animate
+  animation: ${({ isAnimated, isTransparent }) =>
+    isAnimated
       ? css`
-          ${pulseColor(isTransparent)} 500ms linear 1
+          ${pulseColor(isTransparent)} ${theme.animation.speed
+            .default} ease-in-out 1
         `
       : 'none'};
 `
@@ -62,6 +75,8 @@ export const HighlightUI = styled('div')`
 
 export const LinkUI = styled('div')`
   color: ${theme.colors.dark3};
+  display: flex;
+  align-items: center;
   cursor: pointer;
   box-sizing: border-box;
   font-family: ${theme.typography.fonts.font1};
@@ -69,12 +84,12 @@ export const LinkUI = styled('div')`
   margin: 0;
   padding: ${theme.unit(0.25)};
   position: relative;
-  text-align: center;
+  padding-left: ${theme.unit(1.5)};
+  text-align: left;
   width: auto;
-  text-transform: uppercase;
+  vertical-align: middle;
   :hover {
-    background-color: ${theme.colors.dark5};
-    padding: ${theme.unit(0.25)};
+    background-color: ${theme.colors.light1};
   }
   a:active,
   a:visited,
@@ -85,20 +100,61 @@ export const LinkUI = styled('div')`
     min-width: 100%;
     text-decoration: none;
   }
-  background-color: ${({ isOpen }) => isOpen && `${theme.colors.dark5}`};
+  border-bottom: ${theme.border};
+  background-color: ${({ isOpen }) => isOpen && `${theme.colors.light1}`};
+
+  ${({ icon }) => {
+    if (icon === 'back') {
+      return css`
+        :before {
+          display: inline-block;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: ${theme.unit(1)};
+          height: 50%;
+          color: ${theme.colors.dark2};
+          content: '\\02C2';
+        }
+      `
+    } else if (icon === 'forward') {
+      return css`
+        :after {
+          display: inline-block;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: ${theme.unit(1)};
+          height: 50%;
+          color: ${theme.colors.dark2};
+          content: '\\02C3';
+        }
+      `
+    }
+  }}
 `
 
 export const MenuUI = styled('nav')`
   box-sizing: border-box;
   background-color: ${theme.colors.light3};
   display: block;
-  left: 0;
+  left: ${({ isParentMenuOpen }) => (isParentMenuOpen ? '0' : '-100%')};
   min-height: 100vh;
-  padding-top: ${theme.layout.mobile.headerHeight};
   position: absolute;
-  top: 0;
   height: 100%;
   width: 100%;
   min-height: 100vh;
   overflow: auto;
+  animation: ${({ isAnimated, isParentMenuOpen }) =>
+    isAnimated
+      ? css`
+          ${slideIn(isParentMenuOpen)} ${theme.animation.speed
+            .quick} ease-in-out 1
+        `
+      : 'none'};
+
+  top: ${({ isSubMenu }) =>
+    isSubMenu ? '0' : theme.layout.mobile.headerHeight};
+  z-index: 1;
+  background-color: #fff;
 `

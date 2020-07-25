@@ -9,25 +9,31 @@ import {
 } from './desktop.css'
 
 class Container extends React.Component {
-  static isAnimated = false
+  state = {
+    isAnimated: true,
+  }
 
-  UNSAFE_componentWillUpdate(nextProps, nextState) {
-    if (nextProps.style !== this.props.style) {
-      this.isAnimated = true
+  componentDidUpdate(nextProps) {
+    if (
+      nextProps.headerStyle !== this.props.headerStyle ||
+      nextProps.isTransparent !== this.props.isTransparent
+    ) {
+      this.setState({ isAnimated: true })
     }
   }
 
   render() {
-    const { children, isTransparent, style } = this.props
+    const { children, isTransparent, headerStyle } = this.props
+    const { isAnimated } = this.state
 
     return (
-      <ContainerUI style={style} isTransparent={isTransparent}>
+      <ContainerUI headerStyle={headerStyle} isTransparent={isTransparent}>
         <ContainerInnerUI>
           {React.Children.map(children, (child) => {
             return React.cloneElement(child, {
               ...child.props,
-              isAnimated: this.isAnimated,
-              style: style,
+              isAnimated,
+              headerStyle,
             })
           })}
         </ContainerInnerUI>
@@ -36,21 +42,21 @@ class Container extends React.Component {
   }
 }
 
-const Brand = function Brand({ children, isAnimated, style }) {
+const Brand = function Brand({ children, isAnimated, headerStyle }) {
   return (
-    <BrandUI style={style}>
+    <BrandUI>
       {React.Children.map(children, (child) => {
         return React.cloneElement(child, {
           ...child.props,
           isAnimated,
-          style,
+          headerStyle,
         })
       })}
     </BrandUI>
   )
 }
 
-function Dropdown({ children, text }) {
+function SubMenu({ children, text }) {
   return (
     <DropdownUI>
       <LinkUI>{text}</LinkUI>
@@ -63,46 +69,34 @@ function Dropdown({ children, text }) {
   )
 }
 
-class Link extends React.Component {
-  render() {
-    const { children, asHighlight } = this.props
-    if (asHighlight) {
-      return (
-        <LinkUI
-          onClick={(event) => {
-            event.nativeEvent.stopPropagation()
-            window.location.href = 'tel://' + children
-          }}
-        >
-          <HighlightUI>{children}</HighlightUI>
-        </LinkUI>
-      )
-    }
-    return <LinkUI>{children}</LinkUI>
-  }
-}
-
-class Menu extends React.Component {
-  static animate = false
-
-  UNSAFE_componentWillUpdate(prevProps) {
-    this.animate = !(this.props.style === prevProps.style)
-  }
-
-  render() {
-    const { children, style } = this.props
+function Link({ children, asHighlight }) {
+  if (asHighlight) {
     return (
-      <MenuUI animate={this.animate} style={style}>
-        {children}
-      </MenuUI>
+      <LinkUI
+        onClick={(event) => {
+          event.nativeEvent.stopPropagation()
+          window.location.href = 'tel://' + children
+        }}
+      >
+        <HighlightUI>{children}</HighlightUI>
+      </LinkUI>
     )
   }
+  return <LinkUI>{children}</LinkUI>
+}
+
+function Menu({ children, isAnimated, headerStyle }) {
+  return (
+    <MenuUI isAnimated={isAnimated} headerStyle={headerStyle}>
+      {children}
+    </MenuUI>
+  )
 }
 
 export default {
   Brand,
   Container,
-  Dropdown,
+  SubMenu,
   Link,
   Menu,
 }

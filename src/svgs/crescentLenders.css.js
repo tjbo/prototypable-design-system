@@ -1,24 +1,31 @@
 import styled, { css, keyframes } from 'styled-components'
+import theme from '../theme'
 
-const pulseColor = (style) => {
+const pulseColor = (headerStyle) => {
   return keyframes`
 
     to {
-        fill: ${style === 'light' ? '#fff ' : '#000'};
+        fill: ${
+          headerStyle === 'light' ? theme.colors.white : theme.colors.black
+        };
     }
 
     from {
-        fill:  ${style === 'light' ? '#000' : '#fff'};
+        fill:  ${
+          headerStyle === 'light' ? theme.colors.black : theme.colors.white
+        };
     }
     `
 }
 
 export const AnimateFillUI = styled('path')`
-  fill: ${({ style }) => (style === 'light' ? '#fff' : '#000')};
-  animation: ${({ isAnimated, style }) =>
+  fill: ${({ headerStyle }) =>
+    headerStyle === 'light' ? theme.colors.white : theme.colors.black};
+  animation: ${({ isAnimated, headerStyle }) =>
     isAnimated
       ? css`
-          ${pulseColor(style)} 500ms linear 1
+          ${pulseColor(headerStyle)} ${theme.animation.speed
+            .default} ease-in-out 1
         `
       : 'none'};
 `

@@ -14,6 +14,27 @@ const pulseColor = (_style) => {
     `
 }
 
+export const LinkUI = styled('div')`
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  font-family: ${theme.typography.fonts.font1};
+  font-weight: 500;
+  justify-content: center;
+  height: ${theme.layout.desktop.headerHeight};
+  a:visited,
+  a:link {
+    text-decoration: none;
+  }
+  padding: 0 ${theme.unit(0.25)};
+  a:active,
+  a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  text-transform: uppercase;
+`
+
 export const ContainerUI = styled('header')`
   background-color: transparent;
   box-sizing: border-box;
@@ -89,6 +110,7 @@ export const DropdownUI = styled('div')`
       }
     }
 
+    /* arrow */
     :before {
       content: '';
       position: absolute;
@@ -127,29 +149,9 @@ export const BrandUI = styled('div')`
   }
 `
 
-export const LinkUI = styled('div')`
-  align-items: center;
-  box-sizing: border-box;
-  display: flex;
-  font-family: ${theme.typography.fonts.font1};
-  font-weight: 500;
-  justify-content: center;
-  height: ${theme.layout.desktop.headerHeight};
-  a:visited,
-  a:link {
-    text-decoration: none;
-  }
-  padding: 0 ${theme.unit(0.25)};
-  a:active,
-  a:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-  text-transform: uppercase;
-`
-
 export const HighlightUI = styled('div')`
   cursor: pointer;
+  color: #fff;
   padding: ${theme.unit(0.075)} ${theme.unit(0.5)};
   background-color: ${theme.colors.dark2};
 `
@@ -158,17 +160,28 @@ export const MenuUI = styled('div')`
   display: flex;
   position: relative;
 
-  ${LinkUI}, ${LinkUI} a {
-    animation: ${({ animate, style }) =>
-      animate
+  ${LinkUI} > a, ${DropdownUI} ${LinkUI} {
+    animation: ${({ isAnimated, headerStyle }) =>
+      isAnimated
         ? css`
-            ${pulseColor(style)} 1s linear 1
+            ${pulseColor(headerStyle)} ${theme.animation.speed
+              .default} ease-in-out 1
           `
         : 'none'};
-    color: ${({ style }) => (style === 'light' ? '#fff' : '#000')};
+    color: ${({ headerStyle }) => (headerStyle === 'light' ? '#fff' : '#000')};
   }
-  ${LinkUI} ${HighlightUI} a {
-    animation: 'none';
-    color: #fff;
+
+  ul li ${LinkUI} {
+    font-weight: normal;
+    text-transform: none;
+    height: auto;
+    margin: 0;
+    padding: 0;
+
+    a {
+      animation: 'none';
+      color: #fff;
+      margin: 0;
+    }
   }
 `

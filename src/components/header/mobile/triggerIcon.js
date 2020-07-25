@@ -6,13 +6,32 @@ import {
   Line3UI,
 } from './triggerIcon.css'
 
-export default function TriggerIcon({ isAnimated, isOpen, onClick, style }) {
+export default function TriggerIcon({
+  isAnimated,
+  isOpen,
+  onClick,
+  headerStyle,
+}) {
+  console.log('isAnimated', isAnimated)
+
   return (
     <ContainerUI isOpen={isOpen} onClick={onClick}>
       <ContainerInnerUI>
-        <Line1UI isAnimated={isAnimated} isOpen={isOpen} style={style} />
-        <Line2UI isAnimated={isAnimated} isOpen={isOpen} style={style} />
-        <Line3UI isAnimated={isAnimated} isOpen={isOpen} style={style} />
+        <Line1UI
+          isAnimated={isAnimated}
+          isOpen={isOpen}
+          headerStyle={headerStyle}
+        />
+        <Line2UI
+          isAnimated={isAnimated}
+          isOpen={isOpen}
+          headerStyle={headerStyle}
+        />
+        <Line3UI
+          isAnimated={isAnimated}
+          isOpen={isOpen}
+          headerStyle={headerStyle}
+        />
       </ContainerInnerUI>
     </ContainerUI>
   )

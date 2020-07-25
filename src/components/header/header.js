@@ -74,14 +74,14 @@ function Link(props) {
   )
 }
 
-function Dropdown(props) {
+function SubMenu(props) {
   return (
     <Media>
       {({ breakpoints, currentBreakpoint }) => {
         if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
-          return <DesktopHeader.Dropdown {...{ ...props }} />
+          return <DesktopHeader.SubMenu {...{ ...props }} />
         } else {
-          return <MobileHeader.Dropdown {...{ ...props }} />
+          return <MobileHeader.SubMenu {...{ ...props }} />
         }
       }}
     </Media>
@@ -110,7 +110,7 @@ export default {
   Brand,
   Container,
   Divider,
-  Dropdown,
+  SubMenu,
   Link,
   Menu,
   Contact,
