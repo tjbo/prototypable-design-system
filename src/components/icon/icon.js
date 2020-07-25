@@ -7,6 +7,7 @@ const icons = {
   facebook: lazy(() => import('../../svgs/facebook')),
   like: lazy(() => import('../../svgs/like')),
   ['linked-in']: lazy(() => import('../../svgs/linkedin')),
+  loader: lazy(() => import('../../svgs/loader')),
   ['market-watch']: lazy(() => import('../../svgs/market-watch')),
   money: lazy(() => import('../../svgs/money')),
   mortgage: lazy(() => import('../../svgs/mortgage')),
