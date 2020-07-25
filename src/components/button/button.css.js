@@ -7,6 +7,7 @@ export const ButtonUI = styled('button')`
   color: #fff;
   cursor: pointer;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
   font-family: ${theme.typography.fonts.font1};
@@ -39,6 +40,8 @@ export const ButtonUI = styled('button')`
   a:hover,
   a:visited {
     color: ${theme.colors.white};
+    display: flex;
+    align-items: center;
   }
 `
 

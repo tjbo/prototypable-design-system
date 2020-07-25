@@ -1,15 +1,16 @@
 import { ButtonUI, ButtonContainerUI, IconContainerUI } from './button.css'
-import SMS from '../../svgs/sms'
-import Email from '../../svgs/email'
 import PropTypes from 'prop-types'
+import Icon from '../icon'
 
 function getIconComponent(icon) {
-  const icons = {
-    email: <Email />,
-    sms: <SMS />,
-  }
-
-  return (icon && <IconContainerUI>{icons[icon]}</IconContainerUI>) || null
+  return (
+    (icon && (
+      <IconContainerUI>
+        <Icon name={icon} />
+      </IconContainerUI>
+    )) ||
+    null
+  )
 }
 
 function getButtonAsRouterLink({

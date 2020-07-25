@@ -71,6 +71,7 @@ export const ContainerInnerUI = styled('div')`
 export const HighlightUI = styled('div')`
   margin: 0;
   padding: ${theme.unit(0.25)};
+  margin-top: ${theme.unit(0.5)};
 `
 
 export const LinkUI = styled('div')`

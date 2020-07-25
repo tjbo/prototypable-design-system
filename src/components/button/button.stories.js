@@ -31,3 +31,15 @@ export const EmailIcon = () => (
     </Button>
   </Section>
 )
+
+export const RouterLink = () => (
+  <Section>
+    <Button
+      icon="sms"
+      routerLinkComponent={({ children }) => children}
+      to="/about/contact/"
+    >
+      <a href="/">Send Us An SMS</a>
+    </Button>
+  </Section>
+)
