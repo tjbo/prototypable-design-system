@@ -28,7 +28,6 @@ function SubMenu({
         <LinkUI
           icon="back"
           onClick={() => {
-            console.log('toggleSub')
             toggleSubMenu('')
           }}
         >

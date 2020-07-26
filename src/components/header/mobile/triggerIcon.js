@@ -12,8 +12,6 @@ export default function TriggerIcon({
   onClick,
   headerStyle,
 }) {
-  console.log('isAnimated', isAnimated)
-
   return (
     <ContainerUI isOpen={isOpen} onClick={onClick}>
       <ContainerInnerUI>
