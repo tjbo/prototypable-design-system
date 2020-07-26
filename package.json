@@ -12,7 +12,7 @@
     "build-storybook": "build-storybook",
     "release": "release-it",
     "build": "rollup -c",
-    "watch": "npm-watch"
+    "watch": "rm -rf dist && npm-watch"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
     "react-input-slider": "^5.1.7",
     "react-jsx-parser": "^1.23.0",
     "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-terser": "^6.1.0",
     "short-uuid": "^3.1.1",
     "simple-react-validator": "^1.4.6",
     "styled-components": "^5.0.1"

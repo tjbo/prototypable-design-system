@@ -5,6 +5,7 @@ import resolve from 'rollup-plugin-node-resolve'
 import inject from '@rollup/plugin-inject'
 import url from '@rollup/plugin-url'
 import path from 'path'
+import { terser } from 'rollup-plugin-terser'
 
 export default {
   input: './src/index.js',
@@ -36,6 +37,7 @@ export default {
       // are always bundled with the code, not copied to /dist
       limit: 0,
     }),
+    terser(),
   ],
   external: (id) => /^react|prismic-javascript|styled/.test(id),
 }
