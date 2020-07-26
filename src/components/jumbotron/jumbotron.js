@@ -53,7 +53,12 @@ export default function ({
       </ContentUI>
       <ImageUI>
         <OverlayUI overlay={overlay} />
-        <ResponsiveImage aspectRatio={null} data={image} sizes={sizes[size]} />
+        <ResponsiveImage
+          aspectRatio={null}
+          data={image}
+          loading="eager"
+          sizes={sizes[size]}
+        />
       </ImageUI>
     </ContainerUI>
   )
