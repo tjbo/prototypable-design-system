@@ -34,10 +34,6 @@ class Container extends React.Component {
   componentDidMount() {
     if (typeof window !== 'undefined') {
       window.addEventListener(
-        'resize',
-        throttle(() => this.onResize(), 300),
-      )
-      window.addEventListener(
         'scroll',
         throttle(() => this.onScroll(), 300),
       )
@@ -63,13 +59,6 @@ class Container extends React.Component {
     return true
   }
 
-  onResize = () => {
-    if (this.state.isOpen) {
-      this.setState({ isOpen: false })
-      onHideModal()
-    }
-  }
-
   onScroll = () => {
     if (typeof window !== 'undefined') {
       const scrollTop =
@@ -87,6 +76,7 @@ class Container extends React.Component {
   }
 
   toggleMenu = () => {
+    console.log('toggle menu from:', this.state.isOpen)
     this.setState({ isOpen: !this.state.isOpen }, () => {
       if (this.state.isOpen) {
         onShowModal()
@@ -97,6 +87,7 @@ class Container extends React.Component {
   }
 
   toggleSubMenu = (name) => {
+    console.log('toggle sub menu')
     this.setState({ subMenu: name })
   }
 
