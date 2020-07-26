@@ -7,6 +7,7 @@ import {
   LinkUI,
   MenuUI,
 } from './desktop.css'
+import clickPhone from '../../../utils/clickPhone'
 
 class Container extends React.Component {
   state = {
@@ -69,15 +70,10 @@ function SubMenu({ children, text }) {
   )
 }
 
-function Link({ children, asHighlight }) {
+function Link({ children, asHighlight, tel }) {
   if (asHighlight) {
     return (
-      <LinkUI
-        onClick={(event) => {
-          event.nativeEvent.stopPropagation()
-          window.location.href = 'tel://' + children
-        }}
-      >
+      <LinkUI onClick={clickPhone.bind(null, tel)}>
         <HighlightUI>{children}</HighlightUI>
       </LinkUI>
     )

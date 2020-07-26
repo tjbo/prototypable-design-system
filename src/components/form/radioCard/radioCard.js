@@ -11,8 +11,6 @@ import {
 
 import CheckMark from '../../../svgs/checkMark'
 
-var short = require('short-uuid')
-
 export default function ({
   content,
   image,
@@ -24,6 +22,7 @@ export default function ({
   types,
 }) {
   const isChecked = selectedValue === value
+
   return (
     <ContainerUI
       onClick={(e) => onChange(value)}

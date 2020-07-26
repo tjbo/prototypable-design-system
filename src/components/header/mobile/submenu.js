@@ -17,7 +17,6 @@ function SubMenu({
       toggleSubMenu,
     })
   })
-
   return (
     <div>
       <MenuUI
@@ -25,22 +24,12 @@ function SubMenu({
         isParentMenuOpen={subMenu === text}
         isSubMenu={true}
       >
-        <LinkUI
-          icon="back"
-          onClick={() => {
-            toggleSubMenu('')
-          }}
-        >
+        <LinkUI icon="back" onClick={toggleSubMenu.bind(null, '')}>
           Back
         </LinkUI>
         {content}
       </MenuUI>
-      <LinkUI
-        icon="forward"
-        onClick={() => {
-          toggleSubMenu(text)
-        }}
-      >
+      <LinkUI icon="forward" onClick={toggleSubMenu.bind(null, text)}>
         {text}
       </LinkUI>
     </div>

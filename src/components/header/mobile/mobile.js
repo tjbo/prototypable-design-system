@@ -13,6 +13,7 @@ import { onShowModal, onHideModal } from '../../body'
 import Button from '../../button'
 import theme from '../../../theme'
 import throttle from 'lodash.throttle'
+import clickPhone from '../../../utils/clickPhone'
 
 class Container extends React.Component {
   state = {
@@ -149,20 +150,26 @@ const Brand = function Brand({ children, isContainerAnimated, headerStyle }) {
   )
 }
 
+function clickLink(isParentMenuOpen, closeParentMenu, event) {
+  isParentMenuOpen && closeParentMenu()
+  event.nativeEvent.stopPropagation()
+}
+
 function Link(props) {
-  const { asHighlight, children, closeParentMenu, isParentMenuOpen } = props
+  const {
+    asHighlight,
+    children,
+    closeParentMenu,
+    isParentMenuOpen,
+    tel,
+  } = props
 
   const beforeText = asHighlight ? 'Call Us -' : ''
 
   if (asHighlight) {
     return (
       <HighlightUI>
-        <Button
-          onClick={(event) => {
-            event.nativeEvent.stopPropagation()
-            window.location.href = 'tel://' + children
-          }}
-        >
+        <Button onClick={clickPhone.bind(null, tel)}>
           {beforeText}
           {children}
         </Button>
@@ -171,12 +178,7 @@ function Link(props) {
   }
 
   return (
-    <LinkUI
-      onClick={(event) => {
-        isParentMenuOpen && closeParentMenu()
-        event.nativeEvent.stopPropagation()
-      }}
-    >
+    <LinkUI onClick={clickLink.bind(null, isParentMenuOpen, closeParentMenu)}>
       {children}
     </LinkUI>
   )
