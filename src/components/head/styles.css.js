@@ -240,6 +240,110 @@ code {
    font-size: ${theme.typography.sizes.mobile.md};
   }
 }
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: ${theme.typography.fonts['font-3']};
+  font-weight: 700;
+  line-height: 120%;
+  padding: 0;
+  margin: 0;
+  margin-bottom: ${theme.unit(0.5)};
+}
+
+h3 + h4 {
+  margin-top: -${theme.unit(0.5)};
+}
+
+
+
+h1 {
+   font-size: ${theme.typography.sizes.desktop.xxlg};
+  @media (min-width: ${theme.breakPointsAsPixel.mobile}) and (max-width: ${
+  theme.breakPointsAsPixel.tablet
+}) {
+    font-size: ${theme.typography.sizes.tablet.xxlg};
+  }
+
+  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+    font-size: ${theme.typography.sizes.mobile.xxlg};
+  }
+}
+
+  h2 {
+   font-size: ${theme.typography.sizes.desktop.xlg};
+
+  @media (min-width: ${theme.breakPointsAsPixel.mobile}) and (max-width: ${
+  theme.breakPointsAsPixel.tablet
+}) {
+    font-size: ${theme.typography.sizes.tablet.xlg};
+  }
+
+  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+    font-size: ${theme.typography.sizes.mobile.xlg};
+  }
+  }
+
+  h3 {
+   font-size: ${theme.typography.sizes.desktop.lg};
+
+  @media (min-width: ${theme.breakPointsAsPixel.mobile}) and (max-width: ${
+  theme.breakPointsAsPixel.tablet
+}) {
+    font-size: ${theme.typography.sizes.tablet.lg};
+  }
+
+  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+    font-size: ${theme.typography.sizes.mobile.lg};
+  }
+  }
+
+  h4 {
+   font-size: ${theme.typography.sizes.desktop.md};
+
+  @media (min-width: ${theme.breakPointsAsPixel.mobile}) and (max-width: ${
+  theme.breakPointsAsPixel.tablet
+}) {
+    font-size: ${theme.typography.sizes.tablet.md};
+  }
+
+  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+    font-size: ${theme.typography.sizes.mobile.md};
+  }
+  }
+
+  h5 {
+   font-size: ${theme.typography.sizes.desktop.sm};
+
+  @media (min-width: ${theme.breakPointsAsPixel.mobile}) and (max-width: ${
+  theme.breakPointsAsPixel.tablet
+}) {
+    font-size: ${theme.typography.sizes.tablet.sm};
+  }
+
+  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+    font-size: ${theme.typography.sizes.mobile.sm};
+  }
+  }
+
+  h6 {
+   font-size: ${theme.typography.sizes.desktop.xsm};
+
+  @media (min-width: ${theme.breakPointsAsPixel.mobile}) and (max-width: ${
+  theme.breakPointsAsPixel.tablet
+}) {
+    font-size: ${theme.typography.sizes.tablet.xsm};
+  }
+
+  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+    font-size: ${theme.typography.sizes.mobile.xsm};
+  }
+  }
+
+.italic {
+  font-style: italic;
+}
+
+
 `
 
 export default GlobalStyles

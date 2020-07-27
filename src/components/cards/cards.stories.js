@@ -1,7 +1,6 @@
 import Card from '../card'
 import Cards from './cards'
 import Icon from '../icon'
-import Title from '../title'
 import Section from '../section'
 
 export default {
@@ -52,9 +51,7 @@ export function withImages() {
             />
           </Card.Image>
           <Card.Content>
-            <Title as="h3" styling="h4" spaceAfter="small">
-              Seaside, CA
-            </Title>
+            <h3>Seaside, CA</h3>
             <div>
               <strong>Loan Amount: </strong>$220,000
             </div>
@@ -86,9 +83,7 @@ export function withImages() {
             />
           </Card.Image>
           <Card.Content>
-            <Title as="h3" styling="h4" spaceAfter="small">
-              Fullerton, CA
-            </Title>
+            <h3>Fullerton, CA</h3>
             <div>
               <strong>Loan Amount: </strong>$800,000
             </div>
@@ -120,9 +115,7 @@ export function withImages() {
             />
           </Card.Image>
           <Card.Content>
-            <Title as="h3" styling="h4" spaceAfter="small">
-              Baldwin Park, CA
-            </Title>
+            <h3>Baldwin Park, CA</h3>
             <div>
               <strong>Loan Amount: </strong>$240,000
             </div>
@@ -154,9 +147,7 @@ export function withImages() {
             />
           </Card.Image>
           <Card.Content>
-            <Title as="h3" styling="h4" spaceAfter="small">
-              Dana Point, CA
-            </Title>
+            <h3>Dana Point, CA</h3>
             <div>
               <strong>Loan Amount: </strong>$160,000
             </div>
@@ -188,9 +179,7 @@ export function withImages() {
             />
           </Card.Image>
           <Card.Content>
-            <Title as="h3" styling="h4" spaceAfter="small">
-              San Gabriel, CA
-            </Title>
+            <h3>San Gabriel, CA</h3>
             <div>
               <strong>Loan Amount: </strong>$1,540,000
             </div>
@@ -222,9 +211,7 @@ export function withImages() {
             />
           </Card.Image>
           <Card.Content>
-            <Title as="h3" styling="h4" spaceAfter="small">
-              Montebello, CA
-            </Title>
+            <h3>Montebello, CA</h3>
             <div>
               <strong>Loan Amount: </strong>$2,500,000
             </div>

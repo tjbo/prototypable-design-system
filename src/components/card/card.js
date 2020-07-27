@@ -1,5 +1,5 @@
 import Grid from '../grid'
-import { AspectRatioUI, CardUI, ContentUI } from './card.css'
+import { CardUI, ContentUI } from './card.css'
 
 function Card({ children, href = '', maxWidth = null, width = '33.33%' }) {
   const asLink = !!href
@@ -24,7 +24,7 @@ function Card({ children, href = '', maxWidth = null, width = '33.33%' }) {
 }
 
 Card.Image = function ({ children }) {
-  return <AspectRatioUI>{children}</AspectRatioUI>
+  return children
 }
 
 Card.Content = function ({ alignItems, justifyContent, children }) {

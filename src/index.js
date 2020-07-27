@@ -23,7 +23,6 @@ export { default as Section } from './components/section'
 export { default as ScrollToTop } from './components/scrollToTop'
 export { default as Tabs } from './components/tabs'
 export { default as Text } from './components/text'
-export { default as Title } from './components/title'
 export { default as Head } from './components/head/head'
 
 import getComponentsFromSlices from './utils/getComponentsFromSlices'

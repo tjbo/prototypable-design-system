@@ -1,7 +1,6 @@
 import Card from '../card'
 import Cards from '../cards'
 import Icon from '../icon'
-import Title from '../title'
 import Section from '../section'
 
 export default {
@@ -18,9 +17,7 @@ export function withIcon() {
               src="/icons/234171-market-and-economics/svg/money.svg"
               alt="Buy with cash"
             />
-            <Title as="h5" spaceAfter="none" spaceBefore="small">
-              Buy
-            </Title>
+            <h5>Buy</h5>
           </Card.Content>
         </Card>
         <Card href="#rehab" maxWidth="100px">
@@ -29,9 +26,7 @@ export function withIcon() {
               src="/icons/504989-real-estate/svg/016-measuring-tape.svg"
               alt="Rehab with construction"
             />
-            <Title as="h5" spaceAfter="none" spaceBefore="small">
-              Rehab
-            </Title>
+            <h5>Rehab</h5>
           </Card.Content>
         </Card>
         <Card href="#rent" maxWidth="100px">
@@ -40,9 +35,7 @@ export function withIcon() {
               src="/icons/504989-real-estate/svg/003-chat-1.svg"
               alt="Rent with communication"
             />
-            <Title as="h5" spaceAfter="none" spaceBefore="small">
-              Rent
-            </Title>
+            <h5>Rent</h5>
           </Card.Content>
         </Card>
         <Card href="#refinance" maxWidth="100px">
@@ -51,9 +44,7 @@ export function withIcon() {
               src="/icons/504989-real-estate/svg/019-mortgage-4.svg"
               alt="Refinance with a new mortgage"
             />
-            <Title as="h5" spaceAfter="none" spaceBefore="small">
-              Refinance
-            </Title>
+            <h5>Refinance</h5>
           </Card.Content>
         </Card>
         <Card href="#repeat" maxWidth="100px">
@@ -62,9 +53,7 @@ export function withIcon() {
               src="/icons/504989-real-estate/svg/024-house-10.svg"
               alt="Repeat the BRRRR process"
             />
-            <Title as="h5" spaceAfter="none" spaceBefore="small">
-              Repeat
-            </Title>
+            <h5>Repeat</h5>
           </Card.Content>
         </Card>
         <Card href="#repeat" maxWidth="100px">
@@ -73,15 +62,11 @@ export function withIcon() {
               src="/icons/504989-real-estate/svg/024-house-10.svg"
               alt="Repeat the BRRRR process"
             />
-            <Title as="h5" spaceAfter="none" spaceBefore="small">
-              Pros
-            </Title>
+            <h5>Pros</h5>
           </Card.Content>
         </Card>
       </Cards>
-      <Title selector="h2" styling="h3" id="buy" spaceBefore="medium">
-        Buy
-      </Title>{' '}
+      <h5>Buy</h5>{' '}
       <p>
         Identify undervalued and distressed properties in a specific area with a
         strong rental market. Ideally these properties will need some fixing up,
@@ -100,9 +85,7 @@ export function withIcon() {
         them online, but be sure to be on the lookout for these hard money
         scams.
       </p>
-      <Title selector="h2" styling="h3" id="rehab" spaceBefore="medium">
-        Buy
-      </Title>{' '}
+      <h5>Buy</h5>{' '}
     </Section>
   )
 }

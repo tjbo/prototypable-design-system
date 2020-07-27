@@ -3,7 +3,6 @@ import Grid from '../grid/'
 import Quote from './quote/'
 import Box from './box/'
 import Facts from './facts'
-import Title from '../title'
 import Sticky from './sticky'
 
 function Article({ children, collapse }) {
@@ -38,9 +37,7 @@ Article.StickySidebar = function ({ children }) {
 Article.Quote = function ({ children }) {
   return (
     <Quote>
-      <Title as="h3" fontStyle="italic">
-        {children}
-      </Title>
+      <h3 className="italic">{children}</h3>
     </Quote>
   )
 }

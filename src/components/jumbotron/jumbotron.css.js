@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 import theme from '../../theme'
-import { TitleUI } from '../title/title.css'
-import { ImgUI } from '../responsiveImage/responsiveImage.css'
 
 export const ContainerUI = styled('div')`
   align-items: ${({ alignItems }) => alignItems};
@@ -63,7 +61,9 @@ export const MainContentUI = styled('div')`
   display: block;
   position: relative;
 
-  ${TitleUI} {
+  h1,
+  h2,
+  h3 {
     color: #fff;
     margin-bottom: 0;
   }

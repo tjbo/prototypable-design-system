@@ -1,6 +1,5 @@
 import Article from '../article'
 import Grid from '../grid'
-import Title from '../title'
 import Section from '../section'
 import Icon from '../icon'
 import Line from '../line'
@@ -144,9 +143,7 @@ export function ContactForm() {
         <Grid.Col width="50%" horizontalPadding=".5">
           <img src="https://www.crescentlenders.com/images/logo-white-953x349-transparent.png" />
           <p></p>
-          <Title color="dark4" as="h3" spaceAfter="small">
-            Crescent Lenders
-          </Title>
+          Crescent Lenders
           <Text as="h5" color="dark4" spaceAfter="none">
             999 Overland Ave, Suite 116
           </Text>

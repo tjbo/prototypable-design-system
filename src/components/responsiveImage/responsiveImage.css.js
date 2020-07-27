@@ -1,4 +1,3 @@
-import theme from '../../theme'
 import getSpaceAfter from '../../utils/getSpaceAfter'
 
 export const AspectRatioUI = styled('div')`
@@ -23,6 +22,7 @@ export const AspectRatioUI = styled('div')`
     height: 100%;
     min-height: 100%;
   }
+  margin-bottom: ${getSpaceAfter};
 `
 
 export const ImgUI = styled('img')`

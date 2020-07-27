@@ -1,6 +1,5 @@
 import Section from '../section'
 import Article from './article'
-import Title from '../title'
 
 export default {
   title: 'Article',
@@ -41,10 +40,10 @@ export function Quote() {
 
         <Article.Sidebar>
           <Article.Quote>
-            <Title as="h3" spaceAfter="none">
+            <h3>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor.
-            </Title>
+            </h3>
           </Article.Quote>
         </Article.Sidebar>
       </Article>

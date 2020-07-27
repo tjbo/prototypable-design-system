@@ -1,9 +1,8 @@
 import Card from '../card'
 import Cards from '../cards'
-import getSrcSets from '../../utils/getSrcSets'
-import Title from '../title'
 import Section from '../section'
 import toProperCase from '../../utils/toProperCase'
+import ResponsiveImage from '../responsiveImage'
 var short = require('short-uuid')
 
 function formatTitle(title) {
@@ -15,22 +14,18 @@ function getImage(image) {
     return
   }
   return (
-    <Card.Image>
-      <img
-        loading="lazy"
-        src={image.url}
-        srcSet={getSrcSets(['600x338', '960x540'], image)}
-      />
-    </Card.Image>
+    <ResponsiveImage
+      data={image}
+      sizes={['600x338', '960x540']}
+      spaceAfter="none"
+    ></ResponsiveImage>
   )
 }
 
 function getContent(title, content) {
   return (
     <Card.Content>
-      <Title as="h4" spaceAfter="small">
-        {title[0].text}
-      </Title>
+      <h4>{title[0].text}</h4>
       {Object.entries(content).map((_content) => {
         const [key, value] = _content
         return (
@@ -51,7 +46,7 @@ export default function ({
 }) {
   return (
     <Section background={background}>
-      {showTitle ? <Title as="h3">{title}</Title> : null}
+      {showTitle ? <h3>{title}</h3> : null}
       <Cards>
         {cards.map((card) => {
           if (!card.data) {

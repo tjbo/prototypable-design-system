@@ -5,8 +5,8 @@ export default function ({
   aspectRatio = 56.25,
   data,
   loading = 'lazy',
-  sizes,
   spaceAfter = 'medium',
+  sizes,
   src,
 }) {
   const img = (
@@ -22,5 +22,12 @@ export default function ({
     return img
   }
 
-  return <AspectRatioUI aspectRatio={aspectRatio}>{img}</AspectRatioUI>
+  return (
+    <AspectRatioUI
+      aspectRatio={aspectRatio}
+      spaceAfter={aspectRatio ? 0 : spaceAfter}
+    >
+      {img}
+    </AspectRatioUI>
+  )
 }

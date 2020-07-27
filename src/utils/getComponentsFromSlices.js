@@ -8,9 +8,7 @@ import Jumbotron from '../components/jumbotron'
 import Line from '../components/line'
 import ResponsiveImage from '../components/responsiveImage'
 import Text from '../components/text'
-import Title from '../components/title'
 import JsxParser from 'react-jsx-parser'
-import reactElementToJSXString from 'react-element-to-jsx-string'
 import Section from '../components/section'
 var short = require('short-uuid')
 
@@ -25,24 +23,8 @@ const components = {
   Line,
   Grid,
   Icon,
-  h1: ({ children }) => {
-    return <Title as="h1">{children}</Title>
-  },
-  h2: ({ children }) => {
-    return <Title as="h2">{children}</Title>
-  },
-  h3: ({ children }) => {
-    return <Title as="h3">{children}</Title>
-  },
-  h4: ({ children }) => {
-    return <Title as="h4">{children}</Title>
-  },
-  h5: ({ children }) => {
-    return <Title as="h5">{children}</Title>
-  },
   ResponsiveImage,
   Text,
-  Title,
 }
 
 const wrapperComponent = {
@@ -62,19 +44,9 @@ function parsePrismicToReactComponents(text) {
     )
   }
 
+  // if type isn't preformatted we just use global styles
   const parsePrismic = PrismicReactJs.RichText.render(text)
-
-  const string = reactElementToJSXString(parsePrismic, {
-    useFragmentShortSyntax: false,
-  })
-
-  return (
-    <JsxParser
-      components={components}
-      jsx={string}
-      key={short.generate()}
-    ></JsxParser>
-  )
+  return parsePrismic
 }
 
 export default function getComponentsFromSlices({
@@ -85,12 +57,14 @@ export default function getComponentsFromSlices({
   return slices.map((slice, index) => {
     const type = slice.slice_type
 
-    if (type === 'text' || type === 'highlighted_box') {
+    if (type === 'highlighted_box') {
       const parsedComponents = parsePrismicToReactComponents(slice.primary.text)
-
       return React.createElement(wrapperComponent[slice.slice_type], {}, [
         parsedComponents,
       ])
+    } else if (type === 'text' || type === 'highlighted_box') {
+      const parsedComponents = parsePrismicToReactComponents(slice.primary.text)
+      return parsedComponents
     } else if (type === 'responsive_image') {
       return (
         <ResponsiveImage
@@ -158,7 +132,7 @@ export default function getComponentsFromSlices({
 
       return (
         <Section background="light" key={short.generate()}>
-          <Title as="h3">{title1}</Title>
+          <h3>{title1}</h3>
           {intro && !!intro.length && !!intro[0].text.length && (
             <Article>
               <Article.Content>
@@ -172,7 +146,7 @@ export default function getComponentsFromSlices({
               <Faq key={short.generate()}>
                 <Faq.Details>
                   <Faq.Summary>
-                    <Title as="h4">{item.question}</Title>
+                    <h4>{item.question}</h4>
                   </Faq.Summary>
                   {parsePrismicToReactComponents(item.answer)}
                 </Faq.Details>

@@ -58,6 +58,7 @@ export default function ({
           data={image}
           loading="eager"
           sizes={sizes[size]}
+          spaceAfter="none"
         />
       </ImageUI>
     </ContainerUI>

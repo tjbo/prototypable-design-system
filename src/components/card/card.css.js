@@ -33,26 +33,3 @@ export const ContentUI = styled('div')`
   padding: ${`${theme.unit(0.5)} ${theme.unit(0.66)}`};
   width: 100%;
 `
-
-export const AspectRatioUI = styled('div')`
-  /* Position child elements relative to this element */
-  position: relative;
-
-  /* Create a pseudo element that uses padding-bottom to take up space */
-  &:after {
-    display: block;
-    content: '';
-    /* 16:9 aspect ratio */
-    padding-bottom: 56.25%;
-  }
-
-  /* Image is positioned absolutely relative to the parent element */
-  img {
-    /* Image should match parent box size */
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-  }
-`

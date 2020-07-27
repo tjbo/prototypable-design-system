@@ -1,6 +1,5 @@
 import Header from '../header'
 import Jumbotron from './jumbotron'
-import Title from '../title'
 
 export default {
   title: 'Jumbotron',
@@ -114,15 +113,13 @@ export function Default() {
     <div>
       <MockHeader />
       <Jumbotron image={image}>
-        <Title as="h1" color="light3" spaceAfter="none">
-          California Hard Money Lenders
-        </Title>
-        <Title as="h2" color="light3">
+        <h1>California Hard Money Lenders</h1>
+        <h2>
           An Asset Based Real Estate Lender
           <br />
           Call or Text Us Today <br />
           213-474-3131
-        </Title>
+        </h2>
       </Jumbotron>
     </div>
   )
@@ -138,15 +135,13 @@ export function Left() {
         justifyContent="start"
         textAlign="left"
       >
-        <Title as="h1" color="light3" spaceAfter="none">
-          California Hard Money Lenders
-        </Title>
-        <Title as="h2" color="light3">
+        <h1>California Hard Money Lenders</h1>
+        <h2>
           An Asset Based Real Estate Lender
           <br />
           Call or Text Us Today <br />
           213-474-3131
-        </Title>
+        </h2>
       </Jumbotron>
     </div>
   )
@@ -162,15 +157,13 @@ export function Right() {
         justifyContent="flex-end"
         textAlign="center"
       >
-        <Title as="h1" color="light3" spaceAfter="none">
-          California Hard Money Lenders
-        </Title>
-        <Title as="h2" color="light3">
+        <h1>California Hard Money Lenders</h1>
+        <h2>
           An Asset Based Real Estate Lender
           <br />
           Call or Text Us Today <br />
           213-474-3131
-        </Title>
+        </h2>
       </Jumbotron>
     </div>
   )
