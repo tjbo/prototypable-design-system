@@ -143,13 +143,8 @@ export default function getComponentsFromSlices({
 
           {slice.items.map((item) => {
             return (
-              <Faq key={short.generate()}>
-                <Faq.Details>
-                  <Faq.Summary>
-                    <h4>{item.question}</h4>
-                  </Faq.Summary>
-                  {parsePrismicToReactComponents(item.answer)}
-                </Faq.Details>
+              <Faq key={short.generate()} title={item.question}>
+                {parsePrismicToReactComponents(item.answer)}
               </Faq>
             )
           })}

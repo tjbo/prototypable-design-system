@@ -25,7 +25,7 @@ export default function ({
   return (
     <AspectRatioUI
       aspectRatio={aspectRatio}
-      spaceAfter={aspectRatio ? 0 : spaceAfter}
+      spaceAfter={aspectRatio === null ? 0 : spaceAfter}
     >
       {img}
     </AspectRatioUI>

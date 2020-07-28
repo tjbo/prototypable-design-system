@@ -1,10 +1,6 @@
 import { DetailsUI, SummaryUI } from './faq.css'
 
-function Faq({ children }) {
-  return children
-}
-
-class Details extends React.Component {
+class Faq extends React.Component {
   state = {
     isOpen: false,
   }
@@ -15,19 +11,19 @@ class Details extends React.Component {
   }
 
   render() {
-    const { children } = this.props
+    const { children, title } = this.props
+    const { isOpen } = this.state
+
+    console.log('render')
     return (
-      <DetailsUI onClick={this.toggle} open={this.state.isOpen}>
-        {children}
+      <DetailsUI open={this.state.isOpen}>
+        <SummaryUI>
+          <h4 onClick={this.toggle}>{title}</h4>
+        </SummaryUI>
+        {isOpen && children}
       </DetailsUI>
     )
   }
-}
-
-Faq.Details = Details
-
-Faq.Summary = function ({ children }) {
-  return <SummaryUI>{children}</SummaryUI>
 }
 
 export default Faq

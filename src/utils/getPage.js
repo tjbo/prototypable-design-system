@@ -32,6 +32,7 @@ export default function getPage(api, id, fetchLinks) {
         const sections = response.results
         return {
           ...data,
+          id,
           linkedContent: sections,
         }
       })
