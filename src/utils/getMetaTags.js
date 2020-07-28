@@ -10,6 +10,7 @@ export default function (data, defaultTitle, defaultDescription, defaultImage) {
     data.meta_description || data.og_description || defaultDescription
   const metaTitle = data.meta_title || data.og_title || defaultTitle
   const metaNoindex = data.meta_noindex
+  const canonical = data.siteRoot + data.slug
 
   return [
     <meta
@@ -26,6 +27,7 @@ export default function (data, defaultTitle, defaultDescription, defaultImage) {
       key={short.generate()}
     />,
     <title key={short.generate()}>{metaTitle}</title>,
+    canonical && <meta name="canonical" href={canonical} />,
     metaNoindex ? <meta name="robots" content="noindex" /> : null,
   ]
 }
