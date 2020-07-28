@@ -49,6 +49,31 @@ function parsePrismicToReactComponents(text) {
   return parsePrismic
 }
 
+function renderFaq(slice) {
+  const { intro, title1 } = slice.primary
+
+  return (
+    <Section background="light" key={short.generate()}>
+      <h3>{title1}</h3>
+      {intro && !!intro.length && !!intro[0].text.length && (
+        <Article>
+          <Article.Content>
+            {parsePrismicToReactComponents(intro)}
+          </Article.Content>
+        </Article>
+      )}
+
+      {slice.items.map((item) => {
+        return (
+          <Faq key={short.generate()} title={item.question}>
+            {parsePrismicToReactComponents(item.answer)}
+          </Faq>
+        )
+      })}
+    </Section>
+  )
+}
+
 export default function getComponentsFromSlices({
   slices,
   linkedContent,
@@ -106,6 +131,10 @@ export default function getComponentsFromSlices({
       const { background } = slice.primary
       const { body, inner_width } = data[0].data
 
+      if (body[0].slice_type === 'faq') {
+        return renderFaq(body[0])
+      }
+
       const parsedComponents = parsePrismicToReactComponents(body[0])
 
       return (
@@ -128,28 +157,7 @@ export default function getComponentsFromSlices({
         />
       )
     } else if (type === 'faq') {
-      const { intro, title1 } = slice.primary
-
-      return (
-        <Section background="light" key={short.generate()}>
-          <h3>{title1}</h3>
-          {intro && !!intro.length && !!intro[0].text.length && (
-            <Article>
-              <Article.Content>
-                {parsePrismicToReactComponents(intro)}
-              </Article.Content>
-            </Article>
-          )}
-
-          {slice.items.map((item) => {
-            return (
-              <Faq key={short.generate()} title={item.question}>
-                {parsePrismicToReactComponents(item.answer)}
-              </Faq>
-            )
-          })}
-        </Section>
-      )
+      return renderFaq(slice)
     } else if (type == 'article') {
       const {
         background,
