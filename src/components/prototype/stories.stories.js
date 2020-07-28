@@ -175,7 +175,6 @@ export function ArticlePromo() {
     <Section background="light">
       <Article>
         <Article.Content width="66%">
-          <Title as="h3">Some Title Goes Here</Title>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mattis
             nibh id velit sagittis aliquam.

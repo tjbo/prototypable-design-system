@@ -15,7 +15,7 @@ function Card({ children, href = '', maxWidth = null, width = '33.33%' }) {
   }
 
   return (
-    <Grid.Col maxWidth={maxWidth} width={width}>
+    <Grid.Col maxWidth={maxWidth} width={width} alignSelf="stretch">
       <CardUI asLink={asLink} onClick={onClick}>
         {children}
       </CardUI>

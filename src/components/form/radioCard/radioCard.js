@@ -49,9 +49,7 @@ export default function ({
           />
         </CardRadioInputContainerUI>
         <ContentUI>
-          <TitleUI>
-            {title} <CheckMark isChecked={isChecked} />
-          </TitleUI>
+          {title} <CheckMark isChecked={isChecked} />
           {content}
         </ContentUI>
       </CardContentUI>
