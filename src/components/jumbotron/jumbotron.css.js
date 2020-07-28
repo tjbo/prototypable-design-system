@@ -85,6 +85,7 @@ export const MainContentUI = styled('div')`
 
 export const ImageUI = styled('div')`
   top: 0;
+  min-width: 100%;
   width: 100%;
   height: 100%;
   display: block;

@@ -27,6 +27,7 @@ export const AspectRatioUI = styled('div')`
 
 export const ImgUI = styled('img')`
   max-width: 100%;
+  min-width: 100%;
   height: 100%;
   margin-bottom: ${getSpaceAfter};
   object-fit: cover;
