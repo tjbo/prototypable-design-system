@@ -17,11 +17,16 @@ export default class FontLoader extends React.Component {
         { fontWeight: 400 },
       )
 
+      document.fonts.ready.then(() => {
+        // Any operation that needs to be done only after all the fonts
+        // have finished loading can go here.
+        this.setState({ isReady: true })
+      })
+
       Promise.all([font1.load(), font2.load()]).then((loadedFonts) => {
         // Render them at the same time
         loadedFonts.forEach((font) => {
           document.fonts.add(font)
-          this.setState({ isReady: true })
         })
       })
     } else {
