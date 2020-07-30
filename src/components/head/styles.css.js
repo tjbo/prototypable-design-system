@@ -16,22 +16,6 @@ body {
   height: 100%;
 }
 
-@font-face {
-  font-family: 'Roboto';
-  font-weight: 500;
-  font-style: normal;
-  src: url('/fonts/roboto-v20-latin-500.woff2') format('woff2'),
-   url('/fonts/roboto-v20-latin-500.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Roboto';
-  font-weight: 400;
-  font-style: normal;
-  unicode-range: U+000-5FF;
-  src: url('/fonts/roboto-v20-latin-regular.woff2') format('woff2'),
-  url('/fonts/roboto-v20-latin-regular.woff') format('woff');
- }
 
 /* css reset */
 html, body, div, span, applet, object, iframe,
@@ -83,6 +67,7 @@ html {
 
 body {
   color: ${theme.colors.dark4};
+  font-weight: 500;
   display: flex;
   flex-direction: column;
   font-family: ${theme.typography.fonts.font1};
@@ -134,7 +119,7 @@ p, ul, ol, code {
 }
 
 b {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 ul {
@@ -230,7 +215,6 @@ code {
 .lead {
   font-size: ${theme.typography.sizes.desktop.md};
   line-height: 130%;
-  font-family: ${theme.typography.fonts['font-3']};
 
   @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
    font-size: ${theme.typography.sizes.tablet.md};
@@ -242,7 +226,7 @@ code {
 }
 
 h1,h2,h3,h4,h5,h6 {
-  font-family: ${theme.typography.fonts['font-3']};
+  font-family: ${theme.typography.fonts.font1};
   font-weight: 700;
   line-height: 120%;
   padding: 0;
@@ -342,8 +326,6 @@ h1 {
 .italic {
   font-style: italic;
 }
-
-
 `
 
 export default GlobalStyles

@@ -1,25 +1,37 @@
 import { lazy, Suspense } from 'react'
+import CrescentLenders from '../../svgs/crescentLenders'
+import Email from '../../svgs/email'
+import Loader from '../../svgs/loader'
+import MarketWatch from '../../svgs/market-watch'
+import Money from '../../svgs/money'
+import Mortgage from '../../svgs/mortgage'
+import Mortgage2 from '../../svgs/mortgage'
+import Handshake from '../../svgs/handshake'
+import Percentage from '../../svgs/percentage'
+import Rocket from '../../svgs/rocket'
+import Sms from '../../svgs/sms'
+import YahooFinance from '../../svgs/yahoo-finance'
 
 const icons = {
-  ['business-insider']: lazy(() => import('../../svgs/business-insider')),
-  ['crescent-lenders']: lazy(() => import('../../svgs/crescentLenders')),
-  email: lazy(() => import('../../svgs/email')),
-  facebook: lazy(() => import('../../svgs/facebook')),
-  like: lazy(() => import('../../svgs/like')),
-  ['linked-in']: lazy(() => import('../../svgs/linkedin')),
-  loader: lazy(() => import('../../svgs/loader')),
-  ['market-watch']: lazy(() => import('../../svgs/market-watch')),
-  money: lazy(() => import('../../svgs/money')),
-  mortgage: lazy(() => import('../../svgs/mortgage')),
-  mortgage2: lazy(() => import('../../svgs/mortgage2')),
-  handshake: lazy(() => import('../../svgs/handshake')),
-  percentage: lazy(() => import('../../svgs/percentage')),
-  rocket: lazy(() => import('../../svgs/rocket')),
-  sms: lazy(() => import('../../svgs/sms')),
-  ['yahoo-finance']: lazy(() => import('../../svgs/yahoo-finance')),
+  ['crescent-lenders']: CrescentLenders,
+  email: Email,
+  loader: Loader,
+  ['market-watch']: MarketWatch,
+  money: Money,
+  mortgage: Mortgage,
+  mortgage2: Mortgage2,
+  handshake: Handshake,
+  percentage: Percentage,
+  rocket: Rocket,
+  sms: Sms,
+  ['yahoo-finance']: YahooFinance,
 }
 
 export default function Icon({ name, ...rest }) {
+  if (typeof window === 'undefined') {
+    return null
+  }
+
   const Component = icons[name]
   if (Component) {
     return (
