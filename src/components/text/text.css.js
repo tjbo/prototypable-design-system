@@ -7,6 +7,6 @@ function getColor({ color }) {
 export const TextUI = styled('span')`
   color: ${getColor};
   font-style: ${(props) => props.fontStyle};
-  font-weight: ${({ isBold }) => (isBold ? '700' : '500')};
+  font-weight: ${({ isBold }) => (isBold ? '700' : '400')};
   font-size: ${(props) => theme.unit(props.size)};
 `

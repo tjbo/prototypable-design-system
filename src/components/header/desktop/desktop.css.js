@@ -19,7 +19,7 @@ export const LinkUI = styled('div')`
   box-sizing: border-box;
   display: flex;
   font-family: ${theme.typography.fonts.font1};
-  font-weight: 500;
+  font-weight: 400;
   justify-content: center;
   height: ${theme.layout.desktop.headerHeight};
   a:visited,

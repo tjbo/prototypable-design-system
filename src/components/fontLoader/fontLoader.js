@@ -13,7 +13,7 @@ export default class FontLoader extends React.Component {
 
       var font2 = new FontFace(
         'Roboto',
-        "url(/fonts/roboto-v20-latin-500.woff2) format('woff2'), url(/fonts/roboto-v20-latin-500.woff) format('woff')",
+        "url(/fonts/roboto-v20-latin-regular.woff2) format('woff2'), url(/fonts/roboto-v20-latin-regular.woff) format('woff')",
         { fontWeight: 400 },
       )
 
