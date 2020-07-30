@@ -14,7 +14,7 @@ export default class FontLoader extends React.Component {
       var font2 = new FontFace(
         'Roboto',
         "url(/fonts/roboto-v20-latin-500.woff2) format('woff2'), url(/fonts/roboto-v20-latin-500.woff) format('woff')",
-        { fontWeight: 500 },
+        { fontWeight: 400 },
       )
 
       Promise.all([font1.load(), font2.load()]).then((loadedFonts) => {

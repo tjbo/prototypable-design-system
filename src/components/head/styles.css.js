@@ -67,7 +67,7 @@ html {
 
 body {
   color: ${theme.colors.dark4};
-  font-weight: 500;
+  font-weight: 400;
   display: flex;
   flex-direction: column;
   font-family: ${theme.typography.fonts.font1};
