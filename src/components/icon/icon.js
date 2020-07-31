@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import CrescentLenders from '../../svgs/crescentLenders'
+import BusinessInsider from '../../svgs/business-insider'
 import Email from '../../svgs/email'
 import Loader from '../../svgs/loader'
 import MarketWatch from '../../svgs/market-watch'
@@ -13,6 +14,7 @@ import Sms from '../../svgs/sms'
 import YahooFinance from '../../svgs/yahoo-finance'
 
 const icons = {
+  ['business-insider']: BusinessInsider,
   ['crescent-lenders']: CrescentLenders,
   email: Email,
   loader: Loader,

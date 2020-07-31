@@ -1,4 +1,4 @@
-import theme from '../theme'
+import theme from '../../theme'
 
 export default function getSpaceBefore({ spaceBefore }) {
   if (spaceBefore === 'small') {

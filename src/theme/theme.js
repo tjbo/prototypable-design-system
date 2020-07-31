@@ -1,4 +1,4 @@
-import makePixelValue from './utils/makePixelValue'
+import makePixelValue from '../utils/makePixelValue'
 
 const unit = 32
 

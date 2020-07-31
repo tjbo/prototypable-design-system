@@ -1,4 +1,3 @@
-import Button from '../../button'
 import { ButtonUI, ContainerUI, GoBackUI } from './footer.css'
 
 export default function Footer({ onNextStep, onPrevStep, step }) {

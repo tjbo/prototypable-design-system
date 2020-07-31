@@ -5,13 +5,18 @@ import resolve from 'rollup-plugin-node-resolve'
 import inject from '@rollup/plugin-inject'
 import url from '@rollup/plugin-url'
 import path from 'path'
-import { terser } from 'rollup-plugin-terser'
+
+import multiInput from 'rollup-plugin-multi-input'
 
 export default {
-  input: './src/index.js',
+  input: [
+    './src/components/**/index.js',
+    './src/utils/**/index.js',
+    './src/utils/theme/index.js',
+  ],
   output: {
     dir: './dist',
-    format: 'cjs',
+    format: 'es', // maybe change to es6
   },
   plugins: [
     babel({
@@ -37,7 +42,8 @@ export default {
       // are always bundled with the code, not copied to /dist
       limit: 0,
     }),
-    terser(),
+    multiInput({ relative: 'src/' }),
   ],
-  external: (id) => /^react|prismic-javascript|styled/.test(id),
+  external: (id) =>
+    /^react|prismic-javascript|styled-components|styled/.test(id),
 }

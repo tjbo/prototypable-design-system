@@ -1,4 +1,4 @@
-const getColor = (color) => {
+export default function getColor(color) {
   if (color === 'transparent') {
     return 'transparent'
   } else if (color === 'light') {

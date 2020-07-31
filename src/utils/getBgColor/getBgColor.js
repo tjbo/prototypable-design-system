@@ -1,4 +1,4 @@
-const getBgColor = ({ background }) => {
+export default function ({ background }) {
   if (background === 'transparent') {
     return 'transparent'
   } else if (background === 'light') {
