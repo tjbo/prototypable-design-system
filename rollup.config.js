@@ -11,7 +11,7 @@ export default {
   input: [
     './src/components/**/index.js',
     './src/utils/**/index.js',
-    './src/utils/theme/index.js',
+    './src/theme/index.js',
   ],
   output: {
     dir: './dist',
