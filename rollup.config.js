@@ -16,7 +16,7 @@ export default {
   ],
   output: {
     dir: './dist',
-    format: 'es', // maybe change to es6
+    format: 'cjs', // maybe change to es6
   },
   plugins: [
     babel({
