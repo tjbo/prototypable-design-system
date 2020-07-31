@@ -5,7 +5,6 @@ import resolve from 'rollup-plugin-node-resolve'
 import inject from '@rollup/plugin-inject'
 import url from '@rollup/plugin-url'
 import path from 'path'
-
 import multiInput from 'rollup-plugin-multi-input'
 
 export default {
@@ -34,7 +33,6 @@ export default {
     url({
       // by default, rollup-plugin-url will not handle font files
       fileName: '[name][extname]',
-
       include: ['**/*.woff', '**/*.woff2'],
       sourceDir: path.join(__dirname, 'src'),
       publicPath: '/fonts/',
