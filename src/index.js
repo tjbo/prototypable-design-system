@@ -25,7 +25,7 @@ export { default as Tabs } from './components/tabs'
 export { default as Text } from './components/text'
 export { default as Head } from './components/head/head'
 
-export { default as getComponentsFromSlices } from './utils/getComponentsFromSlices'
+import getComponentsFromSlices from './utils/getComponentsFromSlices'
 import getContentByType from './utils/getContentByType'
 import getPages from './utils/getPages'
 import getPosts from './utils/getPosts'
