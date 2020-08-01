@@ -5,18 +5,20 @@ import resolve from 'rollup-plugin-node-resolve'
 import inject from '@rollup/plugin-inject'
 import url from '@rollup/plugin-url'
 import path from 'path'
-import multiInput from 'rollup-plugin-multi-input'
+import pkg from './package.json'
 
 export default {
-  input: [
-    './src/components/**/index.js',
-    './src/utils/**/index.js',
-    './src/theme/index.js',
+  input: './src/index.js',
+  output: [
+    {
+      file: pkg.main,
+      format: 'cjs',
+    },
+    {
+      file: pkg.module,
+      format: 'es',
+    },
   ],
-  output: {
-    dir: './dist',
-    format: 'cjs', // maybe change to es6
-  },
   plugins: [
     babel({
       exclude: 'node_modules/**',
@@ -40,7 +42,6 @@ export default {
       // are always bundled with the code, not copied to /dist
       limit: 0,
     }),
-    multiInput({ relative: 'src/' }),
   ],
   external: (id) =>
     /^react|prismic-javascript|styled-components|styled/.test(id),

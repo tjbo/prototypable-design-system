@@ -2,9 +2,8 @@
   "name": "prototypable-components",
   "version": "0.4.3",
   "description": "A design system for making websites",
-  "exports": {
-    ".": "./dist"
-  },
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "watch": {
     "build": "src/**/*.js"
   },
