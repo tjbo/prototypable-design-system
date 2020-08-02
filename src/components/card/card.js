@@ -1,7 +1,13 @@
 import Grid from '../grid'
-import { CardUI, ContentUI } from './card.css'
+import { CardUI, ContentUI, ImageUI, ImageOverlayUI } from './card.css'
 
-function Card({ children, href = '', maxWidth = null, width = '33.33%' }) {
+function Card({
+  children,
+  href = '',
+  maxWidth = null,
+  width = '33.33%',
+  withBorder = true,
+}) {
   const asLink = !!href
 
   function onClick() {
@@ -16,15 +22,25 @@ function Card({ children, href = '', maxWidth = null, width = '33.33%' }) {
 
   return (
     <Grid.Col maxWidth={maxWidth} width={width} alignSelf="stretch">
-      <CardUI asLink={asLink} onClick={onClick}>
+      <CardUI asLink={asLink} onClick={onClick} withBorder={withBorder}>
         {children}
       </CardUI>
     </Grid.Col>
   )
 }
 
-Card.Image = function ({ children }) {
-  return children
+Card.Image = function ({ children, title }) {
+  if (!!title) {
+    return (
+      <ImageUI>
+        {children}
+        <ImageOverlayUI />
+        <h3>{title}</h3>
+      </ImageUI>
+    )
+  } else {
+    return children
+  }
 }
 
 Card.Content = function ({ alignItems, justifyContent, children }) {

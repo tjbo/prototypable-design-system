@@ -10,6 +10,9 @@ import ResponsiveImage from '../../components/responsiveImage'
 import Text from '../../components/text'
 import JsxParser from 'react-jsx-parser'
 import Section from '../../components/section'
+import Card from '../../components/card'
+import Cards from '../../components/cards'
+
 var short = require('short-uuid')
 
 function getLinkedContentById(linkedContent, id) {
@@ -148,14 +151,43 @@ export default function getComponentsFromSlices({
       const data = slice.items.map((card) => {
         return getLinkedContentById(linkedContent, card.cards.id)[0]
       })
-      return (
-        <CardsSection
-          background={background}
-          cards={data}
-          key={short.generate()}
-          title={slice.primary.title1}
-        />
-      )
+
+      if (data[0].type === 'link') {
+        return (
+          <Section background={background}>
+            <h3 className="centered space-after-small italic">
+              {slice.primary.title1}
+            </h3>
+            <Cards>
+              {Object.entries(data).map((_content) => {
+                return (
+                  <Card>
+                    <Card.Image
+                      withTitle={true}
+                      title={_content[1].data.title[0].text}
+                    >
+                      <ResponsiveImage
+                        data={_content[1].data.image}
+                        spaceAfter="none"
+                        sizes={['600x338', '960x540']}
+                      />
+                    </Card.Image>
+                  </Card>
+                )
+              })}
+            </Cards>
+          </Section>
+        )
+      } else {
+        return (
+          <CardsSection
+            background={background}
+            cards={data}
+            key={short.generate()}
+            title={slice.primary.title1}
+          />
+        )
+      }
     } else if (type === 'faq') {
       return renderFaq(slice)
     } else if (type == 'article') {

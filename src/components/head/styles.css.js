@@ -326,6 +326,18 @@ h1 {
 .italic {
   font-style: italic;
 }
+
+.centered {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.space-after-small {
+  margin-bottom: ${theme.unit(0.25)};
+}
+
+
+
 `
 
 export default GlobalStyles

@@ -1,7 +1,9 @@
 import Card from '../card'
 import Cards from './cards'
-import Icon from '../icon'
 import Section from '../section'
+
+import mockedImages from '../responsiveImage/mockedData'
+import { ResponsiveImage } from '../..'
 
 export default {
   title: 'Cards',
@@ -232,6 +234,24 @@ export function withImages() {
             </div>
           </Card.Content>
         </Card>
+      </Cards>
+    </Section>
+  )
+}
+
+export function withImagesWithTitle() {
+  return (
+    <Section background="dark">
+      <Cards>
+        {mockedImages.map((image) => {
+          return (
+            <Card withBorder={false}>
+              <Card.Image title={image.alt}>
+                <ResponsiveImage data={image} spaceAfter="none" />
+              </Card.Image>
+            </Card>
+          )
+        })}
       </Cards>
     </Section>
   )
