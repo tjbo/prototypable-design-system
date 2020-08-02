@@ -27,7 +27,11 @@ export default function (data, defaultTitle, defaultDescription, defaultImage) {
       key={short.generate()}
     />,
     <title key={short.generate()}>{metaTitle}</title>,
-    canonical && <meta name="canonical" href={canonical} />,
-    metaNoindex ? <meta name="robots" content="noindex" /> : null,
+    canonical && (
+      <meta name="canonical" href={canonical} key={short.generate()} />
+    ),
+    metaNoindex ? (
+      <meta name="robots" content="noindex" key={short.generate()} />
+    ) : null,
   ]
 }

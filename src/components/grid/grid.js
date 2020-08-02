@@ -31,7 +31,7 @@ Grid.Col = function ({
       maxWidth={maxWidth}
       verticalPadding={verticalPadding}
       textAlign={textAlign}
-      width={width}
+      _width={width}
     >
       <ColInnerUI>{children}</ColInnerUI>
     </ColUI>

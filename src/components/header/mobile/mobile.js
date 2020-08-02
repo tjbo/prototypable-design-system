@@ -77,7 +77,6 @@ class Container extends React.Component {
   }
 
   toggleMenu = () => {
-    console.log('toggle menu from:', this.state.isOpen)
     this.setState({ isOpen: !this.state.isOpen }, () => {
       if (this.state.isOpen) {
         onShowModal()
@@ -88,7 +87,6 @@ class Container extends React.Component {
   }
 
   toggleSubMenu = (name) => {
-    console.log('toggle sub menu')
     this.setState({ subMenu: name })
   }
 

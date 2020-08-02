@@ -246,7 +246,11 @@ export function withImagesWithTitle() {
         {mockedImages.map((image) => {
           return (
             <Card withBorder={false}>
-              <Card.Image title={image.alt}>
+              <Card.Image
+                title={image.alt}
+                to="/home"
+                routerLinkComponent={({ children }) => children}
+              >
                 <ResponsiveImage data={image} spaceAfter="none" />
               </Card.Image>
             </Card>

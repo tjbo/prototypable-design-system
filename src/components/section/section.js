@@ -1,4 +1,5 @@
 import { SectionUI, SectionInnerUI, SectionWrapperUI } from './section.css'
+var short = require('short-uuid')
 
 function Section({
   children = [],

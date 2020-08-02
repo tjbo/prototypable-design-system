@@ -1,5 +1,7 @@
 import Grid from '../grid'
-import { CardUI, ContentUI, ImageUI, ImageOverlayUI } from './card.css'
+import { AhrefUI, CardUI, ContentUI } from './card.css'
+import PropTypes from 'prop-types'
+const short = require('short-uuid')
 
 function Card({
   children,
@@ -29,18 +31,32 @@ function Card({
   )
 }
 
-Card.Image = function ({ children, title }) {
-  if (!!title) {
+Card.propTypes = {
+  href: PropTypes.string,
+  maxWidth: PropTypes.string,
+  width: PropTypes.string,
+  withBorder: PropTypes.bool,
+}
+
+Card.Image = function ({ children, to, title, routerLinkComponent }) {
+  if (!!title && to) {
     return (
-      <ImageUI>
-        {children}
-        <ImageOverlayUI />
-        <h3>{title}</h3>
-      </ImageUI>
+      <AhrefUI>
+        {React.createElement(routerLinkComponent, { to }, [
+          children,
+          <h3 key={short.generate()}>{title}</h3>,
+        ])}
+      </AhrefUI>
     )
   } else {
     return children
   }
+}
+
+Card.Image.propTypes = {
+  to: PropTypes.string,
+  title: PropTypes.string,
+  routerLinkComponent: PropTypes.func,
 }
 
 Card.Content = function ({ alignItems, justifyContent, children }) {
@@ -49,6 +65,24 @@ Card.Content = function ({ alignItems, justifyContent, children }) {
       {children}
     </ContentUI>
   )
+}
+
+Card.Content.propTypes = {
+  alignItems: PropTypes.oneOf([
+    'flex-start',
+    'flex-end',
+    'center',
+    'baseline',
+    'stretch',
+  ]),
+  justifyContent: PropTypes.oneOf([
+    'flex-start',
+    'flex-end',
+    'center',
+    'space-between',
+    'space-around',
+    'space-evenly',
+  ]),
 }
 
 export default Card

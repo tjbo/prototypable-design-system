@@ -21,6 +21,10 @@ function getLinkedContentById(linkedContent, id) {
   })
 }
 
+function getLink(link, paths) {
+  return paths[link.id]
+}
+
 const components = {
   Article,
   Line,
@@ -154,17 +158,19 @@ export default function getComponentsFromSlices({
 
       if (data[0].type === 'link') {
         return (
-          <Section background={background}>
+          <Section background={background} key={short.generate()}>
             <h3 className="centered space-after-small italic">
               {slice.primary.title1}
             </h3>
             <Cards>
               {Object.entries(data).map((_content) => {
                 return (
-                  <Card>
+                  <Card key={short.generate()}>
                     <Card.Image
                       withTitle={true}
                       title={_content[1].data.title[0].text}
+                      to={getLink(_content[1].data.link, options.paths)}
+                      routerLinkComponent={options.routerLinkComponent}
                     >
                       <ResponsiveImage
                         data={_content[1].data.image}

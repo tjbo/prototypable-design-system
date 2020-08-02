@@ -14,7 +14,6 @@ class Faq extends React.Component {
     const { children, title } = this.props
     const { isOpen } = this.state
 
-    console.log('render')
     return (
       <DetailsUI open={this.state.isOpen}>
         <SummaryUI>

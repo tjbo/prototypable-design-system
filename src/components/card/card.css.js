@@ -34,9 +34,15 @@ export const ContentUI = styled('div')`
   width: 100%;
 `
 
-export const ImageUI = styled('div')`
+export const ImageUI = styled('div')``
+
+export const AhrefUI = styled('div')`
+  cursor: pointer;
   position: relative;
-  border: 8px solid white;
+  img {
+    filter: none;
+    transition: 400ms;
+  }
 
   h3 {
     position: absolute;
@@ -48,19 +54,14 @@ export const ImageUI = styled('div')`
     color: ${theme.colors.white};
     text-align: center;
   }
-`
-
-export const ImageOverlayUI = styled('div')`
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0.1;
-  display: block;
-  background: #fff;
-  width: 100%;
-  height: 100%;
 
   :hover {
-    opacity: 0.5;
+    img {
+      filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg)
+        saturate(500%) contrast(0.9);
+    }
+    h3 {
+      text-decoration: underline;
+    }
   }
 `

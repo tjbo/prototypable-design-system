@@ -29,7 +29,7 @@ export const ColUI = styled('div')`
   flex-direction: column;
   padding: ${({ horizontalPadding, verticalPadding }) =>
     `${theme.unit(verticalPadding)} ${theme.unit(horizontalPadding)}`};
-  width: ${({ width }) => width};
+  width: ${({ _width }) => _width};
   max-width: ${({ maxWidth }) => maxWidth};
   text-align: ${({ textAlign }) => textAlign};
 
