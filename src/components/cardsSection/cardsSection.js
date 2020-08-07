@@ -3,7 +3,7 @@ import Cards from '../cards'
 import Section from '../section'
 import toProperCase from '../../utils/toProperCase'
 import ResponsiveImage from '../responsiveImage'
-var short = require('short-uuid')
+import short from 'short-uuid'
 
 function formatTitle(title) {
   return toProperCase(title.replace(/_/g, ' '))

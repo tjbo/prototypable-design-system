@@ -1,4 +1,4 @@
-var short = require('short-uuid')
+import short from 'short-uuid'
 
 export default function (data, defaultTitle, defaultDescription, defaultImage) {
   const ogDescription =

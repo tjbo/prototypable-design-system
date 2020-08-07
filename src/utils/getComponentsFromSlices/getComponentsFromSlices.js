@@ -12,8 +12,7 @@ import JsxParser from 'react-jsx-parser'
 import Section from '../../components/section'
 import Card from '../../components/card'
 import Cards from '../../components/cards'
-
-var short = require('short-uuid')
+import short from 'short-uuid'
 
 function getLinkedContentById(linkedContent, id) {
   return linkedContent.filter((content) => {

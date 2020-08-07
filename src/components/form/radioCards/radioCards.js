@@ -1,6 +1,6 @@
 import { BreakUI, ContainerUI } from './radioCards.css'
 import RadioCard from '../radioCard'
-var short = require('short-uuid')
+import short from 'short-uuid'
 
 export default class RadioCards extends React.Component {
   render() {

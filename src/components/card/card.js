@@ -1,7 +1,7 @@
 import Grid from '../grid'
 import { AhrefUI, CardUI, ContentUI } from './card.css'
 import PropTypes from 'prop-types'
-const short = require('short-uuid')
+import short from 'short-uuid'
 
 function Card({
   children,

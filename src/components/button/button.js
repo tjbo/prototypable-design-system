@@ -1,11 +1,12 @@
 import { ButtonUI, ButtonContainerUI, IconContainerUI } from './button.css'
 import PropTypes from 'prop-types'
 import Icon from '../icon'
+import short from 'short-uuid'
 
 function getIconComponent(icon) {
   return (
     (icon && (
-      <IconContainerUI>
+      <IconContainerUI key={short.generate()}>
         <Icon name={icon} />
       </IconContainerUI>
     )) ||
