@@ -93,7 +93,7 @@ export default function getComponentsFromSlices({
       return React.createElement(wrapperComponent[slice.slice_type], {}, [
         parsedComponents,
       ])
-    } else if (type === 'text' || type === 'highlighted_box') {
+    } else if (type === 'text') {
       const parsedComponents = parsePrismicToReactComponents(slice.primary.text)
       return parsedComponents
     } else if (type === 'responsive_image') {
