@@ -49,7 +49,7 @@ export default function ({
       {showTitle ? <h3>{title}</h3> : null}
       <Cards>
         {cards.map((card) => {
-          if (!card.data) {
+          if (!card || !card.data) {
             return
           }
           const { image, title, ...rest } = card.data

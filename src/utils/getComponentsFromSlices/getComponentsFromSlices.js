@@ -156,7 +156,7 @@ export default function getComponentsFromSlices({
         return getLinkedContentById(linkedContent, card.cards.id)[0]
       })
 
-      if (data[0].type === 'link') {
+      if (data[0] && data[0].type === 'link') {
         return (
           <Section background={background} key={short.generate()}>
             <h3 className="centered space-after-small italic">
