@@ -27,6 +27,7 @@ export { default as Text } from './components/text'
 export { default as Head } from './components/head/head'
 
 import getComponentsFromSlices from './utils/getComponentsFromSlices'
+import getImagePathsFromData from './utils/getImagePathsFromData'
 import getContentByType from './utils/getContentByType'
 import getPages from './utils/getPages'
 import getPosts from './utils/getPosts'
@@ -39,6 +40,7 @@ import useScript from './utils/useScript'
 export const utils = {
   getComponentsFromSlices,
   getContentByType,
+  getImagePathsFromData,
   getMetaTags,
   getPages,
   getPosts,

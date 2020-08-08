@@ -74,6 +74,26 @@ export default {
   unitAsNumber(multiplier) {
     return multiplier * unit
   },
+  imageDimensions: {
+    jumbotron: {
+      half: [
+        '375x375',
+        '414x414',
+        '1280x400',
+        '1366x384',
+        '1440x450',
+        '1920x540',
+      ],
+      full: [
+        '375×667',
+        '414×816',
+        '360×780',
+        '1366×768',
+        '1440×900',
+        '1920×1080',
+      ],
+    },
+  },
   layout: {
     desktop: {
       headerHeight: makePixelValue(3.5 * unit),
