@@ -7,10 +7,12 @@ export default function ({
   loading = 'lazy',
   spaceAfter = 'medium',
   sizes,
+  alt,
   src,
 }) {
   const img = (
     <ImgUI
+      alt={alt || data.alt}
       loading={loading}
       src={(data && data.url) || src}
       srcSet={sizes && getSrcSets(sizes, data)}
