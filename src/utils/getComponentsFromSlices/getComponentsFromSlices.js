@@ -189,8 +189,9 @@ export default function getComponentsFromSlices({
             background={background}
             cards={data}
             key={short.generate()}
-            title={slice.primary.title1}
-          />
+          >
+            <h3>{slice.primary.title1}</h3>
+          </CardsSection>
         )
       }
     } else if (type === 'faq') {

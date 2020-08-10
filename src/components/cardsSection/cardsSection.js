@@ -38,15 +38,10 @@ function getContent(title, content) {
   )
 }
 
-export default function ({
-  background = 'light',
-  cards,
-  showTitle = true,
-  title = '',
-}) {
+export default function ({ background = 'light', children, cards }) {
   return (
     <Section background={background}>
-      {showTitle ? <h3>{title}</h3> : null}
+      {children}
       <Cards>
         {cards.map((card) => {
           if (!card || !card.data) {
