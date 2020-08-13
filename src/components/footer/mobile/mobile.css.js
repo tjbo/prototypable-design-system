@@ -17,6 +17,7 @@ export const ContainerUI = styled('footer')`
     text-decoration: none;
     font-family: ${theme.typography.fonts.font1};
   }
+  font-size: ${theme.unit(0.5)};
 `
 
 export const LinkUI = styled('div')`
@@ -48,7 +49,7 @@ export const SubMenuUI = styled('div')`
   ${LinkUI} {
     border-bottom: 1px dotted;
     border-color: rgba(255, 255, 255, 0.25);
-    padding: ${theme.unit(0.25)};
+    padding: ${theme.unit(0.375)};
 
     a {
       display: block;

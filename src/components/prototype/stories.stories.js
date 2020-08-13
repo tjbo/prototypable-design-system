@@ -144,7 +144,7 @@ export function FooterExample() {
         <Footer.Grid alignItems="stretch">
           <Footer.Col width="50%" mobileWidth="100%">
             <Footer.Grid collapse="never" alignItems="stretch">
-              <Footer.Col width="50%">
+              <Footer.Col width="40%">
                 <div
                   style={{
                     boxSizing: 'border-box',
@@ -161,7 +161,7 @@ export function FooterExample() {
                   />
                 </div>
               </Footer.Col>
-              <Footer.Col width="50%">
+              <Footer.Col width="60%">
                 <Footer.Address>
                   213-474-3131
                   <br />

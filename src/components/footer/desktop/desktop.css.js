@@ -62,14 +62,11 @@ export const LinkItemUI = styled('li')`
   margin: 0;
   padding: 0;
   display: block;
-  font-weight: ${({ asTitle }) => (asTitle ? 'bold' : 'normal')};
 `
 
-export const LinkUI = styled('a')`
-  :active,
-  :link,
-  :hover,
-  :visited {
-    color: #fff;
-  }
+export const LinkUI = styled('div')`
+  cursor: pointer;
+  display: block;
+  margin: 0;
+  padding: 0;
 `

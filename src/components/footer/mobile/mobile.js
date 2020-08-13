@@ -8,6 +8,8 @@ import {
 import Grid from '../../grid'
 import Section from '../../section'
 import Icon from '../../icon'
+import clickPhone from '../../../utils/clickPhone'
+import clickEmail from '../../../utils/clickEmail'
 
 export default function Mobile({ children }) {
   return (
@@ -17,7 +19,21 @@ export default function Mobile({ children }) {
   )
 }
 
-Mobile.Link = function ({ children, ...rest }) {
+Mobile.Link = function ({ children, mailto, tel, ...rest }) {
+  if (tel) {
+    return (
+      <LinkUI {...{ ...rest }} onClick={clickPhone.bind(null, tel)}>
+        {children}
+      </LinkUI>
+    )
+  } else if (mailto) {
+    return (
+      <LinkUI {...{ ...rest }} onClick={clickEmail.bind(null, mailto)}>
+        {children}
+      </LinkUI>
+    )
+  }
+
   return <LinkUI {...{ ...rest }}>{children}</LinkUI>
 }
 

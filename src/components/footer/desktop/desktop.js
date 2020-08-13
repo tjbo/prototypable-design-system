@@ -3,12 +3,13 @@ import {
   FinePrintUI,
   ContainerUI,
   LinkItemUI,
+  LinkUI,
   ColUI,
 } from './desktop.css'
-
 import Grid from '../../grid'
-
 import Section from '../../section'
+import clickPhone from '../../../utils/clickPhone'
+import clickEmail from '../../../utils/clickEmail'
 
 function Footer({ children }) {
   return (
@@ -28,8 +29,14 @@ Footer.Col = function ({ children, width }) {
     </Grid.Col>
   )
 }
-Footer.Link = function ({ asTitle, children, href }) {
-  return <LinkItemUI asTitle={asTitle}>{children}</LinkItemUI>
+Footer.Link = function ({ children, tel, mailto }) {
+  if (tel) {
+    return <LinkUI onClick={clickPhone.bind(null, tel)}>{children}</LinkUI>
+  } else if (mailto) {
+    return <LinkUI onClick={clickEmail.bind(null, mailto)}>{children}</LinkUI>
+  }
+
+  return <LinkItemUI>{children}</LinkItemUI>
 }
 
 export default Footer
