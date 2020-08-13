@@ -14,6 +14,7 @@ import Button from '../../button'
 import theme from '../../../theme'
 import throttle from 'lodash.throttle'
 import clickPhone from '../../../utils/clickPhone'
+import Icon from '../../icon'
 
 class Container extends React.Component {
   state = {

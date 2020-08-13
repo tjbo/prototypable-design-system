@@ -1,10 +1,6 @@
 export default function () {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 501.551 501.551"
-      width="30"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 501.551 501.551">
       <path
         d="M309.29 0H20.898C9.404 0 0 9.404 0 20.898v459.755c0 11.494 9.404 20.898 20.898 20.898H309.29c11.494 0 20.898-9.404 20.898-20.898V20.898C330.188 9.404 320.784 0 309.29 0z"
         fill="#40596b"

@@ -1,25 +1,79 @@
-import {
-  AddressUI,
-  FinePrintUI,
-  ContainerUI,
-  LinkItemUI,
-  LinksUI,
-  InnerUI,
-} from './footer.css'
+import DesktopFooter from './desktop'
+import MobileFooter from './mobile'
+import { Media } from 'react-breakpoints'
 
-function Footer({ children }) {
+function Footer(props) {
   return (
-    <ContainerUI>
-      <InnerUI>{children}</InnerUI>
-    </ContainerUI>
+    <Media>
+      {({ breakpoints, currentBreakpoint }) => {
+        if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+          return <DesktopFooter {...{ ...props }} />
+        } else {
+          return <MobileFooter {...{ ...props }} />
+        }
+      }}
+    </Media>
   )
 }
 
-Footer.Address = AddressUI
-Footer.FinePrint = FinePrintUI
-Footer.Links = LinksUI
-Footer.Link = function ({ children, href }) {
-  return <LinkItemUI>{children}</LinkItemUI>
+Footer.Grid = DesktopFooter.Grid
+
+Footer.FinePrint = DesktopFooter.FinePrint
+
+Footer.Address = function (props) {
+  return (
+    <Media>
+      {({ breakpoints, currentBreakpoint }) => {
+        if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+          return <DesktopFooter.Address {...{ ...props }} />
+        } else {
+          return <MobileFooter.Address {...{ ...props }} />
+        }
+      }}
+    </Media>
+  )
+}
+
+Footer.Col = function (props) {
+  return (
+    <Media>
+      {({ breakpoints, currentBreakpoint }) => {
+        if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+          return <DesktopFooter.Col {...{ ...props }} />
+        } else {
+          return <MobileFooter.Col {...{ ...props }} />
+        }
+      }}
+    </Media>
+  )
+}
+
+Footer.Link = function (props) {
+  return (
+    <Media>
+      {({ breakpoints, currentBreakpoint }) => {
+        if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+          return <DesktopFooter.Link {...{ ...props }} />
+        } else {
+          return <MobileFooter.Link {...{ ...props }} />
+        }
+      }}
+    </Media>
+  )
+}
+
+Footer.Menu = function (props) {
+  return (
+    <Media>
+      {({ breakpoints, currentBreakpoint }) => {
+        if (breakpoints[currentBreakpoint] > breakpoints['tablet']) {
+          return props.children
+        } else {
+          return <MobileFooter.Menu {...{ ...props }} />
+        }
+      }}
+    </Media>
+  )
 }
 
 export default Footer

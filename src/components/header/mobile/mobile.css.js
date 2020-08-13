@@ -103,36 +103,6 @@ export const LinkUI = styled('div')`
   }
   border-bottom: ${theme.border};
   background-color: ${({ isOpen }) => isOpen && `${theme.colors.light1}`};
-
-  ${({ icon }) => {
-    if (icon === 'back') {
-      return css`
-        :before {
-          display: inline-block;
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          left: ${theme.unit(1)};
-          height: 50%;
-          color: ${theme.colors.dark2};
-          content: '\\02C2';
-        }
-      `
-    } else if (icon === 'forward') {
-      return css`
-        :after {
-          display: inline-block;
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          right: ${theme.unit(1)};
-          height: 50%;
-          color: ${theme.colors.dark2};
-          content: '\\02C3';
-        }
-      `
-    }
-  }}
 `
 
 export const MenuUI = styled('nav')`

@@ -58,7 +58,7 @@ export const GridUI = styled('div')`
   width: calc(100% + ${theme.unit(0.5)});
   align-items: ${({ alignItems = 'flex-start' }) => alignItems};
   align-content: flex-start;
+  justify-content: center;
   margin-left: -${theme.unit(0.25)};
-
   ${getCollaspe}
 `

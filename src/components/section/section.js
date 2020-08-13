@@ -19,7 +19,6 @@ function Section({
         </SectionUI>
       </SectionWrapperUI>
     )
-    return null
   }
 }
 

@@ -164,7 +164,7 @@ export default function getComponentsFromSlices({
             <Cards>
               {Object.entries(data).map((_content) => {
                 return (
-                  <Card key={short.generate()}>
+                  <Card key={short.generate()} horizontalPadding={0.5}>
                     <Card.Image
                       withTitle={true}
                       title={_content[1].data.title[0].text}

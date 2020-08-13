@@ -1,4 +1,5 @@
 import { LinkUI, MenuUI } from './mobile.css'
+import Icon from '../../icon'
 
 function SubMenu({
   children,
@@ -24,13 +25,15 @@ function SubMenu({
         isParentMenuOpen={subMenu === text}
         isSubMenu={true}
       >
-        <LinkUI icon="back" onClick={toggleSubMenu.bind(null, '')}>
+        <LinkUI onClick={toggleSubMenu.bind(null, '')}>
+          <Icon name="chevron-left" />
           Back
         </LinkUI>
         {content}
       </MenuUI>
-      <LinkUI icon="forward" onClick={toggleSubMenu.bind(null, text)}>
+      <LinkUI onClick={toggleSubMenu.bind(null, text)}>
         {text}
+        <Icon name="chevron-right" />
       </LinkUI>
     </div>
   )

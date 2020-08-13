@@ -1,13 +1,240 @@
 import Article from '../article'
+import Card from '../card'
+import Cards from '../cards'
+import Footer from '../footer'
 import Grid from '../grid'
 import Section from '../section'
 import Icon from '../icon'
 import Line from '../line'
+import mockedImages from '../responsiveImage/mockedData'
+import ResponsiveImage from '../responsiveImage'
+import theme from '../../theme'
 
 import Text from '../text'
 
 export default {
   title: 'Prototype',
+}
+
+export function FooterExample() {
+  return (
+    <div>
+      <Section inner_width="medium-plus">
+        <Grid direction="row" alignItems="center" collapse="tablet">
+          <Grid.Col width="50%" horizontalPadding=".5">
+            <Grid direction="row" collapse="never">
+              <Grid.Col width="23%">
+                <Icon name="money" />
+              </Grid.Col>
+              <Grid.Col width="77%" alignSelf="center">
+                <Text color="dark4" as="h5">
+                  Get funded in 5 to 7 days
+                </Text>
+              </Grid.Col>
+            </Grid>
+
+            <Grid direction="row" collapse="never">
+              <Grid.Col width="23%">
+                <Icon name="percentage" />
+              </Grid.Col>
+              <Grid.Col width="77%" alignSelf="center">
+                <Text as="h5" color="dark4">
+                  LTV up to 75%
+                </Text>
+              </Grid.Col>
+            </Grid>
+
+            <Grid direction="row" collapse="never">
+              <Grid.Col width="23%">
+                <Icon name="mortgage" />
+              </Grid.Col>
+              <Grid.Col width="77%" alignSelf="center">
+                <Text as="h5" color="dark4">
+                  200k to $5 million
+                </Text>
+              </Grid.Col>
+            </Grid>
+
+            <Grid direction="row" collapse="never">
+              <Grid.Col width="23%">
+                <Icon name="handshake" />
+              </Grid.Col>
+              <Grid.Col width="77%" alignSelf="center">
+                <Text as="h5" color="dark4">
+                  Nationwide private lender
+                  <br /> (not a broker, avoid the extra fees)
+                </Text>
+              </Grid.Col>
+            </Grid>
+
+            <Grid direction="row" collapse="never">
+              <Grid.Col width="23%">
+                <Icon name="mortgage2" />
+              </Grid.Col>
+              <Grid.Col width="77%" alignSelf="center">
+                <Text as="h5" color="dark4">
+                  Funding loans such as purchase, refinance, rehab, probate,
+                  1031 exchanges, cash-out
+                </Text>
+              </Grid.Col>
+            </Grid>
+
+            <Grid direction="row" collapse="never">
+              <Grid.Col width="23%">
+                <Icon name="browser-home" />
+              </Grid.Col>
+              <Grid.Col width="77%" alignSelf="center">
+                <Text as="h5" color="dark4">
+                  All types of investment properties considered, residential,
+                  commercial and industrial
+                </Text>
+              </Grid.Col>
+            </Grid>
+          </Grid.Col>
+          <Grid.Col width="50%" horizontalPadding=".5">
+            <Line isMobileOnly={true} />
+            <p style={{ width: '70%' }}>
+              <Icon name="crescent-lenders" />
+            </p>
+            <Line />
+            <p>
+              <b>Email</b>
+              <br />
+              <a href="mailto:info@crescentlenders.com">
+                info@crescentlenders.com
+              </a>
+            </p>
+            <p>
+              <b>Phone</b>
+              <br />
+              <a href="tel:2134743131">213-474-3131</a>
+            </p>
+            <b>Address</b>
+            <p>
+              999 Overland Ave, Suite 116
+              <br />
+              Los Angeles, California
+              <br />
+              <a href="https://goo.gl/maps/PmMGoQSWfWvFgF8y5" target="_blank">
+                Google Maps
+              </a>
+            </p>
+          </Grid.Col>
+        </Grid>
+      </Section>
+      <Section background="light">
+        <h3>We Serve the Entire California Region, Including:</h3>
+        <Cards>
+          {mockedImages.map((image) => {
+            return (
+              <Card withBorder={false}>
+                <Card.Image
+                  title={image.alt}
+                  to="/home"
+                  routerLinkComponent={({ children }) => children}
+                >
+                  <ResponsiveImage data={image} spaceAfter="none" />
+                </Card.Image>
+              </Card>
+            )
+          })}
+        </Cards>
+      </Section>
+      <Footer>
+        <Footer.Grid alignItems="stretch">
+          <Footer.Col width="50%" mobileWidth="100%">
+            <Footer.Grid collapse="never" alignItems="stretch">
+              <Footer.Col width="50%">
+                <div
+                  style={{
+                    boxSizing: 'border-box',
+                    padding: theme.unit(0.5),
+                    width: '100%',
+                    background: '#fff',
+                  }}
+                >
+                  <Icon
+                    name="crescent-lenders"
+                    isAnimated={false}
+                    // isWhite={true}
+                    headerStyle="dark"
+                  />
+                </div>
+              </Footer.Col>
+              <Footer.Col width="50%">
+                <Footer.Address>
+                  213-474-3131
+                  <br />
+                  <Footer.Link asTitle={true}>
+                    info@crescentlenders.com
+                  </Footer.Link>
+                  2999 Overland Ave, Suite 116
+                  <br />
+                  Los Angeles, CA 90064
+                  <br />
+                </Footer.Address>
+              </Footer.Col>
+            </Footer.Grid>
+          </Footer.Col>
+          <Footer.Col width="50%" mobileWidth="100%">
+            <Footer.Grid collapse="never">
+              <Footer.Col mobileWidth="100%">
+                <Footer.Menu title="Locations">
+                  <Footer.Link>
+                    <a href="/hard-money-loans/california/">California</a>
+                  </Footer.Link>
+                  <Footer.Link>
+                    <a href="/hard-money-loans/los-angeles/">Los Angeles</a>
+                  </Footer.Link>
+                  <Footer.Link>
+                    <a href="/hard-money-loans/san-diego/">San Diego</a>
+                  </Footer.Link>
+                  <Footer.Link>
+                    <a href="/hard-money-loans/san-fransico/">San Fransico</a>
+                  </Footer.Link>
+                </Footer.Menu>
+              </Footer.Col>
+              <Footer.Col mobileWidth="100%">
+                <Footer.Menu title="Loans">
+                  <Footer.Link>
+                    <a href="/">Bridge Loans</a>
+                  </Footer.Link>
+                  <Footer.Link>
+                    <a href="/hard-money-loans/california">Fix and Flip</a>
+                  </Footer.Link>
+                  <Footer.Link>
+                    <a href="/hard-money-loans/california">Probate</a>
+                  </Footer.Link>
+                  <Footer.Link>
+                    <a href="/hard-money-loans/california">San Fransico</a>
+                  </Footer.Link>
+                </Footer.Menu>
+              </Footer.Col>
+              <Footer.Col mobileWidth="100%">
+                <Footer.Menu title="More">
+                  <Footer.Link asTitle={true}>
+                    <a href="/">Home</a>
+                  </Footer.Link>
+                  <Footer.Link>
+                    <a href="/about/recently-funded-deals/">Recent Loans</a>
+                  </Footer.Link>
+                  <Footer.Link>
+                    <a href="/about/our-team/">Our Team</a>
+                  </Footer.Link>
+                  <Footer.Link href="/blog/">
+                    <a href="/blog/">Blog</a>
+                  </Footer.Link>
+                  <Footer.Link href="/about/privacy-policy">
+                    <a href="/about/privacy-policy">Privacy Policy</a>
+                  </Footer.Link>
+                </Footer.Menu>
+              </Footer.Col>
+            </Footer.Grid>
+          </Footer.Col>
+        </Footer.Grid>
+      </Footer>
+    </div>
+  )
 }
 
 export function Default() {
@@ -60,110 +287,6 @@ export function Default() {
               </div>
             </Grid.Col>
           </Grid>
-        </Grid.Col>
-      </Grid>
-    </Section>
-  )
-}
-
-export function ContactForm() {
-  return (
-    <Section background="light">
-      <Grid direction="row" alignItems="center" collapse="tablet">
-        <Grid.Col width="50%" horizontalPadding=".5">
-          <Grid direction="row" collapse="never">
-            <Grid.Col width="25%">
-              <Icon name="money" />
-            </Grid.Col>
-            <Grid.Col width="75%" alignSelf="center">
-              <Text color="dark4" as="h5">
-                Get funded in 5 to 7 days
-              </Text>
-            </Grid.Col>
-          </Grid>
-
-          <Grid direction="row" collapse="never">
-            <Grid.Col width="25%">
-              <Icon name="percentage" />
-            </Grid.Col>
-            <Grid.Col width="75%" alignSelf="center">
-              <Text as="h5" color="dark4">
-                LTV up to 75%
-              </Text>
-            </Grid.Col>
-          </Grid>
-
-          <Grid direction="row" collapse="never">
-            <Grid.Col width="25%">
-              <Icon name="mortgage" />
-            </Grid.Col>
-            <Grid.Col width="75%" alignSelf="center">
-              <Text as="h5" color="dark4">
-                200k to $5 million
-              </Text>
-            </Grid.Col>
-          </Grid>
-
-          <Grid direction="row" collapse="never">
-            <Grid.Col width="25%">
-              <Icon name="handshake" />
-            </Grid.Col>
-            <Grid.Col width="75%" alignSelf="center">
-              <Text as="h5" color="dark4">
-                Nationwide private lender
-                <br /> (not a broker, avoid the extra fees)
-              </Text>
-            </Grid.Col>
-          </Grid>
-
-          <Grid direction="row" collapse="never">
-            <Grid.Col width="25%">
-              <Icon name="mortgage2" />
-            </Grid.Col>
-            <Grid.Col width="75%" alignSelf="center">
-              <Text as="h5" color="dark4">
-                Funding loans such as purchase, refinance, rehab, probate, 1031
-                exchanges, cash-out
-              </Text>
-            </Grid.Col>
-          </Grid>
-
-          <Grid direction="row" collapse="never">
-            <Grid.Col width="25%">
-              <Icon name="handshake" />
-            </Grid.Col>
-            <Grid.Col width="75%" alignSelf="center">
-              <Text as="h5" color="dark4">
-                All types of investment properties considered, residential,
-                commercial and industrial
-              </Text>
-            </Grid.Col>
-          </Grid>
-        </Grid.Col>
-        <Grid.Col width="50%" horizontalPadding=".5">
-          <img src="https://www.crescentlenders.com/images/logo-white-953x349-transparent.png" />
-          <p></p>
-          Crescent Lenders
-          <Text as="h5" color="dark4" spaceAfter="none">
-            999 Overland Ave, Suite 116
-          </Text>
-          <Text as="h5" color="dark4" spaceAfter="none">
-            Los Angeles, California
-          </Text>
-          <p></p>
-          <Line />
-          <p></p>
-          <b>Email</b>
-          <Text as="h5" color="dark4">
-            <a href="mailto:info@crescentlenders.com">
-              info@crescentlenders.com
-            </a>
-          </Text>
-          <p></p>
-          <b>Phone</b>
-          <Text as="h5" color="dark4">
-            <a href="href=tel:2134743131">213-474-3131</a>
-          </Text>
         </Grid.Col>
       </Grid>
     </Section>

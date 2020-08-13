@@ -6,6 +6,7 @@ import short from 'short-uuid'
 function Card({
   children,
   href = '',
+  horizontalPadding = 0.25,
   maxWidth = null,
   width = '33.33%',
   withBorder = true,
@@ -23,7 +24,12 @@ function Card({
   }
 
   return (
-    <Grid.Col maxWidth={maxWidth} width={width} alignSelf="stretch">
+    <Grid.Col
+      horizontalPadding={horizontalPadding}
+      maxWidth={maxWidth}
+      width={width}
+      alignSelf="stretch"
+    >
       <CardUI asLink={asLink} onClick={onClick} withBorder={withBorder}>
         {children}
       </CardUI>

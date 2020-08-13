@@ -1,4 +1,4 @@
-import theme from '../../theme'
+import theme from '../../../theme'
 
 export const ContainerUI = styled('footer')`
   box-sizing: border-box;
@@ -36,11 +36,6 @@ export const InnerUI = styled('div')`
   padding-right: ${theme.unit(1)};
   font-family: ${theme.typography.fonts.font1};
 
-  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
-    flex-direction: column;
-    text-align: center;
-  }
-
   ${FinePrintUI} {
     font-size: ${theme.unit(0.4)};
     color: #fff;
@@ -61,23 +56,12 @@ export const ColUI = styled('ul')`
       color: #fff;
     }
   }
-
-  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
-    display: inline-block;
-    li {
-      display: inline-block;
-    }
-  }
 `
 
 export const LinkItemUI = styled('li')`
   margin: 0;
   padding: 0;
   display: block;
-  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
-    display: inline-block;
-    margin: 0 ${theme.unit(0.25)};
-  }
   font-weight: ${({ asTitle }) => (asTitle ? 'bold' : 'normal')};
 `
 
