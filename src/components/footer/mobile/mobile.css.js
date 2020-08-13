@@ -43,8 +43,16 @@ export const LinkTitleUI = styled('div')`
 
 export const SubMenuUI = styled('div')`
   padding: ${theme.unit(0.25)};
-
+  padding-right: ${theme.unit(1.75)};
+  padding-left: ${theme.unit(1)};
   ${LinkUI} {
+    border-bottom: 1px dotted;
+    border-color: rgba(255, 255, 255, 0.25);
     padding: ${theme.unit(0.25)};
+
+    a {
+      display: block;
+      width: 100%;
+    }
   }
 `
