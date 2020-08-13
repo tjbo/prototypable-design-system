@@ -8,7 +8,6 @@ import {
 import Grid from '../../grid'
 import Section from '../../section'
 import Icon from '../../icon'
-import Footer from '../desktop'
 
 export default function Mobile({ children }) {
   return (
@@ -18,14 +17,13 @@ export default function Mobile({ children }) {
   )
 }
 
-Mobile.Link = function ({ children }) {
-  return <LinkUI>{children}</LinkUI>
+Mobile.Link = function ({ children, ...rest }) {
+  return <LinkUI {...{ ...rest }}>{children}</LinkUI>
 }
 
 class Col extends React.Component {
   render() {
     const { children, mobileWidth, width } = this.props
-
     return <Grid.Col width={mobileWidth || width}>{children}</Grid.Col>
   }
 }
@@ -39,20 +37,41 @@ class Menu extends React.Component {
     isOpen: false,
   }
 
+  getSubMenu() {
+    const { children } = this.props
+    const { isOpen } = this.state
+
+    if (!isOpen) {
+      return
+    }
+
+    const content = React.Children.map(children, (child) => {
+      return React.cloneElement(child, {
+        ...child.props,
+        onClick: (event) => {
+          event.preventDefault()
+          event.stopPropagation()
+          this.setState({ isOpen: false })
+        },
+      })
+    })
+
+    return <SubMenuUI>{content}</SubMenuUI>
+  }
+
   toggleOpen = () => {
     this.setState({ isOpen: !this.state.isOpen })
   }
   render() {
-    const { children, title } = this.props
+    const { title } = this.props
     const { isOpen } = this.state
     return (
       <div>
         <LinkTitleUI onClick={this.toggleOpen}>
           {title}
-          <Icon name="chevron-right" />
+          <Icon name="chevron-right" isOpen={isOpen} />
         </LinkTitleUI>
-
-        {isOpen && <SubMenuUI>{children}</SubMenuUI>}
+        {this.getSubMenu()}
       </div>
     )
   }

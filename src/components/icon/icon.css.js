@@ -1,10 +1,8 @@
 import theme from '../../theme'
 
 export const ContainerUI = styled('div')`
-  max-width: 50px;
   position: relative;
   display: block;
-  border: 1px solid red;
 
   svg {
     display: block;
@@ -24,5 +22,5 @@ export const ChevronLeftUI = styled(PositionedChevronIconUI)`
 
 export const ChevronRightUI = styled(PositionedChevronIconUI)`
   right: ${theme.unit(0.75)};
-  transform: rotate(-90deg);
+  transform: ${({ isOpen }) => (isOpen ? `rotate(0deg)` : `rotate(-90deg)`)};
 `

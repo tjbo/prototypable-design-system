@@ -1,5 +1,9 @@
 import theme from '../../../theme'
 
+export const AnimatedIconUI = styled('div')`
+  transform: ${({ isOpen }) => (isOpen ? `rotate deg(90)` : `rotate deg(-90)`)};
+`
+
 export const ContainerUI = styled('footer')`
   a {
     color: #fff;
@@ -35,11 +39,12 @@ export const LinkTitleUI = styled('div')`
   padding: ${theme.unit(0.5)};
   padding-top: 0;
   margin: 0;
-
-  ${LinkUI} {
-  }
 `
 
 export const SubMenuUI = styled('div')`
-  padding: ${theme.unit(0.5)};
+  padding: ${theme.unit(0.25)};
+
+  ${LinkUI} {
+    padding: ${theme.unit(0.25)};
+  }
 `

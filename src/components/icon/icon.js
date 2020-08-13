@@ -15,28 +15,10 @@ import Rocket from '../../svgs/rocket'
 import Sms from '../../svgs/sms'
 import YahooFinance from '../../svgs/yahoo-finance'
 
-function getChevron(direction) {
-  if (direction === 'right') {
-    return () => (
-      <ChevronRightUI>
-        <Chevron />
-      </ChevronRightUI>
-    )
-  } else {
-    return () => (
-      <ChevronLeftUI>
-        <Chevron />
-      </ChevronLeftUI>
-    )
-  }
-}
-
 export const icons = {
   ['business-insider']: BusinessInsider,
   ['browser-home']: BrowserHome,
   ['crescent-lenders']: CrescentLenders,
-  ['chevron-right']: getChevron('right'),
-  ['chevron-left']: getChevron('left'),
   email: Email,
   loader: Loader,
   ['market-watch']: MarketWatch,
@@ -55,12 +37,20 @@ export default function Icon({ name, size = '100%', rotate = 0, ...rest }) {
     return null
   }
 
-  console.log('size11', size)
-
   const Component = icons[name]
 
-  if (name === 'chevron-left' || 'chevron-right') {
-    return <Component {...{ ...rest }} />
+  if (name === 'chevron-right') {
+    return (
+      <ChevronRightUI {...{ ...rest }}>
+        <Chevron />
+      </ChevronRightUI>
+    )
+  } else if (name === 'chevron-left') {
+    return (
+      <ChevronLeftUI {...{ ...rest }}>
+        <Chevron />
+      </ChevronLeftUI>
+    )
   }
 
   if (Component) {
