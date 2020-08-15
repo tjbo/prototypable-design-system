@@ -33,13 +33,15 @@ export const AddressUI = styled('div')`
 `
 
 export const LinkTitleUI = styled('div')`
+  box-sizing: border-box;
   color: #fff;
   cursor: pointer;
-  display: flex;
   border-bottom: 1px solid #fff;
-  padding: ${theme.unit(0.5)};
-  padding-top: 0;
+  display: flex;
+  position: relative;
+  padding: ${theme.unit(0.25)};
   margin: 0;
+  align-items: center;
 `
 
 export const SubMenuUI = styled('div')`
@@ -47,10 +49,10 @@ export const SubMenuUI = styled('div')`
   padding-right: ${theme.unit(1.75)};
   padding-left: ${theme.unit(1)};
   ${LinkUI} {
-    border-bottom: 1px dotted;
+    border-bottom: 1px solid;
     border-color: rgba(255, 255, 255, 0.25);
     padding: ${theme.unit(0.375)};
-
+    position: relative;
     a {
       display: block;
       width: 100%;

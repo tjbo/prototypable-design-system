@@ -1,4 +1,9 @@
-import { ContainerUI, ChevronLeftUI, ChevronRightUI } from './icon.css'
+import {
+  ContainerUI,
+  ChevronLeftUI,
+  ChevronRightUI,
+  ChevronTopUI,
+} from './icon.css'
 import CrescentLenders from '../../svgs/crescentLenders'
 import BusinessInsider from '../../svgs/business-insider'
 import BrowserHome from '../../svgs/browser-home'
@@ -50,6 +55,12 @@ export default function Icon({ name, size = '100%', rotate = 0, ...rest }) {
       <ChevronLeftUI {...{ ...rest }}>
         <Chevron />
       </ChevronLeftUI>
+    )
+  } else if (name === 'chevron-top') {
+    return (
+      <ChevronTopUI {...{ ...rest }}>
+        <Chevron />
+      </ChevronTopUI>
     )
   }
 

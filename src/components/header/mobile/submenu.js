@@ -19,7 +19,7 @@ function SubMenu({
     })
   })
   return (
-    <div>
+    <div style={{ overflow: 'hidden' }}>
       <MenuUI
         isAnimated={true}
         isParentMenuOpen={subMenu === text}

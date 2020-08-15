@@ -18,6 +18,7 @@ export default {
   breakPointsAsPixel: {
     mobile: '608px',
     tablet: '960px',
+    bigTablet: '1024px',
     desktop: '1280px',
   },
   colors: {

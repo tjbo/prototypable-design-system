@@ -34,7 +34,7 @@ export const BrandContainerUI = styled('div')`
 
 export const ContainerUI = styled('div')`
   box-sizing: border-box;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 1;
   display: block;
@@ -111,6 +111,7 @@ export const MenuUI = styled('nav')`
   display: block;
   left: ${({ isParentMenuOpen }) => (isParentMenuOpen ? '0' : '-100%')};
   min-height: 100vh;
+  overflow: hidden;
   position: absolute;
   height: 100%;
   width: 100%;

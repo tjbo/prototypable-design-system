@@ -85,7 +85,11 @@ class Menu extends React.Component {
       <div>
         <LinkTitleUI onClick={this.toggleOpen}>
           {title}
-          <Icon name="chevron-right" isOpen={isOpen} />
+          {!isOpen ? (
+            <Icon name="chevron-right" />
+          ) : (
+            <Icon name="chevron-top" />
+          )}
         </LinkTitleUI>
         {this.getSubMenu()}
       </div>

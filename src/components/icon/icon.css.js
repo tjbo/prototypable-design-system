@@ -9,18 +9,31 @@ export const ContainerUI = styled('div')`
   }
 `
 
-export const PositionedChevronIconUI = styled('div')`
-  display: block;
-  position: absolute;
+export const ChevronLeftUI = styled('div')`
+  bottom: 0;
   width: ${theme.unit(0.5)};
-`
+  position: absolute;
+  top: 0;
+  left: ${theme.unit(0)};
+  margin: auto;
 
-export const ChevronLeftUI = styled(PositionedChevronIconUI)`
-  left: ${theme.unit(0.75)};
   transform: rotate(90deg);
 `
 
-export const ChevronRightUI = styled(PositionedChevronIconUI)`
-  right: ${theme.unit(0.75)};
+export const ChevronRightUI = styled('div')`
+  bottom: 0;
+  width: ${theme.unit(0.5)};
+  position: absolute;
+  top: 0;
+  right: ${theme.unit(0.5)};
+  margin: auto;
   transform: ${({ isOpen }) => (isOpen ? `rotate(0deg)` : `rotate(-90deg)`)};
+`
+
+export const ChevronTopUI = styled('div')`
+  width: ${theme.unit(0.5)};
+  position: absolute;
+  top: ${theme.unit(0.25)};
+  right: ${theme.unit(0.75)};
+  margin: auto;
 `

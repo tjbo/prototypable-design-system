@@ -1,4 +1,4 @@
-import Header from '../header'
+import React from 'react'
 import Jumbotron from './jumbotron'
 
 export default {
@@ -8,34 +8,34 @@ export default {
 
 const image = {
   dimensions: {
-    width: 2000,
-    height: 3000,
+    width: 1280,
+    height: 800,
   },
-  alt: 'California Hard Money Lender Background - Palm trees in the night sky',
+  alt: 'Aerial view of residential properties in the suburbs',
   copyright: null,
   url:
-    'https://images.prismic.io/cresentlenders/fd8a6b7d-49ee-41f5-8342-5eac0891f223_california-palm-trees.jpg?auto=compress,format',
-  '1600×900': {
+    'https://images.prismic.io/cresentlenders/3599b3f1-acac-4ad4-bdcc-b245e68d7b14_ivan-ragozin-iewHqnyv9hM-unsplash.jpg?auto=compress,format&rect=0,111,5464,3415&w=1280&h=800',
+  '375×667': {
     dimensions: {
-      width: 1600,
+      width: 375,
+      height: 667,
+    },
+    alt: null,
+    copyright: null,
+    url:
+      'https://images.prismic.io/cresentlenders/3599b3f1-acac-4ad4-bdcc-b245e68d7b14_ivan-ragozin-iewHqnyv9hM-unsplash.jpg?auto=compress,format&rect=1708,0,2046,3640&w=375&h=667',
+  },
+  '1440×900': {
+    dimensions: {
+      width: 1440,
       height: 900,
     },
     alt: null,
     copyright: null,
     url:
-      'https://images.prismic.io/cresentlenders/fd8a6b7d-49ee-41f5-8342-5eac0891f223_california-palm-trees.jpg?auto=compress,format&rect=0,361,2000,1125&w=1600&h=900',
+      'https://images.prismic.io/cresentlenders/3599b3f1-acac-4ad4-bdcc-b245e68d7b14_ivan-ragozin-iewHqnyv9hM-unsplash.jpg?auto=compress,format&rect=0,114,5464,3415&w=1440&h=900',
   },
-  '1024x768': {
-    dimensions: {
-      width: 1024,
-      height: 768,
-    },
-    alt: null,
-    copyright: null,
-    url:
-      'https://images.prismic.io/cresentlenders/fd8a6b7d-49ee-41f5-8342-5eac0891f223_california-palm-trees.jpg?auto=compress,format&rect=0,738,2000,1500&w=1024&h=768',
-  },
-  '1920x1080': {
+  '1920×1080': {
     dimensions: {
       width: 1920,
       height: 1080,
@@ -43,17 +43,17 @@ const image = {
     alt: null,
     copyright: null,
     url:
-      'https://images.prismic.io/cresentlenders/fd8a6b7d-49ee-41f5-8342-5eac0891f223_california-palm-trees.jpg?auto=compress,format&rect=0,265,2000,1125&w=1920&h=1080',
+      'https://images.prismic.io/cresentlenders/3599b3f1-acac-4ad4-bdcc-b245e68d7b14_ivan-ragozin-iewHqnyv9hM-unsplash.jpg?auto=compress,format&rect=0,285,5464,3074&w=1920&h=1080',
   },
-  '768×1024': {
+  '414×816': {
     dimensions: {
-      width: 768,
-      height: 1024,
+      width: 414,
+      height: 816,
     },
     alt: null,
     copyright: null,
     url:
-      'https://images.prismic.io/cresentlenders/fd8a6b7d-49ee-41f5-8342-5eac0891f223_california-palm-trees.jpg?auto=compress,format&rect=0,0,2000,2667&w=768&h=1024',
+      'https://images.prismic.io/cresentlenders/3599b3f1-acac-4ad4-bdcc-b245e68d7b14_ivan-ragozin-iewHqnyv9hM-unsplash.jpg?auto=compress,format&rect=1807,0,1847,3640&w=414&h=816',
   },
   '1366×768': {
     dimensions: {
@@ -63,55 +63,23 @@ const image = {
     alt: null,
     copyright: null,
     url:
-      'https://images.prismic.io/cresentlenders/fd8a6b7d-49ee-41f5-8342-5eac0891f223_california-palm-trees.jpg?auto=compress,format&rect=0,187,2000,1124&w=1366&h=768',
+      'https://images.prismic.io/cresentlenders/3599b3f1-acac-4ad4-bdcc-b245e68d7b14_ivan-ragozin-iewHqnyv9hM-unsplash.jpg?auto=compress,format&rect=0,284,5464,3072&w=1366&h=768',
   },
-  '360×640': {
+  '360×780': {
     dimensions: {
       width: 360,
-      height: 640,
+      height: 780,
     },
     alt: null,
     copyright: null,
     url:
-      'https://images.prismic.io/cresentlenders/fd8a6b7d-49ee-41f5-8342-5eac0891f223_california-palm-trees.jpg?auto=compress,format&rect=123,0,1688,3000&w=360&h=640',
+      'https://images.prismic.io/cresentlenders/3599b3f1-acac-4ad4-bdcc-b245e68d7b14_ivan-ragozin-iewHqnyv9hM-unsplash.jpg?auto=compress,format&rect=1890,0,1680,3640&w=360&h=780',
   },
 }
-
-const MockHeader = () => (
-  <Header.Container style="dark">
-    <Header.Brand>
-      <img
-        src="https://www.crescentlenders.com/images/logo-white-953x349-transparent.png"
-        width="250"
-      />
-    </Header.Brand>
-    <Header.Menu>
-      <Header.Link>
-        <a href="/">Home</a>
-      </Header.Link>
-      <Header.Dropdown text="About">
-        <a to="/about/our-team/">Our Team</a>
-        <a to="/about/recently-funded-deals/">Recent Deals</a>
-        <a to="/about/our-team/">Thing 2</a>
-        <a to="/about/recently-funded-deals/">Thing 3</a>
-      </Header.Dropdown>
-      <Header.Link>
-        <a href="/">Blog</a>
-      </Header.Link>
-      <Header.Link asHighlight={true}>
-        <a href="/">213-474-3131</a>
-      </Header.Link>
-      <Header.Link>
-        <a href="mailto:info@crescentlenders.com">info@crescentlenders.com</a>
-      </Header.Link>
-    </Header.Menu>
-  </Header.Container>
-)
 
 export function Default() {
   return (
     <div>
-      <MockHeader />
       <Jumbotron image={image}>
         <h1>California Hard Money Lenders</h1>
         <h2>
@@ -128,7 +96,6 @@ export function Default() {
 export function Left() {
   return (
     <div>
-      <MockHeader />
       <Jumbotron
         image={image}
         alignItems="center"
@@ -150,7 +117,6 @@ export function Left() {
 export function Right() {
   return (
     <div>
-      <MockHeader />
       <Jumbotron
         image={image}
         alignItems="center"
