@@ -15,6 +15,8 @@ function Grid({
 
 Grid.Col = function ({
   alignSelf = 'flex-start',
+  collapseHorizontalPaddingOnMobile = false,
+  collapsePaddingOnMobile = false,
   children,
   isSticky = false,
   horizontalPadding = 0.25,
@@ -26,6 +28,8 @@ Grid.Col = function ({
   return (
     <ColUI
       alignSelf={alignSelf}
+      collapseHorizontalPaddingOnMobile={collapseHorizontalPaddingOnMobile}
+      collapsePaddingOnMobile={collapsePaddingOnMobile}
       horizontalPadding={horizontalPadding}
       isSticky={isSticky}
       maxWidth={maxWidth}

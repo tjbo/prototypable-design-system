@@ -11,7 +11,11 @@ function Article({ children, collapse }) {
 
 Article.Content = function ({ children, width = '66%' }) {
   return (
-    <Grid.Col width={width}>
+    <Grid.Col
+      collapsePaddingOnMobile={true}
+      width={width}
+      horizontalPadding={1}
+    >
       <ContentUI>{children}</ContentUI>
     </Grid.Col>
   )
@@ -19,7 +23,11 @@ Article.Content = function ({ children, width = '66%' }) {
 
 Article.Sidebar = function ({ children, width = '34%' }) {
   let _children = children
-  return <Grid.Col width={width}>{_children}</Grid.Col>
+  return (
+    <Grid.Col collapsePaddingOnMobile={true} width={width}>
+      {_children}
+    </Grid.Col>
+  )
 }
 
 Article.Box = function ({ children }) {

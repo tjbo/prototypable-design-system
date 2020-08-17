@@ -231,11 +231,11 @@ h1,h2,h3,h4,h5,h6 {
   line-height: 120%;
   padding: 0;
   margin: 0;
-  margin-bottom: ${theme.unit(0.5)};
+  margin-bottom: ${theme.unit(0.75)};
 }
 
 h3 + h4, h2 + h4 {
-  margin-top: -${theme.unit(0.5)};
+  margin-top: -${theme.unit(0.75)};
 }
 
 

@@ -43,6 +43,15 @@ export const ColUI = styled('div')`
   `
     )
   }}
+
+@media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+  ${({ collapsePaddingOnMobile }) => collapsePaddingOnMobile && `padding: 0`}
+
+  ${({ collapseHorizontalPaddingOnMobile, verticalPadding }) =>
+    collapseHorizontalPaddingOnMobile &&
+    `padding: ${theme.unit(verticalPadding)} 0`}
+}
+
 `
 
 export const ColInnerUI = styled('div')`

@@ -13,6 +13,7 @@ import Section from '../../components/section'
 import Card from '../../components/card'
 import Cards from '../../components/cards'
 import short from 'short-uuid'
+import { Media } from 'react-breakpoints'
 
 function getLinkedContentById(linkedContent, id) {
   return linkedContent.filter((content) => {
@@ -87,6 +88,8 @@ export default function getComponentsFromSlices({
 }) {
   return slices.map((slice, index) => {
     const type = slice.slice_type
+
+    console.log('type', type)
 
     if (type === 'highlighted_box') {
       const parsedComponents = parsePrismicToReactComponents(slice.primary.text)
@@ -235,6 +238,52 @@ export default function getComponentsFromSlices({
             </Article.Sidebar>
           </Article>
         </Section>
+      )
+    } else if (type === 'article___images') {
+      const {
+        items,
+        primary: { background, body, reverse_order },
+      } = slice
+
+      console.log('slice', slice)
+
+      const components = [
+        <Article.Content width="50%">
+          {parsePrismicToReactComponents(body)}
+        </Article.Content>,
+        <Article.Sidebar width="50%">
+          {items.map((item) => {
+            return (
+              <ResponsiveImage
+                data={item.image}
+                sizes={['540x357', '1080x713']}
+                aspectRatio={66}
+              />
+            )
+          })}
+        </Article.Sidebar>,
+      ]
+
+      return (
+        <Media>
+          {({ breakpoints, currentBreakpoint }) => {
+            if (breakpoints[currentBreakpoint] > breakpoints['mobile']) {
+              return (
+                <Section background={background} key={short.generate()}>
+                  <Article>
+                    {reverse_order ? components.reverse() : components}
+                  </Article>
+                </Section>
+              )
+            } else {
+              return (
+                <Section background={background} key={short.generate()}>
+                  <Article>{components.reverse()}</Article>
+                </Section>
+              )
+            }
+          }}
+        </Media>
       )
     } else if (type === 'article_w_linked') {
       const { body2, linked_sidebar_section } = slice.primary

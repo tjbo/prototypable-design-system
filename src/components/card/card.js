@@ -6,10 +6,11 @@ import short from 'short-uuid'
 function Card({
   children,
   href = '',
-  horizontalPadding = 0.25,
+  horizontalPadding = 0.5,
   maxWidth = null,
   width = '33.33%',
   withBorder = true,
+  verticalPadding = 0.5,
 }) {
   const asLink = !!href
 
@@ -25,7 +26,9 @@ function Card({
 
   return (
     <Grid.Col
+      collapseHorizontalPaddingOnMobile={true}
       horizontalPadding={horizontalPadding}
+      verticalPadding={verticalPadding}
       maxWidth={maxWidth}
       width={width}
       alignSelf="stretch"

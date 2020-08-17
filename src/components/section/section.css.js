@@ -20,7 +20,7 @@ const getInnerWidth = ({ innerWidth }) => {
   } else if (innerWidth === 'medium-plus') {
     return theme.unit(30)
   } else {
-    return theme.unit(33)
+    return theme.unit(34)
   }
 }
 
@@ -39,7 +39,7 @@ export const SectionUI = styled('div')`
   width: ${getInnerWidth};
   position: relative;
   margin: 0 auto;
-  padding: ${theme.unit(0.75)} ${theme.unit(0.375)};
+  padding: ${theme.unit(1.5)} ${theme.unit(0.75)};
   width: 100%;
   text-align: ${({ textAlign }) => textAlign};
 `
