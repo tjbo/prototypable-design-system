@@ -13,6 +13,7 @@ import Section from '../../components/section'
 import Card from '../../components/card'
 import Cards from '../../components/cards'
 import short from 'short-uuid'
+import RelatedContent from '../../components/relatedContent'
 import { Media } from 'react-breakpoints'
 
 function getLinkedContentById(linkedContent, id) {
@@ -23,6 +24,10 @@ function getLinkedContentById(linkedContent, id) {
 
 function getLink(link, paths) {
   return paths[link.id]
+}
+
+function linkResolver(paths, doc) {
+  return getLink(doc, paths)
 }
 
 const components = {
@@ -40,7 +45,7 @@ const wrapperComponent = {
 }
 
 // takes prismic data, then parses the components to react components and adds a wrapper
-function parsePrismicToReactComponents(text) {
+function parsePrismicToReactComponents(text, paths) {
   if (text.type === 'preformatted') {
     return (
       <JsxParser
@@ -52,11 +57,14 @@ function parsePrismicToReactComponents(text) {
   }
 
   // if type isn't preformatted we just use global styles
-  const parsePrismic = PrismicReactJs.RichText.render(text)
+  const parsePrismic = PrismicReactJs.RichText.render(
+    text,
+    linkResolver.bind(null, paths),
+  )
   return parsePrismic
 }
 
-function renderFaq(slice) {
+function renderFaq(slice, options) {
   const { intro, title1 } = slice.primary
 
   return (
@@ -65,7 +73,7 @@ function renderFaq(slice) {
       {intro && !!intro.length && !!intro[0].text.length && (
         <Article>
           <Article.Content>
-            {parsePrismicToReactComponents(intro)}
+            {parsePrismicToReactComponents(intro, options.paths)}
           </Article.Content>
         </Article>
       )}
@@ -73,7 +81,7 @@ function renderFaq(slice) {
       {slice.items.map((item) => {
         return (
           <Faq key={short.generate()} title={item.question}>
-            {parsePrismicToReactComponents(item.answer)}
+            {parsePrismicToReactComponents(item.answer, options.paths)}
           </Faq>
         )
       })}
@@ -83,21 +91,26 @@ function renderFaq(slice) {
 
 export default function getComponentsFromSlices({
   slices,
+  id,
   linkedContent,
   options = {},
 }) {
   return slices.map((slice, index) => {
     const type = slice.slice_type
 
-    console.log('type', type)
-
     if (type === 'highlighted_box') {
-      const parsedComponents = parsePrismicToReactComponents(slice.primary.text)
+      const parsedComponents = parsePrismicToReactComponents(
+        slice.primary.text,
+        options.paths,
+      )
       return React.createElement(wrapperComponent[slice.slice_type], {}, [
         parsedComponents,
       ])
     } else if (type === 'text') {
-      const parsedComponents = parsePrismicToReactComponents(slice.primary.text)
+      const parsedComponents = parsePrismicToReactComponents(
+        slice.primary.text,
+        options.paths,
+      )
       return parsedComponents
     } else if (type === 'responsive_image') {
       return (
@@ -116,7 +129,10 @@ export default function getComponentsFromSlices({
         text_align,
       } = slice.primary
 
-      const parsedComponents = parsePrismicToReactComponents(body2)
+      const parsedComponents = parsePrismicToReactComponents(
+        body2,
+        options.paths,
+      )
 
       return React.createElement(
         Jumbotron,
@@ -135,16 +151,40 @@ export default function getComponentsFromSlices({
         },
         parsedComponents,
       )
-    } else if (type === 'linked_component_section') {
+    } else if (
+      type === 'linked_component_section' ||
+      type === 'linked_section'
+    ) {
       const data = getLinkedContentById(linkedContent, slice.primary.body2.id)
+
+      if (data[0].data.body[0].slice_type === 'related_content') {
+        const items = data[0].data.body[0].items
+          .filter((item) => {
+            return item.link.id !== id
+          })
+
+          .map((item) => {
+            return {
+              link: getLink(item.link, options.paths),
+              description: item.description,
+              text: item.text,
+            }
+          })
+
+        return <RelatedContent items={items} />
+      }
+
       const { background } = slice.primary
       const { body, inner_width } = data[0].data
 
       if (body[0].slice_type === 'faq') {
-        return renderFaq(body[0])
+        return renderFaq(body[0], options)
       }
 
-      const parsedComponents = parsePrismicToReactComponents(body[0])
+      const parsedComponents = parsePrismicToReactComponents(
+        body[0],
+        options.paths,
+      )
 
       return (
         <Section key={short.generate()} {...{ background, inner_width }}>
@@ -198,7 +238,7 @@ export default function getComponentsFromSlices({
         )
       }
     } else if (type === 'faq') {
-      return renderFaq(slice)
+      return renderFaq(slice, options)
     } else if (type == 'article') {
       const {
         background,
@@ -212,12 +252,12 @@ export default function getComponentsFromSlices({
         <Section background={background} key={short.generate()}>
           <Article>
             <Article.Content>
-              {parsePrismicToReactComponents(body2)}
+              {parsePrismicToReactComponents(body2, options.paths)}
             </Article.Content>
             <Article.Sidebar>
               {sidebar_style === 'quote' && (
                 <Article.Quote>
-                  {parsePrismicToReactComponents(sidebar)}
+                  {parsePrismicToReactComponents(sidebar, options.paths)}
                 </Article.Quote>
               )}
 
@@ -226,13 +266,13 @@ export default function getComponentsFromSlices({
                 !!sidebar[0].text.length &&
                 !!sidebar.length && (
                   <Article.Box>
-                    {parsePrismicToReactComponents(sidebar)}
+                    {parsePrismicToReactComponents(sidebar, options.paths)}
                   </Article.Box>
                 )}
 
               {sidebar_style === 'facts' && (
                 <Article.Facts title={sidebar_title}>
-                  {parsePrismicToReactComponents(sidebar)}
+                  {parsePrismicToReactComponents(sidebar, options.paths)}
                 </Article.Facts>
               )}
             </Article.Sidebar>
@@ -245,11 +285,9 @@ export default function getComponentsFromSlices({
         primary: { background, body, reverse_order },
       } = slice
 
-      console.log('slice', slice)
-
       const components = [
         <Article.Content width="50%">
-          {parsePrismicToReactComponents(body)}
+          {parsePrismicToReactComponents(body, options.paths)}
         </Article.Content>,
         <Article.Sidebar width="50%">
           {items.map((item) => {
@@ -295,7 +333,7 @@ export default function getComponentsFromSlices({
       return (
         <div>
           <Section inner_width="medium">
-            {parsePrismicToReactComponents(body2)}
+            {parsePrismicToReactComponents(body2, options.paths)}
           </Section>
         </div>
       )
@@ -309,7 +347,10 @@ export default function getComponentsFromSlices({
         text_align,
       } = slice.primary
 
-      const parsedComponents = parsePrismicToReactComponents(body2)
+      const parsedComponents = parsePrismicToReactComponents(
+        body2,
+        options.paths,
+      )
 
       return (
         <Jumbotron

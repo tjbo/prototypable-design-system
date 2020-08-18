@@ -19,6 +19,8 @@ const getInnerWidth = ({ innerWidth }) => {
     return theme.unit(18)
   } else if (innerWidth === 'medium-plus') {
     return theme.unit(30)
+  } else if (innerWidth === 'huge') {
+    return theme.unit(37)
   } else {
     return theme.unit(34)
   }

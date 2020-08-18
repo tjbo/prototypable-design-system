@@ -77,6 +77,7 @@ export default {
   },
   imageDimensions: {
     jumbotron: {
+      ad: ['580x327', '870x490', '1160x652'],
       half: [
         '375x375',
         '414x414',
