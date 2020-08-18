@@ -171,7 +171,12 @@ export default function getComponentsFromSlices({
             }
           })
 
-        return <RelatedContent items={items} />
+        return (
+          <RelatedContent
+            items={items}
+            routerLinkComponent={options.routerLinkComponent}
+          />
+        )
       }
 
       const { background } = slice.primary

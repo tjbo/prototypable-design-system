@@ -1,7 +1,8 @@
 import BlockQuote from '../blockQuote'
 import { ContainerUI } from './relatedContent.css'
 
-export default function ({ items }) {
+export default function ({ items, routerLinkComponent }) {
+  console.log(routerLinkComponent)
   return (
     <BlockQuote>
       <ContainerUI>
@@ -10,7 +11,7 @@ export default function ({ items }) {
           {items.map(({ link, text, description }) => {
             return (
               <li>
-                <a href={link}>{text}</a>
+                {React.createElement(routerLinkComponent, { to: link }, text)}
                 <br />
                 {description.length && description}
               </li>
