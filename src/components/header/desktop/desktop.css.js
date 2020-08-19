@@ -40,6 +40,7 @@ export const ContainerUI = styled('header')`
   box-sizing: border-box;
   display: block;
   height: ${theme.layout.desktop.headerHeight};
+  min-height: ${theme.layout.desktop.headerHeight};
   width: 100%;
   position: relative;
   top: 0;
