@@ -42,8 +42,8 @@ export const ContainerUI = styled('header')`
   height: ${theme.layout.desktop.headerHeight};
   min-height: ${theme.layout.desktop.headerHeight};
   width: 100%;
-  position: relative;
   top: 0;
+  position: absolute;
   z-index: 1;
   background-color: ${({ isTransparent }) =>
     isTransparent ? 'transparent' : theme.colors.light3};
