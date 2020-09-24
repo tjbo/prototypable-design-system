@@ -8,9 +8,9 @@ export default function ({ items, routerLinkComponent }) {
       <ContainerUI>
         <h3>Related</h3>
         <ul>
-          {items.map(({ link, text, description }) => {
+          {items.map(({ link, text, description }, index) => {
             return (
-              <li>
+              <li key={`related-content-${index}`}>
                 {React.createElement(routerLinkComponent, { to: link }, text)}
                 <br />
                 {description.length && description}
