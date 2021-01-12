@@ -1,6 +1,5 @@
 import {
   AddressUI,
-  FinePrintUI,
   ContainerUI,
   LinkItemUI,
   LinkUI,
@@ -21,7 +20,6 @@ function Footer({ children }) {
 
 Footer.Grid = Grid
 Footer.Address = AddressUI
-Footer.FinePrint = FinePrintUI
 Footer.Col = function ({ children, width }) {
   return (
     <Grid.Col width={width}>

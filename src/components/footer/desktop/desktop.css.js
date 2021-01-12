@@ -26,8 +26,6 @@ export const AddressUI = styled('address')`
   font-family: ${theme.typography.fonts.font1};
 `
 
-export const FinePrintUI = styled('div')``
-
 export const InnerUI = styled('div')`
   box-sizing: border-box;
   display: flex;
@@ -35,12 +33,6 @@ export const InnerUI = styled('div')`
   padding: ${`${theme.unit(0.5)} ${theme.unit(0.75)}`};
   padding-right: ${theme.unit(1)};
   font-family: ${theme.typography.fonts.font1};
-
-  ${FinePrintUI} {
-    font-size: ${theme.unit(0.4)};
-    color: #fff;
-    margin-right: ${theme.unit(1)};
-  }
 `
 
 export const ColUI = styled('ul')`

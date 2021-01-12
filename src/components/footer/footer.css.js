@@ -26,8 +26,6 @@ export const AddressUI = styled('address')`
   font-family: ${theme.typography.fonts.font1};
 `
 
-export const FinePrintUI = styled('div')``
-
 export const InnerUI = styled('div')`
   box-sizing: border-box;
   display: flex;
@@ -39,12 +37,6 @@ export const InnerUI = styled('div')`
   @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
     flex-direction: column;
     text-align: center;
-  }
-
-  ${FinePrintUI} {
-    font-size: ${theme.unit(0.4)};
-    color: #fff;
-    margin-right: ${theme.unit(1)};
   }
 `
 

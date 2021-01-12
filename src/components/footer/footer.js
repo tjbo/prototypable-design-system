@@ -18,8 +18,6 @@ function Footer(props) {
 
 Footer.Grid = DesktopFooter.Grid
 
-Footer.FinePrint = DesktopFooter.FinePrint
-
 Footer.Address = function (props) {
   return (
     <Media>
