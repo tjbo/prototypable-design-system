@@ -16,29 +16,9 @@ export const Default = () => (
   </Section>
 )
 
-export const SMSIcon = () => (
-  <Section>
-    <Button align="center" icon="sms" onClick={action('clicked')}>
-      Click on This
-    </Button>
-  </Section>
-)
-
-export const EmailIcon = () => (
-  <Section>
-    <Button align="center" icon="email" onClick={action('clicked')}>
-      Click on This
-    </Button>
-  </Section>
-)
-
 export const RouterLink = () => (
   <Section>
-    <Button
-      icon="sms"
-      routerLinkComponent={({ children }) => children}
-      to="/about/contact/"
-    >
+    <Button to="/about/contact/">
       <a href="/">Send Us An SMS</a>
     </Button>
   </Section>

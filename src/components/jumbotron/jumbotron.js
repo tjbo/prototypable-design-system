@@ -21,7 +21,6 @@ export default function ({
   justifyContent = 'center',
   image = null,
   overlay = 0,
-  routerLinkComponent,
   textAlign = 'center',
   size = 'full',
 }) {
@@ -40,8 +39,11 @@ export default function ({
         <MainContentUI maxWidth="768">{children}</MainContentUI>
         {hasCta && (
           <Button
+            justifyContent="center"
+            colorScheme="red"
             to={callToActionHref}
-            routerLinkComponent={routerLinkComponent}
+            size="lg"
+            maxW="250px"
           >
             {callToActionText}
           </Button>

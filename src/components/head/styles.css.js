@@ -336,6 +336,13 @@ h1 {
   margin-bottom: ${theme.unit(0.25)};
 }
 
+a:active,
+a:link,
+a:hover,
+a:visited {
+  text-decoration: none;
+}
+
 
 
 `

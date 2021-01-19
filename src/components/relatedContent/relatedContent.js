@@ -1,8 +1,8 @@
 import BlockQuote from '../blockQuote'
 import { ContainerUI } from './relatedContent.css'
+import { Link } from '@reach/router'
 
-export default function ({ items, routerLinkComponent }) {
-  console.log(routerLinkComponent)
+export default function ({ items }) {
   return (
     <BlockQuote>
       <ContainerUI>
@@ -11,7 +11,7 @@ export default function ({ items, routerLinkComponent }) {
           {items.map(({ link, text, description }, index) => {
             return (
               <li key={`related-content-${index}`}>
-                {React.createElement(routerLinkComponent, { to: link }, text)}
+                <Link to={link}>{text}</Link>
                 <br />
                 {description.length && description}
               </li>

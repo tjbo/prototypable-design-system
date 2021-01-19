@@ -146,7 +146,6 @@ export default function getComponentsFromSlices({
           key: short.generate(),
           image: slice.primary.image,
           overlay,
-          routerLinkComponent: options.routerLinkComponent,
           textAlign: text_align,
         },
         parsedComponents,
@@ -171,12 +170,7 @@ export default function getComponentsFromSlices({
             }
           })
 
-        return (
-          <RelatedContent
-            items={items}
-            routerLinkComponent={options.routerLinkComponent}
-          />
-        )
+        return <RelatedContent items={items} />
       }
 
       const { background } = slice.primary
@@ -217,7 +211,6 @@ export default function getComponentsFromSlices({
                       withTitle={true}
                       title={_content[1].data.title[0].text}
                       to={getLink(_content[1].data.link, options.paths)}
-                      routerLinkComponent={options.routerLinkComponent}
                     >
                       <ResponsiveImage
                         data={_content[1].data.image}
@@ -367,7 +360,6 @@ export default function getComponentsFromSlices({
           overlay={overlay}
           key={short.generate()}
           image={slice.primary.image}
-          routerLinkComponent={options.routerLinkComponent}
           size="half"
           textAlign={text_align}
         >

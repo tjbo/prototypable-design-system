@@ -1,5 +1,3 @@
-import theme from '../../theme'
-
 export const BodyUI = styled('div')`
   height: 100%;
 

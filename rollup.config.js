@@ -44,5 +44,7 @@ export default {
     }),
   ],
   external: (id) =>
-    /^react|prismic-javascript|styled-components|styled/.test(id),
+    /^react|formik|react|@reach|@chakra-ui|prismic-javascript|styled-components|styled/.test(
+      id,
+    ),
 }

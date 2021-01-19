@@ -2,6 +2,7 @@ import Grid from '../grid'
 import { AhrefUI, CardUI, ContentUI } from './card.css'
 import PropTypes from 'prop-types'
 import short from 'short-uuid'
+import { Link } from '@reach/router'
 
 function Card({
   children,
@@ -47,14 +48,14 @@ Card.propTypes = {
   withBorder: PropTypes.bool,
 }
 
-Card.Image = function ({ children, to, title, routerLinkComponent }) {
+Card.Image = function ({ children, to, title }) {
   if (!!title && to) {
     return (
       <AhrefUI>
-        {React.createElement(routerLinkComponent, { to }, [
-          children,
-          <h3 key={short.generate()}>{title}</h3>,
-        ])}
+        <Link to={to}>
+          {children}
+          <h3 key={short.generate()}>{title}</h3>
+        </Link>
       </AhrefUI>
     )
   } else {
@@ -65,7 +66,6 @@ Card.Image = function ({ children, to, title, routerLinkComponent }) {
 Card.Image.propTypes = {
   to: PropTypes.string,
   title: PropTypes.string,
-  routerLinkComponent: PropTypes.func,
 }
 
 Card.Content = function ({ alignItems, justifyContent, children }) {
