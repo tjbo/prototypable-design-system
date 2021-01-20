@@ -27,7 +27,7 @@ export { default as Head } from './components/head/head'
 export { PrototypableProvider } from './components/prototypableContext'
 
 // we use this library for building forms
-export { Formik, Field } from 'formik'
+export { Form, Formik, Field } from 'formik'
 
 // Prototypable is build atop charka ui component library, we use these for basic things,
 // and to assemble bigger more complext things things, but since we aren't changing these things
@@ -45,6 +45,11 @@ export {
   Input,
   FormHelperText,
   Stack,
+  StatGroup,
+  Stat,
+  StatLabel,
+  StatNumber,
+  StatHelpText,
 } from '@chakra-ui/react'
 
 // prismic is where we host static content, easier to have these here than write them twice

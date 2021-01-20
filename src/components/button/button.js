@@ -2,7 +2,7 @@ import { Button, Box } from '@chakra-ui/react'
 import { Link } from '@reach/router'
 
 export default function (props) {
-  const { justifyContent = 'flex-end', children, to, ...rest } = props
+  const { justifyContent = 'flex-start', children, to, ...rest } = props
 
   if (to) {
     return (
@@ -13,6 +13,10 @@ export default function (props) {
       </Box>
     )
   } else {
-    return <Button>Test</Button>
+    return (
+      <Box d="flex" justifyContent={justifyContent} w="100%">
+        <Button {...{ ...rest }}>{children}</Button>
+      </Box>
+    )
   }
 }
