@@ -1,34 +1,34 @@
-import theme from '../../../theme'
+import theme from '../../theme'
 
 export const BoxWrapper = styled('div')`
   box-sizing: border-box;
   width: 100%;
   display: block;
-  background: ${theme.colors.light1};
+  background: ${theme.colors.white};
   position: relative;
 `
 
 export const QuoteUI = styled('span')`
-  color: ${theme.colors.dark3};
-  line-height: ${theme.unit(4)};
-  font-size: ${theme.unit(4)};
+  color: ${theme.colors.black};
+  line-height: ${theme.space[1]};
+  font-size: ${theme.space[1]};
   opacity: 0.5;
   position: absolute;
 `
 
 export const OpenQuoteUI = styled(QuoteUI)`
-  left: ${theme.unit(0.375)};
-  top: -${theme.unit(0.125)};
+  left: ${theme.space[1]};
+  top: -${theme.space[1]};
 `
 
 export const CloseQuoteUI = styled(QuoteUI)``
 
 export const DropQuoteUI = styled('div')`
-  padding: ${theme.unit(1)};
-  padding-top: ${theme.unit(2)};
+  padding: ${theme.space[2]};
+  padding-top: ${theme.space[4]};
   blockquote {
     border: none;
-    color: ${theme.colors.dark1};
+    color: ${theme.colors.black};
     margin: 0;
     padding: 0;
   }

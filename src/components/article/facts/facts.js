@@ -1,10 +1,10 @@
-import { ContainerUI } from './facts.css'
+import { Box } from '@chakra-ui/react'
 
 export default function ({ children, title }) {
   return (
-    <div>
+    <Box bg="blackAlpha.50" p={3} pt={6}>
       <h3>{title}</h3>
-      <ContainerUI>{children}</ContainerUI>
-    </div>
+      <Box>{children}</Box>
+    </Box>
   )
 }

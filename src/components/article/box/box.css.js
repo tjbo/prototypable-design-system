@@ -1,13 +1,13 @@
-import theme from '../../../theme'
+import theme from '../../theme'
 
 export const BoxWrapper = styled('div')`
   background-color: ${theme.colors.white};
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  border: ${theme.border};
-  padding: ${theme.unit(0.25)} ${theme.unit(0.5)};
-  margin-bottom: ${theme.unit(0.5)};
+  border: ${theme.border} ${theme.colors.gray[300]};
+  padding: ${theme.space[4]} ${theme.space[4]};
+  margin-bottom: ${theme.space[1]};
   width: 100%;
 
   .title {
@@ -23,7 +23,7 @@ export const BoxWrapper = styled('div')`
       margin-left: 0;
     }
   }
-  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
+  @media (max-width: ${theme.breakpoints[4]}) {
     ul {
       column-count: 3;
     }
@@ -33,7 +33,7 @@ export const BoxWrapper = styled('div')`
       column-count: 2;
     }
   }
-  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+  @media (max-width: ${theme.breakpoints[1]}) {
     ul {
       column-count: 1;
     }

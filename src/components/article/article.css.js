@@ -14,7 +14,7 @@ export const SidebarUI = styled('div')`
     }
   }
 
-  @media (max-width: ${theme.breakPointsAsPixel.tablet}) {
+  @media (max-width: ${theme.breakpoints[4]}) {
     ul {
       column-count: 3;
     }
@@ -26,7 +26,7 @@ export const SidebarUI = styled('div')`
     }
   }
 
-  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+  @media (max-width: ${theme.breakpoints[1]}) {
     ul {
       column-count: 1;
     }
