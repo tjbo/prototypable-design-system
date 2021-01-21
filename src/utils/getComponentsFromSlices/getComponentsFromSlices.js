@@ -1,5 +1,5 @@
 import Article from '../../components/article'
-import BlockQuote from '../../components/blockQuote'
+import HighlightedBox from '../../components/highlightedBox'
 import CardsSection from '../../components/cardsSection'
 import Faq from '../../components/faq'
 import Grid from '../../components/grid'
@@ -41,7 +41,7 @@ const components = {
 
 const wrapperComponent = {
   text: 'div',
-  highlighted_box: BlockQuote,
+  highlighted_box: HighlightedBox,
 }
 
 // takes prismic data, then parses the components to react components and adds a wrapper

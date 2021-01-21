@@ -1,8 +1,6 @@
 export { default as Article } from './components/article'
 export { default as Body } from './components/body'
 export { default as Button } from './components/button'
-export { default as BlockQuote } from './components/blockQuote'
-export { default as BreadCrumb } from './components/breadCrumb'
 export { default as Card } from './components/card/'
 export { default as Cards } from './components/cards/'
 export { default as CardsSection } from './components/cardsSection'
@@ -36,6 +34,10 @@ export {
   AlertIcon,
   Box,
   ButtonGroup,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
   // Button, see button above, we need to include a way to use our router
   // ChakraProvider we use this in prototypable provider
   Checkbox,

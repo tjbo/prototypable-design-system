@@ -1,10 +1,10 @@
-import BlockQuote from '../blockQuote'
+import HighlightedBox from '../highlightedBox'
 import { ContainerUI } from './relatedContent.css'
 import { Link } from '@reach/router'
 
 export default function ({ items }) {
   return (
-    <BlockQuote>
+    <HighlightedBox>
       <ContainerUI>
         <h3>Related</h3>
         <ul>
@@ -19,6 +19,6 @@ export default function ({ items }) {
           })}
         </ul>
       </ContainerUI>
-    </BlockQuote>
+    </HighlightedBox>
   )
 }
