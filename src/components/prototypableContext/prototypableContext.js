@@ -1,7 +1,7 @@
 import React from 'react'
 import { ChakraProvider } from '@chakra-ui/react'
 import Body from '../body'
-import theme from './theme'
+import theme from '../theme'
 
 export const Context = React.createContext()
 

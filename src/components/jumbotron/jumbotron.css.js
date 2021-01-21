@@ -1,16 +1,16 @@
 import styled from 'styled-components'
-import theme from '../../theme'
+import theme from '../theme'
 
 export const ContainerUI = styled('div')`
   align-items: ${({ alignItems }) => alignItems};
   display: flex;
   justify-content: ${({ justifyContent }) => justifyContent};
   margin-top: ${({ hasNavShift }) =>
-    hasNavShift === true ? `-${theme.layout.desktop.headerHeight}` : 0};
+    hasNavShift === true ? `-${theme.space[28]}` : 0};
 
-  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+  @media (max-width: ${theme.breakpoints[1]}) {
     margin-top: ${({ hasNavShift }) =>
-      hasNavShift === true ? `-${theme.layout.mobile.headerHeight}` : 0};
+      hasNavShift === true ? `-${theme.space[28]}` : 0};
   }
 
   min-height: ${({ size }) => (size === 'half' ? `50vh` : `100vh`)};
@@ -43,17 +43,15 @@ export const ContentUI = styled('div')`
   max-width: 768px;
   padding: 0;
   margin-top: ${({ hasVerticalOffset }) =>
-    hasVerticalOffset
-      ? theme.layoutAsNumber.desktop.headerHeight / 3 + 'px'
-      : 0};
+    hasVerticalOffset ? theme.space[9] : 0};
 
   margin-left: ${({ justifyContent }) =>
-    justifyContent === 'flex-start' ? `${theme.unit(1.5)}` : '0'};
+    justifyContent === 'flex-start' ? `${theme.space[4]}` : '0'};
 
-  @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
+  @media (max-width: ${theme.breakpoints[1]}) {
     margin-top: 0;
-    margin-left: ${theme.unit(0.5)};
-    margin-right: ${theme.unit(0.5)};
+    margin-left: ${theme.space[2]};
+    margin-right: ${theme.space[2]};
   }
 `
 
@@ -71,10 +69,10 @@ export const MainContentUI = styled('div')`
   p,
   ul {
     color: #fff;
-    font-size: ${theme.unit(0.75)};
+    font-size: ${theme.fontSizes['md']};
 
-    @media (max-width: ${theme.breakPointsAsPixel.mobile}) {
-      font-size: ${theme.unit(0.65)};
+    @media (max-width: ${theme.breakpoints[1]}) {
+      font-size: ${theme.fontSizes['md']};
     }
   }
 

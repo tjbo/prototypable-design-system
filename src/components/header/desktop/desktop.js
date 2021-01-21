@@ -61,14 +61,10 @@ const Brand = function Brand({ children, isAnimated, headerStyle }) {
 function SubMenu({ children, text }) {
   return (
     <DropdownUI>
-      <LinkUI>
-        <Text>{text}</Text>
-      </LinkUI>
+      <LinkUI>{text}</LinkUI>
       <ul>
         {React.Children.map(children, (child) => (
-          <li>
-            <Text>{React.cloneElement(child, {})}</Text>
-          </li>
+          <li>{React.cloneElement(child, {})}</li>
         ))}
       </ul>
     </DropdownUI>
@@ -79,17 +75,11 @@ function Link({ children, asHighlight, tel }) {
   if (asHighlight) {
     return (
       <LinkUI onClick={clickPhone.bind(null, tel)}>
-        <HighlightUI>
-          <Text>{children}</Text>
-        </HighlightUI>
+        <HighlightUI>{children}</HighlightUI>
       </LinkUI>
     )
   }
-  return (
-    <LinkUI>
-      <Text>{children}</Text>
-    </LinkUI>
-  )
+  return <LinkUI>{children}</LinkUI>
 }
 
 function Menu({ children, isAnimated, headerStyle }) {

@@ -8,7 +8,7 @@ import {
 } from './jumbotron.css'
 import Button from '../button'
 import ResponsiveImage from '../responsiveImage'
-import theme from '../../theme'
+import theme from '../theme'
 
 export default function ({
   callToActionText,
@@ -55,7 +55,7 @@ export default function ({
           aspectRatio={null}
           data={image}
           loading="eager"
-          sizes={theme.imageDimensions.jumbotron[size]}
+          sizes={theme.jumbotron[size]}
           spaceAfter="none"
         />
       </ImageUI>

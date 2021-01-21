@@ -9,11 +9,13 @@ export default {
       default: '400ms',
     },
   },
+  // breakpoints: ['0em', '30em', '48em', '62em', '80em', '96em'],
+
   breakPoints: {
-    mobile: 608,
-    tablet: 960,
-    bigTablet: 1024,
-    desktop: 1280,
+    mobile: 608, // 30em index 1
+    tablet: 960, // 62em index 4
+    bigTablet: 1024, //80 em index 5
+    desktop: 1280, //96em index 6
   },
   breakPointsAsPixel: {
     mobile: '608px',

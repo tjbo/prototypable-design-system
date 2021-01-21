@@ -1,6 +1,6 @@
-import theme from '../../../theme'
 import { keyframes, css } from 'styled-components'
 import hexToRgb from '../../../utils/hexToRgb'
+import theme from '../../theme'
 
 const pulseColor = (_style) => {
   return keyframes`
@@ -19,12 +19,12 @@ export const LinkUI = styled('div')`
   box-sizing: border-box;
   display: flex;
   justify-content: center;
-  height: ${theme.layout.desktop.headerHeight};
+  height: ${theme.space[28]};
   a:visited,
   a:link {
     text-decoration: none;
   }
-  padding: 0 ${theme.unit(0.25)};
+  padding: 0 ${theme.space[2]};
   a:active,
   a:hover {
     cursor: pointer;
@@ -37,17 +37,19 @@ export const ContainerUI = styled('header')`
   background-color: transparent;
   box-sizing: border-box;
   display: block;
-  height: ${theme.layout.desktop.headerHeight};
-  min-height: ${theme.layout.desktop.headerHeight};
+  height: ${theme.space[28]};
+  min-height: ${theme.space[28]};
   width: 100%;
   top: 0;
   position: absolute;
   z-index: 1;
   background-color: ${({ isTransparent }) =>
-    isTransparent ? 'transparent' : theme.colors.light3};
+    isTransparent ? 'transparent' : theme.colors.white};
 
   border-bottom: ${({ isTransparent }) =>
-    isTransparent ? '1px solid transparent' : '1px solid #d3d3d3'};
+    isTransparent
+      ? '1px solid transparent'
+      : `1px solid ${theme.colors.gray['200']}`};
 `
 
 export const ContainerInnerUI = styled('div')`
@@ -55,25 +57,25 @@ export const ContainerInnerUI = styled('div')`
   background-color: transparent;
   box-sizing: border-box;
   display: flex;
-  height: ${theme.layout.desktop.headerHeight};
+  height: ${theme.space[28]};
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
   z-index: 1;
-  padding-right: ${theme.unit(1.5)};
-  padding-left: ${theme.unit(1.5)};
+  padding-right: ${theme.space[8]};
+  padding-left: ${theme.space[8]};
 `
 
 export const DropdownUI = styled('div')`
   box-sizing: border-box;
   cursor: pointer;
   display: block;
-  height: ${theme.layout.desktop.headerHeight};
+  height: ${theme.space[28]};
   position: relative;
   float: left;
 
   ul {
-    background-color: rgba(${hexToRgb(theme.colors.dark3)}, 1);
+    background-color: rgba(${hexToRgb(theme.colors.blue['800'])}, 1);
     box-sizing: border-box;
     display: none;
     list-style: none;
@@ -97,14 +99,14 @@ export const DropdownUI = styled('div')`
       a {
         color: #fff;
         :hover {
-          background-color: ${theme.colors.dark5};
+          background-color: ${theme.colors.blue['800']};
           text-decoration: none;
         }
         box-sizing: border-box;
         display: block;
         margin-left: 0;
         min-width: 100%;
-        padding: ${theme.unit(0.25)};
+        padding: ${theme.space[2]};
       }
     }
 
@@ -120,7 +122,7 @@ export const DropdownUI = styled('div')`
       border-style: solid;
       border-width: 0 13px 13px 13px;
       border-color: transparent transparent
-        rgba(${hexToRgb(theme.colors.dark3)}, 1) transparent;
+        rgba(${hexToRgb(theme.colors.blue['800'])}, 1) transparent;
       z-index: 9999;
     }
   }
@@ -137,9 +139,9 @@ export const BrandUI = styled('div')`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: ${theme.layout.desktop.headerHeight};
+  height: ${theme.space['28']};
   max-width: 230px;
-  padding: ${theme.unit(0.5)};
+  padding: ${theme.space['2']};
   padding-left: 0;
 
   img {
@@ -150,8 +152,8 @@ export const BrandUI = styled('div')`
 export const HighlightUI = styled('div')`
   cursor: pointer;
   color: #fff;
-  padding: ${theme.unit(0.075)} ${theme.unit(0.5)};
-  background-color: ${theme.colors.dark2};
+  padding: ${theme.space['1']} ${theme.space['2']};
+  background-color: ${theme.colors.red['600']};
 `
 
 export const MenuUI = styled('div')`
@@ -162,11 +164,11 @@ export const MenuUI = styled('div')`
     animation: ${({ isAnimated, headerStyle }) =>
       isAnimated
         ? css`
-            ${pulseColor(headerStyle)} ${theme.animation.speed
-              .default} ease-in-out 1
+            ${pulseColor(headerStyle)} ${theme.transition.easing['ease-in-out']}
           `
         : 'none'};
-    color: ${({ headerStyle }) => (headerStyle === 'light' ? '#fff' : '#000')};
+    color: ${({ headerStyle }) =>
+      headerStyle === 'light' ? theme.colors.white : theme.colors.black};
   }
 
   ul li ${LinkUI} {
