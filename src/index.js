@@ -33,33 +33,62 @@ export { Form, Formik, Field } from 'formik'
 // and to assemble bigger more complext things things, but since we aren't changing these things
 // we can export them for general use
 export {
+  Alert,
+  AlertIcon,
   Box,
+  ButtonGroup,
   // Button, see button above, we need to include a way to use our router
   // ChakraProvider we use this in prototypable provider
   Checkbox,
+  Divider,
+  Flex,
   FormControl,
   FormLabel,
   FormErrorMessage,
+  Heading,
+  IconButton,
+  InputRightElement,
+  InputGroup,
+  Image,
+  Link,
+  ListIcon,
+  List,
+  ListItem,
   // Heading, for now we will use h1, h2, h3, as they are built into prismic
   Textarea,
   Input,
   FormHelperText,
+  PseudoBox,
+  Progress,
+  Radio,
+  RadioGroup,
+  Select,
+  SimpleGrid,
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
   Stack,
   StatGroup,
   Stat,
   StatLabel,
   StatNumber,
   StatHelpText,
+  Spinner,
+  Switch,
 } from '@chakra-ui/react'
 
 // prismic is where we host static content, easier to have these here than write them twice
 import getComponentsFromSlices from './utils/getComponentsFromSlices'
 import getImagePathsFromData from './utils/getImagePathsFromData'
 import getContentByType from './utils/getContentByType'
+import getPath from './utils/getPath'
+import getPathFromParent from './utils/getPathFromParent'
 import getPages from './utils/getPages'
 import getPosts from './utils/getPosts'
 import getMetaTags from './utils/getMetaTags'
 import getSrcSets from './utils/getSrcSets'
+import getStructuredDataForArticle from './utils/getStructuredDataForArticle'
 
 // general util functions
 import makePixelValue from './utils/makePixelValue'
@@ -71,9 +100,12 @@ export const utils = {
   getContentByType,
   getImagePathsFromData,
   getMetaTags,
+  getPath,
+  getPathFromParent,
   getPages,
   getPosts,
   getSrcSets,
+  getStructuredDataForArticle,
   makePixelValue,
   useScript,
 }

@@ -8,6 +8,7 @@ import {
   MenuUI,
 } from './desktop.css'
 import clickPhone from '../../../utils/clickPhone'
+import { Text } from '@chakra-ui/react'
 
 class Container extends React.Component {
   state = {
@@ -60,10 +61,14 @@ const Brand = function Brand({ children, isAnimated, headerStyle }) {
 function SubMenu({ children, text }) {
   return (
     <DropdownUI>
-      <LinkUI>{text}</LinkUI>
+      <LinkUI>
+        <Text>{text}</Text>
+      </LinkUI>
       <ul>
         {React.Children.map(children, (child) => (
-          <li>{React.cloneElement(child, {})}</li>
+          <li>
+            <Text>{React.cloneElement(child, {})}</Text>
+          </li>
         ))}
       </ul>
     </DropdownUI>
@@ -74,11 +79,17 @@ function Link({ children, asHighlight, tel }) {
   if (asHighlight) {
     return (
       <LinkUI onClick={clickPhone.bind(null, tel)}>
-        <HighlightUI>{children}</HighlightUI>
+        <HighlightUI>
+          <Text>{children}</Text>
+        </HighlightUI>
       </LinkUI>
     )
   }
-  return <LinkUI>{children}</LinkUI>
+  return (
+    <LinkUI>
+      <Text>{children}</Text>
+    </LinkUI>
+  )
 }
 
 function Menu({ children, isAnimated, headerStyle }) {

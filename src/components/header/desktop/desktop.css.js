@@ -18,8 +18,6 @@ export const LinkUI = styled('div')`
   align-items: center;
   box-sizing: border-box;
   display: flex;
-  font-family: ${theme.typography.fonts.font1};
-  font-weight: 400;
   justify-content: center;
   height: ${theme.layout.desktop.headerHeight};
   a:visited,
@@ -104,7 +102,6 @@ export const DropdownUI = styled('div')`
         }
         box-sizing: border-box;
         display: block;
-        font-family: ${theme.typography.fonts.font1};
         margin-left: 0;
         min-width: 100%;
         padding: ${theme.unit(0.25)};
@@ -173,7 +170,6 @@ export const MenuUI = styled('div')`
   }
 
   ul li ${LinkUI} {
-    font-weight: normal;
     text-transform: none;
     height: auto;
     margin: 0;

@@ -1,5 +1,6 @@
 var Prismic = require('prismic-javascript')
 import getPage from '../getPage'
+import getPathFromParent from '../getPathFromParent'
 
 export default function getPages(apiEndpoint, apiToken, options) {
   return Prismic.getApi(apiEndpoint, { accessToken: apiToken }).then((api) => {
@@ -21,7 +22,21 @@ export default function getPages(apiEndpoint, apiToken, options) {
             } else {
               pageData.template = 'src/pages/page'
             }
+
             return pageData
+              .map((page) => {
+                let path = '/'
+                if (page.path !== '/') {
+                  const _path = getPathFromParent(page, pages)
+                  path = _path
+                }
+                page.slug = path
+                return page
+              })
+              .map((page) => {
+                page.path = page.slug
+                return page
+              })
           })
         })
       })
