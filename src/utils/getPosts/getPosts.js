@@ -1,5 +1,7 @@
 import getPost from '../getPost'
 import getPath from '../getPath'
+import chalk from 'chalk'
+const log = console.log
 
 export default function getPosts(
   apiUrl,
@@ -15,7 +17,9 @@ export default function getPosts(
         })
 
         return Promise.all(promises).then((posts) => {
-          return posts.map((post) => {
+          log(chalk.green('Building prismic posts'))
+          log(chalk.green('-----------------------------------'))
+          const _posts = posts.map((post) => {
             const {
               data,
               linkedContent,
@@ -30,6 +34,8 @@ export default function getPosts(
 
             data.path = getPath(data)
 
+            log(chalk.blue(`Build post:`) + chalk.red(`${data.path}`))
+
             return {
               ...data,
               first_publication_date,
@@ -39,6 +45,11 @@ export default function getPosts(
               template: templatePath,
             }
           })
+
+          log(chalk.green('-----------------------------------'))
+          log(chalk.green(`Built ${_posts.length} posts \n`))
+
+          return _posts
         })
       })
   })

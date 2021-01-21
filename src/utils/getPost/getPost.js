@@ -17,7 +17,6 @@ export default function getPost(api, id, fetchLinks) {
 
       return api.getByIDs(ids, { fetchLinks }).then((response) => {
         const sections = response.results
-        console.log('stuff', sections)
         return {
           data,
           id,

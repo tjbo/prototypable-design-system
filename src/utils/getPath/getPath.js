@@ -1,5 +1,5 @@
 function getPath({ category, path }) {
-  if (category === 'root' && path === 'index') {
+  if (category && category === 'root' && path === 'index') {
     return `/`
   } else if (category === 'root') {
     return `/${path}/`
