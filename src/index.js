@@ -18,8 +18,6 @@ export { default as Modal } from './components/modal'
 export { default as ResponsiveImage } from './components/responsiveImage'
 export { default as Section } from './components/section'
 export { default as ScrollToTop } from './components/scrollToTop'
-export { default as Tabs } from './components/tabs'
-export { default as Text } from './components/text'
 export { default as Head } from './components/head/head'
 export { PrototypableProvider } from './components/prototypableContext'
 
@@ -79,17 +77,8 @@ export {
   Switch,
 } from '@chakra-ui/react'
 
-// prismic is where we host static content, easier to have these here than write them twice
-import getComponentsFromSlices from './utils/getComponentsFromSlices'
-import getImagePathsFromData from './utils/getImagePathsFromData'
-import getContentByType from './utils/getContentByType'
-import getPath from './utils/getPath'
-import getPathFromParent from './utils/getPathFromParent'
-import getPages from './utils/getPages'
-import getPosts from './utils/getPosts'
-import getMetaTags from './utils/getMetaTags'
-import getSrcSets from './utils/getSrcSets'
-import getStructuredDataForArticle from './utils/getStructuredDataForArticle'
+// these are prismic utils for building static content
+export * as prismicUtils from './prismicUtils'
 
 // general util functions
 import makePixelValue from './utils/makePixelValue'
@@ -97,16 +86,6 @@ import useScript from './utils/useScript'
 
 // this needs to be exported like this, otherwise weird transpile errors from rollup
 export const utils = {
-  getComponentsFromSlices,
-  getContentByType,
-  getImagePathsFromData,
-  getMetaTags,
-  getPath,
-  getPathFromParent,
-  getPages,
-  getPosts,
-  getSrcSets,
-  getStructuredDataForArticle,
   makePixelValue,
   useScript,
 }

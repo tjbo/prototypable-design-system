@@ -1,4 +1,4 @@
-import getSrcSets from '../../utils/getSrcSets'
+import { getSrcSets } from '../../prismicUtils'
 import { AspectRatioUI, ImgUI } from './responsiveImage.css'
 import short from 'short-uuid'
 

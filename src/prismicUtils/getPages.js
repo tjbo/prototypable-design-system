@@ -1,6 +1,6 @@
 var Prismic = require('prismic-javascript')
-import getPage from '../getPage'
-import getPathFromParent from '../getPathFromParent'
+import getPage from './getPage'
+import getPathFromParent from './getPathFromParent'
 import chalk from 'chalk'
 const log = console.log
 

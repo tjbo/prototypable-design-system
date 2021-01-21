@@ -1,5 +1,5 @@
 import React from 'react'
-import getImagePathsFromData from '../getImagePathsFromData'
+import getImagePathsFromData from './getImagePathsFromData'
 
 function getStructuredDataForArticle(data) {
   const {

@@ -1,19 +1,18 @@
-import Article from '../../components/article'
-import HighlightedBox from '../../components/highlightedBox'
-import CardsSection from '../../components/cardsSection'
-import Faq from '../../components/faq'
-import Grid from '../../components/grid'
-import Icon from '../../components/icon'
-import Jumbotron from '../../components/jumbotron'
-import Line from '../../components/line'
-import ResponsiveImage from '../../components/responsiveImage'
-import Text from '../../components/text'
+import Article from '../components/article'
+import HighlightedBox from '../components/highlightedBox'
+import CardsSection from '../components/cardsSection'
+import Faq from '../components/faq'
+import Grid from '../components/grid'
+import Icon from '../components/icon'
+import Jumbotron from '../components/jumbotron'
+import Line from '../components/line'
+import ResponsiveImage from '../components/responsiveImage'
 import JsxParser from 'react-jsx-parser'
-import Section from '../../components/section'
-import Card from '../../components/card'
-import Cards from '../../components/cards'
+import Section from '../components/section'
+import Card from '../components/card'
+import Cards from '../components/cards'
 import short from 'short-uuid'
-import RelatedContent from '../../components/relatedContent'
+import RelatedContent from '../components/relatedContent'
 import { Media } from 'react-breakpoints'
 
 function getLinkedContentById(linkedContent, id) {
@@ -36,7 +35,6 @@ const components = {
   Grid,
   Icon,
   ResponsiveImage,
-  Text,
 }
 
 const wrapperComponent = {

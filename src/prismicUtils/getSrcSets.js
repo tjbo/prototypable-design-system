@@ -1,4 +1,4 @@
-export default function getSrcSets(sizes, data) {
+function getSrcSets(sizes, data) {
   if (!data) {
     return null
   }
@@ -28,3 +28,5 @@ export default function getSrcSets(sizes, data) {
     })
     .join(',')
 }
+
+export default getSrcSets

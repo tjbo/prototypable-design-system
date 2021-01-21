@@ -1,5 +1,5 @@
-import getPost from '../getPost'
-import getPath from '../getPath'
+import getPost from './getPost'
+import getPath from './getPath'
 import chalk from 'chalk'
 const log = console.log
 
