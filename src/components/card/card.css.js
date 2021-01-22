@@ -1,5 +1,5 @@
-import theme from '../../theme'
 import styled from 'styled-components'
+import theme from '../theme'
 
 export const CardUI = styled('div')`
   * {
@@ -7,19 +7,20 @@ export const CardUI = styled('div')`
   }
   display: block;
   background: #fff;
-  border: ${({ withBorder }) => (withBorder ? theme.border : 'none')};
+  border: ${({ withBorder }) =>
+    withBorder ? theme.borders['1px'] + theme.colors.gray[200] : 'none'};
   line-height: 1.75;
   width: 100%;
   height: 100%;
-  background-color: ${theme.colors.light3};
+  background-color: ${theme.colors.white};
 
   ${({ asLink }) => {
     return (
       asLink &&
       `
   :hover {
-    border: 1px solid ${theme.colors.dark3};
-    background-color: ${theme.colors.dark3};
+    border: 1px solid ${theme.colors.black};
+    background-color: ${theme.colors.black};
     cursor: pointer;
   }
   `
@@ -30,7 +31,7 @@ export const CardUI = styled('div')`
 export const ContentUI = styled('div')`
   display: flex;
   flex-direction: column;
-  padding: ${`${theme.unit(0.5)} ${theme.unit(0.66)}`};
+  padding: ${theme.space[6]};
   width: 100%;
 `
 

@@ -1,28 +1,28 @@
-import theme from '../../theme'
+import theme from '../theme'
 
 const getBgColor = ({ background }) => {
   if (background === 'transparent') {
     return 'transparent'
   } else if (background === 'light') {
-    return theme.colors.light1
+    return theme.colors.gray['50']
   } else if (background === 'dark') {
-    return theme.colors.dark3
+    return theme.colors.blue['700']
   } else {
-    return '#fff'
+    return theme.colors.white
   }
 }
 
 const getInnerWidth = ({ innerWidth }) => {
   if (innerWidth === 'medium') {
-    return theme.unit(21)
+    return theme.breakpoints[3]
   } else if (innerWidth === 'small') {
-    return theme.unit(18)
+    return theme.breakpoints[2]
   } else if (innerWidth === 'medium-plus') {
-    return theme.unit(30)
+    return theme.breakpoints[4]
   } else if (innerWidth === 'huge') {
-    return theme.unit(37)
+    return theme.breakpoints[6]
   } else {
-    return theme.unit(34)
+    return theme.breakpoints[3]
   }
 }
 
@@ -41,7 +41,7 @@ export const SectionUI = styled('div')`
   width: ${getInnerWidth};
   position: relative;
   margin: 0 auto;
-  padding: ${theme.unit(1.5)} ${theme.unit(0.75)};
+  padding: ${theme.space[9]} ${theme.space[3]};
   width: 100%;
   text-align: ${({ textAlign }) => textAlign};
 `
