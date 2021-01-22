@@ -1,24 +1,18 @@
-import {
-  ContainerUI,
-  ChevronLeftUI,
-  ChevronRightUI,
-  ChevronTopUI,
-} from './icon.css'
-import CrescentLenders from '../../svgs/crescentLenders'
-import BusinessInsider from '../../svgs/business-insider'
-import BrowserHome from '../../svgs/browser-home'
-import Chevron from '../../svgs/chevron'
-import Email from '../../svgs/email'
-import Loader from '../../svgs/loader'
-import MarketWatch from '../../svgs/market-watch'
-import Money from '../../svgs/money'
-import Mortgage from '../../svgs/mortgage'
-import Mortgage2 from '../../svgs/mortgage2'
-import Handshake from '../../svgs/handshake'
-import Percentage from '../../svgs/percentage'
-import Rocket from '../../svgs/rocket'
-import Sms from '../../svgs/sms'
-import YahooFinance from '../../svgs/yahoo-finance'
+import CrescentLenders from './svgs/crescentLenders'
+import BusinessInsider from './svgs/business-insider'
+import BrowserHome from './svgs/browser-home'
+// import Chevron from './svgs/chevron'
+import Email from './svgs/email'
+import Loader from './svgs/loader'
+import MarketWatch from './svgs/market-watch'
+import Money from './svgs/money'
+import Mortgage from './svgs/mortgage'
+import Mortgage2 from './svgs/mortgage2'
+import Handshake from './svgs/handshake'
+import Percentage from './svgs/percentage'
+import Rocket from './svgs/rocket'
+import Sms from './svgs/sms'
+import YahooFinance from './svgs/yahoo-finance'
 
 export const icons = {
   ['business-insider']: BusinessInsider,
@@ -37,39 +31,15 @@ export const icons = {
   ['yahoo-finance']: YahooFinance,
 }
 
-export default function Icon({ name, size = '100%', rotate = 0, ...rest }) {
+export default function ({ name, boxSize }) {
   if (typeof window === 'undefined') {
     return null
   }
 
   const Component = icons[name]
 
-  if (name === 'chevron-right') {
-    return (
-      <ChevronRightUI {...{ ...rest }}>
-        <Chevron />
-      </ChevronRightUI>
-    )
-  } else if (name === 'chevron-left') {
-    return (
-      <ChevronLeftUI {...{ ...rest }}>
-        <Chevron />
-      </ChevronLeftUI>
-    )
-  } else if (name === 'chevron-top') {
-    return (
-      <ChevronTopUI {...{ ...rest }}>
-        <Chevron />
-      </ChevronTopUI>
-    )
-  }
-
   if (Component) {
-    return (
-      <ContainerUI size={size} rotate={rotate}>
-        <Component {...{ ...rest }} />
-      </ContainerUI>
-    )
+    return <Component boxSize={boxSize} />
   }
   return null
 }

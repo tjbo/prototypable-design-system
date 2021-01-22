@@ -42,7 +42,7 @@ export const ContainerUI = styled('div')`
   min-width: 100vw;
 
   background-color: ${({ isTransparent }) =>
-    isTransparent ? 'transparent' : theme.colors.gray['200']};
+    isTransparent ? 'transparent' : theme.colors.white};
 
   border-bottom: ${({ isTransparent }) =>
     isTransparent ? '1px solid transparent' : '1px solid #d3d3d3'};

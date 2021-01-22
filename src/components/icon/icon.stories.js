@@ -13,7 +13,7 @@ export function Default() {
   for (let _icon in icons) {
     const icon = (
       <Grid.Col>
-        <Icon name={_icon} size={3} />
+        <Icon name={_icon} boxSize={24} />
       </Grid.Col>
     )
 

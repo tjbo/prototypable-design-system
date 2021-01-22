@@ -1,14 +1,11 @@
 import React from 'react'
 import { AnimateFillUI } from './crescentLenders.css'
+import { Icon } from '@chakra-ui/react'
 
-function Logo({ isAnimated, isWhite, headerStyle }) {
+function Logo({ isAnimated, isWhite, headerStyle, ...rest }) {
   return (
     <a href="/">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="100%"
-        viewBox="0 0 1111.745 406.82"
-      >
+      <Icon viewBox="0 0 1111.745 406.82" {...rest}>
         <defs>
           <path id="c" d="M49.862 62.774h195.107v81.25H49.862z" />
           <path id="b" d="M63.225 57.429h172.122v82.854H63.225z" />
@@ -47,7 +44,7 @@ function Logo({ isAnimated, isWhite, headerStyle }) {
             isAnimated={isAnimated}
           />
         </g>
-      </svg>
+      </Icon>
     </a>
   )
 }

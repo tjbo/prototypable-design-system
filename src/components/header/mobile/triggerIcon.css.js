@@ -88,10 +88,10 @@ export const ContainerInnerUI = styled('div')`
   display: block;
   height: ${makePixelValue(heightIcon)};
   margin: (${makePixelValue(heightIcon * 2.5)}) auto ${heightIcon} auto;
-  margin-top: ${theme.space[1]};
-  margin-right: ${theme.space[1]};
+  margin-top: ${theme.space[4]};
+  margin-right: ${theme.space[4]};
   position: relative;
-  width: ${theme.space[7]};
+  width: ${theme.space[9]};
   z-index: 9999;
   cursor: pointer;
 `

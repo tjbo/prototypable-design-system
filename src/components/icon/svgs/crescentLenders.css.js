@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components'
-import theme from '../components/theme'
+import theme from '../../theme'
 
 const pulseColor = (headerStyle) => {
   return keyframes`

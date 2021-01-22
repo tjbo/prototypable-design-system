@@ -14,6 +14,7 @@ import Cards from '../components/cards'
 import short from 'short-uuid'
 import RelatedContent from '../components/relatedContent'
 import { Media } from 'react-breakpoints'
+import { Box } from '@chakra-ui/react'
 
 function getLinkedContentById(linkedContent, id) {
   return linkedContent.filter((content) => {
@@ -31,6 +32,7 @@ function linkResolver(paths, doc) {
 
 const components = {
   Article,
+  Box,
   Line,
   Grid,
   Icon,

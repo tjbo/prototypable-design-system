@@ -1,6 +1,8 @@
-export default function () {
+import { Icon } from '@chakra-ui/react'
+
+export default function (props) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 508 508">
+    <Icon viewBox="0 0 508 508" {...props}>
       <circle cx="254" cy="254" r="254" fill="#fd8469" />
       <path
         d="M426 122.8H82c-7.2 0-13.2 6-13.2 13.2v236.4c0 7.2 6 13.2 13.2 13.2h344c7.2 0 13.2-6 13.2-13.2V135.6c0-7.2-6-12.8-13.2-12.8z"
@@ -22,6 +24,6 @@ export default function () {
       <g fill="#e6e9ee">
         <path d="M113.6 205.6H218v8.8H113.6zM113.6 227.2H218v8.8H113.6zM113.6 249.2H218v8.8H113.6zM113.6 270.8H218v8.8H113.6zM113.6 292.4H218v8.8H113.6zM113.6 314h52.8v8.8h-52.8z" />
       </g>
-    </svg>
+    </Icon>
   )
 }
