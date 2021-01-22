@@ -13,12 +13,10 @@ export { default as Header } from './components/header'
 export { default as Icon } from './components/icon'
 export { default as Jumbotron } from './components/jumbotron'
 export { default as LoadingScreen } from './components/loadingScreen'
-export { default as theme } from './theme'
 export { default as Modal } from './components/modal'
 export { default as ResponsiveImage } from './components/responsiveImage'
 export { default as Section } from './components/section'
 export { default as ScrollToTop } from './components/scrollToTop'
-export { default as Head } from './components/head/head'
 export { PrototypableProvider } from './components/prototypableContext'
 
 // we use this library for building forms
@@ -62,7 +60,6 @@ export {
   Radio,
   RadioGroup,
   Select,
-  SimpleGrid,
   Slider,
   SliderTrack,
   SliderFilledTrack,

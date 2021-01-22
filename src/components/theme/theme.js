@@ -1,4 +1,4 @@
-import { extendTheme } from '@chakra-ui/react'
+import { extendTheme, theme } from '@chakra-ui/react'
 
 const config = {
   initialColorMode: 'light',
@@ -27,4 +27,35 @@ const shadows = {
   outline: `0 0 0 1px #000`,
 }
 
-export default extendTheme({ config, colors, jumbotron, shadows })
+const { fontSizes: fs } = theme
+
+console.log('fs', fs)
+
+const global = {
+  h1: {
+    // you can also use responsive styles
+    fontSize: [fs['xl'], fs['3xl'], fs['4xl'], fs['5xl']],
+    fontWeight: 'bold',
+    lineHeight: '110%',
+    letterSpacing: '-2%',
+  },
+  h2: {
+    fontSize: ['36px', '48px'],
+    fontWeight: 'semibold',
+    lineHeight: '110%',
+    letterSpacing: '-1%',
+  },
+}
+
+// Version 1: Using objects
+export default extendTheme({
+  config,
+  colors,
+  jumbotron,
+  shadows,
+  styles: {
+    global,
+  },
+})
+
+// export default extendTheme({ config, colors, jumbotron, shadows, textStyles })

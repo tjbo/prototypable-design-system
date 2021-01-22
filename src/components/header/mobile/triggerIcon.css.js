@@ -1,5 +1,5 @@
 import makePixelValue from '../../../utils/makePixelValue'
-import theme from '../../../theme'
+import theme from '../../theme'
 import { css, keyframes } from 'styled-components'
 
 const heightLine = 5
@@ -24,7 +24,7 @@ const pulseColor = ({ headerStyle, isAnimated }) => {
 
   return isAnimated
     ? css`
-        ${_keyframes} ${theme.animation.speed.default} ease-in-out 1
+        ${_keyframes} ${theme.transition.easing['ease-in-out']}
       `
     : 'none'
 }
@@ -40,7 +40,7 @@ function getDefaultStyles({ isAnimated, headerStyle, isOpen }) {
   height: ${makePixelValue(heightLine)};
   left: 0;
   position: absolute;
-  transition: transform ${theme.animation.speed.default} ease-in-out;
+  transition: transform ${theme.transition.easing['ease-in-out']};
   width: 100%;
 `
 }
@@ -78,7 +78,7 @@ export const Line3UI = styled('span')`
 
 export const ContainerUI = styled('div')`
   position: absolute;
-  padding: ${theme.unit(0.5)};
+  padding: ${theme.space[2]};
   right: 0;
   top: 0;
   cursor: pointer;
@@ -88,10 +88,10 @@ export const ContainerInnerUI = styled('div')`
   display: block;
   height: ${makePixelValue(heightIcon)};
   margin: (${makePixelValue(heightIcon * 2.5)}) auto ${heightIcon} auto;
-  margin-top: ${theme.unit(0.375)};
-  margin-right: ${theme.unit(0.375)};
+  margin-top: ${theme.space[1]};
+  margin-right: ${theme.space[1]};
   position: relative;
-  width: ${theme.unit(1.25)};
+  width: ${theme.space[7]};
   z-index: 9999;
   cursor: pointer;
 `

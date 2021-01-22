@@ -26,18 +26,9 @@ function Card({
   }
 
   return (
-    <Grid.Col
-      collapseHorizontalPaddingOnMobile={true}
-      horizontalPadding={horizontalPadding}
-      verticalPadding={verticalPadding}
-      maxWidth={maxWidth}
-      width={width}
-      alignSelf="stretch"
-    >
-      <CardUI asLink={asLink} onClick={onClick} withBorder={withBorder}>
-        {children}
-      </CardUI>
-    </Grid.Col>
+    <CardUI asLink={asLink} onClick={onClick} withBorder={withBorder}>
+      {children}
+    </CardUI>
   )
 }
 

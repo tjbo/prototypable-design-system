@@ -10,7 +10,7 @@ export class PrototypableProvider extends React.Component {
     const { children } = this.props
     return (
       <Context.Provider>
-        <ChakraProvider resetCSS={false} theme={theme}>
+        <ChakraProvider resetCSS={true} theme={theme}>
           <Body>{children}</Body>
         </ChakraProvider>
       </Context.Provider>

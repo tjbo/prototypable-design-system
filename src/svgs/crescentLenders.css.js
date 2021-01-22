@@ -1,5 +1,5 @@
 import styled, { css, keyframes } from 'styled-components'
-import theme from '../theme'
+import theme from '../components/theme'
 
 const pulseColor = (headerStyle) => {
   return keyframes`
@@ -24,8 +24,7 @@ export const AnimateFillUI = styled('path')`
   animation: ${({ isAnimated, headerStyle }) =>
     isAnimated
       ? css`
-          ${pulseColor(headerStyle)} ${theme.animation.speed
-            .default} ease-in-out 1
+          ${pulseColor(headerStyle)} ${theme.transition.easing['ease-in-out']}
         `
       : 'none'};
 `

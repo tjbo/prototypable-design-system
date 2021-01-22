@@ -1,4 +1,4 @@
-import getSpaceAfter from '../../utils/getSpaceAfter'
+import theme from '../theme'
 
 export const AspectRatioUI = styled('div')`
   /* Position child elements relative to this element */
@@ -22,13 +22,13 @@ export const AspectRatioUI = styled('div')`
     height: 100%;
     min-height: 100%;
   }
-  margin-bottom: ${getSpaceAfter};
+  margin-bottom: ${theme.space[4]};
 `
 
 export const ImgUI = styled('img')`
   max-width: 100%;
   min-width: 100%;
   height: 100%;
-  margin-bottom: ${getSpaceAfter};
+  margin-bottom: ${theme.space[4]};
   object-fit: cover;
 `

@@ -11,7 +11,7 @@ import Trigger from './triggerIcon'
 import SubMenu from './submenu'
 import { onShowModal, onHideModal } from '../../body'
 import Button from '../../button'
-import theme from '../../../theme'
+import theme from '../../theme'
 import throttle from 'lodash.throttle'
 import clickPhone from '../../../utils/clickPhone'
 
@@ -64,7 +64,7 @@ class Container extends React.Component {
     if (typeof window !== 'undefined') {
       const scrollTop =
         document.body.scrollTop || document.documentElement.scrollTop
-      if (scrollTop >= theme.layoutAsNumber.mobile.headerHeight) {
+      if (scrollTop >= theme.space[28]) {
         this.setState({ isScrollTopLimit: true })
       } else {
         this.setState({ isScrollTopLimit: false })

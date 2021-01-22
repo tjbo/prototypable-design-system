@@ -1,4 +1,4 @@
-import theme from '../../theme'
+import theme from '../theme'
 import hexToRgb from '../../utils/hexToRgb'
 
 export const CloseButtonUI = styled('a')`
@@ -17,13 +17,13 @@ export const ContainerUI = styled('div')`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(${hexToRgb(theme.colors.dark1)}, 0.8);
+  background: rgba(${hexToRgb(theme.colors.black)}, 0.8);
   z-index: 999;
-  padding: ${theme.unit(0.5)};
+  padding: ${theme.space[3]};
 `
 
 export const ModalUI = styled('div')`
-  padding: ${theme.unit(0.5)};
+  padding: ${theme.space[3]};
   position: absolute;
   z-index: 99999;
   width: 500px;

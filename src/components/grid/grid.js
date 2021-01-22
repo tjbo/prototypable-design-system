@@ -1,45 +1,20 @@
-import { ColUI, ColInnerUI, GridUI } from './grid.css'
+import { Box, SimpleGrid } from '@chakra-ui/react'
 
 function Grid({
-  alignItems = 'flex-start',
   children,
-  collapse = '',
-  direction = 'row',
+  minChildWidth = '250px',
+  spacingX = 4,
+  spacingY = 4,
 }) {
   return (
-    <GridUI alignItems={alignItems} collapse={collapse} direction={direction}>
+    <SimpleGrid {...{ minChildWidth, spacingX, spacingY }}>
       {children}
-    </GridUI>
+    </SimpleGrid>
   )
 }
 
-Grid.Col = function ({
-  alignSelf = 'flex-start',
-  collapseHorizontalPaddingOnMobile = false,
-  collapsePaddingOnMobile = false,
-  children,
-  isSticky = false,
-  horizontalPadding = 0.25,
-  maxWidth = 'initial',
-  verticalPadding = 0.25,
-  textAlign = 'left',
-  width = '32%',
-}) {
-  return (
-    <ColUI
-      alignSelf={alignSelf}
-      collapseHorizontalPaddingOnMobile={collapseHorizontalPaddingOnMobile}
-      collapsePaddingOnMobile={collapsePaddingOnMobile}
-      horizontalPadding={horizontalPadding}
-      isSticky={isSticky}
-      maxWidth={maxWidth}
-      verticalPadding={verticalPadding}
-      textAlign={textAlign}
-      _width={width}
-    >
-      <ColInnerUI>{children}</ColInnerUI>
-    </ColUI>
-  )
+Grid.Col = function ({ children }) {
+  return <Box>{children}</Box>
 }
 
 export default Grid

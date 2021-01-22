@@ -1,5 +1,5 @@
-import theme from '../../theme'
+import theme from '../theme'
 
 export const HRUI = styled('hr')`
-  border-top: 1px solid ${theme.colors.dark4};
+  border-top: 1px solid ${theme.colors.gray['100']};
 `
