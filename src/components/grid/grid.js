@@ -24,11 +24,7 @@ function Grid({
 }
 
 Grid.Col = function ({ children, ...rest }) {
-  return (
-    <Box margin="0" padding="0" {...{ ...rest }}>
-      {children}
-    </Box>
-  )
+  return <Box {...{ ...rest }}>{children}</Box>
 }
 
 export default Grid

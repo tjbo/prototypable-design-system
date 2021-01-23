@@ -31,7 +31,7 @@ export const icons = {
   ['yahoo-finance']: YahooFinance,
 }
 
-export default function ({ name, boxSize, ...rest }) {
+export default function ({ name, boxSize = [24], ...rest }) {
   if (typeof window === 'undefined') {
     return null
   }

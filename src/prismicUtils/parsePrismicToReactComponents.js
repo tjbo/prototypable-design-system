@@ -15,7 +15,6 @@ import ResponsiveImage from '../components/responsiveImage'
 import Grid from '../components/grid'
 import Icon from '../components/icon'
 import HighlightedBox from '../components/highlightedBox'
-import Line from '../components/line'
 import short from 'short-uuid'
 import getLink from './getLink'
 
@@ -26,7 +25,6 @@ function linkResolver(paths, doc) {
 const components = {
   Article,
   Box,
-  Line,
   Grid,
   HighlightedBox,
   Icon,

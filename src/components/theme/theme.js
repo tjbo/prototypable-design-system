@@ -49,24 +49,32 @@ const global = {
 
   h1: {
     // you can also use responsive styles
-    fontSize: [fs['xl'], fs['3xl'], fs['4xl'], fs['5xl']],
+    fontSize: [fs['3xl'], fs['4xl'], fs['5xl'], fs['6xl']],
     fontWeight: 'bold',
     lineHeight: '110%',
     letterSpacing: '-2%',
+    marginBottom: theme.space[6],
   },
   h2: {
-    fontSize: [fs['xl'], fs['3xl'], fs['4xl']],
+    fontSize: [fs['xl'], fs['3xl'], fs['4xl'], fs['5xl']],
     fontWeight: 'semibold',
     lineHeight: '110%',
     letterSpacing: '-1%',
+    marginBottom: theme.space[6],
   },
   h3: {
-    fontSize: [fs['xl'], fs['3xl']],
+    fontSize: [fs['xl'], fs['4xl']],
     fontWeight: 'semibold',
-    lineHeight: '110%',
+    lineHeight: '120%',
     letterSpacing: '-1%',
+    marginBottom: theme.space[6],
   },
-  h4: {},
+  h4: {
+    fontSize: [fs['xl'], fs['xl1']],
+  },
+  h5: {
+    fontSize: [fs['xl'], fs['xl1']],
+  },
 }
 
 // Version 1: Using objects
