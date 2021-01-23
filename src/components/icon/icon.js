@@ -31,7 +31,7 @@ export const icons = {
   ['yahoo-finance']: YahooFinance,
 }
 
-export default function ({ name, boxSize }) {
+export default function ({ name, boxSize, ...rest }) {
   if (typeof window === 'undefined') {
     return null
   }
@@ -39,7 +39,7 @@ export default function ({ name, boxSize }) {
   const Component = icons[name]
 
   if (Component) {
-    return <Component boxSize={boxSize} />
+    return <Component {...{ boxSize, ...rest }} />
   }
   return null
 }

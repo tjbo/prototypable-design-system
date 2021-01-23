@@ -61,19 +61,15 @@ export const MainContentUI = styled('div')`
 
   h1,
   h2,
-  h3 {
+  h3,
+  p,
+  li {
     color: #fff;
     margin-bottom: 0;
   }
 
-  p,
-  ul {
-    color: #fff;
-    font-size: ${theme.fontSizes['md']};
-
-    @media (max-width: ${theme.breakpoints[1]}) {
-      font-size: ${theme.fontSizes['md']};
-    }
+  p {
+    font-size: ${theme.fontSizes['3xl']};
   }
 
   li {

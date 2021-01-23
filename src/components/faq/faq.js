@@ -1,26 +1,33 @@
-import { DetailsUI, SummaryUI } from './faq.css'
+import {
+  Accordion,
+  Box,
+  AccordionIcon,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+} from '@chakra-ui/react'
+import short from 'short-uuid'
 
 class Faq extends React.Component {
-  state = {
-    isOpen: false,
-  }
-
-  toggle = (event) => {
-    event.preventDefault()
-    this.setState({ isOpen: !this.state.isOpen })
-  }
-
   render() {
-    const { children, title } = this.props
-    const { isOpen } = this.state
+    const { items, title } = this.props
 
     return (
-      <DetailsUI open={this.state.isOpen}>
-        <SummaryUI>
-          <h4 onClick={this.toggle}>{title}</h4>
-        </SummaryUI>
-        {isOpen && children}
-      </DetailsUI>
+      <Accordion allowMultiple>
+        {items.map((item) => {
+          return (
+            <AccordionItem key={short.generate()}>
+              <AccordionButton>
+                <Box flex="1" textAlign="left">
+                  {item.question}
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+              <AccordionPanel pb={4}>{item.answer}</AccordionPanel>
+            </AccordionItem>
+          )
+        })}
+      </Accordion>
     )
   }
 }

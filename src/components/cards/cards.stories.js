@@ -247,7 +247,7 @@ export function withImagesWithTitle() {
           return (
             <Card withBorder={false}>
               <Card.Image title={image.alt} to="/home">
-                <ResponsiveImage data={image} spaceAfter="none" />
+                <ResponsiveImage data={image} />
               </Card.Image>
             </Card>
           )

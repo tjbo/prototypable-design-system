@@ -29,9 +29,24 @@ const shadows = {
 
 const { fontSizes: fs } = theme
 
-console.log('fs', fs)
-
 const global = {
+  body: {
+    fontSize: [fs.lg],
+  },
+  a: {
+    color: 'blue.800',
+    hover: {
+      textDecoration: 'underline',
+    },
+  },
+  p: {
+    marginBottom: theme.space[6],
+  },
+  ul: {
+    marginLeft: theme.space[12],
+    marginBottom: theme.space[6],
+  },
+
   h1: {
     // you can also use responsive styles
     fontSize: [fs['xl'], fs['3xl'], fs['4xl'], fs['5xl']],
@@ -40,11 +55,18 @@ const global = {
     letterSpacing: '-2%',
   },
   h2: {
-    fontSize: ['36px', '48px'],
+    fontSize: [fs['xl'], fs['3xl'], fs['4xl']],
     fontWeight: 'semibold',
     lineHeight: '110%',
     letterSpacing: '-1%',
   },
+  h3: {
+    fontSize: [fs['xl'], fs['3xl']],
+    fontWeight: 'semibold',
+    lineHeight: '110%',
+    letterSpacing: '-1%',
+  },
+  h4: {},
 }
 
 // Version 1: Using objects

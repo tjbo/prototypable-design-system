@@ -75,14 +75,12 @@ export {
 } from '@chakra-ui/react'
 
 // these are prismic utils for building static content
-export * as prismicUtils from './prismicUtils'
+export { default as prismicUtils } from './prismicUtils'
 
 // general util functions
-import makePixelValue from './utils/makePixelValue'
 import useScript from './utils/useScript'
 
 // this needs to be exported like this, otherwise weird transpile errors from rollup
 export const utils = {
-  makePixelValue,
   useScript,
 }

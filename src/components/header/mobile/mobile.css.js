@@ -5,12 +5,12 @@ const pulseColor = (isTransparent) => {
   return keyframes`
     to {
         background-color: ${
-          isTransparent === false ? theme.colors.grey['200'] : 'transparent'
+          isTransparent === false ? theme.colors.gray['200'] : 'transparent'
         };
     }
     from {
         background-color:  ${
-          isTransparent === false ? 'transparent' : theme.colors.grey['200']
+          isTransparent === false ? 'transparent' : theme.colors.gray['200']
         };
     }
     `
@@ -74,12 +74,12 @@ export const HighlightUI = styled('div')`
 `
 
 export const LinkUI = styled('div')`
-  color: ${theme.colors.red['800']};
+  color: ${theme.colors.blue['800']};
   display: flex;
   align-items: center;
   cursor: pointer;
   box-sizing: border-box;
-  font-size: ${theme.space[4]};
+  font-size: ${theme.space[6]};
   margin: 0;
   padding: ${theme.space[2]};
   position: relative;
@@ -94,7 +94,7 @@ export const LinkUI = styled('div')`
   a:visited,
   a:hover,
   a:link {
-    color: ${theme.colors.red['800']};
+    color: ${theme.colors.blue['800']};
     display: inline-block;
     min-width: 100%;
     text-decoration: none;

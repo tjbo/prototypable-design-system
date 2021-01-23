@@ -1,20 +1,20 @@
 import Article from '../components/article'
-import HighlightedBox from '../components/highlightedBox'
 import CardsSection from '../components/cardsSection'
 import Faq from '../components/faq'
-import Grid from '../components/grid'
-import Icon from '../components/icon'
 import Jumbotron from '../components/jumbotron'
-import Line from '../components/line'
 import ResponsiveImage from '../components/responsiveImage'
-import JsxParser from 'react-jsx-parser'
 import Section from '../components/section'
 import Card from '../components/card'
 import Cards from '../components/cards'
 import short from 'short-uuid'
 import RelatedContent from '../components/relatedContent'
 import { Media } from 'react-breakpoints'
-import { Box } from '@chakra-ui/react'
+import parsePrismicToReactComponents from './parsePrismicToReactComponents'
+import getLink from './getLink'
+import HighlightedBox from '../components/highlightedBox'
+import { Heading, Image } from '@chakra-ui/react'
+import ArticleWithImages from '../components/articleWithImages'
+import getSrcSets from './getSrcSets'
 
 function getLinkedContentById(linkedContent, id) {
   return linkedContent.filter((content) => {
@@ -22,46 +22,9 @@ function getLinkedContentById(linkedContent, id) {
   })
 }
 
-function getLink(link, paths) {
-  return paths[link.id]
-}
-
-function linkResolver(paths, doc) {
-  return getLink(doc, paths)
-}
-
-const components = {
-  Article,
-  Box,
-  Line,
-  Grid,
-  Icon,
-  ResponsiveImage,
-}
-
 const wrapperComponent = {
   text: 'div',
   highlighted_box: HighlightedBox,
-}
-
-// takes prismic data, then parses the components to react components and adds a wrapper
-function parsePrismicToReactComponents(text, paths) {
-  if (text.type === 'preformatted') {
-    return (
-      <JsxParser
-        components={components}
-        jsx={text.text}
-        key={short.generate()}
-      ></JsxParser>
-    )
-  }
-
-  // if type isn't preformatted we just use global styles
-  const parsePrismic = PrismicReactJs.RichText.render(
-    text,
-    linkResolver.bind(null, paths),
-  )
-  return parsePrismic
 }
 
 function renderFaq(slice, options) {
@@ -78,13 +41,15 @@ function renderFaq(slice, options) {
         </Article>
       )}
 
-      {slice.items.map((item) => {
-        return (
-          <Faq key={short.generate()} title={item.question}>
-            {parsePrismicToReactComponents(item.answer, options.paths)}
-          </Faq>
-        )
-      })}
+      <Faq
+        items={slice.items.map((item) => {
+          return {
+            ...item,
+            answer: parsePrismicToReactComponents(item.answer, options.paths),
+          }
+        })}
+        paths={options.paths}
+      />
     </Section>
   )
 }
@@ -114,9 +79,11 @@ export default function getComponentsFromSlices({
       return parsedComponents
     } else if (type === 'responsive_image') {
       return (
-        <ResponsiveImage
-          data={slice.primary.image1}
-          sizes={['768x506', '1024x674', '1366x900', '1600x1056']}
+        <Image
+          srcSet={getSrcSets(
+            ['768x506', '1024x674', '1366x900', '1600x1056'],
+            slice.primary.image1,
+          )}
         />
       )
     } else if (type === 'jumobotron') {
@@ -214,7 +181,6 @@ export default function getComponentsFromSlices({
                     >
                       <ResponsiveImage
                         data={_content[1].data.image}
-                        spaceAfter="none"
                         sizes={['600x338', '960x540']}
                       />
                     </Card.Image>
@@ -280,46 +246,28 @@ export default function getComponentsFromSlices({
     } else if (type === 'article___images') {
       const {
         items,
-        primary: { background, body, reverse_order },
+        primary: { background, body, reverse_order: reverseOrder },
       } = slice
 
-      const components = [
-        <Article.Content width="50%">
-          {parsePrismicToReactComponents(body, options.paths)}
-        </Article.Content>,
-        <Article.Sidebar width="50%">
-          {items.map((item) => {
-            return (
-              <ResponsiveImage
-                data={item.image}
-                sizes={['540x357', '1080x713']}
-                aspectRatio={66}
-              />
-            )
-          })}
-        </Article.Sidebar>,
-      ]
-
       return (
-        <Media>
-          {({ breakpoints, currentBreakpoint }) => {
-            if (breakpoints[currentBreakpoint] > breakpoints['mobile']) {
-              return (
-                <Section background={background} key={short.generate()}>
-                  <Article>
-                    {reverse_order ? components.reverse() : components}
-                  </Article>
-                </Section>
-              )
-            } else {
-              return (
-                <Section background={background} key={short.generate()}>
-                  <Article>{components.reverse()}</Article>
-                </Section>
-              )
-            }
+        <ArticleWithImages
+          {...{
+            background,
+            content: [
+              parsePrismicToReactComponents(body, options.paths),
+              ...items.map((item) => {
+                console.log('item', item)
+                return (
+                  <Image
+                    src={item.image.url}
+                    srcSet={getSrcSets(['540x357', '1080x713'], item.image)}
+                    aspectRatio={66}
+                  />
+                )
+              }),
+            ],
           }}
-        </Media>
+        />
       )
     } else if (type === 'article_w_linked') {
       const { body2, linked_sidebar_section } = slice.primary

@@ -1,33 +1,20 @@
-import { ContentUI, SidebarUI } from './article.css'
-import Grid from '../grid/'
+// import { ContentUI, SidebarUI } from './article.css'
 import Quote from './quote/'
-import Box from './box/'
+// import Box from './box/'
 import Facts from './facts'
 import Sticky from './sticky'
+import { Flex, Box } from '@chakra-ui/react'
 
-function Article({ children, collapse }) {
-  return <Grid collapse={collapse}>{children}</Grid>
+function Article({ children }) {
+  return <Flex>{children}</Flex>
 }
 
 Article.Content = function ({ children, width = '66%' }) {
-  return (
-    <Grid.Col
-      collapsePaddingOnMobile={true}
-      width={width}
-      horizontalPadding={1}
-    >
-      <ContentUI>{children}</ContentUI>
-    </Grid.Col>
-  )
+  return <Box marginRight={6}>{children}</Box>
 }
 
 Article.Sidebar = function ({ children, width = '34%' }) {
-  let _children = children
-  return (
-    <Grid.Col collapsePaddingOnMobile={true} width={width}>
-      {_children}
-    </Grid.Col>
-  )
+  return <Box>{children}</Box>
 }
 
 Article.Box = function ({ children }) {

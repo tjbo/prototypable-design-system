@@ -44,6 +44,7 @@ export default function ({
             to={callToActionHref}
             size="lg"
             maxW="250px"
+            marginTop={6}
           >
             {callToActionText}
           </Button>
@@ -56,7 +57,6 @@ export default function ({
           data={image}
           loading="eager"
           sizes={theme.jumbotron[size]}
-          spaceAfter="none"
         />
       </ImageUI>
     </ContainerUI>

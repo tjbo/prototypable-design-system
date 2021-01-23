@@ -17,7 +17,6 @@ function getImage(image) {
     <ResponsiveImage
       data={image}
       sizes={['600x338', '960x540']}
-      spaceAfter="none"
     ></ResponsiveImage>
   )
 }

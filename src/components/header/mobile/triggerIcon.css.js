@@ -1,11 +1,10 @@
-import makePixelValue from '../../../utils/makePixelValue'
 import theme from '../../theme'
 import { css, keyframes } from 'styled-components'
 
 const heightLine = 5
 const heightIcon = 22.5
 const translateY = heightIcon / 2
-const translateY1 = makePixelValue(translateY)
+const translateY1 = translateY + 'px'
 
 const pulseColor = ({ headerStyle, isAnimated }) => {
   const _keyframes = keyframes`
@@ -35,9 +34,9 @@ function getDefaultStyles({ isAnimated, headerStyle, isOpen }) {
     headerStyle === 'light' ? theme.colors.white : theme.colors.black
   };
 
-  border-radius: (${makePixelValue(heightLine / 2)});
+  border-radius: (${heightLine / 2}px);
   display: block;
-  height: ${makePixelValue(heightLine)};
+  height: ${heightLine}px;
   left: 0;
   position: absolute;
   transition: transform ${theme.transition.easing['ease-in-out']};
@@ -86,8 +85,8 @@ export const ContainerUI = styled('div')`
 
 export const ContainerInnerUI = styled('div')`
   display: block;
-  height: ${makePixelValue(heightIcon)};
-  margin: (${makePixelValue(heightIcon * 2.5)}) auto ${heightIcon} auto;
+  height: ${heightIcon}px;
+  margin: (${heightIcon * 2.5}px) auto ${heightIcon} auto;
   margin-top: ${theme.space[4]};
   margin-right: ${theme.space[4]};
   position: relative;

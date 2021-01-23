@@ -16,7 +16,7 @@ const getInnerWidth = ({ innerWidth }) => {
   if (innerWidth === 'medium') {
     return theme.breakpoints[3]
   } else if (innerWidth === 'small') {
-    return theme.breakpoints[2]
+    return theme.breakpoints[1]
   } else if (innerWidth === 'medium-plus') {
     return theme.breakpoints[4]
   } else if (innerWidth === 'huge') {
