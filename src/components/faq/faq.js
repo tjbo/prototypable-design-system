@@ -7,6 +7,7 @@ import {
   AccordionPanel,
 } from '@chakra-ui/react'
 import short from 'short-uuid'
+import theme from '../theme'
 
 class Faq extends React.Component {
   render() {
@@ -19,7 +20,7 @@ class Faq extends React.Component {
             <AccordionItem key={short.generate()}>
               <AccordionButton>
                 <Box flex="1" textAlign="left">
-                  {item.question}
+                  <h4 margin={6}>{item.question}</h4>
                 </Box>
                 <AccordionIcon />
               </AccordionButton>

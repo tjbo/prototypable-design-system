@@ -22,6 +22,41 @@ export default {
   title: 'Thing',
   component: Grid,
 }
+
+export const AsSeenOn = () => {
+  return (
+    <Section>
+      <Grid spacingX={9}>
+        <Grid.Col>
+          <p>
+            Crescent Lenders is a Los Angeles Hard Money Lender, we can fund
+            your real estate investment loan:
+          </p>
+          <UnorderedList>
+            <ListItem>Between $200k and $5 million dollars</ListItem>
+            <ListItem>Direct private lender (not a broker)</ListItem>
+            <ListItem>Get funded in 5 to 7 days</ListItem>
+            <ListItem>
+              Purchase, Refinance, Fix and Flip, Cash-Out and 1031 Exchange
+            </ListItem>
+          </UnorderedList>
+        </Grid.Col>
+        <Grid.Col>
+          <Grid>
+            As Seen On:
+            <Grid.Col>
+              <Icon name="market-watch" boxSize={36} />
+            </Grid.Col>
+            <Grid.Col>
+              <Icon name="yahoo-finance" boxSize={36} />
+            </Grid.Col>
+          </Grid>
+        </Grid.Col>
+      </Grid>
+    </Section>
+  )
+}
+
 export const Default = () => {
   return (
     <Grid columns="[1, 2]" spacingX={12} templateColumns="3fr 2fr">
