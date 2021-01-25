@@ -19,6 +19,7 @@ import HighlightedBox from '../components/highlightedBox'
 import short from 'short-uuid'
 import getLink from './getLink'
 import Button from '../components/button'
+import QuickPoint from '../components/quickPoint'
 
 function linkResolver(paths, doc) {
   return getLink(doc, paths)
@@ -41,6 +42,7 @@ const components = {
   UnorderedList,
   Stack,
   Text,
+  QuickPoint,
 }
 
 // takes prismic data, then parses the components to react components and adds a wrapper
