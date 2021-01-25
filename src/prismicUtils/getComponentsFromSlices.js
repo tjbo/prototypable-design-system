@@ -8,11 +8,10 @@ import Card from '../components/card'
 import Cards from '../components/cards'
 import short from 'short-uuid'
 import RelatedContent from '../components/relatedContent'
-import { Media } from 'react-breakpoints'
 import parsePrismicToReactComponents from './parsePrismicToReactComponents'
 import getLink from './getLink'
 import HighlightedBox from '../components/highlightedBox'
-import { Heading, Image } from '@chakra-ui/react'
+import { Image } from '@chakra-ui/react'
 import ArticleWithImages from '../components/articleWithImages'
 import getSrcSets from './getSrcSets'
 
@@ -80,6 +79,8 @@ export default function getComponentsFromSlices({
     } else if (type === 'responsive_image') {
       return (
         <Image
+          alt={slice.primary.image1.alt}
+          src={slice.primary.image1.url}
           srcSet={getSrcSets(
             ['768x506', '1024x674', '1366x900', '1600x1056'],
             slice.primary.image1,
@@ -300,16 +301,11 @@ export default function getComponentsFromSlices({
 
       return (
         <Jumbotron
-          alignItems={align_items}
           callToActionText={call_to_action || options.callToActionText}
           callToActionHref={options.callToActionHref}
-          hasNavShift={false}
-          justifyContent={justify_content}
           overlay={overlay}
           key={short.generate()}
           image={slice.primary.image}
-          size="half"
-          textAlign={text_align}
         >
           {parsedComponents}
         </Jumbotron>

@@ -17,10 +17,19 @@ const colors = {
   },
 }
 
-const jumbotron = {
-  ad: ['580x327', '870x490', '1160x652'],
-  half: ['375x375', '414x414', '1280x400', '1366x384', '1440x450', '1920x540'],
-  full: ['375×667', '414×816', '360×780', '1366×768', '1440×900', '1920×1080'],
+const custom = {
+  images: {
+    sizes: {
+      jumbotron: [
+        '375x375',
+        '414x414',
+        '1280x400',
+        '1366x384',
+        '1440x450',
+        '1920x540',
+      ],
+    },
+  },
 }
 
 const shadows = {
@@ -81,11 +90,9 @@ const global = {
 export default extendTheme({
   config,
   colors,
-  jumbotron,
+  custom,
   shadows,
   styles: {
     global,
   },
 })
-
-// export default extendTheme({ config, colors, jumbotron, shadows, textStyles })

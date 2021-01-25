@@ -55,7 +55,6 @@ class Header extends React.Component {
             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
           </svg>
         </Box>
-
         <Box
           display={{ sm: show ? 'block' : 'none', md: 'flex' }}
           width={{ sm: 'full', md: 'auto' }}
@@ -71,7 +70,7 @@ class Header extends React.Component {
           mt={{ base: 4, md: 0 }}
         >
           <Button bg="transparent" border="1px">
-            Create account
+            CALL 213-474-3131
           </Button>
         </Box>
       </Flex>

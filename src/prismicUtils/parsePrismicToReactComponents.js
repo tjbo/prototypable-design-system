@@ -7,6 +7,7 @@ import {
   List,
   ListItem,
   UnorderedList,
+  Stack,
   Text,
 } from '@chakra-ui/react'
 import JsxParser from 'react-jsx-parser'
@@ -17,6 +18,7 @@ import Icon from '../components/icon'
 import HighlightedBox from '../components/highlightedBox'
 import short from 'short-uuid'
 import getLink from './getLink'
+import Button from '../components/button'
 
 function linkResolver(paths, doc) {
   return getLink(doc, paths)
@@ -25,6 +27,7 @@ function linkResolver(paths, doc) {
 const components = {
   Article,
   Box,
+  Button,
   Grid,
   HighlightedBox,
   Icon,
@@ -36,6 +39,7 @@ const components = {
   List,
   ListItem,
   UnorderedList,
+  Stack,
   Text,
 }
 

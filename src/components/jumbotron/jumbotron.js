@@ -1,42 +1,35 @@
 import React from 'react'
-import {
-  ContainerUI,
-  ContentUI,
-  ImageUI,
-  MainContentUI,
-  OverlayUI,
-} from './jumbotron.css'
+import { TextContainerUI } from './jumbotron.css'
 import Button from '../button'
-import ResponsiveImage from '../responsiveImage'
 import theme from '../theme'
+import { Box, Flex, Image } from '@chakra-ui/react'
+import getSrcSets from '../../prismicUtils/getSrcSets'
 
 export default function ({
   callToActionText,
   callToActionHref,
   children,
-  hasContentVerticalOffset = false,
-  hasNavShift = false,
-  alignItems = 'center',
   hasCta = true,
-  justifyContent = 'center',
   image = null,
-  overlay = 0,
-  textAlign = 'center',
-  size = 'full',
 }) {
   return (
-    <ContainerUI
-      size={size}
-      alignItems={alignItems}
-      hasNavShift={hasNavShift}
-      justifyContent={justifyContent}
-      textAlign={textAlign}
-    >
-      <ContentUI
-        justifyContent={justifyContent}
-        hasVerticalOffset={hasContentVerticalOffset}
+    <Box position="relative">
+      <Flex
+        minHeight="50vh"
+        height="200px"
+        backgroundSize="cover"
+        display={{ base: 'none', md: 'flex' }}
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        alignSelf="center"
+        justifySelf="center"
+        position="relative"
+        zIndex={1}
       >
-        <MainContentUI maxWidth="768">{children}</MainContentUI>
+        <TextContainerUI color="white" maxW="768px">
+          {children}
+        </TextContainerUI>
         {hasCta && (
           <Button
             justifyContent="center"
@@ -49,16 +42,39 @@ export default function ({
             {callToActionText}
           </Button>
         )}
-      </ContentUI>
-      <ImageUI>
-        <OverlayUI overlay={overlay} />
-        <ResponsiveImage
-          aspectRatio={null}
-          data={image}
+      </Flex>
+      <Flex
+        bg="blue.50"
+        border="1px solid red"
+        display={{ base: 'flex', md: 'none' }}
+        flexDirection="column"
+        padding={9}
+        paddingTop={12}
+        paddingBottom={12}
+      >
+        <TextContainerUI>{children}</TextContainerUI>
+        {hasCta && (
+          <Button
+            colorScheme="red"
+            to={callToActionHref}
+            size="lg"
+            maxW="250px"
+            marginTop={6}
+          >
+            {callToActionText}
+          </Button>
+        )}
+      </Flex>
+      <Box>
+        <Image
+          srcSet={getSrcSets(theme.custom.images.sizes.jumbotron, image)}
+          fit="cover"
+          minHeight="50vh"
+          position="absolute"
+          top="0"
           loading="eager"
-          sizes={theme.jumbotron[size]}
         />
-      </ImageUI>
-    </ContainerUI>
+      </Box>
+    </Box>
   )
 }
