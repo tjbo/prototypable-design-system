@@ -1,27 +1,26 @@
 import React from 'react'
-import { Box, Flex } from '@chakra-ui/react'
+import { Box, Grid, GridItem } from '@chakra-ui/react'
 import Section from '../section'
 import short from 'short-uuid'
 
 function ArticleWithImages(props) {
-  const { background, content, reverse } = props
+  const { background, column1, column2, reverse } = props
 
-  if (reverse) {
-    content = content.reverse()
-  }
+  console.log('reverse', reverse)
 
-  console.log('content', content)
+  const col1Start = reverse ? 2 : 1
+  const col2Start = reverse ? 1 : 2
 
   return (
     <Section background={background}>
-      <Flex>
-        <Box key={short.generate()} width="50%">
-          {content[0]}
-        </Box>
-        <Box key={short.generate()} width="50%">
-          {content[1]}
-        </Box>
-      </Flex>
+      <Grid templateColumns="1fr 1fr" columnGap={9}>
+        <GridItem rowStart="1" colStart={col1Start}>
+          {column1}
+        </GridItem>
+        <GridItem rowStart="1" colStart={col2Start}>
+          {column2}
+        </GridItem>
+      </Grid>
     </Section>
   )
 }

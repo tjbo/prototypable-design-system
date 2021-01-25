@@ -247,26 +247,24 @@ export default function getComponentsFromSlices({
     } else if (type === 'article___images') {
       const {
         items,
-        primary: { background, body, reverse_order: reverseOrder },
+        primary: { background, body, reverse_order: reverse },
       } = slice
 
       return (
         <ArticleWithImages
           {...{
             background,
-            content: [
-              parsePrismicToReactComponents(body, options.paths),
-              ...items.map((item) => {
-                console.log('item', item)
-                return (
-                  <Image
-                    src={item.image.url}
-                    srcSet={getSrcSets(['540x357', '1080x713'], item.image)}
-                    aspectRatio={66}
-                  />
-                )
-              }),
-            ],
+            reverse,
+            column1: parsePrismicToReactComponents(body, options.paths),
+            column2: items.map((item) => {
+              return (
+                <Image
+                  src={item.image.url}
+                  srcSet={getSrcSets(['540x357', '1080x713'], item.image)}
+                  aspectRatio={66}
+                />
+              )
+            }),
           }}
         />
       )
