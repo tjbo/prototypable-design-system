@@ -21,20 +21,16 @@ export function Default() {
           title: 'Loans',
           items: [
             {
-              title: 'Fix and Flip',
-              to: 'fix and flip',
+              title: '1031 Exchange',
+              to: '/hard-money-loans/1031-exchange-financing/',
             },
             {
               title: 'Fix and Flip',
-              to: 'fix and flip',
+              to: '/hard-money-loans/fix-and-flip/',
             },
             {
-              title: 'Fix and Flip',
-              to: 'fix and flip',
-            },
-            {
-              title: 'Fix and Flip',
-              to: 'fix and flip',
+              title: 'California',
+              to: '/hard-money-loans/california/',
             },
           ],
         },

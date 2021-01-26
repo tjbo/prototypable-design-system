@@ -65,7 +65,7 @@ export default function ({
           </Button>
         )}
       </Flex>
-      <Box>
+      <Box display={{ base: 'none', md: 'block' }}>
         <Image
           srcSet={getSrcSets(theme.custom.images.sizes.jumbotron, image)}
           fit="cover"
