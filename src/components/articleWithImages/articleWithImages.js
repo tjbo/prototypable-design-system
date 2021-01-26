@@ -6,18 +6,21 @@ import short from 'short-uuid'
 function ArticleWithImages(props) {
   const { background, column1, column2, reverse } = props
 
-  console.log('reverse', reverse)
-
   const col1Start = reverse ? 2 : 1
   const col2Start = reverse ? 1 : 2
 
   return (
     <Section background={background}>
-      <Grid templateColumns="1fr 1fr" columnGap={9}>
+      <Grid
+        display={{ base: 'flex', md: 'grid' }}
+        flexDirection="column-reverse"
+        templateColumns="1fr 1fr"
+        columnGap={9}
+      >
         <GridItem rowStart="1" colStart={col1Start}>
           {column1}
         </GridItem>
-        <GridItem rowStart="1" colStart={col2Start}>
+        <GridItem rowStart="1" colStart={col2Start} marginBottom={9}>
           {column2}
         </GridItem>
       </Grid>

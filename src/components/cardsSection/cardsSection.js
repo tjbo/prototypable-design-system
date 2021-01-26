@@ -4,6 +4,7 @@ import Section from '../section'
 import toProperCase from '../../utils/toProperCase'
 import ResponsiveImage from '../responsiveImage'
 import short from 'short-uuid'
+import { Heading } from '@chakra-ui/react'
 
 function formatTitle(title) {
   return toProperCase(title.replace(/_/g, ' '))
@@ -24,7 +25,9 @@ function getImage(image) {
 function getContent(title, content) {
   return (
     <Card.Content>
-      <h4>{title[0].text}</h4>
+      <Heading as="h5" fontSize={{ base: '1xl', md: '2xl' }} mb={3}>
+        {title[0].text}
+      </Heading>
       {Object.entries(content).map((_content) => {
         const [key, value] = _content
         return (

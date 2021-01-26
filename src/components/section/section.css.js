@@ -1,4 +1,5 @@
 import theme from '../theme'
+import { Box } from '@chakra-ui/react'
 
 const getBgColor = ({ background }) => {
   if (background === 'transparent') {
@@ -35,13 +36,13 @@ export const SectionWrapperUI = styled('section')`
   align-items: center;
 `
 
-export const SectionUI = styled('div')`
+export const SectionUI = styled(Box)`
   box-sizing: border-box;
   max-width: ${getInnerWidth};
   width: ${getInnerWidth};
   position: relative;
   margin: 0 auto;
-  padding: ${theme.space[9]} ${theme.space[3]};
+  padding: ${theme.space[6]} ${theme.space[9]};
   width: 100%;
   text-align: ${({ textAlign }) => textAlign};
 `

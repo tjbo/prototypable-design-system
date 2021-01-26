@@ -88,14 +88,7 @@ export default function getComponentsFromSlices({
         />
       )
     } else if (type === 'jumobotron') {
-      const {
-        align_items,
-        body2,
-        call_to_action,
-        justify_content,
-        overlay,
-        text_align,
-      } = slice.primary
+      const { body2, call_to_action, overlay } = slice.primary
 
       const parsedComponents = parsePrismicToReactComponents(
         body2,
@@ -105,16 +98,11 @@ export default function getComponentsFromSlices({
       return React.createElement(
         Jumbotron,
         {
-          alignItems: align_items,
           callToActionHref: options.callToActionHref,
           callToActionText: call_to_action || options.callToActionText,
-          hasNavShift: true,
-          hasContentVerticalOffset: true,
-          justifyContent: justify_content,
           key: short.generate(),
           image: slice.primary.image,
           overlay,
-          textAlign: text_align,
         },
         parsedComponents,
       )

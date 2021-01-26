@@ -19,12 +19,12 @@ class Faq extends React.Component {
           return (
             <AccordionItem key={short.generate()}>
               <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  <h4 margin={6}>{item.question}</h4>
+                <Box flex="1" textAlign="left" p={3}>
+                  <h4>{item.question}</h4>
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
-              <AccordionPanel pb={4}>{item.answer}</AccordionPanel>
+              <AccordionPanel p={6}>{item.answer}</AccordionPanel>
             </AccordionItem>
           )
         })}

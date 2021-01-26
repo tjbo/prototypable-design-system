@@ -4,15 +4,7 @@ import PropTypes from 'prop-types'
 import short from 'short-uuid'
 import { Link } from '@reach/router'
 
-function Card({
-  children,
-  href = '',
-  horizontalPadding = 0.5,
-  maxWidth = null,
-  width = '33.33%',
-  withBorder = true,
-  verticalPadding = 0.5,
-}) {
+function Card({ children, href = '', withBorder = true }) {
   const asLink = !!href
 
   function onClick() {

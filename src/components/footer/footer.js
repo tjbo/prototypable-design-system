@@ -4,11 +4,12 @@ import Grid from '../grid'
 import Icon from '../icon'
 import { Link as ReachLink } from '@reach/router'
 import { Box, Link, List, ListItem, Text } from '@chakra-ui/react'
+import short from 'short-uuid'
 
 function MenuItem(props) {
   const { to, title, isTitle } = props
   return (
-    <ListItem>
+    <ListItem key={short.generate()}>
       <Link as={ReachLink} to={to} fontWeight={isTitle ? 600 : null}>
         {title}
       </Link>
@@ -23,17 +24,25 @@ function Footer(props) {
       <Box borderTop="1px solid" paddingTop={6}></Box>
       <Grid columns={[2, 2, 4, 4]}>
         <Grid.Col>
-          <Box position="absolute" left={[12, 14, 3, 3]} top={[3, 3, 3, 4]}>
-            <Icon name="crescent-lenders" boxSize={36} />
+          <Box position="relative">
+            <Icon
+              name="crescent-lenders"
+              boxSize={{ base: 36, sm: 48, lg: 52 }}
+              position="absolute"
+              top={{ base: -3, sm: -12, md: -12, lg: -14 }}
+              left={{ base: 9, md: 0 }}
+            />
           </Box>
         </Grid.Col>
         {menus.map(({ items, title, to }) => {
           return (
             <Grid.Col>
               <List>
-                <MenuItem {...{ isTitle: true, title, to }} />
+                <MenuItem
+                  {...{ key: short.generate(), isTitle: true, title, to }}
+                />
                 {items.map(({ title, to }) => (
-                  <MenuItem {...{ title, to }} />
+                  <MenuItem {...{ key: short.generate(), title, to }} />
                 ))}
               </List>
             </Grid.Col>

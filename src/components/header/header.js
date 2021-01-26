@@ -2,6 +2,7 @@ import React from 'react'
 import { Link as ReachLink } from '@reach/router'
 import Icon from '../icon'
 import { Box, Flex, Heading, Link, Text, Button } from '@chakra-ui/react'
+import short from 'short-uuid'
 
 const MenuItem = ({ item }) => {
   const { items, to, title } = item
@@ -62,7 +63,7 @@ class Header extends React.Component {
           flexGrow={1}
         >
           {menuItems.map((item) => {
-            return <MenuItem {...{ item }} />
+            return <MenuItem {...{ item }} key={short.generate()} />
           })}
         </Box>
         <Box

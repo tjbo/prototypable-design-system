@@ -79,7 +79,8 @@ const global = {
     marginBottom: theme.space[6],
   },
   h4: {
-    fontSize: [fs['xl'], fs['xl1']],
+    fontSize: [fs['xl'], fs['xl2']],
+    lineHeight: '110%',
   },
   h5: {
     fontSize: [fs['xl'], fs['xl1']],

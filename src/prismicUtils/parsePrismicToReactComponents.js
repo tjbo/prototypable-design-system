@@ -20,12 +20,21 @@ import short from 'short-uuid'
 import getLink from './getLink'
 import Button from '../components/button'
 import QuickPoint from '../components/quickPoint'
+import { Link } from '@reach/router'
 
 function linkResolver(paths, doc) {
   return getLink(doc, paths)
 }
 
 const components = {
+  a: (props) => {
+    console.log(props)
+    const { href, children } = props
+    if (href[0] === '/') {
+      return <Link to={href}>{children}</Link>
+    }
+    return <a {...props} />
+  },
   Article,
   Box,
   Button,

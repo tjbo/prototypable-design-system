@@ -61,10 +61,9 @@ export default function () {
             </Tbody>
           </Table>
         </Grid.Col>
-        <Grid.Col>
-          <HighlightedBox>
+        <Grid.Col marginTop={{ base: 3, md: 0 }}>
+          <HighlightedBox mb={0}>
             <h3>Property Types</h3>
-
             <UnorderedList>
               <ListItem>
                 Single-family & Multi-family Investment Properties
