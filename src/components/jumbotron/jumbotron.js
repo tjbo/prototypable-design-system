@@ -45,7 +45,6 @@ export default function ({
       </Flex>
       <Flex
         bg="blue.50"
-        border="1px solid red"
         display={{ base: 'flex', md: 'none' }}
         flexDirection="column"
         padding={9}
@@ -65,14 +64,21 @@ export default function ({
           </Button>
         )}
       </Flex>
-      <Box display={{ base: 'none', md: 'block' }}>
+      <Box
+        display={{ base: 'none', md: 'block' }}
+        minHeight="50vh"
+        maxHeight="50vh"
+        width="100vw"
+        overflow="hidden"
+        position="absolute"
+        top="0"
+      >
         <Image
+          height="50vh"
           srcSet={getSrcSets(theme.custom.images.sizes.jumbotron, image)}
           fit="cover"
-          minHeight="50vh"
-          position="absolute"
-          top="0"
           loading="eager"
+          width="100vw"
         />
       </Box>
     </Box>

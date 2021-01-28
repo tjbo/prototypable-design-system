@@ -1,9 +1,9 @@
 export { default as Article } from './components/article'
 export { default as Body } from './components/body'
 export { default as Button } from './components/button'
+export { default as BreadCrumb } from './components/breadCrumb'
 export { default as Card } from './components/card/'
 export { default as Cards } from './components/cards/'
-export { default as CardsSection } from './components/cardsSection'
 export { default as Content } from './components/content'
 export { default as Faq } from './components/faq/faq'
 export { default as Footer } from './components/footer/footer'
@@ -13,7 +13,6 @@ export { default as Icon } from './components/icon'
 export { default as Jumbotron } from './components/jumbotron'
 export { default as LoadingScreen } from './components/loadingScreen'
 export { default as Modal } from './components/modal'
-export { default as ResponsiveImage } from './components/responsiveImage'
 export { default as Section } from './components/section'
 export { default as ScrollToTop } from './components/scrollToTop'
 export { PrototypableProvider } from './components/prototypableContext'
@@ -29,10 +28,10 @@ export {
   AlertIcon,
   Box,
   ButtonGroup,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
+  // Breadcrumb, used by crumb
+  // BreadcrumbItem,
+  // BreadcrumbLink,
+  // BreadcrumbSeparator,
   // Button, see button above, we need to include a way to use our router
   // ChakraProvider we use this in prototypable provider
   Checkbox,

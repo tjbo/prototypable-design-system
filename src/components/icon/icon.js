@@ -13,13 +13,18 @@ import Percentage from './svgs/percentage'
 import Rocket from './svgs/rocket'
 import Sms from './svgs/sms'
 import YahooFinance from './svgs/yahoo-finance'
-import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
+import {
+  ChevronDownIcon,
+  ChevronUpIcon,
+  ChevronRightIcon,
+} from '@chakra-ui/icons'
 
 export const icons = {
   ['business-insider']: BusinessInsider,
   ['browser-home']: BrowserHome,
   ['chevron-down-icon']: ChevronDownIcon,
   ['chevron-up-icon']: ChevronUpIcon,
+  ['chevron-right']: ChevronRightIcon,
   ['crescent-lenders']: CrescentLenders,
   email: Email,
   loader: Loader,

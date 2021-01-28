@@ -1,16 +1,16 @@
-import Cards from './cards'
+import Posts from './posts'
 import { items } from './mock'
 import Section from '../section'
 
 export default {
-  title: 'Cards',
-  component: Cards,
+  title: 'Posts',
+  component: Posts,
 }
 
 export function Default() {
   return (
     <Section>
-      <Cards items={items} />
+      <Posts items={items} />
     </Section>
   )
 }

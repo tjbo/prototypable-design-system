@@ -13,13 +13,14 @@ function SubMenu(props) {
       position={{ base: 'relative', md: 'absolute' }}
       bg={{ base: 'none', md: 'blue.50' }}
       p={6}
-      display={isSubMenuShowing ? 'bloxk' : 'none'}
+      display={isSubMenuShowing ? 'block' : 'none'}
       whiteSpace="nowrap"
       width="auto"
     >
       {items.map((item) => {
         return (
           <MenuItem
+            key={short.generate()}
             item={item}
             margin={6}
             toggleMobileMenu={toggleMobileMenu}
@@ -84,9 +85,10 @@ function MenuItem(props) {
             }
           }}
         >
-          {title} <Icon name="chevron-up-icon" boxSize={6} />
+          {title} <Icon name="chevron-down-icon" boxSize={4} />
         </Link>
         <SubMenu
+          key={short.generate()}
           items={items}
           isSubMenuShowing={subMenuShowing === title}
           toggleMobileMenu={toggleMobileMenu}

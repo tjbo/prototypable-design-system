@@ -18,41 +18,43 @@ function MenuItem(props) {
 }
 
 function Footer(props) {
-  const { finePrint, info, menus } = props
+  const { finePrint, location, info, menus } = props
   return (
-    <Section background="light" inner_width="medium">
-      <Box borderTop="1px solid" paddingTop={6}></Box>
-      <Grid columns={[2, 2, 4, 4]}>
-        <Grid.Col>
-          <Box position="relative">
-            <Icon
-              name="crescent-lenders"
-              boxSize={{ base: 36, sm: 48, lg: 52 }}
-              position="absolute"
-              top={{ base: -3, sm: -12, md: -12, lg: -14 }}
-              left={{ base: 9, md: 0 }}
-            />
-          </Box>
-        </Grid.Col>
-        {menus.map(({ items, title, to }) => {
-          return (
-            <Grid.Col>
-              <List>
-                <MenuItem
-                  {...{ key: short.generate(), isTitle: true, title, to }}
-                />
-                {items.map(({ title, to }) => (
-                  <MenuItem {...{ key: short.generate(), title, to }} />
-                ))}
-              </List>
-            </Grid.Col>
-          )
-        })}
-      </Grid>
-      <Box borderTop="1px solid" paddingTop={3}>
-        <Text fontSize={14}>{finePrint}</Text>
-      </Box>
-    </Section>
+    <Box>
+      <Section background="light" inner_width="medium">
+        <Box borderTop="1px solid" paddingTop={6}></Box>
+        <Grid columns={[2, 2, 4, 4]}>
+          <Grid.Col>
+            <Box position="relative">
+              <Icon
+                name="crescent-lenders"
+                boxSize={{ base: 36, sm: 48, lg: 52 }}
+                position="absolute"
+                top={{ base: -3, sm: -12, md: -12, lg: -14 }}
+                left={{ base: 9, md: 0 }}
+              />
+            </Box>
+          </Grid.Col>
+          {menus.map(({ items, title, to }) => {
+            return (
+              <Grid.Col key={short.generate()}>
+                <List>
+                  <MenuItem
+                    {...{ key: short.generate(), isTitle: true, title, to }}
+                  />
+                  {items.map(({ title, to }) => (
+                    <MenuItem {...{ key: short.generate(), title, to }} />
+                  ))}
+                </List>
+              </Grid.Col>
+            )
+          })}
+        </Grid>
+        <Box borderTop="1px solid" paddingTop={3}>
+          <Text fontSize={14}>{finePrint}</Text>
+        </Box>
+      </Section>
+    </Box>
   )
 }
 

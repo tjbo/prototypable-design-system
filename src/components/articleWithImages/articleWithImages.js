@@ -17,10 +17,15 @@ function ArticleWithImages(props) {
         templateColumns="1fr 1fr"
         columnGap={9}
       >
-        <GridItem rowStart="1" colStart={col1Start}>
+        <GridItem rowStart="1" colStart={col1Start} key={short.generate()}>
           {column1}
         </GridItem>
-        <GridItem rowStart="1" colStart={col2Start} marginBottom={9}>
+        <GridItem
+          rowStart="1"
+          colStart={col2Start}
+          key={short.generate()}
+          marginBottom={9}
+        >
           {column2}
         </GridItem>
       </Grid>

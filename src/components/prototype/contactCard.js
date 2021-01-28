@@ -8,7 +8,7 @@ import QuickPoint from '../quickPoint'
 export default function () {
   return (
     <Section inner_width="tiny">
-      <Grid width="100%" columns={[1, 1, 2, 2, 2]} spacingX={12}>
+      <Grid width="100%" columns={[1, 1, 2, 2, 2]} spacingX={9}>
         <Grid.Col>
           <Flex height="100%">
             <Grid columns={[1]} spacingY={{ base: 3, md: 12 }}>
