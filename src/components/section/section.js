@@ -1,4 +1,4 @@
-import { Box, Container } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import theme from '../theme'
 
 const getBgColor = ({ background }) => {
@@ -34,24 +34,33 @@ function Section({
   inner_width = 'big',
   pt = 6,
   pb = 6,
-  pl = 9,
-  pr = 9,
+  pl = 6,
+  pr = 6,
 }) {
   console.log('container', background)
   return (
-    <Container
+    <Flex
       {...{
         as: 'section',
         bg: getBgColor(background),
-        centerContent: true,
+        justifyContent: 'center',
+        width: '100%',
       }}
     >
       <Box
-        {...{ pt, pb, pl, pr, textAlign, width: getInnerWidth(inner_width) }}
+        {...{
+          pt,
+          pb,
+          pl,
+          pr,
+          textAlign,
+          maxWidth: getInnerWidth(background),
+          width: '100%',
+        }}
       >
         {children}
       </Box>
-    </Container>
+    </Flex>
   )
 }
 

@@ -6,7 +6,7 @@ import { Link, navigate } from '@reach/router'
 import short from 'short-uuid'
 
 function Post(props) {
-  const { title, image, _path } = props
+  const { title, image, path } = props
 
   return (
     <Box
@@ -19,7 +19,7 @@ function Post(props) {
         <Image
           cursor="pointer"
           minHeight="150px"
-          onClick={() => navigate(_path)}
+          onClick={() => navigate(path)}
           src={image.url}
           srcSet={getSrcSets(
             ['414x414', '1280x400', '1200x630', '375x375'],
@@ -29,7 +29,7 @@ function Post(props) {
       </AspectRatio>
       <Box padding={6}>
         <Heading as="h4" size="md">
-          <Link to={_path}> {title[0].text}</Link>
+          <Link to={path}> {title[0].text}</Link>
         </Heading>
       </Box>
     </Box>

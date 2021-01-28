@@ -1,5 +1,6 @@
 import {
   Box,
+  Flex,
   Table,
   Tbody,
   Tr,
@@ -12,7 +13,6 @@ import {
 } from '@chakra-ui/react'
 import JsxParser from 'react-jsx-parser'
 import Article from '../components/article'
-import ResponsiveImage from '../components/responsiveImage'
 import Grid from '../components/grid'
 import Icon from '../components/icon'
 import HighlightedBox from '../components/highlightedBox'
@@ -38,10 +38,10 @@ const components = {
   Article,
   Box,
   Button,
+  Flex,
   Grid,
   HighlightedBox,
   Icon,
-  ResponsiveImage,
   Table,
   Td,
   Tr,
