@@ -177,8 +177,8 @@ class Header extends React.Component {
           })}
         </Box>
         <Box display={{ base: 'none', md: 'block' }} mt={{ base: 4, md: 0 }}>
-          <Button bg="transparent" border="1px">
-            CALL 213-474-3131
+          <Button colorScheme="green" border="1px">
+            CALL US 213-474-3131
           </Button>
         </Box>
         <Box

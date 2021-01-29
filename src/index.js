@@ -1,13 +1,10 @@
-export { default as Article } from './components/article'
 export { default as Body } from './components/body'
 export { default as Button } from './components/button'
 export { default as BreadCrumb } from './components/breadCrumb'
-export { default as Card } from './components/card/'
 export { default as Cards } from './components/cards/'
 export { default as Content } from './components/content'
 export { default as Faq } from './components/faq/faq'
 export { default as Footer } from './components/footer/footer'
-export { default as Grid } from './components/grid'
 export { default as Header } from './components/header'
 export { default as Icon } from './components/icon'
 export { default as Jumbotron } from './components/jumbotron'
@@ -58,6 +55,7 @@ export {
   Progress,
   Radio,
   RadioGroup,
+  SimpleGrid,
   Select,
   Slider,
   SliderTrack,

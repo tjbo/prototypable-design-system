@@ -4,7 +4,6 @@ export default function getPathFromParent(page, pages, _path = []) {
   if (_page.path === '/') {
     return '/'
   }
-
   _path.push(_page.path)
 
   if (
@@ -28,6 +27,5 @@ export default function getPathFromParent(page, pages, _path = []) {
       return getPathFromParent(parent, pages, _path)
     }
   }
-
   return `/${_path.reverse().join('/')}/`.replace(/\/\//g, '/')
 }

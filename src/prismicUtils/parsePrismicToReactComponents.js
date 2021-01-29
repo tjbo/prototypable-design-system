@@ -1,5 +1,6 @@
 import {
   Box,
+  Divider,
   Flex,
   Table,
   Tbody,
@@ -8,12 +9,11 @@ import {
   List,
   ListItem,
   UnorderedList,
+  SimpleGrid,
   Stack,
   Text,
 } from '@chakra-ui/react'
 import JsxParser from 'react-jsx-parser'
-import Article from '../components/article'
-import Grid from '../components/grid'
 import Icon from '../components/icon'
 import HighlightedBox from '../components/highlightedBox'
 import short from 'short-uuid'
@@ -35,11 +35,10 @@ const components = {
     }
     return <a {...props} />
   },
-  Article,
   Box,
   Button,
+  Divider,
   Flex,
-  Grid,
   HighlightedBox,
   Icon,
   Table,
@@ -49,6 +48,7 @@ const components = {
   List,
   ListItem,
   UnorderedList,
+  SimpleGrid,
   Stack,
   Text,
   QuickPoint,
@@ -56,6 +56,10 @@ const components = {
 
 // takes prismic data, then parses the components to react components and adds a wrapper
 function parsePrismicToReactComponents(text, paths) {
+  if (!text) {
+    return null
+  }
+
   if (text.type === 'preformatted') {
     return (
       <JsxParser

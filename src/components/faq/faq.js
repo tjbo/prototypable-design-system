@@ -11,10 +11,11 @@ import Section from '../section'
 
 class Faq extends React.Component {
   render() {
-    const { items, title } = this.props
+    const { background, items, title } = this.props
 
     return (
-      <Section>
+      <Section background={background}>
+        <h3>{title}</h3>
         <Accordion allowMultiple>
           {items.map((item) => {
             return (

@@ -49,7 +49,12 @@ const global = {
     },
   },
   p: {
+    marginTop: theme.space[6],
     marginBottom: theme.space[6],
+  },
+  li: {
+    marginTop: theme.space[4],
+    marginBottom: theme.space[4],
   },
   ul: {
     marginLeft: theme.space[12],

@@ -11,6 +11,7 @@ export default function ({
   children,
   hasCta = true,
   image = null,
+  textColor,
 }) {
   return (
     <Box position="relative">
@@ -27,7 +28,10 @@ export default function ({
         position="relative"
         zIndex={1}
       >
-        <TextContainerUI color="white" maxW="768px">
+        <TextContainerUI
+          color={textColor === 'dark' ? 'black' : 'white'}
+          maxW="768px"
+        >
           {children}
         </TextContainerUI>
         {hasCta && (
