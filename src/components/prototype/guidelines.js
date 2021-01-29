@@ -1,13 +1,21 @@
-import Grid from '../grid'
 import HighlightedBox from '../highlightedBox'
-import { Table, Tbody, Tr, Td, ListItem, UnorderedList } from '@chakra-ui/react'
+import {
+  Box,
+  SimpleGrid,
+  Table,
+  Tbody,
+  Tr,
+  Td,
+  ListItem,
+  UnorderedList,
+} from '@chakra-ui/react'
 import Section from '../section'
 
 export default function () {
   return (
     <Section>
-      <Grid spacingX={12} columns={[1, 1, 1, 2, 2]}>
-        <Grid.Col minWidth={{ base: '100%', md: '600px' }}>
+      <SimpleGrid spacingX={12} columns={[1, 1, 1, 2, 2]}>
+        <Box minWidth={{ base: '100%', md: '600px' }}>
           <h3>Lending Guidelines</h3>
           <Table>
             <Tbody>
@@ -60,8 +68,8 @@ export default function () {
               </Tr>
             </Tbody>
           </Table>
-        </Grid.Col>
-        <Grid.Col marginTop={{ base: 3, md: 0 }}>
+        </Box>
+        <Box marginTop={{ base: 3, md: 0 }}>
           <HighlightedBox mb={0}>
             <h3>Property Types</h3>
             <UnorderedList>
@@ -78,8 +86,8 @@ export default function () {
               <ListItem>Parking Garages &amp; Lots</ListItem>
             </UnorderedList>
           </HighlightedBox>
-        </Grid.Col>
-      </Grid>
+        </Box>
+      </SimpleGrid>
     </Section>
   )
 }

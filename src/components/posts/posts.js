@@ -9,13 +9,15 @@ function Post(props) {
   const { title, image, path } = props
 
   return (
-    <Box
+    <SimpleGrid
       border="1px solid"
       borderRadius="lg"
       overflow="hidden"
       borderColor="gray.300"
+      alignItems="start"
+      columns={1}
     >
-      <AspectRatio ratio={16 / 9}>
+      <AspectRatio ratio={16 / 9} display={{ base: 'none', md: 'block' }}>
         <Image
           cursor="pointer"
           minHeight="150px"
@@ -27,12 +29,12 @@ function Post(props) {
           )}
         />
       </AspectRatio>
-      <Box padding={6}>
-        <Heading as="h4" size="md">
+      <Box padding={6} height="100%">
+        <Heading as="h4" fontStyle="bold" fontSize={{ base: 'lg', md: 'xl' }}>
           <Link to={path}> {title[0].text}</Link>
         </Heading>
       </Box>
-    </Box>
+    </SimpleGrid>
   )
 }
 
@@ -40,8 +42,15 @@ function Posts(props) {
   const { items } = props
 
   return (
-    <Section>
-      <SimpleGrid minChildWidth="250px" spacingX={6} spacingY={6}>
+    <Section background="light">
+      <h3>Recent Posts</h3>
+
+      <SimpleGrid
+        columns={{ base: 1, md: 2, lg: 3 }}
+        minChildWidth="250px"
+        spacingX={6}
+        spacingY={6}
+      >
         {items.map((item) => {
           return <Post {...item} key={short.generate()} />
         })}
