@@ -1,3 +1,4 @@
+import { default as getComponentsFromSlices } from './getComponentsFromSlices'
 import { default as getImagePathsFromData } from './getImagePathsFromData'
 import { default as getMetaTags } from './getMetaTags'
 import { default as getSrcSets } from './getSrcSets'

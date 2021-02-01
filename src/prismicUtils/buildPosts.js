@@ -1,5 +1,6 @@
 const gql = require('graphql-tag')
 const fs = require('fs')
+const chalk = require('chalk')
 
 function buildPosts({ client, PATH }) {
   client
@@ -43,6 +44,7 @@ function buildPosts({ client, PATH }) {
       const _posts = response.data.allPosts.edges
       const posts = _posts.map((post) => {
         post.node.path = `/blog/${post.node.path}/`
+        console.log(chalk.blue(`Built ${post.node.path}`))
         post.node.template = `./src/containers/post`
         return post
       })

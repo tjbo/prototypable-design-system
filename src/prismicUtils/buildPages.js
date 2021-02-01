@@ -1,6 +1,7 @@
 const gql = require('graphql-tag')
 const getPathFromParent = require('./getPathFromParent')
 const fs = require('fs')
+const chalk = require('chalk')
 
 function buildPages({ PATH, client }) {
   return client
@@ -165,6 +166,7 @@ function buildPages({ PATH, client }) {
         })
         .map((page) => {
           page.node.path = page.node._path
+          console.log(chalk.blue(`Built ${page.node.path}`))
           return page
         })
 
