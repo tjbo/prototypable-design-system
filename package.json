@@ -4,6 +4,11 @@
   "description": "A design system for making websites",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
+  "tools": "dist/tools.cjs.js",
+
+  "bin" : {
+    "buildData": "./src/prismicUtils/buildData.js"
+  },
   "watch": {
     "build": "src/**/*.js"
   },
@@ -50,6 +55,7 @@
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
+    "@rollup/plugin-dynamic-import-vars": "^1.1.1",
     "@rollup/plugin-inject": "^4.0.1",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@rollup/plugin-url": "^4.0.2",
@@ -57,10 +63,15 @@
     "@storybook/addon-links": "^5.3.18",
     "@storybook/addons": "^5.3.18",
     "@storybook/react": "^5.3.18",
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.10",
+    "apollo-link-prismic": "^1.0.8",
+    "args-parser": "^1.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.10.7",
     "chalk": "^2.4.2",
     "faker": "^4.1.0",
+    "graphql-tag": "^2.11.0",
     "prismic-javascript": "^2.7.1",
     "release-it": "^13.5.1",
     "rollup": "^1.23.1",

@@ -1,4 +1,4 @@
-export default function getPathFromParent(page, pages, _path = []) {
+function getPathFromParent(page, pages, _path = []) {
   const _page = page.node
 
   if (_page.path === '/') {
@@ -29,3 +29,5 @@ export default function getPathFromParent(page, pages, _path = []) {
   }
   return `/${_path.reverse().join('/')}/`.replace(/\/\//g, '/')
 }
+
+module.exports = getPathFromParent
