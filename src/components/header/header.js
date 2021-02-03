@@ -12,8 +12,9 @@ function SubMenu(props) {
     <Box
       position={{ base: 'relative', md: 'absolute' }}
       bg={{ base: 'none', md: 'blue.50' }}
-      p={6}
+      p={{ base: 0, md: 6 }}
       display={isSubMenuShowing ? 'block' : 'none'}
+      marginTop={{ base: 0, md: -3 }}
       whiteSpace="nowrap"
       width="auto"
     >
@@ -22,7 +23,9 @@ function SubMenu(props) {
           <MenuItem
             key={short.generate()}
             item={item}
-            margin={6}
+            margin={{ base: 0, md: 6 }}
+            p={{ base: 4, md: 2 }}
+            pl={{ base: 9, md: 2 }}
             toggleMobileMenu={toggleMobileMenu}
           />
         )
@@ -45,8 +48,9 @@ function MenuItem(props) {
   const defaultProps = {
     clear: 'both',
     display: 'block',
-    mr: 6,
-    p: { base: 4, md: 0 },
+    p: { base: 4, md: 3 },
+    borderBottom: { base: '1px solid ', md: 'none' },
+    background: { base: 'blue.50', md: 'transparent' },
   }
   const as = ReachLink
 
@@ -56,6 +60,7 @@ function MenuItem(props) {
         {...{
           as,
           ...defaultProps,
+          ...rest,
           to,
         }}
       >
@@ -158,7 +163,7 @@ class Header extends React.Component {
           flexGrow={1}
           position={{ base: 'fixed', md: 'relative' }}
           top={{ base: '100px', md: 0 }}
-          marginLeft={{ base: -6, md: 0 }}
+          marginLeft={{ base: -6, md: 3 }}
           minHeight={{ base: '100vh', md: 'auto' }}
         >
           {menuItems.map((item) => {

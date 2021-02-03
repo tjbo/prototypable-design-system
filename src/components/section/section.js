@@ -1,5 +1,5 @@
 import { Box, Flex } from '@chakra-ui/react'
-import theme from '../theme'
+import short from 'short-uuid'
 
 const getBgColor = (background) => {
   if (background === 'transparent') {
@@ -14,16 +14,16 @@ const getBgColor = (background) => {
 }
 
 const getInnerWidth = (innerWidth) => {
-  if (innerWidth === 'medium') {
-    return theme.breakpoints[3]
-  } else if (innerWidth === 'small') {
-    return theme.breakpoints[1]
+  if (innerWidth === 'small') {
+    return '30em'
+  } else if (innerWidth === 'medium') {
+    return '36em'
   } else if (innerWidth === 'medium-plus') {
-    return theme.breakpoints[4]
+    return '40em'
   } else if (innerWidth === 'huge') {
-    return theme.breakpoints[6]
+    return '100%'
   } else {
-    return theme.breakpoints[3]
+    return '62em'
   }
 }
 
@@ -42,6 +42,7 @@ function Section({
       {...{
         as: 'section',
         bg: getBgColor(background),
+        key: short.generate(),
         justifyContent: 'center',
         width: '100%',
       }}

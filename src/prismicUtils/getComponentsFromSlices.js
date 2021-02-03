@@ -6,22 +6,13 @@ import short from 'short-uuid'
 import parsePrismicToReactComponents from './parsePrismicToReactComponents'
 import HighlightedBox from '../components/highlightedBox'
 import { AspectRatio, Image } from '@chakra-ui/react'
+import Article from '../components/article'
 import ArticleWithImages from '../components/articleWithImages'
 import ArticleWithHighlightedBox from '../components/articleWithHighlightedBox'
 import getSrcSets from './getSrcSets'
 import Posts from '../components/posts'
 
-const wrapperComponent = {
-  text: 'div',
-  highlighted_box: HighlightedBox,
-}
-
-export default function getComponentsFromSlices({
-  slices,
-  id,
-  linkedContent,
-  options = {},
-}) {
+export default function getComponentsFromSlices({ slices, options = {} }) {
   return slices.map((slice, index) => {
     const type = slice.__typename
 
@@ -40,7 +31,14 @@ export default function getComponentsFromSlices({
 
       return (
         <ArticleWithHighlightedBox
-          {...{ background, column1, column2, title1, title2 }}
+          {...{
+            background,
+            column1,
+            column2,
+            key: short.generate(),
+            title1,
+            title2,
+          }}
         />
       )
     } else if (type === 'PostBody1Highlighted_box') {
@@ -49,7 +47,11 @@ export default function getComponentsFromSlices({
         options.paths,
       )
 
-      return <HighlightedBox>{parsedComponents}</HighlightedBox>
+      return (
+        <HighlightedBox key={short.generate()}>
+          {parsedComponents}
+        </HighlightedBox>
+      )
     } else if (type === 'PageBody1Faq') {
       const items = slice.fields.map((item) => {
         return {
@@ -60,6 +62,7 @@ export default function getComponentsFromSlices({
 
       return (
         <Faq
+          key={short.generate()}
           items={items}
           title={slice.primary.title1}
           background={slice.primary.background}
@@ -71,6 +74,12 @@ export default function getComponentsFromSlices({
         options.paths,
       )
       return parsedComponents
+    } else if (type === 'PageBody1Article1') {
+      const { body3, sub_title: subTitle, title1 } = slice.primary
+
+      const body = parsePrismicToReactComponents(body3, options.paths)
+
+      return <Article {...{ body, key: short.generate(), subTitle, title1 }} />
     } else if (type === 'PageBody1Linked_component_section') {
       const { __typename } = slice.primary.body2.body[0]
 
@@ -143,12 +152,12 @@ export default function getComponentsFromSlices({
 
       return <Posts {...{ items }} />
     } else if (type === 'PageBody1Cards') {
-      const { background } = slice.primary
+      const { background, title1 } = slice.primary
       const items = slice.fields.map((card) => {
         return card.cards
       })
 
-      return <Cards {...{ background, items }} />
+      return <Cards {...{ background, items, title: title1 }} />
     } else if (type === 'PageBody1Article___images') {
       const {
         fields,

@@ -42,6 +42,14 @@ function buildPages({ PATH, client }) {
                       text_color
                     }
                   }
+                  ... on PageBody1Article1 {
+                    primary {
+                      background
+                      sub_title
+                      title1
+                      body3
+                    }
+                  }
                   ... on PageBody1Article {
                     primary {
                       body3

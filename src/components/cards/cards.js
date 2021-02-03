@@ -32,10 +32,11 @@ function getContent(title, content) {
 }
 
 export default function (props) {
-  const { background, items } = props
+  const { background, items, title } = props
 
   return (
     <Section {...{ background }}>
+      <h3>{title}</h3>
       <SimpleGrid minChildWidth="250px" spacingX={6} spacingY={6}>
         {items.map((item) => {
           const { image, title, ...rest } = item

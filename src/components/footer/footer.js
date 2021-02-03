@@ -20,7 +20,7 @@ function Footer(props) {
   const { finePrint, location, info, menus } = props
   return (
     <Box>
-      <Section background="dark" inner_width="medium">
+      <Section background="dark">
         <Box borderTop="1px solid" paddingTop={6}></Box>
         <SimpleGrid columns={[2, 2, 4, 4]}>
           <Box>

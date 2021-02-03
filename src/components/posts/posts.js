@@ -31,7 +31,7 @@ function Post(props) {
       </AspectRatio>
       <Box padding={6} height="100%">
         <Heading as="h4" fontStyle="bold" fontSize={{ base: 'lg', md: 'xl' }}>
-          <Link to={path}> {title[0].text}</Link>
+          <Link to={path}> {title[0].text || title}</Link>
         </Heading>
       </Box>
     </SimpleGrid>
@@ -39,11 +39,11 @@ function Post(props) {
 }
 
 function Posts(props) {
-  const { items } = props
+  const { items, title = 'Recent Posts' } = props
 
   return (
     <Section background="light">
-      <h3>Recent Posts</h3>
+      <h3>{title}</h3>
 
       <SimpleGrid
         columns={{ base: 1, md: 2, lg: 3 }}
