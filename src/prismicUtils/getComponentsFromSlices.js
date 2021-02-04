@@ -112,6 +112,7 @@ export default function getComponentsFromSlices({ slices, options = {} }) {
       return (
         <AspectRatio ratio={16 / 9}>
           <Image
+            borderRadius="md"
             alt={slice.primary.image1.alt}
             src={slice.primary.image1.url}
             srcSet={getSrcSets(
@@ -173,6 +174,7 @@ export default function getComponentsFromSlices({ slices, options = {} }) {
             column2: fields.map((item) => {
               return (
                 <Image
+                  borderRadius="md"
                   src={item.image.url}
                   srcSet={getSrcSets(['540x357', '1080x713'], item.image)}
                   aspectRatio={66}

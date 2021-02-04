@@ -61,6 +61,10 @@ const global = {
     marginBottom: theme.space[6],
   },
 
+  ol: {
+    marginLeft: theme.space[12],
+    marginBottom: theme.space[6],
+  },
   h1: {
     // you can also use responsive styles
     fontSize: [fs['2xl'], fs['3xl'], fs['4xl'], fs['5xl']],
@@ -70,14 +74,14 @@ const global = {
     marginBottom: theme.space[6],
   },
   h2: {
-    fontSize: [fs['xl'], fs['3xl'], fs['4xl'], fs['5xl']],
+    fontSize: [fs['xl'], fs['3xl']],
     fontWeight: 'semibold',
     lineHeight: '110%',
     letterSpacing: '-1%',
     marginBottom: theme.space[6],
   },
   h3: {
-    fontSize: [fs['xl'], fs['4xl']],
+    fontSize: [fs['xl'], fs['2xl']],
     fontWeight: 'semibold',
     lineHeight: '120%',
     letterSpacing: '-1%',
@@ -89,6 +93,21 @@ const global = {
   },
   h5: {
     fontSize: [fs['xl'], fs['xl1']],
+  },
+  '.highlighted-text-green': {
+    color: theme.colors.green['800'],
+    fontStyle: 'italic',
+    fontWeight: 600,
+  },
+  '.highlighted-text-blue': {
+    color: theme.colors.blue['800'],
+    fontStyle: 'italic',
+    fontWeight: 600,
+  },
+  '.highlighted-text-red': {
+    color: theme.colors.red['800'],
+    fontStyle: 'italic',
+    fontWeight: 600,
   },
 }
 

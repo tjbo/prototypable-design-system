@@ -28,7 +28,6 @@ function linkResolver(paths, doc) {
 
 const components = {
   a: (props) => {
-    console.log(props)
     const { href, children } = props
     if (href[0] === '/') {
       return <Link to={href}>{children}</Link>

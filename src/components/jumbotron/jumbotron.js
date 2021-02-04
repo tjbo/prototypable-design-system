@@ -29,8 +29,12 @@ export default function ({
         zIndex={1}
       >
         <TextContainerUI
+          display="flex"
+          alignItems="center"
+          flexDirection="column"
           color={textColor === 'dark' ? 'black' : 'white'}
           maxW="768px"
+          textAlign="center"
         >
           {children}
         </TextContainerUI>
@@ -38,6 +42,7 @@ export default function ({
           <Button
             justifyContent="center"
             colorScheme="red"
+            isCta={true}
             to={callToActionHref}
             size="lg"
             maxW="250px"

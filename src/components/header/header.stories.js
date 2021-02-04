@@ -1,5 +1,6 @@
 import Header from './header'
-
+import { Flex } from '@chakra-ui/react'
+import Icon from '../icon/'
 export default {
   title: 'Header',
   component: Header,
@@ -8,6 +9,13 @@ export default {
 export function Default() {
   return (
     <Header
+      Logo={() => {
+        return (
+          <Flex align="center" mr={5} position="relative" minWidth={36}>
+            <Icon name="crescent-lenders" position="absolute" boxSize={[36]} />
+          </Flex>
+        )
+      }}
       menuItems={[
         {
           title: 'Home',

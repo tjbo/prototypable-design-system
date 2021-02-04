@@ -52,6 +52,7 @@ function MenuItem(props) {
     borderBottom: { base: '1px solid ', md: 'none' },
     background: { base: 'blue.50', md: 'transparent' },
   }
+
   const as = ReachLink
 
   if (to) {
@@ -138,7 +139,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const { menuItems, isDesktop } = this.props
+    const { menuItems, isDesktop, Logo } = this.props
     const { isMobileMenuShowing, subMenuShowing } = this.state
 
     return (
@@ -152,9 +153,7 @@ class Header extends React.Component {
         position="relative"
         zIndex={2}
       >
-        <Flex align="center" mr={5} position="relative" minWidth={36}>
-          <Icon name="crescent-lenders" position="absolute" boxSize={[36]} />
-        </Flex>
+        <Logo />
         <Box
           background={{ base: theme.colors.white, md: 'none' }}
           display={{ base: isMobileMenuShowing ? 'block' : 'none', md: 'flex' }}
@@ -162,7 +161,7 @@ class Header extends React.Component {
           alignItems="center"
           flexGrow={1}
           position={{ base: 'fixed', md: 'relative' }}
-          top={{ base: '100px', md: 0 }}
+          top={{ base: '90px', md: 0 }}
           marginLeft={{ base: -6, md: 3 }}
           minHeight={{ base: '100vh', md: 'auto' }}
         >
@@ -181,7 +180,10 @@ class Header extends React.Component {
             )
           })}
         </Box>
-        <Box display={{ base: 'none', md: 'block' }} mt={{ base: 4, md: 0 }}>
+        <Box
+          display={{ base: 'none', md: 'none', lg: 'block' }}
+          mt={{ base: 0, md: 0 }}
+        >
           <Button colorScheme="green" border="1px">
             CALL US 213-474-3131
           </Button>

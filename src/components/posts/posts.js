@@ -11,7 +11,7 @@ function Post(props) {
   return (
     <SimpleGrid
       border="1px solid"
-      borderRadius="lg"
+      borderRadius="md"
       overflow="hidden"
       borderColor="gray.300"
       alignItems="start"
