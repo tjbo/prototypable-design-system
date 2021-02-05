@@ -4,9 +4,10 @@ import getSrcSets from '../../prismicUtils/getSrcSets'
 import Section from '../section'
 import { Link, navigate } from '@reach/router'
 import short from 'short-uuid'
+import linkResolver from '../../prismicUtils/linkResolver'
 
 function Post(props) {
-  const { title, image, path } = props
+  const { title, image } = props
 
   return (
     <SimpleGrid
@@ -21,7 +22,7 @@ function Post(props) {
         <Image
           cursor="pointer"
           minHeight="150px"
-          onClick={() => navigate(path)}
+          onClick={() => navigate(linkResolver(props))}
           src={image.url}
           srcSet={getSrcSets(
             ['414x414', '1280x400', '1200x630', '375x375'],
@@ -31,7 +32,7 @@ function Post(props) {
       </AspectRatio>
       <Box padding={6} height="100%">
         <Heading as="h4" fontStyle="bold" fontSize={{ base: 'lg', md: 'xl' }}>
-          <Link to={path}> {title[0].text || title}</Link>
+          <Link to={linkResolver(props)}> {title[0].text || title}</Link>
         </Heading>
       </Box>
     </SimpleGrid>
@@ -39,10 +40,10 @@ function Post(props) {
 }
 
 function Posts(props) {
-  const { items, title = 'Recent Posts' } = props
+  const { background = 'light', items, title = 'Recent Posts' } = props
 
   return (
-    <Section background="light">
+    <Section background={background}>
       <h3>{title}</h3>
 
       <SimpleGrid

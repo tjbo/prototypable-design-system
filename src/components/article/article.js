@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 import Section from '../section'
 
 function Article(props) {
@@ -7,8 +7,10 @@ function Article(props) {
 
   return (
     <Section background={background} inner_width="medium-plus">
-      <h3>{title1}</h3>
-      {subTitle && <h4>{subTitle}</h4>}
+      <Text as="h2" mb={1}>
+        {title1}
+      </Text>
+      {subTitle && <Text as="h3">{subTitle}</Text>}
       <Box>{body}</Box>
     </Section>
   )

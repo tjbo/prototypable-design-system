@@ -75,11 +75,15 @@ export default function getComponentsFromSlices({ slices, options = {} }) {
       )
       return parsedComponents
     } else if (type === 'PageBody1Article1') {
-      const { body3, sub_title: subTitle, title1 } = slice.primary
+      const { background, body3, sub_title: subTitle, title1 } = slice.primary
 
       const body = parsePrismicToReactComponents(body3, options.paths)
 
-      return <Article {...{ body, key: short.generate(), subTitle, title1 }} />
+      return (
+        <Article
+          {...{ background, body, key: short.generate(), subTitle, title1 }}
+        />
+      )
     } else if (type === 'PageBody1Linked_component_section') {
       const { __typename } = slice.primary.body2.body[0]
 
@@ -146,8 +150,8 @@ export default function getComponentsFromSlices({ slices, options = {} }) {
       const items = slice.fields.map((item) => {
         const { related_blog_post } = item
         return {
-          path: `/blog/${related_blog_post.path}/`,
           ...related_blog_post,
+          __typename: 'PageBodyRelatedPost',
         }
       })
 

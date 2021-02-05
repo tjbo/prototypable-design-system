@@ -14,13 +14,13 @@ import Section from '../section'
 export default function () {
   return (
     <Section>
-      <SimpleGrid spacingX={12} columns={[1, 1, 1, 2, 2]}>
-        <Box minWidth={{ base: '100%', md: '600px' }}>
+      <SimpleGrid spacingX={9} columns={[1, 1, 1, 2, 2]}>
+        <Box minWidth={{ base: '100%', md: 'auto', lg: '630px' }}>
           <h3>Lending Guidelines</h3>
           <Table>
             <Tbody>
               <Tr>
-                <Td>Interest Rates:</Td>
+                <Td minWidth={225}>Interest Rates:</Td>
                 <Td>Starting @ 7.99% (interest only)</Td>
               </Tr>
               <Tr>
@@ -69,9 +69,9 @@ export default function () {
             </Tbody>
           </Table>
         </Box>
-        <Box marginTop={{ base: 3, md: 0 }}>
+        <Box mt={{ base: 6, lg: 0 }}>
+          <h3>Property Types</h3>
           <HighlightedBox mb={0}>
-            <h3>Property Types</h3>
             <UnorderedList>
               <ListItem>
                 Single-family & Multi-family Investment Properties

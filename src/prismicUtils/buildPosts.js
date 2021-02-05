@@ -1,6 +1,7 @@
 const gql = require('graphql-tag')
 const fs = require('fs')
 const chalk = require('chalk')
+const shuffle = require('lodash.shuffle')
 
 function buildPosts({ client, PATH }) {
   client
@@ -12,6 +13,7 @@ function buildPosts({ client, PATH }) {
               node {
                 _meta {
                   id
+                  tags
                 }
                 category
                 image
@@ -42,12 +44,61 @@ function buildPosts({ client, PATH }) {
     })
     .then((response) => {
       const _posts = response.data.allPosts.edges
-      const posts = _posts.map((post) => {
-        post.node.path = `/blog/${post.node.path}/`
-        console.log(chalk.blue(`Built ${post.node.path}`))
-        post.node.template = `./src/containers/post`
-        return post
-      })
+
+      function findRelatedPosts(tags, id) {
+        let relatedPosts = []
+
+        tags.forEach((tag) => {
+          relatedPosts = _posts.filter((post) => {
+            return (
+              post.node._meta.tags.includes(tag) &&
+              !relatedPosts.includes(post) &&
+              post.node._meta.id !== id
+            )
+          })
+        })
+
+        relatedPosts = shuffle(relatedPosts)
+
+        function addAdditionalItems() {
+          if (relatedPosts.length < 3) {
+            const post = _posts.filter((post) => {
+              return !relatedPosts.includes(post) && post.node._meta.id !== id
+            })[0]
+            relatedPosts.push(post)
+            return addAdditionalItems()
+          }
+          relatedPosts = relatedPosts.slice(0, 3)
+        }
+
+        addAdditionalItems()
+
+        return relatedPosts.map((post) => {
+          const { image, path, title } = post.node
+          return {
+            image,
+            path,
+            title,
+            __typename: 'PostBodyRelatedPost',
+          }
+        })
+      }
+
+      const posts = _posts
+        .map((post) => {
+          post.node.relatedPosts = findRelatedPosts(
+            post.node._meta.tags,
+            post.node._meta.id,
+          )
+          return post
+        })
+        .map((post) => {
+          post.node.path = `/blog/${post.node.path}/`
+          console.log(chalk.blue(`Built ${post.node.path}`))
+          post.node.template = `./src/containers/post`
+
+          return post
+        })
       fs.writeFile(PATH, JSON.stringify(posts), 'utf8', () => {})
     })
     .catch((error) => {
