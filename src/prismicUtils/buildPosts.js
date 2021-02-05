@@ -11,6 +11,13 @@ function buildPosts({ client, PATH }) {
           allPosts {
             edges {
               node {
+                og_type
+                og_title
+                og_image
+                og_description
+                meta_title
+                meta_noindex
+                meta_description
                 _meta {
                   id
                   tags

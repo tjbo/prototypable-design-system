@@ -10,9 +10,7 @@ export default function (data, defaultTitle, defaultDescription, defaultImage) {
     data.meta_description || data.og_description || defaultDescription
   const metaTitle = data.meta_title || data.og_title || defaultTitle
   const metaNoindex = data.meta_noindex
-  const canonical = data.slug
-    ? data.siteRoot + data.slug
-    : data.siteRoot + data.path
+  const canonical = data.siteRoot + data.path
 
   return [
     <meta
