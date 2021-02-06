@@ -1,6 +1,8 @@
 import Header from './header'
 import { Flex } from '@chakra-ui/react'
 import Icon from '../icon/'
+import TriggerIcon from './triggerIcon'
+
 export default {
   title: 'Header',
   component: Header,
@@ -55,3 +57,5 @@ export function Default() {
     />
   )
 }
+
+export const TriggerIconStory = () => <TriggerIcon />

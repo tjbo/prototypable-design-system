@@ -107,7 +107,7 @@ export default function () {
                 <Button
                   colorScheme="red"
                   size="lg"
-                  to="/contact/"
+                  to="/about/contact/"
                   minWidth="100%"
                 >
                   Send Us A Message

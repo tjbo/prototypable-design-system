@@ -1,9 +1,10 @@
 import React from 'react'
-import { Link as ReachLink, navigate } from '@reach/router'
+import { Link as ReachLink } from '@reach/router'
 import Icon from '../icon'
-import { Box, Flex, Link, Button, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Flex, Link, useBreakpointValue } from '@chakra-ui/react'
 import short from 'short-uuid'
 import theme from '../theme'
+import TriggerIcon from './triggerIcon'
 
 function SubMenu(props) {
   const { items, isSubMenuShowing, toggleMobileMenu } = props
@@ -139,7 +140,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const { menuItems, isDesktop, Logo } = this.props
+    const { Content1, Content2, menuItems, isDesktop } = this.props
     const { isMobileMenuShowing, subMenuShowing } = this.state
 
     return (
@@ -152,8 +153,9 @@ class Header extends React.Component {
         bg="gray.50"
         position="relative"
         zIndex={2}
+        minHeight={{ base: '90px' }}
       >
-        <Logo />
+        <Content1 />
         <Box
           background={{ base: theme.colors.white, md: 'none' }}
           display={{ base: isMobileMenuShowing ? 'block' : 'none', md: 'flex' }}
@@ -184,15 +186,13 @@ class Header extends React.Component {
           display={{ base: 'none', md: 'none', lg: 'block' }}
           mt={{ base: 0, md: 0 }}
         >
-          <Button colorScheme="green" border="1px">
-            CALL US 213-474-3131
-          </Button>
+          <Content2 />
         </Box>
         <Box
           display={{ base: 'block', md: 'none' }}
           onMouseDown={this.toggleMobileMenu}
         >
-          CLICK
+          <TriggerIcon {...{ isOpen: isMobileMenuShowing }} />
         </Box>
       </Flex>
     )

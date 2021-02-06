@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Box } from '@chakra-ui/react'
+import theme from '../theme'
 
 export const TextContainerUI = styled(Box)`
   h1 {
@@ -7,5 +8,7 @@ export const TextContainerUI = styled(Box)`
   }
   p {
     margin: 0;
+    font-weight: bold;
+    font-size: ${theme.fontSizes['xl']};
   }
 `
