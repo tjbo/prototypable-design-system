@@ -6,7 +6,7 @@ function buildPostsList({ client, PATH }) {
     .query({
       query: gql`
         query {
-          allPosts {
+          allPosts(sortBy: meta_firstPublicationDate_DESC) {
             edges {
               node {
                 _meta {

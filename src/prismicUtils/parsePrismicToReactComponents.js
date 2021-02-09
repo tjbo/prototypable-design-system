@@ -50,8 +50,17 @@ const components = {
 }
 
 function customLink(type, element, content, paths) {
-  const to = element.data.url || paths[element.data.id]
-  return <Link to={to}>{content}</Link>
+  const { link_type, target, id, url } = element.data
+  if (link_type === 'Web') {
+    return (
+      <a href={url} target={target}>
+        {content}
+      </a>
+    )
+  } else {
+    const to = element.data.url || paths[element.data.id]
+    return <Link to={to}>{content}</Link>
+  }
 }
 
 // takes prismic data, then parses the components to react components and adds a wrapper

@@ -9,7 +9,7 @@ function buildPosts({ client, PATH }) {
     .query({
       query: gql`
         query {
-          allPosts {
+          allPosts(sortBy: meta_firstPublicationDate_ASC) {
             edges {
               node {
                 og_type
@@ -20,6 +20,8 @@ function buildPosts({ client, PATH }) {
                 meta_noindex
                 meta_description
                 _meta {
+                  firstPublicationDate
+                  lastPublicationDate
                   id
                   tags
                 }
@@ -104,7 +106,6 @@ function buildPosts({ client, PATH }) {
           post.node.path = `/blog/${post.node.path}/`
           console.log(chalk.blue(`Built ${post.node.path}`))
           post.node.template = `./src/containers/post`
-
           return post
         })
 
