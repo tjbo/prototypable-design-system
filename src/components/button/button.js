@@ -7,11 +7,11 @@ export default function (props) {
     return (
       <Box d="flex" justifyContent={justifyContent} w="100%">
         <Button
-          {...{ ...rest }}
           onClick={() => {
             isCta && localStorage.setItem('cta', children)
             navigate(to)
           }}
+          {...{ ...rest }}
         >
           {children}
         </Button>

@@ -10,5 +10,6 @@ export const TextContainerUI = styled(Box)`
     margin: 0;
     font-weight: bold;
     font-size: ${theme.fontSizes['xl']};
+    margin-top: 0.25em;
   }
 `

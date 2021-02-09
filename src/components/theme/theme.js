@@ -67,7 +67,7 @@ const global = {
   },
   h1: {
     // you can also use responsive styles
-    fontSize: [fs['2xl'], fs['3xl'], fs['4xl'], fs['5xl']],
+    fontSize: [fs['2xl'], fs['3xl'], fs['4xl']],
     fontWeight: 'bold',
     lineHeight: '110%',
     letterSpacing: '-2%',

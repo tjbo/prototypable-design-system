@@ -11,6 +11,7 @@ export default function ({
   children,
   hasCta = true,
   image = null,
+  overlay,
   textColor,
 }) {
   return (
@@ -67,7 +68,7 @@ export default function ({
             to={callToActionHref}
             size="lg"
             maxW="250px"
-            marginTop={6}
+            mt=".75em"
           >
             {callToActionText}
           </Button>
@@ -83,9 +84,10 @@ export default function ({
         top="0"
       >
         <Image
-          height="50vh"
           srcSet={getSrcSets(theme.custom.images.sizes.jumbotron, image)}
+          filter={`brightness(${overlay}%)`}
           fit="cover"
+          minHeight="50vh"
           loading="eager"
           width="100vw"
         />
