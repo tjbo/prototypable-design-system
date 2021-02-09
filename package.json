@@ -1,12 +1,12 @@
 {
   "name": "prototypable-components",
-  "version": "0.4.32",
+  "version": "1.0.0",
   "description": "A design system for making websites",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "tools": "dist/tools.cjs.js",
   "bin": {
-    "buildData": "./src/prismicUtils/buildData.js"
+    "buildData": "src/prismicUtils/buildData.js"
   },
   "watch": {
     "build": "src/**/*.js"
