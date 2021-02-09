@@ -12,6 +12,7 @@ const args = require('args-parser')(process.argv)
 
 const buildDeals = require('./buildDeals')
 const buildPages = require('./buildPages')
+const buildPaths = require('./buildPaths')
 const buildPosts = require('./buildPosts')
 const buildPostsList = require('./buildPostsList')
 const buildSchema = require('./buildSchema')
@@ -30,6 +31,7 @@ const DIR = `${CWD}/data`
 const PATHS = {
   DEALS: `${DIR}/deals.json`,
   FRAGMENTS: `${DIR}/fragmentTypes.json`,
+  PATHS: `${DIR}/paths.json`,
   PAGES: `${DIR}/pages.json`,
   POSTS: `${DIR}/posts.json`,
   POSTS_LIST: `${DIR}/postsList.json`,
@@ -95,6 +97,7 @@ getPrismicRef().then((ref) => {
     }
 
     Promise.all(requests).then(() => {
+      buildPaths({ PATHS })
       console.log('Data finished building.')
     })
   })

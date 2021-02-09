@@ -12,7 +12,11 @@ import ArticleWithHighlightedBox from '../components/articleWithHighlightedBox'
 import getSrcSets from './getSrcSets'
 import Posts from '../components/posts'
 
-export default function getComponentsFromSlices({ slices, options = {} }) {
+export default function getComponentsFromSlices({
+  slices,
+  options = {},
+  paths,
+}) {
   return slices.map((slice, index) => {
     const type = slice.__typename
 
@@ -25,9 +29,9 @@ export default function getComponentsFromSlices({ slices, options = {} }) {
         sidebar_title: title2,
       } = slice.primary
 
-      const column1 = parsePrismicToReactComponents(body3, options.paths)
+      const column1 = parsePrismicToReactComponents(body3, paths)
 
-      const column2 = parsePrismicToReactComponents(sidebar, options.paths)
+      const column2 = parsePrismicToReactComponents(sidebar, paths)
 
       return (
         <ArticleWithHighlightedBox
@@ -44,7 +48,7 @@ export default function getComponentsFromSlices({ slices, options = {} }) {
     } else if (type === 'PostBody1Highlighted_box') {
       const parsedComponents = parsePrismicToReactComponents(
         slice.primary.text,
-        options.paths,
+        paths,
       )
 
       return (
@@ -56,7 +60,7 @@ export default function getComponentsFromSlices({ slices, options = {} }) {
       const items = slice.fields.map((item) => {
         return {
           ...item,
-          answer: parsePrismicToReactComponents(item.answer),
+          answer: parsePrismicToReactComponents(item.answer, paths),
         }
       })
 
@@ -71,13 +75,13 @@ export default function getComponentsFromSlices({ slices, options = {} }) {
     } else if (type === 'PostBody1Text') {
       const parsedComponents = parsePrismicToReactComponents(
         slice.primary.text,
-        options.paths,
+        paths,
       )
       return parsedComponents
     } else if (type === 'PageBody1Article1') {
       const { background, body3, sub_title: subTitle, title1 } = slice.primary
 
-      const body = parsePrismicToReactComponents(body3, options.paths)
+      const body = parsePrismicToReactComponents(body3, paths)
 
       return (
         <Article
@@ -91,16 +95,13 @@ export default function getComponentsFromSlices({ slices, options = {} }) {
 
       if (__typename === 'Component_sliceBodyReact_section') {
         const { body1 } = slice.primary.body2.body[0].primary
-        const parsedComponents = parsePrismicToReactComponents(
-          body1[0],
-          options.paths,
-        )
+        const parsedComponents = parsePrismicToReactComponents(body1[0], paths)
         return <Section background={background}>{parsedComponents}</Section>
       } else if (__typename === 'Component_sliceBodyFaq') {
         const items = slice.primary.body2.body[0].fields.map((item) => {
           return {
             ...item,
-            answer: parsePrismicToReactComponents(item.answer),
+            answer: parsePrismicToReactComponents(item.answer, paths),
           }
         })
 
@@ -129,10 +130,7 @@ export default function getComponentsFromSlices({ slices, options = {} }) {
     } else if (type === 'PageBody1Jumobotron') {
       const { body, call_to_action, overlay, text_color } = slice.primary
 
-      const parsedComponents = parsePrismicToReactComponents(
-        body,
-        options.paths,
-      )
+      const parsedComponents = parsePrismicToReactComponents(body, paths)
 
       return React.createElement(
         Jumbotron,
@@ -174,7 +172,7 @@ export default function getComponentsFromSlices({ slices, options = {} }) {
           {...{
             background,
             reverse,
-            column1: parsePrismicToReactComponents(body, options.paths),
+            column1: parsePrismicToReactComponents(body, paths),
             column2: fields.map((item) => {
               return (
                 <Image

@@ -2,6 +2,8 @@ const gql = require('graphql-tag')
 const getPathFromParent = require('./getPathFromParent')
 const fs = require('fs')
 const chalk = require('chalk')
+const util = require('util')
+const fs_writeFile = util.promisify(fs.writeFile)
 
 function buildPages({ PATH, client }) {
   return client
@@ -178,7 +180,15 @@ function buildPages({ PATH, client }) {
           return page
         })
 
-      fs.writeFile(PATH, JSON.stringify(pages), 'utf8', () => {})
+      return new Promise(function (resolve, reject) {
+        fs.writeFile(PATH, JSON.stringify(pages), function (err) {
+          if (err) {
+            reject(err)
+          } else {
+            resolve()
+          }
+        })
+      })
     })
     .catch((error) => {
       console.error(error)

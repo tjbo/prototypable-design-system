@@ -17,14 +17,10 @@ import JsxParser from 'react-jsx-parser'
 import Icon from '../components/icon'
 import HighlightedBox from '../components/highlightedBox'
 import short from 'short-uuid'
-import getLink from './getLink'
 import Button from '../components/button'
 import QuickPoint from '../components/quickPoint'
 import { Link } from '@reach/router'
-
-function linkResolver(paths, doc) {
-  return getLink(doc, paths)
-}
+import { RichText } from 'prismic-reactjs'
 
 const components = {
   a: (props) => {
@@ -53,6 +49,11 @@ const components = {
   QuickPoint,
 }
 
+function customLink(type, element, content, paths) {
+  const to = element.data.url || paths[element.data.id]
+  return <Link to={to}>{content}</Link>
+}
+
 // takes prismic data, then parses the components to react components and adds a wrapper
 function parsePrismicToReactComponents(text, paths) {
   if (!text) {
@@ -69,12 +70,15 @@ function parsePrismicToReactComponents(text, paths) {
     )
   }
 
-  // if type isn't preformatted we just use global styles
-  const parsePrismic = PrismicReactJs.RichText.render(
-    text,
-    linkResolver.bind(null, paths),
+  // if text isn't preformatted
+  return (
+    <RichText
+      render={text}
+      serializeHyperlink={(type, element, content) =>
+        customLink(type, element, content, paths)
+      }
+    />
   )
-  return parsePrismic
 }
 
 export default parsePrismicToReactComponents

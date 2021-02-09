@@ -30,7 +30,16 @@ function buildPostsList({ client, PATH }) {
         post.node.path = `/blog/${post.node.path}`
         return post
       })
-      fs.writeFile(PATH, JSON.stringify(posts), 'utf8', () => {})
+
+      return new Promise(function (resolve, reject) {
+        fs.writeFile(PATH, JSON.stringify(posts), function (err) {
+          if (err) {
+            reject(err)
+          } else {
+            resolve()
+          }
+        })
+      })
     })
     .catch((error) => {
       console.error(error)

@@ -2,9 +2,10 @@ const gql = require('graphql-tag')
 const fs = require('fs')
 const chalk = require('chalk')
 const shuffle = require('lodash.shuffle')
+const util = require('util')
 
 function buildPosts({ client, PATH }) {
-  client
+  return client
     .query({
       query: gql`
         query {
@@ -106,7 +107,16 @@ function buildPosts({ client, PATH }) {
 
           return post
         })
-      fs.writeFile(PATH, JSON.stringify(posts), 'utf8', () => {})
+
+      return new Promise(function (resolve, reject) {
+        fs.writeFile(PATH, JSON.stringify(posts), function (err) {
+          if (err) {
+            reject(err)
+          } else {
+            resolve()
+          }
+        })
+      })
     })
     .catch((error) => {
       console.error(error)
