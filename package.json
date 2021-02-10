@@ -1,6 +1,6 @@
 {
   "name": "prototypable-components",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A design system for making websites",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
