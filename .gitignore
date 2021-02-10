@@ -7,7 +7,6 @@
 .DS_Store
 .env*
 
-/dist
 
 # debug
 npm-debug.log*
