@@ -327,7 +327,7 @@ function Button (props) {
       w: "100%"
     }, /*#__PURE__*/React.createElement(Button$1, _extends({
       onClick: function onClick() {
-        isCta && localStorage.setItem('cta', children);
+        typeof window !== 'undefined' && isCta && localStorage.setItem('cta', children);
         navigate(to);
       }
     }, _objectSpread2({}, rest)), children));

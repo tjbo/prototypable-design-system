@@ -333,7 +333,7 @@ function Button (props) {
       w: "100%"
     }, /*#__PURE__*/React__default.createElement(react.Button, _extends({
       onClick: function onClick() {
-        isCta && localStorage.setItem('cta', children);
+        typeof window !== 'undefined' && isCta && localStorage.setItem('cta', children);
         router.navigate(to);
       }
     }, _objectSpread2({}, rest)), children));
