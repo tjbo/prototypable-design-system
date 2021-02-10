@@ -2239,7 +2239,7 @@ function getComponentsFromSlices(_ref) {
       _ref$options = _ref.options,
       options = _ref$options === void 0 ? {} : _ref$options,
       paths = _ref.paths;
-  return slices.map(function (slice, index) {
+  return slices && slices.length && slices.map(function (slice, index) {
     var type = slice.__typename;
 
     if (type === 'PageBody1Article') {
@@ -2325,6 +2325,7 @@ function getComponentsFromSlices(_ref) {
       }, /*#__PURE__*/React__default.createElement(react.Image, {
         borderRadius: "md",
         alt: slice.primary.image1.alt,
+        loading: "defer",
         src: slice.primary.image1.url,
         srcSet: getSrcSets(['768x506', '1024x674', '1366x900', '1600x1056'], slice.primary.image1)
       }));

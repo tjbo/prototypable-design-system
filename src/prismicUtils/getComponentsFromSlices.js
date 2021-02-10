@@ -18,6 +18,7 @@ export default function getComponentsFromSlices({
   paths,
 }) {
   return (
+    slices &&
     slices.length &&
     slices.map((slice, index) => {
       const type = slice.__typename
@@ -124,6 +125,7 @@ export default function getComponentsFromSlices({
             <Image
               borderRadius="md"
               alt={slice.primary.image1.alt}
+              loading="defer"
               src={slice.primary.image1.url}
               srcSet={getSrcSets(
                 ['768x506', '1024x674', '1366x900', '1600x1056'],
