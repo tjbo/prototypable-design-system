@@ -1,5 +1,5 @@
 import { Button, Box } from '@chakra-ui/react'
-import { Link, navigate } from '@reach/router'
+import { navigate } from '@reach/router'
 
 export default function (props) {
   const { justifyContent = 'flex-start', children, isCta, to, ...rest } = props
