@@ -8,7 +8,9 @@ export default function (props) {
       <Box d="flex" justifyContent={justifyContent} w="100%">
         <Button
           onClick={() => {
-            isCta && localStorage.setItem('cta', children)
+            typeof window !== 'undefined' &&
+              isCta &&
+              localStorage.setItem('cta', children)
             navigate(to)
           }}
           {...{ ...rest }}
